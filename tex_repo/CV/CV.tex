@@ -1,0 +1,387 @@
+%just for
+% LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2009 Jason Blevins <jrblevin@sdf.lonestar.org>
+% http://jblevins.org/projects/cv-template/
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents. I do ask that you please leave
+% this notice and the above URL in the source code if you choose to
+% redistribute this file.
+
+\documentclass[letterpaper]{article}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+% Comment the following lines to use the default Computer Modern font
+% instead of the Palatino font provided by the mathpazo package.
+% Remove the 'osf' bit if you don't like the old style figures.
+%\usepackage[T1]{fontenc}
+%%\usepackage[sc,osf]{mathpazo}
+%\usepackage[sc]{mathpazo}
+% Set your name here
+
+\def\name{Min-Gi Lee}
+
+% Replace this with a link to your CV if you like, or set it empty
+% (as in \def\footerlink{}) to remove the link in the footer:
+\def\footerlink{http://amath.kaist.ac.kr/pde_lab/}
+
+% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {economics, statistics, mathematics},
+  pdftitle = {\name: Curriculum Vitae},
+  pdfsubject = {Curriculum Vitae},
+  pdfpagemode = UseNone
+}
+
+\geometry{
+  body={6.5in, 8.5in},
+  left=1.0in,
+  top=1.25in
+}
+
+% Customize page headers
+\pagestyle{myheadings}
+\markright{\name}
+\thispagestyle{empty}
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\Large}
+\subsectionfont{\rmfamily\mdseries\itshape\large}
+
+% Other possible font commands include:
+% \ttfamily for teletype,
+% \sffamily for sans serif,
+% \bfseries for bold,
+% \scshape for small caps,
+% \normalsize, \large, \Large, \LARGE sizes.
+
+% Don't indent paragraphs.
+\setlength\parindent{0em}
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+\begin{document}
+
+% Place name at left
+{\huge \name}
+
+% Alternatively, print name centered and bold:
+%\centerline{\huge \bf \name}
+
+\vspace{0.25in}
+
+\begin{minipage}{0.45\linewidth}
+    %4700 King Abdullah University of Science \& Technology\\
+    KAUST\\
+    Computer, Electrical and Mathematical \\Science and Engineering\\
+    Thuwal 23955-6900\\
+    Kingdom of Saudi Arabia
+%  \href{http://www.kaist.ac.kr/}{KAIST} \\
+%  Department of Mathematical Science \\
+%  291 Daehak-ro, Yuseong-gu \\
+%  Daejeon, 305-701, Korea
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+  \vfil
+  \begin{tabular}{ll}
+    {}\\
+    Phone: & +966-12-808-6142 \\
+    %Fax: &  (919) 962-5678 \\
+    Email: & \href{mailto:mingi.lee@kaust.edu.sa}{\tt mingi.lee@kaust.edu.sa} \\
+    {}\\
+    Born on &Sep. 2, 1981 in Seoul, Korea.
+    %Homepage: & \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee}{\tt http://amath.kaist.ac.kr/}\\
+    %& {\tt pde\_lab/members/MinGiLee}
+%    Phone: & 82-42-350-2797 \\
+%    %Fax: &  (919) 962-5678 \\
+%    Email: & \href{mailto:mg.lee@kaist.ac.kr}{\tt mg.lee@kaist.ac.kr} \\
+%    Homepage: & \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee}{\tt http://amath.kaist.ac.kr/}\\
+%    & {\tt pde\_lab/members/MinGiLee}
+  \end{tabular}
+\end{minipage}
+
+% \bigskip
+% \quad Born on Sep. 2, 1981 in Seoul, Korea.
+% \section*{Personal}
+
+% \begin{itemize}
+% \item 
+% \end{itemize}
+
+\section*{Education}
+
+\begin{itemize}
+  \item B.S. Department of Mathematics, KAIST, 2007.
+  \item M.S. Department of Mathematical Science, KAIST, 2009.
+  \item Ph.D. Department of Mathematical Science, KAIST, 2014.
+%  \item B.S. Department of Mathematics, KAIST, 17th, Aug. 2007.
+%  \item M.S. Department of Mathematical Science, KAIST, 21st, Aug. 2009.
+%  \item Ph.D. Department of Mathematical Science, KAIST, 22nd, Aug. 2014.
+\end{itemize}
+
+
+\section*{Employment}
+\begin{itemize}
+  \item 2014$\sim$, Postdoctoral Fellow, King Abdullah University of Science \& Technology
+\end{itemize}
+%\begin{itemize}
+%\item Stanford University 1927--1931.
+%\item Columbia University 1931--1946.
+%\item University of North Carolina, 1946--1973.
+%\end{itemize}
+
+\section*{Research Interests}
+\begin{itemize}
+%\item Partial Differential Equations, Numerical Simulations,
+\item Continuum Mechanics, Plastic deformations, Thermo-mechanical problem,
+\item Inverse Problems.
+%\item Quantum Field Theory and Relativistic Field Equations.
+\end{itemize}
+
+\section*{Reference Letters}
+\begin{enumerate}
+\item Yong-Jung Kim %\item Partial Differential Equations, Numerical Simulations,
+
+\quad
+\begin{minipage}{0.7\linewidth}
+    Professor,\\
+    Department of Mathematical Sciences, KAIST\\
+    291 Daehak-ro, Yuseong-gu, Daejeon, 34141, Korea\\
+    email : yongkim@kaist.edu.sa\\
+    phone : +82-42-350-2739\\
+    homepage : \href{http://amath.kaist.ac.kr/pde_lab/members/YongJungKim/}{\tt\url{http://amath.kaist.ac.kr/pde_lab/members/YongJungKim/}}
+%  Department of Mathematical Science \\
+%  291 Daehak-ro, Yuseong-gu \\
+%  Daejeon, 305-701, Korea
+\end{minipage}
+\item Marshall Slemrod
+
+\quad
+\begin{minipage}{0.7\linewidth}
+    Professor Emeriti,\\
+    Department of Mathematics, UW-Madison\\
+    480 Lincoln Drive\\
+    Madison, Wi  53706\\
+    email : slemrod@math.wisc.edu\\
+    phone : +1-608-263-4283 
+    
+    \bigskip
+    Consultant,\\
+    Department of Mathematics, Weizmann Institute of Science\\
+    234 Herzl Street, Rehovot 7610001, Israel\\
+    phone : +972-8-934-4310
+\end{minipage} 
+\newpage
+\item Athanasios Tzavaras
+
+\quad
+\begin{minipage}{0.7\linewidth}
+    Professor,\\
+    Applied Mathematics and Computational Science Division\\
+    King Abdullah University of Science and Technology (KAUST)\\
+    Thuwal, 23955-6900\\
+    Saudi Arabia\\
+    email : athanasios.tzavaras@kaust.edu.sa\\
+    phone : +966-12-808-0699 \\
+    homepage : \href{http://www.tem.uoc.gr/~thanos.tzavaras/}{\tt\url{http://www.tem.uoc.gr/~thanos.tzavaras/}}
+\end{minipage}
+\item Hyeonbae Kang
+
+\quad
+\begin{minipage}{0.7\linewidth}
+    Jungseok Chair Professor,\\
+    Department of Mathematics,   Inha University\\
+    Incheon 402-751, S. Korea\\
+    email : hbkang@inha.ac.kr\\
+    phone : +82-32-860-7622\\
+    homepage : \href{http://math.inha.ac.kr/~hbkang }{\tt\url{http://math.inha.ac.kr/~hbkang }} 
+
+\end{minipage} 
+\end{enumerate}
+
+
+%\section*{List of Publications}
+\section*{List of Publications and Preprints}
+%\section*{Papers and Preprints}
+%\subsection*{Journal Articles}
+
+\begin{enumerate}
+\item Min-Gi Lee, Athanasios Tzavaras, Existence of localizing solutions in plasticity via the geometric theory of singular perturbations, {\it preprint}.
+\item Theodoros Katsaounis, Min-Gi Lee, Athanasios Tzavaras, Localization in inelastic rate dependent shearing deformations, {\it preprint}.
+\item Yong-Jung Kim, Min-Gi Lee, Existence and uniqueness in anisotropic conductivity reconstruction with Faraday's law, {\it submitted to J. Differential Equations}.
+\item Min-Gi Lee, Min-Su Ko, Yong-Jung Kim, Orthotropic conductivity reconstruction with virtual resistive network and Faraday's law, {\it Math. Methods Appl. Sci.} 39 (2016), 1183-1196.% \href{http://dx.doi.org/10.1002/mma.3564}{doi:10.1002/mma.3564}.
+\item Yong-Jung Kim, Min-Gi Lee, Well-posedness of the conductivity reconstruction from an interior current density in terms of Schauder theory, {\it Quart. Appl. Math.} 73 (2015), no.3, 419-433.
+%\end{enumerate}
+%
+%\subsection*{Preprints}
+%\begin{enumerate}
+\item Yong-Jung Kim, Min-Gi Lee and Marshall Slemrod, Thermal creep of a rarefied gas on the basis of non-linear Korteweg-theory, {\it Arch. Ration. Mech. Anal.} 214 (2015), no.2, 353-379.
+\item Min-Gi Lee, Yong-Jung Kim, Min-Su Ko, Virtual Resistive Network and Conductivity Reconstruction with Faraday's law, {\it Inverse Problems.} 30 (2014), no. 12, 125009-125029.
+%\item Min-Gi Lee, A modification on the Ivanenko-Landau-K\"ahler equation. (preprint) \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee/pdfs/003ilk.pdf}{[pdf]}
+\item Tae Hwi Lee, Hyun Soo Nam, Min-Gi Lee, Yong-Jung Kim, Eung Je Woo, and Oh In Kwon, Reconstruction of Conductivity Using Dual Loop Method with One Injection Current in MREIT {\it Phys. Med. Biol.} 55 (2010), no.24, 7523-7539.
+\item Min-Gi Lee, Network approach to conductivity recovery, (2009, Master thesis, KAIST). \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee/pdfs/masterthesis.pdf>}{[pdf]}
+\item Min-Gi Lee, Well-posedness in anisotropic electrical conductivity reconstruction (2014, Ph.D. thesis, KAIST). \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee/pdfs/phdthesis.pdf>}{[pdf]}
+\end{enumerate}
+
+%\subsection*{Preprints}
+%\begin{enumerate}
+%\item Min-Gi Lee, Yong-Jung Kim, Min-Su Ko, Orthotropic conductivity reconstruction with virtual resistive network and Faraday's law, {\it Inverse Problems}, (submitted). \href{http://amath.kaist.ac.kr/papers/Kim/37.pdf}{[pdf]}
+%\item Min-Gi Lee, Numerical computation of Dirac equation without spectrum degeneracy. (preprint) \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee/pdfs/003ilk.pdf}{[pdf]}
+%%\item Yong Jung Kim, Min-Gi Lee, Well-posedness of the conductivity reconstruction with interior current data and virtual resistive networks, \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee/pdfs/24Isotropic.pdf}{[pdf]}
+%%\item Min-Gi Lee, A Dirac-K\"{a}hler equation with one dirac component in Minkowski space and non-doubling lattice fermion with non-local chiral symmetries, \href{http://amath.kaist.ac.kr/pde_lab/members/MinGiLee/pdfs/manuscript1218.pdf}{[pdf]}
+%\end{enumerate}
+
+\section*{Grants}
+\begin{itemize}
+  \item 2011$\sim$2014, National Junior Research Fellowship.%, 60,000,000 korean won/year.
+\end{itemize}
+
+\section*{List of Talks}
+%\subsection*{Upcoming}
+%\begin{itemize}
+%
+%\end{itemize}
+\subsection*{Presentation}
+\begin{itemize}
+  \item {A class of solutions that appear in a model for shear band formation}
+    \begin{itemize}
+      \item NIMS, Daejeon, Korea January 4-8, 2016
+    \end{itemize}
+  \item {A coherent shear localizing solution that appears in a model for shear band formation}
+    \begin{itemize}
+      \item Society of Engineering Science 52nd Annual Technical Meeting in Texas A\&M, US, September 26-28, 2015
+    \end{itemize}
+  \item {Emergence of coherent localized structures in shear deformation}
+    \begin{itemize}
+      \item Non-linear evolutions : kinetic equations and defect dynamics in Hausdorff center for mathematics, Bonn, Germany, July 13-17, 2015
+    \end{itemize}
+  \item {Numerical computation of Dirac equation without spectrum degeneracy}
+    \begin{itemize}
+      \item The 9th East Asian Conference on PDE (poster session) in Nara, July 28-31, 2014
+    \end{itemize}
+    \item {Thermal creep of a rarefied gas on the basis of non-linear Korteweg-theory}
+    \begin{itemize}
+      \item Workshop in nonlinear pdes in UNIST, Ulsan, May 30-31, 2014
+    \end{itemize}
+    \item {Well-posedness in anisotropic conductivity reconstruction}
+    \begin{itemize}
+      \item HYKE seminar in SNU, Seoul, May 30, 2014
+    \end{itemize}
+  \item {Well-posedness of anisotropic conductivity reconstruction problem with internal current density data in two dimensions}
+    \begin{itemize}
+      \item Applied Inverse Problem Conference 2013 in KAIST, Daejeon, July 1-5, 2013
+    \end{itemize}
+  \item {Analysis of equation in Homing Guidance Loop considering first order dynamic lag}
+    \begin{itemize}
+      \item Korean Agency for Defense Development in Daejeon, September 20, 2012
+    \end{itemize}
+  \item {Analysis of equation in Homing Guidance Loop using confluent hypergeometry Kummer functions}
+    \begin{itemize}
+      \item Korean Agency for Defense Development in Daejeon, January 31, 2012
+    \end{itemize}
+  \item {Reconstruction of Anisotropic Conductivity}
+    \begin{itemize}
+      \item KSIAM Annual meeting in Jeju, November 25-27, 2011
+    \end{itemize}
+  \item {On some remarks of conductivity recovery problem}
+    \begin{itemize}
+      \item Analysis \& Applied mathematics seminar, KAIST, February 9, 2011
+    \end{itemize}
+  \item {Uniqueness of anisotropic conductivity recovery with current density}
+    \begin{itemize}
+      \item Workshop for Young Mathematicians in Korea, in Postech, January 29, 2011
+    \end{itemize}
+  \item {A direct method for a conductivity recovery using a resistive network}
+    \begin{itemize}
+      \item KSIAM 2008 Annual meeting, in Suanbo, November 28-29, 2008
+    \end{itemize}
+\end{itemize}
+
+\section*{Schools Attended}
+%
+\begin{itemize}
+  \item Korea PDE School \#4, NIMS, Febrary 10-14, 2014
+  \item International School on Numerical Relativity and Gravitational Waves, APCTP, August 3-10, 2013
+  \item Korea PDE School \#3, KAIST, January 7-11, 2013
+%  \item POSTECH Summer Workshop on Application and Analysis on PDEs, Postech, June, 20-22, 2012
+  \item Korea PDE School \#2, NIMS, January 9-13, 2012
+%  \item The 8-th East Asia PDE Conference, Postech, December, 18-22, 2011
+%  \item Conference on Kinetic Theory and Related Fields, Postech, June 22-24, 2011
+  \item Intensive Lecture Series on PDE, Postech, June 20-21, 2011
+  \item Korea PDE School \#1, NIMS, February 22-26,2011
+  \item Workshop for Young Mathematicians in Korea, Postech, January 27-29, 2011
+%  \item The 3rd workshop on PDEs of Mathematical Physics in CBNU, January 6-7, 2011
+%  \item Conference for Elliptic and Parabolic PDEs in KAIST, November 5-7, 2009
+%  \item NIMS Thematic Workshop on Conservation Laws, Plasma and Related Fields December in KAIST October 21-23, 2010
+%  \item Conference On Nonlinear PDE's in Postech, October 5-8, 2010
+%  \item KAIST-NIMS International Workshop on ¡°Nonlinear Partial Differential Equations¡±: theory, application \& numerical computation, Theme of the year: Nonlinear Conservation Laws, April 29-May 2, 2010
+%  \item NIMS Hot Topics Workshop on Kinetic Theory and Fluid Dynamics in SNU, October 22-24, 2009
+%  \item Asian Inverse Problem conference in Hanbat Univ., August 17-20, 2009
+%  \item KSIAM 2009 Spring Conference in SNU, May 29-30 2009
+%  \item NIMS Workshop and Minicourse "Mathematical Analysis, Numerics and Applications in fluid and gas dynamics" in KAIST, Jan. 19-Feb. 3, 2009
+%  \item KSIAM 2008 Annual meeting, in Suanbo, November 28-29, 2008
+%  \item KSIAM 2008 Spring Conference in Postech, May 30-31 2008
+\end{itemize}
+\section*{Research Projects Participated as a graduate students in KAIST.}
+\begin{itemize}
+  \item 2010.03 $\sim$ 2012.02, Virtual Resistive Network \& a Development of an Anisotropic Conductivity Reconstruction Method for a Medical Imaging, Korea Science and Engineering Foundation, CRA
+  \item 2010.09 $\sim$ 2012.12, Homing Guidance Loop Design and Analysis Based on Confluent Hypergeometric Kummer Differential Equation, Korean Agency for Defense Development, RA
+\end{itemize}
+
+
+
+\section*{Visitings}
+\begin{itemize}
+  \item ECNU Center for PDE, Shanghai,  April 10-21, 2011.
+\end{itemize}
+
+\section*{Teaching}
+\subsection*{Assistant}
+\begin{itemize}
+  \item Calculus 1, KAIST, Spring, 2008
+  \item Freshmen Design, KAIST, Autumn, 2008
+  \begin{itemize}
+    \item took place in english.
+  \end{itemize}
+\end{itemize}
+%
+%\section*{Internal Seminars}
+%\begin{itemize}
+%  \item seminars on inverse problems, KAIST, Summer, 2009
+%%  \item Krylov's book : Lectures on Elliptic and Parabolic equation in Holder space
+%\end{itemize}
+
+%\subsection*{Proceedings}
+
+%\begin{itemize}
+%\item A generalized T-Test and measure of multivariate dispersion,
+%  Proc. Second Berkeley Symposium of Mathematical Statistics and
+%  Probability, 1951.
+%\end{itemize}
+
+\bigskip
+
+% Footer
+\begin{center}
+  \begin{footnotesize}
+    Last updated: \today \\
+    %\href{\footerlink}{\texttt{\footerlink}}
+  \end{footnotesize}
+\end{center}
+
+\end{document}
