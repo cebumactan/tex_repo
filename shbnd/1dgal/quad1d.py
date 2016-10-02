@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
-class Quad1d(object):
+class Quad1d:
     def __init__(self,ideg):
         self.nq = ideg+1
         self.x = np.zeros(self.nq)

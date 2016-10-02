@@ -6,7 +6,7 @@ Created on Sat Oct  1 18:48:22 2016
 """
 
 # my mudules
-import numpy as np
+from numpy import *
 import clear_all
 import quad1d
 
@@ -15,8 +15,8 @@ clear_all.clear_all()   # clear all variables in workspace memory
 
 q = quad1d.Quad1d(11)   # create a quadrature instance with idegree
     
-# 23th polynomial 1+x^23
-kn = np.zeros(23+1)
+# 23rd polynomial 1+x^23
+kn = zeros(23+1)
 kn[0]=1
 kn[7]=1
 kn[9]=-1

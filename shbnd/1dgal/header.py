@@ -27,3 +27,7 @@ def DTHRE2(a):
     return ( 0.0 if (abs(a)<DEPS*DEPS) else a )
 def ETHRE(a):
     return ( EPS if (abs(a)<EPS) else a )   
+
+
+from fes import *
+import quad1d, param
