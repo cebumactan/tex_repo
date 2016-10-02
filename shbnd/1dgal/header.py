@@ -8,7 +8,7 @@ Created on Sun Oct  2 10:52:56 2016
 # DO NOT MODIFY THIS FILE AND DEFINITIONS
 
 # Used to be #define
-MAXN    = 20050
+MAXN    = 100
 DEG     = 1
 nqmax   = DEG+1
 mxdeg   = DEG
@@ -29,5 +29,5 @@ def ETHRE(a):
     return ( EPS if (abs(a)<EPS) else a )   
 
 
-from fes import *
-import quad1d, param
+import fes,param,quad1d,mysystem
+

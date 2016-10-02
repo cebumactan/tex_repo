@@ -2,8 +2,8 @@
 import numpy as np
 
 class Quad1d:
-    def __init__(self,ideg):
-        self.nq = ideg+1
+    def __init__(self,polydeg):
+        self.nq = polydeg+1
         self.x = np.zeros(self.nq)
         self.w = np.zeros(self.nq)
     
