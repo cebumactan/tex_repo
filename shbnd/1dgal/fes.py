@@ -14,7 +14,7 @@ from myglobals import *
 class Element(object):
     def __init__(self,x):
         self.xk = x
-        self.BFq = np.zeros((3,nqmax,mxdeg1))
+        self.BFq = np.zeros((3,mxdeg1,nqmax))
         self.eMat= np.zeros((3,mxdeg1,mxdeg1))
 
     def LagranBFq(self):
@@ -28,7 +28,7 @@ class Element(object):
                     if i==iN:
                         continue
                     val *= ((myxq-self.xk[i])/(self.xk[iN]-self.xk[i]))
-                self.BFq[0,0:Q.nq,iN] = val
+                self.BFq[0,iN,0:Q.nq] = val
                 
                 # first derivative of Lagrange shape function of iN type at xq
                 val0 = np.zeros(myxq.size)
@@ -41,7 +41,7 @@ class Element(object):
                             continue
                         val1*= ((myxq-self.xk[j])/(self.xk[iN]-self.xk[j]))
                     val0 +=val1
-                self.BFq[1,0:Q.nq,iN]=val0  
+                self.BFq[1,iN,0:Q.nq]=val0  
                 
                 # second derivative of Lagrange shape function of iN type at xq
                 val0 = np.zeros(myxq.size)
@@ -57,7 +57,7 @@ class Element(object):
                                 continue
                             val1*= ((myxq-self.xk[k])/(self.xk[iN]-self.xk[k]))
                         val0 +=val1
-                self.BFq[2,0:Q.nq,iN]=val0
+                self.BFq[2,iN,0:Q.nq]=val0
         
     def eval_LagranB(self,iN):
         # Lagrange shape function of iN type at xq
@@ -68,7 +68,7 @@ class Element(object):
                 continue
             val *= (x-self.xk[i])/(self.xk[iN]-self.xk[i])
 #        plt.clf()
-        plt.plot(x,val,Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0],self.BFq[0,0:Q.nq,iN],'*')
+        plt.plot(x,val,Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0],self.BFq[0,iN,0:Q.nq],'*')
 #        plt.show()
         return val
     
@@ -87,7 +87,7 @@ class Element(object):
     
             val0 +=val1
 #        plt.clf()
-        plt.plot(x,val0,Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0],self.BFq[1,0:Q.nq,iN],'*')
+        plt.plot(x,val0,Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0],self.BFq[1,iN,0:Q.nq],'*')
 #        plt.show()
         return val0
     
@@ -108,7 +108,7 @@ class Element(object):
                     val1*= ((x-self.xk[k])/(self.xk[iN]-self.xk[k]))
                 val0 +=val1
 #        plt.clf()
-        plt.plot(x,val0,Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0],self.BFq[2,0:Q.nq,iN],'*')
+        plt.plot(x,val0,Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0],self.BFq[2,iN,0:Q.nq],'*')
 #        plt.show()
         return val0
 
@@ -165,7 +165,7 @@ class FES:
 if __name__ == "__main__":
     myV = FES()
     for i in range(P.m):
-        myV.EL[i].eval_dLagranB(0)
+        myV.EL[i].eval_dLagranB(3)
     
         
         
