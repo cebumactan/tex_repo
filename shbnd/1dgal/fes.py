@@ -4,14 +4,17 @@ Created on Sun Oct  2 11:29:41 2016
 
 @author: leem
 """
-import scipy as sp
+import scipy.linalg as splin
 import numpy as np
 import matplotlib.pyplot as plt
 
 from header import *
-from myglobals import *
+#from myglobals import *
 
-import systemdef
+import systemdef, quad1d
+
+P = systemdef.Param()
+Q = quad1d.Quad1d(P.deg)
 
 class Element(object):
     def __init__(self,ix,x):
@@ -336,7 +339,7 @@ if __name__ == "__main__":
 #    print np.array_str(myV.SYSbn-myV.mySbn, precision=1,suppress_small=True)   
     
     # 1D poisson    
-    un = sp.linalg.solve_banded((myV.il,myV.iu),myV.SYSbn,myV.fn)
+    un = splin.solve_banded((myV.il,myV.iu),myV.SYSbn,myV.fn)
     print un
     
         
