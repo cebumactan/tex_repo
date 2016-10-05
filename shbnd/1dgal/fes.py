@@ -17,7 +17,6 @@ class Element(object):
     def __init__(self,ix,x):
         self.ixk = ix
         self.xk = x
-        self.tau = self.xk[-1]-self.xk[0]
         self.BFq = np.zeros((3,mxdeg1,nqmax))
         self.eMatC = np.zeros((mxdeg1,mxdeg1))
         self.eMatB = np.zeros((mxdeg1,mxdeg1))
@@ -31,7 +30,7 @@ class Element(object):
         self.aq = np.zeros(nqmax)
 
     def LagranBFq(self):
-        myxq = Q.x * (self.tau) + self.xk[0]
+        myxq = Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0]
         for iq in range(Q.nq):
             for iN in range(P.deg+1):
                 
@@ -73,20 +72,20 @@ class Element(object):
                 self.BFq[2,iN,0:Q.nq]=val0
         
     def fFq(self):
-        myxq = Q.x * (self.tau) + self.xk[0]
+        myxq = Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0]
         for iq in range(Q.nq):
             self.fq[0:Q.nq] = systemdef.eval_f(myxq)
     def cFq(self):
-        myxq = Q.x * (self.tau) + self.xk[0]
+        myxq = Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0]
         for iq in range(Q.nq):
             self.cq[0:Q.nq] = systemdef.eval_c(myxq)
 
     def bFq(self):
-        myxq = Q.x * (self.tau) + self.xk[0]
+        myxq = Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0]
         for iq in range(Q.nq):
             self.bq[0:Q.nq] = systemdef.eval_b(myxq)
     def aFq(self):
-        myxq = Q.x * (self.tau) + self.xk[0]
+        myxq = Q.x * (self.xk[-1]-self.xk[0]) + self.xk[0]
         for iq in range(Q.nq):
             self.aq[0:Q.nq] = systemdef.eval_a(myxq)
             
@@ -94,10 +93,10 @@ class Element(object):
         for iN in range(P.deg+1):
             for jN in range(P.deg+1):
                 for iq in range(Q.nq):
-                    self.eMatC[iN,jN]+= self.cq[iq]*self.BFq[0,iN,iq]*self.BFq[0,jN,iq]*Q.w[iq]*self.tau
-                    self.eMatB[iN,jN]+= self.bq[iq]*self.BFq[1,iN,iq]*self.BFq[0,jN,iq]*Q.w[iq]*self.tau
-                    self.eMatA[iN,jN]+= self.aq[iq]*self.BFq[1,iN,iq]*self.BFq[1,jN,iq]*Q.w[iq]*self.tau
-                    self.eMatG[iN,jN]+= self.BFq[0,iN,iq]*self.BFq[0,jN,iq]*Q.w[iq]*self.tau
+                    self.eMatC[iN,jN]+= self.cq[iq]*self.BFq[0,iN,iq]*self.BFq[0,jN,iq]*Q.w[iq]*(self.xk[-1]-self.xk[0])
+                    self.eMatB[iN,jN]+= self.bq[iq]*self.BFq[1,iN,iq]*self.BFq[0,jN,iq]*Q.w[iq]*(self.xk[-1]-self.xk[0])
+                    self.eMatA[iN,jN]+= self.aq[iq]*self.BFq[1,iN,iq]*self.BFq[1,jN,iq]*Q.w[iq]*(self.xk[-1]-self.xk[0])
+                    self.eMatG[iN,jN]+= self.BFq[0,iN,iq]*self.BFq[0,jN,iq]*Q.w[iq]*(self.xk[-1]-self.xk[0])
                 
     def asm_eMat(self):
         for iN in range(P.deg+1):
@@ -105,7 +104,7 @@ class Element(object):
                 for ider in range(3):
                     for jder in range(3):
                         for iq in range(Q.nq):
-                            self.eMat[ider,jder,iN,jN]+= self.BFq[ider,iN,iq]*self.BFq[jder,jN,iq]*Q.w[iq]*self.tau
+                            self.eMat[ider,jder,iN,jN]+= self.BFq[ider,iN,iq]*self.BFq[jder,jN,iq]*Q.w[iq]*(self.xk[-1]-self.xk[0])
                             
     def eval_LagranB(self,iN):
         # Lagrange shape function of iN type at xq
