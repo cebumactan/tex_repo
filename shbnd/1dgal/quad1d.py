@@ -209,6 +209,20 @@ class Quad1d:
         mysum = mysum*(b-a)
         return mysum
 
+# To verify this module, run this script.
+if __name__ == "__main__":
+    myQ = Quad1d(4)
+
+    # 23rd polynomial 1+x^23
+#    kn = np.zeros(23+1)
+#    kn[0]=1
+#    kn[7]=1
+#    kn[9]=-1
+#    kn[23]=1
+    kn = np.zeros()
+    #kn = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+    a = myQ.myintegral(kn,-2,3)
+    print a
 
 
 

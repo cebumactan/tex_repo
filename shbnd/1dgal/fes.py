@@ -161,28 +161,6 @@ class Element(object):
 #        plt.show()
         return val0
 
-#    def asm_eMat(self):
-#        print "not implemented"
-#        n = self.M.n - 1 
-#        nderiv = min(P.deg+1,3)
-#        e=Element()
-#        for k in range(n):
-#            e.xl = self.M.x[k]
-#            e.xr = self.M.x[k+1]
-#            dx = self.M.x[k+1] - self.M.x[k]
-#            jleft = k + P.deg
-#            
-#            for iq in range(Q.nq):
-#                xq = dx*Q.x[iq] + self.M.x[k]
-#                dBLagran(P.deg,nderiv,xq,jleft)
-#                for nd in range(nderiv):
-#                    for j in range(P.deg+1):
-#                        e.BFq[nd,i,j] = dBF[nd,j]      
-        
-#        self.G = LaMat()
-#        self.S = LaMat()
-
-
 class Mesh(object):
     def __init__(self):
         self.N = P.n + 1      # Number of Nodes !!!
@@ -219,6 +197,8 @@ class FES:
         self.AA=np.zeros(shape=(self.dim,self.dim))
         self.GG=np.zeros(shape=(self.dim,self.dim))
         self.SS=np.zeros(shape=(self.dim,self.dim))
+        self.ff=np.zeros(self.dim)
+        self.mySbn=np.zeros(shape=(self.iu+self.il+1,self.dim))
         
         for i in range(P.m):
             self.EL[i].LagranBFq()
@@ -260,6 +240,55 @@ class FES:
                     self.GG[J,K]+=self.EL[i].eMatG[jN,kN] 
                     
     def add_bdrycond(self):
+        self.ff[:] = self.fn[:]        
+ 
+        self.SS[0,0] = 1.0
+        self.fn[0] = P.ua
+        self.SS[0,1:1+self.iu] = 0.0
+        self.fn[1:1+self.il] -= P.ua*self.SS[1:1+self.il,0]
+        self.SS[1:1+self.il,0] = 0.0
+
+        n = self.dim-1
+
+        self.SS[n,n] = 1.0
+        self.fn[n] = P.ub
+        self.SS[n,n-self.il:n] = 0.0
+        self.fn[n-self.iu:n] -= P.ub*self.SS[n-self.iu:n,n]
+        self.SS[n-self.iu:n,n] = 0.0
+
+#        self.SS[-1,-1] = 1.0
+#        self.fn[-1] = P.ub
+#        self.SS[-1,-1-self.il:-1] = 0.0
+#        self.fn[-1-self.iu:-1] -= P.ub*self.SS[-1-self.iu:-1,-1]
+#        self.SS[-1-self.iu:-1,-1] = 0.0
+
+        self.SYSbn[self.iu,0] = 1.0
+        self.ff[0] = P.ua
+        for K in range(1,1+self.iu):
+            self.SYSbn[self.iu-K , K] = 0.0        
+#        self.SYSbn[(self.iu-1):0:-1 , 1:1+self.iu] = 0.0        
+        for J in range(1,1+self.il):
+            self.ff[J] -= P.ua*self.SYSbn[self.iu+J,0]
+            self.SYSbn[self.iu+J,0]=0.0
+#        self.ff[1:1+self.il] -= P.ua*self.SYSbn[(self.iu+1):(self.iu+1+self.il),0]
+#        self.SYSbn[(self.iu+1):(self.iu+1+self.il),0]
+
+        self.SYSbn[self.iu,n]=1.0
+        self.ff[n] = P.ub
+        for K in range(n-self.il,n):
+            self.SYSbn[self.iu+n-K , K] = 0.0 
+#        self.SYSbn[(self.iu+self.il):self.iu:-1,n] = 0.0
+        for J in range(n-self.iu,n):
+            self.ff[J] -= P.ub*self.SYSbn[self.iu+J-n,n]
+            self.SYSbn[self.iu+J-n,n] = 0.0        
+#        self.ff[n-self.iu:n] -= P.ub*self.SYSbn[0:self.iu,n]
+#        self.SYSbn[0:self.iu,n] = 0.0
+
+        for K in range(self.dim):
+            Z = self.iu-K
+            for J in range( max(0,K-self.iu),min(self.dim,K+1+self.il)):
+                self.mySbn[Z+J,K] =self.SS[J,K]
+
 
         
 #    def asm_CMat_band(self):
@@ -323,20 +352,35 @@ if __name__ == "__main__":
         
     myV.asm_rhs()
     myV.asm_CBAGMat_band()
-    print np.array_str(myV.CC, precision=2)
-    print np.array_str(myV.Cbn, precision=2,suppress_small=True)
-    print np.array_str(myV.BB, precision=2)
-    print np.array_str(myV.Bbn, precision=2,suppress_small=True)
-    print np.array_str(myV.AA, precision=2)
-    print np.array_str(myV.Abn, precision=2,suppress_small=True)    
-    print np.array_str(myV.GG, precision=2)
-    print np.array_str(myV.Gbn, precision=2,suppress_small=True) 
+#    print np.array_str(myV.CC, precision=2)
+#    print np.array_str(myV.Cbn, precision=2,suppress_small=True)
+#    print np.array_str(myV.BB, precision=2)
+#    print np.array_str(myV.Bbn, precision=2,suppress_small=True)
+#    print np.array_str(myV.AA, precision=2)
+#    print np.array_str(myV.Abn, precision=2,suppress_small=True)    
+#    print np.array_str(myV.GG, precision=2)
+#    print np.array_str(myV.Gbn, precision=2,suppress_small=True) 
         
    
     myV.SS = myV.AA + myV.BB + myV.CC
     myV.SYSbn = myV.Abn + myV.Bbn + myV.Cbn
+    print np.array_str(myV.fn, precision=2)
+#    print np.array_str(myV.SS, precision=2)
+#    print np.array_str(myV.SYSbn, precision=2,suppress_small=True)
     
-    un = sp.linalg.solve_banded((myV.l,myV.u),myV.SYSbn,myV.fn)
+    SS = myV.SS
+    f = myV.fn
+    
+    myV.add_bdrycond()
+    print np.array_str(myV.fn, precision=2)
+    print np.array_str(myV.ff, precision=2)
+    print np.array_str(myV.SS, precision=1)
+    print np.array_str(myV.SYSbn-myV.mySbn, precision=1,suppress_small=True)   
+    print np.array_str(myV.mySbn, precision=1,suppress_small=True)   
+    print np.array_str(myV.SYSbn, precision=1,suppress_small=True)  
+    
+    
+    un = sp.linalg.solve_banded((myV.il,myV.iu),myV.SYSbn,myV.fn)
 #    
         
         

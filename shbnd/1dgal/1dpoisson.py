@@ -13,8 +13,12 @@ import matplotlib.pyplot as pl
 from header import *
 from myglobals import *
 
+import systemdef, fes, quad1d
+
 # create finite element space
-Vn = fes.FES()                 
+Vn = fes.FES()
+Vn.EL.asm_eMat() 
+Vn.asm_GSH_Mat()  # assemble sparse matrix of G, S, H               
 
 # assemble system operator, rhs
 SYSn = mysystem.Mysystem(Vn)  

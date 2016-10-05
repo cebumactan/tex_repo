@@ -8,8 +8,9 @@ Created on Sun Oct  2 10:52:56 2016
 # DO NOT MODIFY THIS FILE AND DEFINITIONS
 
 # Used to be #define
-MAXN    = 100
-DEG     = 1
+MAXN    = 1000
+DEG     = 11
+MAXM    = 1000
 nqmax   = DEG+1
 mxdeg   = DEG
 mxdeg1  = DEG+1
@@ -27,7 +28,4 @@ def DTHRE2(a):
     return ( 0.0 if (abs(a)<DEPS*DEPS) else a )
 def ETHRE(a):
     return ( EPS if (abs(a)<EPS) else a )   
-
-
-import fes,param,quad1d,mysystem
 

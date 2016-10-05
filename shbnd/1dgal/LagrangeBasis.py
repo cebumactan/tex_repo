@@ -5,12 +5,12 @@ Created on Mon Oct  3 19:07:42 2016
 @author: leem
 """
 
-clear_all()
+#clear_all()
 
-import param, quad1d
+#import param, quad1d
 import numpy as np
 import matplotlib.pyplot as plt
-import time
+#import time
 from header import *
 from myglobals import *
 
@@ -108,12 +108,12 @@ LagrangeBq(xk)
 x= np.arange(0,P.deg+0.01,0.01)
 
 
-#plt.plot(x,np.zeros(size(x)))
-#plt.plot(x, eval_LagrangeB(x,xk,2))
+plt.plot(x,np.zeros(size(x)))
+#plt.plot(x, eval_LagrangeB(x,xk,0))
 #plt.plot(x, 0.25*x*(x-1)*(x-3)*(x-4),'o')
-#plt.plot(x, eval_dLagrangeB(x,xk,2))
+plt.plot(x, eval_dLagrangeB(x,xk,1),'o-')
 #plt.plot(x, x**3-6*x**2+9.5*x-3,'.')
-#plt.plot(x, eval_ddLagrangeB(x,xk,2),'*-')
+#plt.plot(x, eval_ddLagrangeB(x,xk,1),'*-')
 #plt.plot(x, 3*x**2-12*x+9.5,'+')
 #for iN in range(P.deg+1):
 #plt.plot(x,np.zeros(size(x)))
@@ -128,8 +128,8 @@ x= np.arange(0,P.deg+0.01,0.01)
 
 
 #for iN in range(P.deg+1):
-plt.plot(x,np.zeros(size(x)))
-plt.plot(myx,BFq[2,0:Q.nq,1],'*')
-plt.plot(x, eval_ddLagrangeB(x,xk,1))
+#plt.plot(x,np.zeros(size(x)))
+#plt.plot(myx,BFq[2,0:Q.nq,1],'*')
+#plt.plot(x, eval_ddLagrangeB(x,xk,1))
 
     
