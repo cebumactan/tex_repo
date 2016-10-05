@@ -203,16 +203,17 @@ class FES:
         print "Mesh : EL[MAXM] has allocated."
 
         self.noffdiag = P.deg
-        self.u = self.l = self.noffdiag
+        self.iu = self.il = self.noffdiag
         
         # system matrices in band stroage and rhs vector
-        self.Abn = np.zeros(shape=(self.u+self.l+1,self.dim))
-        self.Bbn = np.zeros(shape=(self.u+self.l+1,self.dim))
-        self.Cbn = np.zeros(shape=(self.u+self.l+1,self.dim))
-        self.Gbn = np.zeros(shape=(self.u+self.l+1,self.dim))
-        self.SYSbn=np.zeros(shape=(self.u+self.l+1,self.dim))
+        self.Abn = np.zeros(shape=(self.iu+self.il+1,self.dim))
+        self.Bbn = np.zeros(shape=(self.iu+self.il+1,self.dim))
+        self.Cbn = np.zeros(shape=(self.iu+self.il+1,self.dim))
+        self.Gbn = np.zeros(shape=(self.iu+self.il+1,self.dim))
+        self.SYSbn=np.zeros(shape=(self.iu+self.il+1,self.dim))
         self.fn  = np.zeros(self.dim)
-        
+ 
+        # this full matrices will be obsolete in future       
         self.CC=np.zeros(shape=(self.dim,self.dim))
         self.BB=np.zeros(shape=(self.dim,self.dim))
         self.AA=np.zeros(shape=(self.dim,self.dim))
@@ -236,57 +237,82 @@ class FES:
                 k = self.EL[i].ixk[0] + iN      # vector index k in 0..dim-1
                 for iq in range(Q.nq):
                     self.fn[k]+=self.EL[i].fq[iq]*self.EL[i].BFq[0,iN,iq]*Q.w[iq]*dx
-    def asm_CMat_band(self):
+                    
+    def asm_CBAGMat_band(self):
         for i in range(P.m):
             dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
             for kN in range(P.deg+1):
                 K = self.EL[i].ixk[0] + kN 
-                Z = self.u-K
-                for jN in range( max(0,kN-self.u),min(P.deg+1,kN+1+self.l)):
+                Z = self.iu-K
+                for jN in range( max(0,kN-self.iu),min(P.deg+1,kN+1+self.il)):
                     J = self.EL[i].ixk[0] + jN
+                    
                     self.Cbn[Z+J,K]+=self.EL[i].eMatC[jN,kN]
-                    self.CC[J,K]+=self.EL[i].eMatC[jN,kN]
-        print np.array_str(self.CC, precision=2)
-        print np.array_str(self.Cbn, precision=2,suppress_small=True)  
-  
-    def asm_BMat_band(self):
-        for i in range(P.m):
-            dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
-            for kN in range(P.deg+1):
-                K = self.EL[i].ixk[0] + kN 
-                Z = self.u-K
-                for jN in range( max(0,kN-self.u),min(P.deg+1,kN+1+self.l)):
-                    J = self.EL[i].ixk[0] + jN
-                    self.Bbn[Z+J-1,K]+=self.EL[i].eMatB[jN,kN]
-                    self.BB[J,K]+=self.EL[i].eMatB[jN,kN]
-        print np.array_str(self.BB, precision=2)
-        print np.array_str(self.Bbn, precision=2,suppress_small=True)  
-        
-    def asm_AMat_band(self):
-        for i in range(P.m):
-            dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
-            for kN in range(P.deg+1):
-                K = self.EL[i].ixk[0] + kN 
-                Z = self.u-K
-                for jN in range( max(0,kN-self.u),min(P.deg+1,kN+1+self.l)):
-                    J = self.EL[i].ixk[0] + jN
+                    self.CC[J,K]+=self.EL[i].eMatC[jN,kN] 
+                    
+                    self.Bbn[Z+J,K]+=self.EL[i].eMatB[jN,kN]
+                    self.BB[J,K]+=self.EL[i].eMatB[jN,kN] 
+                    
                     self.Abn[Z+J,K]+=self.EL[i].eMatA[jN,kN]
-                    self.AA[J,K]+=self.EL[i].eMatA[jN,kN]
-        print np.array_str(self.AA, precision=2)
-        print np.array_str(self.Abn, precision=2,suppress_small=True)        
-
-    def asm_GMat_band(self):
-        for i in range(P.m):
-            dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
-            for kN in range(P.deg+1):
-                K = self.EL[i].ixk[0] + kN 
-                Z = self.u-K
-                for jN in range( max(0,kN-self.u),min(P.deg+1,kN+1+self.l)):
-                    J = self.EL[i].ixk[0] + jN
+                    self.AA[J,K]+=self.EL[i].eMatA[jN,kN] 
+                    
                     self.Gbn[Z+J,K]+=self.EL[i].eMatG[jN,kN]
-                    self.GG[J,K]+=self.EL[i].eMatG[jN,kN]
-        print np.array_str(self.GG, precision=2)
-        print np.array_str(self.Abn, precision=2,suppress_small=True) 
+                    self.GG[J,K]+=self.EL[i].eMatG[jN,kN] 
+                    
+    def add_bdrycond(self):
+
+        
+#    def asm_CMat_band(self):
+#        for i in range(P.m):
+#            dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
+#            for kN in range(P.deg+1):
+#                K = self.EL[i].ixk[0] + kN 
+#                Z = self.iu-K
+#                for jN in range( max(0,kN-self.iu),min(P.deg+1,kN+1+self.il)):
+#                    J = self.EL[i].ixk[0] + jN
+#                    self.Cbn[Z+J,K]+=self.EL[i].eMatC[jN,kN]
+#                    self.CC[J,K]+=self.EL[i].eMatC[jN,kN]
+#        print np.array_str(self.CC, precision=2)
+#        print np.array_str(self.Cbn, precision=2,suppress_small=True)  
+#  
+#    def asm_BMat_band(self):
+#        for i in range(P.m):
+#            dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
+#            for kN in range(P.deg+1):
+#                K = self.EL[i].ixk[0] + kN 
+#                Z = self.iu-K
+#                for jN in range( max(0,kN-self.iu),min(P.deg+1,kN+1+self.il)):
+#                    J = self.EL[i].ixk[0] + jN
+#                    self.Bbn[Z+J-1,K]+=self.EL[i].eMatB[jN,kN]
+#                    self.BB[J,K]+=self.EL[i].eMatB[jN,kN]
+#        print np.array_str(self.BB, precision=2)
+#        print np.array_str(self.Bbn, precision=2,suppress_small=True)  
+#        
+#    def asm_AMat_band(self):
+#        for i in range(P.m):
+#            dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
+#            for kN in range(P.deg+1):
+#                K = self.EL[i].ixk[0] + kN 
+#                Z = self.iu-K
+#                for jN in range( max(0,kN-self.iu),min(P.deg+1,kN+1+self.il)):
+#                    J = self.EL[i].ixk[0] + jN
+#                    self.Abn[Z+J,K]+=self.EL[i].eMatA[jN,kN]
+#                    self.AA[J,K]+=self.EL[i].eMatA[jN,kN]
+#        print np.array_str(self.AA, precision=2)
+#        print np.array_str(self.Abn, precision=2,suppress_small=True)        
+#
+#    def asm_GMat_band(self):
+#        for i in range(P.m):
+#            dx = self.EL[i].xk[-1]-self.EL[i].xk[0]
+#            for kN in range(P.deg+1):
+#                K = self.EL[i].ixk[0] + kN 
+#                Z = self.iu-K
+#                for jN in range( max(0,kN-self.iu),min(P.deg+1,kN+1+self.il)):
+#                    J = self.EL[i].ixk[0] + jN
+#                    self.Gbn[Z+J,K]+=self.EL[i].eMatG[jN,kN]
+#                    self.GG[J,K]+=self.EL[i].eMatG[jN,kN]
+#        print np.array_str(self.GG, precision=2)
+#        print np.array_str(self.Gbn, precision=2,suppress_small=True) 
 
 # To verify this module, run this script.
 if __name__ == "__main__":
@@ -296,11 +322,17 @@ if __name__ == "__main__":
         myV.EL[i].eval_LagranB(1)
         
     myV.asm_rhs()
-    myV.asm_AMat_band()
-    myV.asm_BMat_band()
-    myV.asm_CMat_band()
-    myV.asm_GMat_band()
-    
+    myV.asm_CBAGMat_band()
+    print np.array_str(myV.CC, precision=2)
+    print np.array_str(myV.Cbn, precision=2,suppress_small=True)
+    print np.array_str(myV.BB, precision=2)
+    print np.array_str(myV.Bbn, precision=2,suppress_small=True)
+    print np.array_str(myV.AA, precision=2)
+    print np.array_str(myV.Abn, precision=2,suppress_small=True)    
+    print np.array_str(myV.GG, precision=2)
+    print np.array_str(myV.Gbn, precision=2,suppress_small=True) 
+        
+   
     myV.SS = myV.AA + myV.BB + myV.CC
     myV.SYSbn = myV.Abn + myV.Bbn + myV.Cbn
     
