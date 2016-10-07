@@ -43,6 +43,21 @@
 \def\th{\tilde{h}}
 \def\tx{\tilde{x}}
 \def\tk{\tilde{\kappa}}
+
+\def\tg{{\tilde{\gamma}}}
+\def\tv{{\tilde{v}}}
+\def\tth{{\tilde{\theta}}}
+\def\ts{{\tilde{\tau}}}
+\def\tu{{\tilde{u}}}
+
+\def\ta{{\tilde{a}}}
+\def\tb{{\tilde{b}}}
+\def\tc{{\tilde{c}}}
+\def\td{{\tilde{d}}}
+
+
+
+
 \def\bx{\bar{x}}
 \def\bm{\bar{\mathbf{m}}}
 \def\K{\mathcal{K}}
@@ -147,8 +162,8 @@ We try the solutions of type, i.e. put $\rho =t$ in the rescaling,
 \begin{align*}
  \gamma(t,x) &= t^a\Gamma(t^\lambda x),\\
  v(t,x) &= t^b V(t^\lambda x),\\
- \tau(t,x) &= t^c \Sigma(t^\lambda x),\\
- \theta(t,x) &= t^d \Theta(t^\lambda x),\\
+ \theta(t,x) &= t^c \Theta(t^\lambda x),\\
+ \tau(t,x) &= t^d \Sigma(t^\lambda x),\\
  u(t,x) &= t^{b+\lambda} U(t^\lambda x)
 \end{align*}
 and set $\xi = t^\lambda x$.
@@ -157,11 +172,64 @@ Calculations:
 \begin{align*}
  &\text{Suppose } \; f(t,x) = t^k F(t^\lambda x),\\
  &\partial_t f = k t^{k-1} F + t^k F' \lambda t^{\lambda-1} x = t^{k-1} (kF + \lambda\xi F'),\\
- &\partial_x f = t^k F' t^\lambda = t^{k+\lambda} F'
+ &\partial_x f = t^k F' t^\lambda = t^{k+\lambda} F',
 \end{align*}
 
+At \eqref{eq:g}-\eqref{eq:tau}:
 
+\begin{align*}
+ t^{a-1}(a \Gamma(\xi) + \lambda \xi \Gamma'(\xi)) &= t^{b+ \lambda} U(\xi),\\
+ t^{b-1}(b V(\xi) + \lambda \xi V'(\xi)) &= t^{d+ \lambda} \Sigma'(\xi)\\
+ t^{c-1}(d \Theta(\xi) + \lambda \xi \Theta'(\xi))&=t^{b+d+\lambda} \Sigma U(\xi),\\
+ t^d\Sigma(\xi) &= t^{-\alpha c +ma +n(b+ \lambda)} \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ t^{b+\lambda}V'(\xi)&=t^{b+\lambda}U(\xi)
+\end{align*}
+\begin{equation}
+\begin{aligned}
+ a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
+ b V(\xi) + \lambda \xi V'(\xi) &= \Sigma'(\xi)\\
+ d \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ V'(\xi)&=U(\xi)
+\end{aligned} \label{eq:ss-odes}
+\end{equation}
+\subsection{de-singularization}
+Introduce new field variables 
+\begin{equation}
+\begin{aligned}
+ \Gamma(\xi) &= \xi^\ta \tg(\xi),\\
+ V(\xi)&=\xi^\tb \tv(\xi),\\
+ \Theta(\xi)&=\xi^\tc \tth(\xi),\\
+ \Sigma(\xi)&=\xi^\td \ts(\xi),\\
+ U(\xi)&=\xi^{\tb-1} \tu(\xi). 
+\end{aligned}
+\end{equation}
+Then at \eqref{eq:ss-odes}:
+\begin{align*}
+ \xi^\ta\Big( a\tg + \lambda \ta \tg + \lambda\xi\tg'\Big) &=\xi^{\tb-1} \tu,\\
+ \xi^\tb\Big( b\tv + \lambda \tb \tv + \lambda\xi\tv'\Big) &=\xi^{\td-1} \Big(\td\ts + \xi\ts'\Big),\\
+ \xi^\tc\Big( c\tth+ \lambda \tc \tth+ \lambda\xi\tth'\Big)&=\xi^{\td+\tb-1} \ts\tu,\\
+ \xi^\td\ts &= \xi^{-\alpha \tc +m\ta +n(\tb-1)} \tth^{-\alpha} \tg^m \tu^n,\\
+ \xi^{\tb-1}\Big(\tb\tv + \xi \tv'\Big)&= \xi^{\tb-1} \tu.
+\end{align*}
 
+$\ta, \tb, \tc, \td$ such that
+\begin{align*}
+ &\ta=\tb-1, \quad \tb=\td-1, \quad \tc=\td+\tb-1,\quad \td = -\alpha \tc + m\ta +n(\tb-1) \\
+ \Longrightarrow \quad&\ta = -a_1, \quad \td = -d_1, \quad \tc = -c_1, \quad \tb=-b_1.
+\end{align*}
+
+\begin{equation}
+ \begin{aligned}
+  a_0\tg + \lambda\xi\tg' &=\tu,\\
+  b_0\tv + \lambda\xi\tv' &=-d_1 \sigma + \xi\ts',\\
+  c_0\tth+ \lambda\xi\tth'&=\ts\tu,\\
+  \ts &=\tth^{-\alpha}\tg^m\tu^n,\\
+  -b_1\tv+\xi\tv' &= \tu.
+ \end{aligned}
+\end{equation}
+
+Introduce the new independent variable $\eta = \log\xi$.
 \section{$(p,q,r,s)$-system derivation}
 \section{Normally hyperbolic invariant manifold}
 \section{Equilibrium points, Linear structure}

@@ -300,8 +300,8 @@ if __name__ == "__main__":
     myV = FES()
     
     # check quadrature and evaluation of Lagran basis upto second-derivative
-    for i in range(P.m):
-        myV.EL[i].eval_LagranB(1)
+#    for i in range(P.m):
+#        myV.EL[i].eval_LagranB(1)
     
     # check values of source term
     myV.asm_rhs()
@@ -341,6 +341,10 @@ if __name__ == "__main__":
     # 1D poisson    
     un = splin.solve_banded((myV.il,myV.iu),myV.SYSbn,myV.fn)
     print un
+    
+    x = np.linspace(P.xa,P.xb,100)
+    X = np.linspace(P.xa,P.xb,un.size)
+    plt.plot(x,sin(x),X,un,'*')
     
         
         
