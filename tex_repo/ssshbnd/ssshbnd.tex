@@ -12,7 +12,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper,11pt]{article}
 
-\usepackage[margin=3cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 \usepackage{setspace}
 %\onehalfspacing
 \doublespacing
@@ -247,7 +247,7 @@ Auxiliary calculations:
  \frac{\dtg}{\tg} &= \frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big),\\
  \frac{\dts}{\ts} &= d_1+ b_0\frac{\tv}{\ts} + \lambda \frac{\dtv}{\ts} = d_1+ b_0\frac{\tv}{\ts} + \lambda \Big(b_1 + \frac{\tu}{\tv}\Big)\frac{\tv}{\ts} = d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts} ,\\
  \frac{\dtth}{\tth}&=\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big),\\
- \frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - m \frac{\dtg}{\tg} - n\frac{\dtu}{\tu}&=0,\\
+ 0&=\frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - m \frac{\dtg}{\tg} - n\frac{\dtu}{\tu},\\
  \frac{\dtv}{\tv}&= b_1 +\frac{\tu}{\tv}
 \end{align*}
 
@@ -255,7 +255,7 @@ Define
 \begin{equation}\label{eq:pqrsdef}
  \begin{aligned}
   p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts},\\
-  r^n &= \frac{\big(\ts\tth^\alpha \tg^{-m}\big)}{\tg^n}= \frac{\tu^n}{\tg^n} , & z&=\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} } , \quad s=s(n,z-1).
+  r^n &= \frac{\big(\ts\tth^\alpha \tg^{-m}\big)}{\tg^n}= \frac{\tu^n}{\tg^n} , & s&=s(n,z-1), \quad\text{where}\quad z=\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} }.
  \end{aligned}
 \end{equation}
 \begin{remark}
@@ -265,75 +265,42 @@ Define
  \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
  \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
  n\frac{\drr}{r}=n\frac{\dtu}{\tu} - n\frac{\dtg}{\tg} &= \frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - (m+n) \frac{\dtg}{\tg}& &=\left[\frac{-m-n}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]+\left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
- \frac{\dot{z}}{z} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m)\frac{\dtg}{\tg} & &=\left[\frac{-1-m}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]
+ \frac{\dot{z}}{z} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m)\frac{\dtg}{\tg} & &=\left[\frac{-1-m}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
+%  \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} &&= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}.
 \end{align*}
-using $\displaystyle \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{r}{z}\,u^n$ \quad and \quad$\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $
+$\dss$ is now,
 \begin{align*}
- \frac{\dot{z}}{z} &=(1+m)\bigg\{-\frac{r}{\lambda} + \frac{1}{\lambda}\frac{r}{z}u^n - \frac{n}{\lambda D}\bigg\}
+ \dot{s} =\frac{\partial s}{\partial (z-1)} \dot{z} 
+%  &= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}\\
+ &=\frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{r(u^n-z)-z\frac{n}{D}\bigg\}.
 \end{align*}
-Hence,
-\begin{align*}
- \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} = (1+m)\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-\frac{r}{\lambda} - \frac{n}{\lambda D}\Big]+ \frac{1}{\lambda}ru^n\bigg\}
-\end{align*}
-For instance,
-$$ s = e^{-\frac{(z-1)^k}{n^\ell}}, \quad \frac{\partial s}{\partial (z-1)} = s\big(-\frac{k(z-1)^{k-1}}{n^\ell}\big).$$
+using $\displaystyle \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{r}{z}\,u^n$ \quad and \quad$\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}$. 
 
-Define 
-\begin{equation}\label{eq:pqrsdef}
- \begin{aligned}
-  p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts},\\
-  r^n &= \frac{\big(\ts\tth^\alpha \tg^{-m}\big)}{\tg^n}= \frac{\tu^n}{\tg^n} , & f(n,s)&=\left(\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} } -1 \right).
- \end{aligned}
-\end{equation}
-
-
+We choose $s(n,z)$ such that
+\begin{enumerate}
+ \item As $(n,z-1) \rightarrow (0,0)$, $s(n,z-1) \rightarrow 0$, 
+ \item For fixed $n$, the map $z \mapsto s$ is invertible, and for inverse $z=z(n,s)\rightarrow 1$ as $(n,s) \rightarrow (0,0)$.
+\end{enumerate}
+We set 
+$$ s(n,z-1) = \frac{(z-1)^{\frac{1}{n}}}{n}, \quad \text{or} \quad z= 1+ns^n$$
+and look for solutions of this form. Then we have
 
 
 \begin{align*}
- \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- n\frac{\drr}{r}=n\frac{\dtu}{\tu} - n\frac{\dtg}{\tg} &= \frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - (m+n) \frac{\dtg}{\tg}& &=\left[\frac{-m-n}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]+\left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
- \frac{\frac{\partial f}{\partial s}\dot{s}}{1+f(n,s)} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m)\frac{\dtg}{\tg} & &=\left[\frac{-1-m}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]
-\end{align*}
-using $\displaystyle z:= \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{u^n}{1+f(n,s)}\,r$ and $\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $
-\begin{align*}
- \frac{\partial f}{\partial s}\dot{s}&=(1+m)\bigg\{-\frac{r}{\lambda} + f(n,s)\frac{r}{\lambda}  (u^n-1) - \frac{n(1+f(n,s))}{\lambda D}\bigg\}
+ \frac{\ts\tu}{\tth} &= \frac{1+m}{1+\alpha} \frac{r}{z}\,u^n = \frac{1+m}{1+\alpha} r + n\frac{1+m}{1+\alpha} \frac{r}{1+ns^n}\Big(\frac{u^n-1}{n}-s^n\Big),%\\
+%  \frac{\tu}{\tv}\frac{\tv}{\ts}&=\frac{\ts}{\tv} \frac{\tg}{\ts} \frac{\tu}{\tg} \frac{\tv}{\ts} = pr.
 \end{align*}
 
-
-\begin{align*}
- \frac{\frac{\partial f}{\partial s}\dot{s}}{f(n,s)} = \frac{\frac{\partial f}{\partial s}\dot{s}}{1+f(n,s)} \frac{1+f(n,s)}{f(n,s)}&= \frac{1+f(n,s)}{f(n,s)}\left\{\Big[\frac{-1-m}{\lambda }\Big(r-a_0\Big)\Big] + \Big[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big]\right\}\\
-  \intertext{ using $\displaystyle z:= \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{u^n}{1+f(n,s)}\,r$ and $\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $}
-  &=\frac{1+f(n,s)}{f(n,s)} \bigg\{\Big[-\frac{1+m}{\lambda }r - \frac{n(1+m)}{\lambda D}\Big] + \frac{1+m}{\lambda}\frac{u^n}{1+f(n,s)}\,r\bigg\}\\
- \frac{1}{1+m}\frac{\partial f}{\partial s}\dot{s}&=f(n,s)\frac{1}{\lambda} {u^n}r + (1+f(n,s)) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big].
-\end{align*}
-
-
-\begin{align*}
- \frac{\frac{\partial f}{\partial s}\dot{s}}{1+f(n,s)} &= \Big[-\frac{1+m}{\lambda }r - \frac{n(1+m)}{\lambda D}\Big] + \frac{1+m}{\lambda}\frac{u^n}{1+f(n,s)}\,r\bigg\}\\
- {f(n)}\dot{s}&=(1+m)s^{1-{f(n)}} \left\{(s^{f(n)}+1) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big] + \frac{1}{\lambda} {u^n}r\right\}.
-\end{align*}
-
-
-% \begin{align*}
-%  \frac{\dot{s}}{s} = \frac{\dot{s^{f(n)}}}{s^{f(n)}} &= \frac{\dot{s^{f(n)}+1}}{s^{f(n)}} = \frac{\dot{s^{f(n)}+1}}{s^{f(n)}+1}\frac{s^{f(n)}+1}{s^{f(n)}} = \frac{s^{f(n)}+1}{s^{f(n)}} \left\{\Big[\frac{-1-m}{\lambda }\Big(r-a_0\Big)\Big] + \Big[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big]\right\}\\
-%   &=\frac{s^{f(n)}+1}{s^{f(n)}} \bigg\{\Big[\frac{-1-m}{\lambda }r + \frac{a_0(1+m)-c_0(1+\alpha)}{\lambda}\Big] + \frac{1+\alpha}{\lambda}\frac{\ts\tu}{\tth}\bigg\}\\
-%   \intertext{ using $\displaystyle z:= \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{u^n}{s^{f(n)}+1}\,r$ and $\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $}
-%   &=\frac{s^{f(n)}+1}{s^{f(n)}} \bigg\{\Big[-\frac{1+m}{\lambda }r - \frac{n(1+m)}{\lambda D}\Big] + \frac{1+m}{\lambda}\frac{u^n}{s^{f(n)}+1}\,r\bigg\}\\
-%  {f(n)}\dot{s}&=(1+m)s^{1-{f(n)}} \left\{(s^{f(n)}+1) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big] + \frac{1}{\lambda} {u^n}r\right\}.
-% \end{align*}
 $(p,q,r,s)$-system:
 
 \begin{equation}
 \begin{aligned}
   {\dpp}&=p\bigg\{\Big[\frac{1}{\lambda }\Big(r-a_0\Big)\Big] -\Big[d_1 + q + \lambda p r\Big]\bigg\}\\
   {\dqq}&=q\bigg\{b_1-d_1 + \lambda p r\bigg\} +bpr,\\
- n{\drr}&=r\bigg\{\Big[\frac{-m-n}{\lambda }\Big(r-a_0\Big)\Big]+\Big[d_1 + q + \lambda p r\Big]+\Big[\frac{\alpha}{\lambda }\Big(z-c_0\Big)\Big]\bigg\}\\
- {f(n)}\dot{s}&=(1+m)s^{1-{f(n)}} \left\{(s^{f(n)}+1) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big] + \frac{1}{\lambda} {u^n}r\right\}.
+ n{\drr}&=r\bigg\{\Big[\frac{-m-n}{\lambda }\Big(r-a_0\Big)\Big]+\Big[d_1 + q + \lambda p r\Big]+\Big[\frac{\alpha}{\lambda }\Big(\frac{1+m}{1+\alpha}r-c_0\Big)\Big] + n\Big[\frac{\alpha}{\lambda }\frac{1+m}{1+\alpha} \frac{r}{1+ns^n}\Big(\frac{u^n-1}{n}-s^n\Big)\Big]\bigg\}\\
+ n\dot{s}&=\frac{1+m}{\lambda}s^{1-n} \left\{r\frac{u^n-1}{n} - rs^n -\frac{1+ns^n}{D}\right\}.
 \end{aligned}
 \end{equation}
-where $$u^n = \Big(p^{1+\alpha} r^{D+n}\Big( \frac{1+\alpha}{1+m}(s^{f(n)}+1)\Big)^{-\alpha}\Big)^{\frac{n}{D-n\alpha}}, \quad z = \frac{1+m}{1+\alpha} \frac{r}{s^{f(n)}+1}\,u^n$$
-
 
 \section{Normally hyperbolic invariant manifold}
 \section{Equilibrium points, Linear structure}
