@@ -50,6 +50,17 @@
 \def\ts{{\tilde{\tau}}}
 \def\tu{{\tilde{u}}}
 
+\def\dtg{\dot{\tilde{\gamma}}}
+\def\dtv{\dot{\tilde{v}}}
+\def\dtth{\dot{\tilde{\theta}}}
+\def\dts{\dot{\tilde{\tau}}}
+\def\dtu{\dot{\tilde{u}}}
+
+\def\dpp{\dot{p}}
+\def\dqq{\dot{q}}
+\def\drr{\dot{r}}
+\def\dss{\dot{s}}
+
 \def\ta{{\tilde{a}}}
 \def\tb{{\tilde{b}}}
 \def\tc{{\tilde{c}}}
@@ -222,7 +233,7 @@ $\ta, \tb, \tc, \td$ such that
 \begin{equation}
  \begin{aligned}
   a_0\tg + \lambda\xi\tg' &=\tu,\\
-  b_0\tv + \lambda\xi\tv' &=-d_1 \sigma + \xi\ts',\\
+  b_0\tv + \lambda\xi\tv' &=-d_1 \ts + \xi\ts',\\
   c_0\tth+ \lambda\xi\tth'&=\ts\tu,\\
   \ts &=\tth^{-\alpha}\tg^m\tu^n,\\
   -b_1\tv+\xi\tv' &= \tu.
@@ -231,6 +242,99 @@ $\ta, \tb, \tc, \td$ such that
 
 Introduce the new independent variable $\eta = \log\xi$.
 \section{$(p,q,r,s)$-system derivation}
+Auxiliary calculations:
+\begin{align*}
+ \frac{\dtg}{\tg} &= \frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big),\\
+ \frac{\dts}{\ts} &= d_1+ b_0\frac{\tv}{\ts} + \lambda \frac{\dtv}{\ts} = d_1+ b_0\frac{\tv}{\ts} + \lambda \Big(b_1 + \frac{\tu}{\tv}\Big)\frac{\tv}{\ts} = d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts} ,\\
+ \frac{\dtth}{\tth}&=\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big),\\
+ \frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - m \frac{\dtg}{\tg} - n\frac{\dtu}{\tu}&=0,\\
+ \frac{\dtv}{\tv}&= b_1 +\frac{\tu}{\tv}
+\end{align*}
+
+Define 
+\begin{equation}\label{eq:pqrsdef}
+ \begin{aligned}
+  p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts},\\
+  r^n &= \frac{\big(\ts\tth^\alpha \tg^{-m}\big)}{\tg^n}= \frac{\tu^n}{\tg^n} , & z&=\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} } , \quad s=s(n,z-1).
+ \end{aligned}
+\end{equation}
+\begin{remark}
+ In the case of the variable $r$, assuming $\tg, \ts,\tth \sim \mathcal{O}(1)$, the exponent $n$ is natural and the relaxation time scale $\drr \sim \mathcal{O}(\frac{1}{n})$. For the case of $\displaystyle\left(\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} } -1 \right)$, there is no preferred relaxation time scale. For the time being, we do not specify the function $s(n,z-1)$ in the upcoming calculations. {\blue I strongly suspect that the speed $s(n,z-1) \rightarrow 0$ as $n \rightarrow 0$ is much faster and even non-analytic, like $e^{-1/n}$.}
+\end{remark}
+\begin{align*}
+ \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ n\frac{\drr}{r}=n\frac{\dtu}{\tu} - n\frac{\dtg}{\tg} &= \frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - (m+n) \frac{\dtg}{\tg}& &=\left[\frac{-m-n}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]+\left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
+ \frac{\dot{z}}{z} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m)\frac{\dtg}{\tg} & &=\left[\frac{-1-m}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]
+\end{align*}
+using $\displaystyle \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{r}{z}\,u^n$ \quad and \quad$\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $
+\begin{align*}
+ \frac{\dot{z}}{z} &=(1+m)\bigg\{-\frac{r}{\lambda} + \frac{1}{\lambda}\frac{r}{z}u^n - \frac{n}{\lambda D}\bigg\}
+\end{align*}
+Hence,
+\begin{align*}
+ \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} = (1+m)\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-\frac{r}{\lambda} - \frac{n}{\lambda D}\Big]+ \frac{1}{\lambda}ru^n\bigg\}
+\end{align*}
+For instance,
+$$ s = e^{-\frac{(z-1)^k}{n^\ell}}, \quad \frac{\partial s}{\partial (z-1)} = s\big(-\frac{k(z-1)^{k-1}}{n^\ell}\big).$$
+
+Define 
+\begin{equation}\label{eq:pqrsdef}
+ \begin{aligned}
+  p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts},\\
+  r^n &= \frac{\big(\ts\tth^\alpha \tg^{-m}\big)}{\tg^n}= \frac{\tu^n}{\tg^n} , & f(n,s)&=\left(\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} } -1 \right).
+ \end{aligned}
+\end{equation}
+
+
+
+
+\begin{align*}
+ \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ n\frac{\drr}{r}=n\frac{\dtu}{\tu} - n\frac{\dtg}{\tg} &= \frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - (m+n) \frac{\dtg}{\tg}& &=\left[\frac{-m-n}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]+\left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
+ \frac{\frac{\partial f}{\partial s}\dot{s}}{1+f(n,s)} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m)\frac{\dtg}{\tg} & &=\left[\frac{-1-m}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]
+\end{align*}
+using $\displaystyle z:= \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{u^n}{1+f(n,s)}\,r$ and $\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $
+\begin{align*}
+ \frac{\partial f}{\partial s}\dot{s}&=(1+m)\bigg\{-\frac{r}{\lambda} + f(n,s)\frac{r}{\lambda}  (u^n-1) - \frac{n(1+f(n,s))}{\lambda D}\bigg\}
+\end{align*}
+
+
+\begin{align*}
+ \frac{\frac{\partial f}{\partial s}\dot{s}}{f(n,s)} = \frac{\frac{\partial f}{\partial s}\dot{s}}{1+f(n,s)} \frac{1+f(n,s)}{f(n,s)}&= \frac{1+f(n,s)}{f(n,s)}\left\{\Big[\frac{-1-m}{\lambda }\Big(r-a_0\Big)\Big] + \Big[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big]\right\}\\
+  \intertext{ using $\displaystyle z:= \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{u^n}{1+f(n,s)}\,r$ and $\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $}
+  &=\frac{1+f(n,s)}{f(n,s)} \bigg\{\Big[-\frac{1+m}{\lambda }r - \frac{n(1+m)}{\lambda D}\Big] + \frac{1+m}{\lambda}\frac{u^n}{1+f(n,s)}\,r\bigg\}\\
+ \frac{1}{1+m}\frac{\partial f}{\partial s}\dot{s}&=f(n,s)\frac{1}{\lambda} {u^n}r + (1+f(n,s)) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big].
+\end{align*}
+
+
+\begin{align*}
+ \frac{\frac{\partial f}{\partial s}\dot{s}}{1+f(n,s)} &= \Big[-\frac{1+m}{\lambda }r - \frac{n(1+m)}{\lambda D}\Big] + \frac{1+m}{\lambda}\frac{u^n}{1+f(n,s)}\,r\bigg\}\\
+ {f(n)}\dot{s}&=(1+m)s^{1-{f(n)}} \left\{(s^{f(n)}+1) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big] + \frac{1}{\lambda} {u^n}r\right\}.
+\end{align*}
+
+
+% \begin{align*}
+%  \frac{\dot{s}}{s} = \frac{\dot{s^{f(n)}}}{s^{f(n)}} &= \frac{\dot{s^{f(n)}+1}}{s^{f(n)}} = \frac{\dot{s^{f(n)}+1}}{s^{f(n)}+1}\frac{s^{f(n)}+1}{s^{f(n)}} = \frac{s^{f(n)}+1}{s^{f(n)}} \left\{\Big[\frac{-1-m}{\lambda }\Big(r-a_0\Big)\Big] + \Big[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big]\right\}\\
+%   &=\frac{s^{f(n)}+1}{s^{f(n)}} \bigg\{\Big[\frac{-1-m}{\lambda }r + \frac{a_0(1+m)-c_0(1+\alpha)}{\lambda}\Big] + \frac{1+\alpha}{\lambda}\frac{\ts\tu}{\tth}\bigg\}\\
+%   \intertext{ using $\displaystyle z:= \frac{\ts\tu}{\tth} = \frac{1+m}{1+\alpha} \frac{u^n}{s^{f(n)}+1}\,r$ and $\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{D}, $}
+%   &=\frac{s^{f(n)}+1}{s^{f(n)}} \bigg\{\Big[-\frac{1+m}{\lambda }r - \frac{n(1+m)}{\lambda D}\Big] + \frac{1+m}{\lambda}\frac{u^n}{s^{f(n)}+1}\,r\bigg\}\\
+%  {f(n)}\dot{s}&=(1+m)s^{1-{f(n)}} \left\{(s^{f(n)}+1) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big] + \frac{1}{\lambda} {u^n}r\right\}.
+% \end{align*}
+$(p,q,r,s)$-system:
+
+\begin{equation}
+\begin{aligned}
+  {\dpp}&=p\bigg\{\Big[\frac{1}{\lambda }\Big(r-a_0\Big)\Big] -\Big[d_1 + q + \lambda p r\Big]\bigg\}\\
+  {\dqq}&=q\bigg\{b_1-d_1 + \lambda p r\bigg\} +bpr,\\
+ n{\drr}&=r\bigg\{\Big[\frac{-m-n}{\lambda }\Big(r-a_0\Big)\Big]+\Big[d_1 + q + \lambda p r\Big]+\Big[\frac{\alpha}{\lambda }\Big(z-c_0\Big)\Big]\bigg\}\\
+ {f(n)}\dot{s}&=(1+m)s^{1-{f(n)}} \left\{(s^{f(n)}+1) \Big[-\frac{1}{\lambda }r - \frac{n}{\lambda D}\Big] + \frac{1}{\lambda} {u^n}r\right\}.
+\end{aligned}
+\end{equation}
+where $$u^n = \Big(p^{1+\alpha} r^{D+n}\Big( \frac{1+\alpha}{1+m}(s^{f(n)}+1)\Big)^{-\alpha}\Big)^{\frac{n}{D-n\alpha}}, \quad z = \frac{1+m}{1+\alpha} \frac{r}{s^{f(n)}+1}\,u^n$$
+
+
 \section{Normally hyperbolic invariant manifold}
 \section{Equilibrium points, Linear structure}
 \subsection{Characterization of the heteroclinic orbit : why and how}
