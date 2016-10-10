@@ -191,7 +191,7 @@ At \eqref{eq:g}-\eqref{eq:tau}:
 \begin{align*}
  t^{a-1}(a \Gamma(\xi) + \lambda \xi \Gamma'(\xi)) &= t^{b+ \lambda} U(\xi),\\
  t^{b-1}(b V(\xi) + \lambda \xi V'(\xi)) &= t^{d+ \lambda} \Sigma'(\xi)\\
- t^{c-1}(d \Theta(\xi) + \lambda \xi \Theta'(\xi))&=t^{b+d+\lambda} \Sigma U(\xi),\\
+ t^{c-1}(c \Theta(\xi) + \lambda \xi \Theta'(\xi))&=t^{b+d+\lambda} \Sigma U(\xi),\\
  t^d\Sigma(\xi) &= t^{-\alpha c +ma +n(b+ \lambda)} \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
  t^{b+\lambda}V'(\xi)&=t^{b+\lambda}U(\xi)
 \end{align*}
@@ -247,9 +247,9 @@ Introduce the new independent variable $\eta = \log\xi$.
  \item The equation \eqref{eq:th} can be rewritten in the form
  $$ \Big(\frac{1}{1+\alpha} \tth^{1+\alpha}\Big)_t = \frac{\tu^n}{\tg^n} \Big(\frac{1}{1+m+n} \tg^{1+m+n}\Big)_t$$
  and we expect, at least for the self-similar solutions, that
- $$ \frac{ \frac{1}{1+m+n} \tg^{1+m+n} }{ \frac{1}{1+\alpha} \tth^{1+\alpha} }  = 1 + \mathcal{O}(n) = s^n, \quad \text{for some $s$}. $$
+ $$ \frac{ \frac{1}{1+\alpha} \tth^{1+\alpha} }{ \frac{1}{1+m+n} \tg^{1+m+n} }  = 1 + \mathcal{O}(n) \overset{put}{=} s^n, \quad \text{for some $s$}. $$
  \item If so, we can define the variable 
- $$r = \Big(\Big(\frac{1+m+n}{1+\alpha}\Big)^{\frac{\alpha}{(1+\alpha)}}\tau \gamma^{\frac{\alpha-m-n}{1+\alpha}}\Big)^{\frac{1}{n}} = \frac{\tu}{\tg}\,s^{\frac{\alpha}{1+\alpha}} \sim \mathcal{O}(1) $$
+ $$r = \Big(\Big(\frac{1+m+n}{1+\alpha}\Big)^{\frac{\alpha}{(1+\alpha)}}\tau \gamma^{\frac{\alpha-m-n}{1+\alpha}}\Big)^{\frac{1}{n}} = \frac{\tu}{\tg}\,s^{-\frac{\alpha}{1+\alpha}} \sim \mathcal{O}(1) $$
  and when $\alpha=0$, it reduces to $\frac{\tu}{\tg}$. The advantage of this definition to the $\frac{\tu}{\tg}$ is that the latter expression couples to the $\tth$ too whereas $r$ here does not. 
 \end{enumerate}
 
@@ -266,7 +266,7 @@ Define
 \begin{equation}\label{eq:pqrsdef}
  \begin{aligned}
   p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts},\\
-  r^n &= \frac{\big(\ts\tth^\alpha \tg^{-m}\big)}{\tg^n}= \frac{\tu^n}{\tg^n} , & s&=s(n,z-1), \quad\text{where}\quad z=\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} }.
+  r &= \Big(\Big(\frac{1+m+n}{1+\alpha}\Big)^{\frac{\alpha}{(1+\alpha)}}\tau \gamma^{\frac{\alpha-m-n}{1+\alpha}}\Big)^{\frac{1}{n}} , & s&=z^{\frac{1}{n}}, \quad z=\frac{ \frac{1}{1+\alpha} \tth^{1+\alpha} }{ \frac{1}{1+m+n} \tg^{1+m+n} }.
  \end{aligned}
 \end{equation}
 
@@ -274,31 +274,45 @@ We have
 \begin{align*}
  \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
  \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- n\frac{\drr}{r}=n\frac{\dtu}{\tu} - n\frac{\dtg}{\tg} &= \frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - (m+n) \frac{\dtg}{\tg}& &=\left[\frac{-m-n}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]+\left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
- \frac{\dot{z}}{z} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m)\frac{\dtg}{\tg} & &=\left[\frac{-1-m}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
+ n\frac{\drr}{r}&=\frac{\dts}{\ts} +\frac{\alpha-m-m}{1+\alpha} \frac{\dtg}{\tg}& &=\left[\frac{\alpha-m-n}{\lambda(1+\alpha) }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dot{z}}{z} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m+n)\frac{\dtg}{\tg} & &=\left[\frac{-1-m-n}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
 %  \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} &&= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}.
 \end{align*}
-Noticing that $\displaystyle a_0(1+m)-c_0(1+\alpha)=\frac{-n(1+m)}{\lambda D}$ and also
+Noticing that $\displaystyle a_0(1+m+n)-c_0(1+\alpha)=n$ and that
 \begin{align*}
- \frac{\ts\tu}{\tth} = \frac{\tg^{1+m}}{\tth^{1+\alpha}}\frac{\tu}{\tg}u^n = \frac{1+m}{1+\alpha} \frac{r}{z}\,u^n 
- =\frac{1+m}{1+\alpha}\Big( r + \frac{r}{z}\big((u^n-1) -(z-1)\big)\Big),
+ \frac{\ts\tu}{\tth} = \frac{\tg^{1+m+n}}{\tth^{1+\alpha}}\Big(\frac{\tu}{\tg}\Big)^{1+n} = \frac{1+m}{1+\alpha} \frac{1}{z}\,\Big(\frac{\tu}{\tg}\Big)^{1+n} =  \frac{1+m+n}{1+\alpha} \frac{1}{s^n}\,\Big(rs^{\frac{\alpha}{1+\alpha}}\Big)^{1+n}
+ =\frac{1+m+n}{1+\alpha}\Big( r^{1+n} s^{\frac{\alpha-n}{1+\alpha}}\Big),
 \end{align*}
 \begin{align*}
+n\frac{\dot{s}}{s} = \frac{\dot{z}}{z} = \frac{1+m+n}{\lambda}\Big(r^{1+n}s^{\frac{\alpha-n}{1+\alpha}} - rs^{\frac{\alpha}{1+\alpha}} \Big) + \frac{n}{\lambda} = \frac{1+m+n}{\lambda}\,rs^{\frac{\alpha}{1+\alpha}}\Big(r^{n}s^{\frac{-n}{1+\alpha}} - 1 \Big) + \frac{n}{\lambda}
 \end{align*}
 
+$(p,q,r,s)$-system:
 \begin{align*}
- \frac{\dot{z-1}}{z-1} = \frac{1+m}{\lambda} \bigg\{ -r + r(u^n-1) -n\frac{z}{D}\bigg\}
+ \frac{\dpp}{p}&=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dqq}{q}&=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ n\frac{\drr}{r}&=\left[\frac{\alpha-m-n}{\lambda(1+\alpha) }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dot{s}}{s} &= \frac{1+m+n}{\lambda}\,rs^{\frac{\alpha}{1+\alpha}}\Big(\frac{r^{n}s^{\frac{-n}{1+\alpha}} - 1}{n} \Big) + \frac{1}{\lambda}
 \end{align*}
 
+\begin{remark}
+ \begin{enumerate}
+  \item 
+  \item Note that $s$ is not a fast variable. Even though $\displaystyle\frac{ \frac{1}{1+\alpha} \tth^{1+\alpha} }{ \frac{1}{1+m+n} \tg^{1+m+n} }$ relaxes to the manifold $1 + \mathcal{O}(n)$, the relaxation time is not of $\mathcal{O}(\frac{1}{n})$ but is of $\mathcal{O}(1)$.
+  
+ \end{enumerate}
+\end{remark}
 
-$(p,q,r,z)$-system:
+
+
+$(p,q,r,s)$-system:
 
 \begin{equation}
 \begin{aligned}
   {\dpp}&=p\bigg\{\Big[\frac{1}{\lambda }\Big(r-a_0\Big)\Big] -\Big[d_1 + q + \lambda p r\Big]\bigg\}\\
   {\dqq}&=q\bigg\{b_1-d_1 + \lambda p r\bigg\} +bpr,\\
-  \dot{(z-1)} &=\frac{1+m}{\lambda}\bigg\{-r(z-1) + r(u^n-1) -n\frac{z}{D}\bigg\},\\
- n{\drr}&=r\bigg\{\Big[\frac{-m-n}{\lambda }\Big(r-a_0\Big)\Big]+\Big[d_1 + q + \lambda p r\Big]+\Big[\frac{\alpha}{\lambda }\Big(\frac{1+m}{1+\alpha}r-c_0\Big)\Big] + \Big[\frac{\alpha}{\lambda }\frac{1+m}{1+\alpha} \frac{r}{z}\Big((u^n-1)-(z-1)\Big)\Big]\bigg\}.
+ n{\drr}&=r\bigg\{\left[\frac{\alpha-m-n}{\lambda(1+\alpha) }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\bigg\}\\
+ n\frac{\dot{s}}{s} &= \frac{1+m+n}{\lambda}\Big(r^{1+n}s^{\frac{\alpha-n}{1+\alpha}} - r \Big) + \frac{n}{\lambda}
 \end{aligned}
 \end{equation}
 
@@ -325,7 +339,9 @@ and look for solutions of this form. Then we have
 %  \frac{\tu}{\tv}\frac{\tv}{\ts}&=\frac{\ts}{\tv} \frac{\tg}{\ts} \frac{\tu}{\tg} \frac{\tv}{\ts} = pr.
 \end{align*}
 
-$(p,q,r,s)$-system:
+
+
+
 
 \begin{equation}
 \begin{aligned}
