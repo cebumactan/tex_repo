@@ -306,14 +306,15 @@ we derive $(p,q,r)$-system:
 \section{Equilibrium points, Linear structure}
 $(p,q,r)$-system possesses four equilibrium points and the exceptional equilibriums that we are not interested in. They are
 \begin{align*}
- (0,0,0), \quad \Big(0,0,\big(c_0-d_1\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(c_0-(d_1+1)\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).
+  (0,0,0), \quad \Big(0,0,\big(c_0-d_1\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(c_0-(d_1+1)\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).\\
+ (0,0,0), \quad \Big(0,1,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,0,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).
 \end{align*}
 
+\noindent
 {\bf Exceptional cases}
 \medskip
 
 Exceptional equilibriums are,
-
 \begin{align*}
  r=0, \quad q=0, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1} = \frac{1+\alpha}{1+n} \frac{1}{\alpha-n},\\
  r=0, \quad q=1, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1-1}= \frac{1+\alpha}{1+n} \frac{2}{2(\alpha-n)-1},\\
@@ -323,94 +324,85 @@ Exceptional equilibriums are,
 
 
 \section{Normally hyperbolic invariant manifold}
-
-
-
-\begin{align*}
-\frac{\dot{z}}{z} = \frac{1+m+n}{\lambda}\Big(\frac{r^{1+n}}{z} - r \Big) + \frac{n}{\lambda} = \frac{1+m+n}{\lambda}\,r\Big(\frac{r^{n}}{z} - 1 \Big) + \frac{n}{\lambda}
-\end{align*}
-
-\begin{enumerate}
- \item  Equation on $z$ in the form of
- $$ \dot{z-1} = -\frac{1+m+n}{\lambda}\, r (z-1) + \frac{1+m+n}{\lambda}\, r(r^n-1) + n\frac{z}{\lambda} = -\frac{1+m+n}{\lambda}\, r (z-1) + \mathcal{O}(n)$$
- dictates that the $z$ will relax to $z=1 + \mathcal{O}(n)$. When $n=0$, it exactly relaxes to $z\equiv1$, provided $r>0$.
- \item Furthermore, once $z = 1+\mathcal{O}(n)$ at some point, then it will remain to be so (using gronwall's inequality), at least for the finite time, suggesting the invariant manifold that comprises these orbits around $z\equiv1$.
- \item Let us suppose the existence of the invariant manifold $\bar{z}(p,q)$ that is of $1+\mathcal{O}(n)$. Since we are only interested in the orbits that are on the invariant manifold or that are close enough to the manifold, we can safely assume that
- $$ |z-1| < \sqrt{n}, \quad 0<n\ll1.$$
- We observe that the relaxation time of the variable $z$ is of $\mathcal{O}(1)$, and when it is on the manifold, $\dot{z} \sim O(n)$. Compare this to the fast variable $r$: $r$ relaxes with speed $\mathcal{O}(1/n)$ and when it is on the manifold, $\dot{r} \sim O(1)$.
- 
- We may technically define a variable that has the fast relaxation time.  When $|z-1| < \sqrt{n}$, $s$ defined by the relation 
- $$ s = \sgn{(z-1)}\Big(\frac{|z-1|}{\sqrt{n}}\Big)^{\frac{1}{n}}, \quad \Longleftrightarrow z = 1+\sqrt{n}s^n, \quad \text{for $|z-1|<\sqrt{n}.$}$$
- is uniformly bounded and is invertible for fixed $n$. If $z$ relaxes to the manifold $\bar{z}=1+\mathcal{O}(n)$ then $s$ relaxes to the manifold $\bar{s}\sim \sqrt{n}^{\frac{1}{n}}$ for $n>0$, and $\displaystyle \lim_{n \rightarrow 0+} \sqrt{n}^{\frac{1}{n}}=0$, which is consistent with $z\equiv1$.
-\end{enumerate}
-
-
-
-
-$(p,q,r,s)$-system:
-\begin{align*}
- \dpp&=p\bigg\{\left[\frac{1}{\lambda }\Big(r-a_0\Big)\right] & &-\left[d_1 + q + \lambda pr\right]\bigg\}\\
- \dqq&=q\bigg\{\left[b_1 +\frac{bpr}{q}\right] & &-\left[d_1 + q + \lambda pr\right]\bigg\}\\ 
- n\drr&=r\bigg\{\left[\frac{\alpha-m-n}{\lambda(1+\alpha) }\Big(r-a_0\Big)\right]& &+\left[d_1 + q + \lambda pr\right]+ \Big[\frac{\alpha}{1+\alpha}\, \Big(\frac{1+m+n}{\lambda} \Big(\frac{r^n}{1+\sqrt{n}s^n}-1\Big)r + \frac{n}{\lambda}\Big)\Big]\bigg\}\\
- n\dss&=-\frac{1+m+n}{\lambda}rs & &+ \sqrt{n}s^{1-n}\Big( \frac{1+m+n}{\lambda} \, r\frac{r^n-1}{n} + \frac{1+\sqrt{n}s^n}{\lambda}\Big).
-\end{align*}
-
-\begin{remark}
- \begin{enumerate}
-  \item 
-  \item Note that $s$ is not a fast variable. Even though $\displaystyle\frac{ \frac{1}{1+\alpha} \tth^{1+\alpha} }{ \frac{1}{1+m+n} \tg^{1+m+n} }$ relaxes to the manifold $1 + \mathcal{O}(n)$, the relaxation time is not of $\mathcal{O}(\frac{1}{n})$ but is of $\mathcal{O}(1)$.
-  
- \end{enumerate}
-\end{remark}
-
-
-
-$(p,q,r,s)$-system:
-
+The critical manifold $r=h(p,q,n=0)$.
 \begin{equation}
-\begin{aligned}
-  {\dpp}&=p\bigg\{\Big[\frac{1}{\lambda }\Big(r-a_0\Big)\Big] -\Big[d_1 + q + \lambda p r\Big]\bigg\}\\
-  {\dqq}&=q\bigg\{b_1-d_1 + \lambda p r\bigg\} +bpr,\\
- n{\drr}&=r\bigg\{\left[\frac{\alpha-m-n}{\lambda(1+\alpha) }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\bigg\}\\
- n\frac{\dot{s}}{s} &= \frac{1+m+n}{\lambda}\Big(r^{1+n}s^{\frac{\alpha-n}{1+\alpha}} - r \Big) + \frac{n}{\lambda}
-\end{aligned}
+ r=h(p,q,n=0) = \frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}
+\end{equation}
+This is a smooth function of $p\ge0$ and $q$.
+
+The system in {\it fast scale} with the independent variable $\tilde{\eta} = \eta/n$ is
+
+\begin{align} 
+ p^\prime &=np\Big( \Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \nonumber \\
+ q^\prime &=nq\Big(\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \tag*{($\tilde{P}$)\textsuperscript{$\lambda,m,n$}}\label{eq:pqr_fast} \\%%\textsuperscript{$\lambda,m,n$}}%\\
+ r^\prime&=r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big)\nonumber \\
+ &=:f^{\lambda,m,n}(p,q,r), \nonumber
+\end{align}
+
+\begin{align} 
+ p^\prime &=0, \nonumber \\
+ q^\prime &=0, \tag*{($\tilde{P}$)\textsuperscript{$\lambda,m,0$}}\label{eq:pqr_fast} \\%%\textsuperscript{$\lambda,m,n$}}%\\
+ r^\prime&=r\Big( \Big[\frac{\alpha}{\lambda}\Big(r-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big)\nonumber \\
+ &=:f^{\lambda,m,0}(p,q,r), \nonumber
+\end{align}
+
+\begin{lemma} \label{lem:normal_hyper}
+ $G^{\lambda,m,0}$ is a normally hyperbolic invariant manifold with respect to the system $(\tilde{P})^{ \lambda,m,0}$.
+\end{lemma}
+\begin{proof}
+We linearize the system $(\tilde{P})^{ \lambda,m,0}$ around $G^{\lambda,m,0}$, and show that $0$ is the eigenvalue with a multiplicity of exactly $2$. Let the perturbations of $p$, $q$, and $r$ be $P$, $Q$, and $R$, respectively. After discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \\ {R}^\prime \end{pmatrix} =
+ \begin{pmatrix} 0 & 0& 0\\ 0 & 0 & 0\\ \lambda (h^{\lambda,\alpha,0})^2 & h^{\lambda,\alpha,0} & ( \frac{\alpha}{ \lambda} + \lambda p )h^{\lambda,\alpha,0} \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \\ {R} \end{pmatrix}.
+\end{align*}
+The coefficient matrix has eigenvalues of $0$ and $( \frac{m}{ \lambda} + \lambda p )h^{\lambda,m,0}$. Since we take $h^{\lambda,m,0}$ away from zero and $p \ge 0$, the latter eigenvalue is strictly greater than zero. Thus, $0$ is an eigenvalue with multiplicity $2$. %The claim that the graph $G^{\lambda,m,0}$ is a normally hyperbolic invariant manifold with respect to $(\tilde{*})^{ \lambda,m,0}$ has been shown.
+\end{proof}
+
+
+
+\begin{align*}
+ \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\\
+ \frac{\dqq}{q}&=\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\\
+ n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
+\end{align*}
+
+\noindent where we denoted $(\cdot)^\prime = \frac{d}{d\tilde{\eta}}(\cdot)$. 
+The right-hand side of the equation on $r$ is denoted by $f^{\lambda,m,n}(p,q,r)$. We specify the {\it critical manifold} $G^{\lambda,m,0}$ in the below that is a compact subset of $\{(p,q,r)\;|\; f^{\lambda,m,0}(p,q,r)=0\}$. The latter set consists of the equilibria of the system $\tilde{(P)}^{\lambda,m,0}$. 
+
+In the region $r>0$, one solves the algebraic equation $f^{\lambda,m,0}(p,q,r)=0$,
+\begin{equation}\label{eq:hn0}
+ r=h(p,q,n=0) = \frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}
+\end{equation} 
+from which we notice that its level lines are straight lines; after rearranging, 
+\begin{equation}
+ q + \lambda \underbar{r}p =  -\frac{\alpha}{\lambda} \big( \underbar{r} - c_0\big)-d_1, \quad \text{for  $h^{\lambda,m,0}(p,q)=\underbar{r}$.} \label{eq:level}
 \end{equation}
 
-\begin{remark}
- In the case of the variable $r$, assuming $\tg, \ts,\tth \sim \mathcal{O}(1)$, the exponent $n$ is natural and the relaxation time scale $\drr \sim \mathcal{O}(\frac{1}{n})$. For the case of $\displaystyle\left(\frac{ \frac{1}{1+\alpha}\tth^{1+\alpha}}{ \frac{1}{1+m}\tg^{1+m} } -1 \right)$, there is no preferred relaxation time scale. For the time being, we do not specify the function $s(n,z-1)$ in the upcoming calculations.
-\end{remark}
-\begin{align*}
- \dot{s} =\frac{\partial s}{\partial (z-1)} \dot{z}
- &= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} z\bigg\{-r - \frac{n}{D}+ \frac{r}{z}u^n\bigg\}\\
- &=\frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{r(u^n-1) +r(1-z) -n\frac{z}{D}\bigg\}.
-\end{align*}
-We choose $s(n,z)$ such that
-\begin{enumerate}
- \item As $(n,z-1) \rightarrow (0,0)$, $s(n,z-1) \rightarrow 0$, 
- \item For fixed $n$, the map $z \mapsto s$ is invertible, and for inverse $z=z(n,s)\rightarrow 1$ as $(n,s) \rightarrow (0,0)$.
-\end{enumerate}
-We set 
-$$ s(n,z-1) = \frac{(z-1)^{\frac{1}{n}}}{n}, \quad \text{or} \quad z= 1+ns^n$$
-and look for solutions of this form. Then we have
-
-
-\begin{align*}
- \frac{\ts\tu}{\tth} &= \frac{1+m}{1+\alpha} \frac{r}{z}\,u^n = \frac{1+m}{1+\alpha} r + n\frac{1+m}{1+\alpha} \frac{r}{1+ns^n}\Big(\frac{u^n-1}{n}-s^n\Big),%\\
-%  \frac{\tu}{\tv}\frac{\tv}{\ts}&=\frac{\ts}{\tv} \frac{\tg}{\ts} \frac{\tu}{\tg} \frac{\tv}{\ts} = pr.
-\end{align*}
-
-
-
-
-
 \begin{equation}
-\begin{aligned}
-  {\dpp}&=p\bigg\{\Big[\frac{1}{\lambda }\Big(r-a_0\Big)\Big] -\Big[d_1 + q + \lambda p r\Big]\bigg\}\\
-  {\dqq}&=q\bigg\{b_1-d_1 + \lambda p r\bigg\} +bpr,\\
- n{\drr}&=r\bigg\{\Big[\frac{-m-n}{\lambda }\Big(r-a_0\Big)\Big]+\Big[d_1 + q + \lambda p r\Big]+\Big[\frac{\alpha}{\lambda }\Big(\frac{1+m}{1+\alpha}r-c_0\Big)\Big] + n\Big[\frac{\alpha}{\lambda }\frac{1+m}{1+\alpha} \frac{r}{1+ns^n}\Big(\frac{u^n-1}{n}-s^n\Big)\Big]\bigg\}\\
- n\dot{s}&=\frac{1+m}{\lambda}s^{1-n} \left\{r\frac{u^n-1}{n} - rs^n -\frac{1+ns^n}{D}\right\}.
-\end{aligned}
+ q + \lambda \underbar{r}p =  \frac{\alpha}{\lambda} \Big( \big(\frac{2}{D} + \frac{2}{D}\lambda\big) - \underbar{r} \Big)
 \end{equation}
+
+In view of \eqref{eq:level}, the contour lines in the $pq$-plane sweep out the first quadrant from the origin. See Figure \ref{fig:contour}. More precisely, the contour line passes the origin when $\underbar{r}=a^{ \lambda,m,0}$ at the same time as the level line passes the equilibrium $M_0^{ \lambda,m,0}$. As $\underbar{r}$ decreases, the contour line intersects the $p$ and $q$ axes and becomes steeper. When $\underbar{r}$ reaches $c^{ \lambda,m,0}$, the level line passes $M_1^{ \lambda,m,0}$. $\underbar{r}$ then further decreases until the level line immerses in the $r=0$ plane. Note that the inequality \eqref{eq:a4} implies $c^{ \lambda,m,0}>0$. 
+
+
+We let $T$ be the triangle enclosed by the $p$-axis, $q$-axis and the one contour line of \eqref{eq:level} with $0<\underbar{r} < c^{\lambda,m,0}$. We let $D$ be an open set in the vicinity of the triangle $T$. The critical manifold for each $\lambda$ and $m$ is defined by 
+\begin{equation}
+ G^{\lambda,m,0} = \{(p,q,r) \in \bar{D} \;|\; r=h^{\lambda,m,0}(p,q)\}.
+\end{equation}
+
+
+
+
+% \subsubsection{Flow on the critical manifold : the case $m=1$}
+% 
+% The marginal case $m=1$ provides closer detail. 
+% By substituting $h^{\lambda,1,0}(p,q)$ in place of $r$, the system is explicitly solved and
+% %we can solve the system explicitly and the whole critical graph is completely characterized. 
+% the general solution on the graph is a family of parabolae $p=kq^2$ and $r=h^{\lambda,1,0}(p,q)$. This includes the two extremes $p=0$ and $q=0$, where $k$ takes $0$ and $\infty$ respectively. See Figure \ref{fig:hn0m1}. We focus on discussing two points: 1) In an effort to apprehend the flow of the rest of cases, we remark a few features for this marginal case, which in turn persist under the perturbation; and 2) we report features that do not persist too. These features do not play any role in our study, but this bifurcation is described here for clarity.
+% 
+% We address the first point. Look at $M_0^{ \lambda,1,0}$ in Figure \ref{fig:hn0m1_b} surrounded by a family of parabolae in the neighborhood. Our interested direction $\vec{X}_{02}$ and the other $\vec{X}_{01}$ are annotated near $M_0^{ \lambda,1,0}$ by a dotted arrow. The family of parabolae is manifesting the fact that orbit curves meet $M_0^{ \lambda,1,0}$ tangentially to $\vec{X}_{01}$; one exception is the degenerate straight line that emanates in $\vec{X}_{02}$, which is depicted as the green one in Figure \ref{fig:hn0m1}, the target orbit. Another observation from the $pq$-plane is that the flow in the first quadrant far away from the origin is {\it inwards}. More precisely, as illustrated in Figure \ref{fig:hn0m1_b}, whenever $0<\underbar{r} < 1 = c^{\lambda,1,0}$ the flow on the contour line $\underbar{r} = h^{\lambda,1,0}$ is inwards. We make use of this observation in the proof of Section \ref{sec:proof_proof}.
+% 
+% Now, we describe the bifurcation of this marginal case. The crucial difference is that $M_1^{\lambda,1,0}$ is replaced by a line of equilibria $h^{\lambda,1,0}(p,q) = c^{\lambda,1,0}=1$, which is the red line in Figure \ref{fig:hn0m1}. As a result, each of the parabolae emanated from $M_0^{\lambda,1,0}$ lands at a point among these equilibria. $\vec{X}_{02}$ is immersed on $q=0$ plane distinctively from all other cases and the target orbit in particular lands at the $q$-intercept of the line of equilibria. To compare this observation to the statement of Theorem \ref{thm:1}, the target orbit does not connect $M_0^{ \lambda,1,0}$ to $M_1^{ \lambda,1,0}$ but to this $q$-intercept. This observation does not spoil our proof in Section \ref{sec:proof_proof} because we assert the persistence of the critical manifold not the target orbit.
 
 \subsection{Characterization of the heteroclinic orbit : why and how}
 \subsection{Asymptotic behavior of self-similar variables in $\xi$}
