@@ -47,14 +47,16 @@
 \def\tg{{\tilde{\gamma}}}
 \def\tv{{\tilde{v}}}
 \def\tth{{\tilde{\theta}}}
-\def\ts{{\tilde{\tau}}}
+\def\ts{{\tilde{\sigma}}}
 \def\tu{{\tilde{u}}}
+\def\tph{{\tilde{\varphi}}}
 
-\def\dtg{\dot{\tilde{\gamma}}}
-\def\dtv{\dot{\tilde{v}}}
-\def\dtth{\dot{\tilde{\theta}}}
-\def\dts{\dot{\tilde{\tau}}}
-\def\dtu{\dot{\tilde{u}}}
+\def\dtg{{\dot{\tilde{\gamma}}}}
+\def\dtv{{\dot{\tilde{v}}}}
+\def\dtth{{\dot{\tilde{\theta}}}}
+\def\dts{{\dot{\tilde{\sigma}}}}
+\def\dtu{{\dot{\tilde{u}}}}
+\def\dtph{{\dot{\tilde{\varphi}}}}
 
 \def\dpp{\dot{p}}
 \def\dqq{\dot{q}}
@@ -230,7 +232,7 @@ $\ta, \tb, \tc, \td$ such that
  \Longrightarrow \quad&\ta = -a_1, \quad \td = -d_1, \quad \tc = -c_1, \quad \tb=-b_1.
 \end{align*}
 
-\begin{equation}
+\begin{equation} \label{eq:tildesys}
  \begin{aligned}
   a_0\tg + \lambda\xi\tg' &=\tu,\\
   b_0\tv + \lambda\xi\tv' &=-d_1 \ts + \xi\ts',\\
@@ -241,48 +243,71 @@ $\ta, \tb, \tc, \td$ such that
 \end{equation}
 
 Introduce the new independent variable $\eta = \log\xi$.
-\section{$(p,q,r,s)$-system derivation}
+
+\section{temperature softening model}
+We first focus on the problem where 
+$$ \tau = \tau(\theta,u) = \theta^{-\alpha}u^n.$$
+Then the first equation \eqref{eq:g} drops out from the system, and we focus on the system
+\begin{equation} \label{eq:orisys}
+ \begin{aligned}
+  v_t &= \tau_x,\\
+  \theta_t &= \tau u,\\
+  \tau &=\theta^{-\alpha}u^n.
+ \end{aligned}
+\end{equation}
+
+
+\section{$(p,q,r)$-system derivation}
 
 \begin{enumerate}
- \item The equation \eqref{eq:th} can be rewritten in the form
- $$ \Big(\frac{1}{1+\alpha} \tth^{1+\alpha}\Big)_t = \frac{\tu^n}{\tg^n} \Big(\frac{1}{1+m+n} \tg^{1+m+n}\Big)_t$$
- and we expect, at least for the self-similar solutions, that
- $$ \frac{ \frac{1}{1+\alpha} \tth^{1+\alpha} }{ \frac{1}{1+m+n} \tg^{1+m+n} }  = 1 + \mathcal{O}(n) \overset{put}{=} s^n, \quad \text{for some $s$}. $$
- \item If so, we can define the variable 
- $$r = \Big(\Big(\frac{1+m+n}{1+\alpha}\Big)^{\frac{\alpha}{(1+\alpha)}}\tau \gamma^{\frac{\alpha-m-n}{1+\alpha}}\Big)^{\frac{1}{n}} = \frac{\tu}{\tg}\,s^{-\frac{\alpha}{1+\alpha}} \sim \mathcal{O}(1) $$
- and when $\alpha=0$, it reduces to $\frac{\tu}{\tg}$. The advantage of this definition to the $\frac{\tu}{\tg}$ is that the latter expression couples to the $\tth$ too whereas $r$ here does not. 
+ \item The temperature equation in \eqref{eq:tildesys}, \eqref{eq:orisys} can be rewritten in the form
+ $$ \Big(\frac{1}{1+\alpha} \tth^{1+\alpha}\Big)_t = u^{1+n}, \quad c_0\tth^{1+\alpha} + \frac{\lambda}{1+\alpha} \xi\big({\tth^{1+\alpha}}\big)' = \tu^{1+n}. $$
+ If we write the system in the form below, with $\tph = \theta^{1+\alpha}$, we see the similarity in the structure of the problem to the problem we had before for strain-softening model. i.e.,
+ \begin{align*}
+  c_0\tph + \frac{ \lambda }{1+\alpha} \dtph &= u^{1+n},\\
+  b_0\tv + \lambda \dtv &= -d_1\ts + \dts,\\
+  \dts &= \tph^{-\frac{\alpha}{1+\alpha}} u^n.
+ \end{align*}
+ Observe that the variable that is responsible for the softening is now $\tph$, which used be the $\gamma$ in the strain-softening model. Notice also that the exponent $-\frac{\alpha}{1+\alpha} >-1$ always holds for any $\alpha > 0$, which came as the constraint in the strain-softening model. 
 \end{enumerate}
 
 Auxiliary calculations:
 \begin{align*}
- \frac{\dtg}{\tg} &= \frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big),\\
  \frac{\dts}{\ts} &= d_1+ b_0\frac{\tv}{\ts} + \lambda \frac{\dtv}{\ts} = d_1+ b_0\frac{\tv}{\ts} + \lambda \Big(b_1 + \frac{\tu}{\tv}\Big)\frac{\tv}{\ts} = d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts} ,\\
  \frac{\dtth}{\tth}&=\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big),\\
  0&=\frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - m \frac{\dtg}{\tg} - n\frac{\dtu}{\tu},\\
  \frac{\dtv}{\tv}&= b_1 +\frac{\tu}{\tv}
 \end{align*}
 
-Define 
+Based on this observations, we define the variables
 \begin{equation}\label{eq:pqrsdef}
  \begin{aligned}
-  p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts},\\
-  r &= \Big(\Big(\frac{1+m+n}{1+\alpha}\Big)^{\frac{\alpha}{(1+\alpha)}}\tau \gamma^{\frac{\alpha-m-n}{1+\alpha}}\Big)^{\frac{1}{n}} , & s&=z^{\frac{1}{n}}, \quad z=\frac{ \frac{1}{1+\alpha} \tth^{1+\alpha} }{ \frac{1}{1+m+n} \tg^{1+m+n} }.
+  p = \frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts}, \quad q=b \frac{\tv}{\ts},  \quad r = \frac{u}{\tth^{\,\frac{1+\alpha}{1+n}}}
  \end{aligned}
-\end{equation}
+\end{equation} 
 
 We have
 \begin{align*}
- \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dpp}{p}&=\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth} - \frac{\dts}{\ts}& &=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
  \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- n\frac{\drr}{r}&=n\frac{\dtu}{\tu} -n\frac{\dtg}{\tg}& &=\left[\frac{\alpha-m-n}{\lambda(1+\alpha) }\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- & & & & &+ \Big[\frac{\alpha}{1+\alpha}\, \Big(\frac{1+m+n}{\lambda} \Big(\frac{r^n}{z}-1\Big)r + \frac{n}{\lambda}\Big)\Big]\\
- \frac{\dot{z}}{z} &= (1+\alpha)\frac{\dtth}{\tth} - (1+m+n)\frac{\dtg}{\tg} & &=\left[\frac{-1-m-n}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+ \left[\frac{1+\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
-%  \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} &&= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}.
+ n\frac{\drr}{r}&=n\frac{\dtu}{\tu} -n\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth}= \frac{\dts}{\ts} + \Big(\alpha-n\frac{1+\alpha}{1+n}\Big)\,\frac{\dtth}{\tth} & &=\left[\frac{\alpha-n}{\lambda}\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]
 \end{align*}
-Noticing that $\displaystyle a_0(1+m+n)-c_0(1+\alpha)=n$ and that
+Noticing that
 \begin{align*}
- \frac{\ts\tu}{\tth} = \frac{\tg^{1+m+n}}{\tth^{1+\alpha}}\Big(\frac{\tu}{\tg}\Big)^{1+n} = \frac{1+m+n}{1+\alpha} \frac{1}{z}\,\Big(\frac{\tu}{\tg}\Big)^{1+n} =  \frac{1+m+n}{1+\alpha} \frac{r^{1+n}}{z},
+ \frac{\ts\tu}{\tth} = r^{1+n}, \quad \frac{\tu}{\tv} = \frac{\ts}{\tv} \frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts} \frac{u}{\tth^{\,\frac{1+\alpha}{1+n}}} = \frac{bpr}{q}, \quad \frac{\tu}{\tv} \frac{\tv}{\ts} = pr
 \end{align*}
+we derive $(p,q,r)$-system:
+\begin{align*}
+ \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\\
+ \frac{\dqq}{q}&=\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\\
+ n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
+\end{align*}
+
+\section{Equilibrium points, Linear structure}
+\section{Normally hyperbolic invariant manifold}
+
+
+
 \begin{align*}
 \frac{\dot{z}}{z} = \frac{1+m+n}{\lambda}\Big(\frac{r^{1+n}}{z} - r \Big) + \frac{n}{\lambda} = \frac{1+m+n}{\lambda}\,r\Big(\frac{r^{n}}{z} - 1 \Big) + \frac{n}{\lambda}
 \end{align*}
@@ -369,8 +394,6 @@ and look for solutions of this form. Then we have
 \end{aligned}
 \end{equation}
 
-\section{Normally hyperbolic invariant manifold}
-\section{Equilibrium points, Linear structure}
 \subsection{Characterization of the heteroclinic orbit : why and how}
 \subsection{Asymptotic behavior of self-similar variables in $\xi$}
 \section{A $k$-parameter family of shear banding solutions}
