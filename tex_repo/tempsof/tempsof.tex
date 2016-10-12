@@ -268,7 +268,7 @@ Then the first equation \eqref{eq:g} drops out from the system, and we focus on 
   b_0\tv + \lambda \dtv &= -d_1\ts + \dts,\\
   \dts &= \tph^{-\frac{\alpha}{1+\alpha}} u^n.
  \end{align*}
- Observe that the variable that is responsible for the softening is now $\tph$, which used be the $\gamma$ in the strain-softening model. Notice also that the exponent $-\frac{\alpha}{1+\alpha} >-1$ always holds for any $\alpha > 0$, which came as the constraint in the strain-softening model. 
+ Observe that the variable that is responsible for the softening is now $\tph$, which used to be the $\gamma$ in the strain-softening model. Notice also that the exponent $-\frac{\alpha}{1+\alpha} >-1$ always holds for any $\alpha > 0$, which came as the constraint in the strain-softening model. Therefore, we expect the existence of self-similar shear band solutions for the parameter $\alpha>0$, $-\alpha+n<0$.
 \end{enumerate}
 
 Auxiliary calculations:
@@ -290,7 +290,7 @@ We have
 \begin{align*}
  \frac{\dpp}{p}&=\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth} - \frac{\dts}{\ts}& &=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
  \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- n\frac{\drr}{r}&=n\frac{\dtu}{\tu} -n\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth}= \frac{\dts}{\ts} + \Big(\alpha-n\frac{1+\alpha}{1+n}\Big)\,\frac{\dtth}{\tth} & &=\left[\frac{\alpha-n}{\lambda}\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]
+ n\frac{\drr}{r}&=n\frac{\dtu}{\tu} -n\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth}= \frac{\dts}{\ts} + \Big(\alpha-n\frac{1+\alpha}{1+n}\Big)\,\frac{\dtth}{\tth} & &=\left[\frac{\alpha-n}{\lambda(1+n)}\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]
 \end{align*}
 Noticing that
 \begin{align*}
@@ -300,10 +300,28 @@ we derive $(p,q,r)$-system:
 \begin{align*}
  \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\\
  \frac{\dqq}{q}&=\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\\
- n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
+ n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
 \end{align*}
 
 \section{Equilibrium points, Linear structure}
+$(p,q,r)$-system possesses four equilibrium points and the exceptional equilibriums that we are not interested in. They are
+\begin{align*}
+ (0,0,0), \quad \Big(0,0,\big(c_0-d_1\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(c_0-(d_1+1)\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).
+\end{align*}
+
+{\bf Exceptional cases}
+\medskip
+
+Exceptional equilibriums are,
+
+\begin{align*}
+ r=0, \quad q=0, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1} = \frac{1+\alpha}{1+n} \frac{1}{\alpha-n},\\
+ r=0, \quad q=1, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1-1}= \frac{1+\alpha}{1+n} \frac{2}{2(\alpha-n)-1},\\
+ p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}}.
+\end{align*}
+
+
+
 \section{Normally hyperbolic invariant manifold}
 
 
