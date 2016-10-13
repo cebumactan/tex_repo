@@ -321,6 +321,29 @@ Exceptional equilibriums are,
  p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}}.
 \end{align*}
 
+Linearized equation around the equilibrium points. Using
+\begin{align*}
+ (r+R)^{1+n} = \begin{cases}
+                R^{1+n} &\text{if $r=0$},\\
+                r^{1+n}\Big(1+\frac{R}{r}\Big)^{1+n} = r^{1+n} + (1+n)r^nR + \mathcal{O}(\delta^2), & \text{if $r>\bar{r}>0$}                
+               \end{cases}
+\end{align*}
+
+\noindent
+{\bf Cases $r=0$, $p=0$, $q=0$ or $q=1$}
+\begin{align*}
+ \dot{P} &=P\Big(-q-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1\Big),\\
+ \dot{Q} &=Q(1-q) -qQ,\\
+ \dot{R} &=\frac{1}{n}\Big(q-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1 \Big).
+\end{align*}
+
+\noindent
+{\bf Cases $\Big( \frac{\alpha-n}{\lambda(1+n)} r^{1+n} - \frac{\alpha-n}{\lambda(1+n)}c_0 + d_1 + q \Big)=0$, $p=0$, $q=0$ or $q=1$}
+\begin{align*}
+ \dot{P}&=P\Big( \frac{1+\alpha}{\lambda(1+n)} r^{1+n} - \frac{1+\alpha}{\lambda(1+n)} c_0 -d_1-q\Big) = P\Big(-\frac{D}{\alpha-n}(d_1+q)\Big),\\
+ \dot{Q}&=Q(1-q) +q(-Q-\lambda Pr) + bPr,\\
+ \dot{R}&=\frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big) + \frac{R}{n}\Big(\frac{\alpha-n}{\lambda(1+n)}r^{1+n}-\frac{\alpha-n}{\lambda(1+n)}r^{1+n}c_0 + d_1 +q\Big) = \frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big)
+\end{align*}
 
 
 \section{Normally hyperbolic invariant manifold}
@@ -409,7 +432,112 @@ We let $T$ be the triangle enclosed by the $p$-axis, $q$-axis and the one contou
 \section{A $k$-parameter family of shear banding solutions}
 \subsection{Asymptotic behavior of field variables in $t$ and $x$}
 \section{Existence via Geometric theory of singular perturbation}
+\subsection{Proof of the theorem} \label{sec:proof_proof} 
 
+\smallskip
+\noindent
+\begin{proof}
+%\mbox{}\\*\indent
+\medskip \noindent{\bf Step 1.} 
+ Regularly perturbed reduced system.
+\medskip
+
+By Lemma \ref{lem:normal_hyper}, there exists $n_0$, such that for $n \in [0, n_0)$, locally invariant manifold $G^{\lambda,m,n}$ with respect to \eqref{eq:pqr_fast} exists. Moreover,   $G^{\lambda,m,n}$ is again given by the graph $(p,q,h^{\lambda,m,n}(p,q))$ on $\bar{D}$. The condition that $G^{\lambda,m,n}$ is disjoint from $r=0$ plane for all $n \in [0, n_0)$ must persist by making $n_0$ smaller if necessary. In addition, $n_0$ is chosen in the valid range of inequalities \eqref{eq:a3} and \eqref{eq:a4}.%$h^{\lambda,m,n}(p,q)>0$ in the domain of definition for all $0\le n\le n_2$ has to persist by taking $K^{\lambda,m,0}$ and $n_2$ appropriately.  %On this surface, $r$ evolves such a way staying in the surface.
+
+After achieving $h^{\lambda,m,n}(p,q)$, substitution of the function in place of $r$ in system \eqref{eq:pqrsystem} leads to  the reduced systems that are parametrized by $\lambda$, $m$, and $n\in[0,n_0)$:
+% {\small
+% \begin{align} \tag*{($\tilde{*}$){\scriptsize re}\textsuperscript{$\lambda,m,n$}} \label{eq:reduced_fast}
+% %  \begin{split}
+%  {p}^\prime &=np\Big(\frac{1}{ \lambda }\big(h^{\lambda,m,n}(p,q) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} 1-q- \lambda p h^{\lambda,m,n}(p,q)\Big),\\
+%  {q}^\prime &=nq\Big(                                                                          1-q- \lambda p h^{\lambda,m,n}(p,q)\Big) + nb^{\lambda,m,n}ph^{\lambda,m,n}(p,q), \
+% %  \end{split} 
+% \end{align}
+% }
+% and the equivalent systems with independent variable $\eta$: %${(*)}^{\lambda,m,n}_{re}$ :
+{\small
+\begin{equation} \tag*{(${R}$)\textsuperscript{$\lambda,m,n$}} \label{eq:reduced}
+\begin{split}
+ \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h^{\lambda,m,n}(p,q) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h^{\lambda,m,n}(p,q)\Big),\\
+ \dot{q} &=q\Big(                                                                          1-q- \lambda p h^{\lambda,m,n}(p,q)\Big) + b^{\lambda,m,n}ph^{\lambda,m,n}(p,q),
+\end{split}
+\end{equation}
+}
+
+\medskip \noindent{\bf Step 2.} 
+ $M_0^{\lambda,m,n}$ and $M_1^{\lambda,m,n}$ are still on the graph.
+\medskip
+
+In fact, only $M_1^{ \lambda,1,n}$ needs to be checked because, other than that, the equilibrium points are hyperbolic. At $(p,q)=(0,1)$, from the system \eqref{eq:reduced}, we see $\dot{p} = \dot{q} = 0$. Now $\dot{r} = \frac{\partial h^{\lambda,1,n}}{\partial p} \dot{p} + \frac{\partial h^{\lambda,1,n}}{\partial q} \dot{q} = 0$ %unless possibly $\frac{\partial h^{\lambda,1,n}}{\partial p}$ or $\frac{\partial h^{\lambda,1,n}}{\partial q}$ diverges. 
+because the derivatives of $h^{\lambda,1,0}$ do not diverge and derivatives of $h^{\lambda,1,n}$ are close to them. This equilibrium point must be $M_1^{\lambda,1,n}$ since there is no other equilibrium point near $M_1^{\lambda,1,n}$. Similar reasoning in fact applies for the hyperbolic equilibrium points.
+
+% {\red
+\medskip
+Recall that $M_0^{\lambda,m,n}$ is an unstable node and $M_1^{\lambda,m,n}$ is a saddle point. Here, we inspect the linear stability restricted in the tangent space of the surface $G^{\lambda,m,n}$ at $M_0^{\lambda,m,n}$ and at $M_1^{\lambda,m,n}$ respectively. 
+
+\medskip \noindent{\bf Step 3.} 
+ $(0,0)$, the projection on the $pq$-plane of $M_0^{\lambda,m,n}$, is an unstable node with respect to \eqref{eq:reduced}. $(0,1)$, that of $M_1^{\lambda,m,n}$, is a stable node with respect to \eqref{eq:reduced}.
+\medskip
+
+Let the perturbations of $p$ and $q$ be $P$ and $Q$, respectively and write 
+$$h(p+P,q+Q) = h(p,q) + P\frac{\partial h}{\partial p}(p,q) + Q\frac{\partial h}{\partial q}(p,q) + \text{higer-order terms}.$$
+Around $(p,q) = (0,0)$, after discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} 2 & 0 \\  ab & 1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix}.
+\end{align*}
+from whose coefficient matrix we see two positive eigenvalues. Around $(p,q) = (0,1)$, after discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} -\frac{1-m+n}{m-n} & 0 \\  (b- \lambda)c & -1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix},
+\end{align*}
+from whose coefficient matrix we see two negative eigenvalues. %}
+
+\medskip \noindent{\bf Step 4.} 
+ $T$ is positively invariant under the flow \eqref{eq:reduced} if $n$ is sufficiently small.
+\medskip
+
+First, we show the claim when $n=0$ and prove that it persists under the perturbation. Consider the system $(R)^{\lambda,m,0}$. On $p=0$, it is invariant; on $q=0$, the inward normal vector is $(0,1)$ and the inward flow $\dot{q} = b^{ \lambda,m,0}ph^{ \lambda,m,0} \ge 0$. On the hypotenuse contour line, if $\underbar{p}$ is the $p$-intercept and $\underbar{q}$ is the $q$-intercept, that is
+$$ \underbar{q} = \frac{2m}{1+m}-\frac{m}{ \lambda } \big( \underbar{r} - \frac{2}{1+m} \big), \quad \underbar{p} = \frac{ \underbar{q} }{ \lambda \underbar{r} },$$
+then $(-\underbar{q}, -\underbar{p})$ is an inward normal vector.
+% Then the inward normal vector is $(-\underbar{q}, -\underbar{p})$. We now compute the dot product of the inward normal vector and the vector field of system. we compute it can be written in terms of $q$ and $\underbar{r}$.
+The inward normal component of the vector field on the line is then
+\begin{align*} 
+ (-\underbar{q}, &-\underbar{p}) \cdot ( \dot{p}, \dot{q} ) \\
+ %&= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(\underbar{r} - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p \underbar{r}\Big)-\underbar{p}q(1-q- \lambda p \underbar{r}) - \underbar{p}b(\lambda,m,0)p\underbar{r} \\
+ %&= -\underbar{q}p\Big( \big(\frac{2m}{1+m} -\underbar{q}\big) \big(1+ \frac{1}{m}\big)\Big)-\underbar{p}(\underbar{q} - \lambda \underbar{r}p)(1-\underbar{q}) - \frac{b^{\lambda,m,0}}{\lambda} \underbar{q} p \\
+ &=-\underbar{p}\underbar{q}(1-\underbar{q}) - p \frac{\underbar{q}}{m}\Big( \frac{2m}{1+m} - \frac{m}{ \lambda} \big( 1-\frac{2}{1+m} \big) - \underbar{q}\Big)\\
+ &\ge -\underbar{p}\underbar{q}(1-\underbar{q}) \\%\quad \text{if $\underbar{r} < 1$} \\
+ &=: \delta >0.
+%  -q(1-q- \lambda p \underbar{r}) - b(\lambda,m,0)p\underbar{r} \\
+%  &=-\lambda \underbar{r}p\Big(\frac{1+m}{ \lambda }\big(\underbar{r}- \frac{2}{1+m}\big)\Big) -q\Big(\frac{m}{ \lambda } \big(\underbar{r} - \frac{2}{1+m}\big) + \frac{1-m}{1+m}\Big) - \frac{1-m}{1+m}(1 + \lambda) p\underbar{r}\\
+%  &=-\lambda \underbar{r}p\Big(\frac{1+m}{ \lambda }\big(\underbar{r}- \frac{2}{1+m}\big) + \frac{1-m}{1+m} \frac{1 + \lambda}{ \lambda}\Big)
+\end{align*}
+The inequality comes from $0<\underbar{r} < c^{ \lambda,m,0} \le 1$. $\delta$ is a fixed constant that is strictly positive, proving that the triangle $T$ is invariant.
+
+
+Now, we show that this positively invariant property persists under perturbation. We examine the same triangle $T$ but with  the system ${(R)}^{\lambda,m,n}$ with $n>0$. % we took for $n=0$ case. %We may take $\underbar{r}$ so that $h^{\lambda,m,n}(p,q)$ includes the triangle in the domain of definition.
+Again, sides of $p=0$ and $q=0$ are invariant or inward for the same reason. Now, the line of the hypotenuse of $T$ is no longer a contour line of $h^{ \lambda,m,n}(p,q)=\underbar{r}$, but $h^{ \lambda,m,n}(p,q)$ remains close to $\underbar{r}$, that is 
+$$h^{ \lambda,m,n}(p,q) = \underbar{r} + ng_1(n,p,q), \quad \text{by Taylor theorem.}$$ 
+{$g_1$ is uniformly bounded  in $n$, $p$, and $q$.} The inward normal component of the vector field on the line is computed as
+\begin{align*} 
+ (-\underbar{q}, &-\underbar{p}) \cdot ( \dot{p}, \dot{q} ) \\
+ &= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(h(p,q) - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p h(p,q)\Big)-\underbar{p}q(1-q- \lambda p h(p,q)) \\&- \underbar{p}b^{\lambda,m,n}ph(p,q) \\
+ &= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(\underbar{r} - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p \underbar{r}\Big)-\underbar{p}q(1-q- \lambda p \underbar{r}) - \underbar{p}b^{\lambda,m,0}p\underbar{r} \\ 
+ &+n\Big(-\underbar{q}p\big( \frac{1}{ \lambda } g_1 - \lambda p g_1\big) - \underbar{p}q\big(- \lambda p g_1\big)\Big) - \underbar{p}\big( \frac{b^{\lambda,m,n}-b^{\lambda,m,0}}{n}p\underbar{r} + b^{\lambda,m,n} p g_1\big)\Big)\\
+ &=-\underbar{p}\underbar{q}(1-\underbar{q}) - p \frac{\underbar{q}}{m}\Big( \frac{2m}{1+m} + \frac{m}{ \lambda} \big( \frac{2}{1+m}-1 \big) - \underbar{q}\Big)\\
+ &+n\Big(-\underbar{q}p\big( \frac{1}{ \lambda } g_1 - \lambda p g_1\big) - \underbar{p}q\big(- \lambda p g_1\big)\Big) - \underbar{p}\big( \frac{b^{\lambda,m,n}-b^{\lambda,m,0}}{n}p\underbar{r} + b^{\lambda,m,n} p g_1\big)\Big)\\
+ &\ge \delta + ng_2(n,p,q),
+\end{align*}
+where $g_2(n,p,q)$ is the expression in the parentheses of the last equality that is multiplied by $n$, which is also uniformly bounded in $n$, $p$, and $q$. We have used $ b^{\lambda,m,n}-b^{\lambda,m,0}=n\frac{(1-m) + 2 \lambda}{(1+m-n)(1+m)}$. 
+Therefore, $n_0$ can be chosen, even smaller if necessary, so that the last expression becomes positive. This proves the claim. 
+
+
+\medskip
+
+% {\red
+Note that $\vec{X}_{02}$ is pointing inward of the triangle $T$ from $(0,0)$. Thus, the orbit emanating in $\vec{X}_{02}$ is continued to the interior of $T$ by the stable(unstable) manifold theorem. The $\omega$-limit set of this orbit cannot contain the limit cycle because when $n>0$, there is no equilibrium point inside of $T$ other than $(0,0)$ and $(0,1)$. Recall that $(0,0)$ is the unstable node and $(0,1)$ is the stable node. Thus, the Poincar\'e-Bendixson theory (for example in \cite{perko_differential_2001}) implies that the orbit converges to $(0,1)$.  The lifting of this orbit to the three dimensional phase space is the desired heteroclinic orbit. %whole triangle $T \subset W^s\big( (0,1)\big)$, proving the continued orbit converges to $(0,1)$. This orbit  the orbit Since , it is certain that the triangle $T$ contains the orbit responsible for the second unstable eigenspace of $M_0^{ \lambda,m,n}$, which completes the proof.
+% }
+\end{proof}
 
 
 \end{document}
