@@ -44,6 +44,15 @@
 \def\tx{\tilde{x}}
 \def\tk{\tilde{\kappa}}
 
+
+\def\bg{{\bar{\gamma}}}
+\def\bv{{\bar{v}}}
+\def\bth{{\bar{\theta}}}
+\def\bs{{\bar{\sigma}}}
+\def\bu{{\bar{u}}}
+\def\bph{{\bar{\varphi}}}
+
+
 \def\tg{{\tilde{\gamma}}}
 \def\tv{{\tilde{v}}}
 \def\tth{{\tilde{\theta}}}
@@ -114,12 +123,194 @@
 % abstract
 % \end{abstract}
 
+\section{The model description}
+We consider a 1-d shear deformation of a material whose material law of stress depends on 1) temperature, 2) strain, 3) strain rate. The motion is described by following field variables,
+\begin{equation} \label{eq:vars}
+\begin{aligned}
+ \gamma(t,x) &: \text{strain}\\
+ u(t,x)=\gamma_t &: \text{strain rate}\\
+ v(t,x) &: \text{vertical velocity}\\
+ \theta(t,x) &: \text{temperature}\\
+ \tau(t,x) &: \text{stress}
+\end{aligned}
+\end{equation}
+The material exhibits 1) temperature-softening, 2) strain-hardening, 3) rate-hardening. we denote the shear stress
+$$ \tau = \tau(\theta,\gamma,u). $$
+and study a model
+\begin{equation}
+ \tau = \theta^{-\alpha}\gamma^m u^n. \label{eq:stresslaw}
+\end{equation}
+
+A few forehand perspectives :
+\begin{enumerate}
+ \item The regime where $-\alpha+m+n <0$ will exhibit the localization, whereas the regime $-\alpha+m+n > 0$ will exhibit stabilization. {\blue Can we rigorously study the linearize stability to the uniform shearing solution?}
+ \item The uniform shearing solution will appear as one of the self-similar solution by a specific $\lambda$ that is negative.
+\end{enumerate}
+\subsection{A system of conservation laws}
+For the field variables \eqref{eq:vars}, equations describing the deformation are given by
+\begin{align}
+ \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
+ v_t &= \tau_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
+ \theta_t &= \tau u \quad \text{(energy conservation)}	\label{eq:th}\\
+ \tau &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
+\end{align}
+
+\subsection{temperature softening model}
+We first focus on the problem where 
+$$ \tau = \tau(\theta,u) = \theta^{-\alpha}u^n.$$
+Then the first equation \eqref{eq:g} drops out from the system, and we focus on the system
+\begin{equation} \label{eq:orisys}
+ \begin{aligned}
+  v_t &= \tau_x,\\
+  \theta_t &= \tau u,\\
+  \tau &=\theta^{-\alpha}u^n.
+ \end{aligned}
+\end{equation}
+
+\subsection{strain softening model}
+We first focus on the problem where 
+$$ \tau = \tau(\theta,u) = \theta^{-\alpha}u^n.$$
+Then the first equation \eqref{eq:g} drops out from the system, and we focus on the system
+\begin{equation} \label{eq:orisys}
+ \begin{aligned}
+  v_t &= \tau_x,\\
+  \theta_t &= \tau u,\\
+  \tau &=\theta^{-\alpha}u^n.
+ \end{aligned}
+\end{equation}
+
+\section{Self-similar structure}
+
+\subsection{Scale invariance property of the system}
+The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppose $(\gamma,u,v,\theta,\tau)$ is a solution. Then a rescaled version of it $(\gamma_\rho,u_\rho,v_\rho,\theta_\rho,\tau_\rho)$ that is given by
+\begin{align*}
+ \gamma_\rho(t,x) &= \rho^a\gamma(\rho^{-1}t,\rho^\lambda x), &
+ v_\rho(t,x) &= \rho^bv(\rho^{-1}t,\rho^\lambda x),\\
+ \theta_\rho(t,x) &= \rho^c\theta(\rho^{-1}t,\rho^\lambda x), &
+ \tau_\rho(t,x) &= \rho^d\tau(\rho^{-1}t,\rho^\lambda x),\\
+ u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x),
+\end{align*}
+again is a solution provided
+\begin{align*}
+ a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, & b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
+ c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda,
+\end{align*}
+for each $\lambda \in \mathbb{R}$, where the denominator $D = 1+2\alpha-m-n$. Being $\lambda$ negative makes this scaling spread the original profiles spatially as $\rho$ grows, and this is the sign that is used for instance in the parabolic problems. On the other hand, we are interested in the {\it localizing} phenomena and thus we focus only on the opposite, with $\lambda>0$, throughout this paper.
+
+ But uniform shearing solution takes a negative $\lambda$.
+\subsection{Self-Similar field variables}
+Motivated by the scale invariance property parametrized by $\lambda>0$, we look for the solutions of type
+\begin{align*}
+ \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x),\\
+ \tau(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
+\end{align*}
+and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\eqref{eq:tau} gives us the system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
+
+\begin{equation}
+\begin{aligned}
+ a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
+ b V(\xi) + \lambda \xi V'(\xi) &= \Sigma'(\xi),\\
+ c \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ V'(\xi)&=U(\xi).
+\end{aligned} \label{eq:ss-odes}
+\end{equation}
+
+This system is non-autonomous and the coefficient $\xi$ in front of the highest derivative of $\Theta, V, \Gamma$ makes the equation singular at $\xi=0$. EXPLAIN MORE
+
+\section{Heteroclinic orbit formulation}
+The goal of this section is to derive the equivalent (p,q,r)-system \eqref{eq:pqrsys} of \eqref{eq:ss-odes} that is autonomous and to turn the problem that seeks the self-similar solutions into that seeks a heteroclinic orbit of \eqref{eq:pqrsys}. In the course, we devise a series of techniques to de-singularize the system \eqref{eq:ss-odes}. The series of techniques were first advanced in REF
+
+\subsection{De-singularization}
+We begin by observing that if $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of \eqref{eq:ss-odes}, then so is \\$\big(\Gamma(-\xi), -V(-\xi), \Theta(-\xi), \Sigma(-\xi), U(-\xi)\big)$. From this fact, we seek self-similar profiles such that $\Gamma(\xi)$, $\Theta(\xi)$, $\Sigma(\xi)$, $U(\xi)$ are even functions of $\xi$, and $V(\xi)$ is an odd function of $\xi$. In addition, we consider profiles that are smooth and bounded around $\xi=0$, which leads to imposing conditions
+\begin{equation}
+ V(0)=U'(0)=\Gamma'(0)=\Sigma'(0)=\Theta'(0)=0 \label{eq:bdry0}
+\end{equation}
+and we regard \eqref{eq:ss-odes} as the boundary-value problem in the right half space $\xi \in [0,\infty)$ subject to the boundary conditions \eqref{eq:bdry0}. 
+
+Next, following the idea in REF, we introduce the new field variables
+\begin{equation} \label{eq:CAPtoBAR}
+\begin{aligned}
+ \bg(\xi)&=\xi^{a_1}\Gamma(\xi), &
+ \bv(\xi)&=\xi^{b_1}V(\xi), &
+ \bth(\xi)&=\xi^{c_1}\Theta(\xi), \\
+ \bs(\xi)&=\xi^{d_1}\Sigma(\xi), &
+ \bu(\xi)&=\xi^{b_1+1}U(\xi).
+\end{aligned}
+\end{equation}
+Then, the system that $(\bg,\bv,\bth,\bs,\tu)$ satisfies reads
+\begin{equation} \label{eq:barsys}
+ \begin{aligned}
+  a_0\bg + \lambda\xi\bg' &=\bu,\\
+  b_0\bv + \lambda\xi\bv' &=-d_1 \bs + \xi\bs',\\
+  c_0\bth+ \lambda\xi\bth'&=\bs\bu,\\
+  \ts &=\bth^{-\alpha}\bg^m\bu^n,\\
+  -b_1\bv+\xi\bv' &= \bu.
+ \end{aligned}
+\end{equation}
+Introduce the new independent variable $\eta = \log\xi$ and define variables $(\tg,\tv,\tth,\ts,\tu)$ accordingly as below.
+\begin{equation} \label{eq:BARtoTIL}
+\begin{aligned}
+ \tg(\log\xi)&=\bg(\xi), &
+ \tv(\log\xi)&=\bv(\xi), &
+ \tth(\log\xi)&=\bth(\xi), \\
+ \ts(\log\xi)&=\bs(\xi), &
+ \tu(\log\xi)&=\bu(\xi)
+\end{aligned}
+\end{equation}
+so that for example $\frac{d}{d\eta}\tg(\eta) = \xi \frac{d}{d\xi}\bg(\xi)$ and write the autonomous system
+\begin{equation} \label{eq:tildesys}
+ \begin{aligned}
+  a_0\tg + \lambda\dtg &=\tu,\\
+  b_0\tv + \lambda\dtv &=-d_1 \ts + \dts,\\
+  c_0\tth+ \lambda\dtth&=\ts\tu,\\
+  \ts &=\tth^{-\alpha}\tg^m\tu^n,\\
+  -b_1\tv+\dtv &= \tu.
+ \end{aligned}
+\end{equation}
+Here $\dot{f}$ means $\frac{df}{d\eta}$.
+
+
+
+\subsection{$(p,q,r)$-system derivation}
+At \eqref{eq:tildesys}, we arrived the autonomous system. For this system, we observe that not all the variables equilibrate. To see this, suppose $\tu \rightarrow \tu_\infty$ as $\eta \rightarrow \infty$. Then from the last equation in \eqref{eq:tildesys}, we conclude that $\tv \rightarrow \infty$ and thus $\ts \rightarrow \infty$ either by the second equation. This raises difficulties in analyzing system and we can come up with proper variables all of which equilibrate simultaneously as $\eta \rightarrow \infty$ and $\eta \rightarrow -\infty$.
+
+This can be done by looking at the system \eqref{eq:ss-odes} for $\big(\Gamma,V,\Theta,\Sigma,U)$ carefully. First, observe that
+$$ \frac{\dot{f}}{f} \rightarrow 0 \quad \text{as $\eta \rightarrow \infty$ implies that } \quad f \rightarrow const. \quad \text{as $\xi \rightarrow \infty$ and}$$
+$$ \frac{\dot{f}}{f} \rightarrow 0 \quad \text{as $\eta \rightarrow -\infty$ implies that } \quad f \rightarrow const. \quad \text{as $\xi \rightarrow 0$ and}$$
+$$ \frac{\dot{(f/g)}}{f/g} = \frac{\dot{f}}{f} - \frac{\dot{g}}{g}. $$
+This dictates that if the asymptotic behavior of the variables as $\xi \rightarrow \infty$ (resp. $\xi \rightarrow 0$) are known a priori, then the ratio of two variables that share the asymptotic order will converge to a constant as $\xi \rightarrow \infty$ (resp. $\xi \rightarrow 0$). By looking at the system \eqref{eq:ss-odes} and examining heuristically with polynomial asymptotics, we find the ratios
+\begin{equation}\label{eq:pqrdef}
+ \begin{aligned}
+  p \triangleq \frac{ \xi^{\frac{1+\alpha}{1+n}c_1} \Theta(\xi)^{\frac{1+\alpha}{1+n}}}{\xi^{d_1} \Sigma(\xi)}=\frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts}, \quad q \triangleq b\frac{ \xi^{b_1} V(\xi) }{ \xi^{d_1} \Sigma(\xi)}=b \frac{\tv}{\ts},  \quad r \triangleq \frac{ U(\xi) }{ \Theta(\xi)^{\frac{1+\alpha}{1+n}} } = \frac{u}{\tth^{\,\frac{1+\alpha}{1+n}}}.
+ \end{aligned}
+\end{equation}
+ work and $(p,q,r) \leftrightarrow (\tv, \tth,\ts)$ is a bijection.
+With the calculation that is cumbersome but straightforward, we write
+\begin{align*}
+ \frac{\dpp}{p}&=\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth} - \frac{\dts}{\ts}& &=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ n\frac{\drr}{r}&=n\frac{\dtu}{\tu} -n\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth}= \frac{\dts}{\ts} + \Big(\alpha-n\frac{1+\alpha}{1+n}\Big)\,\frac{\dtth}{\tth} & &=\left[\frac{\alpha-n}{\lambda(1+n)}\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]
+\end{align*}
+Noticing that
+\begin{align*}
+ \frac{\ts\tu}{\tth} = r^{1+n}, \quad \frac{\tu}{\tv} = \frac{\ts}{\tv} \frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts} \frac{u}{\tth^{\,\frac{1+\alpha}{1+n}}} = \frac{bpr}{q}, \quad \frac{\tu}{\tv} \frac{\tv}{\ts} = pr,
+\end{align*}
+we derive $(p,q,r)$-system:
+\begin{equation} \label{eq:pqrsys}
+\begin{aligned}
+ \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big],\\
+ \frac{\dqq}{q}&=\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big],\\
+ n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
+\end{aligned}
+\end{equation}
+that has a few nice properties we precise in the below.
 \section{Equilibrium points and linear stability}
 $(p,q,r)$-system possesses four equilibrium points in the first octant of the phase space\footnotemark[1] and they are
 \begin{align*}
  M_0=\Big(0,1,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,0,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad  M_2=(0,1,0) \quad M_3 = (0,0,0).
 \end{align*}
-The goal of this section is to reveal the linear stability around the four equilibrium points delivering a perspective on the behaviors of orbits.
+This section specifies the linear stability around the four equilibrium points, aiming to have a perspective on the dynamics of orbits in the phase space.
 \footnotetext[1]{
 As a matter of facts, the (p,q,r)-system has one more equilibrium point that is not lied in the first octant, which is
 $$p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}},$$
@@ -133,7 +324,7 @@ These line of equilibria are not of our interests because we only look for solut
 \end{align*}
 }
 
-In the below, we denote the three eigenvalues of the equilibrium point $M_i$ by $\mu_{ij}$, $j=1,2,3$ and the three eigenvectors by $X_{ij}$, $j=1,2,3$.\medskip
+We denote the three eigenvalues of the equilibrium point $M_i$, $i=0,1,2,3$ by $\mu_{ij}$, $j=1,2,3$ and the three eigenvectors by $X_{ij}$, $j=1,2,3$. For the transparency, each of the linearized system and its coefficient matrices are included in the appendix. \medskip
 
 \noindent{\bf Equilibrium $M_0$ is an unstable node.}
 \begin{align*}
@@ -141,30 +332,34 @@ In the below, we denote the three eigenvalues of the equilibrium point $M_i$ by 
  X_{02} = \bigg( \Big( \frac{-2n + \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{-2n + \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;-1\bigg),\\
  &X_{03} = (0,0,1), \quad \mu_{01} = 1, \quad \mu_{02}= 2, \quad \mu_{03} = \frac{\alpha-n}{n\lambda}r_0^{1+n}.
 \end{align*}
-Along $X_{01}$, as $q$ increases, $p$ stays the same but $r$ decreases. Along $X_{02}$, as $q$ increases, $p$ increases as well but $r$ decreases. Note that the third eigenvalue along $X_{03}$ has much greater value than other two because $n \ll 1$.
+Every direction is of unstable direction. Note further that the third eigenvalue along $r$-axis has much greater value than other two because $n \ll 1$. We observe that along $X_{01}$, as $q$ increases, $p$ stays the same but $r$ decreases and that along $X_{02}$, as $q$ increases, $p$ increases but $r$ decreases. 
 \medskip
 
 \noindent{\bf Equilibrium $M_1$ is a saddle.}
 \begin{align*}
 &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\ 
  &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
- X_{13} = (0,0,1), \quad \mu_{11} =-\frac{1+n}{\alpha-n}, \quad \mu_{02}=-1, \quad \mu_{13} = \frac{\alpha-n}{n\lambda}r_1^{1+n}
+ X_{13} = (0,0,1), \quad \mu_{11} =-\frac{1+n}{\alpha-n}, \quad \mu_{02}=-1, \quad \mu_{13} = \frac{\alpha-n}{n\lambda}r_1^{1+n}.
 \end{align*}
+$X_{11}$ and $X_{12}$ are of stable directions and $X_{13}$ is of unstable direction. Again, the third eigenvalue along $r$-axis has much greater value than other two.
 \medskip
 
 \noindent{\bf Equilibrium $M_2$ is a stable node.}
 \begin{align*}
  &X_{21} = (1,0,0) \quad X_{22}=(0,1,0), \quad X_{23}=(0,0,1),\\
- &\mu_{21} =-1-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1, \quad \mu_{22}=-1, \quad \mu_{23} = -\frac{\alpha-n}{n(1+n)}\lambda r_1^{1+n}
+ &\mu_{21} =-\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} + \frac{(1+n)^2}{D(1+\alpha)}\lambda\Big), \quad \mu_{22}=-1, \quad \mu_{23} = -\frac{\alpha-n}{n(1+n)}\lambda r_1^{1+n}.
 \end{align*}
+Every direction is of stable direction.
 \medskip
 
-\noindent{\bf Equilibrium $M_0$ is a saddle.}
+\noindent{\bf Equilibrium $M_3$ is a saddle.}
 \begin{align*}
  &X_{31} = (1,0,0) \quad X_{32}=(0,1,0), \quad X_{33}=(0,0,1),\\
- &\mu_{31} =-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1, \quad \mu_{22}=-1, \quad \mu_{23} = \frac{1}{n}\Big(-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+ &\mu_{31} =-\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} - \frac{2(\alpha-n)(1+n)}{D(1+\alpha)}\lambda\Big), \quad \mu_{32}=1, \quad \mu_{33} = -\frac{\alpha-n}{\lambda n(1+n)}r_0^{1+n}.
 \end{align*}
+The $X_{32}$ is of unstable direction whereas the $X_{33}$ is of stable direction. The sign of the first eigenvalue varies according to the value of $\lambda$.
 
+\section{Characterization of the heteroclinic orbit}
 
 
 
@@ -204,6 +399,11 @@ For the field variables \eqref{eq:vars}, equations describing the deformation ar
  \theta_t &= \tau u \quad \text{(energy conservation)}	\label{eq:th}\\
  \tau &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
 \end{align}
+
+
+
+
+
 \subsection{Scale invariance property of the system}
 The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppose $(\gamma,u,v,\theta,\tau)$ is a solution. Then a rescaled version of it 
 \begin{align*}
@@ -318,51 +518,7 @@ Then the first equation \eqref{eq:g} drops out from the system, and we focus on 
 \end{equation}
 
 
-\section{$(p,q,r)$-system derivation}
 
-\begin{enumerate}
- \item The temperature equation in \eqref{eq:tildesys}, \eqref{eq:orisys} can be rewritten in the form
- $$ \Big(\frac{1}{1+\alpha} \tth^{1+\alpha}\Big)_t = u^{1+n}, \quad c_0\tth^{1+\alpha} + \frac{\lambda}{1+\alpha} \xi\big({\tth^{1+\alpha}}\big)' = \tu^{1+n}. $$
- If we write the system in the form below, with $\tph = \theta^{1+\alpha}$, we see the similarity in the structure of the problem to the problem we had before for strain-softening model. i.e.,
- \begin{align*}
-  c_0\tph + \frac{ \lambda }{1+\alpha} \dtph &= u^{1+n},\\
-  b_0\tv + \lambda \dtv &= -d_1\ts + \dts,\\
-  \dts &= \tph^{-\frac{\alpha}{1+\alpha}} u^n.
- \end{align*}
- Observe that the variable that is responsible for the softening is now $\tph$, which used to be the $\gamma$ in the strain-softening model. Notice also that the exponent $-\frac{\alpha}{1+\alpha} >-1$ always holds for any $\alpha > 0$, which came as the constraint in the strain-softening model. Therefore, we expect the existence of self-similar shear band solutions for the parameter $\alpha>0$, $-\alpha+n<0$.
-\end{enumerate}
-
-Auxiliary calculations:
-\begin{align*}
- \frac{\dts}{\ts} &= d_1+ b_0\frac{\tv}{\ts} + \lambda \frac{\dtv}{\ts} = d_1+ b_0\frac{\tv}{\ts} + \lambda \Big(b_1 + \frac{\tu}{\tv}\Big)\frac{\tv}{\ts} = d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts} ,\\
- \frac{\dtth}{\tth}&=\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big),\\
- 0&=\frac{\dts}{\ts} +\alpha \frac{\dtth}{\tth} - m \frac{\dtg}{\tg} - n\frac{\dtu}{\tu},\\
- \frac{\dtv}{\tv}&= b_1 +\frac{\tu}{\tv}
-\end{align*}
-
-Based on this observations, we define the variables
-\begin{equation}\label{eq:pqrsdef}
- \begin{aligned}
-  p = \frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts}, \quad q=b \frac{\tv}{\ts},  \quad r = \frac{u}{\tth^{\,\frac{1+\alpha}{1+n}}}
- \end{aligned}
-\end{equation} 
-
-We have
-\begin{align*}
- \frac{\dpp}{p}&=\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth} - \frac{\dts}{\ts}& &=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\Big] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- n\frac{\drr}{r}&=n\frac{\dtu}{\tu} -n\frac{1+\alpha}{1+n}\,\frac{\dtth}{\tth}= \frac{\dts}{\ts} + \Big(\alpha-n\frac{1+\alpha}{1+n}\Big)\,\frac{\dtth}{\tth} & &=\left[\frac{\alpha-n}{\lambda(1+n)}\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]
-\end{align*}
-Noticing that
-\begin{align*}
- \frac{\ts\tu}{\tth} = r^{1+n}, \quad \frac{\tu}{\tv} = \frac{\ts}{\tv} \frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts} \frac{u}{\tth^{\,\frac{1+\alpha}{1+n}}} = \frac{bpr}{q}, \quad \frac{\tu}{\tv} \frac{\tv}{\ts} = pr
-\end{align*}
-we derive $(p,q,r)$-system:
-\begin{align*}
- \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\\
- \frac{\dqq}{q}&=\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\\
- n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
-\end{align*}
 
 \section{Equilibrium points and linear stability}
 $(p,q,r)$-system possesses four equilibrium points\footnotemark[1] and the exceptional equilibriums that we are not interested in. They are
@@ -585,7 +741,6 @@ We let $T$ be the triangle enclosed by the $p$-axis, $q$-axis and the one contou
 % 
 % Now, we describe the bifurcation of this marginal case. The crucial difference is that $M_1^{\lambda,1,0}$ is replaced by a line of equilibria $h^{\lambda,1,0}(p,q) = c^{\lambda,1,0}=1$, which is the red line in Figure \ref{fig:hn0m1}. As a result, each of the parabolae emanated from $M_0^{\lambda,1,0}$ lands at a point among these equilibria. $\vec{X}_{02}$ is immersed on $q=0$ plane distinctively from all other cases and the target orbit in particular lands at the $q$-intercept of the line of equilibria. To compare this observation to the statement of Theorem \ref{thm:1}, the target orbit does not connect $M_0^{ \lambda,1,0}$ to $M_1^{ \lambda,1,0}$ but to this $q$-intercept. This observation does not spoil our proof in Section \ref{sec:proof_proof} because we assert the persistence of the critical manifold not the target orbit.
 
-\subsection{Characterization of the heteroclinic orbit : why and how}
 \subsection{Asymptotic behavior of self-similar variables in $\xi$}
 \section{A $k$-parameter family of shear banding solutions}
 \subsection{Asymptotic behavior of field variables in $t$ and $x$}
