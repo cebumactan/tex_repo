@@ -68,6 +68,8 @@
 \def\tc{{\tilde{c}}}
 \def\td{{\tilde{d}}}
 
+\def\BO{{\mathcal{O}}}
+
 
 
 
@@ -90,7 +92,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{Note for the Self-similar shear bands problem}
+\title{Existence of localizing solutions in adiabatic process of thermo-elastic material via geometric theory of singular perturbation}
 \author{Min-Gi Lee\footnotemark[1]}
 % \and Athanasios Tzavaras\footnotemark[1]\  \footnotemark[3]  \footnotemark[4]}
 \date{}
@@ -111,6 +113,65 @@
 % \begin{abstract}
 % abstract
 % \end{abstract}
+
+\section{Equilibrium points and linear stability}
+$(p,q,r)$-system possesses four equilibrium points in the first octant of the phase space\footnotemark[1] and they are
+\begin{align*}
+ M_0=\Big(0,1,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,0,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad  M_2=(0,1,0) \quad M_3 = (0,0,0).
+\end{align*}
+The goal of this section is to reveal the linear stability around the four equilibrium points delivering a perspective on the behaviors of orbits.
+\footnotetext[1]{
+As a matter of facts, the (p,q,r)-system has one more equilibrium point that is not lied in the first octant, which is
+$$p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}},$$
+and is out of our interest for $q$ being negative.
+Beside of this one, when $\lambda$ takes exceptional values, the system has a line of equilibria that entirely lies on the plane $r=0$.
+These line of equilibria are not of our interests because we only look for solutions whose $r$ is away from $0$. For the clarity, we specifies the exceptional line of equilibrium here,
+\begin{align*}
+ r&=0, \quad q=0, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1} = \frac{1+\alpha}{1+n} \frac{1}{\alpha-n},\\
+ r&=0, \quad q=1, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1-1}= \frac{1+\alpha}{1+n} \frac{2}{2(\alpha-n)-1},\\
+%  p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}}.
+\end{align*}
+}
+
+In the below, we denote the three eigenvalues of the equilibrium point $M_i$ by $\mu_{ij}$, $j=1,2,3$ and the three eigenvectors by $X_{ij}$, $j=1,2,3$.\medskip
+
+\noindent{\bf Equilibrium $M_0$ is an unstable node.}
+\begin{align*}
+&X_{01} = \bigg(0, \Big(\frac{-n+ \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), -1\bigg), \quad
+ X_{02} = \bigg( \Big( \frac{-2n + \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{-2n + \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;-1\bigg),\\
+ &X_{03} = (0,0,1), \quad \mu_{01} = 1, \quad \mu_{02}= 2, \quad \mu_{03} = \frac{\alpha-n}{n\lambda}r_0^{1+n}.
+\end{align*}
+Along $X_{01}$, as $q$ increases, $p$ stays the same but $r$ decreases. Along $X_{02}$, as $q$ increases, $p$ increases as well but $r$ decreases. Note that the third eigenvalue along $X_{03}$ has much greater value than other two because $n \ll 1$.
+\medskip
+
+\noindent{\bf Equilibrium $M_1$ is a saddle.}
+\begin{align*}
+&X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\ 
+ &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+ X_{13} = (0,0,1), \quad \mu_{11} =-\frac{1+n}{\alpha-n}, \quad \mu_{02}=-1, \quad \mu_{13} = \frac{\alpha-n}{n\lambda}r_1^{1+n}
+\end{align*}
+\medskip
+
+\noindent{\bf Equilibrium $M_2$ is a stable node.}
+\begin{align*}
+ &X_{21} = (1,0,0) \quad X_{22}=(0,1,0), \quad X_{23}=(0,0,1),\\
+ &\mu_{21} =-1-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1, \quad \mu_{22}=-1, \quad \mu_{23} = -\frac{\alpha-n}{n(1+n)}\lambda r_1^{1+n}
+\end{align*}
+\medskip
+
+\noindent{\bf Equilibrium $M_0$ is a saddle.}
+\begin{align*}
+ &X_{31} = (1,0,0) \quad X_{32}=(0,1,0), \quad X_{33}=(0,0,1),\\
+ &\mu_{31} =-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1, \quad \mu_{22}=-1, \quad \mu_{23} = \frac{1}{n}\Big(-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+\end{align*}
+
+
+
+
+
+
+
+
 
 \section{The model description}
 We consider a 1-d shear deformation of a material whose material law of stress depends on 1) temperature, 2) strain, 3) strain rate. The motion is described by following field variables,
@@ -138,7 +199,7 @@ A few forehand perspectives :
 \subsection{A system of conservation laws}
 For the field variables \eqref{eq:vars}, equations describing the deformation are given by
 \begin{align}
- \gamma_t &= u, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
+ \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
  v_t &= \tau_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
  \theta_t &= \tau u \quad \text{(energy conservation)}	\label{eq:th}\\
  \tau &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
@@ -201,7 +262,7 @@ At \eqref{eq:g}-\eqref{eq:tau}:
 \begin{aligned}
  a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
  b V(\xi) + \lambda \xi V'(\xi) &= \Sigma'(\xi)\\
- d \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ c \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
  \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
  V'(\xi)&=U(\xi)
 \end{aligned} \label{eq:ss-odes}
@@ -303,12 +364,25 @@ we derive $(p,q,r)$-system:
  n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
 \end{align*}
 
-\section{Equilibrium points, Linear structure}
-$(p,q,r)$-system possesses four equilibrium points and the exceptional equilibriums that we are not interested in. They are
+\section{Equilibrium points and linear stability}
+$(p,q,r)$-system possesses four equilibrium points\footnotemark[1] and the exceptional equilibriums that we are not interested in. They are
 \begin{align*}
   (0,0,0), \quad \Big(0,0,\big(c_0-d_1\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(c_0-(d_1+1)\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).\\
  (0,0,0), \quad \Big(0,1,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,0,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).
 \end{align*}
+
+\footnotetext[1]{
+As a matter of facts, the (p,q,r)-system has one more equilibrium point that is not lied in the first octant, which is
+$$p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}},$$
+and is out of our interest for $q$ being negative.
+Beside of this one, when $\lambda$ takes exceptional values, the system has a line of equilibria that entirely lies on the plane $r=0$.
+These line of equilibria are not of our interests because we only look for solutions whose $r$ is away from $0$. For the clarity, we specifies the exceptional line of equilibrium here,
+\begin{align*}
+ r&=0, \quad q=0, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1} = \frac{1+\alpha}{1+n} \frac{1}{\alpha-n},\\
+ r&=0, \quad q=1, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1-1}= \frac{1+\alpha}{1+n} \frac{2}{2(\alpha-n)-1},\\
+%  p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}}.
+\end{align*}
+}
 
 \noindent
 {\bf Exceptional cases}
@@ -334,7 +408,7 @@ Linearized equation around the equilibrium points. Using
 \begin{align*}
  \dot{P} &=P\Big(-q-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1\Big),\\
  \dot{Q} &=Q(1-q) -qQ,\\
- \dot{R} &=\frac{1}{n}\Big(q-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1 \Big).
+ \dot{R} &=\frac{R}{n}\Big(q-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1 \Big).
 \end{align*}
 
 \noindent
@@ -343,6 +417,90 @@ Linearized equation around the equilibrium points. Using
  \dot{P}&=P\Big( \frac{1+\alpha}{\lambda(1+n)} r^{1+n} - \frac{1+\alpha}{\lambda(1+n)} c_0 -d_1-q\Big) = P\Big(-\frac{D}{\alpha-n}(d_1+q)\Big),\\
  \dot{Q}&=Q(1-q) +q(-Q-\lambda Pr) + bPr,\\
  \dot{R}&=\frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big) + \frac{R}{n}\Big(\frac{\alpha-n}{\lambda(1+n)}r^{1+n}-\frac{\alpha-n}{\lambda(1+n)}r^{1+n}c_0 + d_1 +q\Big) = \frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big)
+\end{align*}
+
+Coefficients Matrices for Linearized equations:
+\begin{align*}
+ Mat_0 &= \begin{pmatrix}
+          -\frac{D}{\alpha-n}(d_1) & 0 & 0\\
+          br_0 & 1 & 0\\
+          \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
+         \end{pmatrix}
+        = \begin{pmatrix}
+          2 & 0 & 0\\
+          br_0 & 1 & 0\\
+          \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
+         \end{pmatrix}\\
+ Mat_1 &= \begin{pmatrix}
+          -\frac{D}{\alpha-n}(d_1+1) & 0 & 0\\
+          (b-\lambda)r_1 & -1 & 0\\
+          \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
+         \end{pmatrix}
+        =\begin{pmatrix}
+          -\frac{1+n}{\alpha-n} & 0 & 0\\
+          (b-\lambda)r_1 & -1 & 0\\
+          \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
+         \end{pmatrix}\\
+ Mat_2 &= \begin{pmatrix}
+	  -1-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
+	  0 & -1 & 0\\ 
+	  0 & 0 & \frac{1}{n}\Big(1-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+         \end{pmatrix}
+        = \begin{pmatrix}
+	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} + \frac{(1+n)^2}{D(1+\alpha)}\lambda\Big) & 0 & 0\\
+	  0 & -1 & 0\\ 
+	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_1^{1+n}
+         \end{pmatrix}\\         
+ Mat_3 &= \begin{pmatrix}
+	  -\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
+	  0 & 1 & 0\\ 
+	  0 & 0 & \frac{1}{n}\Big(-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+         \end{pmatrix}
+	=\begin{pmatrix}
+	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} - \frac{2(\alpha-n)(1+n)}{D(1+\alpha)}\lambda\Big)& 0 & 0\\
+	  0 & 1 & 0\\ 
+	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_0^{1+n}
+         \end{pmatrix}         
+\end{align*}
+The lower triangular matrix has the eigenvalues and eigenvectors such that
+\begin{align*}
+ MAT = \begin{pmatrix}
+        A & 0 & 0\\
+        B & C & 0\\
+        D & E & F
+       \end{pmatrix}, \quad
+ \mu_1 = A, \quad\mu_2 = C, \quad\mu_3 = F,\\
+ v_1 = \Big( \frac{ (A-C)(A-F) }{ D(A-C) + BE }, \frac{ B(A-F) }{ D(A-C) + BE }, 1), \quad  v_2 = (0, \frac{C-F}{E}, 1), \quad v_3 = (0,0,1).
+\end{align*}
+
+\begin{align*}
+ &X_{01} = \bigg( \Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;1\bigg),\quad 
+ X_{02} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+ X_{03} = (0,0,1),\\
+ &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\ 
+ &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+ X_{13} = (0,0,1), 
+\end{align*}
+
+\subsection{heteroclinic orbit}
+\begin{align*}
+  &\Phi(\xi) = \Theta(\xi)^{\frac{1+\alpha}{1+n}}, \quad \Sigma(\xi) = \Phi^{-\frac{\alpha-n}{1+\alpha}} \Big(\frac{U}{\Phi}\Big)^n\\
+  &c + \frac{1+n}{1+\alpha} \lambda \xi \big(\log\Phi\big)' = \Big(\frac{U}{\Phi}\Big)^{1+n},\\
+  &(b+\lambda)U = \Sigma^{''} = \Big(\Phi^{-\frac{\alpha-n}{1+\alpha}}\Big(\frac{U}{\Phi}\Big)^{n}\Big)^{''}\\
+  &(f^k)^{''} = k(k-1)f^{k-1}(f')^2 + kf^{k-1}f^{''} = kf^{k-1}f^{''}\\
+  &\Longrightarrow  \quad V(0)=0, U'(0)=\Phi'(0)=\Sigma'(0)=0, \quad V'(0)=U(0),\quad \frac{U(0)}{\Phi(0)} = r_0 = c^{\frac{1}{1+n}},\\
+  &\Big(\frac{U}{\Phi}\Big)'(0)=0, \quad \Big(\frac{U}{\Phi}\Big)^{''}(0) = \frac{ (b+\lambda) r_0^{1-n} U(0)\Phi(0)^{\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}} = \frac{ (b+\lambda) r_0^{2-n} \Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}}\\
+\end{align*}
+
+\begin{align*}
+ p(\log\xi) &= \frac{ \tth^{\frac{1+\alpha}{1+n}} }{\ts} = \frac{ \xi^{\frac{1+\alpha}{1+n}c_1} \Theta(\xi)^{\frac{1+\alpha}{1+n}}}{\xi^{d_1} \Sigma(\xi)} = \xi^2\frac{\Theta(\xi)^{\frac{1+\alpha}{1+n}}}{\Sigma(\xi)} = \xi^2\frac{\Theta(0)^{\frac{1+\alpha}{1+n}}}{\Sigma(0)} + \BO(\xi^3) = \xi^2\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + \cdots,\\
+ q(\log\xi) &= b\frac{\tv}{\ts} = b\frac{ \xi^{b_1} V(\xi) }{ \xi^{d_1} \Sigma(\xi)} = b\xi\frac{ V(\xi) }{ \Sigma(\xi)} = b\xi^2 \frac{U(0)}{\Sigma(0)}+ \BO(\xi^3) = \xi^2\Big(b\frac{U(0)}{\Phi(0)}\Big)\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + \cdots,\\
+ r(\log\xi) &= \frac{\tu}{ \tth^{\frac{1+\alpha}{1+n}} } = \frac{ \xi^{1+b_1}U(\xi) }{ \xi^{\frac{1+\alpha}{1+n}c_1}\Theta(\xi)^{\frac{1+\alpha}{1+n}} } = \frac{ U(0) }{ \Theta(0)^{\frac{1+\alpha}{1+n}} },\\
+ r(\log\xi) - \frac{ U(0) }{ \Phi(0)} &= \frac{  U }{ \Phi }(\xi) - \frac{ {U}(0)}{ \Phi(0)}\\
+  &= \xi \frac{U(0)}{ \Phi(0)} \bigg(\frac{ U'(0)}{U(0)} - \frac{ \Phi'(0)}{ \Phi(0)}\bigg) \\
+  &+ \frac{1}{2}\xi^2\bigg[ \frac{U^{''}(0)}{ \Phi(0)} - 2 \frac{ U'(0)\Phi'(0)}{\Phi(0)^2} + U(0) \bigg(- \frac{ \Phi^{''}(0) }{\Phi(0)^2} + 2 \frac{\Phi'(0)^2}{ \Phi(0)^3 }\bigg) \bigg] + \BO(\xi^3)\\
+  &=\frac{ (b+\lambda) r_0^{2} }{ 2n - \frac{\alpha-n}{\lambda}r_0^{(1+n)}} r_0^{-n} \Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + \cdots
+%  &=\big(\bG(0)^{1+m-n}a^{-n}\big)\frac{ -\lambda ad }{m-n}  \Bigg(\frac{1}{ 1 -  2  A^{-1}}\Bigg)   \xi^2 + o(\xi^2).
 \end{align*}
 
 
