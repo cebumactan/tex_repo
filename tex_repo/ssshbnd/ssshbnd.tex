@@ -168,6 +168,13 @@ From above, we reach to exponents
  c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda
 \end{align*}
 for each $\lambda \in \mathbb{R}$. For localization, $\lambda>0$. But uniform shearing solution takes a negative $\lambda$.
+
+\begin{align*}
+ &a_0-1 = b_0,  \quad b_0-1=d_0,  \quad c_0-1=d_0 +b_0, \quad c_1-1=d_1+b_1, \quad d_0 = -\alpha c_0 + ma_0 +nb_0,\\
+ &a_1-1=b_1, \quad b_1-1=d_1, \quad c_1-1=d_1+b_1,  \quad d_1 = -\alpha c_1 + ma_1 +n(b_1+1).
+\end{align*}
+
+
 \subsection{Self-Similar variables}
 We try the solutions of type, i.e. put $\rho =t$ in the rescaling,
 \begin{align*}
@@ -199,12 +206,47 @@ At \eqref{eq:g}-\eqref{eq:tau}:
 \begin{aligned}
  a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
  b V(\xi) + \lambda \xi V'(\xi) &= \Sigma'(\xi)\\
- d \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ c \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
  \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
  V'(\xi)&=U(\xi)
 \end{aligned} \label{eq:ss-odes}
 \end{equation}
+
+\begin{equation}
+\begin{aligned}
+ a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
+ (b+\lambda) U(\xi) + \lambda \xi U'(\xi) &= \Sigma^{''}(\xi)\\
+ c \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ V'(\xi)&=U(\xi)
+\end{aligned} \label{eq:ss-odes2}
+\end{equation}
+
 \subsection{de-singularization}
+% {\red This part cannot be done : constants are inconsistent
+% We find the following monomials constitute the special solution.
+% \begin{equation} \label{eq:monomials}
+% \begin{aligned}
+%  \Gamma(\xi)&=\xi^{-a_1}\Gamma_0, & \Theta(\xi)&=\xi^{-c_1}\Theta_0,\\
+%  \Sigma(\xi)&=\xi^{-d_1}\Sigma_0, & U(\xi)&=\xi^{-b_1-1}U_0, \\
+%  V(\xi)&=\int_{\xi_0}^\xi U(\xi')\, d\xi',
+% \end{aligned}
+% \end{equation}
+% where the constants $\big(\Gamma_0, U_0, \Theta_0, \Sigma_0, U_0\big)$ is in relations
+% \begin{align*}
+%  \Gamma_0 &= \frac{U_0}{a_0}, \quad \Theta_0 = a_0^{-\frac{m}{1+\alpha}} c_0^{-\frac{1}{1+\alpha}} U_0^{\frac{1+m+n}{1+\alpha}}, \quad \Sigma_0=a_0^{-\frac{m}{1+\alpha}} c_0^{\frac{\alpha}{1+\alpha}} U_0^{-\frac{\alpha-m-n}{1+\alpha}} \\
+% %  U_0&=\Big(b_1\,d_1\,a_0^{-\frac{m}{1+\alpha}} b_0^{-1}c_0^{\frac{\alpha}{1+\alpha}}\Big)^{\frac{1+\alpha}{D}}.
+% \end{align*}
+% }
+
+These arise from the consideration of the scale invariance property of the system \eqref{eq:ss-odes}: Provided $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of it, then the scaled version $\big(\Gamma_\rho(\xi), V_\rho(\xi), \Theta_\rho(\xi), \Sigma_\rho(\xi), U_\rho(\xi)\big)$, where
+\begin{align*}
+ \Gamma_\rho(\xi)&=\rho^{a_1}\Gamma(\rho\xi), & V_\rho(\xi)&=\rho^{b_1}V(\rho\xi), & \Theta_\rho(\xi)&=\rho^{c_1}\Theta(\rho\xi),\\
+ \Sigma_\rho(\xi)&=\rho^{d_1}\Sigma(\rho\xi), & U_\rho(\xi)&=\rho^{b_1+1}U(\rho\xi),
+\end{align*}
+again is a solution. From that we find \eqref{eq:monomials} by setting $\rho=\xi^{-1}$.
+
+
 Introduce new field variables 
 \begin{equation}
 \begin{aligned}
