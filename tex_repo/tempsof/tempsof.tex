@@ -102,8 +102,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \title{Existence of localizing solutions in adiabatic process of thermo-elastic material via geometric theory of singular perturbation}
-\author{Min-Gi Lee\footnotemark[1]}
-% \and Athanasios Tzavaras\footnotemark[1]\  \footnotemark[3]  \footnotemark[4]}
+\author{Min-Gi Lee\footnotemark[1] \and Athanasios Tzavaras\footnotemark[1]\  \footnotemark[3]  \footnotemark[4]}
 \date{}
 
 \maketitle
@@ -228,7 +227,14 @@ We begin by observing that if $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi
 \end{equation}
 and we regard \eqref{eq:ss-odes} as the boundary-value problem in the right half space $\xi \in [0,\infty)$ subject to the boundary conditions \eqref{eq:bdry0}.
 
-Next, following the idea in REF, we introduce the new field variables
+These arise from the consideration of the scale invariance property of the system \eqref{eq:ss-odes}: Provided $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of it, then the scaled version $\big(\Gamma_\rho(\xi), V_\rho(\xi), \Theta_\rho(\xi), \Sigma_\rho(\xi), U_\rho(\xi)\big)$, where
+\begin{align*}
+ \Gamma_\rho(\xi)&=\rho^{a_1}\Gamma(\rho\xi), & V_\rho(\xi)&=\rho^{b_1}V(\rho\xi), & \Theta_\rho(\xi)&=\rho^{c_1}\Theta(\rho\xi),\\
+ \Sigma_\rho(\xi)&=\rho^{d_1}\Sigma(\rho\xi), & U_\rho(\xi)&=\rho^{b_1+1}U(\rho\xi),
+\end{align*}
+again is a solution. From that we find \eqref{eq:monomials} by setting $\rho=\xi^{-1}$.
+
+We observe that \eqref{eq:monomials} is a special solution but it does not satisfy the boundary condition \eqref{eq:bdry0}. Instead of putting constants on each monomial, we try to construct solutions by constructing the multiplicative residuals of the profiles to the monomial solution, 
 \begin{equation} \label{eq:CAPtoBAR}
 \begin{aligned}
  \bg(\xi)&=\xi^{a_1}\Gamma(\xi), &
@@ -238,7 +244,8 @@ Next, following the idea in REF, we introduce the new field variables
  \bu(\xi)&=\xi^{b_1+1}U(\xi).
 \end{aligned}
 \end{equation}
-Then, the system that $(\bg,\bv,\bth,\bs,\tu)$ satisfies reads
+
+These variables result in a nice property; the system that $(\bg,\bv,\bth,\bs,\tu)$ satisfies reads
 \begin{equation} \label{eq:barsys}
  \begin{aligned}
   a_0\bg + \lambda\xi\bg' &=\bu,\\
@@ -426,9 +433,11 @@ Having specified the asymptotic behavior of the heteroclinic orbit, we target th
 As was discussed in \ref{sec:equil}, $M_1$ has two dimensions of stable manifold and $M_0$ is an unstable node. We hypothesize that this two dimensional stable manifold of $M_1$ is globally extended in the negative $\eta$ and it is the slice of the unstable manifold of $M_0$. We can expect infinitely many orbits that joins $M_0$ to $M_1$ on the surface. From \ref{rem:alpha}, generic orbits are expected to meet $M_0$ with the dominated direction that is $X_{01}$. Thus the asymptotics \eqref{eq:alpha} characterizes the unique orbit among them that has the distinguished properties that $\kappa_1=0$ and meets $M_0$ along $X_{02}$. We have not yet proved the existence of such an orbit and we prove this in the next section.
 
 \section{Existence via Geometric theory of singular perturbation}
-In this section, we give a proof for the existence of the heteroclinic orbit hypothesized in the preceding section. It is accomplished by the two consecutive chunks of arguments, the geometric singular perturbation theory and the theorem of Poincar\'e-Bendixson.
+In this section, we give a proof for the existence of the heteroclinic orbit hypothesized in the preceding section. It is accomplished by the two consecutive chunks of arguments, the geometric singular perturbation theory and the analysis on the reduced system via theorem of Poincar\'e-Bendixson.
 
 
+
+\subsection{Reduction to the slow system}
 
 \hrulefill
 
