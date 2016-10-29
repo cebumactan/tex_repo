@@ -24,7 +24,7 @@
 \usepackage[notcite,notref]{showkeys}
 
 % \usepackage{psfrag}
-\usepackage{graphicx,subfigure}
+% \usepackage{graphicx,subfigure}
 \usepackage{color}
 \def\red{\color{red}}
 \def\blue{\color{blue}}
@@ -199,10 +199,12 @@ for each $\lambda \in \mathbb{R}$, where the denominator $D = 1+2\alpha-m-n$. Be
  But uniform shearing solution takes a negative $\lambda$.
 \subsection{Self-Similar field variables}
 Motivated by the scale invariance property parametrized by $\lambda>0$, we look for the solutions of type
-\begin{align*}
+\begin{equation}\label{eq:ORItoCAP}
+\begin{aligned}
  \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x),\\
  \tau(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
-\end{align*}
+\end{aligned}
+\end{equation}
 and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\eqref{eq:tau} gives us the system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
 
 \begin{equation}
@@ -234,7 +236,7 @@ These arise from the consideration of the scale invariance property of the syste
 \end{align*}
 again is a solution. From that we find \eqref{eq:monomials} by setting $\rho=\xi^{-1}$.
 
-We observe that \eqref{eq:monomials} is a special solution but it does not satisfy the boundary condition \eqref{eq:bdry0}. Instead of putting constants on each monomial, we try to construct solutions by constructing the multiplicative residuals of the profiles to the monomial solution, 
+We observe that \eqref{eq:monomials} is a special solution but it does not satisfy the boundary condition \eqref{eq:bdry0}. Instead of putting constants on each monomial, we try to construct solutions by constructing the multiplicative residuals of the profiles to the monomial solution,
 \begin{equation} \label{eq:CAPtoBAR}
 \begin{aligned}
  \bg(\xi)&=\xi^{a_1}\Gamma(\xi), &
@@ -311,7 +313,7 @@ we derive $(p,q,r)$-system:
  n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
 \end{aligned}
 \end{equation}
-\section{Equilibrium points and linear stability}
+\section{Equilibrium points and linear stability} \label{sec:equil}
 $(p,q,r)$-system possesses four equilibrium points in the first octant of the phase space\footnotemark[1] and they are
 \begin{align*}
  M_0=\Big(0,1,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,0,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad  M_2=(0,1,0) \quad M_3 = (0,0,0).
@@ -345,7 +347,13 @@ Every direction is of unstable direction. Note further that the third eigenvalue
 \noindent{\bf Equilibrium $M_1$ is a saddle.}
 \begin{align*}
 &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\
- &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+&X_{11} = 
+\begin{cases}
+\bigg(  \frac{\Big(-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big)}{(b-\lambda)r_1^2}\;,\;\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{r_1}\;,\;\frac{\big(1-\frac{1+n}{\alpha-n}\big)\lambda + (b-\lambda)}{b-\lambda}\bigg) &\text{if $\lambda\ne b$,}\\
+\bigg(  \frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\lambda r_1^2}\;,\;0\;,\;1\bigg) & \text{if $\lambda=b$}
+\end{cases}\\
+%&X_{11} = \bigg( \frac{ 1-\frac{1+n}{\alpha-n} }{ \Big(1-\frac{1+n}{\alpha-n}\Big)\lambda + (b-\lambda) }\;,\;\frac{ (b-\lambda)r_1}{ \Big(1-\frac{1+n}{\alpha-n}\Big)\lambda + (b-\lambda) }\;,\;\frac{-r_1^2}{n\frac{1+n}{\alpha-n} + \frac{\alpha-n}{\lambda}r_1^{1+n}}\bigg),\\
+ &X_{12} = \bigg(0, \frac{-n- \frac{\alpha-n}{\lambda}r_1^{1+n}}{r_1}, 1\bigg), \quad
  X_{13} = (0,0,1), \quad \mu_{11} =-\frac{1+n}{\alpha-n}, \quad \mu_{02}=-1, \quad \mu_{13} = \frac{\alpha-n}{n\lambda}r_1^{1+n}.
 \end{align*}
 $X_{11}$ and $X_{12}$ are of stable directions and $X_{13}$ is of unstable direction. Again, the third eigenvalue along $r$-axis has much greater value than other two.
@@ -405,7 +413,7 @@ Re-write \eqref{eq:barsys}
   &(b+\lambda)U = \Sigma^{''} = \Big(\Phi^{-\frac{\alpha-n}{1+\alpha}}\Big(\frac{U}{\Phi}\Big)^{n}\Big)^{''}
 \end{align*}
 }
-from which albeit cumbersome we conclude 
+from which albeit cumbersome we conclude
 \begin{align*}
 &\frac{U(0)}{\Phi(0)} = r_0 = c^{\frac{1}{1+n}},  \quad \Big(\frac{U}{\Phi}\Big)'(0)=0, \\
 &\Big(\frac{U}{\Phi}\Big)^{''}(0) = \frac{ (b+\lambda) r_0^{1-n} U(0)\Phi(0)^{\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}} = \frac{ (b+\lambda) r_0^{2-n} \Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}}.
@@ -433,32 +441,51 @@ Having specified the asymptotic behavior of the heteroclinic orbit, we target th
 As was discussed in \ref{sec:equil}, $M_1$ has two dimensions of stable manifold and $M_0$ is an unstable node. We hypothesize that this two dimensional stable manifold of $M_1$ is globally extended in the negative $\eta$ and it is the slice of the unstable manifold of $M_0$. We can expect infinitely many orbits that joins $M_0$ to $M_1$ on the surface. From \ref{rem:alpha}, generic orbits are expected to meet $M_0$ with the dominated direction that is $X_{01}$. Thus the asymptotics \eqref{eq:alpha} characterizes the unique orbit among them that has the distinguished properties that $\kappa_1=0$ and meets $M_0$ along $X_{02}$. We have not yet proved the existence of such an orbit and we prove this in the next section.
 
 \section{Existence via Geometric theory of singular perturbation}
-In this section, we give a proof for the existence of the heteroclinic orbit hypothesized in the preceding section. It is accomplished by the two consecutive chunks of arguments, the geometric singular perturbation theory and the analysis on the reduced system via theorem of Poincar\'e-Bendixson.
+In this section, we give a proof for the existence of the heteroclinic orbit hypothesized in the preceding section. It is accomplished by the two consecutive chunks of arguments, the geometric singular perturbation theory and the theorem of Poincar\'e-Bendixson on the positively invariant set.
 
-
-
-\subsection{Reduction to the slow system}
-
-\hrulefill
-
-
-
-
-
-
-
-
-This exploits the fact that the (p,q,r)-system is of multiple time scale, i.e., the presence of the small parameter $n$ in front of  $\dot{r}$ indicates the time scale of $\dot{r}\sim \frac{1}{n}$ unless the right-hand-side of the equation is small enough to compensate.
-
-Let $f(p,q,r;\lambda,\alpha,n)$ be the right-hand-side of the equation on $r$, i.e.,
-\begin{equation}
- f(p,q,r,\lambda,\alpha,n) = r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big).
-\end{equation}
-The compact subset of the zero set of $f(p,q,r;\lambda,\alpha,n=0)$
-$$ Z \triangleq \{\,(p,q,r)\; | \; f(p,q,r,\lambda,\alpha,n=0)\, \} $$
-is taken and is referred to as the critical manifold.
-
-In order to take the suitable compact piece of the zero set $Z$, we detail in the graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.
+%In the first chunk, we exploit the fact that the $(p,q,r)$-system is of multiple time scale: Observe  the small parameter $n$ multiplied to $\dot{r}$ in \eqref{eq:pqrsys}, which makes the evolution of $r$ fast, i.e., if
+%\begin{equation}
+% f(p,q,r;\lambda,\alpha,n) = r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big).
+%\end{equation}
+%the right-hand-side of the equation on $r$, $\dot{r} \sim \frac{1}{n}$ away from the zero set of $f(p,q,r;\lambda,\alpha,n)$ When $n=0$, the orbit is strictly restricted on the zero set
+%\begin{equation}
+% Z \triangleq \{\,(p,q,r)\; | \; f(p,q,r,\lambda,\alpha,n=0)\, \} \label{eq:zeroset}
+%\end{equation}
+%and the problem is essentially reduced to the one of only slow variable $p$ and $q$, provided $r$ is solved from the algebraic equation \eqref{eq:zeroset}.
+%
+%The graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.
+%is taken and is referred to as the critical manifold.
+%
+%
+%
+%In order to take the suitable compact piece of the zero set $Z$, we detail in the graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.
+%
+%
+%
+%
+%
+%
+%\hrulefill
+%
+%
+%
+%
+%
+%
+%
+%
+%This exploits the fact that the (p,q,r)-system is of multiple time scale, i.e., the presence of the small parameter $n$ in front of  $\dot{r}$ indicates the time scale of $\dot{r}\sim \frac{1}{n}$ unless the right-hand-side of the equation is small enough to compensate.
+%
+%Let $f(p,q,r;\lambda,\alpha,n)$ be the right-hand-side of the equation on $r$, i.e.,
+%\begin{equation}
+% f(p,q,r,\lambda,\alpha,n) = r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big).
+%\end{equation}
+%The compact subset of the zero set of $f(p,q,r;\lambda,\alpha,n=0)$
+%$$ Z \triangleq \{\,(p,q,r)\; | \; f(p,q,r,\lambda,\alpha,n=0)\, \} $$
+%is taken and is referred to as the critical manifold.
+%
+%
+%\subsection{Reduction to the slow system}
 
 \subsection*{The graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.}
 The equation of the graph can be written in the form
@@ -470,11 +497,9 @@ where we observe that the level line $r=\bar{r}$ is the straight line in the pha
 \subsection*{Critical manifold}
 Inequality
 $$ \lambda < \frac{2(\alpha-n)}{(1+n)^2} $$
-prevents $r_1$ from being less than equal to $0$. Therefore, we always can take the value $0<\underbar{r}<r_1$. Having fixed the value $\underbar{r}$, we take the closed set $T$ that is the triangle in the first quadrant enclosed by $p$-axis, $q$-axis and the contour line $\underbar{r} = \bar{r}(p,q)$.
-
-We take the compact piece of the set $Z$ by
+prevents $r_1$ from being less than equal to $0$. Therefore, we always can take the value $0<\underbar{r}<r_1$. Having fixed the value $\underbar{r}$, we take the closed set $T$ that is the triangle in the first quadrant enclosed by $p$-axis, $q$-axis and the contour line $\underbar{r} = \bar{r}(p,q)$. Observe that $h\ge\underbar{r}>0$ on the graph if $(p,q) \in T$. Since $h$ is continuous in the neighborhood of $T$, we can take another closed set $K$ in the vicinity of $T$ on which $h$ is still away from $0$. We take the compact piece of the set $Z$ by
 \begin{equation}
- G(\lambda,\alpha,n=0) \triangleq \Big\{\, (p,q,r) \;|\; (p,q) \in T, \text{ and } r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p} \,\Big\} \subset Z
+ G(\lambda,\alpha,n=0) \triangleq \Big\{\, (p,q,r) \;|\; (p,q) \in K, \text{ and } r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p} \,\Big\} \subset Z
 \end{equation}
 
 \subsection*{Normally hyperbolicity}
@@ -503,6 +528,24 @@ To prove the normally hyperbolicity of the graph $G(\lambda,\alpha,n=0)$, we sho
 where $h$ is a shorthand for $h(p,q;\lambda,\alpha,n=0)$. $( \frac{\alpha}{ \lambda} + \lambda p )h > 0$ because $\alpha>0$, $p\ge0$ and $h > \underbar{r}>0$ on the $G(\lambda,\alpha,n=0)$, which proves that $0$ is an eigenvalue with multiplicity $2$.
 \end{proof}
 
+\begin{proposition}
+For $n>0$ sufficiently small, there is a function $h(p,q;\lambda,\alpha,n) : T\subset \mathbb{R}^2 \mapsto \mathbb{R}$ such that
+\begin{equation} \tag*{(${R}$)} \label{eq:reduced}
+\begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+ \dot{q} &=q\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + b^{\lambda,m,n}ph(p,q;\lambda,\alpha,n),
+\end{aligned}
+\end{equation}
+
+
+\begin{enumerate}
+ \item $h$ is jointly smooth function of $p$, $q$, and $n$ in $T \times I$
+ \item The graph $r=h(p,q;\lambda,\alpha,n)$ is locally invariant, i.e., The orbit $(p,q,r)$
+\end{enumerate}
+
+\end{proposition}
+
+
 % \subsubsection{Flow on the critical manifold : the case $m=1$}
 %
 % The marginal case $m=1$ provides closer detail.
@@ -515,39 +558,256 @@ where $h$ is a shorthand for $h(p,q;\lambda,\alpha,n=0)$. $( \frac{\alpha}{ \lam
 % Now, we describe the bifurcation of this marginal case. The crucial difference is that $M_1^{\lambda,1,0}$ is replaced by a line of equilibria $h^{\lambda,1,0}(p,q) = c^{\lambda,1,0}=1$, which is the red line in Figure \ref{fig:hn0m1}. As a result, each of the parabolae emanated from $M_0^{\lambda,1,0}$ lands at a point among these equilibria. $\vec{X}_{02}$ is immersed on $q=0$ plane distinctively from all other cases and the target orbit in particular lands at the $q$-intercept of the line of equilibria. To compare this observation to the statement of Theorem \ref{thm:1}, the target orbit does not connect $M_0^{ \lambda,1,0}$ to $M_1^{ \lambda,1,0}$ but to this $q$-intercept. This observation does not spoil our proof in Section \ref{sec:proof_proof} because we assert the persistence of the critical manifold not the target orbit.
 
 
+
+
+
+
+\pagebreak
+
+
 \subsection{Proof of the theorem} \label{sec:proof_proof}
 
-Now, we are ready to state our main theorem.
-
+\begin{theorem} \label{thm1}
+Let $\lambda>0$ and $\alpha>0$. For any pair $(\lambda,\alpha)$, there exists $n_0$ such that for all $n \in (0,n_0)$
+\begin{enumerate}
+    \item[(i)] the triple $(\lambda,\alpha,n)$ satisfies the \eqref{eq:r1posineq}.
+    \item[(ii)] $(p,q,r)$-system with parameters from $(\lambda,\alpha,n)$ admits a heteroclinic orbit $\chi(\eta)$ such that
+    \begin{equation}
+        \chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\chi(\eta) - M_1\big) \rightarrow \kappa \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa>0$}.
+    \end{equation}
+\end{enumerate}
+\end{theorem}
 
 \smallskip
 \noindent
 \begin{proof}
 %\mbox{}\\*\indent
-\medskip \noindent{\bf Step 1.}
- Regularly perturbed reduced system.
+\noindent{\bf Reduction to the $(p,q)$-system.}
+\medskip
+For $(\lambda,\alpha)$, by the Theorem of Geometric singular perturbation theory, there exists $n_1$ such that if $n\in(0,n_1)$, there exists the locally invariant manifold $G(\lambda,\alpha,n)$ with respect to the $(p,q,r)$-system with parameter $(\lambda,\alpha,n)$. Moreover, the graph is again given by the graph $r=h(p,q;\lambda,\alpha,n)$, for a function $h(p,q;\lambda,\alpha,n)$ that has the definition on $D$ again. The function is, jointly with $n$, smooth in $(p,q,n) \in D\times(0,n_1)$. Taking smaller $n_1$ if necessary can achieve the inequality \eqref{eq:r1posineq}. We can take $n_1$ even smaller to ensure $h(p,q,n)>0$ in $D\times(0,n_1)$.
+
+
+Then, on the graph, $\big(p(\eta),q(\eta)\big)$ satisfies the planar system
+\begin{equation} \tag*{(${R}$)} \label{eq:reduced}
+\begin{aligned}
+ {\dpp}&=p\bigg\{\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(h^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda ph\Big]\bigg\},\\
+ {\dqq}&=q\Big(1-q-\lambda p h\Big) + bph,\\
+\end{aligned}
+\end{equation}
+where $h$ is an abbreviation for $h(p,q;\lambda,\alpha,n)$.
+
+The part of the geometric singular perturbation theory ensures that the hyperbolic equilibrium points that were on the critical manifold persists for $n>0$ and are on the subjected locally invariant manifold, dictating that the two equilibrium points $M_0(\lambda,\alpha,n)$ and $M_1(\lambda,m,n)$ are on the graph $r=h(p,q;\lambda,\alpha,n)$. 
+
+Next, we analyze the planar system $(R)$. We focus on two points $(0,0)$ and $(0,1)$, which are the two projections of $M_0$ and $M_1$ and thus are two equilibrium points of $(R)$.
+
+\medskip
+\noindent{\bf Claim 1.}
+$(0,0)$ is an unstable node of $(R)$ and $(0,1)$ is an stable node of $(R)$. 
 \medskip
 
-By Lemma \ref{lem:normal_hyper}, there exists $n_0$, such that for $n \in [0, n_0)$, locally invariant manifold $G^{\lambda,m,n}$ with respect to \eqref{eq:pqr_fast} exists. Moreover,   $G^{\lambda,m,n}$ is again given by the graph $(p,q,h^{\lambda,m,n}(p,q))$ on $\bar{D}$. The condition that $G^{\lambda,m,n}$ is disjoint from $r=0$ plane for all $n \in [0, n_0)$ must persist by making $n_0$ smaller if necessary. In addition, $n_0$ is chosen in the valid range of inequalities \eqref{eq:a3} and \eqref{eq:a4}.%$h^{\lambda,m,n}(p,q)>0$ in the domain of definition for all $0\le n\le n_2$ has to persist by taking $K^{\lambda,m,0}$ and $n_2$ appropriately.  %On this surface, $r$ evolves such a way staying in the surface.
+Linear stability of $R$ around the $\tilde{M}_0$ and $\tilde{M}_1$ respectively gives the proof. Linearized system around $\tilde{M}_0$ with perturbations $P$ and $Q$ is
+{\blue
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} 2 & 0 \\  ab & 1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix}
+\end{align*}
+}
+and we see the two positive eigenvalues of the coefficient matrix. Linearized system around $\tilde{M}_1$ with perturbations $P$ and $Q$ is
+{\blue
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} -\frac{1-m+n}{m-n} & 0 \\  (b- \lambda)c & -1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix},
+\end{align*}
+}
+and we see the two negative eigenvalues of the coefficient matrix. The claim is shown.
 
-After achieving $h^{\lambda,m,n}(p,q)$, substitution of the function in place of $r$ in system \eqref{eq:pqrsystem} leads to  the reduced systems that are parametrized by $\lambda$, $m$, and $n\in[0,n_0)$:
+\medskip
+\noindent{\bf Claim 2.}
+The triangle $T$  is positively invariant for the system $(R)$ with $(\lambda,\alpha,n=0)$.
+\medskip
+
+When $n=0$, the explicit formula for the graph is available, which makes $(R)$ even simpler,
+\begin{align*}
+ \dot{p} &= -\frac{D}{\alpha} p\Big(d_1+q+\lambda p h\Big),\\
+ \dot{q} &= q\Big(1-q-\lambda p h\Big) + b p h.
+\end{align*}
+
+
+
+We compute the inward normal component of $(\dot{p},\dot{q})$ on three sides of the $T$. On $p$-axis, the inward normal vector is $(0,1)$ and $(\dot{p},\dot{q})\cdot(0,1)=bpr\ge0$. On $q$-axis, the inward normal vector is $(1,0)$ and $(\dot{p},\dot{q})\cdot(1,0)=0$. Lastly for the hypotenuse, recall that it is the contour line $\underbar{r}=h(p,q,n=0)$, or $q + \lambda p\underbar{r} = \frac{\alpha}{\lambda}(r_0-\underbar{r})$. Define $\underbar{p}$ and $\underbar{q}$ to be the $p$-intercept and $q$-intercept of the contour line, or $\underbar{q} = \lambda \underbar{p}\underbar{r} = \frac{\alpha}{\lambda}(r_0-\underbar{r})$. Then $(-\underbar{q},-\underbar{p})$ is an inward normal vector on the contour line. We compute
+\begin{align*}
+    (\dot{p},\dot{q}) \cdot (-\underbar{q},-\underbar{p}) &= \frac{D}{\alpha}\underbar{q}p\Big(d_1 + q + \lambda p \underbar{r}\Big) -\underbar{p}\bigg\{q\Big(1-q-\lambda p \underbar{r}\Big) + b p \underbar{r}\bigg\}\\
+    &=\frac{D}{\alpha}\underbar{q}p\Big(d_1 +\underbar{q}\Big) -\underbar{p}\bigg\{\Big(\underbar{q}-\lambda p \underbar{r}\Big)\Big(1-\underbar{q}\Big) + b p \underbar{r}\bigg\}\\
+    &=-\underbar{p}\underbar{q}(1-\underbar{q}) + \underbar{q}p\Big(\frac{D}{\alpha}d_1 + \frac{D}{\alpha}\underbar{q} + (1-\underbar{q}) - \frac{b}{\lambda}\Big)\\
+    &=-\underbar{p}\underbar{q}(1-\underbar{q}) + \underbar{q}p\frac{1+\alpha}{\lambda}\Big(\frac{1}{1+\alpha}-\underbar{r}\Big)\\
+    &\ge -\underbar{p}\underbar{q}(1-\underbar{q}) \quad \text{since $\underbar{r} < \frac{1}{1+\alpha}$}\\
+    &\ge \delta_0 > 0.
+\end{align*}
+Thus the claim 2 is shown. In particular $\delta_0$ can be taken regardless of $n$.
+
+\medskip
+\noindent{\bf Claim 3.}
+The triangle $T$  is positively invariant for the system $(R)$ with $(\lambda,\alpha,n)$ provided $n$ is sufficiently small.
+\medskip
+
+Same reasonings apply on the $p$-axis and the $q$-axis, so it is sufficient to show that the flow is inward on the hypotenuse. Now the hypotenuse is not anymore a contour line of the function $h(p,q;\lambda,\alpha,n)$. We arrange terms of right-hand-sides of $(R)$ in the form
+\begin{align*}
+ {\dpp}&=p\bigg\{\Big[\frac{1+\alpha}{\lambda }\Big(\underbar{r}-c_0\Big)\Big] -\Big[d_1 + q + \lambda p\underbar{r}\Big]\bigg\} + \underbrace{p\bigg\{\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(h^{1+n}-c_0\Big)\Big]-\Big[\frac{1+\alpha}{\lambda }\Big(\underbar{r}-c_0\Big)\Big] -\lambda p(h-\underbar{r})\Big]\bigg\}}_\text{$\triangleq g_1(p,q,n)$},\\
+ {\dqq}&=q\Big(1-q-\lambda p \underbar{r}\Big) + bp\underbar{r} + \underbrace{(-q\lambda p+b) (h-\underbar{r})}_\text{$\triangleq g_2(p,q,n)$}.
+\end{align*}
+Since $h$ is a smooth function of $n$ and $D$ is compact, provided $n$ is sufficiently small, we have an estimate
+\begin{equation}
+ |g_1(p,q,n)| + |g_2(p,q,n)| \le C_0 n, \quad \text{where $C_0$ does not depend on $p$, $q$, and $n$.}
+\end{equation}
+Therefore
+$$ (\dot{p},\dot{q}) \cdot(-\underbar{q},-\underbar{p}) \ge \delta_0 + C_0'n \quad \text{for another uniform constant $C_0'$}.$$
+Taking $n$ sufficiently small, say $n<n_0<n_1$, so that the last expression is positive gives the proof of the claim. 
+
+\medskip
+{\blue
+From the Claim 1 and that the domain of $h$ contains $T$, it is clear that the all the orbits on the graph in the neighborhood of $M_0$ have the asymptotic expansion
+$$\psi(\eta) = M_0 + \kappa_1 e^\eta X_{01} + \kappa_2 e^{2\eta}X_{02} + \text{higher-order terms as $\eta \rightarrow -\infty$.}$$ By the stable(unstable) manifold theorem, there is an orbit $\chi(\eta)$ in the neighborhood of $M_0$ that emanates through the direction $X_{02}$ (towards the first octant) and is on the graph $G(\lambda,\alpha,n)$. 
+
+Consider the projected orbit $\tilde{\chi}(\eta)$ in $(p,q)$-plane of $\chi(\eta)$, which emanates through the projection of $X_{02}$ toward the interior of $T$ from $(0,0)$. $\tilde{\chi}(\eta)$ is an orbit of $(R)$ and $\tilde{\chi}(\eta)$ exists for $\eta \in (-\infty, \infty)$ and has the $\omega$-limit set in $T$ since $T$ is compact and positively invariant and the right-hand-sides of $(R)$ in $T$ are bounded.
+
+Next, because there is no interior equilibrium points in $T$, the $\omega$-limit set of $\tilde{\chi}(\eta)$ cannot contain the limit cycle by the Poincar\'e-Bendixson Theorem. Recalling the Claim 1, the $\omega$-limit set of $\tilde{\chi}(\eta)$ is $(0,1)$. Lifting of the $\tilde{\chi}$ is the desired heteroclinic orbit.
+}
+\end{proof}
+
+\section{Existence of two-parameters family of self-similar shear banding solutions and asymptotics}
+The dynamical system has a translation invariance, i.e., if $\chi(\eta)$ is a heteroclinic orbit, then so is a $\chi(\eta-\eta_0)$ for any $\eta_0\in \mathbb{R}$, implying that we have constructed in fact infinitely many heteroclinics and it turns out that all of them are relevant.  Besides of $\eta_0$, we have been using a few other parameters and this gives rise to the point that we have constructed a family of solutions with a certain degrees of freedom. Not all of parameters are independent and we precise the relationships between parameters and the total number of degrees of freedom.
+
+To begin with, fix any referential heteroclinic orbit $Z(\eta)=\big(P(\eta),Q(\eta),R(\eta)\big)$, which is characterized by the unique constant $\bar{\kappa}$ in the expansion around the $M_0$ such that
+$$ Z(\eta) = \bar{\kappa}e^{2\eta}X_{02} + \text{higer-order terms as $\eta \rightarrow -\infty$.}$$%, with the associated constant $\bar{\kappa}$.}$$
+We set our heteroclinic orbit $\chi(\eta) = Z(\eta-\eta_0)$ and fix $\eta_0$. From the proposition \ref{prop1}, 
+$$ \kappa = \Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}}=\lim_{\eta \rightarrow -\infty} e^{-2\eta}\chi(\eta)  = \lim_{\eta \rightarrow -\infty} e^{-2\eta} Z(\eta-\eta_0) =\bar{\kappa}e^{-2\eta_0}.$$
+By treating $U(0)$ and $\Theta(0)$ as the primary parameters, $\eta_0$ is determined by
+\begin{equation}
+ \eta_0 = \frac{1}{2} \log\Big(\bar{\kappa} \Big(\frac{U(0)}{\Phi(0)}\Big)^{n}\Phi(0)^{-1-\frac{\alpha-n}{1+\alpha}}  \Big) = \frac{1}{2} \log\Big(\bar{\kappa} U(0)^n \Theta(0)^{-\alpha-\frac{1+\alpha}{1+n}}  \Big). \label{eq:eta0}
+\end{equation}
+
+Next, we check that 
+$$ \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} = \lim_{\eta \rightarrow -\infty} r^{1+n} = c_0 = \frac{2}{D} + \frac{2+n}{D}\lambda.$$
+Again, by treating $U(0)$ and $\Theta(0)$ as the primary parameters, we obtain
+\begin{equation}
+ \lambda = \frac{1+2\alpha-n}{2+n}\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} - \frac{2}{2+n}. \label{eq:lambda}
+\end{equation}
+Now, we find the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ is restricted by \eqref{eq:r1posineq},
+\begin{equation} \label{eq:restriction}
+ \frac{2}{D} < \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} < \frac{2}{D} + \frac{2(\alpha-n)(2+n)}{D(1+n)^2}.
+\end{equation}
+
+
+
+The rest of the parameters $\alpha$ and $n$ are the material properties. In conclusion, for each of the material characterized by $\alpha$ and $n$, we have constructed the two-parameters family of heteroclinic orbits parameterized by $U(0)$ and $\Theta(0)$ at $\xi=0$, the tip of the localized profiles, where the localizing rate $\lambda$ and the translational factor $\eta_0$ are determined by \eqref{eq:lambda} and \eqref{eq:eta0} respectively, and the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ is restricted by \eqref{eq:restriction}.
+
+
+\subsection{Asymptotic behavior of the solutions}
+By transforming back the \eqref{eq:ORItoCAP}, \eqref{eq:CAPtoBAR}, and \eqref{eq:BARtoTIL}, the self-similar profiles $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ and the original profiles $\big(\gamma(x,t),v(x,t),\theta(x,t),\sigma(x,t),u(x,t)\big)$ are recovered.
+We replace $t \leftarrow t+1$ in the final expressions,
+\begin{equation*}
+\begin{aligned}
+ \gamma(t,x) &= (t+1)^a\Gamma((t+1)^\lambda x), & v(t,x) &= (t+1)^b V((t+1)^\lambda x), &\theta(t,x) &= (t+1)^c \Theta((t+1)^\lambda x),\\
+ \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x)
+\end{aligned}
+\end{equation*}
+interpreting $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ as the initial states that give rise to the localization that is self-similar parametrized by $U(0)$ and $\Theta(0)$ as time proceeds. 
+
+\subsubsection{Initial non-uniformities}
+We view $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ as initial non-uniformities or perturbations to the uniform shearing states. By investigating asymptotic behavior of the heteroclinic orbit as $\eta \rightarrow \pm\infty$, we 
+
+\begin{proposition}
+ Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be a smooth self-similar profile satisfying \eqref{eq:continuity} and let $\varphi^\star(\eta)=\big(p(\eta),q(\eta),r(\eta)\big)$ be the associated variables defined by \eqref{eq:tvars} and \eqref{eq:ratios}. Suppose $\varphi^\star(\eta)$ is the heteroclinic orbit of \eqref{eq:pqrsystem} that connects $M_0$ to $M_1$. Then, 
+ \begin{enumerate}
+  \item[(i)] At $\xi = 0$, the self-similar profiles satisfy the boundary conditions
+    \begin{equation*}
+    {V}(0) = \Gamma_\xi(0) = \Theta_\xi(0)=\Sigma_\xi(0) = {U}_\xi(0)=0, \quad \text{$U(0), \Theta(0)$ are given parameters.}
+  \end{equation*}
+%   where the translation factor $\eta_0$ of $\varphi^\star(\eta)$ and $\bG_0$ are related by \eqref{eq:eta0}.
+  \item[(ii)] The asymptotic behavior as $\xi \rightarrow 0$ is given by 
+  \begin{equation} \label{eq:ss_asymp0}
+  \begin{aligned}
+    \Gamma(\xi) &= \Gamma(0) + O(\xi^2), &V(\xi) &= U(0)\xi + O(\xi^3), & \Theta(\xi) &= \Theta(0) + O(\xi^2),\\
+    \Sigma(\xi) &= \Theta(0)^{-\alpha}{U(0)^n}+ O(\xi^2), & U(\xi) &= U(0) + O(\xi^2).
+  \end{aligned}
+  \end{equation}
+  \item[(iii)] The asymptotic behavior as $\xi \rightarrow \infty$ is given by
+  \begin{equation} \label{eq:ss_asymp1}
+  \begin{aligned}
+    V(\xi) &= O(1), &    G(\xi) &= O(\xi^{- \frac{1}{m-n}}),\\
+	S(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{- \frac{1}{m-n}}).
+  \end{aligned}
+  \end{equation}
+ \end{enumerate}
+ 
+\end{proposition}
+\begin{proof}
+\begin{align*}
+ \tv &= \frac{1}{b} \,p^{\frac{\alpha-n}{D}} \,q\, r^{\frac{n(1+\alpha)}{D}}, & \tth&=p^{\frac{1+n}{D}}\,r^{\frac{n(1+n)}{D}}, & \ts&=p^{-\frac{\alpha-n}{D}}\,r^{\frac{n(1+\alpha)}{D}}, & \tu&=p^{\frac{1+\alpha}{D}}\,r^{\frac{n(1+\alpha)}{D}+1}
+\end{align*}
+
+$p \sim \xi^{-\frac{1+n}{1+\alpha}}$
+
+$$ \tv \sim \xi^{-\frac{1+n}{D}}, \quad \tth \sim \xi^{-\frac{(1+n)^2}{(\alpha-n)D}}, \quad \ts \sim \xi^{\frac{1+n}{D}}, \quad \tu \sim \xi^{-\frac{(1+n)(1+\alpha)}{(\alpha-n)D}}$$
+
+$$ V \sim O(1), \quad \Theta \sim \xi^{-\frac{1+n}{\alpha-n}}, \quad \Sigma \sim \xi, \quad U \sim \xi^{-\frac{1+\alpha}{\alpha-n}}.$$
+
+
+  $(i)$ and $(ii)$ were verified in the proof of Proposition \ref{prop1}. To show $(iii)$, the asymptotic behavior of $\varphi^\star(\eta)$ in a neighborhood of $M_1$ is investigated. The asymptotic behavior of a nonlinear problem near the hyperbolic equilibrium point $M_1$ is determined by the associated linearized problem. 
+As the orbit $\varphi^\star(\eta)$ lies in the stable manifold of $M_1$,  its asymptotic behavior  in the neighborhood of $M_1$ is expressed by \eqref{eq:expansion2}. 
+For the orbit $\varphi^\star(\eta)$, one can further exclude the possibility that the coefficient $\kappa'_2 = 0$ in \eqref{eq:expansion2}. 
+
+Indeed,  the plane $p=0$ is invariant for the dynamical system \eqref{eq:pqrsystem}, and the corresponding orbits on the plane $p=0$ can be calculated. 
+In this case  the equation for $q$ decouples and one can integrate for $q$ and $r$. 
+In particular, the heteroclinic that connects $M_0$ to $M_1$ on the plane $p =0$  can be calculated and has  $\kappa'_2 = 0$ for its coefficient. 
+Since the orbit $\varphi^\star(\eta)$ ventures out of the plane $p=0$, we conclude that for this one $\kappa'_2\ne0$. 
+
+In addition, observe that $p \rightarrow 0$ and the $p$-component of $\vec{X}_{11}$ vanishes, which implies
+  $$p = \kappa'_2e^{- \frac{1-m+n}{m-n}\eta} + \text{higher-order terms}, \quad q\rightarrow 1, \quad r\rightarrow c\quad  as ~~\eta \rightarrow \infty.$$
+  The reconstruction formulas for $\big(\tv,\tg,\ts,\tu\big)$ from $\big(p,q,r\big)$ are 
+  \begin{equation}
+  \begin{aligned}
+  \tv &= \frac{1}{b}\Big( p^{-(m-n)}q^{1+m-n}r^n \Big)^{ \frac{1}{1+m-n}},&
+  \tg &= \Big( pr^n \Big)^{ \frac{1}{1+m-n}},\\
+  \ts &= \Big( p^{-(m-n)}r^n \Big)^{ \frac{1}{1+m-n}},&
+  \tu &= \Big( pr^{1+m} \Big)^{ \frac{1}{1+m-n}}.
+  \end{aligned}\label{eq:recon}
+  \end{equation}
+Hence, we conclude
+  \begin{equation*}
+   \tv \sim e^{ \frac{1-m+n}{1+m-n}\eta}, \quad \tg \sim e^{-\frac{1-m+n}{(m-n)(1+m-n)}\eta}, \quad   \ts \sim e^{\frac{1-m+n}{1+m-n}\eta}, \quad \tu \sim e^{-\frac{1-m+n}{(m-n)(1+m-n)}\eta} 
+  \end{equation*}
+  as $\eta \rightarrow \infty$ and then setting  $\xi = e^\eta$ and \eqref{eq:tvars} provides $(iii)$.  
+\end{proof}
+
+\subsubsection{Emergence of localization}
+
+\begin{proof}
+
+
+
+
+
+Note that $\tilde{X}_{02}$ is toward $T$. By the stable(unstable) manifold theorem, there is an orbit $\chi(\eta)$ in the neighborhood of $M_0$ in particular emanates through the ${X}_{02}$ and tangentially on the graph. The projected orbit $\tilde{\chi}(\eta)$ into $T$. In the positively invariant set $T$, the Poincar\'e-Bendixon theorem implies that the $\omega$-limit set of $\chi(\eta)$ cannot contain limit cycle because if so, there would be an equilibrium point in interior of the limit cycle but there are no equilibrium points in interior of $T$. In addition, recall that $\tilde{M_0}$ is an unstable node and $\tilde{M_1}$ is an stable node. In conclusion, the orbit $\chi(\eta)$ has to converge to $\tilde{M_1}$. The lifting of this orbit to the graph is the desired heteroclinic orbit.
+
+
+
+
+
+
+By Lemma \ref{lem:normal_hyper}, there exists $n_0$, such that for $n \in [0, n_0)$, locally invariant manifold $G^{\lambda,m,n}$ with respect to \eqref{eq:pqr_fast} exists. Moreover,   $G^{\lambda,m,n}$ is again given by the graph $(p,q,h(p,q;\lambda,\alpha,n))$ on $\bar{D}$. The condition that $G^{\lambda,m,n}$ is disjoint from $r=0$ plane for all $n \in [0, n_0)$ must persist by making $n_0$ smaller if necessary. In addition, $n_0$ is chosen in the valid range of inequalities \eqref{eq:a3} and \eqref{eq:a4}.%$h(p,q;\lambda,\alpha,n)>0$ in the domain of definition for all $0\le n\le n_2$ has to persist by taking $K^{\lambda,m,0}$ and $n_2$ appropriately.  %On this surface, $r$ evolves such a way staying in the surface.
+
+After achieving $h(p,q;\lambda,\alpha,n)$, substitution of the function in place of $r$ in system \eqref{eq:pqrsystem} leads to  the reduced systems that are parametrized by $\lambda$, $m$, and $n\in[0,n_0)$:
 % {\small
 % \begin{align} \tag*{($\tilde{*}$){\scriptsize re}\textsuperscript{$\lambda,m,n$}} \label{eq:reduced_fast}
 % %  \begin{split}
-%  {p}^\prime &=np\Big(\frac{1}{ \lambda }\big(h^{\lambda,m,n}(p,q) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} 1-q- \lambda p h^{\lambda,m,n}(p,q)\Big),\\
-%  {q}^\prime &=nq\Big(                                                                          1-q- \lambda p h^{\lambda,m,n}(p,q)\Big) + nb^{\lambda,m,n}ph^{\lambda,m,n}(p,q), \
+%  {p}^\prime &=np\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+%  {q}^\prime &=nq\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + nb^{\lambda,m,n}ph(p,q;\lambda,\alpha,n), \
 % %  \end{split}
 % \end{align}
 % }
 % and the equivalent systems with independent variable $\eta$: %${(*)}^{\lambda,m,n}_{re}$ :
-{\small
-\begin{equation} \tag*{(${R}$)\textsuperscript{$\lambda,m,n$}} \label{eq:reduced}
-\begin{split}
- \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h^{\lambda,m,n}(p,q) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h^{\lambda,m,n}(p,q)\Big),\\
- \dot{q} &=q\Big(                                                                          1-q- \lambda p h^{\lambda,m,n}(p,q)\Big) + b^{\lambda,m,n}ph^{\lambda,m,n}(p,q),
-\end{split}
-\end{equation}
-}
+
 
 \medskip \noindent{\bf Step 2.}
  $M_0^{\lambda,m,n}$ and $M_1^{\lambda,m,n}$ are still on the graph.
@@ -601,7 +861,7 @@ The inward normal component of the vector field on the line is then
 The inequality comes from $0<\underbar{r} < c^{ \lambda,m,0} \le 1$. $\delta$ is a fixed constant that is strictly positive, proving that the triangle $T$ is invariant.
 
 
-Now, we show that this positively invariant property persists under perturbation. We examine the same triangle $T$ but with  the system ${(R)}^{\lambda,m,n}$ with $n>0$. % we took for $n=0$ case. %We may take $\underbar{r}$ so that $h^{\lambda,m,n}(p,q)$ includes the triangle in the domain of definition.
+Now, we show that this positively invariant property persists under perturbation. We examine the same triangle $T$ but with  the system ${(R)}^{\lambda,m,n}$ with $n>0$. % we took for $n=0$ case. %We may take $\underbar{r}$ so that $h(p,q;\lambda,\alpha,n)$ includes the triangle in the domain of definition.
 Again, sides of $p=0$ and $q=0$ are invariant or inward for the same reason. Now, the line of the hypotenuse of $T$ is no longer a contour line of $h^{ \lambda,m,n}(p,q)=\underbar{r}$, but $h^{ \lambda,m,n}(p,q)$ remains close to $\underbar{r}$, that is
 $$h^{ \lambda,m,n}(p,q) = \underbar{r} + ng_1(n,p,q), \quad \text{by Taylor theorem.}$$
 {$g_1$ is uniformly bounded  in $n$, $p$, and $q$.} The inward normal component of the vector field on the line is computed as
@@ -624,8 +884,6 @@ Therefore, $n_0$ can be chosen, even smaller if necessary, so that the last expr
 Note that $\vec{X}_{02}$ is pointing inward of the triangle $T$ from $(0,0)$. Thus, the orbit emanating in $\vec{X}_{02}$ is continued to the interior of $T$ by the stable(unstable) manifold theorem. The $\omega$-limit set of this orbit cannot contain the limit cycle because when $n>0$, there is no equilibrium point inside of $T$ other than $(0,0)$ and $(0,1)$. Recall that $(0,0)$ is the unstable node and $(0,1)$ is the stable node. Thus, the Poincar\'e-Bendixson theory (for example in \cite{perko_differential_2001}) implies that the orbit converges to $(0,1)$.  The lifting of this orbit to the three dimensional phase space is the desired heteroclinic orbit. %whole triangle $T \subset W^s\big( (0,1)\big)$, proving the continued orbit converges to $(0,1)$. This orbit  the orbit Since , it is certain that the triangle $T$ contains the orbit responsible for the second unstable eigenspace of $M_0^{ \lambda,m,n}$, which completes the proof.
 % }
 \end{proof}
-
-\section{Existence of $3$-parameters family of self-similar shear banding solutions}
 
 
 
@@ -786,7 +1044,7 @@ Then the first equation \eqref{eq:g} drops out from the system, and we focus on 
 $(p,q,r)$-system possesses four equilibrium points\footnotemark[1] and the exceptional equilibriums that we are not interested in. They are
 \begin{align*}
   (0,0,0), \quad \Big(0,0,\big(c_0-d_1\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(c_0-(d_1+1)\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).\\
- (0,0,0), \quad \Big(0,1,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,0,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).
+ (0,0,0), \quad \Big(0,0,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).
 \end{align*}
 
 \footnotetext[1]{
@@ -1017,14 +1275,14 @@ We let $T$ be the triangle enclosed by the $p$-axis, $q$-axis and the one contou
  Regularly perturbed reduced system.
 \medskip
 
-By Lemma \ref{lem:normal_hyper}, there exists $n_0$, such that for $n \in [0, n_0)$, locally invariant manifold $G^{\lambda,m,n}$ with respect to \eqref{eq:pqr_fast} exists. Moreover,   $G^{\lambda,m,n}$ is again given by the graph $(p,q,h^{\lambda,m,n}(p,q))$ on $\bar{D}$. The condition that $G^{\lambda,m,n}$ is disjoint from $r=0$ plane for all $n \in [0, n_0)$ must persist by making $n_0$ smaller if necessary. In addition, $n_0$ is chosen in the valid range of inequalities \eqref{eq:a3} and \eqref{eq:a4}.%$h^{\lambda,m,n}(p,q)>0$ in the domain of definition for all $0\le n\le n_2$ has to persist by taking $K^{\lambda,m,0}$ and $n_2$ appropriately.  %On this surface, $r$ evolves such a way staying in the surface.
+By Lemma \ref{lem:normal_hyper}, there exists $n_0$, such that for $n \in [0, n_0)$, locally invariant manifold $G^{\lambda,m,n}$ with respect to \eqref{eq:pqr_fast} exists. Moreover,   $G^{\lambda,m,n}$ is again given by the graph $(p,q,h(p,q;\lambda,\alpha,n))$ on $\bar{D}$. The condition that $G^{\lambda,m,n}$ is disjoint from $r=0$ plane for all $n \in [0, n_0)$ must persist by making $n_0$ smaller if necessary. In addition, $n_0$ is chosen in the valid range of inequalities \eqref{eq:a3} and \eqref{eq:a4}.%$h(p,q;\lambda,\alpha,n)>0$ in the domain of definition for all $0\le n\le n_2$ has to persist by taking $K^{\lambda,m,0}$ and $n_2$ appropriately.  %On this surface, $r$ evolves such a way staying in the surface.
 
-After achieving $h^{\lambda,m,n}(p,q)$, substitution of the function in place of $r$ in system \eqref{eq:pqrsystem} leads to  the reduced systems that are parametrized by $\lambda$, $m$, and $n\in[0,n_0)$:
+After achieving $h(p,q;\lambda,\alpha,n)$, substitution of the function in place of $r$ in system \eqref{eq:pqrsystem} leads to  the reduced systems that are parametrized by $\lambda$, $m$, and $n\in[0,n_0)$:
 % {\small
 % \begin{align} \tag*{($\tilde{*}$){\scriptsize re}\textsuperscript{$\lambda,m,n$}} \label{eq:reduced_fast}
 % %  \begin{split}
-%  {p}^\prime &=np\Big(\frac{1}{ \lambda }\big(h^{\lambda,m,n}(p,q) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} 1-q- \lambda p h^{\lambda,m,n}(p,q)\Big),\\
-%  {q}^\prime &=nq\Big(                                                                          1-q- \lambda p h^{\lambda,m,n}(p,q)\Big) + nb^{\lambda,m,n}ph^{\lambda,m,n}(p,q), \
+%  {p}^\prime &=np\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+%  {q}^\prime &=nq\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + nb^{\lambda,m,n}ph(p,q;\lambda,\alpha,n), \
 % %  \end{split}
 % \end{align}
 % }
@@ -1032,8 +1290,8 @@ After achieving $h^{\lambda,m,n}(p,q)$, substitution of the function in place of
 {\small
 \begin{equation} \tag*{(${R}$)\textsuperscript{$\lambda,m,n$}} \label{eq:reduced}
 \begin{split}
- \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h^{\lambda,m,n}(p,q) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h^{\lambda,m,n}(p,q)\Big),\\
- \dot{q} &=q\Big(                                                                          1-q- \lambda p h^{\lambda,m,n}(p,q)\Big) + b^{\lambda,m,n}ph^{\lambda,m,n}(p,q),
+ \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+ \dot{q} &=q\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + b^{\lambda,m,n}ph(p,q;\lambda,\alpha,n),
 \end{split}
 \end{equation}
 }
@@ -1090,7 +1348,7 @@ The inward normal component of the vector field on the line is then
 The inequality comes from $0<\underbar{r} < c^{ \lambda,m,0} \le 1$. $\delta$ is a fixed constant that is strictly positive, proving that the triangle $T$ is invariant.
 
 
-Now, we show that this positively invariant property persists under perturbation. We examine the same triangle $T$ but with  the system ${(R)}^{\lambda,m,n}$ with $n>0$. % we took for $n=0$ case. %We may take $\underbar{r}$ so that $h^{\lambda,m,n}(p,q)$ includes the triangle in the domain of definition.
+Now, we show that this positively invariant property persists under perturbation. We examine the same triangle $T$ but with  the system ${(R)}^{\lambda,m,n}$ with $n>0$. % we took for $n=0$ case. %We may take $\underbar{r}$ so that $h(p,q;\lambda,\alpha,n)$ includes the triangle in the domain of definition.
 Again, sides of $p=0$ and $q=0$ are invariant or inward for the same reason. Now, the line of the hypotenuse of $T$ is no longer a contour line of $h^{ \lambda,m,n}(p,q)=\underbar{r}$, but $h^{ \lambda,m,n}(p,q)$ remains close to $\underbar{r}$, that is
 $$h^{ \lambda,m,n}(p,q) = \underbar{r} + ng_1(n,p,q), \quad \text{by Taylor theorem.}$$
 {$g_1$ is uniformly bounded  in $n$, $p$, and $q$.} The inward normal component of the vector field on the line is computed as
