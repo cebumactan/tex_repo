@@ -316,7 +316,7 @@ we derive $(p,q,r)$-system:
 \section{Equilibrium points and linear stability} \label{sec:equil}
 $(p,q,r)$-system possesses four equilibrium points in the first octant of the phase space\footnotemark[1] and they are
 \begin{align*}
- M_0=\Big(0,1,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,0,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad  M_2=(0,1,0) \quad M_3 = (0,0,0).
+ M_0=\Big(0,0,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,1,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad  M_2=(0,1,0) \quad M_3 = (0,0,0).
 \end{align*}
 This section specifies the linear stability around the four equilibrium points, aiming to have a perspective on the dynamics of orbits in the phase space.
 \footnotetext[1]{
@@ -391,7 +391,7 @@ The quantity $\displaystyle r^{1+n} = \frac{\tu^{1+n}}{\tth^{1+\alpha}} = \frac{
 \subsection{Boundary conditions as $\xi \rightarrow 0$}
 Recall that we imposed the boundary conditions \eqref{eq:bdry0} at $\xi=0$. These restrict the behavior of the heteroclinic orbit as $\eta \rightarrow -\infty$. Next proposition states how the conditions are transmitted to those of the $(p,q,r)$-system.
 
-\begin{proposition}
+\begin{proposition} \label{prop1}
     Suppose $\big(\Gamma,V,\Theta,\Sigma,U\big)$ is a solution of \eqref{eq:barsys}, \eqref{eq:bdry0} that is smooth and bounded in the neighborhood of $\xi=0$. Then the corresponding orbit defined by transformations \eqref{CAPtoBAR}, \eqref{BARtoTIL}, \eqref{pqrdef} $\chi(\eta) = (p(\eta), q(\eta), r(\eta)) \rightarrow M_0$ as $\eta \rightarrow -\infty$. Furthermore, it meets $M_0$ along the direction of the second eigenvector $X_{02}$, i.e.,
     \begin{equation} \label{eq:alpha}
      \big(\chi(\eta) - M_0 \big)e^{-2\eta} \rightarrow \kappa, \quad \text{for some constant $\kappa\ne0$.}
@@ -404,20 +404,28 @@ Recall that we imposed the boundary conditions \eqref{eq:bdry0} at $\xi=0$. Thes
   Because $\mu_{01}=1<2=\mu_{02}$, the first term in the right-hand-side overwhelms other terms in the limit $\eta \rightarrow -\infty$ unless the orbit has $\kappa_1=0$. More precisely, among the three dimensional unstable manifold of $M_0$, there is only one slice of surface on which the orbits meet $M_0$ in the direction of $X_{02}$. This is the surface whose tangent space at $M_0$ is spanned by $X_{02}$ and $X_{03}$.
 \end{remark}
 \begin{proof}
-From the smoothness and boundedness of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ and the boundary conditions \eqref{eq:bdry0}, we can calculate a few leading derivatives of quantities at $\xi=0$ by differentiating the system \eqref{eq:barsys} repeatedly. For the notational simplicity, let
+From the smoothness and boundedness of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ and the boundary conditions \eqref{eq:bdry0}, we can calculate a few leading derivatives of quantities at $\xi=0$ by differentiating the system \eqref{eq:ss-odes} repeatedly. For the notational simplicity, let
 $$\Phi(\xi) \triangleq \Theta(\xi)^{\frac{1+\alpha}{1+n}}, \quad \Sigma(\xi) = \Phi^{-\frac{\alpha-n}{1+\alpha}} \Big(\frac{U}{\Phi}\Big)^n.$$
-Re-write \eqref{eq:barsys}
-{\blue
+
+Re-write \eqref{eq:ss-odes}
 \begin{align*}
-  &c + \frac{1+n}{1+\alpha} \lambda \xi \big(\log\Phi\big)' = \Big(\frac{U}{\Phi}\Big)^{1+n},\\
-  &(b+\lambda)U = \Sigma^{''} = \Big(\Phi^{-\frac{\alpha-n}{1+\alpha}}\Big(\frac{U}{\Phi}\Big)^{n}\Big)^{''}
+  c + \frac{1+n}{1+\alpha} \lambda \xi \big(\log\Phi\big)' &= \Big(\frac{U}{\Phi}\Big)^{1+n},\\
+  (b+\lambda)U  + \lambda \xi U'(\xi) &= \Sigma^{''} = \Big(\Phi^{-\frac{\alpha-n}{1+\alpha}}\Big(\frac{U}{\Phi}\Big)^{n}\Big)^{''}
 \end{align*}
-}
 from which albeit cumbersome we conclude
 \begin{align*}
 &\frac{U(0)}{\Phi(0)} = r_0 = c^{\frac{1}{1+n}},  \quad \Big(\frac{U}{\Phi}\Big)'(0)=0, \\
 &\Big(\frac{U}{\Phi}\Big)^{''}(0) = \frac{ (b+\lambda) r_0^{1-n} U(0)\Phi(0)^{\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}} = \frac{ (b+\lambda) r_0^{2-n} \Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}}.
 \end{align*}
+Furthermore, we have
+\begin{equation} \label{eq:second_der}
+\begin{aligned}
+\frac{\Theta^{''}(0)}{\Theta(0)} &= (b+\lambda)r_0^{1-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} \Big(\frac{n}{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}} -1\Big)\Big(\frac{1}{\alpha-n}\Big) < 0,\\
+\frac{U^{''}(0)}{U(0)} &=(b+\lambda)r_0^{1-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} \Big(\frac{n\frac{1+\alpha}{\alpha-n}+1}{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}} -\frac{1+\alpha}{\alpha-n}\Big) < 0,\\
+\Gamma^{''}(0)&=(a+2\lambda)U^{''}(0) <0,\\
+\Sigma^{''}(0)&=(b+\lambda)U(0)>0.
+\end{aligned}
+\end{equation}
 
 Now, we consider the taylor expansion of $p(\log\xi)$, $q(\log\xi)$ and $r(\log\xi)$ at $\xi=0$ using above and \eqref{eq:bdry0}.
 \begin{align*}
@@ -572,7 +580,7 @@ Let $\lambda>0$ and $\alpha>0$. For any pair $(\lambda,\alpha)$, there exists $n
 \begin{enumerate}
     \item[(i)] the triple $(\lambda,\alpha,n)$ satisfies the \eqref{eq:r1posineq}.
     \item[(ii)] $(p,q,r)$-system with parameters from $(\lambda,\alpha,n)$ admits a heteroclinic orbit $\chi(\eta)$ such that
-    \begin{equation}
+    \begin{equation} \label{eq:estimate}
         \chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\chi(\eta) - M_1\big) \rightarrow \kappa \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa>0$}.
     \end{equation}
 \end{enumerate}
@@ -675,7 +683,7 @@ Next, because there is no interior equilibrium points in $T$, the $\omega$-limit
 \end{proof}
 
 \section{Existence of two-parameters family of self-similar shear banding solutions and asymptotics}
-The dynamical system has a translation invariance, i.e., if $\chi(\eta)$ is a heteroclinic orbit, then so is a $\chi(\eta-\eta_0)$ for any $\eta_0\in \mathbb{R}$, implying that we have constructed in fact infinitely many heteroclinics and it turns out that all of them are relevant.  Besides of $\eta_0$, we have been using a few other parameters and this gives rise to the point that we have constructed a family of solutions with a certain degrees of freedom. Not all of parameters are independent and we precise the relationships between parameters and the total number of degrees of freedom.
+The dynamical system has a translation invariance, i.e., if $\chi(\eta)$ is a heteroclinic orbit, then so is a $\chi(\eta-\eta_0)$ for any $\eta_0\in \mathbb{R}$, implying that we have constructed in fact infinitely many heteroclinics and it turns out that all of them are relevant.  Besides of $\eta_0$, we have been using a few other parameters and this points to that we have constructed a family of solutions with a certain degrees of freedom. Not all of parameters are independent and we precise the relationships between parameters and the total number of degrees of freedom.
 
 To begin with, fix any referential heteroclinic orbit $Z(\eta)=\big(P(\eta),Q(\eta),R(\eta)\big)$, which is characterized by the unique constant $\bar{\kappa}$ in the expansion around the $M_0$ such that
 $$ Z(\eta) = \bar{\kappa}e^{2\eta}X_{02} + \text{higer-order terms as $\eta \rightarrow -\infty$.}$$%, with the associated constant $\bar{\kappa}$.}$$
@@ -699,7 +707,7 @@ Now, we find the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ is restricted b
 
 
 
-The rest of the parameters $\alpha$ and $n$ are the material properties. In conclusion, for each of the material characterized by $\alpha$ and $n$, we have constructed the two-parameters family of heteroclinic orbits parameterized by $U(0)$ and $\Theta(0)$ at $\xi=0$, the tip of the localized profiles, where the localizing rate $\lambda$ and the translational factor $\eta_0$ are determined by \eqref{eq:lambda} and \eqref{eq:eta0} respectively, and the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ is restricted by \eqref{eq:restriction}.
+The rest of the parameters $\alpha$ and $n$ are the material properties. In conclusion, for each of the material characterized by $\alpha$ and $n$, we have constructed the two-parameters family of heteroclinic orbits parameterized by $U(0)$ and $\Theta(0)$ at $\xi=0$, the tip of the localized profiles, where the localizing rate $\lambda$ and the translational factor $\eta_0$ are determined by \eqref{eq:lambda} and \eqref{eq:eta0} respectively, and the valid range of the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ for the Theorem \ref{thm1} to apply is restricted by \eqref{eq:restriction}.
 
 
 \subsection{Asymptotic behavior of the solutions}
@@ -708,40 +716,53 @@ We replace $t \leftarrow t+1$ in the final expressions,
 \begin{equation*}
 \begin{aligned}
  \gamma(t,x) &= (t+1)^a\Gamma((t+1)^\lambda x), & v(t,x) &= (t+1)^b V((t+1)^\lambda x), &\theta(t,x) &= (t+1)^c \Theta((t+1)^\lambda x),\\
- \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x)
+ \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x),
 \end{aligned}
 \end{equation*}
-interpreting $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ as the initial states that give rise to the localization that is self-similar parametrized by $U(0)$ and $\Theta(0)$ as time proceeds. 
+by which we interprete $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)=\big(\gamma(0,x),v(0,x),\theta(0,x),\sigma(0,x),u(0,x)\big)|_{x=\xi}$,  the initial states that give rise to the localization. In the following sections, we examine characteristics of these two-parameter family of initial states and discuss the self-similar emergence of localization from them as time proceeds.
 
 \subsubsection{Initial non-uniformities}
-We view $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ as initial non-uniformities or perturbations to the uniform shearing states. By investigating asymptotic behavior of the heteroclinic orbit as $\eta \rightarrow \pm\infty$, we 
+
+Now, we fix the two primary parameters $U(0)$ and $\Theta(0)$ and look into the 
+
+
+In this section we contrast the initial non-uniformities $\big(\gamma(0,x),v(0,x),\theta(0,x),\sigma(0,x),u(0,x)\big)=\\ \big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)|_{\xi=x}$ from the one snapshot at a certain time of the uniform shearing motion. We state that each of the strain, strain-rate, and temperature has a small bump at origin out of the constant state, whose sizes of tips are parameterized by $U(0)$ and $\Theta(0)$. Accordingly, the velocity is an increasing function of $x$ that is slightly stipper at origin than the rest of the place, and the stress is the convex increasing function of $|x|$.  
 
 \begin{proposition}
- Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be a smooth self-similar profile satisfying \eqref{eq:continuity} and let $\varphi^\star(\eta)=\big(p(\eta),q(\eta),r(\eta)\big)$ be the associated variables defined by \eqref{eq:tvars} and \eqref{eq:ratios}. Suppose $\varphi^\star(\eta)$ is the heteroclinic orbit of \eqref{eq:pqrsystem} that connects $M_0$ to $M_1$. Then, 
+ Let $U(0)$ and $\Theta(0)$ be fixed and let $\chi(\eta)=\big(p(\eta),q(\eta),r(\eta)\big)$ be the heteroclinic orbit of the $(p,q,r)$-system \eqref{eq:pqrsys} such that the asymptotics \eqref{eq:estimate} holds. Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be the associated self-similar profiles defined by transformations of \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, and \eqref{eq:pqrdef}. Then, 
  \begin{enumerate}
-  \item[(i)] At $\xi = 0$, the self-similar profiles satisfy the boundary conditions
+  \item[(i)] The self-similar profile achieves the boundary condition at $\xi=0$,
     \begin{equation*}
     {V}(0) = \Gamma_\xi(0) = \Theta_\xi(0)=\Sigma_\xi(0) = {U}_\xi(0)=0, \quad \text{$U(0), \Theta(0)$ are given parameters.}
   \end{equation*}
-%   where the translation factor $\eta_0$ of $\varphi^\star(\eta)$ and $\bG_0$ are related by \eqref{eq:eta0}.
-  \item[(ii)] The asymptotic behavior as $\xi \rightarrow 0$ is given by 
+  \item[(ii)] Its asymptotic behavior as $\xi \rightarrow 0$ is given by 
   \begin{equation} \label{eq:ss_asymp0}
   \begin{aligned}
-    \Gamma(\xi) &= \Gamma(0) + O(\xi^2), &V(\xi) &= U(0)\xi + O(\xi^3), & \Theta(\xi) &= \Theta(0) + O(\xi^2),\\
-    \Sigma(\xi) &= \Theta(0)^{-\alpha}{U(0)^n}+ O(\xi^2), & U(\xi) &= U(0) + O(\xi^2).
+    \Gamma(\xi) &= \frac{1}{a}U(0) + \Gamma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Gamma^{''}(0)&<0,\\
+    \Theta(\xi) &= \Theta(0) + \Theta^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Theta^{''}(0)&<0,\\
+    \Sigma(\xi) &= \Theta(0)^{-\alpha}{U(0)^n}+ \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Sigma^{''}(0)&>0, \\
+    U(\xi) &= U(0) + U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & U^{''}(0)&<0,\\
+    V(\xi) &= U(0)\xi + U^{''}(0)\frac{\xi^3}{6} + o(\xi^3), & U^{''}(0)&<0,
   \end{aligned}
   \end{equation}
-  \item[(iii)] The asymptotic behavior as $\xi \rightarrow \infty$ is given by
+  \item[(iii)] Its asymptotic behavior as $\xi \rightarrow \infty$ is given by
   \begin{equation} \label{eq:ss_asymp1}
   \begin{aligned}
-    V(\xi) &= O(1), &    G(\xi) &= O(\xi^{- \frac{1}{m-n}}),\\
-	S(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{- \frac{1}{m-n}}).
+    \Gamma(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-n}}), & V(\xi) &= O(1), &    \Theta(\xi) &= O(\xi^{-\frac{1+n}{\alpha-n}}),\\
+   \Sigma(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-n}}).
   \end{aligned}
   \end{equation}
  \end{enumerate}
  
 \end{proposition}
 \begin{proof}
+The proof of the Proposition \ref{prop1} contains $(i)$ and $(ii)$ (See \eqref{eq:second_der}.) and thus we are left to prove $(iii)$. 
+
+By \eqref{eq:estimate}, $p(\log\xi) \rightarrow 0$, $q(\log\xi) \rightarrow 1$, and $r^{1+n}(\log\xi)=\frac{U(\xi)^{1+n}}{\Theta(\xi)^{1+\alpha}} \rightarrow r_1^{1+n}$ as $\xi \rightarrow\infty$. From $\eqref{eq:ss-odes}_{3}$, we observe that
+$$ \frac{\lambda}{1+\alpha} \frac{\xi\Theta'(\xi)}{\Theta(\xi)} \rightarrow r_1 - c = -\frac{1+n}{\alpha-n}, \quad \text{as $\xi \rightarrow \infty$}.$$
+
+
+
 \begin{align*}
  \tv &= \frac{1}{b} \,p^{\frac{\alpha-n}{D}} \,q\, r^{\frac{n(1+\alpha)}{D}}, & \tth&=p^{\frac{1+n}{D}}\,r^{\frac{n(1+n)}{D}}, & \ts&=p^{-\frac{\alpha-n}{D}}\,r^{\frac{n(1+\alpha)}{D}}, & \tu&=p^{\frac{1+\alpha}{D}}\,r^{\frac{n(1+\alpha)}{D}+1}
 \end{align*}
@@ -781,6 +802,30 @@ Hence, we conclude
 \end{proof}
 
 \subsubsection{Emergence of localization}
+
+{\bf strain}
+\begin{align*}
+ \gamma(t,0) &= (1+t)^{1+\frac{1}{D} + \frac{2+2\alpha}{D}\lambda}\Gamma(0),\\
+ \gamma(t,x) &\sim t^{1+\frac{1}{D} - \frac{(1+\alpha)(1+n)}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+\begin{align*}
+ u(t,0) &= (1+t)^{\frac{1}{D} + \frac{2+2\alpha}{D}\lambda}U(0),\\
+ u(t,x) &\sim t^{\frac{1}{D} - \frac{(1+\alpha)(1+n)}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+\begin{align*}
+ \theta(t,0) &= (1+t)^{\frac{2}{D} + \frac{2+2n}{D}\lambda}\Theta(0),\\
+ \theta(t,x) &\sim t^{\frac{2}{D} - \frac{(1+n)^2}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+\begin{align*}
+ \sigma(t,0) &= (1+t)^{\frac{-2\alpha+n}{D} + \frac{-2\alpha+2n}{D}\lambda}\Sigma(0),\\
+ \sigma(t,x) &\sim t^{\frac{-2\alpha+n}{D} +\frac{1+n}{D}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+\begin{align*}
+ \gamma(t,0) &= (1+t)^{\frac{2}{D} + \frac{2(1+n)}{D}\lambda}\Gamma(0),\\
+ \gamma(t,x) &\sim t^{1+\frac{1}{D} - \frac{(1+\alpha)(1+n)}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+
+
 
 \begin{proof}
 
