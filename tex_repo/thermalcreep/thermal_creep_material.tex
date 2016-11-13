@@ -220,6 +220,15 @@ Then the question, that whether the Korteweg's capillarity theory can also expla
 In reality, we may be in the mixed situation where less pressure gradient exists but still is in same direction with the temperature gradient, and less acceleration from the colder site to the hotter site.
 \end{enumerate}
 
+\section{Work of Dunn and Serrin}
+I didn't summarize the work of Dunn and Serrin. Hoever, the most critical message from this paper in regard to our study is that,
+\begin{itemize}
+ \item From the free energy function depends on higher gradient of motion and temperature, this paper derives the stress tensor.
+ \item It is inconsistent with the Clausius-Duhem inequality, so the authors appended the additional energy flux, the interstitial working.
+ \item At the beginning, the stress tensor could have included the terms of $D^2\theta$ because the free energy function depended on higher gradient of the temperature. However, due to the Clausius-Duhem inequality, this possibility is excluded in the course of the stress derivation.
+ \item I need to know whether this exclusion is unavoidable or we could have modified theory by making more efforts, as same as they appended the interstitial working term to make the Korteweg tensor be consistent to the Clausius-Duhem inequality. I will read this paper more carefully so that I can answer to this question !
+\end{itemize}
+
 \section{Work of Karlin and Gorban, Marshall}
 Karlin and Gorban explains the chapman-enskog expansion through the idea of relaxation to the slow manifold regarding the Boltzmann equation as a dynamical system with multiple time scales. In a Boltzmann or other kinetic equation,
 
@@ -244,70 +253,65 @@ and view the equation as an infinite dimensional dynamical system. Assuming the 
  One important point that this specific hydrodynamic model, which is parametrized by $\epsilon$, would be of the {\it regularly perturbed system}. Whether or not the $M(x;\epsilon)$ has an expansion in $\epsilon$ does not spoil this fact.
 \end{itemize}
 
-In the below, I 
+In the below, I focus on the term $\theta_{xx}$ and its sign and the above issue on regular perturbation with respect to the $\epsilon$.
 
 
 \subsection{Linearized Grad 13 moments or 10 moments system around the global maxwellian}
-Karlin and Gorban picked the Grad 13 moments or 10 moments system as a kinetic model parametrized by $\epsilon$ the Knudsen number. From Sone's eye, this corresponds to his first expansion where Boltzmann equation is linearized around the global maxwellian and he restricted the interpretation within the perturbation size of much less than the Knudsen number. If we are skeptical, then we may not further infer from this point.
+This is a brief summary of the paper. The Grad 13 moments or 10 moments system is considered as a given kinetic model, which is parametrized by $\epsilon$ the Knudsen number. The system is linearized around the constant state of $(\rho_0,\mathbf{v}_0,\theta_0)$. From perspective of the Sone's work, this corresponds to his first expansion where Boltzmann equation is linearized around the global maxwellian and there, the interpretation was such that the perturbation size is much less than the Knudsen number. Thus one might be skeptical on the further inference of the results in this line.
 
-If we continue, we can find a few remarks,
+\begin{enumerate}
+ \item For this linearized system, the hydrodynamic invariant manifold exists, in particular regardlessly of $\epsilon$. However, the expansion in $\epsilon$ fails : high order chapman-enskog exhibit the bobylev instability.
+ 
+ \item The ultimate form of the stress in terms of lower moments in fourier space is
+ $$\sigma(k) = - k^2 B(k^2) p(k) - i k A(k^2)v(k),$$
+ where $p = \rho + \theta$, (the linearized pressure) and {{{$A(k^2)$}}} and {{{$B(k^2)$}}} are two functions of {{{$k^2$}}} that are negative. So, it is a non-local operator on $p$ and $v$. 
+ \item Importantly, this stress does not suffer from the bobylev instability. In the course, the rescale has been done, so in order to invoke $\epsilon$, we need to transform back by replacing $k \mapsto \epsilon k$. 
+ \item The functions $A(k^2)$ and $B(k^2)$ are low-pass filters. 
+%  
+%  Approximately, {{{ $$ A(k^2) \sim -\frac{4}{3 + 9k^2}, \qquad B(k^2) \sim -\frac{4}{3 + 5k^2}. $$ }}}
+%  If we invoke $\epsilon$,
 
- * 1. The chapman-enskog expansion at high order exhibits the bobylev type instability.
-
- * 2. For this linear system, chapman-enskog expansion can be traced up to the infinite order. In the course, they got rid of $\epsilon$ by scaling the independent variables $x$ and $t$.
-  * 1. The final form of stress function in terms of lower moments and their derivatives is in fourier space is
-
-{{{ $$\sigma(k) = - k^2 B(k^2) p(k) - i k A(k^2) $$ }}}, where $p = \rho + \theta$ in the linearized form and {{{$A(k^2)$}}} and {{{$B(k^2)$}}} are functions of {{{$k^2$}}} and are negative.
-
-  * 2. So the stress $\sigma$ is non-local operator of $p$ and $u$.
-  * 3. This stress form doesn't exhibit bobylev instability.
-  * 4. The functions $-A$ and $-B$ looks like low-pass filter. It decays to $0$ and has the tail {{{$O(\frac{1}{k^2})$}}}.
-
-%{{attachment:b_k.png||width="500"}}
-
-Approximately, {{{ $$ A(k^2) \sim -\frac{4}{3 + 9k^2}, \qquad B(k^2) \sim -\frac{4}{3 + 5k^2} $$ }}}
-
-  * 5. If we invoke $\epsilon$ again, then
-
+Approximately,
 {{{ $$ A(k^2) \sim -\frac{4}{3 + 9\epsilon^2 k^2}, \qquad B(k^2) \sim -\frac{4}{3 + 5\epsilon^2 k^2}. $$ }}}
+It decays to $0$ as $k^2 \rightarrow \infty$ with tail behavior of $O(\frac{1}{k^2})$.
 
- * 3. Marshall presented the entropy dissipation equality in the form
+ \item Marshall presented the entropy dissipation equality for the 10-moments system in the form
+$$ \frac{1}{2} \partial_t \int_{-\infty}^{\infty} \frac{3}{5} p(k)^2 + u(k)^2 \; dk + \frac{1}{2} \int_{-\infty}^{\infty} -\frac{3}{5}k^2 B(k^2)p(k)^2 \; dk = \int_{-\infty}^{\infty} k^2 A(k^2) u(k)^2 \; dk, $$
+which is consistence in the sense that $A(k^2)$ and $B(k^2)$ are negative. The first term is clearly of classical free energy and the kinetic energy and the second contribution can be interpreted as the {\it non-local capillary} energy.
 
-{{{ $$ \frac{1}{2} \partial_t \int_{-\infty}^{\infty} \frac{3}{5} p(k)^2 + u(k)^2 \; dk + \frac{1}{2} \int_{-\infty}^{\infty} -\frac{3}{5}k^2 B(k^2)p(k)^2 \; dk = \int_{-\infty}^{\infty} k^2 A(k^2) u(k)^2 \; dk \le 0 $$}}}
+ \item One can give the heuristic explanation to connect above {\it non-local} to the {\it local} Korteweg type energy. Marshall explained in the paper but I want to refine it as below.  
+ \begin{enumerate}
+ \item The leading order of $-\frac{3}{5}k^2 B(k^2) \sim -\frac{3}{5}B(0) k^2$
+ 
+ This is the second derivative {\it local} stress with the {\it correct sign}. However the reason why it has the correct sign is rather delicate because in the 13-moments system, it would have a different sign; this reminds us that we do not truncate at the finite order of $\epsilon$ was the main theme.
+ \item The reason why the above local leading order has the correct sign is that the bobylev instability of the 10-moments system begins at the Super-burnett order, not from the Burnett order, as can be seen in the paper of Karlin and Gorban. 
+ 
+ \item Without the truncation at the leading order, still we can give the formal explanation to reach the {\it local} version of the stress.
+ 
+ \item For simplicity, let's ignore constants and examine the expression 
+ $$b(k^2) = \frac{-1}{1+\epsilon^2 k^2}.$$ A few leading orders of $-k^2b(k^2)$ will be
+ $$ k^2(1 - \epsilon^2k^2),$$
+ where we see the bobylev instability from the second term.
+ \item The expression $-k^2b(k^2)$ is expected to be {\it regularly perturbed}. We can be quite concrete on this. $b(k^2)$ has the inverse fourier transform, which is 
+$$ b(\epsilon,x) = \frac{1}{2\epsilon} e^{-\frac{|x|}{\epsilon}} $$
+and this kernel has the integral $1$ in entire space. Equivalent way to say that is 
+\begin{align*}
+ \sigma_{capillary} &= \Delta q, \quad q = (Id - \epsilon^2 \Delta) p, \quad (q(k) = 1+\epsilon^2k^2 p(k)), \quad \text{or}\\
+ \sigma_{capillary} &= \Delta(Id - \epsilon^2 \Delta)^{-1} p.
+\end{align*}
+I remember those expression from Marshall's talk in regard to the failure of truncation of $(I-\epsilon^2 \Delta)^{-1}$. 
 
-  * 1. $A$ and $B$ are negative.
-  * 2. Marshall interpreted the second term in the left-hand-side as the non-local capillary energy, which is positive and the right hand side as non-local viscosity dissipation which is negative.
+\item I did not give any proof, but the above expression formally should converges to $\Delta p$ in {\it a good mode of convergence}.
+\item It is true that we would have another $\epsilon$ in front of $\sigma_{capillary}$, so the asymptotic limit as $\epsilon \rightarrow 0$ could be even more trivial. In any sense, this size diminishing, and the convergence to the {\it local} operator are both of {\it regularly perturbed} and the limit of the multiplications of these two also will behave well in my perspective. In addition, the overall size of the capillary stress contribution has to be determined with the problem specification itself, considering non-dimensional quantities, so it has to be separately treated.
+\end{enumerate}
+\item Now, we come the the local stress $p_{xx} = \rho_{xx} + \theta_{xx}$ that would appear in the limit $\epsilon \rightarrow 0$. Here we have the contribution $\theta_{xx}$ that does not appear in the Korteweg stress tensor. I address this issue because we mentioned that this has incorrect sign in the introduction section of the previous thermal creep paper. After spending some times, my new opinion is that it has the correct sign and that this was the reason why Maxwell succeeded to explain phenomena in his paper. As to the bobylev instability, first of all the instability is the consequence of the eigenvalue analysis for entire linear system rather than the consequence of one term. Besides, it happens when we probe the high frequency functions and other than that it is more or less okay. Recall that Sone either did not take those high frequency functions into account by assuming derivatives of functions are of comparable size to the functions themselves.
 
- * 4. In a sentence of Marshall's paper on page 622, that the non-local term {{{$-k^2 B(k^2)$}}} has the leading order {{{$\frac{3}{5}C_0k^2$}}} with {{{$C_0>0$}}}, and that this corresponds to the Korteweg's ''local'' capillary stress that also has the correct entropy inequality, I'd like to endeavor more on the logical connection in the below. Anyhow, because $B$ is negative here, the capillary energy is positive and there is no harm. But I think it's worth to mention in the below because this tells one role of $\epsilon$ the small parameter.
-  * 1. For simplicity, let's ignore constants and see for the form {{{ $b(k^2) = \frac{-1}{1+k^2}$ }}}, in this case the leading order is {{{$k^2$}}}
-  * 2. In the next leading order of {{{$k^2(1-k^2)$}}}, we see the bobylev instability again.
-  * 3. I simply put the appeared term {{{$k^2$}}} as a result putting $\epsilon=0$ on {{{$b(\epsilon,k^2) =  \frac{-1}{1+\epsilon^2k^2}$}}}. This is in my opinion, is related to the fact that the expression for the stress in terms of lower moments is '''regularly''' perturbed. Let me detail in the below.
-  * 4. In fact, the expression {{{$-b(\epsilon,k^2) = \frac{1}{1 + \epsilon^2 k^2}$}}} has the inverse fourier transform, it is of the form
+\item Regarding to the non-local to local issue, it is worth to look at the approximation Euler-Korteweg model (in Relative Energy paper (2.53)), which was motivated by the numerical concerns.
 
-{{{$$ b(\epsilon,x) = \frac{1}{2\epsilon} e^{-\frac{|x|}{\epsilon}} $$}}} and this kernel has the integral $1$ in entire space. Equivalent way to say is  that the capillary stress is given by {{{ $$\sigma_{cap} = \epsilon^2\Delta q, \quad q = (Id - \epsilon \Delta) p$$}}} I remember Marshall also quote the failure of truncation with above example.
-
-  * 5. At least formally, the operator $p \mapsto b(\epsilon,x)\star p$ converges to the identity and the kernel $b$ converges to the dirac measure in some '''good''' mode of convergence.
-
-  * 6. Overall size of the capillary stress is determined by $\epsilon^2$ in front of the Laplacian operator above. However, this size can be in any order and Laplacian part has to be treated separately. Whatever the size, my guess is whole expression is regularly perturbed in some 'good' topology, and the part associated to $b$ converges to the dirac measure as $\epsilon \rightarrow 0$. It is just a molifier which comes from the low-pass property of $b(k)$ and the integrability.
-
-  * 7. If we look carefully of the Karlin and Gorban's paper, then we can find that the bobylev instability of the Chapman-Enskog expansion of the Grad 10 moments system starts from the super-Burnett order, not from the Burnett order. After sending the limit $\epsilon \rightarrow 0$, the result happen to be the one at the Burnett order, which is '''stable'''. Karlin and Gorban is saying that in section 4, the Grad system with full 13 moments exhibits bobylev instability from the burnett order. I didn't yet go through the entropy inequality of Grad 13 moments case, but I presume that in the limit $\epsilon \rightarrow 0$, the stress should have a few more terms becauseI presume that in the limit the stability result should be inherited. In addition the term {{{ $p_{xx} = \rho_{xx} + \theta_{xx}$}}} will be still there with unchanged sign. From this, I think the sign in front of {{{$\theta_{xx}$}}} is the correct sign but instability comes from the lack of necessary terms. The reason why Maxwell could explain the thermal phenomena with the second gradient of temperature with sign at Burnett order is I guess it is in correct sign assuming only the long wave fields.
-
-  * 8 At this point, the iso-thermal one-parameter approximate Korteweg model in the paper of Jan and thanos looks much more relevant other than the numerical motivation. Indeed, the kernel $b(x)$ looks like trinangle function near origin and if this kernel were exactly the triangle function then the capillary stress will be exactly the second order ''difference'' of the $p$. And its fourier transform is the square of sinc funtion, which could be said to have similar asymptotics in $k$.
-
-  * 9. If we are to expand $b(x)$ asymptotically w.r.t $\epsilon$ with ''the technique of matched asymptotics'', then we can see in fact there is '''nothing'''. The outer expansion is merely $0$ and the inner expansion is just $b(x)$ itself.
-  * 10. overall conclusion is, the lesson from Karlin and Gorban, Marshall is not to truncate at any order of $\epsilon$. But $\epsilon$ can be passed to the limit, which results in the ''local'' expression in the stress.
-  * 11. The Korteweg theory, as a matter of fact, is from the first place designed to have consistence with thermodynamics, It is a second gradient theory of a motion field $x(X,t)$ of gas, and ignoring the viscosity, it is a hamiltonian system without temperature variation and a dissipative system with temperature variation. Apparent difference we note is that Korteweg stress tensor contains the second gradient of $rho$ but the only first gradient of $\theta$. In fact, in the work of Dunn and Serrin, they at first let the helmholtz energy to depend on the first gradient of $\theta$ which could produce the second gradient of $\theta$ in the stress. But in the course of making consistence, this possibility was removed. (I don't quite understand the criterion).
-
-  * 12. In addition, I tried to illustrate in the below that the iso-thermally occured capillary problem, where the gravitational potential energy increases in a particular direction $z$-axis, has some purely mathematical similar structure to the problem  of thermal stress flow in 1D, where the temperature increases in a particular direction. This is very speculative and perhaps is wrong. My point is the reason why the one theory (due to the Korteweg's stress tensor) could explain the two phenomena, the capillarity and the thermal flow, might be seen purely mathematically.
-
-\section{Work of Dunn and Serrin}
-I didn't summarize the work of Dunn and Serrin. Hoever, the most critical message from this paper in regard to our study is that,
-\begin{itemize}
- \item From the free energy function depends on higher gradient of motion and temperature, this paper derives the stress tensor.
- \item It is inconsistent with the Clausius-Duhem inequality, so the authors appended the additional energy flux, the interstitial working.
- \item At the beginning, the stress tensor could have included the terms of $D^2\theta$ because the free energy function depended on higher gradient of the temperature. However, due to the Clausius-Duhem inequality, this possibility is excluded in the course of the stress derivation.
- \item I need to know whether this exclusion is unavoidable or we could have modified theory by making more efforts, as same as they appended the interstitial working term to make the Korteweg tensor be consistent to the Clausius-Duhem inequality. I will read this paper more carefully so that I can answer to this question !
-\end{itemize}
+\item From the form of the kernel 
+$$ b(\epsilon,x) = \frac{1}{2\epsilon} e^{-\frac{|x|}{\epsilon}}, $$
+it is quite clear why the expansion in $\epsilon$ fails.
+\end{enumerate}
 
 
 \section{Work of Kareem and Min-Gi}
