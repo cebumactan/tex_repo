@@ -1,0 +1,433 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=3cm]{geometry}
+\usepackage{setspace}
+%\onehalfspacing
+\doublespacing
+%\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[notcite,notref]{showkeys}
+
+\usepackage{psfrag}
+\usepackage{graphicx,subfigure}
+\usepackage{color}
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+%\usepackage{verbatim}
+\usepackage{alltt}
+%\usepackage{kotex}
+
+\usepackage{enumerate}
+
+%%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\tr{\,\textrm{tr}\,}
+\def\div{\,\textrm{div}\,}
+\def\sgn{\,\textrm{sgn}\,}
+
+\def\th{\tilde{h}}
+\def\tk{\tilde{\kappa}}
+\def\bx{\bar{x}}
+\def\bm{\bar{\mathbf{m}}}
+\def\K{\mathcal{K}}
+\def\E{\mathcal{E}}
+\def\del{\partial}
+\def\eps{\varepsilon}
+
+\newcommand{\tcr}{\textcolor{red}}
+\newcommand{\tcb}{\textcolor{blue}}
+
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage[utf8]{inputenc}
+
+%opening
+\title{Second gradient theory, Kinetic model and Thermally driven flow.}
+\author{Min-Gi Lee}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+This note is, first of all for myself to organize what I read and thought but also for the discussions. I am currently looking into the works of
+\begin{itemize}
+ \item Yoshio Sone, Kinetic Theory and Fluid Dynamics (2002)
+ \item Maxwell(1879), On stresses in rarefied gases arising from inequalities of temperature
+ \item Dunn \& Serrin(1984), On the thermomechanics of interstitial working
+ \item Giesselmann, Lattanzio, Tzavaras, Relative energy for the korteweg theory and related hamiltonian flows in gas dynamics
+ \item Kim, Lee, Slemrod(2015), Thermal creep of a rarefied gas on the basis of non-linear Korteweg-theory
+ \item Slemrod(2012), Chapman-Enskog $\Rightarrow$ Viscosity-Capillarity
+ \item Karlin \& Gorban(2014), Hilbert's 6th problem : exact and approximate hydrodynamic manifolds for kinetic equations.
+\end{itemize}
+
+The current purpose of this note is to address three points.
+\begin{enumerate}
+ \item I wanted to clarify issues on the signs of terms in the stress come out of the {\it second gradient theory} or {\it kinetic considerations} (Section 5)
+ \item One obvious difference between two stress tensors ($T^M$ from kinetic consideration, $T^K$ of korteweg theory) is that the former has the term on $D^2\theta$, $\theta$ the temperature, whereas the latter does not. I want to address that this matters to some extent and clarify the differences and consequences. (Section 6,7)
+ \item I certainly can say that in 1D Euler-Korteweg model, Korteweg stress does carry the thermal effect in the correct direction in the presence of the temperature gradient. Its mechanism is to penalize the density gradient and what the korteweg tensor does is to moderate the density gradient and apparently it can be interpreted as the thermal effect. (Section 7)
+\end{enumerate}
+
+
+
+\tableofcontents
+
+\section{Terminology}
+I discriminate the term Thermal creep from thermal stress flow. In a narrow sense, thermal creep is associated to the surface-gas interaction on which the gradient of temperature presences. From hydrodynamic perspective, thermal creep could be modeled only by more elaborate slip boundary conditions. %, we may think of a model without any (thermal) additional stress contribution other than the pressure and the viscosity but with more elaborate boundary conditions that include the slip due to temperature gradient.
+
+On the other hand, the thermal stress is the additional contribution in the stress term in the hydrodynamic model, and Sone refers to the flow purely due to this contribution as the  {\bf thermal stress flow}.
+
+Phenomenologically, we might not able to know where to attribute, however.
+
+Maxwell also distinguished these two, he used the terms normal stress and the tangential stress to denote the stress contribution that are in the normal to the surface boundary. If the surface has uniform temperature, then there will be no tangential stress contribution on the boundary.
+
+\section{Notations}
+\begin{itemize}
+ \item {{{ $\rho, \theta , \mathbf{v}, T, T^v, T^k$ }}} : density, temperature, velocity, stress tensor, viscous stress tensor, Korteweg stress tensor
+ \item $X$ : material coordinate,
+ \item $x$ : spatial coordinate,
+ \item $x(X,t)$ : motion field, {{{$F_{ij} = \frac{\partial x_i}{\partial X_j}$}}} : deformation gradient, $\tau = det(F) $ : specific volume.
+\end{itemize}
+
+\section{Work of Sone}
+Idea of Sone : Sone were not concerned with the question of Chapman-Enskog but were concerned with how come we really is able to say some calculations are up to 0th, 1st, 2nd, 3rd ... order of Knudsen number no matter how the approximating system looks like. He refined the asymptotic cases according to the Mach number Ma, and the knudsen number Kn, and named each different expansion by, 1) G-expansion (Grad-Hilbert) 2) S-expansion 3) SB-expansion 4) H-expansion (Hilbert). One crucial thing we bare in mind from his calculation is that-- equations here are pde, and we need some size estimations of the derivatives of the field variables along with the size estimations of fields themselves (w.r.t. Ma and Kn) -- he proceeded the calculation under the size assumption that the differential of a field variable is of comparable size to the field variable. This means he won't probe the short wave for that field. This issue becomes critical in the context of bobylev instability of Burnett and Super-Burnett.
+
+\begin{enumerate}
+ \item[Regime 1] Asymptotics around Global Maxwellian 
+ \begin{itemize}
+  \item Perturbation is assumed to be much smaller than $Kn$ in the leading order and this case corresponds to $Ma, Kn \rightarrow 0$, $Ma \ll Kn$.
+  \item He used Linearized Boltzmann equation around the global maxwellian.
+  \item He named this expansion as Grad-Hilbert expansion.
+ \end{itemize}
+ 
+  \item[Regime 2] Asymptotics around Global Maxwellian
+ \begin{itemize}
+  \item This case corresponds to $Ma \sim Kn \rightarrow 0$
+  \item He used the non-linear Boltzmann equation but from the $Q(f,f)$ terms the linearized part is extracted out explicitly and the residual non-linearity is considered.
+  \item He named this expansion as S-expansion
+ \end{itemize}
+ 
+  \item[Regime 3] Asymptotics around Local Maxwellian 
+ \begin{itemize}
+  \item This case also corresponds to $Ma \sim Kn \rightarrow 0$, but the temperature of the Local Maxwellian depends on $x$, the velocity is a perturbation of the uniform velocity.
+  \item He used the non-linear Boltzmann equation of the original form.
+  \item He named this expansion as SB-expansion
+ \end{itemize}
+ 
+  \item[Regime 4] Asymptotics around Local Maxwellian 
+ \begin{itemize}
+  \item This case corresponds to $Ma \sim O(1)$, $Kn \rightarrow 0$. Both of the temperature and the velocity in the Local maxwellian depend on $x$.
+  \item He used the non-linear Boltzmann equation of the original form.
+  \item He named this expansion as Hilbert expansion.
+ \end{itemize} 
+
+\end{enumerate}
+
+\subsection{remarks of Sone's work}
+\begin{enumerate}
+ \item In each of expansions, the thermal stress contribution appears in different ways and at different orders. For example, from 1) thermal stress and the slip boundary conditions appear in higher order, from 3) thermal stress appear in the leading order.
+ \item Thermal stress flow, or thermal creep flow can occur at different orders in different regimes. For example, from 1) these flow can only be seen at higher order but from 3) flows can be seen from the leading order.
+ \item This book is for the steady boundary value problem.
+\end{enumerate}
+
+
+\section{Work of Maxwell}
+Maxwell's paper can be summarized as his two assertions and discussions of four different phenomena. What he did is the {\bf Chapman-Enskog} expansion truncated at higher order(Burnett order).
+
+He asserted
+
+ (1) in momentum equation $ \rho \frac{d\mathbf{v}}{dt} = div{T} $,
+
+{{{$$ T = -p \delta_{ij} + T^v + T^M$$}}} and the additional contribution {{{$$T^M = -3\frac{\mu^2}{\rho\theta} \big( D^2 \theta + \frac{1}{2}\Delta \theta\big).$$}}}
+
+ (2) On the solid boundary where temperature gradient exists, the velocity slips and the tangential velocity $u$ is given by
+
+{{{ $$u = G(\rho,\theta) \left[ \frac{\partial u}{\partial x_n} - \frac{3}{2} \frac{\mu}{\rho\theta} \frac{\partial^2\theta}{\partial x_n\partial x_t}\right]  + \frac{3}{4} \frac{\mu}{\rho\theta} \frac{\partial\theta}{\partial x_t},$$ }}}
+where $x_n$ and $x_t$ are the normal and the tangential components at the surface, $G(\rho,\theta)$ is a kind of a constitutive relation.
+when $G(\rho,\theta)=0$, there is only the tangential temperature gradient contribution.
+
+Maxwell succeeded to explain  the four phenomena with this new contribution. {\it The sign of the contribution was correct to explain the direction of thermal stress in the four phenomena.}  Concerning the bobylev instability at Burnett order, why it was successful despite of the bobylev instability at the Burnett order will be discussed later when I talk about the work of Karlin and Gorban.
+
+\subsection{four phenomena appeared in the paper}
+Four phenomena Maxwell discussed are more or less related to the crookes radiometer and after this paper, it seems the there were agreement among the researcher.
+
+\begin{enumerate}
+ \item[(A)] temperature on the body is higher (resp. lower) than the ambient temperature. Maxwell said {{{$\theta_{xx}$}}} on $x$-axis has the fixed sign and then there will be an excessive (resp. less) stress on the axis between the bodies, so two bodies repel each other. (resp. attract)
+ \begin{figure}[ht]
+  \centering
+  \includegraphics[height=5cm]{Maxwell_A.png}
+ \end{figure}
+ 
+ \item[(B)] Cup-shaped body on which temperature is constant. temperature and their derivatives at $p$ is comparable to those with spherical body is placed. On the while, the temperature and their derivatives at $q$ is comparable to those when $q$ is the inside point of the spherical body. This difference makes the stress field non-trivial, and there is the flow (I forgot the direction). 
+ \begin{figure}[ht]
+  \centering
+  \includegraphics[height=5cm]{Maxwell_B.png}
+ \end{figure} 
+ Indeed, Crookes came with the cup-shaped radiometer at those times. Even though temperature on both side of the vane is constant, (differently from the standard radiometer setting), this apparatus rotates under the light.
+ \begin{figure}[ht]
+  \centering
+  \includegraphics[height=5cm]{cup_radiometer.png}
+ \end{figure} 
+ 
+ \item[(C)] Capillary tube on whose boundary temperature gradient presences.
+
+ \begin{figure}[ht]
+  \centering
+  \includegraphics[height=5cm]{Maxwell_C.png}
+ \end{figure} 
+ It is in the appendix. Here, he approximately calculated and showed that
+ \begin{itemize}
+  \item If there is no pressure gradient, then net flow is from colder site to the hotter site.
+  \item If there is no net flow, then the pressure at hotter site is higher than that of colder site.
+ \end{itemize}
+It is notable that Maxwell actually performed the approximate calculation of the influence on the pressure-driven flow(poisseulle flow) of the new stress even when the viscosity effect is taken account. Throughout his paper he is saying that, after long time, temperature relaxes to equilibrium (or become harmonic) and if the temperature at the boundary of the domain doesn't have the gradient, then the contribution of {{{$T^M$}}} in the momentum equation vanishes and also pressure becomes constant, which is consistent with the formula of {{{$T^M$}}} above. Speaking of this point, Maxwell pointed out that, when $T^M$ does not contribute and there is no slip at the boundary then there is no way to have the thermal flow in the steady state, insisting that in the thermal creep flow, the slip boundary condition is everything. I'll endeavor this point again later when we consider the Korteweg's stress tensor, not the Maxwell's stress tensor.
+
+ \item[(D)] the standard crookes radiometer
+  \begin{figure}[ht]
+  \centering
+  \includegraphics[height=5cm]{2dgeometry.png}
+ \end{figure} 
+
+\end{enumerate}
+
+\subsection{remarks of Maxwell's work and discussions}
+\begin{enumerate}
+ \item All 4 phenomena cannot occur in Navier-Stokes model with no-slip condition.
+ \item Maxwell separated issues on assertion (1) on thermal stress and assertion (2) on slip boundary condition. [A] and [B] can be explained without the assertion (2).
+ \item There are two ways of demonstration of the presence of the additional contribution in the stress. To make things easier, let's suppose the {\bf temperature is maintained externally} (this amounts to say we ignore the energy equation). The demonstrations depend on what variable other than the temperature we have in our control. Two extremes are found:
+ \begin{enumerate}
+  \item[(a)] If the {\bf pressure is in our control}, then easiest case is the iso-baric case where the pressure is constant. Then the thermal stress exerts so that there is a flow {\bf from the colder site to the hotter site}.
+  \item[(b)] If the {\bf velocity is in our control}, then easiest case is the no flow case where the velocity is $0$. Then the thermal stress exerts so that there is a pressure gradient and {\bf the pressure at the hotter site is greater than that at the colder site.}
+ \end{enumerate}
+
+The reasoning is as follows: Suppose there is any additional contribution in the stress term. Then, if we consider the pressure-driven flow (say, the poisseuille flow), the flow behavior is for sure influenced. For simplicity, let us ignore the viscosity for the moment. If no pressure gradient is applied, then for the classical model, there shouldn't be the acceleration. The presence of additional contribution can be demonstrated by showing, there is a non-trivial acceleration even when the pressure is constant. 
+
+The transposition statement of this is : If we don't see any acceleration, then for classical model, pressure has to be constant and the presence of non-trivial pressure gradient implies the presence of the additional contribution in stress.
+
+Then the question, that whether the Korteweg's capillarity theory can also explain the thermal flow or not, is at the {\it direction} of the pressure gradient. The observations of thermally driven flow indicates, the gas flows from colder site to the hotter site. This implies that in the circumstance the flow is absent, the thermal stress is against the pressure gradient or, the pressure at hotter site should be higher. Therefore, in the case (b), the question that the Korteweg theory predicts the thermally driven flow correctly or not boils down to checking whether the pressure increases as temperature increases, and whether the pressure decreases as temperature decreases.
+
+In reality, we may be in the mixed situation where less pressure gradient exists but still is in same direction with the temperature gradient, and less acceleration from the colder site to the hotter site.
+\end{enumerate}
+
+\section{Work of Karlin and Gorban, Marshall}
+Karlin and Gorban explains the chapman-enskog expansion through the idea of relaxation to the slow manifold regarding the Boltzmann equation as a dynamical system with multiple time scales. In a Boltzmann or other kinetic equation,
+
+{{{$$ \partial_t f + v \cdot \partial_x f = \frac{Q(f,f)}{\epsilon}. $$}}}
+
+\begin{itemize}
+ \item From the dynamical system perspective, we treat the field as the field indexed by $v$, $f(v;t,x)=f^v$,
+$$ \partial_t f^{v} + Lf^{v} = \frac{Q(f^v,f^v)}{\epsilon}, $$
+and view the equation as an infinite dimensional dynamical system. Assuming the suitable integrability conditions, $\{f^v\}_{v\in \mathbb{R}}$ can be expanded to the equivalent infinite number of moments, $(M^0, M^1_{i}, M^2_{ij}, \cdots)$.
+ \item Presence of $\epsilon$ in the denominator of r-h-s indicates that the system has the fast-slow structure. To be precise, the nonlinearity $Q(f,f)$ has the kernel, the local Maxwellians, and the set of local Maxwellians is subjected to the template manifold around which the orbits possibly relax.
+ \item  The fact that integrals of $Q(f,f)$, $vQ(f,f)$, $|v|^2 Q(f,f)$ vanish, i.e. the 0th moment, first moments, and one second moment vanish, these $5$ variables are not the fast variable but the slow variables. They are $\rho$, $\mathbf{v}$, and $\theta$, the density, velocity, and temperature.
+ \item The question is the existence of the {\bf hydrodynamic invariant manifold}, which is around the set of local maxwellians, and on which all other fast components of $f^v$ are determined by the values of the first $5$ moments. 
+ 
+ Note that these moments are in fact fields, with another independent variable $x$. Determinacy here is of functional, for example for a higher moment $M$ that
+ $$M = M[\rho,\mathbf{v},\theta]$$
+ is a functional dependency upon the $5$ functions that depend on $x$. If, in addition this dependency has a certain {\it locality} restriction in $x$, then we would be able to convert the functional expression into the expression of differential operator
+ $$M(x;\epsilon)= \mathcal{M}(\rho(x),D\rho(x),D^2\rho(x), \cdots, \mathbf{v}(x), D\mathbf{v}(x), D^2\mathbf{v}(x), \cdots, \theta(x), D\theta(x), D^2\theta(x), \cdots).$$
+ 
+ The hypothetical picture is that if the field is placed off the manifold then it undergoes the fast relaxation to the hydrodynamic manifold, and the dynamics afterwards is on the manifold, which is the intermediate asymptotics. 
+ \item For {\it a given kinetic model}, if we can prove what is said above, then the intermediate asymptotic specify {\it a hydrodynamic model} and we are interested in how the model looks like, or how the stress tensor in the model looks like. 
+ 
+ One important point that this specific hydrodynamic model, which is parametrized by $\epsilon$, would be of the {\it regularly perturbed system}. Whether or not the $M(x;\epsilon)$ has an expansion in $\epsilon$ does not spoil this fact.
+\end{itemize}
+
+In the below, I 
+
+
+\subsection{Linearized Grad 13 moments or 10 moments system around the global maxwellian}
+Karlin and Gorban picked the Grad 13 moments or 10 moments system as a kinetic model parametrized by $\epsilon$ the Knudsen number. From Sone's eye, this corresponds to his first expansion where Boltzmann equation is linearized around the global maxwellian and he restricted the interpretation within the perturbation size of much less than the Knudsen number. If we are skeptical, then we may not further infer from this point.
+
+If we continue, we can find a few remarks,
+
+ * 1. The chapman-enskog expansion at high order exhibits the bobylev type instability.
+
+ * 2. For this linear system, chapman-enskog expansion can be traced up to the infinite order. In the course, they got rid of $\epsilon$ by scaling the independent variables $x$ and $t$.
+  * 1. The final form of stress function in terms of lower moments and their derivatives is in fourier space is
+
+{{{ $$\sigma(k) = - k^2 B(k^2) p(k) - i k A(k^2) $$ }}}, where $p = \rho + \theta$ in the linearized form and {{{$A(k^2)$}}} and {{{$B(k^2)$}}} are functions of {{{$k^2$}}} and are negative.
+
+  * 2. So the stress $\sigma$ is non-local operator of $p$ and $u$.
+  * 3. This stress form doesn't exhibit bobylev instability.
+  * 4. The functions $-A$ and $-B$ looks like low-pass filter. It decays to $0$ and has the tail {{{$O(\frac{1}{k^2})$}}}.
+
+%{{attachment:b_k.png||width="500"}}
+
+Approximately, {{{ $$ A(k^2) \sim -\frac{4}{3 + 9k^2}, \qquad B(k^2) \sim -\frac{4}{3 + 5k^2} $$ }}}
+
+  * 5. If we invoke $\epsilon$ again, then
+
+{{{ $$ A(k^2) \sim -\frac{4}{3 + 9\epsilon^2 k^2}, \qquad B(k^2) \sim -\frac{4}{3 + 5\epsilon^2 k^2}. $$ }}}
+
+ * 3. Marshall presented the entropy dissipation equality in the form
+
+{{{ $$ \frac{1}{2} \partial_t \int_{-\infty}^{\infty} \frac{3}{5} p(k)^2 + u(k)^2 \; dk + \frac{1}{2} \int_{-\infty}^{\infty} -\frac{3}{5}k^2 B(k^2)p(k)^2 \; dk = \int_{-\infty}^{\infty} k^2 A(k^2) u(k)^2 \; dk \le 0 $$}}}
+
+  * 1. $A$ and $B$ are negative.
+  * 2. Marshall interpreted the second term in the left-hand-side as the non-local capillary energy, which is positive and the right hand side as non-local viscosity dissipation which is negative.
+
+ * 4. In a sentence of Marshall's paper on page 622, that the non-local term {{{$-k^2 B(k^2)$}}} has the leading order {{{$\frac{3}{5}C_0k^2$}}} with {{{$C_0>0$}}}, and that this corresponds to the Korteweg's ''local'' capillary stress that also has the correct entropy inequality, I'd like to endeavor more on the logical connection in the below. Anyhow, because $B$ is negative here, the capillary energy is positive and there is no harm. But I think it's worth to mention in the below because this tells one role of $\epsilon$ the small parameter.
+  * 1. For simplicity, let's ignore constants and see for the form {{{ $b(k^2) = \frac{-1}{1+k^2}$ }}}, in this case the leading order is {{{$k^2$}}}
+  * 2. In the next leading order of {{{$k^2(1-k^2)$}}}, we see the bobylev instability again.
+  * 3. I simply put the appeared term {{{$k^2$}}} as a result putting $\epsilon=0$ on {{{$b(\epsilon,k^2) =  \frac{-1}{1+\epsilon^2k^2}$}}}. This is in my opinion, is related to the fact that the expression for the stress in terms of lower moments is '''regularly''' perturbed. Let me detail in the below.
+  * 4. In fact, the expression {{{$-b(\epsilon,k^2) = \frac{1}{1 + \epsilon^2 k^2}$}}} has the inverse fourier transform, it is of the form
+
+{{{$$ b(\epsilon,x) = \frac{1}{2\epsilon} e^{-\frac{|x|}{\epsilon}} $$}}} and this kernel has the integral $1$ in entire space. Equivalent way to say is  that the capillary stress is given by {{{ $$\sigma_{cap} = \epsilon^2\Delta q, \quad q = (Id - \epsilon \Delta) p$$}}} I remember Marshall also quote the failure of truncation with above example.
+
+  * 5. At least formally, the operator $p \mapsto b(\epsilon,x)\star p$ converges to the identity and the kernel $b$ converges to the dirac measure in some '''good''' mode of convergence.
+
+  * 6. Overall size of the capillary stress is determined by $\epsilon^2$ in front of the Laplacian operator above. However, this size can be in any order and Laplacian part has to be treated separately. Whatever the size, my guess is whole expression is regularly perturbed in some 'good' topology, and the part associated to $b$ converges to the dirac measure as $\epsilon \rightarrow 0$. It is just a molifier which comes from the low-pass property of $b(k)$ and the integrability.
+
+  * 7. If we look carefully of the Karlin and Gorban's paper, then we can find that the bobylev instability of the Chapman-Enskog expansion of the Grad 10 moments system starts from the super-Burnett order, not from the Burnett order. After sending the limit $\epsilon \rightarrow 0$, the result happen to be the one at the Burnett order, which is '''stable'''. Karlin and Gorban is saying that in section 4, the Grad system with full 13 moments exhibits bobylev instability from the burnett order. I didn't yet go through the entropy inequality of Grad 13 moments case, but I presume that in the limit $\epsilon \rightarrow 0$, the stress should have a few more terms becauseI presume that in the limit the stability result should be inherited. In addition the term {{{ $p_{xx} = \rho_{xx} + \theta_{xx}$}}} will be still there with unchanged sign. From this, I think the sign in front of {{{$\theta_{xx}$}}} is the correct sign but instability comes from the lack of necessary terms. The reason why Maxwell could explain the thermal phenomena with the second gradient of temperature with sign at Burnett order is I guess it is in correct sign assuming only the long wave fields.
+
+  * 8 At this point, the iso-thermal one-parameter approximate Korteweg model in the paper of Jan and thanos looks much more relevant other than the numerical motivation. Indeed, the kernel $b(x)$ looks like trinangle function near origin and if this kernel were exactly the triangle function then the capillary stress will be exactly the second order ''difference'' of the $p$. And its fourier transform is the square of sinc funtion, which could be said to have similar asymptotics in $k$.
+
+  * 9. If we are to expand $b(x)$ asymptotically w.r.t $\epsilon$ with ''the technique of matched asymptotics'', then we can see in fact there is '''nothing'''. The outer expansion is merely $0$ and the inner expansion is just $b(x)$ itself.
+  * 10. overall conclusion is, the lesson from Karlin and Gorban, Marshall is not to truncate at any order of $\epsilon$. But $\epsilon$ can be passed to the limit, which results in the ''local'' expression in the stress.
+  * 11. The Korteweg theory, as a matter of fact, is from the first place designed to have consistence with thermodynamics, It is a second gradient theory of a motion field $x(X,t)$ of gas, and ignoring the viscosity, it is a hamiltonian system without temperature variation and a dissipative system with temperature variation. Apparent difference we note is that Korteweg stress tensor contains the second gradient of $rho$ but the only first gradient of $\theta$. In fact, in the work of Dunn and Serrin, they at first let the helmholtz energy to depend on the first gradient of $\theta$ which could produce the second gradient of $\theta$ in the stress. But in the course of making consistence, this possibility was removed. (I don't quite understand the criterion).
+
+  * 12. In addition, I tried to illustrate in the below that the iso-thermally occured capillary problem, where the gravitational potential energy increases in a particular direction $z$-axis, has some purely mathematical similar structure to the problem  of thermal stress flow in 1D, where the temperature increases in a particular direction. This is very speculative and perhaps is wrong. My point is the reason why the one theory (due to the Korteweg's stress tensor) could explain the two phenomena, the capillarity and the thermal flow, might be seen purely mathematically.
+
+\section{Work of Dunn and Serrin}
+I didn't summarize the work of Dunn and Serrin. Hoever, the most critical message from this paper in regard to our study is that,
+\begin{itemize}
+ \item From the free energy function depends on higher gradient of motion and temperature, this paper derives the stress tensor.
+ \item It is inconsistent with the Clausius-Duhem inequality, so the authors appended the additional energy flux, the interstitial working.
+ \item At the beginning, the stress tensor could have included the terms of $D^2\theta$ because the free energy function depended on higher gradient of the temperature. However, due to the Clausius-Duhem inequality, this possibility is excluded in the course of the stress derivation.
+ \item I need to know whether this exclusion is unavoidable or we could have modified theory by making more efforts, as same as they appended the interstitial working term to make the Korteweg tensor be consistent to the Clausius-Duhem inequality. I will read this paper more carefully so that I can answer to this question !
+\end{itemize}
+
+
+\section{Work of Kareem and Min-Gi}
+\subsection{difference and similarity between the results of Maxwell's equations of motion and Korteweg's equations of motion}
+In order to say the Korteweg theory indicates the correct the thermal behavior, we should be able to predict the phenomena [A] ~ [D]. Even before we consider the radiometer, where the solid boundary has the temperature gradient, we may first go for the cases where surface-gas interaction doesn't quite matter. So, let's focus on the example [A]. [A] can be simplified to 1-D case where the temperature $\theta(x)$ is externally maintained.
+
+%{{attachment:1Dmodel.png}}
+
+We consider the radial symmetric 1-D problem. This can be compared to the case where two hotter (resp. colder) bodies are placed symmetrically at left side and the right side, and this amounts to say we have a control in the temperature distribution, and temperature increases (resp. decreases) in the radial variable $r$. So from the model, we externally assign the temperature as we want. Now, to demonstrate the presence of the thermal stress, we also choose the variable we have in control other than the temperature.
+
+After I read through the Maxwell's paper, I realized the difference of ability in phrasing there is a thermal effect, between the Korteweg model and the Maxwell model.
+
+We want to tell what will happen if one employ the Maxwell's equations of motion or the Korteweg's equations of motion, i.e.
+
+$$ \rho \frac{d\mathbf{v}}{dt} = div(T),$$
+
+Maxwell : {{{ $T = -p \delta_{ij} + T^v + T^M(\rho,\theta)$ }}}
+
+Korteweg : {{{ $T= -p \delta_{ij} + T^v + T^K(\rho,\theta)$ }}}
+
+{{{$$T^M = -3\frac{\mu^2}{\rho\theta} \big( D^2 \theta + \frac{1}{2}\Delta \theta\big).$$}}}
+
+{{{$$ T^K = -\frac{1}{2} \Big[ \rho c_\rho (\rho,\theta) + c(\rho,\theta) |\nabla \rho|^2 + \nabla \cdot \big(\rho c(\rho,\theta) \nabla \rho\big) \Big] \delta_{ij} - c(\rho,\theta) \nabla \rho \otimes \nabla\rho,$$}}} where $c(\rho,\theta)$ is the capillary coefficient.
+
+In 1-D case, and if {{{ $c(\rho,\theta) = c_0 \rho^k \theta^\ell$}}}, then the {{{$T^K$}}} has the following expression {{{ $$ T^k = \frac{c_0}{\alpha} \rho^{\alpha+1} \Big[ \theta^{\ell}(x) (\rho^{\alpha})^\prime \Big]^\prime, \quad \alpha = \frac{k+1}{2} $$}}} which is a non-linear elliptic operator for given $\theta(x)>0$. I'll denote the operator by {{{$ A_\theta[\rho]$}}} and also say $\rho$ is $A$-convex if this is positive and $A$-concave if this is negative.
+
+The question here is the sign and the gradient of {{{$T^M$ (resp. $T^K$)}}} for the given temperature field: Will the gas at the origin feel the excessive stress or restrained stress?
+
+For Maxwell's stress, we can tell the sign of the stress even before we solve the equation, because the temperature is externally given and we can merely calculate the thermal stress directly, whereas for the Korteweg's stress, we don't know the value or sign of this stress until we solve for the $\rho$, which is solved by pde where the temperature appears as the coefficients of the operator. After we have solved for $\rho$, together with $\mathbf{v}$ , we can tell the sign or value of the Korteweg's stress.
+
+The only exception is the iso-baric case, where we put $\rho = 1/\theta$ and we can read off the effect of the Korteweg stress. We examine this case first.
+
+\subsubsection{pressure control}
+Suppose we have the pressure in our control, and consider the isobaric case. Then formula {{{$A_\theta[\rho]$}}} amounts to say
+
+{{{ $$ \text{$\theta$ is convex(Maxwell)} \sim \text{excessive stress} \sim  \text{$\theta^{\ell-\alpha}$ is convex, if $\ell>\alpha$ and $\theta^{\ell-\alpha}$ is concave if $\ell<\alpha$  (Korteweg, isobaric)} $$}}}
+
+In view of this, 1) we may say that the Korteweg theory in some sense cause qualitatively similar effect to that of Maxwell, and 2) the sign of Maxwell stress tensor (at Burnett order) is not wrong. (this point is discussed in the section of Karlin and Gorban.)
+
+The disadvantage of the iso-baric case is the stress in general will not be balanced out and there will be acceleration and the non-trivial flow. To have the real solution, we have to solve non-steady mass and momentum equations for $\rho$ and the non-trivial $\mathbf{v}$.
+
+The previous work of Marshall, Yong-Jung and me aimed this demonstration. In this paper we, instead of having temperature externally, assumed the steady state and iso-baric condition. To have self-criticism recalling from now, I should have paid more attention on the boundary conditions on $\rho$ and on the temperature distribution.
+
+\subsubsection{velocity control}
+The advantage of this demonstration is that, when the velocity is assumed to be 0, we are only left with the equation of the balance in the stress. $$ div(T) = 0. $$
+
+But as I addressed earlier, the effect of Korteweg stress is rather obscure until we come up with $\rho$. I, at first, was confused for that even this no-flow case can take place.
+
+In addition, let's say if we have some desired direction of the stress {{{$T^K$}}} or the pressure gradient, whether or not it makes physical sense. It seems there is no obstacle to generate such a solution; as $\rho$ re-distribute out rather freely with three boundary conditions, the $\rho$ just seems to adjust as I desire. So, we may be ''design'' the flow in the following order, we fix the temperature -> we fix the desired directional tendency of the pressure -> seek for such $\rho$. From this, I'd like to argue that something does drive the solution in a particular way essentially is the three boundary conditions on $\rho$.
+
+To be concrete, the equation {{{$$ \big(\rho\theta - T^K(\rho,\theta)\big)^\prime = \big( \rho\theta - A_\theta[\rho] \big)^\prime = 0 $$}}} can be manipulated with three boundary conditions of $\rho$ with a lot of degrees of freedom. So if the sign of some quantity is the correctly explaining one for thermal flow, then the boundary conditions play an essential role.
+
+Now, we solve the equation for $\rho$ which is the third order equation.
+
+{{{$$ \partial_x(\rho\theta - T^k) = 0, \quad \text{or} \quad \rho\theta - T^k = T^{total}_0.$$}}}
+
+In this problem,
+
+ * temperature is fixed.
+ * Because it is radial symmetric, {{{$\theta^\prime(0) = \rho^\prime(0)=0$, and thus $p^\prime(0)=0$.}}}
+ * {{{$\rho(0)= \rho_0$}}}
+ * The the total stress {{{$T^{total}_0$}}} is an undetermined constant. If this were known, then the {{{$\rho^{\prime\prime}(0)$}}} could have been known and also the sign of the Korteweg stress could have been known. This could be measured at the boundary $x=L$ or at far field according to the problem setting, but in order to solve the equation in the setting of initial-value problem, we specify the constant first and shoot the ode playing with the two parameters {{{$\rho_0$}}} and {{{$T^{total}_0$}}}.
+
+Our statement for the Korteweg's equations of motion is the dichotomy,
+
+ 1. for given two parameters {{{$\rho_0$}}} and {{{$T^{total}_0$}}}, the shot solution does not survive to exist until $x=L$.
+
+ 1. the shot solution does exist and the pressure increases in $[0,L]$.
+
+We verify the statement first numerically, using ode solver(Runge-Kutta) in python.
+
+First of all, in the increasing-temperature case, the case {{{$T^{total}_0<0$}}} is not very interesting because : If so, initially $\rho$ is accelerated and being {{{$T^{total}_0<0$}}} and increasing temperature make this acceleration bigger and bigger. No doubt for pressure increase. (in the decreasing-temperature case, same applies for {{{$T^{total}_0>0$}}})
+
+Kareem and I ran many instances. The overall behavior seen from the calculations is,
+
+ 1. pressure gradient direction always is in correct direction.
+
+ 1. If the reference scale of the temperature is quite bigger than that of $\rho$ (like 10 times bigger), then the variation of $\rho$ seems to be suppressed, in other words, in the pressure $p=\rho\theta$, $\rho$ does not re-distribute out against the temperature gradient.
+
+I put increasing-temperature case and decreasing-temperature case in the below.
+
+%{{attachment:lorentzdist-inc.png||height="300",width="300"}} %{{attachment:parabola-dec.png||height="300",width="300"}}
+
+\section{Isothermal capillary problem vs. thermal-stress flow problem}
+Here, I want to demonstrate the similar structure observed in the 1D case between the isothermal capillary problem and the thermal-flow problem.
+
+In the capillary problem, let's consider the gravity in $z$-direction and assume there is no flow($\mathbf{v}=0$). If we are to use Korteweg stress tensor, then in the stress balance,
+
+{{{$$\partial_z(-\rho\theta_0 + T^K) = -1$$}}} {{{$$-\rho\theta_0 + T^K = -z + const.$$}}}
+
+Hence, we have an elliptic operator
+
+{{{$$-T^K = -A[\rho] = -(\rho +z) + const., \quad \text{where $A_{\theta_0}[\rho]$ is an elliptic operator defined above, and I set $\theta_0=1$} $$}}}
+
+In the thermal-stress problem, {{{$$\partial_z(-\rho\theta(z) + T^K) = 0$$}}}
+
+Hence, we have an elliptic operator
+
+{{{$$-T^K = -A_\theta[\rho] = -\rho\theta(z) + const., \quad \text{where $\theta(z)$ is an increasing function of $z$} $$}}}
+
+As long as $\theta(z)>0$, the left hand side is non-linear elliptic operator. The right-hand-side in the capillary problem and the thermal-stress problem have different reaction and source term but might imply shared property.
+
+\section{Hamiltonian structure and dissipative structure of isothermal and non-isothermal Euler-Korteweg model}
+In the Euler-Kortweg model, we put the helmholtz energy functional
+
+{{{ $$ \mathcal{E} = \int h(\rho,\theta) + \frac{1}{2}\kappa(\rho,\theta) |\nabla\rho|^2 \, dx $$ }}}
+
+In the iso-thermal case, Euler-Korteweg model is hamiltonian system. In the paper of Jan and Thanos, they mentioned about the Benzoni-Gavage's hamiltonian formulation which is valid only when the curl of $\mathbf{v}$ vanishes, but as they remarked, the hamiltonian is better looked as a function of the generalized coordinate and the generalized momenta rather than the function of $\rho$ and $\mathbf{v}$.
+
+I'll fill in the calculation gaps in the below later on, but it should have natural hamiltonian system structure with hamiltonian depending on the motion and the momenta $(x(X,t), \mathbf{m}(X,t))$.
+
+----
+Following the serrin's book(mathematical principles of classical fluid mechanics), first consider the hamiltonian functional in the material coordinate $X$ and write the density {{{$\rho J = \rho_0$}}}, where $J$ is the determinant of the deformation gradient. I purposely exposed the constant {{{$\rho_0$}}} rather than using $1$. Formal calculation gives
+
+{{{ $$ H = \int \frac{1}{2} \rho|\mathbf{v}|^2 + h(\rho,\theta) + \frac{1}{2}\kappa(\rho,\theta) |\nabla\rho|^2 \, dx $$ }}}
+
+{{{ $$ H = \int \rho_0(X) \left(\frac{1}{2} |\mathbf{v}|^2 + \tilde{h}(\rho) + \frac{1}{2}\tilde{\kappa}(\rho) |\nabla_{x}\rho|^2\right) \, dX, $$ }}} we set {{{$\mathbf{m} = \rho_0(X)\mathbf{v}$, $\tilde{h}(\rho) = h(\rho)/\rho$, $\tilde{\kappa}(\rho)= \kappa(\rho)/\rho$}}}.
+
+{{{ $$ H(x(X,t),\mathbf{m}(X,t)) = H(\rho(X,t),\mathbf{m}(X,t)) = \int \left(\frac{1}{2\rho_0(X)} |\mathbf{m}|^2 + \tilde{h}(\rho) + \frac{1}{2}\tilde{\kappa}(\rho) |\nabla_{x}\rho|^2\right) \, dX $$ }}} Hamiltonian system is {{{ $$\frac{dx(X,t)}{dt} = \frac{\delta H}{\delta \mathbf{m}} = \frac{\mathbf{m}}{\rho_0(X)} =  \mathbf{v}  $$}}} {{{ $$\frac{d\mathbf{m}(X,t)}{dt} = -\frac{\delta H}{\delta x} $$}}}
+
+----
+When the flow is non-isothermal, Euler-Korteweg system is dissipative with modification of Dunn \& Serrin. (I'll more endeavor to understand the procedure)
+\end{document}
