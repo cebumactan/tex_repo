@@ -223,14 +223,14 @@ In reality, we may be in the mixed situation where less pressure gradient exists
 \section{Work of Dunn and Serrin}
 I didn't summarize the work of Dunn and Serrin. Hoever, the most critical message from this paper in regard to our study is that,
 \begin{itemize}
- \item From the free energy function depends on higher gradient of motion and temperature, this paper derives the stress tensor.
- \item It is inconsistent with the Clausius-Duhem inequality, so the authors appended the additional energy flux, the interstitial working.
+ \item From the free energy function that depends on higher gradient of motion and temperature, this paper derives the stress tensor.
+ \item Korteweg type stress is inconsistent with the Clausius-Duhem inequality, so the authors appended the additional energy flux, the interstitial working.
  \item At the beginning, the stress tensor could have included the terms of $D^2\theta$ because the free energy function depended on higher gradient of the temperature. However, due to the Clausius-Duhem inequality, this possibility is excluded in the course of the stress derivation.
  \item I need to know whether this exclusion is unavoidable or we could have modified theory by making more efforts, as same as they appended the interstitial working term to make the Korteweg tensor be consistent to the Clausius-Duhem inequality. I will read this paper more carefully so that I can answer to this question !
 \end{itemize}
 
 \section{Work of Karlin and Gorban, Marshall}
-Karlin and Gorban explains the chapman-enskog expansion through the idea of relaxation to the slow manifold regarding the Boltzmann equation as a dynamical system with multiple time scales. In a Boltzmann or other kinetic equation,
+Karlin and Gorban explain the chapman-enskog expansion through the idea of relaxation to the slow manifold, regarding the Boltzmann equation as a dynamical system with multiple time scales. In a Boltzmann or other kinetic equation,
 
 {{{$$ \partial_t f + v \cdot \partial_x f = \frac{Q(f,f)}{\epsilon}. $$}}}
 
@@ -238,8 +238,8 @@ Karlin and Gorban explains the chapman-enskog expansion through the idea of rela
  \item From the dynamical system perspective, we treat the field as the field indexed by $v$, $f(v;t,x)=f^v$,
 $$ \partial_t f^{v} + Lf^{v} = \frac{Q(f^v,f^v)}{\epsilon}, $$
 and view the equation as an infinite dimensional dynamical system. Assuming the suitable integrability conditions, $\{f^v\}_{v\in \mathbb{R}}$ can be expanded to the equivalent infinite number of moments, $(M^0, M^1_{i}, M^2_{ij}, \cdots)$.
- \item Presence of $\epsilon$ in the denominator of r-h-s indicates that the system has the fast-slow structure. To be precise, the nonlinearity $Q(f,f)$ has the kernel, the local Maxwellians, and the set of local Maxwellians is subjected to the template manifold around which the orbits possibly relax.
- \item  The fact that integrals of $Q(f,f)$, $vQ(f,f)$, $|v|^2 Q(f,f)$ vanish, i.e. the 0th moment, first moments, and one second moment vanish, these $5$ variables are not the fast variable but the slow variables. They are $\rho$, $\mathbf{v}$, and $\theta$, the density, velocity, and temperature.
+ \item Presence of $\epsilon$ in the denominator of r-h-s indicates that the system has the fast-slow structure. To be precise, the nonlinearity $Q(f,f)$ has the kernel, the local Maxwellians, and the set of local Maxwellians is put as the template manifold around which the orbits possibly relax.
+ \item  The fact that integrals of $Q(f,f)$, $vQ(f,f)$, $|v|^2 Q(f,f)$ vanish, i.e. the 0th moment, first moments, and one second moment vanish indicates that these $5$ variables are not the fast variables but the slow variables. They are $\rho$, $\mathbf{v}$, and $\theta$, the density, velocity, and temperature.
  \item The question is the existence of the {\bf hydrodynamic invariant manifold}, which is around the set of local maxwellians, and on which all other fast components of $f^v$ are determined by the values of the first $5$ moments. 
  
  Note that these moments are in fact fields, with another independent variable $x$. Determinacy here is of functional, for example for a higher moment $M$ that
@@ -250,14 +250,14 @@ and view the equation as an infinite dimensional dynamical system. Assuming the 
  The hypothetical picture is that if the field is placed off the manifold then it undergoes the fast relaxation to the hydrodynamic manifold, and the dynamics afterwards is on the manifold, which is the intermediate asymptotics. 
  \item For {\it a given kinetic model}, if we can prove what is said above, then the intermediate asymptotic specify {\it a hydrodynamic model} and we are interested in how the model looks like, or how the stress tensor in the model looks like. 
  
- One important point that this specific hydrodynamic model, which is parametrized by $\epsilon$, would be of the {\it regularly perturbed system}. Whether or not the $M(x;\epsilon)$ has an expansion in $\epsilon$ does not spoil this fact.
+ One important point is that this specific hydrodynamic model, which is parametrized by $\epsilon$, would be of the {\it regularly perturbed system}. Whether or not the $M(x;\epsilon)$ has an expansion in $\epsilon$ does not spoil this fact.
 \end{itemize}
 
 In the below, I focus on the term $\theta_{xx}$ and its sign and the above issue on regular perturbation with respect to the $\epsilon$.
 
 
 \subsection{Linearized Grad 13 moments or 10 moments system around the global maxwellian}
-This is a brief summary of the paper. The Grad 13 moments or 10 moments system is considered as a given kinetic model, which is parametrized by $\epsilon$ the Knudsen number. The system is linearized around the constant state of $(\rho_0,\mathbf{v}_0,\theta_0)$. From perspective of the Sone's work, this corresponds to his first expansion where Boltzmann equation is linearized around the global maxwellian and there, the interpretation was such that the perturbation size is much less than the Knudsen number. Thus one might be skeptical on the further inference of the results in this line.
+This is a brief summary of the paper. The Grad 13 moments or 10 moments system is considered as a given kinetic model, which is parametrized by $\epsilon$ the Knudsen number. The system is linearized around the constant state of $(\rho_0,\mathbf{v}_0,\theta_0)$. From perspective of the Sone's work, this corresponds to his first expansion where Boltzmann equation is linearized around the global maxwellian. There, the interpretation was such that the perturbation size is much less than the Knudsen number. Thus one might be skeptical on the further inference of the results in this line.
 
 \begin{enumerate}
  \item For this linearized system, the hydrodynamic invariant manifold exists, in particular regardlessly of $\epsilon$. However, the expansion in $\epsilon$ fails : high order chapman-enskog exhibit the bobylev instability.
@@ -277,13 +277,14 @@ It decays to $0$ as $k^2 \rightarrow \infty$ with tail behavior of $O(\frac{1}{k
 
  \item Marshall presented the entropy dissipation equality for the 10-moments system in the form
 $$ \frac{1}{2} \partial_t \int_{-\infty}^{\infty} \frac{3}{5} p(k)^2 + u(k)^2 \; dk + \frac{1}{2} \int_{-\infty}^{\infty} -\frac{3}{5}k^2 B(k^2)p(k)^2 \; dk = \int_{-\infty}^{\infty} k^2 A(k^2) u(k)^2 \; dk, $$
-which is consistence in the sense that $A(k^2)$ and $B(k^2)$ are negative. The first term is clearly of classical free energy and the kinetic energy and the second contribution can be interpreted as the {\it non-local capillary} energy.
+which is consistence in the sense that $A(k^2)$ and $B(k^2)$ are negative. The first term is the classical free energy and the kinetic energy and the second contribution can be interpreted as the {\it non-local capillary} energy.
 
- \item One can give the heuristic explanation to connect above {\it non-local} to the {\it local} Korteweg type energy. Marshall explained in the paper but I want to refine it as below.  
+ \item One can give the heuristic explanation to connect above {\it non-local} to the {\it local} Korteweg type theory. Marshall explained in the paper but I want to refine it as below.  
  \begin{enumerate}
  \item The leading order of $-\frac{3}{5}k^2 B(k^2) \sim -\frac{3}{5}B(0) k^2$
  
- This is the second derivative {\it local} stress with the {\it correct sign}. However the reason why it has the correct sign is rather delicate because in the 13-moments system, it would have a different sign; this reminds us that we do not truncate at the finite order of $\epsilon$ was the main theme.
+ This is the second derivativek, i.e., {\it local} stress with the {\it correct sign}. However the reason why it has the correct sign is rather delicate because in the 13-moments system, it would have a different sign; the theme is that we do not truncate at the finite order of $\epsilon$.
+ 
  \item The reason why the above local leading order has the correct sign is that the bobylev instability of the 10-moments system begins at the Super-burnett order, not from the Burnett order, as can be seen in the paper of Karlin and Gorban. 
  
  \item Without the truncation at the leading order, still we can give the formal explanation to reach the {\it local} version of the stress.
@@ -302,9 +303,9 @@ and this kernel has the integral $1$ in entire space. Equivalent way to say that
 I remember those expression from Marshall's talk in regard to the failure of truncation of $(I-\epsilon^2 \Delta)^{-1}$. 
 
 \item I did not give any proof, but the above expression formally should converges to $\Delta p$ in {\it a good mode of convergence}.
-\item It is true that we would have another $\epsilon$ in front of $\sigma_{capillary}$, so the asymptotic limit as $\epsilon \rightarrow 0$ could be even more trivial. In any sense, this size diminishing, and the convergence to the {\it local} operator are both of {\it regularly perturbed} and the limit of the multiplications of these two also will behave well in my perspective. In addition, the overall size of the capillary stress contribution has to be determined with the problem specification itself, considering non-dimensional quantities, so it has to be separately treated.
+\item It is true that we would have another $\epsilon$ in front of $\sigma_{capillary}$, so the asymptotic limit as $\epsilon \rightarrow 0$ could be even more trivial. This amounts to say we are considering the limit of multiplication of two limits. One is overall size diminishing, and the other is the convergence to the {\it local} operator. My opinion is that both limits behave well ({\it regularly perturbed}) and the limit of the multiplication behaves well. The $\epsilon$ that determines the overall size of the $\sigma_{capillary}$ indeed has to be examined with the non-dimensional quantities that specify the problem. Thus, this $\epsilon$ has to be separately determined with respect to the problem specification.
 \end{enumerate}
-\item Now, we come the the local stress $p_{xx} = \rho_{xx} + \theta_{xx}$ that would appear in the limit $\epsilon \rightarrow 0$. Here we have the contribution $\theta_{xx}$ that does not appear in the Korteweg stress tensor. I address this issue because we mentioned that this has incorrect sign in the introduction section of the previous thermal creep paper. After spending some times, my new opinion is that it has the correct sign and that this was the reason why Maxwell succeeded to explain phenomena in his paper. As to the bobylev instability, first of all the instability is the consequence of the eigenvalue analysis for entire linear system rather than the consequence of one term. Besides, it happens when we probe the high frequency functions and other than that it is more or less okay. Recall that Sone either did not take those high frequency functions into account by assuming derivatives of functions are of comparable size to the functions themselves.
+\item Now, we come the the local stress $p_{xx} = \rho_{xx} + \theta_{xx}$ that would appear in the limit $\epsilon \rightarrow 0$. Here we have the contribution $\theta_{xx}$ that does not appear in the Korteweg stress tensor. I address this issue because we shortly mentioned that this has incorrect sign in the introduction section of the previous thermal creep paper. After spending some times, I became to think that it has the correct sign and it has the same sign as the Maxwell's tensor(not surprizingly). I think this was the reason why Maxwell succeeded to explain phenomena in his paper. As to the bobylev instability, first of all the instability is the consequence of the eigenvalue analysis for entire linear system rather than the consequence of one term. Besides, it is for the high-frequency limit for a fixed $\epsilon$, the frequency $k$ and the knudesen number $\epsilon$. The instability happens when $k \rightarrow \infty$ for a fixed $\epsilon$. If we do not probe the high frequency functions it is more or less okay; recall that Sone either did not take those high frequency functions into account by assuming derivatives of functions are of comparable size to the functions themselves.
 
 \item Regarding to the non-local to local issue, it is worth to look at the approximation Euler-Korteweg model (in Relative Energy paper (2.53)), which was motivated by the numerical concerns.
 
@@ -313,125 +314,152 @@ $$ b(\epsilon,x) = \frac{1}{2\epsilon} e^{-\frac{|x|}{\epsilon}}, $$
 it is quite clear why the expansion in $\epsilon$ fails.
 \end{enumerate}
 
+\section{Hamiltonian Formalism of Euler-Kortweg Model}
+Euler-Kortweg model is from the second gradient theory. It has interesting hamiltonian structure. I intentionally did not include the details here but I am studying it in the other direction. We pick an Euler-Korweg model for {\it Isothermal process}.
+\begin{equation} \label{Euler-Kortweg}
+\begin{aligned}
+ &\dot{\rho} + \rho \div_x \mathbf{v} = 0 \\
+ &\rho \dot{v} = \div_x \left[\left(-\big(\rho h^\prime(\rho)- h(\rho)\big) -\frac{1}{2} \Big(\big(\rho\kappa^\prime(\rho)-\kappa(\rho)\big)|\nabla_x\rho|^2\Big) + \rho\div_x\big(\kappa(\rho)\nabla_x \rho\big)\right)\delta_{ij}\right.\\
+ &\left. -\Big(\kappa(\rho)\nabla_x\rho \otimes \nabla_x \rho\Big)\right].
+\end{aligned}
+\end{equation}
 
+It is associated with the free energy
+\begin{equation}
+ \mathcal{E}[\rho] = \int h(\rho) \;+\; \frac{1}{2}\kappa(\rho)\, |\nabla_x\rho|^2 \:dx.
+\end{equation}
+and we write the hamiltonian in the Lagrangian coordinate $X$,
+\begin{equation}
+ H[x, \mathbf{m}] = \int \frac{1}{2\rho_0(X)} | \mathbf{m} |^2 \;+\; \left[\frac{h(\rho)}{\rho} \;+\; \frac{1}{2}\frac{\kappa(\rho)}{\rho} \, |\nabla_x \rho|^2\right] \, \rho_0(X) \:dX,
+\end{equation}
+where $\rho_0$ is such that $\rho_0dX = \rho dx$, with the Lagrangian coordinate $X$, $\mathbf{m}(X,t)=\rho_0(X) \mathbf{v}$, the momentum density w.r.t the Lagrangian volume form $dX$. Then we have the canonical equations
+\begin{align}
+ \langle \dot{x}, \psi \rangle &= \langle \frac{\delta H}{\delta \mathbf{m}}, \psi \rangle, \label{eq:xdot}\\
+ \langle \dot{\mathbf{m}}, \phi \rangle &= \langle -\frac{\delta H}{\delta \mathbf{x}}, \phi \rangle, \label{eq:mdot}
+\end{align} 
+which gives the \eqref{Euler-Kortweg}
 \section{Work of Kareem and Min-Gi}
-\subsection{difference and similarity between the results of Maxwell's equations of motion and Korteweg's equations of motion}
-In order to say the Korteweg theory indicates the correct the thermal behavior, we should be able to predict the phenomena [A] ~ [D]. Even before we consider the radiometer, where the solid boundary has the temperature gradient, we may first go for the cases where surface-gas interaction doesn't quite matter. So, let's focus on the example [A]. [A] can be simplified to 1-D case where the temperature $\theta(x)$ is externally maintained.
+In the earlier section, I addressed that 
+\begin{enumerate}
+ \item the stress out of the kinetic consideration has the term $\theta_{xx}$ that the Kortweg stress does not have.
+ \item the term has the correct sign; Maxwell's explanations were successful.
+\end{enumerate}
+In this section, we study 1D Euler-Kortweg model, making comparison to the Maxwell's model. We attempt to verify the following statements hold for both of 1D Euler-Korteweg model and the Maxwell's model.
+ \begin{itemize}
+  \item If there is no pressure gradient, then net acceleration is from colder site to the hotter site.
+  \item If there is no net acceleration, then the pressure at hotter site is higher than that of colder site.
+ \end{itemize}
 
-%{{attachment:1Dmodel.png}}
+However, the way they are so has differences, so I will emphasize
+\begin{itemize}
+ \item the technical differences to arrive at above statements. 
+ \item the situation that two models would predict different.
+\end{itemize}
 
-We consider the radial symmetric 1-D problem. This can be compared to the case where two hotter (resp. colder) bodies are placed symmetrically at left side and the right side, and this amounts to say we have a control in the temperature distribution, and temperature increases (resp. decreases) in the radial variable $r$. So from the model, we externally assign the temperature as we want. Now, to demonstrate the presence of the thermal stress, we also choose the variable we have in control other than the temperature.
 
-After I read through the Maxwell's paper, I realized the difference of ability in phrasing there is a thermal effect, between the Korteweg model and the Maxwell model.
+\subsection{Consistency of Kortweg model to the Maxwell model: two special cases}
+We consider the radial symmetric 1-D problem, where the temperature $\theta(x)$ is externally maintained.
+ \begin{figure}[ht]
+  \centering
+  \includegraphics[height=5cm]{1Dmodel.png}
+ \end{figure}
+This corresponds to the phenomenon [A] that maxwell discussed where two hotter (resp. colder) bodies are placed symmetrically at left side and the right side. Note that this problem does not have the surface-gas interaction on which temperature exhibits gradient, i.e., this is about the stress tensor, but might not be about the thermal creep. This problem is far simpler than the radiometer problem.
 
-We want to tell what will happen if one employ the Maxwell's equations of motion or the Korteweg's equations of motion, i.e.
-
-$$ \rho \frac{d\mathbf{v}}{dt} = div(T),$$
+We consider the equations of motion,
+$$ \rho \frac{d\mathbf{v}}{dt} = div(T), \quad \text{with}$$
 
 Maxwell : {{{ $T = -p \delta_{ij} + T^v + T^M(\rho,\theta)$ }}}
 
-Korteweg : {{{ $T= -p \delta_{ij} + T^v + T^K(\rho,\theta)$ }}}
+Korteweg : {{{ $T= -p \delta_{ij} + T^v + T^K(\rho,\theta)$, }}}
+respectively. $T^v$ is the viscous stress.
+\begin{align*}
+T^M &= -3\frac{\mu^2}{\rho\theta} \big( D^2 \theta + \frac{1}{2}\Delta \theta\big),\\
+T^K &= \Big[-\frac{1}{2} \big(\rho c_\rho (\rho,\theta) + c(\rho,\theta) |\nabla \rho|^2\big) + \nabla \cdot \big(\rho c(\rho,\theta) \nabla \rho\big) \Big] \delta_{ij} - c(\rho,\theta) \nabla \rho \otimes \nabla\rho,
+\end{align*}
+where $c(\rho,\theta)$ is the capillary coefficient.
 
-{{{$$T^M = -3\frac{\mu^2}{\rho\theta} \big( D^2 \theta + \frac{1}{2}\Delta \theta\big).$$}}}
+We verify the statements we gave in the above with two models. Before stating the results here we find the technical difference. In 1D case, if the capillary coefficient {{{ $c(\rho,\theta) = c_0 \rho^k \theta^\ell$}}}, then the
+the {{{$T^K$}}} has the following expression  $$ T^k = \frac{c_0}{\alpha} \rho^{\alpha+1} \Big[ \theta^{\ell}(x) (\rho^{\alpha})^\prime \Big]^\prime=:A_\theta[\rho], \quad \alpha = \frac{k+1}{2}, $$ which is a non-linear elliptic operator on $\rho$ for externally given $\theta(x)>0$.
+Having observed that, the presence of $D^2\theta$ in the maxwell's tensor and the absence of it in the Korteweg's stress tensor make the difference in the following way.
+\begin{enumerate}
+ \item In the Maxwell's model, no matter what the boundary conditions are, the sign of $T^M$ is the {\it local property} that depends only on the local temperature distribution.
+ \item In the Korteweg's model, the boundary conditions crucially determine the sign; Only after we solve the boundary value problem we can tell the sign of $T^K$. It is kinematically determined and depends on function values on every other point. It is thus the {\it non-local property}, 
+\end{enumerate}
 
-{{{$$ T^K = -\frac{1}{2} \Big[ \rho c_\rho (\rho,\theta) + c(\rho,\theta) |\nabla \rho|^2 + \nabla \cdot \big(\rho c(\rho,\theta) \nabla \rho\big) \Big] \delta_{ij} - c(\rho,\theta) \nabla \rho \otimes \nabla\rho,$$}}} where $c(\rho,\theta)$ is the capillary coefficient.
+\subsubsection{Iso-baric case : temperature and pressure are in control}
+Now, we first consider the {\it Iso-baric} case, from which we verify the first statement of
+ \begin{itemize}
+  \item If there is no pressure gradient, then net acceleration is from colder site to the hotter site.
+  \item If there is no net acceleration, then the pressure at hotter site is higher than that of colder site.
+ \end{itemize}
 
-In 1-D case, and if {{{ $c(\rho,\theta) = c_0 \rho^k \theta^\ell$}}}, then the {{{$T^K$}}} has the following expression {{{ $$ T^k = \frac{c_0}{\alpha} \rho^{\alpha+1} \Big[ \theta^{\ell}(x) (\rho^{\alpha})^\prime \Big]^\prime, \quad \alpha = \frac{k+1}{2} $$}}} which is a non-linear elliptic operator for given $\theta(x)>0$. I'll denote the operator by {{{$ A_\theta[\rho]$}}} and also say $\rho$ is $A$-convex if this is positive and $A$-concave if this is negative.
+Suppose we have the pressure in our control, and consider the isobaric case $\rho = \frac{1}{\theta}$. Then formula {{{$T^K=A_\theta[\rho]$}}} amounts to say that $T^k > 0$
+\begin{align*}
+ \begin{cases}
+  \text{$\theta^{\ell-\alpha}$ is concave} & \text{when $\ell-\alpha>0$, }\\
+  \text{$\theta^{\ell-\alpha}$ is convex}  & \text{when $\ell-\alpha<0$, }
+ \end{cases}
+\end{align*}
+assuming $\alpha>0$.
+Compare this to that $T^M >0$ if $\theta$ is concave and $T^M <0$ if $\theta$ is convex. 
 
-The question here is the sign and the gradient of {{{$T^M$ (resp. $T^K$)}}} for the given temperature field: Will the gas at the origin feel the excessive stress or restrained stress?
+In isobaric case, it does behave similarly, in a reasonable range of parameters to that of Maxwell. Again, the sign of Maxwell stress tensor should be as it is and not wrong. 
 
-For Maxwell's stress, we can tell the sign of the stress even before we solve the equation, because the temperature is externally given and we can merely calculate the thermal stress directly, whereas for the Korteweg's stress, we don't know the value or sign of this stress until we solve for the $\rho$, which is solved by pde where the temperature appears as the coefficients of the operator. After we have solved for $\rho$, together with $\mathbf{v}$ , we can tell the sign or value of the Korteweg's stress.
+\subsubsection{No acceleration : temperature and velocity are in control}
+Now, we verify the second statement of 
+ \begin{itemize}
+  \item If there is no pressure gradient, then net acceleration is from colder site to the hotter site.
+  \item If there is no net acceleration, then the pressure at hotter site is higher than that of colder site.
+ \end{itemize}
+In this case, by the Gallilean symmetry, we put the velocity $v=0$. The advantage of this demonstration is that, we are only left with the equation of the balance in the total stress 
+\begin{align*}
+ div(T) = 0
+\end{align*}
+In 1D case,
+\begin{align*}
+ \partial_x(\rho\theta - T^k) = 0, \quad \text{or} \quad - A_\theta[\rho] + \theta\rho  = T^{total}_0
+\end{align*}
+Now the ellipticity of the operator plays the crucial role here. We set up the boundary conditions as below.
+\begin{enumerate}
+ \item Because of the radial symmetry, we look for the $\rho$ that is even function of $x$. We solve the problem in $[0,L]$.
+ \item We set $\rho'(0)=0$.
+ \item We parametrize $\rho(0)=\rho_0$.
+ \item We parametrize the total stress $T^{total}$.
+\end{enumerate}
+As addressed earlier, the sign of the Korteweg stress is determined after we solve the boundary value problem and how $\rho$ re-distributes out is non-locally determined depending on the parameters and the external function $\theta(x)$ critically. But here we have too many freedom because we cannot fix $\rho_0$ and $T^{total}$ and the slop or the convexity of $\theta(x)$ are quite arbitrarily small or large. Nevertheless, we could observe a certain consistency from the numerical calculations of various instances.
 
-The only exception is the iso-baric case, where we put $\rho = 1/\theta$ and we can read off the effect of the Korteweg stress. We examine this case first.
+\begin{remark}
+From numerical calculations we observed the following: Let $[0,L]$ be the domain of interest, and $\theta(x)$ be the fixed temperature distribution that is monotone increasing (resp. decreasing) in $x$. Choose $\rho_0>0$ and $T^{total}$. Then, for this choice of parameters, either the solution breaks down, i.e. $\rho(x_0)<0$ at $x_0<L$ or the pressure is monotone increasing (resp. decreasing) in $x$, i.e., the pressure at hotter place is higher.
+\end{remark}
+We do not have the proof, but this might not be trivial, because we tested $T^{total}$ that is positive and negative.
+\begin{figure}
+ 	\centering
+    \subfigure[{\scriptsize pressure increases as temperature increases}] {
+	   \includegraphics[width=7cm]{lorentzdist-inc.pdf} \label{fig:1}
+    } \hfill
+    \subfigure[{\scriptsize pressure decreases as temperature decreases}] {
+	\includegraphics[width=7cm]{parabola-dec.pdf} \label{fig:2}
+    }
+	\caption{Numerical calculation of the pressure behavior influenced by temperature gradient.}
+\end{figure}
 
-\subsubsection{pressure control}
-Suppose we have the pressure in our control, and consider the isobaric case. Then formula {{{$A_\theta[\rho]$}}} amounts to say
+For the numerical calculations, radially symmetric temperature profiles that are monotone in the radial variable $x \in [0,L]$ were tested, 
+$$ \theta(x) = A+ \frac{B}{1+Cx^2}, \quad \text{or} \quad \theta(x) = Dx^2 + E. $$
 
-{{{ $$ \text{$\theta$ is convex(Maxwell)} \sim \text{excessive stress} \sim  \text{$\theta^{\ell-\alpha}$ is convex, if $\ell>\alpha$ and $\theta^{\ell-\alpha}$ is concave if $\ell<\alpha$  (Korteweg, isobaric)} $$}}}
+\subsection{Discussion}
+We examined the two examples. In the first example, we imagine the artificial situation that the Korteweg stress tensor is turned on at $t=t_0$ before which the gas is isobaric with respect to the given temperature $\theta(x)$. At the moment $t=t_0$, the direction of the acceleration is {\it consistent} and is {\it locally determined} depending on the temperature distribution. In the second example, we considered the situation that we assign the nontrivial temperature in a bounded region and wait long time until we do not see any flow motion. When the gas is at this state, the direction of the pressure gradient is {\it consistent} but is {\it non-locally determined} according to the boundary conditions and $\theta(x)$.
 
-In view of this, 1) we may say that the Korteweg theory in some sense cause qualitatively similar effect to that of Maxwell, and 2) the sign of Maxwell stress tensor (at Burnett order) is not wrong. (this point is discussed in the section of Karlin and Gorban.)
+Therefore, the Korteweg model in 1D in those two extreme cases behaves {\it consistently} to the Maxwell's model. The mechanism it provides is rather different however. In the Korteweg model, it can be interpreted that, from energy perspective, it penalizes the density gradient, which in turn apparently gives the temperature effect in consistent way. 
 
-The disadvantage of the iso-baric case is the stress in general will not be balanced out and there will be acceleration and the non-trivial flow. To have the real solution, we have to solve non-steady mass and momentum equations for $\rho$ and the non-trivial $\mathbf{v}$.
+If one considers the initial-value problem with same boundary conditions in a bounded region then the Maxwell's model and the Korteweg's model possibly converges to the similar steady states. However, it is doubtful that the intermediate flow of them are so. We perhaps can make an example that 
+$|\theta_{xx}|$ is so high that it dominates the $\nabla p=\nabla (\rho\theta)$ and makes flow reverse against the pressure gradient. This is possible in the Maxwell's model. It is not clear how Korteweg model can implement such a flow.
 
-The previous work of Marshall, Yong-Jung and me aimed this demonstration. In this paper we, instead of having temperature externally, assumed the steady state and iso-baric condition. To have self-criticism recalling from now, I should have paid more attention on the boundary conditions on $\rho$ and on the temperature distribution.
+Besides, as we discussed in the section of Dunn and Serrin, we could have the $D^2\theta$ term in the stress of the second gradient theory and we have not explored this possibility yet. 
 
-\subsubsection{velocity control}
-The advantage of this demonstration is that, when the velocity is assumed to be 0, we are only left with the equation of the balance in the stress. $$ div(T) = 0. $$
+Overall impression and perspective I have is that in the isothermal phenomena, it is strongly suggestive that the Korteweg theory in a certain sense agrees to the theory from the Kinetic model. For the phenomena where temperature plays the crucial role, it seems we have many possibilities that we have not yet reviewed.
 
-But as I addressed earlier, the effect of Korteweg stress is rather obscure until we come up with $\rho$. I, at first, was confused for that even this no-flow case can take place.
+\subsubsection{Isothermal capillary problem vs. thermal-stress flow problem}
+It could have an interesting relation to the Isothermal capillary problem in 1D with the gravitational acceleration in $z$ because there we have
+$$\rho(z)\theta_0+z - T^K[\rho(z)] = T^{total}.$$
 
-In addition, let's say if we have some desired direction of the stress {{{$T^K$}}} or the pressure gradient, whether or not it makes physical sense. It seems there is no obstacle to generate such a solution; as $\rho$ re-distribute out rather freely with three boundary conditions, the $\rho$ just seems to adjust as I desire. So, we may be ''design'' the flow in the following order, we fix the temperature -> we fix the desired directional tendency of the pressure -> seek for such $\rho$. From this, I'd like to argue that something does drive the solution in a particular way essentially is the three boundary conditions on $\rho$.
-
-To be concrete, the equation {{{$$ \big(\rho\theta - T^K(\rho,\theta)\big)^\prime = \big( \rho\theta - A_\theta[\rho] \big)^\prime = 0 $$}}} can be manipulated with three boundary conditions of $\rho$ with a lot of degrees of freedom. So if the sign of some quantity is the correctly explaining one for thermal flow, then the boundary conditions play an essential role.
-
-Now, we solve the equation for $\rho$ which is the third order equation.
-
-{{{$$ \partial_x(\rho\theta - T^k) = 0, \quad \text{or} \quad \rho\theta - T^k = T^{total}_0.$$}}}
-
-In this problem,
-
- * temperature is fixed.
- * Because it is radial symmetric, {{{$\theta^\prime(0) = \rho^\prime(0)=0$, and thus $p^\prime(0)=0$.}}}
- * {{{$\rho(0)= \rho_0$}}}
- * The the total stress {{{$T^{total}_0$}}} is an undetermined constant. If this were known, then the {{{$\rho^{\prime\prime}(0)$}}} could have been known and also the sign of the Korteweg stress could have been known. This could be measured at the boundary $x=L$ or at far field according to the problem setting, but in order to solve the equation in the setting of initial-value problem, we specify the constant first and shoot the ode playing with the two parameters {{{$\rho_0$}}} and {{{$T^{total}_0$}}}.
-
-Our statement for the Korteweg's equations of motion is the dichotomy,
-
- 1. for given two parameters {{{$\rho_0$}}} and {{{$T^{total}_0$}}}, the shot solution does not survive to exist until $x=L$.
-
- 1. the shot solution does exist and the pressure increases in $[0,L]$.
-
-We verify the statement first numerically, using ode solver(Runge-Kutta) in python.
-
-First of all, in the increasing-temperature case, the case {{{$T^{total}_0<0$}}} is not very interesting because : If so, initially $\rho$ is accelerated and being {{{$T^{total}_0<0$}}} and increasing temperature make this acceleration bigger and bigger. No doubt for pressure increase. (in the decreasing-temperature case, same applies for {{{$T^{total}_0>0$}}})
-
-Kareem and I ran many instances. The overall behavior seen from the calculations is,
-
- 1. pressure gradient direction always is in correct direction.
-
- 1. If the reference scale of the temperature is quite bigger than that of $\rho$ (like 10 times bigger), then the variation of $\rho$ seems to be suppressed, in other words, in the pressure $p=\rho\theta$, $\rho$ does not re-distribute out against the temperature gradient.
-
-I put increasing-temperature case and decreasing-temperature case in the below.
-
-%{{attachment:lorentzdist-inc.png||height="300",width="300"}} %{{attachment:parabola-dec.png||height="300",width="300"}}
-
-\section{Isothermal capillary problem vs. thermal-stress flow problem}
-Here, I want to demonstrate the similar structure observed in the 1D case between the isothermal capillary problem and the thermal-flow problem.
-
-In the capillary problem, let's consider the gravity in $z$-direction and assume there is no flow($\mathbf{v}=0$). If we are to use Korteweg stress tensor, then in the stress balance,
-
-{{{$$\partial_z(-\rho\theta_0 + T^K) = -1$$}}} {{{$$-\rho\theta_0 + T^K = -z + const.$$}}}
-
-Hence, we have an elliptic operator
-
-{{{$$-T^K = -A[\rho] = -(\rho +z) + const., \quad \text{where $A_{\theta_0}[\rho]$ is an elliptic operator defined above, and I set $\theta_0=1$} $$}}}
-
-In the thermal-stress problem, {{{$$\partial_z(-\rho\theta(z) + T^K) = 0$$}}}
-
-Hence, we have an elliptic operator
-
-{{{$$-T^K = -A_\theta[\rho] = -\rho\theta(z) + const., \quad \text{where $\theta(z)$ is an increasing function of $z$} $$}}}
-
-As long as $\theta(z)>0$, the left hand side is non-linear elliptic operator. The right-hand-side in the capillary problem and the thermal-stress problem have different reaction and source term but might imply shared property.
-
-\section{Hamiltonian structure and dissipative structure of isothermal and non-isothermal Euler-Korteweg model}
-In the Euler-Kortweg model, we put the helmholtz energy functional
-
-{{{ $$ \mathcal{E} = \int h(\rho,\theta) + \frac{1}{2}\kappa(\rho,\theta) |\nabla\rho|^2 \, dx $$ }}}
-
-In the iso-thermal case, Euler-Korteweg model is hamiltonian system. In the paper of Jan and Thanos, they mentioned about the Benzoni-Gavage's hamiltonian formulation which is valid only when the curl of $\mathbf{v}$ vanishes, but as they remarked, the hamiltonian is better looked as a function of the generalized coordinate and the generalized momenta rather than the function of $\rho$ and $\mathbf{v}$.
-
-I'll fill in the calculation gaps in the below later on, but it should have natural hamiltonian system structure with hamiltonian depending on the motion and the momenta $(x(X,t), \mathbf{m}(X,t))$.
-
-----
-Following the serrin's book(mathematical principles of classical fluid mechanics), first consider the hamiltonian functional in the material coordinate $X$ and write the density {{{$\rho J = \rho_0$}}}, where $J$ is the determinant of the deformation gradient. I purposely exposed the constant {{{$\rho_0$}}} rather than using $1$. Formal calculation gives
-
-{{{ $$ H = \int \frac{1}{2} \rho|\mathbf{v}|^2 + h(\rho,\theta) + \frac{1}{2}\kappa(\rho,\theta) |\nabla\rho|^2 \, dx $$ }}}
-
-{{{ $$ H = \int \rho_0(X) \left(\frac{1}{2} |\mathbf{v}|^2 + \tilde{h}(\rho) + \frac{1}{2}\tilde{\kappa}(\rho) |\nabla_{x}\rho|^2\right) \, dX, $$ }}} we set {{{$\mathbf{m} = \rho_0(X)\mathbf{v}$, $\tilde{h}(\rho) = h(\rho)/\rho$, $\tilde{\kappa}(\rho)= \kappa(\rho)/\rho$}}}.
-
-{{{ $$ H(x(X,t),\mathbf{m}(X,t)) = H(\rho(X,t),\mathbf{m}(X,t)) = \int \left(\frac{1}{2\rho_0(X)} |\mathbf{m}|^2 + \tilde{h}(\rho) + \frac{1}{2}\tilde{\kappa}(\rho) |\nabla_{x}\rho|^2\right) \, dX $$ }}} Hamiltonian system is {{{ $$\frac{dx(X,t)}{dt} = \frac{\delta H}{\delta \mathbf{m}} = \frac{\mathbf{m}}{\rho_0(X)} =  \mathbf{v}  $$}}} {{{ $$\frac{d\mathbf{m}(X,t)}{dt} = -\frac{\delta H}{\delta x} $$}}}
-
-----
-When the flow is non-isothermal, Euler-Korteweg system is dissipative with modification of Dunn \& Serrin. (I'll more endeavor to understand the procedure)
 \end{document}
