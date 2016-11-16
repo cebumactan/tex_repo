@@ -155,24 +155,24 @@ Whereas, if the viscosity is allowed to grow to $\infty$ or decay to $0$, the qu
 \begin{equation} \label{intro:powerlaw} \sigma= \mu(\theta)v_x^n, \quad \mu(\theta) = \theta^{-\alpha}, \end{equation}
 the amount of ``orderly'' that is required for the flow stabilizes is the condition $-\alpha+n>0$.
 
-The instability of the flow with decreasing $\mu(\theta)$ was studied by \cite{bertsch_effect_1991} for the newtonian fluid. They showed that, according to the initial profiles, either the temperature or the velocity gradient localizes as time proceeds. The non-newtonian fluid was studied by Tzavaras \cite{Tz_1987} showing that $-\alpha+n<0$ leads to the instability.
+The instability of the flow with decreasing $\mu(\theta)$ was studied by \cite{bertsch_effect_1991} for the case $n=1$, the newtonian fluid. They showed that if $-\alpha<1$, according to the initial profiles, either the temperature or the velocity gradient localizes as time proceeds. The non-newtonian fluid was studied by Tzavaras \cite{Tz_1987} showing that $-\alpha+n<0$ leads to the instability.
 
 The decreasing $\mu(\theta)$, or the {\it temperature-thinning}, reminds us the positive feedback mechanism of the plastic shear flow of solids. See the discussion in \cite{KLT_2016}, where authors studied the material that exhibits the strain-softening. Indeed, the system \eqref{intro:system} is rewritten with the velocity gradient $u\triangleq v_x$ and $h(\theta)$ of \eqref{intro:h} as
 \begin{align*}
  h(\theta)_t &=u,\\
  u_t&=\sigma_{xx},
 \end{align*}
-where we find $h(\theta)$ an increasing function of $\theta$. The velocity gradient $u$ grows at the point where the stress is less than the surrounding. The size of the stress is determined by the viscosity and the $u$ itself. The increment of temperature diminishes the stress, whereas the increment of $u$ increases the stress and the overall size is determined from this competition. Suppose the decay rate of the viscosity is sufficiently fast, which is not ``orderly'', so that the temperature effect overwhelm the other, or the region with higher temperature has the smaller stress size. This increases $u$ and in turn, results in the increment of the temperature again and the positive feedback is conceivably triggered. 
+where we find $h(\theta)$ an increasing function of $\theta$. The velocity gradient $u$ grows at the point where the stress is less than the surrounding. The size of the stress is determined by the viscosity and the $u$ itself. The increment of temperature diminishes the stress, whereas the increment of $u$ increases the stress and the overall size is determined from this competition. Suppose the decay rate of the viscosity is sufficiently fast, not ``orderly'', so that the temperature effect overwhelm the other, or the region with higher temperature has the smaller stress size. This increases $u$ and in turn, results in the increment of the temperature again and the positive feedback is conceivably triggered. 
 
-\cite{KOT14} considered the viscosity with exponential law
-$$ \mu(\theta) = e^{-\alpha\theta}$$
-and constructed a family of solutions that exhibit localizing instability. In the course, the authors introduced the series of techniques that exploits the scale invariance property of the system \eqref{intro:system}. They worked on the whole space $x \in \mathbb{R}$ and seeked  the self-similar solutions. This technique turns out to be successful in the plastic shear flow of solid with power-law type stress \cite{KLT_2016, LT16}, namely
+Into this discussions of stabilizing or destabilizing matters, it was \cite{KOT14} that introduced the idea of self-similar solutions, woking in the whole space $x\in \mathbb{R}$. They showed that for the case of exponential viscosity, 
+$$ \sigma = \mu(\theta)v_x^n, \quad \mu(\theta) = e^{-\alpha\theta}.$$
+there is a family of localizing self-similar solutions in $(t,x) \in \mathbb{R}^+ \times \mathbb{R}$ for each $\alpha>0.$
+That \eqref{intro:system} has a family of scale invariance (See \eqref{eq:scale} and \eqref{eq:exponents}) has been known from early stage of the study. By exploiting this, or by posing the ansatz of self-similar solutions, they reduced the system into that of ordinary differential equations, which turned out to be of non-autonomous and singular. The key step was to introduce a series of transformations to turn the system into the equivalent autonomous system and to  construct the suitable heteroclinic orbit of it. This approach demonstrates the emergence of localization directly. Later, the approach was adopted in study of the plastic shear flow of solid with power-law type stress \cite{KLT_2016, LT16}, namely
 $$ \sigma_p = \sigma_p(\gamma,u) = \gamma^{-m}u^n, \quad \text{where $\gamma$ is the shear strain and $m,n>0$.}$$
+In that, the another ingredient, the geometric geometric singular perturbation theory played the key role. 
 
-
-
-
-It is our objective to construct 
+To return to our problem, we study \eqref{intro:system} in $(t,x) \in \mathbb{R}^+ \times \mathbb{R}$ with the power law viscosity \eqref{intro:powerlaw} in the regime $-\alpha+n<0$. 
+It is our objective to construct two-parameters family of self-similar solutions,
 \begin{equation*}
 \begin{aligned}
 %  \gamma(t,x) &= (t+1)^a\Gamma((t+1)^\lambda x), & 
@@ -180,109 +180,72 @@ It is our objective to construct
  \sigma(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x),
 \end{aligned}
 \end{equation*}
-
-\begin{equation}
- \lambda = \frac{D}{2+2n}\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} - \frac{2}{2+2n}. \label{intro:lambda}
+where the exponents are given by
+\begin{equation} \label{intro:exponents}
+\begin{aligned}
+ b&=\frac{1}{D} + \frac{1+n}{D}, & c&=\frac{2}{D} + \frac{2(1+n)}{D}\lambda, & d&=\frac{-2\alpha +n}{D} + \frac{-2\alpha+2n}{D}\lambda,\\
+ D&=1+2\alpha-n.
+\end{aligned}
 \end{equation}
-\begin{equation} \label{intro:restriction}
- \frac{2}{1+2\alpha-n} < \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} < \frac{2}{1+n}.
+$t^\lambda x=\xi$ is the self-similar variable and we consider $\lambda>0$. This is in the oppoite sign to that of familiar self-similar variable of parabolic problem. $\lambda$ accounts for the rate of localization, for instance, if a bump is assumed around the origin for the initial profile, then as time proceeds the bump becomes narrower. The attached polynomial factor of $t$ lets this localization accompanied by additional growth or decay in the height of the bump. It is worth to know that this family of self-similar solution includes the {\it uniform shearing solution} when $\lambda = -\frac{1+m}{2(1+\alpha)}$; $\lambda \le0$ does not corresponds to the localization.
+
+In the regime of localization, instead of stability we speak of non-arbitrariness of the instability. Even though the field variables localizes and develops singularity as $t \rightarrow \infty$, the intermediate process is maintained to be smooth and oscillation is suppressed. See the discussion on the competition between the Hadamard instability and the diffusion in \cite{KOT14}. In this regard, it is suggestive that the solution is achieved in the bounded range of the localizing rate  
+\begin{equation}\label{intro:r1posineq}
+ 0<\lambda < \frac{2(\alpha-n)}{(1+n)^2} \quad \Longleftrightarrow \quad \frac{2}{1+2\alpha-n} < \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} < \frac{2}{1+n}.
 \end{equation}
+In the latter, $U(0)$ and $\Theta(0)$ parametrize the initial tip sizes of the bumps at the origin respectively. It is necessary to have the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ not too small and not too big for the self-similar solution to be achieved. 
 
-Now, we find the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ is restricted by \eqref{eq:r1posineq},
+Lastly, we briefly describe the profiles we obtain. For each fixed parameters, the asymptotic behavior of obtained solutions are as below. Differently from the \cite{bertsch_effect_1991}, the solutions exhibit the localization both in the temperature and the velocity gradient.
+\begin{align*}
+ u(t,0) &= (1+t)^{\frac{1}{D} + \frac{2+2\alpha}{D}\lambda}U(0),&
+ u(t,x) &\sim t^{\frac{1}{D} - \frac{(1+\alpha)(1+n)}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$,}\\
+ \theta(t,0) &= (1+t)^{\frac{2}{D} + \frac{2+2n}{D}\lambda}\Theta(0),&
+ \theta(t,x) &\sim t^{\frac{2}{D} - \frac{(1+n)^2}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$,}\\
+ \sigma(t,0) &= (1+t)^{\frac{-2\alpha+n}{D} + \frac{-2\alpha+2n}{D}\lambda}\Sigma(0), &
+ \sigma(t,x) &\sim t^{\frac{-2\alpha+n}{D} +\frac{1+n}{D}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$,}
+\end{align*}
+which dictates the contrasted growth or decay at the origin to the rest of the place. For the velocity field, its gradient localizes similarly to that observed in \cite{bertsch_effect_1991} in the way
+$$v_\infty(t)\triangleq \lim_{x \rightarrow \infty} v(t,x)=(1+t)^{b}V_\infty = (1+t)^{\frac{1}{D} + \frac{1+n}{D}\lambda}V_\infty, \quad V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi) <\infty.$$
+It is observed that the far field velocity grows as time proceeds. The particle gets faster as it moves forward in $y$-direction and relatively more energy is pumped into the domain than the constant far field velocity does. This is a consequence of our simplifying assumption of the self-similarity inherited from the scaling property of \eqref{intro:system} and \eqref{intro:powerlaw}.
 
-
-
-In the regime localization takes place, instead of speaking of stability we speak of non-arbitrariness of the instability. See the discussion on the competition between the Hadamard instability and the diffusion in \cite{KOT14}. Even though the field variables localizes, developing singularity as $t \rightarrow \infty$, the intermediate process is maintained to be smooth and oscillation is suppressed. In regard, 
-
-the m, temperature effect give a dissipative mechanism. Other than that,  With heat conduction, its one effect gives a dissipative mechanism. Other than this mechanism, 
-
-
-flow of non-newtonian fluid.
-\begin{enumerate}
- \item rectlinear(?) non-newtonian viscous flow
- \item decreasing viscosity, power law, arrehnius law, exponential law
- \item kinematics, initial-boundary value problem
- \item energy, temperature increases to infinity
- \item uniform shear
- \item self-similar localization in whole space
- \item strain independent solid, identical equation
- \item oscillation is suppressed
- \item temperature localization, velocity gradient localization
-\end{enumerate}
-
-
-\section{The model description}
-We consider a 1-d shear deformation of a material whose material law of stress depends on 1) temperature, 2) strain, 3) strain rate. The motion is described by following field variables,
+Throughout this paper,
 \begin{equation} \label{eq:vars}
 \begin{aligned}
  \gamma(t,x) &: \text{strain}\\
  u(t,x)=\gamma_t &: \text{strain rate}\\
  v(t,x) &: \text{vertical velocity}\\
  \theta(t,x) &: \text{temperature}\\
- \sigma(t,x) &: \text{stress}
+ \tau(t,x) &: \text{stress}
 \end{aligned}
 \end{equation}
-The material exhibits 1) temperature-softening, 2) strain-hardening, 3) rate-hardening. we denote the shear stress
-$$ \sigma = \sigma(\theta,\gamma,u). $$
-and study a model
-\begin{equation}
- \sigma = \theta^{-\alpha}\gamma^m u^n. \label{eq:stresslaw}
-\end{equation}
-
-A few forehand perspectives :
-\begin{enumerate}
- \item The regime where $-\alpha+m+n <0$ will exhibit the localization, whereas the regime $-\alpha+m+n > 0$ will exhibit stabilization. {\blue Can we rigorously study the linearize stability to the uniform shearing solution?}
- \item The uniform shearing solution will appear as one of the self-similar solution by a specific $\lambda$ that is negative.
-\end{enumerate}
-\subsection{A system of conservation laws}
-For the field variables \eqref{eq:vars}, equations describing the deformation are given by
+in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$ and equations describing the deformation are given by
 \begin{align}
  \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
- v_t &= \sigma_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
- \theta_t &= \sigma u \quad \text{(energy conservation)}	\label{eq:th}\\
- \sigma &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
+ v_t &= \tau_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
+ \theta_t &= \tau u \quad \text{(energy conservation)}	\label{eq:th}\\
+ \tau &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
 \end{align}
-
-\subsection{temperature softening model}
-We first focus on the problem where
-$$ \sigma = \sigma(\theta,u) = \theta^{-\alpha}u^n.$$
-Then the first equation \eqref{eq:g} drops out from the system, and we focus on the system
-\begin{equation} \label{eq:orisys}
- \begin{aligned}
-  v_t &= \sigma_x,\\
-  \theta_t &= \sigma u,\\
-  \sigma &=\theta^{-\alpha}u^n.
- \end{aligned}
-\end{equation}
-
-\subsection{strain softening model}
-We first focus on the problem where
-$$ \sigma = \sigma(\theta,u) = \theta^{-\alpha}u^n.$$
-Then the first equation \eqref{eq:g} drops out from the system, and we focus on the system
-\begin{equation} \label{eq:strsof}
- \begin{aligned}
-  v_t &= \sigma_x,\\
-  \theta_t &= \sigma u,\\
-  \sigma &=\theta^{-\alpha}u^n.
- \end{aligned}
-\end{equation}
 
 \section{Self-similar structure}
 
 \subsection{Scale invariance property of the system}
 The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppose $(\gamma,u,v,\theta,\sigma)$ is a solution. Then a rescaled version of it $(\gamma_\rho,u_\rho,v_\rho,\theta_\rho,\sigma_\rho)$ that is given by
-\begin{align*}
+\begin{equation}\label{eq:scale}
+\begin{aligned}
  \gamma_\rho(t,x) &= \rho^a\gamma(\rho^{-1}t,\rho^\lambda x), &
  v_\rho(t,x) &= \rho^bv(\rho^{-1}t,\rho^\lambda x),\\
  \theta_\rho(t,x) &= \rho^c\theta(\rho^{-1}t,\rho^\lambda x), &
  \sigma_\rho(t,x) &= \rho^d\sigma(\rho^{-1}t,\rho^\lambda x),\\
  u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x),
-\end{align*}
+\end{aligned}
+\end{equation}
 again is a solution provided
-\begin{align*}
+\begin{equation} \label{eq:exponents}
+\begin{aligned}
  a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, & b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
  c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda,
-\end{align*}
+\end{aligned}
+\end{equation}
 for each $\lambda \in \mathbb{R}$, where the denominator $D = 1+2\alpha-m-n$. Being $\lambda$ negative makes this scaling spatially spread the original profiles  as $\rho$ grows, and this is the sign that is used for instance in the parabolic problems. On the other hand, we are interested in the {\it localizing} phenomena and thus we focus on the opposite, with $\lambda>0$, throughout this paper.
 
  But uniform shearing solution takes a negative $\lambda$.
