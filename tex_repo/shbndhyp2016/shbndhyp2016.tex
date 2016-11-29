@@ -32,6 +32,73 @@
 \usepackage{multicol}        % used for the two-column index
 \usepackage[bottom]{footmisc}% places footnotes at page bottom
 
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+%\usepackage{verbatim}
+% \usepackage{alltt}
+%\usepackage{kotex}
+
+\usepackage{enumerate}
+
+%%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\tr{\,\textrm{tr}\,}
+\def\div{\,\textrm{div}\,}
+\def\sgn{\,\textrm{sgn}\,}
+
+\def\th{\tilde{h}}
+\def\tx{\tilde{x}}
+\def\tk{\tilde{\kappa}}
+
+
+\def\bg{{\bar{\gamma}}}
+\def\bv{{\bar{v}}}
+\def\bth{{\bar{\theta}}}
+\def\bs{{\bar{\sigma}}}
+\def\bu{{\bar{u}}}
+\def\bph{{\bar{\varphi}}}
+
+
+\def\tg{{\tilde{\gamma}}}
+\def\tv{{\tilde{v}}}
+\def\tth{{\tilde{\theta}}}
+\def\ts{{\tilde{\sigma}}}
+\def\tu{{\tilde{u}}}
+\def\tph{{\tilde{\varphi}}}
+
+\def\dtg{{\dot{\tilde{\gamma}}}}
+\def\dtv{{\dot{\tilde{v}}}}
+\def\dtth{{\dot{\tilde{\theta}}}}
+\def\dts{{\dot{\tilde{\sigma}}}}
+\def\dtu{{\dot{\tilde{u}}}}
+\def\dtph{{\dot{\tilde{\varphi}}}}
+
+\def\dpp{\dot{p}}
+\def\dqq{\dot{q}}
+\def\drr{\dot{r}}
+\def\dss{\dot{s}}
+
+\def\ta{{\tilde{a}}}
+\def\tb{{\tilde{b}}}
+\def\tc{{\tilde{c}}}
+\def\td{{\tilde{d}}}
+
+\def\BO{{\mathcal{O}}}
+\def\lio{{\mathcal{o}}}
+
+
+
+\def\bx{\bar{x}}
+\def\bm{\bar{\mathbf{m}}}
+\def\K{\mathcal{K}}
+\def\E{\mathcal{E}}
+\def\del{\partial}
+\def\eps{\varepsilon}
+
 % see the list of further useful packages
 % in the Reference Guide
 
@@ -49,9 +116,9 @@
 \author{Min-Gi Lee, Katsaonious Theodoros and Athanasios Tzavaras}
 % Use \authorrunning{Short Title} for an abbreviated version of
 % your contribution title if the original one is too long
-\institute{Min-Gi Lee \at Name, Address of Institute, \email{mingi.lee@kaust.edu.sa}
-\and Name of Second Author \at Name, Address of Institute \email{name@email.address}
-\and Name of Second Author \at Name, Address of Institute \email{name@email.address}}
+\institute{Min-Gi Lee \at KAUST, Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia, \email{mingi.lee@kaust.edu.sa}
+\and Katsaonious Theodoros \at KAUST, Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia \email{theodoros.katsaounis@kaust.edu.sa}
+\and Athanasios Tzavaras \at KAUST, Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia \email{athanasios.tzavaras@kaust.edu.sa}}
 %
 % Use the package "url.sty" to avoid
 % problems with special characters
@@ -64,6 +131,129 @@ Please use the 'starred' version of the new Springer \texttt{abstract} command f
 
 \abstract{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.\newline\indent
 Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
+
+\section{Introduction}
+We study instability in adiabatic one dimensional shear flow. Consider a slab of a material situated on the $(x,y)$-plane between the interval $0<x<1$ that is under shear deformation in the $y$-direction. As the flow is adiabatic, the energy, which is ceaselessly supplied by the movement of the boundary, accumulates at each point and once the imbalance of the temperature distribution occurs then it persists and does not diffuse out. Typically, material exhibits {\it thermal softening} and {\it strain hardening}. When the temperature distribution and the strain distribution are non-uniform in $x$, the stress response is the competition between the softening and the hardening and thus according to the precise constitutive law, the nature of the system has many possibilities.
+
+If the decay rate of the stress as temperature increases is faster enough than the growth rate as strain increases, then the net effect makes the point of material softer than before and this can  trigger the positive-feedback mechanism within the increment of the temperature and the increment of the strain. This is manifested by loss of hyperbolicity in the corresponding thermo-elastic model.
+
+In the regime that the system loses hyperbolicity, it is acutely pointed out in \cite{KLT_2016} that the original thermo-elastic model does not fully account for the shear localization phenomena: The instability system exhibits has coined the term {\it Hadamard Instability} that typically occurs in the initial problem of an elliptic equations and that we have Hadamard Instability indicates the exponential growth of oscillation, i.e., the system is catastrophically ill-posed.
+
+On the other hand, Zenor and Solomon \cite{ZH_1944} conducted the experiments of shear deformation of metals in high rate of deformation, which let the process close to the adiabatic. What is observed in the experiments is the coherent localization of the shear strain, the {\it shear band}. There, oscillations are suppressed and the process is ``orderly'' albeit the development of the singularity.
+
+\cite{tzavaras_nonlinear_1992,Tz_1986,Tz_1987} the efforts has been focused on the role of viscosity in the model. In the linearized analysis in \cite{KLT_2016}, the presence of small viscosity alters the nature of the instability from Hadamard Instability to the Turing Instability. The positive eigenvalues of the linearized system are unbounded without the viscosity whereas they are bounded with the viscosity.
+
+In this paper, we study the instability by constructing a family of localizing self-similar solutions for the variety of thermo-visco-elastic models for the one dimensional shear flow. We explain the hierarchy of variety of models as in \cite{tzavaras_nonlinear_1992}.
+
+The family of solutions reveals the structure of the coherent shear bands. With in the family, the rate of focusing and growing is of polynomial order and it is bounded by the value associated to the viscosity. The family of solutions are parametrized by the initial heights of the small bumps in temperature, strain, and strain rate distributions, $\Theta(0)$, $\Gamma(0)$, and $U(0)$ respectively. It turns out that the solution does not exists if the ratio $\displaystyle \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$, where $n$ and $\alpha$ accounts for the  $\displaystyle \frac{U(0)}{\Gamma(0)}$ (resp. $\displaystyle \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$) is outside of a certain interval, which indicates the coherent localization is a consequence of the sophisticated competition between the viscosity and the instability due to inelastic response of the material.
+\section{Problem Description}
+We study the one dimensional adiabatic shear flow in $(t,x) \in \mathbb{R}^+\times \mathbb{R}$. The direction of shear is $y$-direction and the motion is described by following field variables,
+\begin{equation} \label{eq:vars}
+\begin{aligned}
+ \gamma(t,x) &: \text{shear strain}\\
+ u(t,x)=\gamma_t &: \text{shear strain rate}\\
+ v(t,x) &: \text{vertical velocity}\\
+ \theta(t,x) &: \text{temperature}\\
+ \tau(t,x) &: \text{shear stress}
+\end{aligned}
+\end{equation}
+The shear stress
+$$ \tau = \tau(\theta,\gamma,u) $$
+the thermo-visco-elastic constitutive law. In particular we consider the nonlinear viscous contribution in the following form
+\begin{equation}
+ \tau = \varphi(\theta,\gamma) u^n, \label{eq:stresslaw}
+\end{equation}
+where $n$ is the strain-rate sensitivity and is assumed to be very small, $0<n\ll1$.
+
+A system of equations describing the deformation are given by
+\begin{equation} \label{eq:A}\tag{A}
+\begin{aligned}
+ \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\\
+ v_t &= \tau_x, \quad \text{(momentum conservation)} 	\\
+ \theta_t &= \tau u \quad \text{(adiabatic energy equation)}	\\
+ \tau &=\varphi(\theta,\gamma) u^n.			
+\end{aligned}
+\end{equation}
+We look for a self-similar solution of the system. 
+
+The material keeps loading in $y$-direction so we expect the temperature and the strain at each point increase to infinity as $t \rightarrow \infty$,
+$$ \theta(t,x), \; \gamma(t,x) \rightarrow \infty, \quad \text{as $t \rightarrow \infty$, for each $x$}.$$
+
+
+
+
+From \eqref{eq:A}, the cases where $\varphi$ is independent on either of $\theta$ and $\gamma$ forms two subclasses of models. In fact, two subclasses have their own interpretations respectively, but they share the exactly same set of equations. See also the model hierarchy explained in \cite{tzavaras_nonlinear_1992}. 
+\subsubsection{strain independent model}
+We first consider the subclass where
+$$ \varphi(\theta,\gamma) = \varphi(\theta), \quad \tau = \varphi(\theta)u^n.$$
+In this subclass, the model describes a rect-linear shear flow of a viscous fluid. $\tau = \varphi(\theta)u^n$ is the non-newtonian viscous stress and the $\varphi(\theta)$ is the temperature dependent viscosity.
+
+The system is closed without the the first equation of \eqref{eq:A}, having
+\begin{equation} \label{eq:B1}\tag{B1}
+ \begin{aligned}
+  v_t &= \tau_x,\\
+  \theta_t &= \tau u,\\
+  \tau &=\varphi(\theta)u^n.
+ \end{aligned}
+\end{equation}
+
+
+
+\subsubsection{temperature independent model}
+Next, we consider the subclass where
+$$ \varphi(\theta,\gamma) = \varphi(\gamma), \quad \varphi'(\gamma)<0, \quad \tau = \varphi(\gamma)u^n.$$
+In this subclass, the model describes the isothermal plastic viscous shear deformation.
+
+The system is closed without the temperature equation of \eqref{eq:A}, having
+\begin{equation} \label{eq:B2}\tag{B2}
+ \begin{aligned}
+  \gamma_t &= u,\\
+  v_t &= \tau_x,\\
+  \tau &=\varphi(\gamma)u^n.
+ \end{aligned}
+\end{equation}
+
+\section{Main results}
+
+\section{Idea of proof} \label{sec:idea}
+
+\section{Self-similar structure}
+
+\subsection{Scale invariance property of the system}
+The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppose $(\gamma,u,v,\theta,\tau)$ is a solution. Then a rescaled version of it $(\gamma_\rho,u_\rho,v_\rho,\theta_\rho,\tau_\rho)$ that is given by
+\begin{align*}
+ \gamma_\rho(t,x) &= \rho^a\gamma(\rho^{-1}t,\rho^\lambda x), &
+ v_\rho(t,x) &= \rho^bv(\rho^{-1}t,\rho^\lambda x),\\
+ \theta_\rho(t,x) &= \rho^c\theta(\rho^{-1}t,\rho^\lambda x), &
+ \tau_\rho(t,x) &= \rho^d\tau(\rho^{-1}t,\rho^\lambda x),\\
+ u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x),
+\end{align*}
+again is a solution provided
+\begin{align*}
+ a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, & b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
+ c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda,
+\end{align*}
+for each $\lambda \in \mathbb{R}$, where the denominator $D = 1+2\alpha-m-n$. Being $\lambda$ negative makes this scaling spread the original profiles spatially as $\rho$ grows, and this is the sign that is used for instance in the parabolic problems. On the other hand, we are interested in the {\it localizing} phenomena and thus we focus only on the opposite, with $\lambda>0$, throughout this paper.
+
+ But uniform shearing solution takes a negative $\lambda$.
+\subsection{Self-Similar field variables}
+Motivated by the scale invariance property parametrized by $\lambda>0$, we look for the solutions of type
+\begin{align*}
+ \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x),\\
+ \tau(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
+\end{align*}
+and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\eqref{eq:tau} gives us the system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
+
+\begin{equation}
+\begin{aligned}
+ a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
+ b V(\xi) + \lambda \xi V'(\xi) &= \Sigma'(\xi),\\
+ c \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ V'(\xi)&=U(\xi).
+\end{aligned} \label{eq:ss-odes}
+\end{equation}
+
 
 \section{Section Heading}
 \label{sec:1}
@@ -321,6 +511,79 @@ a \times b = c
 \end{equation}
 
 \input{referenc}
+\begin{thebibliography}{10}
+
+\bibitem{bertsch_effect_1991}
+{\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel}, 
+The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
+{\em SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
+
+\bibitem{dafermos_adiabatic_1983}
+{\sc C.~M. Dafermos and L.~Hsiao}, 
+Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
+{\em Quart.  Applied Math.} {\bf 41} (1983), 45--58.
+
+\bibitem{fenichel_geometric_1979}
+{\sc N.~Fenichel}, 
+Geometric singular perturbation theory for ordinary differential equations, 
+{\it J. Differ. Equations} {\bf 31} (1979), 53--98.
+
+\bibitem{FM87}
+{\sc C.~Fressengeas and A.~Molinari}, 
+Instability and localization of plastic flow in shear at high strain rates, 
+  {\em J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
+
+\bibitem{jones_geometric_1995}
+{\sc C.~K. R.~T. Jones}, 
+Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+  
+  
+\bibitem{KOT14}
+{\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras}, 
+Emergence of coherent localized structures in shear deformations of
+  temperature dependent fluids, arXiv preprint arXiv:1411.6131,  (2014).
+
+\bibitem{LT16}
+{\sc M.-G.~Lee and A.E.~Tzavaras},
+Existence of localizing solutions in plasticity via the geometric singular perturbation theory, arXiv preprint arXiv:xxxx.xxxxx,  (2016)
+
+\bibitem{KLT_2016}
+{\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras}, 
+Localization in inelastic rate dependent shearing deformations, arXiv preprint arXiv:1605.04564,  (2016).
+
+% \bibitem{perko_differential_2001}
+% {\sc L.~Perko}, 
+% {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).  
+
+\bibitem{Tz_1986}
+{\sc A.E. Tzavaras},
+Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
+{\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
+
+\bibitem{Tz_1987}
+{\sc A.E. Tzavaras}, 
+Effect of thermal softening in shearing of strain-rate dependent materials.
+{\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
+
+\bibitem{tzavaras_nonlinear_1992}
+%\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
+{\sc A.E. Tzavaras}, 
+Nonlinear analysis techniques for shear band formation at high strain-rates, 
+% {\it Applied Mechanics Reviews} 
+{\it Appl. Mech. Rev.}
+{\bf  45} (1992), S82--S94.
+
+\bibitem{ZH_1944}
+{\sc C.~Zener and J.~H. Hollomon}, 
+Effect of strain rate upon plastic flow of steel,
+% {\it  Journal of Applied Physics} 
+{\it J. Appl. Phys.}
+{\bf 15} (1944), 22--32.
+\end{thebibliography}
+
+\end{document}	
+
+
 \end{document}
 
 
