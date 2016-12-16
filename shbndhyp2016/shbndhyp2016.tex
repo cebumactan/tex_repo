@@ -35,14 +35,13 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{color}
+\usepackage{color,subfigure}
 \def\red{\color{red}}
 \def\blue{\color{blue}}
 %\usepackage{verbatim}
 % \usepackage{alltt}
 %\usepackage{kotex}
 
-\usepackage{enumerate}
 
 %%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -58,7 +57,7 @@
 \def\bg{{\bar{\gamma}}}
 \def\bv{{\bar{v}}}
 \def\bth{{\bar{\theta}}}
-\def\bs{{\bar{\sigma}}}
+\def\bs{{\bar{\tau}}}
 \def\bu{{\bar{u}}}
 \def\bph{{\bar{\varphi}}}
 
@@ -66,14 +65,14 @@
 \def\tg{{\tilde{\gamma}}}
 \def\tv{{\tilde{v}}}
 \def\tth{{\tilde{\theta}}}
-\def\ts{{\tilde{\sigma}}}
+\def\ts{{\tilde{\tau}}}
 \def\tu{{\tilde{u}}}
 \def\tph{{\tilde{\varphi}}}
 
 \def\dtg{{\dot{\tilde{\gamma}}}}
 \def\dtv{{\dot{\tilde{v}}}}
 \def\dtth{{\dot{\tilde{\theta}}}}
-\def\dts{{\dot{\tilde{\sigma}}}}
+\def\dts{{\dot{\tilde{\tau}}}}
 \def\dtu{{\dot{\tilde{u}}}}
 \def\dtph{{\dot{\tilde{\varphi}}}}
 
@@ -89,7 +88,7 @@
 
 \def\BO{{\mathcal{O}}}
 \def\lio{{\mathcal{o}}}
-
+\def\R{{\mathbb{R}}}
 
 
 \def\bx{\bar{x}}
@@ -110,15 +109,15 @@
 
 \begin{document}
 
-\title*{On Localization of Thermo-Elastic Materials In Adiabatic Process  }
+\title*{Localization of Thermoviscoplastic Materials In Adiabatic Deformations }
 % Use \titlerunning{Short Title} for an abbreviated version of
 % your contribution title if the original one is too long
-\author{Min-Gi Lee, Katsaonious Theodoros and Athanasios Tzavaras}
+\author{Min-Gi Lee, Theodoros Katsaounis and Athanasios E. Tzavaras}
 % Use \authorrunning{Short Title} for an abbreviated version of
 % your contribution title if the original one is too long
-\institute{Min-Gi Lee \at KAUST, Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia, \email{mingi.lee@kaust.edu.sa}
-\and Katsaonious Theodoros \at KAUST, Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia \email{theodoros.katsaounis@kaust.edu.sa}
-\and Athanasios Tzavaras \at KAUST, Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia \email{athanasios.tzavaras@kaust.edu.sa}}
+\institute{Min-Gi Lee \at King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia, \\ \email{mingi.lee@kaust.edu.sa}
+\and Theodoros Katsaounis \at King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  \email{theodoros.katsaounis@kaust.edu.sa}
+\and Athanasios Tzavaras \at King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  \email{athanasios.tzavaras@kaust.edu.sa}}
 %
 % Use the package "url.sty" to avoid
 % problems with special characters
@@ -126,101 +125,105 @@
 %
 \maketitle
 
-\abstract*{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.
-Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
+%\abstract*{We study a focusing instability occuring during deformations of metals at high strain rates  and leading to the formation of shear bands. 
+%We consider shear motions of a thermal-viscoplastic material exhibting thermal softening and strain hardening.
+%Under adiabatic conditions thermal softening induces a destabilizing mechanism that may lead to  localization of shear strain in a narrow band.
+%The main result of the paper is the existence of the family of focusing self-similar solutions. This reveals the nature of the instability, in particular the special role of the viscosity. In the absence of the viscosity, the system without hyperbolicity exhibits Hadamard Instability. The presence of the viscosity alters the nature of the instability; the focusing self-similar solutions we obtain can grow only at the polynomial order and the rate of focusing is bounded above. To construct the solutions, we introduce the non-linear transformations to turn the problem into that of finding heteroclinic orbit of the associated dynamical system. The key step is to conduct the Chapman-Enskog type reduction via geometric singular perturbation theory. The part of the latter step is included.}
 
-\abstract{Each chapter should be preceded by an abstract (10--15 lines long) that summarizes the content. The abstract will appear \textit{online} at \url{www.SpringerLink.com} and be available with unrestricted access. This allows unregistered users to read the abstract as a teaser for the complete chapter. As a general rule the abstracts will not appear in the printed version of your book unless it is the style of your particular book or that of the series to which your book belongs.\newline\indent
-Please use the 'starred' version of the new Springer \texttt{abstract} command for typesetting the text of the online abstracts (cf. source file of this chapter template \texttt{abstract}) and include them with the source files of your manuscript. Use the plain \texttt{abstract} command if the abstract is also to appear in the printed version of the book.}
+\abstract{We study a focusing instability occurring during high strain-rate deformations of metals  and leading to the formation of shear bands. 
+We consider shear motions of a thermal-viscoplastic material exhibting thermal softening and strain hardening.
+Under adiabatic conditions thermal softening induces a destabilizing mechanism that may lead to  localization of shear strain in a narrow band.
+We show the existence of a family of focusing self-similar solutions, that capture the nature of this instability, in particular its
+emergence as a net result of the competition between Hadamard instability and viscosity.
+The focusing self-similar solutions we obtain can grow at a  polynomial order. To construct the solutions, we introduce a non-linear transformation and to turn the 
+existence problem into that of finding a heteroclinic orbit of an associated dynamical system. The mechanism of instability is captured by a Chapman-Enskog type asymptotic reduction. The existence of the heteroclinic orbit is obtained via the geometric singular perturbation theory. }
+
 
 \section{Introduction}
-We study instability in adiabatic one dimensional shear flow. Consider a slab of a material situated on the $(x,y)$-plane between the interval $0<x<1$ that is under shear deformation in the $y$-direction. As the flow is adiabatic, the energy, which is ceaselessly supplied by the movement of the boundary, accumulates at each point and once the imbalance of the temperature distribution occurs then it persists and does not diffuse out. Typically, material exhibits {\it thermal softening} and {\it strain hardening}. When the temperature distribution and the strain distribution are non-uniform in $x$, the stress response is the competition between the softening and the hardening and thus according to the precise constitutive law, the nature of the system has many possibilities.
+We study a focusing type instability occurring in one dimensional adiabatic shear flows. We consider shear motions of a slab  located at in the $x-y$ plane,
+and moving in the $y$-direction. We are interested in two situations: (a) the material  occupies the slab  between two parallel plates,
+$(x,y) \in (0,1) \times \R$,  and is sheared by assigned velocities at $x=0,1$. 
+(b) The material occupies the entire $x-y$-space and is sheared in the $y$-direction. 
+As the material keeps loading, the shear deformation and the internal energy increase in time. Materials typically is {\it thermally softening} 
+and this, in some instances, can lead to the loss of hyperbolicity in the corresponding thermo-mechanical system. As the process is adiabatic, energy accumulates at each of point $x$ possibly non-uniformly and this imbalance of the temperature distribution can lead to the localization of shear.
+%This problem also has attracted attentions in mechanics literature, see \cite{FM87,ZH_1944} and references therein.
 
-If the decay rate of the stress as temperature increases is faster enough than the growth rate as strain increases, then the net effect makes the point of material softer than before and this can  trigger the positive-feedback mechanism within the increment of the temperature and the increment of the strain. This is manifested by loss of hyperbolicity in the corresponding thermo-elastic model.
-
-In the regime that the system loses hyperbolicity, it is acutely pointed out in \cite{KLT_2016} that the original thermo-elastic model does not fully account for the shear localization phenomena: The instability system exhibits has coined the term {\it Hadamard Instability} that typically occurs in the initial problem of an elliptic equations and that we have Hadamard Instability indicates the exponential growth of oscillation, i.e., the system is catastrophically ill-posed.
-
-On the other hand, Zenor and Solomon \cite{ZH_1944} conducted the experiments of shear deformation of metals in high rate of deformation, which let the process close to the adiabatic. What is observed in the experiments is the coherent localization of the shear strain, the {\it shear band}. There, oscillations are suppressed and the process is ``orderly'' albeit the development of the singularity.
-
-\cite{tzavaras_nonlinear_1992,Tz_1986,Tz_1987} the efforts has been focused on the role of viscosity in the model. In the linearized analysis in \cite{KLT_2016}, the presence of small viscosity alters the nature of the instability from Hadamard Instability to the Turing Instability. The positive eigenvalues of the linearized system are unbounded without the viscosity whereas they are bounded with the viscosity.
-
-In this paper, we study the instability by constructing a family of localizing self-similar solutions for the variety of thermo-visco-elastic models for the one dimensional shear flow. We explain the hierarchy of variety of models as in \cite{tzavaras_nonlinear_1992}.
-
-The family of solutions reveals the structure of the coherent shear bands. With in the family, the rate of focusing and growing is of polynomial order and it is bounded by the value associated to the viscosity. The family of solutions are parametrized by the initial heights of the small bumps in temperature, strain, and strain rate distributions, $\Theta(0)$, $\Gamma(0)$, and $U(0)$ respectively. It turns out that the solution does not exists if the ratio $\displaystyle \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$, where $n$ and $\alpha$ accounts for the  $\displaystyle \frac{U(0)}{\Gamma(0)}$ (resp. $\displaystyle \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$) is outside of a certain interval, which indicates the coherent localization is a consequence of the sophisticated competition between the viscosity and the instability due to inelastic response of the material.
-\section{Problem Description}
-We study the one dimensional adiabatic shear flow in $(t,x) \in \mathbb{R}^+\times \mathbb{R}$. The direction of shear is $y$-direction and the motion is described by following field variables,
+To understand this phenomenon, we study the following one dimensional thermo-mechanical model. $y(t,x)\in \mathbb{R}$ is the spatial coordinate in the $y$-direction at time $t$ of the material initially at $x$ on the $x$-axis. The motion is described by following quantities,
 \begin{equation} \label{eq:vars}
 \begin{aligned}
- \gamma(t,x) &: \text{shear strain}\\
- u(t,x)=\gamma_t &: \text{shear strain rate}\\
- v(t,x) &: \text{vertical velocity}\\
- \theta(t,x) &: \text{temperature}\\
- \tau(t,x) &: \text{shear stress}
+ \gamma(t,x) \triangleq \partial_x y(t,x)&: \text{shear strain},\\
+ v(t,x)\triangleq \partial_t y(t,x) &: \text{vertical velocity},\\
+ u(t,x)\triangleq \partial_t\gamma(t,x) &: \text{shear strain rate},\\
+ \theta(t,x) &: \text{temperature},\\
+ \tau(t,x) &: \text{shear stress}.
 \end{aligned}
 \end{equation}
-The shear stress
-$$ \tau = \tau(\theta,\gamma,u) $$
-the thermo-visco-elastic constitutive law. In particular we consider the nonlinear viscous contribution in the following form
-\begin{equation}
- \tau = \varphi(\theta,\gamma) u^n, \label{eq:stresslaw}
-\end{equation}
-where $n$ is the strain-rate sensitivity and is assumed to be very small, $0<n\ll1$.
-
-A system of equations describing the deformation are given by
+Here, we focus on the problem in the entire space $(t,x) \in \mathbb{R}^+\times \mathbb{R}$.
+The system of equations describing the motion is
 \begin{equation} \label{eq:A}\tag{A}
 \begin{aligned}
- \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\\
- v_t &= \tau_x, \quad \text{(momentum conservation)} 	\\
- \theta_t &= \tau u \quad \text{(adiabatic energy equation)}	\\
- \tau &=\varphi(\theta,\gamma) u^n.			
+ \gamma_t &= u \quad \text{(kinematic compatibility)}, 	\\
+ v_t &= \tau_x \quad \text{(momentum conservation)}, 	\\
+ \theta_t &= \tau u \quad \text{(energy equation that is adiabatic)},	\\
+ \tau &=\tau(\theta,\gamma,u) \quad \text{(constitutive law)}.			
 \end{aligned}
 \end{equation}
-We look for a self-similar solution of the system. 
+In terms of classification, the model \eqref{eq:A} belongs to the framework of one-dimensional thermo-visco-elasticity. 
+It is also instructive to interprete $\eqref{eq:A}_4$ as a constitutive law for thermo-visco-plastic materials viewing $\gamma=\gamma_p$ the plastic strain. (See the hierarchy of models in \cite{KT09,tzavaras_nonlinear_1992}.)
+The latter context suggests the terminology: The material exhibits thermal softening at $(\theta,\gamma,u)$ where $f_\theta(\theta,\gamma,u)<0$, strain hardening where $f_\gamma(\theta,\gamma,u)>0$, and strain softening where $f_\gamma(\theta,\gamma,u)<0$.
 
-The material keeps loading in $y$-direction so we expect the temperature and the strain at each point increase to infinity as $t \rightarrow \infty$,
-$$ \theta(t,x), \; \gamma(t,x) \rightarrow \infty, \quad \text{as $t \rightarrow \infty$, for each $x$}.$$
-
-
-
-
-From \eqref{eq:A}, the cases where $\varphi$ is independent on either of $\theta$ and $\gamma$ forms two subclasses of models. In fact, two subclasses have their own interpretations respectively, but they share the exactly same set of equations. See also the model hierarchy explained in \cite{tzavaras_nonlinear_1992}. 
-\subsubsection{strain independent model}
-We first consider the subclass where
-$$ \varphi(\theta,\gamma) = \varphi(\theta), \quad \tau = \varphi(\theta)u^n.$$
-In this subclass, the model describes a rect-linear shear flow of a viscous fluid. $\tau = \varphi(\theta)u^n$ is the non-newtonian viscous stress and the $\varphi(\theta)$ is the temperature dependent viscosity.
-
-The system is closed without the the first equation of \eqref{eq:A}, having
-\begin{equation} \label{eq:B1}\tag{B1}
- \begin{aligned}
-  v_t &= \tau_x,\\
-  \theta_t &= \tau u,\\
-  \tau &=\varphi(\theta)u^n.
- \end{aligned}
+To carry on the parametric study accordingly to the stiffness of these slopes, we focus on the law of form
+\begin{equation}
+ \tau = \varphi(\theta,\gamma)u^n = \theta^{-\alpha}\gamma^m u^n, \label{eq:power} 
+\end{equation}
+where $n$ is the strain-rate sensitivity and is assumed to be very small, $0<n\ll1$. We further introduce two subclasses of \eqref{eq:A}, where $\varphi$ is independent of either $\theta$ or $\gamma$ respectively.
+% \begin{align}
+%  \tau &= \varphi(\gamma)u^n, \quad \text{or} \quad \tau = \mu(\theta)u^n.
+% \end{align}
+The strain independent model $(B)$ consists of 
+\begin{equation} \label{eq:B}\tag{B}
+ v_t = \tau_x, \quad \theta_t = \tau u, \quad \tau = \mu(\theta)u^n 		
+\end{equation}
+and the temperature indenpendent model $(C)$ consists of
+\begin{equation} \label{eq:C}\tag{C}
+ \gamma_t = u, \quad  v_t = \tau_x \quad \tau, = \varphi(\gamma)u^n.			
 \end{equation}
 
+The main results of this paper is the construction of the family of self-similar solutions of {\it focusing type} to the problems (B), and (C). The same for the problem (A) is in progress. This study on the focusing behavior is motivated by the phenomena of shear bands, which is the narrow zones shear localizes intensely. It was observed by Zener and Hollomon \cite{ZH_1944} during the high speed of deformation of metals. For further mechanical interests on the problem, we refer to \cite{FM87, SC89} and references therein. %, where it was recognized that the effects of high strain rate are twofolds: (a) It alters the deformation conditions from isothermal to nearly adiabatic, (b) strain rate has an effect {\it per se}, and needs to be included in the constitutive law. 
 
+In the study of the stability, one finds the solution of uniform shearing motion as the referential motion, which arises universally to (A). At the simplest normalization constants, 
+$$ \gamma = t, \quad v=x, \quad u=1, \quad \text{$\theta$ such that $\theta_t = \varphi(\theta,t)$}$$
+constitutes a solution. More concrete form is available for (B),
+$$ h(\theta) = \int_{\Theta_0}^\theta \frac{d\theta'}{\mu(\theta')}, \quad \theta = h^{-1}(t).$$
+Note that the growth rate of the strain is linear and uniform in $x$. In the focusing solutions we construct, the growth rate is not uniform; it grows faster at the focusing core and slower at the rest of the points.
 
-\subsubsection{temperature independent model}
-Next, we consider the subclass where
-$$ \varphi(\theta,\gamma) = \varphi(\gamma), \quad \varphi'(\gamma)<0, \quad \tau = \varphi(\gamma)u^n.$$
-In this subclass, the model describes the isothermal plastic viscous shear deformation.
-
-The system is closed without the temperature equation of \eqref{eq:A}, having
-\begin{equation} \label{eq:B2}\tag{B2}
- \begin{aligned}
-  \gamma_t &= u,\\
-  v_t &= \tau_x,\\
-  \tau &=\varphi(\gamma)u^n.
- \end{aligned}
+The linear stability around the uniform shearing solution \cite{FM87} and the study of Chapman-Enskog type relaxation to the effective equation \cite{KT09} indicate the system becomes unstable in the regime
+\begin{equation}
+ -\alpha + m + n < 0. \label{eq:constraint}
 \end{equation}
+In the other regime $-\alpha + m + n > 0$, it is expected that the uniform shearing solution is the globally asymptotically stable solution.
+Non-linear stability of the problem (B) ($m=0$) in the regime $-\alpha+n>0$ has been studied from early stage of the research, by Dafermos and Hsiao \cite{dafermos_adiabatic_1983} when $n=1$, and by Tzavaras \cite{Tz_1986} when $n\ne1$. The system (B) has an interpretation that the model describes a fluid with temperature dependent viscosity $\mu(\theta)$ in the rect-linear shear motion. Similar result for the problem (C) ($\alpha=0$) in the regime $m+n>0$  is obtained by Tzavaras \cite{tzavaras_nonlinear_1992}. For the problem (B), the failure of the asymptotic stability is treated by Bertsch et. al. \cite{bertsch_effect_1991} when $n=1$ and by Katsaounis and Tzavaras \cite{KT09} when $n\ne1$. Our objective is to show the onset of localization by constructing solutions directly.
 
+The special role of the viscosity in the model is of our central insterest. In the absence of the viscosity $(n=0)$ for the regime \eqref{eq:constraint}, the system loses hyperbolicity and the instability system exhibits has coined the term {\it Hadamard Instability}. This refers to that the oscillations will grow exponentially, i.e., the systems are catastrophically ill-posed. In the presence of the viscosity on the other hand, it alters the nature of the instability. There is a competition between the viscosity and the inelastic softening. Even when the viscosity effects merely in the way \eqref{eq:constraint} holds, it is one of our main objective to state that, among the self-similar family, the growth and focusing rates are polynomial and the rate is bounded above according to the material property.
+% The main results of this paper is the construction of the family of self-similar solutions to the problems (B), and (C). The same for the problem (A) is in progress. For this studies, the thermal softening effect and the strain hardening effect are parametrized by the exponents for the following power law 
+% \begin{equation}
+%  \tau = \varphi(\theta,\gamma)u^n = \theta^{-\alpha}\gamma^m u^n. \label{eq:pw}
+% \end{equation}
+% Linear stability around the uniform shearing solution in the slab of material \cite{FM87} has revealed that the system exhibits instability for the regime 
+% \begin{equation}
+%  -\alpha + m + n < 0. \label{eq:constraint}
+% \end{equation}
+% In this parametrization, the problem (A) refers to as the one with \eqref{eq:pw}, the problem (B) as the one with with \eqref{eq:pw} but $m=0$, and lastly (C) as the one with \eqref{eq:pw} but $\alpha=0$. In all cases, we work in the regime satisfying \eqref{eq:constraint}. The technique we employ for the study was mainly developed in Katsaounis et. al. \cite{KOT14}, where the authors studies the problem (B) with exponential law $\mu(\theta) = e^{-\alpha\theta}$. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% SECTION
+%%%%%%%%%%%%%%%%%%%%%%
 \section{Main results}
-
-\section{Idea of proof} \label{sec:idea}
-
-\section{Self-similar structure}
-
-\subsection{Scale invariance property of the system}
-The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppose $(\gamma,u,v,\theta,\tau)$ is a solution. Then a rescaled version of it $(\gamma_\rho,u_\rho,v_\rho,\theta_\rho,\tau_\rho)$ that is given by
+\subsection{Self-similar structure}
+We investigate the scale invariance property of the system (A), and consequently that of (B) and (C) too.
+Suppose $(\gamma,u,v,\theta,\tau)$ is a solution of system (A). Then a rescaled version of it $(\gamma_\rho,u_\rho,v_\rho,\theta_\rho,\tau_\rho)$ given by
 \begin{align*}
  \gamma_\rho(t,x) &= \rho^a\gamma(\rho^{-1}t,\rho^\lambda x), &
  v_\rho(t,x) &= \rho^bv(\rho^{-1}t,\rho^\lambda x),\\
@@ -228,21 +231,23 @@ The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppo
  \tau_\rho(t,x) &= \rho^d\tau(\rho^{-1}t,\rho^\lambda x),\\
  u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x),
 \end{align*}
-again is a solution provided
+is also a solution of (A) provided
 \begin{align*}
- a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, & b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
- c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda,
+ a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, \\
+ b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
+ c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, \\
+ d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda,
 \end{align*}
-for each $\lambda \in \mathbb{R}$, where the denominator $D = 1+2\alpha-m-n$. Being $\lambda$ negative makes this scaling spread the original profiles spatially as $\rho$ grows, and this is the sign that is used for instance in the parabolic problems. On the other hand, we are interested in the {\it localizing} phenomena and thus we focus only on the opposite, with $\lambda>0$, throughout this paper.
-
- But uniform shearing solution takes a negative $\lambda$.
-\subsection{Self-Similar field variables}
-Motivated by the scale invariance property parametrized by $\lambda>0$, we look for the solutions of type
+for each $\lambda \in \mathbb{R}$, where  $D = 1+2\alpha-m-n$. 
+Motivated by the scale invariance property parametrized by $\lambda$, we look for the solutions of the form 
 \begin{align*}
  \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x),\\
  \tau(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
 \end{align*}
-and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\eqref{eq:tau} gives us the system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
+and set $\xi = t^\lambda x$. In this format, $\lambda>0$ accounts for the focusing behavior as time proceeds whereas $\lambda<0$ accounts for the de-focusing behavior. This family includes the uniform shearing solution at $\lambda = -\frac{1+m}{2(1+\alpha)}$. Since we are interested in the focusing solutions, we consider $\lambda>0$ in the rest of the paper.
+
+
+Plugging in the ansatz to the system (A) we obtain a  system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
 
 \begin{equation}
 \begin{aligned}
@@ -254,274 +259,297 @@ and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\
 \end{aligned} \label{eq:ss-odes}
 \end{equation}
 
+\subsection{Main theorem}
 
-\section{Section Heading}
-\label{sec:1}
-Use the template \emph{chapter.tex} together with the Springer document class SVMono (monograph-type books) or SVMult (edited books) to style the various elements of your chapter content in the Springer layout.
+We first state the existence of two parameters family of solutions for (B) where $m=0$. See \cite{LT16_2} for the detailed discussion.
 
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references and citations. And please note that the first line of
-text that follows a heading is not indented, whereas the first lines of
-all subsequent paragraphs are.
-
-\section{Section Heading}
-\label{sec:2}
-% Always give a unique label
-% and use \ref{<label>} for cross-references
-% and \cite{<label>} for bibliographic references
-% use \sectionmark{}
-% to alter or adjust the section heading in the running head
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references and citations.
-
-Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
-
-Use the standard \verb|equation| environment to typeset your equations, e.g.
-%
-\begin{equation}
-a \times b = c\;,
+\begin{theorem} \label{thm1}
+Let $\alpha,n>0$, $\alpha\ne2n+1$ the given material parameters and fix $U_0>0$ and $\Theta_0>0$. Suppose that
+\begin{equation} \label{eq:restriction}
+ \frac{2}{1+2\alpha-n} < \frac{U_0^{1+n}}{\Theta_0^{1+\alpha}} < \frac{2}{1+n},
 \end{equation}
-%
-however, for multiline equations we recommend to use the \verb|eqnarray| environment\footnote{In physics texts please activate the class option \texttt{vecphys} to depict your vectors in \textbf{\itshape boldface-italic} type - as is customary for a wide range of physical subjects}.
-\begin{eqnarray}
-a \times b = c \nonumber\\
-\vec{a} \cdot \vec{b}=\vec{c}
-\label{eq:01}
-\end{eqnarray}
+$-\alpha+n<0$, and $n$ is sufficiently small. Then there is a focusing self-similar solution of the form
+\begin{equation*}
+\begin{aligned}
+ v(t,x) &= (t+1)^b V((t+1)^\lambda x), &\theta(t,x) &= (t+1)^c \Theta((t+1)^\lambda x),\\
+ \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x)
+\end{aligned}
+\end{equation*}
+to the system (B), where the focusing rate is 
+\begin{equation}
+ \lambda = \frac{1+2\alpha-n}{2+2n}\frac{U_0^{1+n}}{\Theta_0^{1+\alpha}} - \frac{2}{2+2n}>0. \label{eq:lambda}
+\end{equation}
+Furthermore, the self-similar profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big), \ \xi = (t+1)^\lambda x$,  has the  following properties :
+ \begin{enumerate}
+  \item[(i)] Satisfies the boundary condition at $\xi=0$,
+    \begin{equation*}
+    {V}(0) = \Theta_\xi(0)=\Sigma_\xi(0) = {U}_\xi(0)=0, \quad U(0)=U_0, \Theta(0)=\Theta_0.
+  \end{equation*}
+  \item[(ii)] Its asymptotic behavior as $\xi \rightarrow 0$ is given by 
+  \begin{equation} \label{eq:ss_asymp0}
+  \begin{aligned}
+%     \Gamma(\xi) &= \frac{1}{a}U(0) + \Gamma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Gamma^{''}(0)&<0,\\
+    \Theta(\xi) &= \Theta(0) + \Theta^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Theta^{''}(0)&<0,\\
+    \Sigma(\xi) &= \Theta(0)^{-\alpha}{U(0)^n}+ \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Sigma^{''}(0)&>0, \\
+    U(\xi) &= U(0) + U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & U^{''}(0)&<0,\\
+    V(\xi) &= U(0)\xi + U^{''}(0)\frac{\xi^3}{6} + o(\xi^3), & U^{''}(0)&<0.
+  \end{aligned}
+  \end{equation}
+  \item[(iii)] Its asymptotic behavior as $\xi \rightarrow \infty$ is given by
+  \begin{equation} \label{eq:ss_asymp1}
+  \begin{aligned}
+%     \Gamma(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-n}}), & 
+    V(\xi) &= O(1), &    \Theta(\xi) &= O(\xi^{-\frac{1+n}{\alpha-n}}),\\
+   \Sigma(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-n}}).
+  \end{aligned}
+  \end{equation}
+ \end{enumerate}
+\end{theorem}
 
-\subsection{Subsection Heading}
-\label{subsec:2}
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references\index{cross-references} and citations\index{citations}
-as has already been described in Sect.~\ref{sec:2}.
+In case of system (C), where  $\alpha=0$,  there exists a two parameter family of solutions,  see \cite{KLT_2016}, \cite{LT16} for the detailed discussion. 
 
-\begin{quotation}
-Please do not use quotation marks when quoting texts! Simply use the \verb|quotation| environment -- it will automatically render Springer's preferred layout.
-\end{quotation}
+\begin{theorem} \label{thm2}
+Let $-1\le m<0$ and $n>0$, $m+n\ne \frac{1}{2}$ the given material parameters and fix $U_0>0$ and $\Gamma_0>0$. Suppose that
+\begin{equation*}
+ \frac{2-n}{1-m-n} \;<\; \frac{U_0}{\Gamma_0} \;<\; \frac{2-n}{1+m+n} \, ,
+\end{equation*}
+$m+n<0$, and $n$ is sufficiently small. Then there is a focusing self-similar solution of the form
+\begin{equation*}
+\begin{aligned}
+ \gamma(t,x) &= (t+1)^a\Gamma((t+1)^\lambda x), & v(t,x) &= (t+1)^b V((t+1)^\lambda x), \\
+ \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x),
+\end{aligned}
+\end{equation*}
+to the system (C), where the focusing rate is
+\begin{equation}
+ \lambda = \frac{1-m-n}{2}\Big(\frac{U_0}{\Gamma_0} - \frac{2-n}{1-m-n}\Big)>0. \label{eq:lambdaC}
+\end{equation}
+Furthermore, the self-similar profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big), \ \xi = (t+1)^\lambda x$,  has the  following properties :
+ \begin{enumerate}
+  \item[(i)] Satisfies the boundary condition at $\xi=0$,
+    \begin{equation*}
+    {V}(0) = \Gamma_\xi(0) = \Sigma_\xi(0) = {U}_\xi(0)=0, \quad U(0)=U_0, \Gamma(0)=\Gamma_0.
+  \end{equation*}
+  \item[(ii)] Its asymptotic behavior as $\xi \rightarrow 0$ is given by 
+  \begin{equation} \label{eq:ss_asympC0}
+  \begin{aligned}
+    \Gamma(\xi) &= \frac{1}{a}U(0) + \Gamma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Gamma^{''}(0)&<0,\\
+%     \Theta(\xi) &= \Theta(0) + \Theta^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Theta^{''}(0)&<0,\\
+    \Sigma(\xi) &= \Gamma(0)^{m}{U(0)^n}+ \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Sigma^{''}(0)&>0, \\
+    U(\xi) &= U(0) + U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & U^{''}(0)&<0,\\
+    V(\xi) &= U(0)\xi + U^{''}(0)\frac{\xi^3}{6} + o(\xi^3), & U^{''}(0)&<0.
+  \end{aligned}
+  \end{equation}
+  \item[(iii)] Its asymptotic behavior as $\xi \rightarrow \infty$ is given by
+  \begin{equation} \label{eq:ss_asympC1}
+  \begin{aligned}
+    \Gamma(\xi) &= O(\xi^{\frac{1}{m+n}}), & V(\xi) &= O(1), \\%&    \Theta(\xi) &= O(\xi^{-\frac{1+n}{\alpha-n}}),\\
+   \Sigma(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{\frac{1}{m+n}}).
+  \end{aligned}
+  \end{equation}
+ \end{enumerate}
+\end{theorem}
 
+\subsection{Emergence of localization}
+We describe the emergence of localization of the family of solutions for system (B)  constructed by Theorem \ref{thm1}. The corresponding localized solutions for system (C) constructed by Theorem \ref{thm2} is similar, thus omitted. 
 
-\subsubsection{Subsubsection Heading}
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references and citations as has already been described in
-Sect.~\ref{subsec:2}, see also Fig.~\ref{fig:1}\footnote{If you copy
-text passages, figures, or tables from other works, you must obtain
-\textit{permission} from the copyright holder (usually the original
-publisher). Please enclose the signed permission with the manuscript. The
-sources\index{permission to print} must be acknowledged either in the
-captions, as footnotes or in a separate section of the book.}
+In both cases we replace $t \leftarrow t+1$,
+\begin{equation*}
+\begin{aligned}
+ v(t,x) &= (t+1)^b V((t+1)^\lambda x),  & \theta(t,x) &= (t+1)^c \Theta((t+1)^\lambda x), \\
+ \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x),
+\end{aligned}
+\end{equation*}
+so that we interpret 
+$$\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)=\big(v(0,x),\theta(0,x),\tau(0,x),u(0,x)\big)|_{x=\xi},$$  the initial states of the self-similar solutions. 
 
-Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
+\begin{itemize}
+ \item Initial non-uniformities : The profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ is the initial profile of the self-similar solution. $\Theta(\xi)$ and $U(\xi)$ have a small bump at the origin from the asymptotically flat state. The tip sizes at the origin $\Theta_0$ and $U_0$ are the two parameters that fixes the solution. The velocity $V(\xi)$ is an odd function of $\xi$ that connects $-V_\infty$ and $V_\infty$ as $\xi$ runs from $-\infty$ to $\infty$, where $V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi)$. The slope near the origin is slightly steeper, which reflects the initial non-uniformity in the velocity.
+\item Temperature : The temperature is an increasing function of $t$ for a fixed $x$. The growth rate at the origin is faster than any other $x$, which dictates the localization near the origin.
+\begin{align*}
+ \theta(t,0) &= (1+t)^{\frac{2}{D} + \frac{2+2n}{D}\lambda}\Theta(0),&
+ \theta(t,x) &\sim t^{\frac{2}{D} - \frac{(1+n)^2}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
 
-% For figures use
-%
-\begin{figure}[b]
-\sidecaption
-% Use the relevant command for your figure-insertion program
-% to insert the figure file.
-% For example, with the graphicx style use
-\includegraphics[scale=.65]{figure}
-%
-% If no graphics program available, insert a blank space i.e. use
-%\picplace{5cm}{2cm} % Give the correct figure height and width in cm
-%
-\caption{If the width of the figure is less than 7.8 cm use the \texttt{sidecapion} command to flush the caption on the left side of the page. If the figure is positioned at the top of the page, align the sidecaption with the top of the figure -- to achieve this you simply need to use the optional argument \texttt{[t]} with the \texttt{sidecaption} command}
-\label{fig:1}       % Give a unique label
+\item Strain rate : The growth rate at the origin is faster than the rest of the points, which dictates the localization near the origin.
+\begin{align*}
+ u(t,0) &= (1+t)^{\frac{1}{D} + \frac{2+2\alpha}{D}\lambda}U(0), \\
+ u(t,x) &\sim t^{\frac{1}{D} - \frac{(1+\alpha)(1+n)}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+\item Stress : The stress is a decreasing function of $t$ for  fixed $x$. However, the decay rate at the origin is faster than the rest of the points.
+\begin{align*}
+ \tau(t,0) &= (1+t)^{\frac{-2\alpha+n}{D} + \frac{-2\alpha+2n}{D}\lambda}\Sigma(0), \\
+ \tau(t,x) &\sim t^{\frac{-2\alpha+n}{D} +\frac{1+n}{D}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+Note that the rate of the latter is always less than $-\frac{n}{1+n}$ in the valid range of  $\lambda$.
+\item Velocity : The velocity $v(x,t)$ is an odd function of $x$. It connects $-v_\infty$ to $v_\infty$, as $x$ runs from $-\infty$ to $\infty$, where $v_\infty\triangleq \lim_{x \rightarrow \infty} v(t,x)$. Because of the scaling law $\xi=(1+t)^\lambda x$, the transition from $-v_\infty$ to $v_\infty$ localizes around the origin as time increases. The slope becomes steeper and steeper and develops a step function type singularity, see Figure 1(c). The far field velocity 
+$$v_\infty(t)=(1+t)^{b}V_\infty = (1+t)^{\frac{1}{D} + \frac{1+n}{D}\lambda}V_\infty$$
+itself grows at a polynomial rate. This is not in agreement with the uniform shearing motion. This deviation is a consequence of our simplifying assumption for the self-similarity.
+\end{itemize}
+
+\begin{figure}[ht]
+  \centering
+  \subfigure[temperature ($\theta$)]{
+  \includegraphics[scale=0.25]{temperature_log} \label{fig:gamma}
+  }
+  \subfigure[strain rate ($u$)]{
+  \includegraphics[scale=0.25]{strain_rate_log} \label{fig:u}
+  }
+  \subfigure[velocity ($v$)] {
+  \includegraphics[scale=0.25]{velocity} \label{fig:v}
+  }
+  \subfigure[stress ($\sigma$)] {
+  \includegraphics[scale=0.25]{stress_log} \label{fig:sigma}
+  }
+\caption{The localizing solutions for system (B), for $n=0.3$ and $\lambda =0.39$. 
+ All graphs except $v$ are in logarithmic scale. See \cite{KLT_2016} for the system (C).} 
 \end{figure}
 
 
-\paragraph{Paragraph Heading} %
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references and citations as has already been described in
-Sect.~\ref{sec:2}.
+\section{Existence via Geometric singular perturbation theory} \label{sec:idea}
 
-Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
+Among steps to prove Theorem \ref{thm1} and \ref{thm2}, we provide the one key step of the existence proof, for system (B). The problem boils down to show the existence of a heteroclinic orbit for the  system. 
+\begin{equation} \label{eq:pqrsys}\tag{P}
+\begin{aligned}
+ \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big],\\
+ \frac{\dqq}{q}&=\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big],\\
+ n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big].
+\end{aligned}
+\end{equation}
+The objective is to construct the heteroclinic orbit that connects equilibrium points
+\begin{align*}
+ M_0=\Big(0,0,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,1,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big).
+\end{align*}
 
-For typesetting numbered lists we recommend to use the \verb|enumerate| environment -- it will automatically render Springer's preferred layout.
+We describe now briefly how system \eqref{eq:pqrsys} is derived.  The technique we employ was mainly developed in Katsaounis et. al. \cite{KOT14}. Following \cite{KOT14,LT16,LT16_2},  we introduce a series of non-linear transformations described by  \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL} while the definition of $(p,q,r)$-variables is given in \eqref{eq:pqrdef}, 
+\begin{equation} \label{eq:CAPtoBAR}
+\begin{aligned}
+ \bg(\xi)&=\xi^{a_1}\Gamma(\xi), &
+ \bv(\xi)&=\xi^{b_1}V(\xi), &
+ \bth(\xi)&=\xi^{c_1}\Theta(\xi), \\
+ \bs(\xi)&=\xi^{d_1}\Sigma(\xi), &
+ \bu(\xi)&=\xi^{b_1+1}U(\xi).
+\end{aligned}
+\end{equation}
+\begin{equation} \label{eq:BARtoTIL}
+\begin{aligned}
+ \tg(\log\xi)&=\bg(\xi), &
+ \tv(\log\xi)&=\bv(\xi), &
+ \tth(\log\xi)&=\bth(\xi), \\
+ \ts(\log\xi)&=\bs(\xi), &
+ \tu(\log\xi)&=\bu(\xi), 
+\end{aligned}
+\end{equation}
+\begin{equation}\label{eq:pqrdef}
+ \begin{aligned}
+  p \triangleq \frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts}, \quad q \triangleq b \frac{\tv}{\ts},  \quad r \triangleq \frac{\tu}{\tth^{\,\frac{1+\alpha}{1+n}}},
+ \end{aligned}
+\end{equation}
+and $\eta\triangleq \log\xi$ the new independent variable $\Big(\frac{df}{d\eta}=\dot{f}\Big)$. 
+The system \eqref{eq:pqrsys} has a {\it fast-slow} structure due to $n$ in front of $\dot{r}$. We conduct a Chapman-Enskog type reduction via geometric singular perturbation theory \cite{fenichel_geometric_1979, KUEHN_2015}. The reduced problem becomes a planar dynamical system and  the heteroclinic orbit is obtained by phase space analysis, \cite{LT16_2}. 
+\subsection{Critical manifold}
+The surface the orbit relaxes is the zero set of the right-hand-side of $\eqref{eq:pqrsys}_3$. The zero set,  that is away from $r=0$ plane,  is the surface specified by
+\begin{align*}
+ r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}\triangleq h(p,q;n=0), \quad \text{or} \quad  q + \lambda {r}p + \frac{\alpha}{\lambda} \Big( r-r_0\Big)=0.
+\end{align*}
 
-\begin{enumerate}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.}
-\begin{enumerate}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.}
-\end{enumerate}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.}
-\end{enumerate}
-
-
-\subparagraph{Subparagraph Heading} In order to avoid simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Use the \LaTeX\ automatism for all your cross-references and citations as has already been described in Sect.~\ref{sec:2}, see also Fig.~\ref{fig:2}.
-
-For unnumbered list we recommend to use the \verb|itemize| environment -- it will automatically render Springer's preferred layout.
-
-\begin{itemize}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development, cf. Table~\ref{tab:1}.}
-\begin{itemize}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.}
-\end{itemize}
-\item{Livelihood and survival mobility are oftentimes coutcomes of uneven socioeconomic development.}
-\end{itemize}
-
-\begin{figure}[t]
-\sidecaption[t]
-% Use the relevant command for your figure-insertion program
-% to insert the figure file.
-% For example, with the option graphics use
-\includegraphics[scale=.65]{figure}
-%
-% If no graphics program available, insert a blank space i.e. use
-%\picplace{5cm}{2cm} % Give the correct figure height and width in cm
-%
-%\caption{Please write your figure caption here}
-\caption{If the width of the figure is less than 7.8 cm use the \texttt{sidecapion} command to flush the caption on the left side of the page. If the figure is positioned at the top of the page, align the sidecaption with the top of the figure -- to achieve this you simply need to use the optional argument \texttt{[t]} with the \texttt{sidecaption} command}
-\label{fig:2}       % Give a unique label
-\end{figure}
-
-\runinhead{Run-in Heading Boldface Version} Use the \LaTeX\ automatism for all your cross-references and citations as has already been described in Sect.~\ref{sec:2}.
-
-\subruninhead{Run-in Heading Italic Version} Use the \LaTeX\ automatism for all your cross-refer\-ences and citations as has already been described in Sect.~\ref{sec:2}\index{paragraph}.
-% Use the \index{} command to code your index words
-%
-% For tables use
-%
-\begin{table}
-\caption{Please write your table caption here}
-\label{tab:1}       % Give a unique label
-%
-% Follow this input for your own table layout
-%
-\begin{tabular}{p{2cm}p{2.4cm}p{2cm}p{4.9cm}}
-\hline\noalign{\smallskip}
-Classes & Subclass & Length & Action Mechanism  \\
-\noalign{\smallskip}\svhline\noalign{\smallskip}
-Translation & mRNA$^a$  & 22 (19--25) & Translation repression, mRNA cleavage\\
-Translation & mRNA cleavage & 21 & mRNA cleavage\\
-Translation & mRNA  & 21--22 & mRNA cleavage\\
-Translation & mRNA  & 24--26 & Histone and DNA Modification\\
-\noalign{\smallskip}\hline\noalign{\smallskip}
-\end{tabular}
-$^a$ Table foot note (with superscript)
-\end{table}
-%
-\section{Section Heading}
-\label{sec:3}
-% Always give a unique label
-% and use \ref{<label>} for cross-references
-% and \cite{<label>} for bibliographic references
-% use \sectionmark{}
-% to alter or adjust the section heading in the running head
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references and citations as has already been described in
-Sect.~\ref{sec:2}.
-
-Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
-
-If you want to list definitions or the like we recommend to use the Springer-enhanced \verb|description| environment -- it will automatically render Springer's preferred layout.
-
-\begin{description}[Type 1]
-\item[Type 1]{That addresses central themes pertainng to migration, health, and disease. In Sect.~\ref{sec:1}, Wilson discusses the role of human migration in infectious disease distributions and patterns.}
-\item[Type 2]{That addresses central themes pertainng to migration, health, and disease. In Sect.~\ref{subsec:2}, Wilson discusses the role of human migration in infectious disease distributions and patterns.}
-\end{description}
-
-\subsection{Subsection Heading} %
-In order to avoid simply listing headings of different levels we recommend to let every heading be followed by at least a short passage of text. Use the \LaTeX\ automatism for all your cross-references and citations citations as has already been described in Sect.~\ref{sec:2}.
-
-Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
-
-\begin{svgraybox}
-If you want to emphasize complete paragraphs of texts we recommend to use the newly defined Springer class option \verb|graybox| and the newly defined environment \verb|svgraybox|. This will produce a 15 percent screened box 'behind' your text.
-
-If you want to emphasize complete paragraphs of texts we recommend to use the newly defined Springer class option and environment \verb|svgraybox|. This will produce a 15 percent screened box 'behind' your text.
-\end{svgraybox}
-
-
-\subsubsection{Subsubsection Heading}
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references and citations as has already been described in
-Sect.~\ref{sec:2}.
-
-Please note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
-
-\begin{theorem}
-Theorem text goes here.
-\end{theorem}
-%
-% or
-%
-\begin{definition}
-Definition text goes here.
-\end{definition}
-
-\begin{proof}
-%\smartqed
-Proof text goes here.
-\qed
-\end{proof}
-
-\paragraph{Paragraph Heading} %
-Instead of simply listing headings of different levels we recommend to
-let every heading be followed by at least a short passage of text.
-Further on please use the \LaTeX\ automatism for all your
-cross-references and citations as has already been described in
-Sect.~\ref{sec:2}.
-
-Note that the first line of text that follows a heading is not indented, whereas the first lines of all subsequent paragraphs are.
-%
-% For built-in environments use
-%
-\begin{theorem}
-Theorem text goes here.
-\end{theorem}
-%
-\begin{definition}
-Definition text goes here.
-\end{definition}
-%
-\begin{proof}
-\smartqed
-Proof text goes here.
-\qed
-\end{proof}
-%
-\begin{acknowledgement}
-If you want to include acknowledgments of assistance and the like at the end of an individual chapter please use the \verb|acknowledgement| environment -- it will automatically render Springer's preferred layout.
-\end{acknowledgement}
-%
-\section*{Appendix}
-\addcontentsline{toc}{section}{Appendix}
-%
-%
-When placed at the end of a chapter or contribution (as opposed to at the end of the book), the numbering of tables, figures, and equations in the appendix section continues on from that in the main text. Hence please \textit{do not} use the \verb|appendix| command when writing an appendix at the end of your chapter or contribution. If there is only one the appendix is designated ``Appendix'', or ``Appendix 1'', or ``Appendix 2'', etc. if there is more than one.
-
+ 
+We take the triangle $T$ in the first quadrant enclosed by $p$-axis, $q$-axis and the contour line $\underbar{r} =  h(p,q;n=0)$ and a compact set $K\supset\supset T$. We set the critical manifold 
 \begin{equation}
-a \times b = c
+ G(\lambda,\alpha,n=0) \triangleq \Big\{\, (p,q,r) \;|\; (p,q) \in K, \text{ and } r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p} \,\Big\}.
 \end{equation}
 
-\input{referenc}
+The system in {\it fast scale} with the independent variable $\tilde{\eta} = \eta/n$ is
+\begin{equation}\label{eq:pqr_fast} \tag*{($\tilde{P}$)}
+\begin{aligned}
+ p^\prime &=np\Big( \Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \\
+ q^\prime &=nq\Big(\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \\
+ r^\prime &=r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big),
+\end{aligned}
+\end{equation}
+where we denoted $\displaystyle(\cdot)^\prime = \frac{d}{d\tilde{\eta}}(\cdot)$. When $n=0$, $(\tilde{P})|_{n=0}$ reads
+\begin{align*}
+ p^\prime =0, \quad q^\prime =0, \quad r^\prime=r\Big( \Big[\frac{\alpha}{\lambda}\Big(r-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big). %\label{eq:fastn0}
+\end{align*}
+\begin{lemma} \label{lem:normal_hyper}
+ $G(\lambda,\alpha,0)$ is a normally hyperbolic invariant manifold with respect to the system $(\tilde{P})|_{n=0}$.
+\end{lemma}
+
+\subsection{Chapman-Enskog type reduction}
+By the theorem of geometric singular perturbation theory, \cite{fenichel_geometric_1979, KUEHN_2015}, if $n$ is sufficiently small, there exists  the locally invariant manifold $G(\lambda,\alpha,n)$ with respect to \eqref{eq:pqrsys}. Then, on this manifold, $\big(p(\eta),q(\eta)\big)$ satisfies the planar system
+\begin{equation} \tag*{(${R}$)} \label{eq:reduced}
+\begin{aligned}
+ {\dpp}&=p\bigg\{\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(h^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda ph\Big]\bigg\},\\
+ {\dqq}&=q\Big(1-q-\lambda p h\Big) + bph,\\
+\end{aligned}
+\end{equation}
+where $h$ stands for $h(p,q;n)$.
+
+
+\subsection{Confinement of the orbit}
+\begin{lemma}
+The triangle $T$  is positively invariant for the system $(R)$ when $n=0$.
+\end{lemma}
+We can compute the inward normal component of $(\dot{p},\dot{q})$ on the boundary of the triangle $T$ for $(R)|_{n=0}$:
+\begin{align*}
+ \dot{p} &= -\frac{D}{\alpha} p\Big(d_1+q+\lambda p h\Big),\\
+ \dot{q} &= q\Big(1-q-\lambda p h\Big) + b p h.
+\end{align*}
+Essential calculation is on the hypotenuse and the fact that it is the contour line $\underbar{r}=h(p,q,n=0)$ helps us obtain the estimate. Define $\underbar{p}$ and $\underbar{q}$ to be the $p$-intercept and $q$-intercept of the contour line respectively : $\underbar{q} = \lambda \underbar{p}\underbar{r} = \frac{\alpha}{\lambda}(r_0-\underbar{r})$. With  $(-\underbar{q},-\underbar{p})$ being the inward normal vector, the  inward normal component on the hypotenuse is 
+\begin{align*}
+    (\dot{p},\dot{q}) \cdot (-\underbar{q},-\underbar{p}) &= \frac{D}{\alpha}\underbar{q}p\Big(d_1 + q + \lambda p \underbar{r}\Big) -\underbar{p}\bigg\{q\Big(1-q-\lambda p \underbar{r}\Big) + b p \underbar{r}\bigg\}\\
+    &=\frac{D}{\alpha}\underbar{q}p\Big(d_1 +\underbar{q}\Big) -\underbar{p}\bigg\{\Big(\underbar{q}-\lambda p \underbar{r}\Big)\Big(1-\underbar{q}\Big) + b p \underbar{r}\bigg\}\\
+    &=-\underbar{p}\underbar{q}(1-\underbar{q}) + \underbar{q}p\Big(\frac{D}{\alpha}d_1 + \frac{D}{\alpha}\underbar{q} + (1-\underbar{q}) - \frac{b}{\lambda}\Big)\\
+    &=-\underbar{p}\underbar{q}(1-\underbar{q}) + \underbar{q}p\frac{1+\alpha}{\lambda}\Big(\frac{1}{1+\alpha}-\underbar{r}\Big)\\
+    &\ge -\underbar{p}\underbar{q}(1-\underbar{q}) \quad \text{for $\underbar{r} < \frac{1}{1+\alpha}$}\\
+    &\ge \delta_0 > 0.
+\end{align*}
+
+\begin{lemma}
+The triangle $T$  is positively invariant for the system $(R)$ provided $n$ is sufficiently small.
+\end{lemma}
+Now the hypotenuse is not anymore a contour line of the function $h(p,q;\lambda,\alpha,n)$. We arrange terms of right-hand-sides of $(R)$ in the form
+\begin{align*}
+ {\dpp}&=p\bigg\{\Big[\frac{1+\alpha}{\lambda }\Big(\underbar{r}-c_0\Big)\Big] -\Big[d_1 + q + \lambda p\underbar{r}\Big]\bigg\} \\
+ &+ \underbrace{p\bigg\{\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(h^{1+n}-c_0\Big)\Big]-\Big[\frac{1+\alpha}{\lambda }\Big(\underbar{r}-c_0\Big)\Big] -\lambda p(h-\underbar{r})\Big]\bigg\}}_\text{$\triangleq g_1(p,q,n)$},\\
+ {\dqq}&=q\Big(1-q-\lambda p \underbar{r}\Big) + bp\underbar{r} + \underbrace{(-q\lambda p+b) (h-\underbar{r})}_\text{$\triangleq g_2(p,q,n)$}.
+\end{align*}
+Since $h$ is a smooth function of $n$ and $D$ is compact, provided $n$ is sufficiently small, we have an estimate
+\begin{equation*}
+ |g_1(p,q,n)| + |g_2(p,q,n)| \le C_0 n, \quad \text{where $C_0$ does not depend on $p$, $q$, and $n$.}
+\end{equation*}
+Therefore
+$$ (\dot{p},\dot{q}) \cdot(-\underbar{q},-\underbar{p}) \ge \delta_0 + C_0'n \quad \text{for another uniform constant $C_0'$}.$$
+Take $n$ sufficiently small so that the last expression is positive. After having the orbit confined in the positive invariant set $T$, we further conduct the phase space analysis to capture the heteroclinic orbit but is omitted here.
+\subsection*{Acknowledgements}
+This research was supported by King Abdullah University of Science and Technology (KAUST).
+
 \begin{thebibliography}{10}
+
+% \bibitem{baxevanis_adaptive_2010}
+% {\sc Th.~Baxevanis, Th~Katsaounis, and A.~E. Tzavaras},  
+% Adaptive finite element computations of shear band formation, 
+%   {\em Math. Models  Methods Appl. Sci.} {\bf 20}  (2010),  423--448.
 
 \bibitem{bertsch_effect_1991}
 {\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel}, 
 The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
 {\em SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
 
+% \bibitem{CB99} 
+% {\sc L.~ Chen and R.C.~Batra },
+% The asymptotic structure of a shear band in mode-II deformations.
+% {\em International Journal of Engineering Science} {\bf 37} (1999),  895--919.
+
 \bibitem{dafermos_adiabatic_1983}
 {\sc C.~M. Dafermos and L.~Hsiao}, 
 Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
 {\em Quart.  Applied Math.} {\bf 41} (1983), 45--58.
+
+% \bibitem{estep_2001}
+% {\sc Donald~J Estep, Sjoerd M~Verduyn Lunel, and Roy~D Williams}, 
+% {Analysis of Shear Layers in a Fluid with Temperature-Dependent Viscosity},
+%  {\em  J. Comp. Physics}  {\bf 173} (2001), 17--60.
 
 \bibitem{fenichel_geometric_1979}
 {\sc N.~Fenichel}, 
@@ -533,37 +561,56 @@ Geometric singular perturbation theory for ordinary differential equations,
 Instability and localization of plastic flow in shear at high strain rates, 
   {\em J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
 
-\bibitem{jones_geometric_1995}
-{\sc C.~K. R.~T. Jones}, 
-Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+% \bibitem{jones_geometric_1995}
+% {\sc C.~K. R.~T. Jones}, 
+% Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
   
+\bibitem{KT09}
+{\sc Th.~Katsaounis and A.E.~Tzavaras}, 
+ Effective equations for localization and shear band formation, 
+ {\em SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
   
 \bibitem{KOT14}
 {\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras}, 
 Emergence of coherent localized structures in shear deformations of
-  temperature dependent fluids, arXiv preprint arXiv:1411.6131,  (2014).
+  temperature dependent fluids, {\em Archive for Rational Mechanics and Analysis}, (to appear).
 
+\bibitem{KUEHN_2015}
+{\sc C.~ Kuehn}, 
+{\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
+  
 \bibitem{LT16}
-{\sc M.-G.~Lee and A.E.~Tzavaras},
-Existence of localizing solutions in plasticity via the geometric singular perturbation theory, arXiv preprint arXiv:xxxx.xxxxx,  (2016)
+{\sc M-G.~Lee and A.E.~Tzavaras},
+Existence of localizing solutions in plasticity via the geometric singular perturbation theory, 
+{\em SIAM J. Appl. Dyn. Syst.}, (to appear).
+
+\bibitem{LT16_2}
+{\sc M-G.~Lee and A.E.~Tzavaras},
+Localization in adiabatic process of viscous shear flow via geometric theory of singular perturbation, (in preparation).
 
 \bibitem{KLT_2016}
-{\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras}, 
-Localization in inelastic rate dependent shearing deformations, arXiv preprint arXiv:1605.04564,  (2016).
+{\sc Th. Katsaounis, M-G. Lee, and A.E. Tzavaras}, 
+Localization in inelastic rate dependent shearing deformations, 
+{\em J.  Mech. Physics of Solids} {\bf 98} (2017), 106--125.
 
 % \bibitem{perko_differential_2001}
 % {\sc L.~Perko}, 
 % {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).  
+
+\bibitem{SC89}
+{\sc T.~G. Shawki and R.~J. Clifton}, 
+Shear band formation in thermal viscoplastic materials, 
+{\em Mechanics of Materials} {\bf 8 } (1989), 13--43.
 
 \bibitem{Tz_1986}
 {\sc A.E. Tzavaras},
 Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
 {\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
 
-\bibitem{Tz_1987}
-{\sc A.E. Tzavaras}, 
-Effect of thermal softening in shearing of strain-rate dependent materials.
-{\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
+% \bibitem{Tz_1987}
+% {\sc A.E. Tzavaras}, 
+% Effect of thermal softening in shearing of strain-rate dependent materials.
+% {\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
 
 \bibitem{tzavaras_nonlinear_1992}
 %\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
@@ -572,6 +619,12 @@ Nonlinear analysis techniques for shear band formation at high strain-rates,
 % {\it Applied Mechanics Reviews} 
 {\it Appl. Mech. Rev.}
 {\bf  45} (1992), S82--S94.
+
+% \bibitem{walter_1992}
+% {\sc J.W.~Walter}, 
+% Numerical experiments on adiabatic shear band formation
+%   in one dimension.
+%   {\em International Journal of Plasticity} {\bf  8} (1992), 657--693.
 
 \bibitem{ZH_1944}
 {\sc C.~Zener and J.~H. Hollomon}, 
