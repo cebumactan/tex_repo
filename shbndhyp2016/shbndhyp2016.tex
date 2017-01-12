@@ -42,7 +42,7 @@
 % \usepackage{alltt}
 %\usepackage{kotex}
 
-
+%\usepackage{showkeys}
 %%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\tr{\,\textrm{tr}\,}
@@ -109,14 +109,14 @@
 
 \begin{document}
 
-\title*{Localization of Thermoviscoplastic Materials In Adiabatic Deformations }
+\title*{Localization of Adiabatic Deformations in Thermoviscoplastic Materials }
 % Use \titlerunning{Short Title} for an abbreviated version of
 % your contribution title if the original one is too long
 \author{Min-Gi Lee, Theodoros Katsaounis and Athanasios E. Tzavaras}
 % Use \authorrunning{Short Title} for an abbreviated version of
 % your contribution title if the original one is too long
 \institute{Min-Gi Lee \at King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia, \\ \email{mingi.lee@kaust.edu.sa}
-\and Theodoros Katsaounis \at King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  \email{theodoros.katsaounis@kaust.edu.sa}
+\and Theodoros Katsaounis \at King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia and  \at IACM, FORTH, Heraklion, Greece,  \\ \email{theodoros.katsaounis@kaust.edu.sa}
 \and Athanasios Tzavaras \at King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  \email{athanasios.tzavaras@kaust.edu.sa}}
 %
 % Use the package "url.sty" to avoid
@@ -125,96 +125,67 @@
 %
 \maketitle
 
-%\abstract*{We study a focusing instability occuring during deformations of metals at high strain rates  and leading to the formation of shear bands. 
-%We consider shear motions of a thermal-viscoplastic material exhibting thermal softening and strain hardening.
-%Under adiabatic conditions thermal softening induces a destabilizing mechanism that may lead to  localization of shear strain in a narrow band.
-%The main result of the paper is the existence of the family of focusing self-similar solutions. This reveals the nature of the instability, in particular the special role of the viscosity. In the absence of the viscosity, the system without hyperbolicity exhibits Hadamard Instability. The presence of the viscosity alters the nature of the instability; the focusing self-similar solutions we obtain can grow only at the polynomial order and the rate of focusing is bounded above. To construct the solutions, we introduce the non-linear transformations to turn the problem into that of finding heteroclinic orbit of the associated dynamical system. The key step is to conduct the Chapman-Enskog type reduction via geometric singular perturbation theory. The part of the latter step is included.}
-
-\abstract{We study a focusing instability occurring during high strain-rate deformations of metals  and leading to the formation of shear bands. 
-We consider shear motions of a thermal-viscoplastic material exhibting thermal softening and strain hardening.
-Under adiabatic conditions thermal softening induces a destabilizing mechanism that may lead to  localization of shear strain in a narrow band.
-We show the existence of a family of focusing self-similar solutions, that capture the nature of this instability, in particular its
-emergence as a net result of the competition between Hadamard instability and viscosity.
-The focusing self-similar solutions we obtain can grow at a  polynomial order. To construct the solutions, we introduce a non-linear transformation and to turn the 
-existence problem into that of finding a heteroclinic orbit of an associated dynamical system. The mechanism of instability is captured by a Chapman-Enskog type asymptotic reduction. The existence of the heteroclinic orbit is obtained via the geometric singular perturbation theory. }
+\abstract{ We study an instability occurring at high strain-rate deformations,  induced by thermal softening properties of metals, and leading to the formation of shear bands. 
+We consider adiabatic shear deformations of thermoviscoplastic materials and establish the existence of a family of focusing self-similar solutions that capture this instability.
+The self-similar solutions emerge as the net response resulting from the  competition between Hadamard instability and viscosity.
+Their existence is turned into a problem of constructing a heteroclinic orbit for an associated dynamical system, which is achieved with the help of geometric singular perturbation theory. }
 
 
 \section{Introduction}
-We study a focusing type instability occurring in one dimensional adiabatic shear flows. We consider shear motions of a slab  located at in the $x-y$ plane,
-and moving in the $y$-direction. We are interested in two situations: (a) the material  occupies the slab  between two parallel plates,
-$(x,y) \in (0,1) \times \R$,  and is sheared by assigned velocities at $x=0,1$. 
-(b) The material occupies the entire $x-y$-space and is sheared in the $y$-direction. 
-As the material keeps loading, the shear deformation and the internal energy increase in time. Materials typically is {\it thermally softening} 
-and this, in some instances, can lead to the loss of hyperbolicity in the corresponding thermo-mechanical system. As the process is adiabatic, energy accumulates at each of point $x$ possibly non-uniformly and this imbalance of the temperature distribution can lead to the localization of shear.
-%This problem also has attracted attentions in mechanics literature, see \cite{FM87,ZH_1944} and references therein.
+Shear bands are regions of intensely localized shear deformation appearing when metals are deforming at high strain-rates.  This type of material instability has attracted attention in the mechanics and mathematical literature, \cite{FM87,SC89,ZH_1944,dafermos_adiabatic_1983,Tz_1986,tzavaras_nonlinear_1992}. In the mechanics literature, such material instability,  is
+often called \emph{Hadamard instability} and is associated with an ill-posed initial value problem. However, it should be noted that although Hadamard instability indicates the catastrophic growth of oscillations around a mean state, coherent localized structures, \emph{the shear bands}, emerge in an orderly fashion. This is a highly nonlinear phenomenon resulting from the competition between Hadamard instability and viscosity. 
 
-To understand this phenomenon, we study the following one dimensional thermo-mechanical model. $y(t,x)\in \mathbb{R}$ is the spatial coordinate in the $y$-direction at time $t$ of the material initially at $x$ on the $x$-axis. The motion is described by following quantities,
-\begin{equation} \label{eq:vars}
-\begin{aligned}
- \gamma(t,x) \triangleq \partial_x y(t,x)&: \text{shear strain},\\
- v(t,x)\triangleq \partial_t y(t,x) &: \text{vertical velocity},\\
- u(t,x)\triangleq \partial_t\gamma(t,x) &: \text{shear strain rate},\\
- \theta(t,x) &: \text{temperature},\\
- \tau(t,x) &: \text{shear stress}.
-\end{aligned}
-\end{equation}
-Here, we focus on the problem in the entire space $(t,x) \in \mathbb{R}^+\times \mathbb{R}$.
-The system of equations describing the motion is
+
+Under isothermal conditions, metals, in general, strain harden and exhibit a stable response. As the deformation speed increases, the heat produced by the plastic work causes an increase in the temperature. For certain metals, the tendency for thermal softening may outweigh the tendency for strain hardening and deliver net softening. A destabilizing feedback mechanism is then induced, which operates as follows (see \cite{CDHS}): Nonuniformities in the strain rate result in nonuniform heating. If heat diffusion is too weak to equalize the temperatures, the initial nonuniformities in the strain rate are, in turn, amplified. This mechanism tends to localize the total deformation into narrow regions(shear bands). On the other hand, there is opposition to this process by ``viscous effects'' induced by strain-rate sensitivity. The outcome of the competition depends mainly on the relative weights of thermal softening, strain hardening, and strain-rate sensitivity, as well as the loading circumstances. This qualitative scenario is widely accepted as the mechanism of shear band formation. 
+
+
+We work with a simple model that captures the mechanism of shear band formation : we consider the  adiabatic shear deformation  of a  thermoviscoplastic material that occupies the slab between two parallel plates. The relevant quantities are: the velocity $v(t,x)$, the shear strain $\gamma(t,x)$, 
+ the shear strain rate $u(t,x)$, the shear stress $\tau(t,x)$,  and the temperature $\theta(t,x)$. The system of equations describing the motion takes the form
 \begin{equation} \label{eq:A}\tag{A}
 \begin{aligned}
  \gamma_t &= u \quad \text{(kinematic compatibility)}, 	\\
  v_t &= \tau_x \quad \text{(momentum conservation)}, 	\\
- \theta_t &= \tau u \quad \text{(energy equation that is adiabatic)},	\\
- \tau &=\tau(\theta,\gamma,u) \quad \text{(constitutive law)}.			
+ \theta_t &= \tau u \quad \text{(energy equation)},	\\
+ \tau &=\tau(\theta,\gamma,u) \quad \text{(constitutive law)},			
 \end{aligned}
 \end{equation}
-In terms of classification, the model \eqref{eq:A} belongs to the framework of one-dimensional thermo-visco-elasticity. 
-It is also instructive to interprete $\eqref{eq:A}_4$ as a constitutive law for thermo-visco-plastic materials viewing $\gamma=\gamma_p$ the plastic strain. (See the hierarchy of models in \cite{KT09,tzavaras_nonlinear_1992}.)
-The latter context suggests the terminology: The material exhibits thermal softening at $(\theta,\gamma,u)$ where $f_\theta(\theta,\gamma,u)<0$, strain hardening where $f_\gamma(\theta,\gamma,u)>0$, and strain softening where $f_\gamma(\theta,\gamma,u)<0$.
+with $(t,x) \in \mathbb{R}^+\times \mathbb{R}$. In terms of classification, the model \eqref{eq:A} belongs to the framework of one-dimensional thermo-visco-elasticity. 
+It is also instructive to interpret $\eqref{eq:A}_4$ as a constitutive law for thermo-visco-plastic materials 
+viewing $\gamma \equiv \gamma_p$ as the plastic strain, see the hierarchy of models in \cite{KT09,tzavaras_nonlinear_1992}.
+This context suggests the terminology: the material exhibits thermal softening at $(\theta,\gamma,u)$ when $\tau_\theta(\theta,\gamma,u)<0$, strain hardening if $\tau_\gamma(\theta,\gamma,u)>0$, and strain softening if $\tau_\gamma(\theta,\gamma,u)<0$.
 
-To carry on the parametric study accordingly to the stiffness of these slopes, we focus on the law of form
+In this study we focus on a constitutive hypothesis in the form of a \emph{power} law 
 \begin{equation}
  \tau = \varphi(\theta,\gamma)u^n = \theta^{-\alpha}\gamma^m u^n, \label{eq:power} 
 \end{equation}
-where $n$ is the strain-rate sensitivity and is assumed to be very small, $0<n\ll1$. We further introduce two subclasses of \eqref{eq:A}, where $\varphi$ is independent of either $\theta$ or $\gamma$ respectively.
-% \begin{align}
-%  \tau &= \varphi(\gamma)u^n, \quad \text{or} \quad \tau = \mu(\theta)u^n.
-% \end{align}
-The strain independent model $(B)$ consists of 
+where $n$ is the strain-rate sensitivity which is assumed to be very small $0<n\ll1$, $\alpha$ measures the degree of thermal softening, while $m$ measures the degree of strain hardening. We further introduce two subclasses of \eqref{eq:A}, where $\varphi (\theta, \gamma)$ is independent 
+of either $\theta$ or $\gamma$, respectively. These are: the strain independent model $(B)$ ($m = 0$)  consising of 
 \begin{equation} \label{eq:B}\tag{B}
- v_t = \tau_x, \quad \theta_t = \tau u, \quad \tau = \mu(\theta)u^n 		
+ v_t = \tau_x, \quad \theta_t = \tau u, \quad \tau = \mu(\theta)u^n 	\, , 	
 \end{equation}
-and the temperature indenpendent model $(C)$ consists of
+and the temperature indenpendent model $(C)$ ($\alpha = 0$) consisting of
 \begin{equation} \label{eq:C}\tag{C}
- \gamma_t = u, \quad  v_t = \tau_x \quad \tau, = \varphi(\gamma)u^n.			
+ \gamma_t = u, \quad  v_t = \tau_x, \quad \tau = \varphi(\gamma)u^n.			
 \end{equation}
-
-The main results of this paper is the construction of the family of self-similar solutions of {\it focusing type} to the problems (B), and (C). The same for the problem (A) is in progress. This study on the focusing behavior is motivated by the phenomena of shear bands, which is the narrow zones shear localizes intensely. It was observed by Zener and Hollomon \cite{ZH_1944} during the high speed of deformation of metals. For further mechanical interests on the problem, we refer to \cite{FM87, SC89} and references therein. %, where it was recognized that the effects of high strain rate are twofolds: (a) It alters the deformation conditions from isothermal to nearly adiabatic, (b) strain rate has an effect {\it per se}, and needs to be included in the constitutive law. 
-
-In the study of the stability, one finds the solution of uniform shearing motion as the referential motion, which arises universally to (A). At the simplest normalization constants, 
-$$ \gamma = t, \quad v=x, \quad u=1, \quad \text{$\theta$ such that $\theta_t = \varphi(\theta,t)$}$$
-constitutes a solution. More concrete form is available for (B),
-$$ h(\theta) = \int_{\Theta_0}^\theta \frac{d\theta'}{\mu(\theta')}, \quad \theta = h^{-1}(t).$$
-Note that the growth rate of the strain is linear and uniform in $x$. In the focusing solutions we construct, the growth rate is not uniform; it grows faster at the focusing core and slower at the rest of the points.
-
-The linear stability around the uniform shearing solution \cite{FM87} and the study of Chapman-Enskog type relaxation to the effective equation \cite{KT09} indicate the system becomes unstable in the regime
+Model \eqref{eq:A} with power law \eqref{eq:power} admits a special class of solutions describing uniform shearing,  which can be written explicitly 
 \begin{equation}
- -\alpha + m + n < 0. \label{eq:constraint}
+\label{USS}
+ \gamma_s = t+\gamma_0, \ v_s=x, \ \theta_s=\left[\theta_0^{1+\alpha}+\frac{1+\alpha}{1+m}\left[ \gamma_s^{1+m} - \gamma_0^{1+m}\right] \right]^{\frac1{1+\alpha}}, \  \tau_s = \theta_s^{-\alpha}\gamma_s^m \, ,
 \end{equation}
-In the other regime $-\alpha + m + n > 0$, it is expected that the uniform shearing solution is the globally asymptotically stable solution.
-Non-linear stability of the problem (B) ($m=0$) in the regime $-\alpha+n>0$ has been studied from early stage of the research, by Dafermos and Hsiao \cite{dafermos_adiabatic_1983} when $n=1$, and by Tzavaras \cite{Tz_1986} when $n\ne1$. The system (B) has an interpretation that the model describes a fluid with temperature dependent viscosity $\mu(\theta)$ in the rect-linear shear motion. Similar result for the problem (C) ($\alpha=0$) in the regime $m+n>0$  is obtained by Tzavaras \cite{tzavaras_nonlinear_1992}. For the problem (B), the failure of the asymptotic stability is treated by Bertsch et. al. \cite{bertsch_effect_1991} when $n=1$ and by Katsaounis and Tzavaras \cite{KT09} when $n\ne1$. Our objective is to show the onset of localization by constructing solutions directly.
+where $\gamma_0, \ \theta_0$ denote  initial values of shear strain and temperature respectively. 
 
-The special role of the viscosity in the model is of our central insterest. In the absence of the viscosity $(n=0)$ for the regime \eqref{eq:constraint}, the system loses hyperbolicity and the instability system exhibits has coined the term {\it Hadamard Instability}. This refers to that the oscillations will grow exponentially, i.e., the systems are catastrophically ill-posed. In the presence of the viscosity on the other hand, it alters the nature of the instability. There is a competition between the viscosity and the inelastic softening. Even when the viscosity effects merely in the way \eqref{eq:constraint} holds, it is one of our main objective to state that, among the self-similar family, the growth and focusing rates are polynomial and the rate is bounded above according to the material property.
-% The main results of this paper is the construction of the family of self-similar solutions to the problems (B), and (C). The same for the problem (A) is in progress. For this studies, the thermal softening effect and the strain hardening effect are parametrized by the exponents for the following power law 
-% \begin{equation}
-%  \tau = \varphi(\theta,\gamma)u^n = \theta^{-\alpha}\gamma^m u^n. \label{eq:pw}
-% \end{equation}
-% Linear stability around the uniform shearing solution in the slab of material \cite{FM87} has revealed that the system exhibits instability for the regime 
-% \begin{equation}
-%  -\alpha + m + n < 0. \label{eq:constraint}
-% \end{equation}
-% In this parametrization, the problem (A) refers to as the one with \eqref{eq:pw}, the problem (B) as the one with with \eqref{eq:pw} but $m=0$, and lastly (C) as the one with \eqref{eq:pw} but $\alpha=0$. In all cases, we work in the regime satisfying \eqref{eq:constraint}. The technique we employ for the study was mainly developed in Katsaounis et. al. \cite{KOT14}, where the authors studies the problem (B) with exponential law $\mu(\theta) = e^{-\alpha\theta}$. 
+The linear stability analysis, \cite{FM87} around the \emph{uniform shearing solutions} \eqref{USS} indicates that system \eqref{eq:A} becomes unstable in the regime 
+$q:=-\alpha + m + n < 0$ while it is asymptotically stable in the complementary region $q > 0$. Using the Champan-Enskog expansion and a relaxation theory approach, the authors in \cite{KT09}, obtained an effective equation for the shear strain rate that changes type from forward parabolic when $q>0$ to backward parabolic when $q<0$. 
 
+Non-linear stability of model \eqref{eq:B} ($m=0$) in the regime $q>0$ has been studied in \cite{dafermos_adiabatic_1983} when $n=1$, and in \cite{Tz_1986} for $n\ne1$. System \eqref{eq:B} has an interpretation that the model describes a fluid with temperature dependent viscosity $\mu(\theta)$ in the rect-linear shear motion. Similar result for the problem \eqref{eq:C} ($\alpha=0$) in the regime $q>0$  is obtained in \cite{tzavaras_nonlinear_1992}. For the problem \eqref{eq:B} in the regime $q<0$, the failure of the asymptotic stability is treated in \cite{bertsch_effect_1991} when $n=1$ and for $n\ne1$ in \cite{KT09}.  
+
+The main result of this paper is the construction of a family of self-similar solutions of {\it focusing type} to models \eqref{eq:B}, and \eqref{eq:C} that capture the underlying instability. It provides a survey of several related results concerning the construction of focussing solutions that
+have recently appeared in the literature \cite{KOT14,KLT_2016,LT16}. The exposition is organized mostly around the general system of three equations 
+ \eqref{eq:A}. The last step of the construction of focusing self-similar solutions for the general power law \eqref{eq:power} is work in progress \cite{LT16_2}. 
+
+The paper is organized as follows: Section 2 contains the main results of this work. The existence of focusing type self similar solutions for systems \eqref{eq:B} and \eqref{eq:C} is stated precisely in Theorems \ref{thm1} and \ref{thm2}. Figures \ref{fig:theta}, \ref{fig:u}, \ref{fig:v} and \ref{fig:sigma} depict the typical behaviour of such focusing solutions.  
+The existence of focusing self-similar solutions is turned into a problem of constructing a heteroclinic orbit for an associated dynamical system. 
+The main tool of proving the latter is the theory of geometric singular perturbations, \cite{fenichel_geometric_1979} which is  discussed briefly in Section 3. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -231,7 +202,7 @@ Suppose $(\gamma,u,v,\theta,\tau)$ is a solution of system (A). Then a rescaled 
  \tau_\rho(t,x) &= \rho^d\tau(\rho^{-1}t,\rho^\lambda x),\\
  u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x),
 \end{align*}
-is also a solution of (A) provided
+is also a solution of \eqref{eq:A}  provided that 
 \begin{align*}
  a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, \\
  b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
@@ -242,13 +213,12 @@ for each $\lambda \in \mathbb{R}$, where  $D = 1+2\alpha-m-n$.
 Motivated by the scale invariance property parametrized by $\lambda$, we look for the solutions of the form 
 \begin{align*}
  \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x),\\
- \tau(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
+ \tau(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x),
 \end{align*}
-and set $\xi = t^\lambda x$. In this format, $\lambda>0$ accounts for the focusing behavior as time proceeds whereas $\lambda<0$ accounts for the de-focusing behavior. This family includes the uniform shearing solution at $\lambda = -\frac{1+m}{2(1+\alpha)}$. Since we are interested in the focusing solutions, we consider $\lambda>0$ in the rest of the paper.
+and set $\xi = t^\lambda x$. In this format, $\lambda>0$ accounts for the focusing behavior as time increases,  whereas $\lambda<0$ accounts for the de-focusing behavior. This family includes the uniform shearing solution at $\lambda = -\frac{1+m}{2(1+\alpha)}$. Since we are interested in the focusing solutions, we consider $\lambda>0$ in the rest of the paper.
 
 
-Plugging in the ansatz to the system (A) we obtain a  system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
-
+Using this ansatz to the system \eqref{eq:A} we obtain a  system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies, 
 \begin{equation}
 \begin{aligned}
  a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
@@ -261,21 +231,20 @@ Plugging in the ansatz to the system (A) we obtain a  system of ordinary differe
 
 \subsection{Main theorem}
 
-We first state the existence of two parameters family of solutions for (B) where $m=0$. See \cite{LT16_2} for the detailed discussion.
-
+We first state the existence of two parameters family of solutions for \eqref{eq:B}  where $m=0$. See \cite{LT16_2} for the detailed discussion.
 \begin{theorem} \label{thm1}
 Let $\alpha,n>0$, $\alpha\ne2n+1$ the given material parameters and fix $U_0>0$ and $\Theta_0>0$. Suppose that
 \begin{equation} \label{eq:restriction}
  \frac{2}{1+2\alpha-n} < \frac{U_0^{1+n}}{\Theta_0^{1+\alpha}} < \frac{2}{1+n},
 \end{equation}
-$-\alpha+n<0$, and $n$ is sufficiently small. Then there is a focusing self-similar solution of the form
+$-\alpha+n<0$, and $n$ is sufficiently small. Then there is a focusing self-similar solution to system \eqref{eq:B} of the form
 \begin{equation*}
 \begin{aligned}
  v(t,x) &= (t+1)^b V((t+1)^\lambda x), &\theta(t,x) &= (t+1)^c \Theta((t+1)^\lambda x),\\
  \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x)
 \end{aligned}
 \end{equation*}
-to the system (B), where the focusing rate is 
+where the focusing rate is 
 \begin{equation}
  \lambda = \frac{1+2\alpha-n}{2+2n}\frac{U_0^{1+n}}{\Theta_0^{1+\alpha}} - \frac{2}{2+2n}>0. \label{eq:lambda}
 \end{equation}
@@ -306,21 +275,20 @@ Furthermore, the self-similar profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi
  \end{enumerate}
 \end{theorem}
 
-In case of system (C), where  $\alpha=0$,  there exists a two parameter family of solutions,  see \cite{KLT_2016}, \cite{LT16} for the detailed discussion. 
-
+In case of system \eqref{eq:C} , where  $\alpha=0$,  there exists a two parameter family of solutions,  see \cite{KLT_2016}, \cite{LT16} for the detailed discussion. 
 \begin{theorem} \label{thm2}
 Let $-1\le m<0$ and $n>0$, $m+n\ne \frac{1}{2}$ the given material parameters and fix $U_0>0$ and $\Gamma_0>0$. Suppose that
 \begin{equation*}
  \frac{2-n}{1-m-n} \;<\; \frac{U_0}{\Gamma_0} \;<\; \frac{2-n}{1+m+n} \, ,
 \end{equation*}
-$m+n<0$, and $n$ is sufficiently small. Then there is a focusing self-similar solution of the form
+$m+n<0$, and $n$ is sufficiently small. Then there is a focusing self-similar solution to system \eqref{eq:C} of the form
 \begin{equation*}
 \begin{aligned}
  \gamma(t,x) &= (t+1)^a\Gamma((t+1)^\lambda x), & v(t,x) &= (t+1)^b V((t+1)^\lambda x), \\
  \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x),
 \end{aligned}
 \end{equation*}
-to the system (C), where the focusing rate is
+where the focusing rate is
 \begin{equation}
  \lambda = \frac{1-m-n}{2}\Big(\frac{U_0}{\Gamma_0} - \frac{2-n}{1-m-n}\Big)>0. \label{eq:lambdaC}
 \end{equation}
@@ -351,7 +319,7 @@ Furthermore, the self-similar profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi
 \end{theorem}
 
 \subsection{Emergence of localization}
-We describe the emergence of localization of the family of solutions for system (B)  constructed by Theorem \ref{thm1}. The corresponding localized solutions for system (C) constructed by Theorem \ref{thm2} is similar, thus omitted. 
+We describe the emergence of localization of the family of solutions for system \eqref{eq:B}   constructed by Theorem \ref{thm1}. The corresponding localized solutions for system \eqref{eq:C}  constructed by Theorem \ref{thm2} is similar, thus omitted. 
 
 In both cases we replace $t \leftarrow t+1$,
 \begin{equation*}
@@ -364,25 +332,25 @@ so that we interpret
 $$\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)=\big(v(0,x),\theta(0,x),\tau(0,x),u(0,x)\big)|_{x=\xi},$$  the initial states of the self-similar solutions. 
 
 \begin{itemize}
- \item Initial non-uniformities : The profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ is the initial profile of the self-similar solution. $\Theta(\xi)$ and $U(\xi)$ have a small bump at the origin from the asymptotically flat state. The tip sizes at the origin $\Theta_0$ and $U_0$ are the two parameters that fixes the solution. The velocity $V(\xi)$ is an odd function of $\xi$ that connects $-V_\infty$ and $V_\infty$ as $\xi$ runs from $-\infty$ to $\infty$, where $V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi)$. The slope near the origin is slightly steeper, which reflects the initial non-uniformity in the velocity.
-\item Temperature : The temperature is an increasing function of $t$ for a fixed $x$. The growth rate at the origin is faster than any other $x$, which dictates the localization near the origin.
+ \item Initial non-uniformities : The profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ is the initial profile of the self-similar solution. $\Theta(\xi)$ and $U(\xi)$ have a small bump at the origin from the asymptotically flat state. The tip sizes at the origin $\Theta_0$ and $U_0$ are the two parameters that fixes the solution. The velocity $V(\xi)$ is an odd function of $\xi$ that connects $-V_\infty$ and $V_\infty$ as $\xi$ spans from $-\infty$ to $\infty$, where $V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi)$. The slope near the origin is slightly steeper, which reflects the initial non-uniformity in the velocity.
+\item Temperature : The temperature is an increasing function of $t$ for a fixed $x$. The growth rate at the origin is faster than any other $x$, which dictates the localization near the origin, see Figure \ref{fig:theta}
 \begin{align*}
  \theta(t,0) &= (1+t)^{\frac{2}{D} + \frac{2+2n}{D}\lambda}\Theta(0),&
  \theta(t,x) &\sim t^{\frac{2}{D} - \frac{(1+n)^2}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
 \end{align*}
 
-\item Strain rate : The growth rate at the origin is faster than the rest of the points, which dictates the localization near the origin.
+\item Strain rate : The growth rate at the origin is faster than the rest of the points, which dictates the localization near the origin, see Figure \ref{fig:u}
 \begin{align*}
  u(t,0) &= (1+t)^{\frac{1}{D} + \frac{2+2\alpha}{D}\lambda}U(0), \\
  u(t,x) &\sim t^{\frac{1}{D} - \frac{(1+\alpha)(1+n)}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
 \end{align*}
-\item Stress : The stress is a decreasing function of $t$ for  fixed $x$. However, the decay rate at the origin is faster than the rest of the points.
+\item Stress : The stress is a decreasing function of $t$ for  fixed $x$. However, the decay rate at the origin is faster than the rest of the points, see Figure \ref{fig:sigma}
 \begin{align*}
  \tau(t,0) &= (1+t)^{\frac{-2\alpha+n}{D} + \frac{-2\alpha+2n}{D}\lambda}\Sigma(0), \\
  \tau(t,x) &\sim t^{\frac{-2\alpha+n}{D} +\frac{1+n}{D}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
 \end{align*}
 Note that the rate of the latter is always less than $-\frac{n}{1+n}$ in the valid range of  $\lambda$.
-\item Velocity : The velocity $v(x,t)$ is an odd function of $x$. It connects $-v_\infty$ to $v_\infty$, as $x$ runs from $-\infty$ to $\infty$, where $v_\infty\triangleq \lim_{x \rightarrow \infty} v(t,x)$. Because of the scaling law $\xi=(1+t)^\lambda x$, the transition from $-v_\infty$ to $v_\infty$ localizes around the origin as time increases. The slope becomes steeper and steeper and develops a step function type singularity, see Figure 1(c). The far field velocity 
+\item Velocity : The velocity $v(x,t)$ is an odd function of $x$. It connects $-v_\infty$ to $v_\infty$, as $x$ runs from $-\infty$ to $\infty$, where $v_\infty\triangleq \lim_{x \rightarrow \infty} v(t,x)$. Because of the scaling law $\xi=(1+t)^\lambda x$, the transition from $-v_\infty$ to $v_\infty$ localizes around the origin as time increases. The slope becomes steeper and steeper and develops a step function type singularity, see Figure \ref{fig:v}. The far field velocity 
 $$v_\infty(t)=(1+t)^{b}V_\infty = (1+t)^{\frac{1}{D} + \frac{1+n}{D}\lambda}V_\infty$$
 itself grows at a polynomial rate. This is not in agreement with the uniform shearing motion. This deviation is a consequence of our simplifying assumption for the self-similarity.
 \end{itemize}
@@ -390,7 +358,7 @@ itself grows at a polynomial rate. This is not in agreement with the uniform she
 \begin{figure}[ht]
   \centering
   \subfigure[temperature ($\theta$)]{
-  \includegraphics[scale=0.25]{temperature_log} \label{fig:gamma}
+  \includegraphics[scale=0.25]{temperature_log} \label{fig:theta}
   }
   \subfigure[strain rate ($u$)]{
   \includegraphics[scale=0.25]{strain_rate_log} \label{fig:u}
@@ -401,14 +369,14 @@ itself grows at a polynomial rate. This is not in agreement with the uniform she
   \subfigure[stress ($\sigma$)] {
   \includegraphics[scale=0.25]{stress_log} \label{fig:sigma}
   }
-\caption{The localizing solutions for system (B), for $n=0.3$ and $\lambda =0.39$. 
- All graphs except $v$ are in logarithmic scale. See \cite{KLT_2016} for the system (C).} 
+\caption{The localizing solutions for system \eqref{eq:B}, for $\mu(\theta)=\theta^{-\alpha}$, $\alpha=1.4$, $n=0.3$ and $\lambda =0.39$. 
+ All graphs except $v$ are in logarithmic scale. See \cite{KLT_2016} for the system \eqref{eq:C}.} 
 \end{figure}
 
 
 \section{Existence via Geometric singular perturbation theory} \label{sec:idea}
 
-Among steps to prove Theorem \ref{thm1} and \ref{thm2}, we provide the one key step of the existence proof, for system (B). The problem boils down to show the existence of a heteroclinic orbit for the  system. 
+The main step in proving Theorem \ref{thm1} and \ref{thm2}, is to show the existence of a heteroclinic orbit to an associated dynamical system, which, in the case of  system  \eqref{eq:B}, reads as follows,
 \begin{equation} \label{eq:pqrsys}\tag{P}
 \begin{aligned}
  \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big],\\
@@ -421,7 +389,7 @@ The objective is to construct the heteroclinic orbit that connects equilibrium p
  M_0=\Big(0,0,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,1,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big).
 \end{align*}
 
-We describe now briefly how system \eqref{eq:pqrsys} is derived.  The technique we employ was mainly developed in Katsaounis et. al. \cite{KOT14}. Following \cite{KOT14,LT16,LT16_2},  we introduce a series of non-linear transformations described by  \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL} while the definition of $(p,q,r)$-variables is given in \eqref{eq:pqrdef}, 
+First, we describe now briefly how system \eqref{eq:pqrsys} is derived.  The technique we employ was mainly developed in  \cite{KOT14}. Following \cite{KOT14,LT16,LT16_2},  we introduce a series of non-linear transformations described by  \eqref{eq:CAPtoBAR} and \eqref{eq:BARtoTIL} while the definition of $(p,q,r)$-variables is given by \eqref{eq:pqrdef}, 
 \begin{equation} \label{eq:CAPtoBAR}
 \begin{aligned}
  \bg(\xi)&=\xi^{a_1}\Gamma(\xi), &
@@ -445,20 +413,20 @@ We describe now briefly how system \eqref{eq:pqrsys} is derived.  The technique 
   p \triangleq \frac{\tth^{\,\frac{1+\alpha}{1+n}}}{\ts}, \quad q \triangleq b \frac{\tv}{\ts},  \quad r \triangleq \frac{\tu}{\tth^{\,\frac{1+\alpha}{1+n}}},
  \end{aligned}
 \end{equation}
-and $\eta\triangleq \log\xi$ the new independent variable $\Big(\frac{df}{d\eta}=\dot{f}\Big)$. 
-The system \eqref{eq:pqrsys} has a {\it fast-slow} structure due to $n$ in front of $\dot{r}$. We conduct a Chapman-Enskog type reduction via geometric singular perturbation theory \cite{fenichel_geometric_1979, KUEHN_2015}. The reduced problem becomes a planar dynamical system and  the heteroclinic orbit is obtained by phase space analysis, \cite{LT16_2}. 
+with $\eta\triangleq \log\xi$ being the new independent variable $\Big(\frac{df}{d\eta}=\dot{f}\Big)$. 
+The system \eqref{eq:pqrsys} has a {\it fast-slow} structure due to parameter $n$ in front of $\dot{r}$. We conduct a Chapman-Enskog type reduction via geometric singular perturbation theory \cite{fenichel_geometric_1979, KUEHN_2015}. The reduced problem becomes a planar dynamical system and  the heteroclinic orbit is obtained by phase space analysis, \cite{LT16_2}. 
 \subsection{Critical manifold}
-The surface the orbit relaxes is the zero set of the right-hand-side of $\eqref{eq:pqrsys}_3$. The zero set,  that is away from $r=0$ plane,  is the surface specified by
+The surface the orbit relaxes is near the zero set of the right-hand-side of $\eqref{eq:pqrsys}_3$. The zero set,  that is away from $r=0$ plane,  is the surface specified by
 \begin{align*}
  r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}\triangleq h(p,q;n=0), \quad \text{or} \quad  q + \lambda {r}p + \frac{\alpha}{\lambda} \Big( r-r_0\Big)=0.
 \end{align*}
-
- 
+%
+%
 We take the triangle $T$ in the first quadrant enclosed by $p$-axis, $q$-axis and the contour line $\underbar{r} =  h(p,q;n=0)$ and a compact set $K\supset\supset T$. We set the critical manifold 
 \begin{equation}
  G(\lambda,\alpha,n=0) \triangleq \Big\{\, (p,q,r) \;|\; (p,q) \in K, \text{ and } r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p} \,\Big\}.
 \end{equation}
-
+%
 The system in {\it fast scale} with the independent variable $\tilde{\eta} = \eta/n$ is
 \begin{equation}\label{eq:pqr_fast} \tag*{($\tilde{P}$)}
 \begin{aligned}
@@ -520,7 +488,7 @@ Since $h$ is a smooth function of $n$ and $D$ is compact, provided $n$ is suffic
 \end{equation*}
 Therefore
 $$ (\dot{p},\dot{q}) \cdot(-\underbar{q},-\underbar{p}) \ge \delta_0 + C_0'n \quad \text{for another uniform constant $C_0'$}.$$
-Take $n$ sufficiently small so that the last expression is positive. After having the orbit confined in the positive invariant set $T$, we further conduct the phase space analysis to capture the heteroclinic orbit but is omitted here.
+For $n$ sufficiently small the last expression is positive. After having the orbit confined in the positive invariant set $T$, we further conduct the phase space analysis to capture the heteroclinic orbit, for details we refer to \cite{LT16, LT16_2}. 
 \subsection*{Acknowledgements}
 This research was supported by King Abdullah University of Science and Technology (KAUST).
 
@@ -535,6 +503,11 @@ This research was supported by King Abdullah University of Science and Technolog
 {\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel}, 
 The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
 {\em SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
+
+\bibitem{CDHS}
+{\sc R.J. Clifton, J. Duffy, K.A. Hartley, and T.G. Shawki}, 
+On critical conditions for shear band formation at high strain rates, 
+{\em Scripta Met.}, {\bf 18} (1984), 443?448.
 
 % \bibitem{CB99} 
 % {\sc L.~ Chen and R.C.~Batra },
@@ -572,8 +545,7 @@ Instability and localization of plastic flow in shear at high strain rates,
   
 \bibitem{KOT14}
 {\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras}, 
-Emergence of coherent localized structures in shear deformations of
-  temperature dependent fluids, {\em Archive for Rational Mechanics and Analysis}, (to appear).
+Emergence of coherent localized structures in shear deformations of temperature dependent fluids, {\em Archive for Rational Mechanics and Analysis}, (online). doi:10.1007/s00205-016-1071-2.
 
 \bibitem{KUEHN_2015}
 {\sc C.~ Kuehn}, 
@@ -582,11 +554,12 @@ Emergence of coherent localized structures in shear deformations of
 \bibitem{LT16}
 {\sc M-G.~Lee and A.E.~Tzavaras},
 Existence of localizing solutions in plasticity via the geometric singular perturbation theory, 
-{\em SIAM J. Appl. Dyn. Syst.}, (to appear).
+{\em SIAM J. Appl. Dyn. Syst.}, (to appear). 
+%(https://arxiv.org/pdf/1608.00198.pdf)
 
 \bibitem{LT16_2}
 {\sc M-G.~Lee and A.E.~Tzavaras},
-Localization in adiabatic process of viscous shear flow via geometric theory of singular perturbation, (in preparation).
+Localization and the formation of shear bands in thermoviscoplastic deformations. (in preparation).
 
 \bibitem{KLT_2016}
 {\sc Th. Katsaounis, M-G. Lee, and A.E. Tzavaras}, 
