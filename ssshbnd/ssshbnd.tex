@@ -83,7 +83,8 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
-%\newtheorem{definition}{Definition}[section]
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -244,8 +245,7 @@ These arise from the consideration of the scale invariance property of the syste
  \Gamma_\rho(\xi)&=\rho^{a_1}\Gamma(\rho\xi), & V_\rho(\xi)&=\rho^{b_1}V(\rho\xi), & \Theta_\rho(\xi)&=\rho^{c_1}\Theta(\rho\xi),\\
  \Sigma_\rho(\xi)&=\rho^{d_1}\Sigma(\rho\xi), & U_\rho(\xi)&=\rho^{b_1+1}U(\rho\xi),
 \end{align*}
-again is a solution. From that we find \eqref{eq:monomials} by setting $\rho=\xi^{-1}$.
-
+again is a solution. 
 
 Introduce new field variables 
 \begin{equation}
@@ -283,6 +283,8 @@ $\ta, \tb, \tc, \td$ such that
 \end{equation}
 
 Introduce the new independent variable $\eta = \log\xi$.
+
+
 \section{$(p,q,r,s)$-system derivation}
 
 \begin{enumerate}
@@ -393,6 +395,120 @@ and look for solutions of this form. Then we have
  n\dot{s}&=\frac{1+m}{\lambda}s^{1-n} \left\{r\frac{u^n-1}{n} - rs^n -\frac{1+ns^n}{D}\right\}.
 \end{aligned}
 \end{equation}
+
+\pagebreak
+\section{Existence of the heteroclinic orbit $\varphi^*(\eta)$}
+In slow time scale $\eta$,
+\begin{equation}\label{eq:slow}
+ \begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p r -q\Big) + b p r,\\
+ n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \lambda pr + q +\frac{\alpha}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ \dot{y} &=y\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \lambda pr + q - \frac{1}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+In fast time scale $\tilde\eta=\frac{\eta}{n}$,
+\begin{equation} \label{eq:fast}
+ \begin{aligned}
+ {p}' &=np\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
+ {q}' &=nq\Big(1 -\lambda p r -q\Big) + nb p r,\\
+ {r}' &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ {y}' &=ny\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+\eqref{eq:slow} at $n=0$:
+\begin{equation}\label{eq:slow0}
+ \begin{aligned}
+ r &=\hat{r}(p,q,y,n=0) \triangleq \frac{ \frac{\alpha-m}{\lambda(1+\alpha)}a - q }{  \frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(y- \frac{1+m}{1+\alpha}\big)}, \quad \text{$=\hat{r}(0)$ for simplicity },\\
+ \dot{p} &=p\Big(\frac{1}{\lambda}(\hat{r}(0)-a) + 2- \lambda p \hat{r}(0) -q\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p \hat{r}(0) -q\Big) + b p \hat{r}(0),\\
+ \dot{y} &=y\Big(\frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p\hat{r}(0) + q - \frac{1}{\lambda}\hat{r}(0)\big(y- \frac{1+m}{1+\alpha}\big)\Big) = -\frac{1+\alpha}{\lambda}\hat{r}(0)y\big(y- \frac{1+m}{1+\alpha}\big).
+ \end{aligned}
+\end{equation}
+\eqref{eq:fast} at $n=0$:
+\begin{equation} \label{eq:fast0}
+ \begin{aligned}
+ {p}' &=0,\\
+ {q}' &=0,\\
+ {r}' &=r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(y- \frac{1+m}{1+\alpha}\big)\Big),\\
+ {y}' &=0.
+ \end{aligned}
+\end{equation}
+
+\subsection{Notion of Normally Hyperbolicity and the stable manifold theorem}
+$x\in \mathbb{R}^n$: slow variables; $y \in \mathbb{R}^m$: fast variables with respect to a small parameter $\epsilon$.
+\begin{definition}[fast-slow case definition of normally hyperbolicity of invariant manifold]
+A compact set $\Lambda$ is called normally hyperbolic if the $m\times m$ matrix $(D_y f)(p)$ of first partial derivatives with respect to the fast variables $y$ has no eigenvalues with zero real part for all $p \in \Lambda$.
+\end{definition}
+
+
+\subsection{Notion of Hyperbolic Set and the (topological) stable manifold theorem}
+M.W. Hirsh, C.C. Pugh, {\it Stable manifolds and hyperbolic sets}, in Global Analysis \it{Proc. Symps. Pure Math.} {\bf 14}, Berkeley, Calif., 1968.
+\begin{definition}[Hyperbolic set]
+The invariant set $\Lambda \subset U$ is hyperbolic for the map $f: U \rightarrow M$ if $T_\Lambda M$ has a splitting (Whitney sum decomposition) $T_\Lambda M = E^u \oplus E^s$ satisfying:
+\begin{enumerate}
+ \item $E^u$ and $E^s$ are invariant under the bundle map $Tf$;
+ \item there exist constants $c>0$ and $0<\tau <1$ such that for all $n \in \mathbb{Z}_+$,
+ $$ max\{ ||Tf^n|_{E^s}||,~||Tf^{-n}|_{E^u}||\} < c\tau^n. $$
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Theorem 7.3 in HP68, Structural stability] Let $\Lambda \subset U$ be a compact hyperbolic set for the $C^1$ embedding $f: U\subset M \rightarrow M$. Given $\epsilon>0$ there is a compact neighborhood $V\subset U$ of $\Lambda$ and a neighborhood $\mathcal{N}$ of the map $f$ in $C^1(U,M)$ with the following properties: if $g_i\in N$ for $i=1,2$ then $g_i$ has a unique maximal hyperbolic set $\Lambda_i \subset V$ containing every invariant set of $g_i$ in $V$; and there is a unique homeomorphism $h_1: \Lambda_1 \rightarrow \Lambda_2$ such that $h_1 g_1 h_1^{-1} = g_2|_\Lambda$; and $d(h_1,1) \le \epsilon$. Moreover $h_1$ depends continuously on $(g_1,g_2) \in \mathcal{N}\times\mathcal{N}$.
+\end{theorem}
+
+
+\subsection{Proof steps}
+
+Critical Manifold $K_0$: ($\underbar{r}$ is determined in the below later.)
+\begin{align*}
+ K &\triangleq \left\{ \: (p,q,y) \: | \:  p\ge0, ~~ q\ge0, ~~ \left|y-\frac{1+m}{1+\alpha}\right| \le 0.5 \frac{\alpha-m}{\alpha(1+\alpha)}, \right.\\
+  &  \left.\frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-a) + \lambda p\underbar{r} + q +\frac{\alpha}{\lambda}\underbar{r}\big(y- \frac{1+m}{1+\alpha}\big) \le 0.\right\},\\
+ G_0 &\triangleq \left\{ \: (p,q,r,y) \: | \: r=\hat{r}(p,q,y,0), \quad (p,q,y)\in K. \: \right\}.
+\end{align*}
+
+
+
+
+\begin{claim} 
+$G_0$ is normally hyperbolic with respect to the flow \eqref{eq:fast0}. 
+\end{claim}
+
+% \begin{claim}
+% \end{claim}
+% 
+% \begin{claim} 
+% Let $T$ be a triangle $\{y=\frac{1+m}{1+\alpha}\} \cap K_0$.  Then $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
+% \end{claim}
+
+\begin{claim} 
+Consider the reduced flow \eqref{eq:slow0} for $n=0$.
+\begin{enumerate}
+ \item The set $K$ is positively invariant.
+ \item Let $T$ be a triangle $\{y=\frac{1+m}{1+\alpha}\} \cap K$. Then $T$ is invariant. Furthermore, $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
+ \item $K\backslash B_\delta(M_0) \subset W^s(M_1)$ either.
+\end{enumerate}
+\end{claim}
+
+\begin{claim}
+ The flow \eqref{eq:slow0} in $K \backslash B_\delta(M_0)$ is structurally stable.
+\end{claim}
+\begin{proof}
+ We claim that $K \backslash B_\delta(M_0)$ is a hyperbolic set for the reduced flow \eqref{eq:slow0} as a whole $3$-dimensional set that has only stable bundle. Note that $K \backslash B_\delta(M_0)$ is positively invariant but is not invariant. We cut-off the \eqref{eq:slow0} near the boundary so that the set is invariant and maximal with respect to the cut-off flow.
+\end{proof}
+
+
+Now, consider the reduced problem for $n>0$.
+\begin{claim}
+\begin{enumerate}
+ \item Two dimensional $W^u(M_0(n))B_\delta(M_0) \subset K \subset W^s(M_1(n))$.
+ \item The heteroclinic orbit $\varphi^*(\eta)$ exists as a unstable fiber passing $M_0(n)$. More precisely
+    \begin{equation} \label{eq:estimate}
+        \varphi^*(\eta) \rightarrow M_1(n) \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\varphi^*(\eta) - M_0(n)\big) \rightarrow \kappa\vec{X}_{02} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa>0$}.
+    \end{equation} 
+\end{enumerate}
+\end{claim}
+
+\pagebreak
 
 \section{Normally hyperbolic invariant manifold}
 \section{Equilibrium points, Linear structure}
