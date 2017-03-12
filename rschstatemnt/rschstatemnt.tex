@@ -12,7 +12,7 @@
 %\usepackage[notcite,notref]{showkeys}
 
 % \usepackage{psfrag}
-% \usepackage{graphicx,subfigure}
+\usepackage{graphicx,subfigure}
 \usepackage{color}
 \def\red{\color{red}}
 \def\blue{\color{blue}}
@@ -117,7 +117,7 @@
 % abstract
 % \end{abstract}
 % \section{Ph.d. thesis and ongoing works}
-\section{Anisotropic Conductivity Recovery Problem {\small(with Yong-Jung Kim)}}
+\section{Anisotropic Conductivity Recovery Problem. {\small(with Yong-Jung Kim)}}
 Conductivity recovery problem in linear electrostatics is to recover the coefficient $\sigma(x)$ in the following Neumann problem
 \begin{equation}\label{eq:Neumann}
 \begin{aligned}
@@ -126,12 +126,12 @@ Conductivity recovery problem in linear electrostatics is to recover the coeffic
  \int_{\partial\Omega} g(y) \;dS(y) &=0,
 \end{aligned}
 \end{equation}
-from a set of data, which is typically the partial information of solutions. In \eqref{eq:Neumann}, $u$ is the electric potential, $-\sigma(x)\nabla u$ is the current density vector field, and $\sigma(x)$ is the conductivity, which is a symmetric matrix field. We solve an inverse problem that is for $\Omega\subset \mathbf{R}^2$ and that exploits the data 
+from a set of data, which is typically the partial information of solutions. In \eqref{eq:Neumann}, $u$ is the electric potential, $-\sigma(x)\nabla u$ is the current density vector field, and $\sigma(x)$ is the conductivity, which is a symmetric matrix field. We solve an inverse problem that is for $\Omega\subset \mathbf{R}^2$ and that exploits the data
 \begin{enumerate}
  \item Three current density vector fields $\F_k(x) \in C^\infty(\bar\Omega;\mathbf{R}^2)$, $k=1,2,3$,
  \item directional resistivity value $b_j\in C^\infty(\Gamma_j^-;\mathbf{R})$ on $\Gamma_j^-\subset\partial\Omega$, $j=1,2$. More precisely, for a vector field $N_j$, $\langle N_j, rN_j\rangle = b_j$ on $\Gamma_j^-$, where $r=\sigma^{-1}$ the resistivity matrix. The vector fields $N_j$ and the boundary portions $\Gamma_j^-$, $j=1,2$ are determined once $\F_k(x)$ are prescribed, we refer the definitions to \cite{lee_well-posedness_2014}.
 \end{enumerate}
-We recover from the data the anisotropic conductivity $\sigma(x)$, which is a $2\times2$ symmetric matrix field in $\bar\Omega$. 
+We recover from the data the anisotropic conductivity $\sigma(x)$, which is a $2\times2$ symmetric matrix field in $\bar\Omega$.
 
 This work is motivated from imaging science. Most of efforts have been devoted to practical aspects of the problem, where one takes data as many as possible and forms an overdetermined problem, which is solved by the least square principle numerically. Our theorem provides the ground of the theory, proving the partial well-posedness, the existence and the uniqueness. Main idea is to form a hyperbolic system of two equations, which can be integrated from the initial {\it space-like} manifolds $\Gamma_j^-$, $j=1,2$. It is the precise amount of information of data specified above that makes problem neither overdetermined nor underdetermined.
 
@@ -151,7 +151,7 @@ These comprise a set of sufficient conditions for integrating the system {\it gl
 The procedure to solve the problem is as follows. We seek the two potentials $u_1$ and $u_2$ in $\bar\Omega$ that are in relations with the unknown $\sigma(x)$ and the data $\F_k$ by $-\sigma(x)\nabla u_k = \F_k$, $k=1,2$. We acquire two equations from two sources: Firstly, if
 \begin{equation}
 r(x) = \sigma^{-1}(x) = -\begin{pmatrix} \partial_x u_1 & \partial_x u_2 \\ \partial_y u_1 & \partial_y u_2 \end{pmatrix}
-\begin{pmatrix} F^x_1 & F^x_2 \\ F^y_1 & F^y_2 \end{pmatrix}^{-1}, \label{eq:inverse}                                                                    
+\begin{pmatrix} F^x_1 & F^x_2 \\ F^y_1 & F^y_2 \end{pmatrix}^{-1}, \label{eq:inverse}
 \end{equation}
 then the two off-diagonal terms must coincide because it is symmetric. Secondly, $ \nabla\times (r\F_3) = 0$ because $r\F_3=-\nabla u_3$ the potential, where $r$ is understood to be the expression substituted from \eqref{eq:inverse} that are only on $u_1$ and $u_2$. These two equations form a first order linear hyperbolic system on $u_1$ and $u_2$. In the below, we state the main theorem, where the detailed definitions of associated objects are omitted.
 \begin{theorem}
@@ -173,15 +173,15 @@ In this project, we study the {localizing} type instability of the following sys
  \tau &=\tau(\theta,\gamma,u) \quad \text{(constitutive law)}			
 \end{aligned}
 \end{equation}
-in $(t,x)\in \mathbb{R}^+\times \mathbb{R}$. The system describes a specimen placed on $(x,y)$-plane that is in shear deformation in $y$-direction, with $\gamma$ the shear strain, $u=\gamma_t$ the strain rate, $v$ the vertical velocity, $\theta$ the temperature, and $\tau$ the shear stress. The objective is to construct a family of focusing self-similar solutions of \eqref{eq:A} exhibiting shear localization at various of rates as time proceeds. Two simpler submodels of \eqref{eq:A} are also studied: The submodel (B) comprises the strain-independent constitutive theory $\tau = \tau(\theta,u)$, $\eqref{eq:A}_2$, and $\eqref{eq:A}_3$; the submodel (C) comprises the temperature-independent constitutive theory $\tau = \tau(\gamma,u)$, $\eqref{eq:A}_1$, and $\eqref{eq:A}_2$. 
+in $(t,x)\in \mathbb{R}^+\times \mathbb{R}$. The system describes a specimen placed on $(x,y)$-plane that is in shear deformation in $y$-direction, with $\gamma$ the shear strain, $u=\gamma_t$ the strain rate, $v$ the vertical velocity, $\theta$ the temperature, and $\tau$ the shear stress. The objective is to construct a family of focusing self-similar solutions of \eqref{eq:A} exhibiting shear localization at various of rates as time proceeds. Two simpler submodels of \eqref{eq:A} are also studied: The submodel (B) comprises the strain-independent constitutive theory $\tau = \tau(\theta,u)$, $\eqref{eq:A}_2$, and $\eqref{eq:A}_3$; the submodel (C) comprises the temperature-independent constitutive theory $\tau = \tau(\gamma,u)$, $\eqref{eq:A}_1$, and $\eqref{eq:A}_2$.
 
-This work is motivated from the study of material failure. {\it shear bands} are the narrow zones of intense shear that is observed during the high speed shear deformation of metals and they often precede the rupture. 
+This work is motivated from the study of material failure. {\it shear bands} are the narrow zones of intense shear that is observed during the high speed shear deformation of metals and they often precede the rupture.
 
 We focus on two key words in the study. Firstly, the flow is {\it adiabatic}, which by interplaying with the {plastic (or thermal softening)} constitutive theory, could give rise to the positive feedback between the strain and the temperature in narrow zones. This appears in mathematical terms as the loss of the hyperbolicity in \eqref{eq:A}, which indicates the exponential growth of oscillations. This catastrophic instability has coined the term {\it Hadamard instability} but this cannot be the case seen from the experiments where oscillations are suppressed. We focus on another key player the {\it viscosity} as a regularizing mechanism. That the strain-rate enters to the constitutive theory has been observed apparently and we quantify its influence from following parametric study.
 
 We focus on the power-law constitutive theory $\tau = \theta^{-\alpha}\gamma^m u^n$, with $\alpha\ge0$, $-\alpha+m+n<0$, and $0<n\ll1$, which turns out to be the proper regime for the localizing instability to occur. It accounts for strength of (i) thermal softening, (ii) strain hardening if $m>0$, strain softening if $m<0$, (iii) strain rate hardening with $0<n\ll1$.
 
-Two-parameters family of focusing solutions for $(B)$ and for $(C)$ have been constructed. The same result for $(A)$ is in progress. Two parameters in (B) are the $\Theta_0$ and $U_0$, the tip sizes of the temperature and strain-rate at the core of the bump type initial perturbations. Those of strain $\Gamma_0$ and strain rate do the same role in $(C)$.  
+Two-parameters family of focusing solutions for $(B)$ and for $(C)$ have been constructed. The same result for $(A)$ is in progress. Two parameters in (B) are the $\Theta_0$ and $U_0$, the tip sizes of the temperature and strain-rate at the core of the bump type initial perturbations. Those of strain $\Gamma_0$ and strain rate do the same role in $(C)$.
 \begin{enumerate}
  \item The focusing self-similar solution for (B) exists in the range of the parameters where the ratio between $\Theta_0$ and $U_0$  is not too big and not too small, as stated in the theorem below. Similar for (C) with $\Gamma_0$ and $U_0$.
  \item The viscosity prevents, at least among the self-similar family, the process from developing exponential growth of the height and oscillations. The rates of focusing and growth are of polynomial and the maximum rate is finite, depending on the corresponding constitutive law.
@@ -199,7 +199,7 @@ Then there is a focusing self-similar solution of the form
  \tau(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x)
 \end{aligned}
 \end{equation*}
-to the system (B), where the focusing rate is 
+to the system (B), where the focusing rate is
 \begin{equation}
  \lambda = \frac{1+2\alpha-n}{2+2n}\frac{U_0^{1+n}}{\Theta_0^{1+\alpha}} - \frac{2}{2+2n}>0. \label{eq:lambda}
 \end{equation}
@@ -209,13 +209,13 @@ Furthermore, the self-similar profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi
     \begin{equation*}
     {V}(0) = \Theta_\xi(0)=\Sigma_\xi(0) = {U}_\xi(0)=0, \quad U(0)=U_0, \Theta(0)=\Theta_0.
   \end{equation*}
-  \item[(ii)] Its asymptotic behavior as $\xi \rightarrow 0$ is given by 
+  \item[(ii)] Its asymptotic behavior as $\xi \rightarrow 0$ is given by
   \begin{equation} \label{eq:ss_asymp0}
   \begin{aligned}
 %     \Gamma(\xi) &= \frac{1}{a}U(0) + \Gamma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Gamma^{''}(0)&<0,\\
     \Theta(\xi) &= \Theta(0) + \Theta^{''}(0)\frac{\xi^2}{2} + o(\xi^2),  &
     \Sigma(\xi) &= \Theta(0)^{-\alpha}{U(0)^n}+ \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \\
-    U(\xi) &= U(0) + U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & 
+    U(\xi) &= U(0) + U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), &
     V(\xi) &= U(0)\xi + U^{''}(0)\frac{\xi^3}{6} + o(\xi^3),\quad
     \Theta^{''}(0)<0, \Sigma^{''}(0)>0, U^{''}(0)<0
   \end{aligned}
@@ -223,7 +223,7 @@ Furthermore, the self-similar profile $\big(V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi
   \item[(iii)] Its asymptotic behavior as $\xi \rightarrow \infty$ is given by
   \begin{equation} \label{eq:ss_asymp1}
   \begin{aligned}
-%     \Gamma(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-n}}), & 
+%     \Gamma(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-n}}), &
     V(\xi) &= O(1), &    \Theta(\xi) &= O(\xi^{-\frac{1+n}{\alpha-n}}), &
    \Sigma(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-n}}).
   \end{aligned}
@@ -237,7 +237,7 @@ The following forms of solutions are sought motivated by the scale invariance pr
  \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x), &
  \tau(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
 \end{align*}
-where $\lambda>0$, and $a,b,c,d$ are the exponents from the scale invariance property. Note that $\lambda>0$ accounts for the focusing behavior; for the usual treatise of diffusive process $\lambda$ is negative. Technical difficulty of this study is that the derived system for the self-similar ansatz consists of singular and non-autonomous odes. Overcoming this difficulty, the proof consists of two parts: 
+where $\lambda>0$, and $a,b,c,d$ are the exponents from the scale invariance property. Note that $\lambda>0$ accounts for the focusing behavior; for the usual treatise of diffusive process $\lambda$ is negative. Technical difficulty of this study is that the derived system for the self-similar ansatz consists of singular and non-autonomous odes. Overcoming this difficulty, the proof consists of two parts:
 \begin{enumerate}
  \item Heteroclinic orbit formulation of the problem. The system is de-singularized  by series of non-linear transformations and at last, it boils down to construct a heteroclinic orbit of the following dynamical system
 \begin{equation} \label{eq:pqrsys}\tag{P}
@@ -254,6 +254,25 @@ that connects equilibrium points
  \item Construction of the heteroclinic orbit via {\it geometric singular perturbation theory}: We exploit the structure of multiple time scales ($n\ll1$), or so called the {\it fast-slow} structure. Chapman-Enskog type reduction is rigorously conducted. After the reduction, further phase space analysis that confines the orbit in the positively invariant compact set captures the heteroclinic orbit.
 \end{enumerate}
 
+% \section{Proton diffusion problem \\{\small (with Athanasios Tzavaras, Himanshu Mishra, and Navaladian Subramanian)}}
+% The collaboration with Interfacial Lab in Environmental Science and Engineering are being made in this project, working with Himanshu Mishra, a faculty of the division, and Navaladian Subramanian, a member of the Lab.
+% 
+% Study of the proton diffusion in water is motivated by its distinguished large diffusion constant in water than that of other positively charged ions, where the diffusion constant is estimated to be five times bigger as in the table below.
+% \begin{figure}[h]
+%  \centering
+%  \includegraphics[height=4cm]{dconst.png}
+% \end{figure}
+% 
+% The study to explain this enhancement of the transportation dates back to early 19 century and is still of active research area. The proton, which is a hydrogen atom that has lost its electron, is a constituent of the water molecule and the overall reason for the enhancement is that what actually is transported is the charge rather than the proton itself.
+% 
+% This transportation of charges in Microscopic point of view is quite complicated; there are other mechanisms to transport the charge besides of the browninan motion. Water molecules, owing to polarity in molecule, can bind each other by hydrogen bond, forming a local structure. There are not many but a few possible configurations, which serve as the building blocks of the global configuration of water. The entire water is thus a network system that ceaselessly fluctuate. It is believed that the charge can be transported by the sequence of a local configurations along the path it is transported, which is referred to as Hopping mechanism. 
+% 
+% Our objective is to pose a Macroscopic diffusion model that is robust enough to have a predictive power. All means to transport the proton mentioned earlier can lead to, macroscopically, non-linear or non-local diffusion phenomena. Collaborating with the chemists, we set up the following experiment configuration.
+% \begin{figure}[h]
+%  \centering
+%  \includegraphics[height=4cm]{setup.png}
+% \end{figure}
+% This let us pose a boundary-value-problem of a diffusion system in a half space and a specific diffusion model enables us to analyze how the profile should scale. This scaling property pinpoints the nature of the diffusion system, which is possibly non-linear or non-local. We try a linear diffusion; porous-medium type diffusion; non-local levy process. This approach is new in this field, while measuring the mass arrival time at a distance of the proton droplet has been conducted in literature. The estimation of the diffusion constant of the latter assumes the linear diffusion model and is incapable to see the deviation from the linear model, which is likely substantial.
 
 
 \section{Polyconvexity and entropy techniques in $H^s$ and $H^{-s}$ energy: (i) higher gradient theory and (ii) non-local mean-field theory \\{\small (with Athanasios Tzavaras, Jan Gieselman, Jose Carrillo)}}
@@ -261,34 +280,34 @@ We begin by invoking the polyconvex energy functional of  Elasticity,
 \begin{equation}
  \mathcal{E} = \int W(F^i_\alpha) \; dX =  \int g\Big(F^i_\alpha, (\cof F)^{k}_\sigma, \det F\Big) \; dX,
 \end{equation}
-where the integral is written in the Lagrangian coordinate system $X^\alpha$, $\alpha=1,\cdots,d$, $y^i(t,X)$, $i=1,\cdots,d$ is the motion of continuum body and $\displaystyle F^i_\alpha = \frac{\partial y^i(t,X)}{\partial X^\alpha}$ is the deformation gradient. The Kirchhoff stress associated to the energy functional is 
+where the integral is written in the Lagrangian coordinate system $X^\alpha$, $\alpha=1,\cdots,d$, $y^i(t,X)$, $i=1,\cdots,d$ is the motion of continuum body and $\displaystyle F^i_\alpha = \frac{\partial y^i(t,X)}{\partial X^\alpha}$ is the deformation gradient. The Kirchhoff stress associated to the energy functional is
 \begin{equation}
- S^{i}_\alpha = \frac{\partial W}{\partial F^i_\alpha} = \frac{\partial g}{\partial F^i_\alpha} + \frac{\partial g}{\partial Z^k_\sigma}\frac{(\cof F)^{k}_\sigma}{\partial F^i_\alpha} + \frac{\partial g}{\partial \tau}\frac{\det F}{\partial F^i_\alpha}. 
+ S^{i}_\alpha = \frac{\partial W}{\partial F^i_\alpha} = \frac{\partial g}{\partial F^i_\alpha} + \frac{\partial g}{\partial Z^k_\sigma}\frac{(\cof F)^{k}_\sigma}{\partial F^i_\alpha} + \frac{\partial g}{\partial \tau}\frac{\det F}{\partial F^i_\alpha}.
 \end{equation}
-Then, the Elasticity in Lagrangian coordinate system 
+Then, the Elasticity in Lagrangian coordinate system
 % \begin{equation} \label{eq:elasticity0} %\red
-%     \partial_t y^i = v^i,\quad 
+%     \partial_t y^i = v^i,\quad
 %     \partial_t \pi^i = \div_{\alpha} S^i_\alpha, \quad\text{where $\pi^i = \rho_0(X)v^i$ the momentum vector},
 % \end{equation}
 is endowed with the natural Hamiltonian structure with Hamiltonian $\H = \K + \E$, $\displaystyle \K = \int \frac{1}{2} \rho_0(X) |v|^2 \; dX$, i.e.,
 \begin{equation} \label{eq:elasticity_ham}
-    \partial_t y^i = \frac{\delta \H}{\delta \pi^i},\quad 
+    \partial_t y^i = \frac{\delta \H}{\delta \pi^i},\quad
     \partial_t \pi^i = -\frac{\delta \H}{\delta y^i}, \quad\text{where $\pi^i = \rho_0(X)v^i$ the momentum vector}.
 \end{equation}
 It is crucial to conduct the variational calculus on the {\it motion} $y^i(t,X)$ in the second equation. Thus, the system is endowed with the natural {\it entropy} that is the hamiltonian density of $\H$. It is yet another task to formulate the Elasticity as a hyperbolic system endowed with a {\it convex entropy}. One prolongs the state variables appending $F^i_\alpha$, $(\cof F)^{k}_\sigma$, and $\det F$ independently. Their kinematic equations are their evolution equations. See \cite{demoulini_variational_2001}. The entropy techniques largely hinge on this proper formulation.
 
-It turns out that, one can broaden the extent the relevant entropy techniques apply to the larger class of hamiltonian systems, or the larger class of energy functionals. We bear in mind two directions of generalization: 
+It turns out that, one can broaden the extent the relevant entropy techniques apply to the larger class of hamiltonian systems, or the larger class of energy functionals. We bear in mind two directions of generalization:
 \begin{enumerate}
  \item Higher gradient contribution. For instance, one of the Kortweg type fluid is associated to the free energy
 \begin{equation}
  \E = \int_\Omega h(\rho) + \frac{1}{2}\kappa(\rho) |\nabla \rho|^2 \;dx, \label{eq:Korteweg}
 \end{equation}
-where the integral is written in the Eulerian coordinate system and $h(\rho)$ gives the classical pressure by $p(\rho) = \rho h'(\rho)- h(\rho)$. Materials are not limited to the fluid. In the Lagrangian coordinate, the free energy \eqref{eq:Korteweg} is in the form of 
+where the integral is written in the Eulerian coordinate system and $h(\rho)$ gives the classical pressure by $p(\rho) = \rho h'(\rho)- h(\rho)$. Materials are not limited to the fluid. In the Lagrangian coordinate, the free energy \eqref{eq:Korteweg} is in the form of
 $$ \int W(F^i_\alpha, \nabla F^i_\alpha) \; dX = \int g\Big(F^i_\alpha, (\cof F)^{k}_\sigma, \det F, \nabla (\det F)\Big) \; dX.$$
 More general higher gradient contributions will be in studied in a systematic way, focusing on the applications of the entropy technique.
  \item The mean-field model with the long-range interaction potential. For instance, the Euler-Poisson system is associated to the energy
 \begin{equation}
- \E = \int_\Omega h(\rho) + \frac{1}{2} \Big(\phi^2+|\nabla \phi|^2\Big) \;dx, \quad \phi = (\textrm{I}-\Delta)^{-1} (\rho-\langle\rho\rangle)=K\star(\rho-\langle\rho\rangle), \quad \text{$\langle\rho\rangle = \frac{1}{|\Omega|}\int_\Omega \rho \; dx$}. \label{eq:E-P} 
+ \E = \int_\Omega h(\rho) + \frac{1}{2} \Big(\phi^2+|\nabla \phi|^2\Big) \;dx, \quad \phi = (\textrm{I}-\Delta)^{-1} (\rho-\langle\rho\rangle)=K\star(\rho-\langle\rho\rangle), \quad \text{$\langle\rho\rangle = \frac{1}{|\Omega|}\int_\Omega \rho \; dx$}. \label{eq:E-P}
 \end{equation}
 \end{enumerate}
 
@@ -301,16 +320,16 @@ The followings are the main questions to ask.
 \end{enumerate}
 
 {\bf Convexity and signs.}
-% In the second direction, the problem is the formal mean-field model of many-body system under a repulsive-attractive long-range interaction. 
+% In the second direction, the problem is the formal mean-field model of many-body system under a repulsive-attractive long-range interaction.
 The kernel $K$ of the interaction energy in \eqref{eq:E-P} accounts for the long-range interaction. Another frequently employed kernel is the repulsive-attractive radial kernel of power type
 \begin{equation}
-K(x) = \frac{1}{|x|^a} - \frac{1}{|x|^b}, \quad a,b>-d. \label{eq:power_kernel} 
+K(x) = \frac{1}{|x|^a} - \frac{1}{|x|^b}, \quad a,b>-d. \label{eq:power_kernel}
 \end{equation}
 We focus on kernels, according to the domain $\Omega$, that share the property
 $$ \int_\Omega K_{-s}\star(\rho-\langle\rho\rangle)\; dx =\int_\Omega \phi_{-s}\,\rho\; dx \ge ||\rho-\langle\rho\rangle||^2_{H^{-s}(\Omega)}$$% \quad -\frac{d}{2}<-s<0$$
-for some negative sobolev exponent $-\frac{d}{2}<-s<0$. When equality holds, the potential $\phi\in H^s(\Omega)$ is the representation of $\rho-\langle\rho\rangle \in H^{-s}(\Omega)$ with respect to the prescribed inner product in $H^s(\Omega)$ and $||\rho-\langle\rho\rangle||^2_{H^{-s}(\Omega)}=||\phi||^2_{H^s(\Omega)}$. Note we may say this generalization is in opposite direction to the first one, taking ``negative'' derivatives of $\rho$ into account. 
+for some negative sobolev exponent $-\frac{d}{2}<-s<0$. When equality holds, the potential $\phi\in H^s(\Omega)$ is the representation of $\rho-\langle\rho\rangle \in H^{-s}(\Omega)$ with respect to the prescribed inner product in $H^s(\Omega)$ and $||\rho-\langle\rho\rangle||^2_{H^{-s}(\Omega)}=||\phi||^2_{H^s(\Omega)}$. Note we may say this generalization is in opposite direction to the first one, taking ``negative'' derivatives of $\rho$ into account.
 
-What becomes important is to set up the right state variables that can give rise to the {\it convex entropy}. For the first try, $x(t,X)$ the motion is not an appropriate choice because the radial kernel $|x|^a$ is not convex in $x$ in general. The convexity is from $H^{-s}$ norm square on $\rho-\langle\rho\rangle$; the potential field $\phi$ and $\nabla \phi$ will be the yet another state variables here.  
+What becomes important is to set up the right state variables that can give rise to the {\it convex entropy}. For the first try, $x(t,X)$ the motion is not an appropriate choice because the radial kernel $|x|^a$ is not convex in $x$ in general. The convexity is from $H^{-s}$ norm square on $\rho-\langle\rho\rangle$; the potential field $\phi$ and $\nabla \phi$ will be the yet another state variables here.
 
 In addition to the convexity issue, whenever one considers the combination of the repulsive-attractive kernels as in \eqref{eq:power_kernel}, one cannot avoid the conflict in signs in Hamiltonian, making the Hamiltonian indefinite.  In \cite{GTz}, the case for a Euler-Korteweg model where the higher order energy allows one to have a chance to control the other has been treated. More precisely, $h(\rho)$ was not convex in $\rho$ while the Korteweg contribution is convex in $\nabla\rho$. We are exploring the possibility for the similar to hold, among the negative sobolev norm squares on $\rho-\langle\rho\rangle$ with $-s_1 > -s_2 > -s_3 > \cdots > -s_N$.
 
@@ -322,15 +341,15 @@ In regard with the appending state variables, it is interesting to consider a Eu
  \epsilon^2\ddot\phi-\Delta \phi&= \rho-\langle\rho\rangle.
 \end{aligned}
 \end{equation}
-The system is cast to the framework of Hamiltonian or Lagrangian mechanics all together by carrying out the variational calculus on $y^i(t,X)$ and on scalar $\phi(t,X)$, producing the coupled hyperbolic system \eqref{eq:EP2}. The coupling structure in Lagrangian density is to have the $\rho$ as an in-homogeneous term. %This can be regarded as the coupled system of the charged continuum and the electric field. 
+The system is cast to the framework of Hamiltonian or Lagrangian mechanics all together by carrying out the variational calculus on $y^i(t,X)$ and on scalar $\phi(t,X)$, producing the coupled hyperbolic system \eqref{eq:EP2}. The coupling structure in Lagrangian density is to have the $\rho$ as an in-homogeneous term. %This can be regarded as the coupled system of the charged continuum and the electric field.
 
 \section{Boundary value problem of viscous-capillary system: a model for Thermal Creep {\small (with Marshall Slemrod, Yong-Jung Kim)}}
 The objective of this project is to produce the rarefied gas flow that the Navier-Stokes fails to predict, such as Thermal Creep, via the hydrodynamic model of viscosity-capillarity, such as Navier-Stokes-Korteweg. We study the boundary value problem. Those phenomena have been studied in the context of kinetic theory but we explore the possibility to skip the consideration of kinetic model motivated from the work of Karlin and Gorban \cite{GK}.
 
-Their work is about the {\it Chapman-Enskog} expansion of a kinetic model (of the rarefied gas where Knudsen number $Kn=\epsilon$ is small). It is the procedure to attain the {\it slow manifold} in the phase space of solutions by which two time scales of dynamics separate; the fast relaxation off and towards the manifold as time goes by; and the slow hydrodynamics on the manifold where the higher moments are expanded in terms of $\rho$,$\mathbf{v}$ and $\theta$ and $\epsilon$. This yields a constitutive theory of the higher moments, such as stress and heat flux, yielding a corresponding hydrodynamic model. This is a very long standing rich theme. Karlin and Gorban have succeeded to sum up the {Chapman-Enskog} expansion completely for the linearized Grad system and 
-Slemrod focussed on the two features of the resultant constitutive theory: $(i)$ the hydrodynamic system has a correct free energy dissipation inequaility; $(ii)$ it is of non-local viscosity and capillarity.  
+Their work is about the {\it Chapman-Enskog} expansion of a kinetic model (of the rarefied gas where Knudsen number $Kn=\epsilon$ is small). It is the procedure to attain the {\it slow manifold} in the phase space of solutions by which two time scales of dynamics separate; the fast relaxation off and towards the manifold as time goes by; and the slow hydrodynamics on the manifold where the higher moments are expanded in terms of $\rho$,$\mathbf{v}$ and $\theta$ and $\epsilon$. This yields a constitutive theory of the higher moments, such as stress and heat flux, yielding a corresponding hydrodynamic model. This is a very long standing rich theme. Karlin and Gorban have succeeded to sum up the {Chapman-Enskog} expansion completely for the linearized Grad system and
+Slemrod focussed on the two features of the resultant constitutive theory: $(i)$ the hydrodynamic system has a correct free energy dissipation inequaility; $(ii)$ it is of non-local viscosity and capillarity.
 
-In our study, the initial-boundary value problem 
+In our study, the initial-boundary value problem
 \begin{equation}
 \begin{aligned}
 \dot{\rho} &=-\rho \div_x \mathbf{v}, & \text{in } & \Omega,\\
@@ -342,7 +361,7 @@ with initial conditions in $\Omega$, and a set of boundary conditions on $\parti
  \begin{equation} \label{eq:free}
   \E[\rho,\nabla\rho,\theta,\nabla\theta] = \int h(\rho,\theta) \;+\; \frac{1}{2}\kappa(\rho,\theta)|\nabla\rho|^2 \;+\; \frac{1}{2}\chi(\rho,\theta)|\nabla\theta|^2 \; dx, \quad \text{$\rho$: density, $\theta$: temperature},
  \end{equation}
-which costs $\nabla\rho$ and $\nabla\theta$, the capillarity. In the case of Euler-Korteweg, $\E$ does not depend on $\nabla\theta$. 
+which costs $\nabla\rho$ and $\nabla\theta$, the capillarity. In the case of Euler-Korteweg, $\E$ does not depend on $\nabla\theta$.
 
 This study raises a few issues that have not been answered clearly:
 
@@ -359,8 +378,8 @@ This study raises a few issues that have not been answered clearly:
   \item More general capillary model where $\E$ depends on $\nabla\theta$. Spatially non-uniform temperature more directly effects. The stress $T$ has the second order derivative of $\theta$.
  \end{enumerate}
  \end{enumerate}
- 
-The topics and problems we have worked on or will work on are listed in the below. 
+
+The topics and problems we have worked on or will work on are listed in the below.
 \begin{enumerate}
  \item Half-space problem (Knudsen layer problem) of the viscosity-capillarity model. %See \cite{kim_thermal_2015}.
  \item Self-similar flow patterns around the wedge in $\mathbb{R}^2$ on whose boundary tangential temperature gradient increases radially. See \cite{kim_thermal_2015}.
@@ -375,8 +394,8 @@ The topics and problems we have worked on or will work on are listed in the belo
 % \newblock 98:106--125.
 
 \bibitem{KLT_2016}
-{\sc Th. Katsaounis, M-G. Lee, and A.E. Tzavaras}, 
-Localization in inelastic rate dependent shearing deformations, 
+{\sc Th. Katsaounis, M-G. Lee, and A.E. Tzavaras},
+Localization in inelastic rate dependent shearing deformations,
 {\em J.  Mech. Physics of Solids} {\bf 98} (2017), 106-125.
 
 \bibitem{kim_thermal_2015}
@@ -414,61 +433,61 @@ Yong-Jung Kim, Min-Gi Lee, Existence and uniqueness in anisotropic conductivity 
 
 
 % % \bibitem{baxevanis_adaptive_2010}
-% % {\sc Th.~Baxevanis, Th~Katsaounis, and A.~E. Tzavaras},  
-% % Adaptive finite element computations of shear band formation, 
+% % {\sc Th.~Baxevanis, Th~Katsaounis, and A.~E. Tzavaras},
+% % Adaptive finite element computations of shear band formation,
 % %   {\em Math. Models  Methods Appl. Sci.} {\bf 20}  (2010),  423--448.
-% 
+%
 % \bibitem{bertsch_effect_1991}
-% {\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel}, 
+% {\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel},
 % The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
 % {\em SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
-% 
-% % \bibitem{CB99} 
+%
+% % \bibitem{CB99}
 % % {\sc L.~ Chen and R.C.~Batra },
 % % The asymptotic structure of a shear band in mode-II deformations.
 % % {\em International Journal of Engineering Science} {\bf 37} (1999),  895--919.
-% 
+%
 % \bibitem{dafermos_adiabatic_1983}
-% {\sc C.~M. Dafermos and L.~Hsiao}, 
+% {\sc C.~M. Dafermos and L.~Hsiao},
 % Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
 % {\em Quart.  Applied Math.} {\bf 41} (1983), 45--58.
-% 
+%
 % % \bibitem{estep_2001}
-% % {\sc Donald~J Estep, Sjoerd M~Verduyn Lunel, and Roy~D Williams}, 
+% % {\sc Donald~J Estep, Sjoerd M~Verduyn Lunel, and Roy~D Williams},
 % % {Analysis of Shear Layers in a Fluid with Temperature-Dependent Viscosity},
 % %  {\em  J. Comp. Physics}  {\bf 173} (2001), 17--60.
-% 
+%
 % \bibitem{fenichel_geometric_1979}
-% {\sc N.~Fenichel}, 
-% Geometric singular perturbation theory for ordinary differential equations, 
+% {\sc N.~Fenichel},
+% Geometric singular perturbation theory for ordinary differential equations,
 % {\it J. Differ. Equations} {\bf 31} (1979), 53--98.
-% 
+%
 % \bibitem{FM87}
-% {\sc C.~Fressengeas and A.~Molinari}, 
-% Instability and localization of plastic flow in shear at high strain rates, 
+% {\sc C.~Fressengeas and A.~Molinari},
+% Instability and localization of plastic flow in shear at high strain rates,
 %   {\em J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
-% 
+%
 % % \bibitem{jones_geometric_1995}
-% % {\sc C.~K. R.~T. Jones}, 
+% % {\sc C.~K. R.~T. Jones},
 % % Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
-%   
+%
 % \bibitem{KT09}
-% {\sc Th.~Katsaounis and A.E.~Tzavaras}, 
-%  Effective equations for localization and shear band formation, 
+% {\sc Th.~Katsaounis and A.E.~Tzavaras},
+%  Effective equations for localization and shear band formation,
 %  {\em SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
-%   
+%
 % \bibitem{KOT14}
-% {\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras}, 
+% {\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras},
 % Emergence of coherent localized structures in shear deformations of
 %   temperature dependent fluids, {\em Archive for Rational Mechanics and Analysis}, (to appear).
-% 
+%
 % \bibitem{KUEHN_2015}
-% {\sc C.~ Kuehn}, 
+% {\sc C.~ Kuehn},
 % {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
-  
+
 \bibitem{LT16}
 {\sc M-G.~Lee and A.E.~Tzavaras},
-Existence of localizing solutions in plasticity via the geometric singular perturbation theory, 
+Existence of localizing solutions in plasticity via the geometric singular perturbation theory,
 {\em SIAM J. Appl. Dyn. Syst.}, (to appear). (arXiv:1608.00198)
 
 
@@ -502,42 +521,42 @@ A.N. Gorban and I.V. Karlin, Beyond Navier–Stokes equations: capillarity of id
 Localization in adiabatic process of viscous shear flow via geometric theory of singular perturbation, (in preparation).
 
 % \bibitem{perko_differential_2001}
-% {\sc L.~Perko}, 
-% {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).  
+% {\sc L.~Perko},
+% {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
 
 % \bibitem{SC89}
-% {\sc T.~G. Shawki and R.~J. Clifton}, 
-% Shear band formation in thermal viscoplastic materials, 
+% {\sc T.~G. Shawki and R.~J. Clifton},
+% Shear band formation in thermal viscoplastic materials,
 % {\em Mechanics of Materials} {\bf 8 } (1989), 13--43.
-% 
+%
 % \bibitem{Tz_1986}
 % {\sc A.E. Tzavaras},
 % Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
 % {\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
 
 % \bibitem{Tz_1987}
-% {\sc A.E. Tzavaras}, 
+% {\sc A.E. Tzavaras},
 % Effect of thermal softening in shearing of strain-rate dependent materials.
 % {\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
 
 % \bibitem{tzavaras_nonlinear_1992}
 % %\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
-% {\sc A.E. Tzavaras}, 
-% Nonlinear analysis techniques for shear band formation at high strain-rates, 
-% % {\it Applied Mechanics Reviews} 
+% {\sc A.E. Tzavaras},
+% Nonlinear analysis techniques for shear band formation at high strain-rates,
+% % {\it Applied Mechanics Reviews}
 % {\it Appl. Mech. Rev.}
 % {\bf  45} (1992), S82--S94.
 
 % \bibitem{walter_1992}
-% {\sc J.W.~Walter}, 
+% {\sc J.W.~Walter},
 % Numerical experiments on adiabatic shear band formation
 %   in one dimension.
 %   {\em International Journal of Plasticity} {\bf  8} (1992), 657--693.
 
 % \bibitem{ZH_1944}
-% {\sc C.~Zener and J.~H. Hollomon}, 
+% {\sc C.~Zener and J.~H. Hollomon},
 % Effect of strain rate upon plastic flow of steel,
-% % {\it  Journal of Applied Physics} 
+% % {\it  Journal of Applied Physics}
 % {\it J. Appl. Phys.}
 % {\bf 15} (1944), 22--32.
 \end{thebibliography}
