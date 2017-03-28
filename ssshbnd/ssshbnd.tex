@@ -1,0 +1,2135 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Self-Similar shear bands, Existence, Numerics, Asymptotics
+%
+%                                                      by
+%
+%                                       Min-Gi Lee
+%
+%                                          version Sep 2016
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{setspace}
+%\onehalfspacing
+\doublespacing
+%\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage[notcite,notref]{showkeys}
+
+% \usepackage{psfrag}
+% \usepackage{graphicx,subfigure}
+\usepackage{color}
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+%\usepackage{verbatim}
+% \usepackage{alltt}
+%\usepackage{kotex}
+
+\usepackage{enumerate}
+
+%%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\tr{\,\textrm{tr}\,}
+\def\div{\,\textrm{div}\,}
+\def\sgn{\,\textrm{sgn}\,}
+
+\def\th{\tilde{h}}
+\def\tx{\tilde{x}}
+\def\tk{\tilde{\kappa}}
+
+
+\def\bg{{\bar{\gamma}}}
+\def\bv{{\bar{v}}}
+\def\bth{{\bar{\theta}}}
+\def\bs{{\bar{\sigma}}}
+\def\bu{{\bar{u}}}
+\def\bph{{\bar{\varphi}}}
+
+
+\def\tg{{\tilde{\gamma}}}
+\def\tv{{\tilde{v}}}
+\def\tth{{\tilde{\theta}}}
+\def\ts{{\tilde{\sigma}}}
+\def\tu{{\tilde{u}}}
+\def\tph{{\tilde{\varphi}}}
+
+\def\dtg{{\dot{\tilde{\gamma}}}}
+\def\dtv{{\dot{\tilde{v}}}}
+\def\dtth{{\dot{\tilde{\theta}}}}
+\def\dts{{\dot{\tilde{\sigma}}}}
+\def\dtu{{\dot{\tilde{u}}}}
+\def\dtph{{\dot{\tilde{\varphi}}}}
+
+\def\dpp{\dot{p}}
+\def\dqq{\dot{q}}
+\def\drr{\dot{r}}
+\def\dss{\dot{s}}
+
+\def\ta{{\tilde{a}}}
+\def\tb{{\tilde{b}}}
+\def\tc{{\tilde{c}}}
+\def\td{{\tilde{d}}}
+
+\def\BO{{\mathcal{O}}}
+\def\lio{{\mathcal{o}}}
+
+
+
+\def\bx{\bar{x}}
+\def\bm{\bar{\mathbf{m}}}
+\def\K{\mathcal{K}}
+\def\E{\mathcal{E}}
+\def\del{\partial}
+\def\eps{\varepsilon}
+
+\newcommand{\tcr}{\textcolor{red}}
+\newcommand{\tcb}{\textcolor{blue}}
+
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{claim}{Claim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Localization in adiabatic process of viscous shear flow via geometric theory of singular perturbation}
+\author{Min-Gi Lee\footnotemark[1] \and Athanasios Tzavaras\footnotemark[1]\  \footnotemark[3]  \footnotemark[4]}
+\date{}
+
+\maketitle
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% \footnotetext[1]{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
+% \footnotetext[2]{Department of Mathematics and Applied Mathematics, University of Crete, Heraklion, Greece}
+% \footnotetext[3]{Institute of Applied and Computational Mathematics, FORTH, Heraklion, Greece}
+% \footnotetext[4]{Corresponding author : \texttt{athanasios.tzavaras@kaust.edu.sa}}
+%\footnotetext[4]{Research supported by the King Abdullah University of Science and Technology (KAUST) }
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+
+\maketitle
+
+\tableofcontents
+% \begin{abstract}
+% abstract
+% \end{abstract}
+
+% \section{Introduction}
+% We study the instability of adiabatic rectlinear shear flow of non-newtonian fluid. This adiabatic viscous shear flow is studied by \cite{dafermos_adiabatic_1983} when authors assessed the effect of temperature on the thermo-mechanic process exerting through the temperature dependent viscosity. The model elucidates the mechanism other than the heat conduction provides.
+% 
+% In cartesian coordinates, two parallel plates are placed at $x=0$ and $x=1$ that are moving in the $y$-direction with the different constant velocities. We set 
+% \begin{equation}
+%  v(t,0)=0, \quad v(t,1)=1. \label{intro:bdry}
+% \end{equation}
+% The process is described by $\theta(t,x)$ the temperature field, $\sigma(t,x)$ the shear viscous stress, and $v(t,x)$ the vertical velocity, for $x\in[0,1]$ and $t\in \mathbb{R}^+$. The equations the fields satisfy are
+% \begin{equation} \label{intro:system}
+% \begin{aligned}
+%  v_t &= \sigma_x,\\
+%  \theta_t &= \sigma v_x,
+% \end{aligned}
+% \end{equation}
+% the momentum and energy balance equations, where we simply put the internal energy $e(\theta)=\theta$. The non-newtonian viscous stress of the form 
+% $$ \sigma = \mu(\theta) v_x^n, \quad n>0$$
+% is considered, where the viscosity depends on the temperature. \eqref{intro:bdry}, \eqref{intro:system}, and initial conditions
+% $$ v(0,x) = v_0(x), \quad \theta(0,x)=\theta_0(x)$$
+% comprises the initial-boundary value problem.
+% 
+% This problem has the solution of uniform shearing motion, i.e., when $\theta_0(x)=\Theta_0$, we find $v=x$ and the temperature given by
+% $$ h(\theta) = \int_{\Theta_0}^\theta \frac{d\theta'}{\mu(\theta')}, \quad \theta = h^{-1}(t)$$
+% make up the solution. That $v=x$ manifests the effect of the viscosity, which drives the motion in $x\in[0,1]$.
+% 
+% Particularly in this adiabatic flow, heat is produced at every point $x$ and then is accumulated. The source of energy is the mechanical working at the boundary keeps pumping in the energy and this leads to the ultimate increment of the temperature at every point
+% \begin{equation}\label{intro:h} \theta(t,x) \rightarrow \infty \quad \text{as $t \rightarrow \infty$.} \end{equation}
+% 
+% The newtonian fluid where the viscosity $\mu(\theta)$ saturates at the finite value $\mu_\infty\triangleq \lim_{\theta \rightarrow \infty} \mu(\theta) < \infty$ is studied by \cite{dafermos_adiabatic_1983}. When this is the case, the flow eventually behaves as if the flow with the temperature independent viscosity does, and authors of \cite{dafermos_adiabatic_1983} proved that the uniform shearing solution is globally asymptotically stable.
+% 
+% Whereas, if the viscosity is allowed to grow to $\infty$ or decay to $0$, the question of the stability becomes nontrivial. In Dafermos and Hsiao \cite{dafermos_adiabatic_1983} proved the asymptotic stability if the rate of growth or decay of $\mu(\theta)$ is ``orderly''; the quantity $\frac{\mu(\theta)\mu^{''}(\theta)}{(\mu'(\theta))^2}$ is assumed to be bounded below and above. Tzavaras \cite{Tz_1986} considered the the non-newtonian fluid and proved the asymptotic stability. When the condition comes to the power law 
+% \begin{equation} \label{intro:powerlaw} \sigma= \mu(\theta)v_x^n, \quad \mu(\theta) = \theta^{-\alpha}, \end{equation}
+% the amount of ``orderly'' that is required for the flow stabilizes is the condition $-\alpha+n>0$.
+% 
+% The instability of the flow with decreasing $\mu(\theta)$ was studied by \cite{bertsch_effect_1991} for the case $n=1$, the newtonian fluid. They showed that if $-\alpha<1$, according to the initial profiles, either the temperature or the velocity gradient localizes as time proceeds. The non-newtonian fluid was studied by Tzavaras \cite{Tz_1987} showing that $-\alpha+n<0$ leads to the instability.
+% 
+% The decreasing $\mu(\theta)$, or the {\it temperature-thinning}, reminds us the positive feedback mechanism of the plastic shear flow of solids. See the discussion in \cite{KLT_2016}, where authors studied the material that exhibits the strain-softening. Indeed, the system \eqref{intro:system} is rewritten with the velocity gradient $u\triangleq v_x$ and $h(\theta)$ of \eqref{intro:h} as
+% \begin{align*}
+%  h(\theta)_t &=u,\\
+%  u_t&=\sigma_{xx},
+% \end{align*}
+% where we find $h(\theta)$ an increasing function of $\theta$. The velocity gradient $u$ grows at the point where the stress is less than the surrounding. The size of the stress is determined by the viscosity and the $u$ itself. The increment of temperature diminishes the stress, whereas the increment of $u$ increases the stress and the overall size is determined from this competition. Suppose the decay rate of the viscosity is sufficiently fast, not ``orderly'', so that the temperature effect overwhelm the other, or the region with higher temperature has the smaller stress size. This increases $u$ and in turn, results in the increment of the temperature again and the positive feedback is conceivably triggered. 
+% 
+% Into this discussions of stabilizing or destabilizing matters, it was \cite{KOT14} that introduced the idea of self-similar solutions, woking in the whole space $x\in \mathbb{R}$. They showed that for the case of exponential viscosity, 
+% $$ \sigma = \mu(\theta)v_x^n, \quad \mu(\theta) = e^{-\alpha\theta}.$$
+% there is a family of localizing self-similar solutions in $(t,x) \in \mathbb{R}^+ \times \mathbb{R}$ for each $\alpha>0.$
+% That \eqref{intro:system} has a family of scale invariance (See \eqref{eq:scale} and \eqref{eq:exponents}) has been known from early stage of the study. By exploiting this, or by posing the ansatz of self-similar solutions, they reduced the system into that of ordinary differential equations, which turned out to be of non-autonomous and singular. The key step was to introduce a series of transformations to turn the system into the equivalent autonomous system and to  construct the suitable heteroclinic orbit of it. This approach demonstrates the emergence of localization directly. Later, the approach was adopted in study of the plastic shear flow of solid with power-law type stress \cite{KLT_2016, LT16}, namely
+% $$ \sigma_p = \sigma_p(\gamma,u) = \gamma^{-m}u^n, \quad \text{where $\gamma$ is the shear strain and $m,n>0$.}$$
+% In that, the another ingredient, the geometric geometric singular perturbation theory played the key role. 
+% 
+% To return to our problem, we study \eqref{intro:system} in $(t,x) \in \mathbb{R}^+ \times \mathbb{R}$ with the power law viscosity \eqref{intro:powerlaw} in the regime $-\alpha+n<0$. 
+% It is our objective to construct two-parameters family of self-similar solutions,
+% \begin{equation*}
+% \begin{aligned}
+% %  \gamma(t,x) &= (t+1)^a\Gamma((t+1)^\lambda x), & 
+%  v(t,x) &= (t+1)^b V((t+1)^\lambda x), &\theta(t,x) &= (t+1)^c \Theta((t+1)^\lambda x),\\
+%  \sigma(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x),
+% \end{aligned}
+% \end{equation*}
+% where the exponents are given by
+% \begin{equation} \label{intro:exponents}
+% \begin{aligned}
+%  b&=\frac{1}{D} + \frac{1+n}{D}, & c&=\frac{2}{D} + \frac{2(1+n)}{D}\lambda, & d&=\frac{-2\alpha +n}{D} + \frac{-2\alpha+2n}{D}\lambda,\\
+%  D&=1+2\alpha-n.
+% \end{aligned}
+% \end{equation}
+% $t^\lambda x=\xi$ is the self-similar variable and we consider $\lambda>0$. This is in the oppoite sign to that of familiar self-similar variable of parabolic problem. $\lambda$ accounts for the rate of localization, for instance, if a bump is assumed around the origin for the initial profile, then as time proceeds the bump becomes narrower. The attached polynomial factor of $t$ lets this localization accompanied by additional growth or decay in the height of the bump. It is worth to know that this family of self-similar solution includes the {\it uniform shearing solution} when $\lambda = -\frac{1+m}{2(1+\alpha)}$; $\lambda \le0$ does not corresponds to the localization.
+% 
+% In the regime of localization, instead of stability we speak of non-arbitrariness of the instability. Even though the field variables localizes and develops singularity as $t \rightarrow \infty$, the intermediate process is maintained to be smooth and oscillation is suppressed. See the discussion on the competition between the Hadamard instability and the diffusion in \cite{KOT14}. In this regard, it is suggestive that the solution is achieved in the bounded range of the localizing rate  
+% \begin{equation}\label{intro:r1posineq}
+%  0<\lambda < \frac{2(\alpha-n)}{(1+n)^2} \quad \Longleftrightarrow \quad \frac{2}{1+2\alpha-n} < \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} < \frac{2}{1+n}.
+% \end{equation}
+% In the latter, $U(0)$ and $\Theta(0)$ parametrize the initial tip sizes of the bumps at the origin respectively. It is necessary to have the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ not too small and not too big for the self-similar solution to be achieved. 
+% 
+% Lastly, we briefly describe the profiles we obtain. For each fixed parameters, the asymptotic behavior of obtained solutions are as below. Differently from the \cite{bertsch_effect_1991}, the solutions exhibit the localization both in the temperature and the velocity gradient.
+% \begin{align*}
+%  u(t,0) &= (1+t)^{\frac{1}{D} + \frac{2+2\alpha}{D}\lambda}U(0),&
+%  u(t,x) &\sim t^{\frac{1}{D} - \frac{(1+\alpha)(1+n)}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$,}\\
+%  \theta(t,0) &= (1+t)^{\frac{2}{D} + \frac{2+2n}{D}\lambda}\Theta(0),&
+%  \theta(t,x) &\sim t^{\frac{2}{D} - \frac{(1+n)^2}{D(\alpha-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$,}\\
+%  \sigma(t,0) &= (1+t)^{\frac{-2\alpha+n}{D} + \frac{-2\alpha+2n}{D}\lambda}\Sigma(0), &
+%  \sigma(t,x) &\sim t^{\frac{-2\alpha+n}{D} +\frac{1+n}{D}\lambda}|x|^{-\frac{1+\alpha}{\alpha-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$,}
+% \end{align*}
+% which dictates the contrasted growth or decay at the origin to the rest of the place. For the velocity field, its gradient localizes similarly to that observed in \cite{bertsch_effect_1991} in the way
+% $$v_\infty(t)\triangleq \lim_{x \rightarrow \infty} v(t,x)=(1+t)^{b}V_\infty = (1+t)^{\frac{1}{D} + \frac{1+n}{D}\lambda}V_\infty, \quad V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi) <\infty.$$
+% It is observed that the far field velocity grows as time proceeds. The particle gets faster as it moves forward in $y$-direction and relatively more energy is pumped into the domain than the constant far field velocity does. This is a consequence of our simplifying assumption of the self-similarity inherited from the scaling property of \eqref{intro:system} and \eqref{intro:powerlaw}.
+% 
+% Throughout this paper,
+% \begin{equation} \label{eq:vars}
+% \begin{aligned}
+%  \gamma(t,x) &: \text{strain}\\
+%  u(t,x)=\gamma_t &: \text{strain rate}\\
+%  v(t,x) &: \text{vertical velocity}\\
+%  \theta(t,x) &: \text{temperature}\\
+%  \tau(t,x) &: \text{stress}
+% \end{aligned}
+% \end{equation}
+% in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$ and equations describing the deformation are given by
+% \begin{align}
+%  \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
+%  v_t &= \tau_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
+%  \theta_t &= \tau u \quad \text{(energy conservation)}	\label{eq:th}\\
+%  \tau &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
+% \end{align}
+
+\section{Self-similar structure}
+
+\subsection{Scale invariance property of the system}
+The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppose $(\gamma,u,v,\theta,\sigma)$ is a solution. Then a rescaled version of it $(\gamma_\rho,u_\rho,v_\rho,\theta_\rho,\sigma_\rho)$ that is given by
+\begin{equation}\label{eq:scale}
+\begin{aligned}
+ \gamma_\rho(t,x) &= \rho^a\gamma(\rho^{-1}t,\rho^\lambda x), &
+ v_\rho(t,x) &= \rho^bv(\rho^{-1}t,\rho^\lambda x),\\
+ \theta_\rho(t,x) &= \rho^c\theta(\rho^{-1}t,\rho^\lambda x), &
+ \sigma_\rho(t,x) &= \rho^d\sigma(\rho^{-1}t,\rho^\lambda x),\\
+ u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x),
+\end{aligned}
+\end{equation}
+again is a solution provided
+\begin{equation} \label{eq:exponents}
+\begin{aligned}
+ a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, & b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
+ c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda,
+\end{aligned}
+\end{equation}
+for each $\lambda \in \mathbb{R}$, where the denominator $D = 1+2\alpha-m-n$. Being $\lambda$ negative makes this scaling spatially spread the original profiles  as $\rho$ grows, and this is the sign that is used for instance in the parabolic problems. On the other hand, we are interested in the {\it localizing} phenomena and thus we focus on the opposite, with $\lambda>0$, throughout this paper.
+
+ But uniform shearing solution takes a negative $\lambda$.
+\subsection{Self-Similar field variables}
+Motivated by the scale invariance property parametrized by $\lambda>0$, we look for the solutions of type
+\begin{equation}\label{eq:ORItoCAP}
+\begin{aligned}
+ \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x),\\
+ \sigma(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
+\end{aligned}
+\end{equation}
+and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\eqref{eq:tau} gives us the system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
+
+\begin{equation}
+\begin{aligned}
+ a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
+ b V(\xi) + \lambda \xi V'(\xi) &= \Sigma'(\xi),\\
+ c \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ V'(\xi)&=U(\xi).
+\end{aligned} \label{eq:ss-odes}
+\end{equation}
+This system is non-autonomous and the coefficient $\xi$ in front of the highest derivative of $\Theta, V, \Gamma$ makes the equations singular at $\xi=0$. Existence or non-existence of the singular ordinary differential equations requires case-by-case study and results depend on the characteristics of the problem. It is our main work to de-singularize \eqref{eq:ss-odes} and to reveal the proper existence theory of it. 
+
+\section{Heteroclinic orbit formulation}
+The goal of this section is to derive the equivalent $(p,q,r,s)$-system \eqref{eq:pqrsys} of \eqref{eq:ss-odes} that is autonomous and to turn the problem that seeks the self-similar solutions of \eqref{eq:ss-odes} into that seeks a heteroclinic orbit of \eqref{eq:pqrsys}. In the course, we devise a series of techniques to de-singularize the system \eqref{eq:ss-odes}. The series of techniques were first advanced in KOT, where the authors studied the similar temperature dependent viscosity with exponential law. 
+$$ \sigma = \mu(\theta)u^n = e^{-\alpha\theta} u^n.$$ 
+It turns out to be successful also in the power law type constitutive law for the solid model whose stress law exhibits strain softening
+$$ \sigma = \theta^{-\alpha}\gamma^{m}u^n, \quad -\alpha+m+n<0.$$
+It is of same spirit to extend in this paper the series of techniques to the power law type model for the fluid with temperature dependent viscosity.
+
+\subsection{De-singularization}
+We begin by observing that if $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of \eqref{eq:ss-odes}, then so is \\$\big(\Gamma(-\xi), -V(-\xi), \Theta(-\xi), \Sigma(-\xi), U(-\xi)\big)$. From this fact, we seek self-similar profiles such that $\Gamma(\xi)$, $\Theta(\xi)$, $\Sigma(\xi)$, $U(\xi)$ are even functions of $\xi$, and $V(\xi)$ is an odd function of $\xi$. In addition, we consider profiles that are smooth and bounded around $\xi=0$, which leads to imposing conditions
+\begin{equation}
+ V(0)=U'(0)=\Gamma'(0)=\Sigma'(0)=\Theta'(0)=0 \label{eq:bdry0}
+\end{equation}
+and we regard \eqref{eq:ss-odes} as the boundary-value problem in the right half space $\xi \in [0,\infty)$ subject to the boundary conditions \eqref{eq:bdry0}. Later, we also append the far field condition as $\xi \rightarrow \infty$ and yet another boundary conditions at $\xi=0$, detailing in the issue of fixing the unique solution, but for the moment we work upon \eqref{eq:bdry0}.
+
+To begin with, we study the scale invariance property of the system \eqref{eq:ss-odes}: \\Provided $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of it, then the scaled version \\$\big(\Gamma_\rho(\xi), V_\rho(\xi), \Theta_\rho(\xi), \Sigma_\rho(\xi), U_\rho(\xi)\big)$
+\begin{align*}
+ \Gamma_\rho(\xi)&=\rho^{a_1}\Gamma(\rho\xi), & V_\rho(\xi)&=\rho^{b_1}V(\rho\xi), & \Theta_\rho(\xi)&=\rho^{c_1}\Theta(\rho\xi),\\
+ \Sigma_\rho(\xi)&=\rho^{d_1}\Sigma(\rho\xi), & U_\rho(\xi)&=\rho^{b_1+1}U(\rho\xi),
+\end{align*}
+is again a solution. It is tempting to seek the monomial solutions obtained by setting $\rho=\xi^{-1}$ as was the case of KOT, where the monomials served as the proper asymptotes as $\xi \rightarrow \infty$. Whereas for our power law viscosity, as soon one attempts to do it, one realizes that the exponent $-(b_1+1)$ of $U(\xi)$ is less than $-1$ and thus it is integrable in the whole space, or the leading order of $V(\xi) = -\int_\xi^\infty U(\xi') \; d\xi'$ is constant. This ruins the simple monomial ansatz and leads to that monomials do not constitute the meaningful solutions for our power law type model. The same was observed for the strain-softening model equipped with power law in KLT.
+
+Nevertheless, we still exploit the scale invariance property to construct the profiles by constructing the multiplicative residuals to the monomials, namely
+\begin{equation} \label{eq:CAPtoBAR}
+\begin{aligned}
+ \bg(\xi)&=\xi^{a_1}\Gamma(\xi), &
+ \bv(\xi)&=\xi^{b_1}V(\xi), &
+ \bth(\xi)&=\xi^{c_1}\Theta(\xi), \\
+ \bs(\xi)&=\xi^{d_1}\Sigma(\xi), &
+ \bu(\xi)&=\xi^{b_1+1}U(\xi).
+\end{aligned}
+\end{equation}
+
+These variables result in a nice property; the system that $(\bg,\bv,\bth,\bs,\tu)$ satisfies is
+\begin{equation} \label{eq:barsys}
+ \begin{aligned}
+  a_0\bg + \lambda\xi\bg' &=\bu,\\
+  b_0\bv + \lambda\xi\bv' &=-d_1 \bs + \xi\bs',\\
+  c_0\bth+ \lambda\xi\bth'&=\bs\bu,\\
+  \ts &=\bth^{-\alpha}\bg^m\bu^n,\\
+  -b_1\bv+\xi\bv' &= \bu.
+ \end{aligned}
+\end{equation}
+Now, introduce the new independent variable $\eta = \log\xi$ and define variables $(\tg,\tv,\tth,\ts,\tu)$ accordingly by
+\begin{equation} \label{eq:BARtoTIL}
+\begin{aligned}
+ \tg(\log\xi)&=\bg(\xi), &
+ \tv(\log\xi)&=\bv(\xi), &
+ \tth(\log\xi)&=\bth(\xi), \\
+ \ts(\log\xi)&=\bs(\xi), &
+ \tu(\log\xi)&=\bu(\xi).
+\end{aligned}
+\end{equation}
+Notice that $\frac{d}{d\eta}\tg(\eta) = \xi \frac{d}{d\xi}\bg(\xi)$ and we write the autonomous system
+\begin{equation} \label{eq:tildesys}
+ \begin{aligned}
+  a_0\tg + \lambda\dtg &=\tu,\\
+  b_0\tv + \lambda\dtv &=-d_1 \ts + \dts,\\
+  c_0\tth+ \lambda\dtth&=\ts\tu,\\
+  \ts &=\tth^{-\alpha}\tg^m\tu^n,\\
+  -b_1\tv+\dtv &= \tu,
+ \end{aligned}
+\end{equation}
+where $\dot{f}=\frac{df}{d\eta}$.
+
+
+
+\subsection{$(p,q,r,s)$-system derivation}
+At \eqref{eq:tildesys} we arrived  an autonomous system. For this system, we observe that not all the variables equilibrate. To see this, suppose $\tu \rightarrow \tu_\infty$ as $\eta \rightarrow \infty$. Then from the last equation in \eqref{eq:tildesys}, we conclude that $\tv \rightarrow \infty$ and thus $\ts \rightarrow \infty$ either by the second equation. This raises difficulties in analyzing system and we can come up with proper variables all of which equilibrate simultaneously as $\eta \rightarrow \infty$ and $\eta \rightarrow -\infty$.
+
+This can be done by looking at the system \eqref{eq:ss-odes} for $\big(\Gamma,V,\Theta,\Sigma,U)$ carefully. First, observe that
+$$ f \sim \xi^\rho=e^{\rho\eta} \quad \text{as $\eta \rightarrow \infty$ (as $\xi \rightarrow \infty$) implies} \quad \frac{\dot{f}}{f} \rightarrow \rho,$$
+$$ f \sim \xi^{\rho'}=e^{\rho'\eta} \quad \text{as $\eta \rightarrow -\infty$ (as $\xi \rightarrow 0$) implies} \quad \frac{\dot{f}}{f} \rightarrow \rho',$$
+% $$ f \sim \xi^\rho'=e^{\rho'\eta} \quad \text{as $\eta \rightarrow \infty$ (as $\xi \rightarrow \infty$) implies} \quad \frac{\dot{f}}{f} \rightarrow \rho' \quad \text{as $\eta \rightarrow -\infty$ (as $\xi \rightarrow 0$) },$$
+% $$ \frac{\dot{f}}{f} \rightarrow 0 \quad \text{as $\eta \rightarrow -\infty$ implies that } \quad f \rightarrow const. \quad \text{as $\xi \rightarrow 0$ and}$$
+$$ \frac{\dot{(f/g)}}{f/g} = \frac{\dot{f}}{f} - \frac{\dot{g}}{g}. $$
+This dictates that if the asymptotic behavior of the variables as $\eta \rightarrow \infty$ (resp. $\eta \rightarrow -\infty$) are known a priori, then the ratio of two variables that share the asymptotic order will equilibrate as $\eta \rightarrow \infty$ (resp. $\eta \rightarrow -\infty$). By looking at the system \eqref{eq:ss-odes} and presuming heuristically the polynomial asymptotics, we find the ratios
+\begin{equation}\label{eq:pqrdef}
+ \begin{aligned}
+  p \triangleq \frac{ \xi^{a_1} \Gamma(\xi)}{\xi^{d_1} \Sigma(\xi)}=\frac{\tg}{\ts}, \quad q \triangleq b\frac{ \xi^{b_1} V(\xi) }{ \xi^{d_1} \Sigma(\xi)}=b \frac{\tv}{\ts},  \quad r \triangleq \frac{ U(\xi) }{ \Gamma(\xi) } = \frac{\tu}{\tg}, \quad s \triangleq \frac{\Sigma(\xi)\Gamma(\xi)}{\Theta(\xi)} = \frac{\ts\tg}{\tth}
+ \end{aligned}
+\end{equation}
+ work and $(p,q,r,s) \leftrightarrow (\tg,\tv, \tth,\ts)$ is a bijection.
+ 
+Define 
+\begin{equation}\label{eq:pqrsdef}
+ \begin{aligned}
+  p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts}, &  r &= \frac{\tu}{\tg}, & s&=\frac{\ts\tg}{\tth}.
+ \end{aligned}
+\end{equation} 
+ 
+With the calculation that is cumbersome but straightforward, we write
+\begin{align*}
+ \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
+ n\frac{\drr}{r}&=-(m+n)\frac{\dtg}{\tg}+\frac{\dts}{\ts} + \alpha\frac{\dtth}{\tth} & &=\left[\frac{-(m+n)}{\lambda}\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right] + \left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
+ \frac{\dot{s}}{s} &= \frac{\dtg}{\tg} + \frac{\dts}{\ts} - \frac{\dtth}{\tth} & &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right] -\left[\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
+%  \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} &&= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}.
+\end{align*}
+Noticing that
+\begin{align*}
+ \frac{\ts\tu}{\tth} = rs, \quad \frac{\tu}{\tv} = \frac{\ts}{\tv} \frac{\tg}{\ts} \frac{\tu}{\tg} = \frac{bpr}{q}, \quad \frac{\tu}{\tv} \frac{\tv}{\ts} = pr,
+\end{align*}
+we derive $(p,q,r,s)$-system:
+\begin{equation}\label{eq:slow}
+ \begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p r -q\Big) + b p r,\\
+ n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+
+
+\section{Equilibrium points and linear stability} \label{sec:equil}
+$(p,q,r,s)$-system \eqref{eq:slow} admits quite several equilibrium sets. Before we look into the phase space, we first set our region of interest that is an positively invariant manifold $\{(p,q,r,s) \; | \; p\ge0, q\ge0, r\ge0, s\ge0 \;\}$. Moreover, we will be able to conceive a three dimensional invariant manifold in the set
+\begin{align*}
+ \left\{ \: (p,q,r,s) \: | \:  p,q\ge0, ~~ r,s\ge\delta>0, ~~\left|s-\frac{1+m}{1+\alpha}\right| \le A \frac{\alpha-m}{\alpha(1+\alpha)}\: \right\}.
+\end{align*}
+and only orbits those in the manifold is of our discussion. Because all the orbits are confined in this manifold and cannot escape in positive time, the only equilibrium points those in the region are of our interest. It turns out that only two equilibrium points resides.
+\begin{align*}
+ M_0 &= (0,0,r_0,s_0), & r_0 &=\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda, & s_0&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_0},\\
+ M_1 &= (0,1,r_1,s_1), & r_1 &= r_0-\frac{1+\alpha}{\alpha-m-n}\lambda, & s_1&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_1}.
+\end{align*}
+
+Before we going further, we first reason why we reject the region where $r,s\le0$. If we transform back, then we find
+\begin{equation*}
+ t\partial_t \log \theta(t,x) = rs, \quad t\partial_t\log \gamma(t,x) = r.
+\end{equation*}
+for the original variables $\theta(t,x)$ and $\gamma(t,x)$. These quantities pick the leading exponents of quantity that asymptotically behaves similarly to the polynomial. If $\gamma(t,x) = \mathcal{O}(t^\rho)$ as $t \rightarrow \infty$, then $t\partial_t\log \gamma(t,x) \rightarrow \rho$ as $t \rightarrow \infty$. Having $r,s>0$ is a reflection of our expectation that $\gamma(t,x) = \mathcal{O}(t^{\rho_1})$, $\theta(t,x) = \mathcal{O}(t^{\rho_2})$ for $\rho_1,\rho_2 >0$ as $t \rightarrow \infty$.
+
+In the problem configuration, the specimen keeps loading driven by the velocity assigned at far field. Thus, regardless of the position $x$, we expect the strain $\gamma(t,x)$ always increases and increases to  $\infty$ as $t \rightarrow\infty$. On the same time, since the process is adiabatic, the heat produced at a point $x$ accumulates. Clearly energy keeps pumped into the domain from the far field driving velocity. Thus, we expect the temperature $\theta(t,x)$ either always increases.
+
+Now, we return to the phase space analysis in the region of interest. To locate $M_0$ and $M_1$ in the region, wee see that $\lambda$ cannot be arbitrarily large with the same reason above but
+\begin{equation}
+ 0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(1-\frac{n}{1+m+n}\right)
+\end{equation}
+
+\subsection{Linear stability of $M_0$ and $M_1$}
+Here and hereafter, we denote the four eigenvalues and four eigenvectors of $M_i$, $i=0,1$  by $\mu_{ij}$ and $X_{ij}$ and $j=1,2,3,4$.
+\begin{itemize}
+ \item $M_0$ is a saddle; it has three positive eigenvalues and one negative eigenvalue. Notice that one of the positive eigenvalue $\mu_{03}$ is $\mathcal{O}( \frac{1}{n})$.
+ \begin{equation}
+  \mu_{01} = 2, \quad \mu_{02}=1, \quad \mu_{03}=\mu_0^+=\BO\Big(\frac{1}{n}\Big)>0, \quad \mu_{04}=\mu_0^{-}<0, 
+ \end{equation}
+  where $\mu_0^\pm$ is a positive and negative solution respectively of the quadratic equation
+ $$ \mu^2 - \mu\Big(\frac{r_0(1-s_0)}{n\lambda}-\frac{r_0s_0+1}{\lambda}\Big) - \frac{r_0^2s_0(\alpha-m-n)}{n\lambda^2}=0.$$
+We find the asymptotic formula for $\mu_0^\pm$ as,
+$$\mu_0^+ = \frac{r_0(1-s_0)}{n\lambda} + \frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n), \quad \mu_0^- = -\frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n).$$ 
+ Four eigenvectors are collected in the matrix as columns. While the precise values of the components are presented here, signs of them are $y_1,y_2<0$, $y_3$ is indefinite, and $z_1=\BO(n)$, $z_2=\BO(n)$, $z_3<0$ for sufficiently small $n$. See the figure.
+\begin{align*}
+ S_0&=
+ \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    br_0 & 1 & 0 & 0\\
+    y_1 & y_2 & 1 & y_3\\
+    z_1 & z_2 & z_3 &1
+ \end{pmatrix},
+ \quad \quad
+ \begin{array}{l}
+   y_1=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{2}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+2)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) },\\
+ y_2=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{1}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+1)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) },\\
+ y_3=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)},\\
+ z_1=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1, \quad
+ z_2=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2, \\
+ z_3=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg).
+ \end{array}
+\end{align*}
+The precise values of the components of vectors  $y_1,y_2<0$, $y_3$ is indefinite, and $z_1=\BO(n)$, $z_2=\BO(n)$, $z_3<0$ for sufficiently small $n$. For the clarity, the $4\times4$ coefficient linear matrices are attached in the appendix \cite{append.mat}. where  
+ 
+ $$ \mu_0^\pm = \frac{1}{2}\Big(\frac{r_0(1-s_0)}{n\lambda}-\frac{1+r_0s_0}{\lambda}\Big)\Big(1\pm \sqrt{1-n\frac{4}{1}}\Big)$$
+ \item $M_1$ is a saddle; it has one positive eigenvalue and three negative eigenvalues. In particular, one of the positive eigenvalue is $\mathcal{O}( \frac{1}{n})$.
+\begin{equation}
+ \mu_{11}=-\frac{1+m+n}{\alpha-m-n}, \quad \mu_{12}=-1, \quad \mu_{13}=\BO\Big(\frac{1}{n}\Big)>0, \quad \mu_{14}=\mu_0^{-}<0,
+\end{equation}
+\end{itemize}
+
+\pagebreak
+where $mu_0^\pm$ is a positive and negative solution respectively of the quadratic equation
+ $$ \mu^2 - \mu\Big(\frac{a-c}{n\lambda}-\frac{c}{\lambda} - \frac{1}{\lambda}\Big) + \frac{ac}{n\lambda^2}(\alpha-m-n)=0.$$ 
+
+
+
+
+
+
+where
+\begin{align*}
+ y_1&=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{2}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+2)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) }\\
+ y_2&=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{1}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+1)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) }\\
+ y_3&=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)}\\
+ z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1 \\
+ z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2 \\
+ z_3&=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg)
+\end{align*}
+ 
+
+
+
+To see that $\mu_0^+ = \BO(\frac{1}{n})$, and $\mu_0^-=\BO(1)$ 
+ $$ \mu_0^\pm = \frac{1}{2}\Big(\frac{r_0(1-s_0)}{n\lambda}-\frac{1+r_0s_0}{\lambda}\Big)\Big(1\pm \sqrt{1-n\frac{4}{1}}\Big)$$
+%  \item $M_1$ is a saddle; it has one positive eigenvalue and three negative eigenvalues. In particular, one of the positive eigenvalue is $\mathcal{O}( \frac{1}{n})$.
+\begin{equation}
+ \mu_{11}=-\frac{1+m+n}{\alpha-m-n}, \quad \mu_{12}=-1, \quad \mu_{13}=\mu_1^+, \quad \mu_{14}=\mu_1^-,
+\end{equation}
+ where $mu_0^\pm$ is a positive and negative solution respectively of the quadratic equation
+ $$ \mu^2 - \mu\Big(\frac{a-c}{n\lambda}-\frac{c}{\lambda} - \frac{1}{\lambda}\Big) + \frac{ac}{n\lambda^2}(\alpha-m-n)=0.$$ 
+
+
+
+
+Other equilibrium points and rejections:
+\begin{align*}
+ &p=0, \ q=0, \ {\bf r=0, \ s=0},\\
+ &p=0, \ q=0, \ {\bf r=0},\ s=s, \ {\bf r_0 = \frac{-n}{\alpha-m-n}},\\
+ &p=0, \ q=0, \ r = \frac{n\alpha - r_0(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
+ &p=0, \ q=1, \ {\bf r=0, \ s=0}, \\
+ &p=0, \ q=1, \ {\bf r=0},\ s=s, \ {\bf r_1 = \frac{-n}{\alpha-m-n}},\\
+ &p=0, \ q=1, \ r = \frac{n\alpha - r_1(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
+ &p=p, \ q=0, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=2, \\ 
+ &p=p, \ q=1, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=1, \\
+ &p=p, \ q=0, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=2, \ {\bf r_0 = \frac{-n}{\alpha-m-n}}, \\
+ &p=p, \ q=1, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=1, \ {\bf r_1 = \frac{-n}{\alpha-m-n}}, \\
+ &{\bf p=\#<0}, \ q=\frac{2(\alpha-m-n)}{1+m}, \ r=a_0, \ s=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)a_0},\\
+ &p=\#, \ q=\#, \ r = \frac{2-n}{1-m-n}, {\bf s=0}.
+\end{align*}
+
+Coefficients Matrices $Mat_i$ for Linearized equations around $M_i$, $i=0,1,2,3$: 
+\begin{align*}
+ Mat_0 &= \begin{pmatrix}
+          2 & 0 & 0 & 0 \\
+          br_0 & 1 & 0 & 0\\
+          \frac{r_0}{n}(\lambda r_0) & \frac{r_0}{n} & \frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big) & \frac{r_0}{n}(\frac{\alpha r_0}{\lambda})\\
+          s_0(\lambda r_0) & s_0 & s_0\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big) & s_0(-\frac{r_0}{\lambda})
+         \end{pmatrix}
+        =\begin{pmatrix}
+          2 & 0 & 0 & 0 \\
+          br_0 & 1 & 0 & 0\\
+          \frac{r_0}{n}(\lambda r_0) & \frac{r_0}{n} & \frac{r_0}{n}\frac{1}{\lambda}\Big(1-s_0-\frac{n}{r_0}\Big) & \frac{r_0}{n}(\frac{\alpha r_0}{\lambda})\\
+          s_0(\lambda r_0) & s_0 & s_0\frac{1}{\lambda}(1-s_0) & s_0(-\frac{r_0}{\lambda})
+         \end{pmatrix}
+\end{align*}
+\begin{equation}
+ \mu_{01}=2, \ \mu_{02}=1, \ \mu_{03}=\mu_0^+, \ \mu_{04}=\mu_0^-,
+\end{equation}
+where $\mu_0^\pm$ is the two roots of the 
+$$ \Big(\frac{r_0}{n}\frac{1}{\lambda}(1-s_0)-\frac{1}{\lambda}-\mu \Big)\Big(-\frac{s_0r_0}{\lambda}-\mu\Big) - \alpha\frac{r_0}{n}(\frac{s_0 r_0}{\lambda})\frac{1}{\lambda}(1-s_0)=0$$
+$$ \mu^2 - \mu\Big(\frac{r_0}{n}\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{r_0s_0}{\lambda} - \frac{\alpha}{\lambda(1+\alpha)}\Big) - \frac{r_0}{n}\frac{r_0s_0}{\lambda}(1+\alpha) = 0.$$
+$$ \mu^2 + \mu\Big(\frac{s_0r_0}{\lambda} + \frac{1}{\lambda}-\frac{r_0}{n}\frac{1-s_0}{\lambda}\Big) + \frac{s_0r_0}{n\lambda}\Big(\frac{n}{\lambda} - \frac{(1+\alpha)(1-s_0)}{\lambda}\Big).$$
+\begin{align*}
+ \mu_0^+ &= \frac{A}{n} + D + \frac{BC}{A} + \cdots, \quad \mu_0^- = - \frac{BC}{A} + \cdots,
+\end{align*}
+where
+\begin{align*}
+ \begin{pmatrix} \frac{A}{n} & \frac{B}{n} \\ C & D \end{pmatrix} = 
+ \begin{pmatrix}
+ \frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big) & \frac{r_0}{n}(\frac{\alpha r_0}{\lambda})\\
+ s_0\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big) & s_0(-\frac{r_0}{\lambda})
+ \end{pmatrix}.
+\end{align*}
+
+Four eigenvectors are the four columns of the matrix:
+\begin{align*}
+ S_0&=
+ \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    br_0 & 1 & 0 & 0\\
+    y_1 & y_2 & 1 & y_3\\
+    z_1 & z_2 & z_3 &1
+ \end{pmatrix},
+\end{align*}
+where
+\begin{align*}
+ y_1&=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{2}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+2)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) }\\
+ y_2&=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{1}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+1)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) }\\
+ y_3&=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)}\\
+ z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1 \\
+ z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2 \\
+ z_3&=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg)
+\end{align*}
+
+% 
+% \begin{align*}
+%  y_1&=-\frac{(\lambda+b)r_0}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{2n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+2)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) }\\
+%  y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) }\\
+%  y_3&=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)}\\
+%  z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1 \\
+%  z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2 \\
+%  z_3&=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg)
+% \end{align*}
+
+\hrulefill
+\begin{align*}
+ Mat_1 &= \begin{pmatrix}
+          -\frac{1+m+n}{\alpha-m-n} & 0 & 0 & 0\\
+          (b-\lambda)r_1 & -1 & 0 & 0\\
+          \frac{r_1}{n}(\lambda r_1) & \frac{r_1}{n} & \frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big) & \frac{r_1}{n}(\frac{\alpha r_1}{\lambda})\\
+          s_1(\lambda r_1) & s_1 & s_1\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big) & s_1(-\frac{r_1}{\lambda})
+         \end{pmatrix}
+         =\begin{pmatrix}
+          -\frac{1+m+n}{\alpha-m-n} & 0 & 0 & 0\\
+          (b-\lambda)r_1 & -1 & 0 & 0\\
+          \frac{r_1}{n}(\lambda r_1) & \frac{r_1}{n} & \frac{r_1}{n}\frac{1}{\lambda}\Big(1-s_1-\frac{n}{r_1}\Big) & \frac{r_1}{n}(\frac{\alpha r_1}{\lambda})\\
+          s_1(\lambda r_1) & s_1 & s_1\frac{1}{\lambda}(1-s_1) & s_1(-\frac{r_1}{\lambda})
+         \end{pmatrix}
+\end{align*}
+\begin{equation}
+ \mu_{11}=-\frac{1+m+n}{\alpha-m-n}, \ \mu_{12}=-1, \ \mu_{13}=\mu_1^+, \ \mu_{14}=\mu_1^-,
+\end{equation}
+where $\mu_1^\pm$ is the two roots of the 
+$$ \mu^2 - \mu\Big(\frac{r_1}{n}\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{r_1s_1}{\lambda} - \frac{\alpha}{\lambda(1+\alpha)}\Big) - \frac{r_1}{n}\frac{r_1s_1}{\lambda}(1+\alpha) = 0.$$
+\begin{align*}
+ \mu_1^+ &= \frac{A}{n} + D + \frac{BC}{A} + \cdots, \quad \mu_1^- = - \frac{BC}{A} + \cdots,
+\end{align*}
+where
+\begin{align*}
+ \begin{pmatrix} \frac{A}{n} & \frac{B}{n} \\ C & D \end{pmatrix} = 
+ \begin{pmatrix}
+ \frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big) & \frac{r_1}{n}(\frac{\alpha r_1}{\lambda})\\
+ s_1\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big) & s_1(-\frac{r_1}{\lambda})
+ \end{pmatrix}.
+\end{align*}
+
+{\bf case 1: $b=\lambda$}
+Four eigenvectors are collected in the matrix:
+\begin{align*}
+ S_1&=
+ \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    y_1 & y_2 & 1 & y_3\\
+    z_1 & z_2 & z_3 &1
+ \end{pmatrix},
+\end{align*}
+where
+\begin{align*}
+ y_1&=-\frac{\lambda r_1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + n\frac{1+m+n}{\alpha-m-n}\frac{1}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n})\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\Big) }\\
+ y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{r_1(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\Big) }\\
+ y_3&=\frac{\mu_1^- +\frac{r_1s_1}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big)}\\
+ z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n}\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\bigg)y_1 \\
+ z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}-1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\bigg)y_2 \\
+ z_3&=n\bigg(\mu_1^+-\frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big)\bigg)r_1(\frac{\alpha r_1}{\lambda})\bigg)
+\end{align*}
+{\bf case 2: $b\ne\lambda$ and $-\frac{1+m+n}{\alpha-m-n}\ne -1$}
+Four eigenvectors are collected in the matrix:
+\begin{align*}
+ S_1&=
+ \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    \frac{(b-\lambda)r_1}{1-\frac{1+m+n}{\alpha-m-n}} & 1 & 0 & 0\\
+    y_1 & y_2 & 1 & y_3\\
+    z_1 & z_2 & z_3 &1
+ \end{pmatrix},
+\end{align*}
+where
+\begin{align*}
+ y_1&=-\frac{\Big(\lambda + \frac{(b-\lambda)}{1-\frac{1+m+n}{\alpha-m-n}}\Big)r_1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + n\frac{1+m+n}{\alpha-m-n}\frac{1}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n})\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\Big) }\\
+ y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{r_1(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\Big) }\\
+ y_3&=\frac{\mu_1^- +\frac{r_1s_1}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big)}\\
+ z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n}\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\bigg)y_1 \\
+ z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}-1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\bigg)y_2 \\
+ z_3&=n\bigg(\mu_1^+-\frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big)\bigg)r_1(\frac{\alpha r_1}{\lambda})\bigg)
+\end{align*}
+
+
+{\bf case 3: $b\ne\lambda$ and $-\frac{1+m+n}{\alpha-m-n}= -1$}
+
+Generalized eigenvector
+\begin{align*}
+NONO\\
+ y_1 &= \frac{-\frac{1}{1+\alpha}\Big(\frac{n}{r}y_2 +\frac{\alpha}{s}z_2\Big) + br + 1}{\frac{\alpha-m-n}{\lambda(1+\alpha)}}\\
+ z_1 &= \frac{-\Big(\frac{n}{r}y_2 +\frac{1}{s}z_2\Big)+ \frac{n}{r}\frac{1}{\lambda}y_1}{\frac{1+\alpha}{\lambda}r}
+\end{align*}
+
+
+% $(p,q,r)$-system possesses four equilibrium points in the first octant of the phase space\footnotemark[1] and they are
+% \begin{align*}
+%  M_0=\Big(0,0,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad M_1=\Big(0,1,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad  M_2=(0,1,0) \quad M_3 = (0,0,0).
+% \end{align*}
+% This section specifies the linear stability around the four equilibrium points, aiming to have a perspective on the dynamics of orbits in the phase space.
+% \footnotetext[1]{
+% As a matter of facts, the (p,q,r)-system has one more equilibrium point that is not lied in the first octant, which is
+% $$p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}},$$
+% and is out of our interest for $q$ being negative.
+% Beside of this one, when $\lambda$ takes exceptional values, the system has a line of equilibria that entirely lies on the plane $r=0$.
+% These line of equilibria are not of our interests because we only look for solutions whose $r$ is away from $0$. For the clarity, we specifies the exceptional line of equilibrium here,
+% \begin{align*}
+%  r&=0, \quad q=0, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1} = \frac{1+\alpha}{1+n} \frac{1}{\alpha-n},\\
+%  r&=0, \quad q=1, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1-1}= \frac{1+\alpha}{1+n} \frac{2}{2(\alpha-n)-1},\\
+% %  p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}}.
+% \end{align*}
+% }
+% 
+% We denote the three eigenvalues of the equilibrium point $M_i$, $i=0,1,2,3$ by $\mu_{ij}$, $j=1,2,3$ and the three eigenvectors by $X_{ij}$, $j=1,2,3$. For the transparency, each of the linearized system and its coefficient matrices are included in the Appendix. \ref{append:linear} \medskip
+% 
+% \noindent{\bf Equilibrium $M_0$ is an unstable node.}
+% \begin{align*}
+% &X_{01} = \bigg(0, \Big(\frac{-n+ \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), -1\bigg), \quad
+% %  &X_{02} = \bigg( \Big( \frac{-2n + \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{-2n + \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;-1\bigg),\\
+% X_{02} = \bigg( 1, br_0, \frac{\big({\lambda}+b\big) r_0^2}{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}\bigg),\\
+%  &X_{03} = (0,0,1), \quad \mu_{01} = 1, \quad \mu_{02}= 2, \quad \mu_{03} = \frac{\alpha-n}{n\lambda}r_0^{1+n}.
+% \end{align*}
+% Every direction is of unstable direction. Note further that the third eigenvalue along $r$-axis has much greater value than other two because $n \ll 1$. We observe that along $X_{01}$, as $q$ increases, $p$ stays the same but $r$ decreases and that along $X_{02}$, as $q$ increases, $p$ increases but $r$ decreases.
+% \medskip
+% 
+% \noindent{\bf Equilibrium $M_1$ is a saddle.}
+% \begin{align*}
+% % &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\
+% &X_{11} = 
+% \begin{cases}
+% \bigg(  \frac{\Big(-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big)}{(b-\lambda)r_1^2}\;,\;\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{r_1}\;,\;\frac{\big(1-\frac{1+n}{\alpha-n}\big)\lambda + (b-\lambda)}{b-\lambda}\bigg) &\text{if $\lambda\ne b$,}\\
+% \bigg(  \frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\lambda r_1^2}\;,\;0\;,\;1\bigg) & \text{if $\lambda=b$,}
+% \end{cases}\\
+% %&X_{11} = \bigg( \frac{ 1-\frac{1+n}{\alpha-n} }{ \Big(1-\frac{1+n}{\alpha-n}\Big)\lambda + (b-\lambda) }\;,\;\frac{ (b-\lambda)r_1}{ \Big(1-\frac{1+n}{\alpha-n}\Big)\lambda + (b-\lambda) }\;,\;\frac{-r_1^2}{n\frac{1+n}{\alpha-n} + \frac{\alpha-n}{\lambda}r_1^{1+n}}\bigg),\\
+%  &X_{12} = \bigg(0, \frac{-n- \frac{\alpha-n}{\lambda}r_1^{1+n}}{r_1}, 1\bigg), \quad
+%  X_{13} = (0,0,1), \quad \mu_{11} =-\frac{1+n}{\alpha-n}, \quad \mu_{12}=-1, \quad \mu_{13} = \frac{\alpha-n}{n\lambda}r_1^{1+n}.
+% \end{align*}
+% We split cases into when $\mu_{11}\ne\mu_{12}$ and when $\mu_{11}=\mu_{12}=-1$, or $\alpha=2n+1$. When $\mu_{11}\ne\mu_{12}$, $M_1$ is a hyperbolic equilibrium point that is saddle. $X_{11}$ and $X_{12}$ are of stable directions and $X_{13}$ is of unstable direction. Again, the third eigenvalue along $r$-axis has much greater value than other two. On the other hand when $\mu_{11}=\mu_{12}=-1$, the geometric multiplicity of the eigenvalue $-1$ is one (see that the two eigenvectors $X_{11}$ and $X_{12}$ coincide), making $M_1$ non-hyperbolic equilibrium point. This case will be treated separately in the proof of our main result. 
+% \medskip
+% 
+% \noindent{\bf Equilibrium $M_2$ is a stable node.}
+% \begin{align*}
+%  &X_{21} = (1,0,0) \quad X_{22}=(0,1,0), \quad X_{23}=(0,0,1),\\
+%  &\mu_{21} =-\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} + \frac{(1+n)^2}{D(1+\alpha)}\lambda\Big), \quad \mu_{22}=-1, \quad \mu_{23} = -\frac{\alpha-n}{n(1+n)}\lambda r_1^{1+n}.
+% \end{align*}
+% Every direction is of stable direction.
+% \medskip
+% 
+% \noindent{\bf Equilibrium $M_3$ is a saddle.}
+% \begin{align*}
+%  &X_{31} = (1,0,0) \quad X_{32}=(0,1,0), \quad X_{33}=(0,0,1),\\
+%  &\mu_{31} =-\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} - \frac{2(\alpha-n)(1+n)}{D(1+\alpha)}\lambda\Big), \quad \mu_{32}=1, \quad \mu_{33} = -\frac{\alpha-n}{\lambda n(1+n)}r_0^{1+n}.
+% \end{align*}
+% The $X_{32}$ is of unstable direction whereas the $X_{33}$ is of stable direction. The sign of the first eigenvalue varies according to the value of $\lambda$.
+
+\section{Characterization of the heteroclinic orbit}
+
+% \subsection{Far field condition as $\xi \rightarrow \infty$} \label{sec:far}
+% It is the specimen keeps loading that we are modeling in this paper. In other words, that the strain $\gamma(x,t)$ at a fixed point $x$ is an increasing function of $t$, for instance, Uniform shearing solution describes the specimen that keeps loading so that the strain grows linearly everywhere. Hence, we expect the self-similar solutions where strain $\gamma(x,t) \sim t^k$, for $k>0$.
+% 
+% Then, in view of \eqref{eq:th} in the re-written form
+% $$ \frac{1}{1+\alpha} \big(\theta^{1+\alpha}\big)_t = (\gamma_t)^{1+n}, $$
+% the temperature at a point $x$ is also an increasing function of $t$.
+% 
+% The quantity $\displaystyle r^{1+n} = \frac{\tu^{1+n}}{\tth^{1+\alpha}} = \frac{U(\xi)^{1+n}}{\Theta(\xi)^{1+\alpha}} = \frac{tu^{1+n}}{\theta^{1+\alpha}}=\frac{1}{1+\alpha} \frac{t\big(\theta^{1+\alpha}\big)_t}{\theta^{1+\alpha}}=\frac{t\theta_t}{\theta}$. If $\theta \sim t^\rho$ as $t \rightarrow \infty$, then $r^{1+n} \rightarrow \rho$ as $t \rightarrow \infty$. When $t \rightarrow \infty$, $\xi$ and $\eta \rightarrow \infty$, for a fixed $x>0$. Conclusively, we look for solutions that satisfy the far field condition
+% \begin{equation}
+%     r^{1+n} \rightarrow \rho, \quad \text{for some $\rho>0$ as $\eta \rightarrow \infty$}. \label{eq:farcond}
+% \end{equation}
+% Among equilibrium points, only $M_0$ and $M_1$ are possible above the plane $r=0$ and $M_1$ is so only if the rate of localization $\lambda$ is restricted in the range
+% \begin{equation}\label{eq:r1posineq}
+%  0<\lambda < \frac{2(\alpha-n)}{(1+n)^2}. 
+% \end{equation}
+
+\subsection{Boundary conditions as $\xi \rightarrow 0$}
+Recall that we imposed the boundary conditions \eqref{eq:bdry0} at $\xi=0$. These restrict the behavior of the heteroclinic orbit as $\eta \rightarrow -\infty$. Next proposition states how the conditions are transmitted to those of the $(p,q,r)$-system.
+
+\begin{proposition} \label{prop1}
+    Suppose $\big(\Gamma,V,\Theta,\Sigma,U\big)$ is a solution of \eqref{eq:barsys}, \eqref{eq:bdry0} that is smooth and bounded in the neighborhood of $\xi=0$. Then the corresponding orbit defined by transformations \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, \eqref{eq:pqrdef} $\chi(\eta) = (p(\eta), q(\eta), r(\eta),s(\eta)) \rightarrow M_0$ as $\eta \rightarrow -\infty$. Furthermore, it meets $M_0$ along the direction of the first eigenvector $X_{01}$, i.e.,
+    \begin{equation} \label{eq:alpha}
+     \big(\chi(\eta) - M_0 \big)e^{-2\eta} \rightarrow \kappa X_{01}, \quad \text{for some constant $\kappa\ne0$.}
+    \end{equation}
+\end{proposition}
+
+\begin{remark} \label{rem:alpha}
+  That the orbit meets $M_0$ along $X_{02}$ is nontrivial. Any orbit $\psi(\eta)$ in the neighborhood of $M_0$ has the expansion
+  $$  \psi(\eta) = M_0 + \kappa_1 e^{\mu_{01}\eta} + \kappa_2 e^{\mu_{02}\eta} + \kappa_3 e^{\mu_{03}\eta} + \text{higher-order terms as $\eta \rightarrow -\infty$}.$$
+  Because $\mu_{01}=1<2=\mu_{02}$, the first term in the right-hand-side dominates other terms in the limit $\eta \rightarrow -\infty$ unless the orbit has $\kappa_1=0$. More precisely, among the three dimensional unstable manifold of $M_0$, there is only one slice of surface on which the orbits meet $M_0$ in the direction of $X_{02}$. This is the surface whose tangent space at $M_0$ is spanned by $X_{02}$ and $X_{03}$.
+\end{remark}
+\begin{proof}
+From the smoothness and boundedness of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ in the neighborhood of $\xi=0$ and the boundary conditions \eqref{eq:bdry0}, derivatives of the variables evaluated at $\xi=0$ are obtained by differentiating the system \eqref{eq:ss-odes} repeatedly. 
+% First we check
+% \begin{align*}
+%  &\Gamma'(0)=U'(0)=\Sigma'(0)= \Big(\frac{U}{\Gamma}\Big)'(0)=\Big(\frac{\Sigma\Gamma}{\Theta}\Big)'(0)=0,\\
+%  &\frac{U}{\Gamma}(0) = a, \quad \frac{\Sigma\Gamma}{\Theta}(0)=\frac{c}{a}.
+% \end{align*}
+Re-write \eqref{eq:ss-odes}
+\begin{align*}
+  a + \lambda\xi\frac{\Gamma'}{\Gamma} &= \frac{U}{\Gamma},\\
+  c + \lambda\xi\frac{\Theta'}{\Theta} &= \frac{\Sigma\Gamma}{\Theta} \frac{U}{\Gamma},\\
+  (b+\lambda)U  + \lambda \xi U'(\xi) &= \Sigma^{''} = \Big(\frac{\Sigma\Gamma}{\Theta} \frac{\Theta}{\Gamma}\Big)^{''},\\
+  \Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''} &= (1+m+n)\frac{\Gamma^{''}}{\Gamma}-(1+\alpha) \frac{\Theta^{''}}{\Theta} + n \frac{ \big(\frac{U}{\Gamma}\big)^{''}}{\frac{U}{\Gamma}}
+\end{align*}
+from which albeit cumbersome we conclude
+\begin{align*}
+&\frac{U}{\Gamma}(0) = a = r_0,  & \Big(\frac{U}{\Gamma}\Big)'(0)&=0, & \Big(\frac{U}{\Gamma}\Big)^{''}(0) &= \frac{\Gamma(0)}{\Sigma(0)} \frac{2(b+\lambda)r_0}{\frac{s_0-1}{\lambda}+n\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)},\\
+&\frac{\Sigma\Gamma}{\Theta}(0) = \frac{c}{a} = s_0,  & \Big(\frac{\Sigma\Gamma}{\Theta}\Big)'(0)&=0, &
+\Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0) &= n \left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)\Big(\frac{U}{\Gamma}\Big)^{''}(0).
+\end{align*}
+In the valid range in $\lambda$ of \eqref{eq:r1posineq}, $\displaystyle \Big(\frac{U}{\Gamma}\Big)^{''}(0) <0$, and thus $\displaystyle \Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0) <0$.
+Furthermore, we have
+\begin{equation} \label{eq:second_der}
+\begin{aligned}
+\frac{\Gamma^{''}(0)}{\Gamma(0)} &= \frac{1}{2\lambda}\Big(\frac{U}{\Gamma}\Big)^{''}(0) < 0,\\
+\frac{\Theta^{''}(0)}{\Theta(0)} &= \frac{1}{2\lambda}\Big(r_0\Big(\frac{U}{\Gamma}\Big)^{''}(0) + s_0\Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0)\Big)\Big)  < 0,\\
+\frac{U^{''}(0)}{U(0)} &=\frac{\Gamma^{''}(0)}{\Gamma(0)} + \frac{ \big(\frac{U}{\Gamma}\big)^{''}(0)}{\frac{U}{\Gamma}(0)}< 0,\\
+\Sigma^{''}(0)&=(b+\lambda)U(0)>0.
+\end{aligned}
+\end{equation}
+
+Now, we consider the Taylor expansions of $p(\log\xi)$, $q(\log\xi)$, $s(\log\xi)$ and $s(\log\xi)$ at $\xi=0$ using above and \eqref{eq:bdry0}.
+\begin{align*}
+ p(\log\xi) &= \frac{ \tg }{\ts} = \frac{ \xi^{a_1} \Gamma(\xi)}{\xi^{d_1} \Sigma(\xi)} = \xi^2\frac{\Gamma(\xi)}{\Sigma(\xi)} = \xi^2\frac{\Gamma(0)}{\Sigma(0)} + o(\xi^2) \\
+ %&= \xi^2\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + o(\xi^2),\\
+ q(\log\xi) &= b\frac{\tv}{\ts} = b\frac{ \xi^{b_1} V(\xi) }{ \xi^{d_1} \Sigma(\xi)} = b\xi\frac{ V(\xi) }{ \Sigma(\xi)} = b\xi^2 \frac{U(0)}{\Sigma(0)}+ o(\xi^2)=\xi^2 ~br_0\frac{\Gamma(0)}{\Sigma(0)} + o(\xi^2) \\
+ %&= \xi^2\Big(b\frac{U(0)}{\Phi(0)}\Big)\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + o(\xi^2),\\
+ r(\log\xi) &= \frac{\tu}{ \tg } = \frac{ \xi^{1+b_1}U(\xi) }{ \xi^{a_1}\Gamma(\xi) } = \frac{ U(0) }{ \Gamma(0) }+ \xi \Big(\frac{U}{\Gamma}\Big)'(0) + \frac{1}{2}\xi^2\Big(\frac{U}{\Gamma}\Big)^{''}(0) + o(\xi^2)\\
+  &=\frac{ U(0) }{ \Gamma(0) } + \xi^2\frac{\Gamma(0)}{\Sigma(0)} \frac{(b+\lambda)r_0}{\frac{s_0-1}{2}+2n\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)} + o(\xi^2),\\
+ s(\log\xi) &= \frac{\ts\tg}{\tth} = \frac{ \xi^{a_1+d_1}\Sigma(\xi)\Gamma(\xi) }{\xi^{c_1} \Theta(\xi)} = \frac{ \Sigma(0)\Gamma(0) }{\Theta(0)} + \xi \Big(\frac{ \Sigma\Gamma }{\Theta}\Big)^{'}(0) + \frac{1}{2}\xi^2\Big(\frac{ \Sigma\Gamma }{\Theta}\Big)^{''}(0) + o(\xi^2)\\
+ &=\frac{ \Sigma(0)\Gamma(0) }{\Theta(0)} + \xi^2 n \left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)\frac{(b+\lambda)r_0}{\frac{s_0-1}{2}+2n\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)}.
+\end{align*}
+Therefore,
+\begin{align*}
+\chi(\log\xi) = \big(p(\log\xi),q(\log\xi),r(\log\xi),s(\log\xi)\big) -M_0 = \xi^2\Big(\frac{\Gamma(0)}{\Sigma(0)}\Big) X_{02} + o(\xi^2),
+\end{align*}
+which is the \eqref{eq:alpha} for $\eta=\log\xi$.
+\end{proof}
+
+\subsection{Characterization of the heteroclinic orbit}
+Having specified the asymptotic behavior of the heteroclinic orbit, we target the heteroclinic orbit we look for. From the discussion in Section \ref{sec:equil}, there are only two equilibrium points $M_0$ and $M_1$ whose $r$ is positive. Since $M_0$ is an unstable node, it cannot be the point the orbit converges in the positive time direction, or the heteroclinic orbit $\chi(\eta) \rightarrow M_1$ as $\eta \rightarrow \infty$. In conclusion, the heteroclinic orbit we look for is the one joining $M_0$ to $M_1$ as $\eta$ runs from $-\infty$ to $\infty$ in such a way satisfying \eqref{eq:alpha}. 
+
+As was discussed in Section \ref{sec:equil}, $M_1$ has two dimensions of stable manifold and $M_0$ is an unstable node. We hypothesize that this two dimensional stable manifold of $M_1$ is globally extended in the negative $\eta$ and it is the slice of the unstable manifold of $M_0$. We can expect infinitely many orbits that joins $M_0$ to $M_1$ on the surface. From Remark \ref{rem:alpha}, generic orbits are expected to meet $M_0$ with the dominated direction that is $X_{01}$. Thus the asymptotics \eqref{eq:alpha} characterizes the unique orbit among them that has the distinguished properties that $\kappa_1=0$ and meets $M_0$ along $X_{02}$. Notice that however, we have not yet proved the existence of such an orbit but targeted the orbit. We prove the existence of targeted orbit in the next section.
+
+% \section{Existence via Geometric theory of singular perturbation}
+% In this section, we give a proof for the existence of the heteroclinic orbit hypothesized in the preceding section. It is accomplished by the two consecutive chunks of arguments, the geometric singular perturbation theory and the theorem of Poincar\'e-Bendixson on the positively invariant set.
+% 
+% Considering $n$ as a small parameter, we take a point of view on the $(p,q,r)$-system regarding it a singularly perturbed problem. See the term $n\dot{r}$ in $\eqref{eq:pqrsys}_3$, which indicates that the evolution of $r$ is of faster time scale, and we refer to $r$ as a fast variable and the others $p$ and $q$ two slow variables.
+% 
+% The geometric singular perturbation theory considers the dynamics that takes place near the zeroset of the right-hand-side of $\eqref{eq:pqrsys}_3$, where the time scale of the evolution of the fast variable possibly becomes comparable to that of slow variables. In particular for the critical case $n=0$, the orbits that are upon the zeroset are considered, on where the problem is essentially reduced to that of slow variables only and it becomes regularly perturbed problem. The upshot of the geometric singular perturbation theory is to enable continuing this reduction to $n>0$ provided $n$ is small. 
+% 
+% To be concrete and to get prepared to apply the geometric singular perturbation theory, in this section we examine two objects and one verification of the property of the latter: First, we examine the zeroset of the right-hand-side of $\eqref{eq:pqrsys}_3$ when $n=0$, which is given by the graph
+% $$r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}\triangleq h(p,q;\lambda,\alpha,n=0) \quad \text{for $r>0$}.$$
+% We decribe this graph in the phase space to probe an idea of developing arguments. A suitable compact piece of the graph is subjected to applying the theory and we refer to it as the {\it critical manifold}. This is our second object and we give the precise specification of this object. The critical manifold serves as the template invariant manifold when $n=0$ from which the perturbed invariant manifold when $n>0$ is disposed of.  Lastly, the {\it normally hyperbolicity} of the critical manifold is verified. This is in regard with the system \eqref{eq:pqr_fast} in the fast independent variable. By rescailing $\tilde\eta=\frac{\eta}{n}$ for $n>0$, we see the dynamics that occurs in the fast time scale. The critical case $n=0$ in this format describes the fast relaxation toward the critical manifold or escape from it. The critical manifold is the set of equilibrium for the \eqref{eq:fastn0} and is the center manifold of the individual equilibrium points in it. Normally hyperbolicity concerns the hyperbolicity in the rest of the dimensions and this is the key property that enables us to continue the invariant manifold for $n>0$.
+% %In the first chunk, we exploit the fact that the $(p,q,r)$-system is of multiple time scale: Observe  the small parameter $n$ multiplied to $\dot{r}$ in \eqref{eq:pqrsys}, which makes the evolution of $r$ fast, i.e., if
+% %\begin{equation}
+% % f(p,q,r;\lambda,\alpha,n) = r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big).
+% %\end{equation}
+% %the right-hand-side of the equation on $r$, $\dot{r} \sim \frac{1}{n}$ away from the zero set of $f(p,q,r;\lambda,\alpha,n)$ When $n=0$, the orbit is strictly restricted on the zero set
+% %\begin{equation}
+% % Z \triangleq \{\,(p,q,r)\; | \; f(p,q,r,\lambda,\alpha,n=0)\, \} \label{eq:zeroset}
+% %\end{equation}
+% %and the problem is essentially reduced to the one of only slow variable $p$ and $q$, provided $r$ is solved from the algebraic equation \eqref{eq:zeroset}.
+% %
+% %The graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.
+% %is taken and is referred to as the critical manifold.
+% %
+% %
+% %
+% %In order to take the suitable compact piece of the zero set $Z$, we detail in the graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.
+% %
+% %
+% %
+% %
+% %
+% %
+% %\hrulefill
+% %
+% %
+% %
+% %
+% %
+% %
+% %
+% %
+% %This exploits the fact that the (p,q,r)-system is of multiple time scale, i.e., the presence of the small parameter $n$ in front of  $\dot{r}$ indicates the time scale of $\dot{r}\sim \frac{1}{n}$ unless the right-hand-side of the equation is small enough to compensate.
+% %
+% %Let $f(p,q,r;\lambda,\alpha,n)$ be the right-hand-side of the equation on $r$, i.e.,
+% %\begin{equation}
+% % f(p,q,r,\lambda,\alpha,n) = r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big).
+% %\end{equation}
+% %The compact subset of the zero set of $f(p,q,r;\lambda,\alpha,n=0)$
+% %$$ Z \triangleq \{\,(p,q,r)\; | \; f(p,q,r,\lambda,\alpha,n=0)\, \} $$
+% %is taken and is referred to as the critical manifold.
+% %
+% %
+% %\subsection{Reduction to the slow system}
+% 
+% \subsection*{The graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.}
+% The equation of the graph can be written in the form
+% \begin{equation}
+%  q + \lambda {r}p + \frac{\alpha}{\lambda} \Big( r-r_0\Big)=0, \label{eq:level}
+% \end{equation}
+% where we observe that the level line $r=\bar{r}$ is the straight line in the phase space. On the $(p,q)$-plane, for $r$ in the range of $(0,r_0)$ the contour line crosses the first quadrant with the negative slope, intersecting $p$-axis and $q$-axis. When $r=r_0$ it is the line passing the origin and this point $(0,0,r_0) = M_0$. When $r=r_1$, the level line passes the $(0,1,r_1)=M_1$.
+% 
+% \subsection*{Critical manifold}
+% Inequality
+% $$ \lambda < \frac{2(\alpha-n)}{(1+n)^2} $$
+% prevents $r_1$ from being less than equal to $0$. Therefore, we always can take the value $0<\underbar{r}<r_1$. Having fixed the value $\underbar{r}$, we take the closed set $T$ that is the triangle in the first quadrant enclosed by $p$-axis, $q$-axis and the contour line $\underbar{r} = \bar{r}(p,q)$. Observe that $h\ge\underbar{r}>0$ on the graph if $(p,q) \in T$. Since $h$ is continuous in the neighborhood of $T$, we can take another closed set $K$ in the vicinity of $T$ on which $h$ is still away from $0$. We take the compact piece of the set $Z$ by
+% \begin{equation}
+%  G(\lambda,\alpha,n=0) \triangleq \Big\{\, (p,q,r) \;|\; (p,q) \in K, \text{ and } r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p} \,\Big\} \subset Z
+% \end{equation}
+% 
+% \subsection*{Normally hyperbolicity}
+% The system in {\it fast scale} with the independent variable $\tilde{\eta} = \eta/n$ is
+% \begin{equation}\label{eq:pqr_fast} \tag*{($\tilde{P}$)}
+% \begin{aligned}
+%  p^\prime &=np\Big( \Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \\
+%  q^\prime &=nq\Big(\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \\
+%  r^\prime &=r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big)\triangleq f(p,q,r;\lambda,\alpha,n),
+% \end{aligned}
+% \end{equation}
+% where we denoted $\displaystyle(\cdot)^\prime = \frac{d}{d\tilde{\eta}}(\cdot)$. In particular, the system $(\tilde{P})|_{n=0}$ reads
+% \begin{align}
+%  p^\prime =0, \quad q^\prime =0, \quad r^\prime=r\Big( \Big[\frac{\alpha}{\lambda}\Big(r-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big) = f(p,q,r;\lambda,\alpha,0). \label{eq:fastn0}
+% \end{align}
+% 
+% \begin{lemma} \label{lem:normal_hyper}
+%  $G(\lambda,\alpha,0)$ is a normally hyperbolic invariant manifold with respect to the system $(\tilde{P})|_{n=0}$.
+% \end{lemma}
+% \begin{proof}
+% To prove the normally hyperbolicity of the graph $G(\lambda,\alpha,n=0)$, we show that the coefficient matrix of the linearized system of $(\tilde{P})|_{n=0}$ around $G(\lambda,\alpha,n=0)$ has the eigenvalue $0$ exactly with the multiplicity $2$. Let $P$, $Q$, and $R$ be the perturbations of $p$, $q$, and $r$ respectively. The linearized equations after discarding terms higher than the first order are
+% \begin{align*}
+%  \begin{pmatrix} {P}^\prime\\ {Q}^\prime \\ {R}^\prime \end{pmatrix} =
+%  \begin{pmatrix} 0 & 0& 0\\ 0 & 0 & 0\\ \lambda h^2 & h & ( \frac{\alpha}{ \lambda} + \lambda p )h \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \\ {R} \end{pmatrix},
+% \end{align*}
+% where $h$ is a shorthand for $h(p,q;\lambda,\alpha,n=0)$. $( \frac{\alpha}{ \lambda} + \lambda p )h > 0$ because $\alpha>0$, $p\ge0$ and $h > \underbar{r}>0$ on the $G(\lambda,\alpha,n=0)$, which proves that $0$ is an eigenvalue with multiplicity $2$.
+% \end{proof}
+% 
+% \begin{proposition}
+% For $n>0$ sufficiently small, there is a function $h(p,q;\lambda,\alpha,n) : T\subset \mathbb{R}^2 \mapsto \mathbb{R}$ such that
+% \begin{equation} \tag*{(${R}$)} \label{eq:reduced}
+% \begin{aligned}
+%  \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+%  \dot{q} &=q\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + b^{\lambda,m,n}ph(p,q;\lambda,\alpha,n),
+% \end{aligned}
+% \end{equation}
+% 
+% 
+% \begin{enumerate}
+%  \item $h$ is jointly smooth function of $p$, $q$, and $n$ in $T \times I$
+%  \item The graph $r=h(p,q;\lambda,\alpha,n)$ is locally invariant, i.e., The orbit $(p,q,r)$
+% \end{enumerate}
+% 
+% \end{proposition}
+% 
+%
+% \subsubsection{Flow on the critical manifold : the case $m=1$}
+%
+% The marginal case $m=1$ provides closer detail.
+% By substituting $h^{\lambda,1,0}(p,q)$ in place of $r$, the system is explicitly solved and
+% %we can solve the system explicitly and the whole critical graph is completely characterized.
+% the general solution on the graph is a family of parabolae $p=kq^2$ and $r=h^{\lambda,1,0}(p,q)$. This includes the two extremes $p=0$ and $q=0$, where $k$ takes $0$ and $\infty$ respectively. See Figure \ref{fig:hn0m1}. We focus on discussing two points: 1) In an effort to apprehend the flow of the rest of cases, we remark a few features for this marginal case, which in turn persist under the perturbation; and 2) we report features that do not persist too. These features do not play any role in our study, but this bifurcation is described here for clarity.
+%
+% We address the first point. Look at $M_0^{ \lambda,1,0}$ in Figure \ref{fig:hn0m1_b} surrounded by a family of parabolae in the neighborhood. Our interested direction $\vec{X}_{02}$ and the other $\vec{X}_{01}$ are annotated near $M_0^{ \lambda,1,0}$ by a dotted arrow. The family of parabolae is manifesting the fact that orbit curves meet $M_0^{ \lambda,1,0}$ tangentially to $\vec{X}_{01}$; one exception is the degenerate straight line that emanates in $\vec{X}_{02}$, which is depicted as the green one in Figure \ref{fig:hn0m1}, the target orbit. Another observation from the $pq$-plane is that the flow in the first quadrant far away from the origin is {\it inwards}. More precisely, as illustrated in Figure \ref{fig:hn0m1_b}, whenever $0<\underbar{r} < 1 = c^{\lambda,1,0}$ the flow on the contour line $\underbar{r} = h^{\lambda,1,0}$ is inwards. We make use of this observation in the proof of Section \ref{sec:proof_proof}.
+%
+% Now, we describe the bifurcation of this marginal case. The crucial difference is that $M_1^{\lambda,1,0}$ is replaced by a line of equilibria $h^{\lambda,1,0}(p,q) = c^{\lambda,1,0}=1$, which is the red line in Figure \ref{fig:hn0m1}. As a result, each of the parabolae emanated from $M_0^{\lambda,1,0}$ lands at a point among these equilibria. $\vec{X}_{02}$ is immersed on $q=0$ plane distinctively from all other cases and the target orbit in particular lands at the $q$-intercept of the line of equilibria. To compare this observation to the statement of Theorem \ref{thm:1}, the target orbit does not connect $M_0^{ \lambda,1,0}$ to $M_1^{ \lambda,1,0}$ but to this $q$-intercept. This observation does not spoil our proof in Section \ref{sec:proof_proof} because we assert the persistence of the critical manifold not the target orbit.
+
+
+\section{Existence via Geometric theory of singular perturbation}
+In slow time scale $\eta$,
+\begin{equation}
+ \begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p r -q\Big) + b p r,\\
+ n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+In fast time scale $\tilde\eta=\frac{\eta}{n}$,
+\begin{equation} \label{eq:fast}
+ \begin{aligned}
+ {p}' &=np\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
+ {q}' &=nq\Big(1 -\lambda p r -q\Big) + nb p r,\\
+ {r}' &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ {s}' &=ns\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+\eqref{eq:slow} at $n=0$:
+\begin{equation}\label{eq:slow0}
+ \begin{aligned}
+ r &=\hat{r}(p,q,s,n=0) \triangleq \frac{ \frac{\alpha-m}{\lambda(1+\alpha)}a - q }{  \frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big)},\\% \quad \text{$=\hat{r}(0)$ for simplicity },\\
+ \dot{p} &=p\Big(\frac{1}{\lambda}(\hat{r}-a) + 2- \lambda p \hat{r} -q\Big) & &= p\Big(\frac{D}{\lambda(1+\alpha)}(\hat{r}-a_0)\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p \hat{r} -q\Big) + b p \hat{r} & &=q\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-r_1)\Big) + b p \hat{r},\\
+ \dot{s} &=s\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda p\hat{r} + q - \frac{1}{\lambda}\hat{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big) &&= -\frac{1+\alpha}{\lambda}\hat{r}s\big(s- \frac{1+m}{1+\alpha}\big).
+ \end{aligned}
+\end{equation}
+\eqref{eq:fast} at $n=0$:
+\begin{equation} \label{eq:fast0}
+ \begin{aligned}
+ {p}' &=0,\\
+ {q}' &=0,\\
+ {r}' &=r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big),\\
+ {y}' &=0.
+ \end{aligned}
+\end{equation}
+
+% \subsection{Notion of Normally Hyperbolicity and the stable manifold theorem}
+% $x\in \mathbb{R}^n$: slow variables; $y \in \mathbb{R}^m$: fast variables with respect to a small parameter $\epsilon$.
+\begin{definition}[fast-slow case definition of normally hyperbolicity of invariant manifold]
+A compact set $\Lambda$ is called normally hyperbolic if the $m\times m$ matrix $(D_y f)(p)$ of first partial derivatives with respect to the fast variables $y$ has no eigenvalues with zero real part for all $p \in \Lambda$.
+\end{definition}
+% 
+% 
+% \subsection{Notion of Hyperbolic Set and the (topological) stable manifold theorem}
+% M.W. Hirsh, C.C. Pugh, {\it Stable manifolds and hyperbolic sets}, in Global Analysis \it{Proc. Symps. Pure Math.} {\bf 14}, Berkeley, Calif., 1968.
+% \begin{definition}[Hyperbolic set]
+% The invariant set $\Lambda \subset U$ is hyperbolic for the map $f: U \rightarrow M$ if $T_\Lambda M$ has a splitting (Whitney sum decomposition) $T_\Lambda M = E^u \oplus E^s$ satisfying:
+% \begin{enumerate}
+%  \item $E^u$ and $E^s$ are invariant under the bundle map $Tf$;
+%  \item there exist constants $c>0$ and $0<\tau <1$ such that for all $n \in \mathbb{Z}_+$,
+%  $$ max\{ ||Tf^n|_{E^s}||,~||Tf^{-n}|_{E^u}||\} < c\tau^n. $$
+% \end{enumerate}
+% \end{definition}
+% 
+% \begin{theorem}[Theorem 7.3 in HP68, Structural stability] Let $\Lambda \subset U$ be a compact hyperbolic set for the $C^1$ embedding $f: U\subset M \rightarrow M$. Given $\epsilon>0$ there is a compact neighborhood $V\subset U$ of $\Lambda$ and a neighborhood $\mathcal{N}$ of the map $f$ in $C^1(U,M)$ with the following properties: if $g_i\in N$ for $i=1,2$ then $g_i$ has a unique maximal hyperbolic set $\Lambda_i \subset V$ containing every invariant set of $g_i$ in $V$; and there is a unique homeomorphism $h_1: \Lambda_1 \rightarrow \Lambda_2$ such that $h_1 g_1 h_1^{-1} = g_2|_\Lambda$; and $d(h_1,1) \le \epsilon$. Moreover $h_1$ depends continuously on $(g_1,g_2) \in \mathcal{N}\times\mathcal{N}$.
+% \end{theorem}
+
+
+\subsection{Proof steps}
+
+$3$-dimensional trapezoid $K$: ($\underbar{r}$ and $0<A<1$ is determined in the below later.)
+\begin{align*}
+ K &\triangleq \left\{ \: (p,q,s) \: | \:  p\ge0, ~~ q\ge0, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le A \frac{\alpha-m}{\alpha(1+\alpha)}, ~~ \hat{r}(p,q,s,0)\ge \underbar{r}\: \right\}.
+\end{align*}
+Take $\tilde{K} \supset\supset K$, but sufficiently tight.
+ %\right. \left.\frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-a) + \lambda p\underbar{r} + q +\frac{\alpha}{\lambda}\underbar{r}\big(y- \frac{1+m}{1+\alpha}\big) \le 0.\right\},\\
+\begin{align*}
+ G_0 &\triangleq \left\{ \: (p,q,r,s) \: | \: r=\hat{r}(p,q,s,0), \quad (p,q,s)\in \tilde{K}. \: \right\}.
+\end{align*}
+
+The level-surface $\hat{r}(p,q,s,0) = \underbar{r}$ is an affine surface in $(p,q,s)$-space.
+\begin{equation}
+ \begin{aligned}
+  \lambda \underbar{r}p + q +\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big) + \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-a) = 0,\\
+  \Longleftrightarrow \lambda \underbar{r}p + q-1 +\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big) + \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) = 0
+ \end{aligned}
+\end{equation}
+
+
+\begin{proposition} 
+$G_0$ is normally hyperbolic with respect to the flow \eqref{eq:fast0}. 
+\end{proposition}
+\begin{proof}
+ Let $f(p,q,r,s) \triangleq r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big)$, the right hand side of $\eqref{eq:fast0}_3$. Then 
+ \begin{align*}
+ \frac{\partial f}{\partial r} &= \Big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda p\hat{r} + q +\frac{\alpha}{\lambda}\hat{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big) + \hat{r}\Big(\frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big)\Big)\\
+ &= \hat{r}\Big(\frac{\alpha-m}{\lambda(1+\alpha)} + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big) + \lambda p\Big)\ge \underbar{r}\Big(A\underbar{r}\frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p\Big)>0.
+ \end{align*}
+\end{proof}
+\subsection{Reduced flow \eqref{eq:slow0} for $n=0$}
+\begin{lemma}[$n=0$] 
+The set $K$ is positively invariant to the flow \eqref{eq:slow0}.
+% \begin{enumerate}
+%  \item The set $K$ is positively invariant.
+%  \item Let $T$ be a triangle $\{s=\frac{1+m}{1+\alpha}\} \cap K$. Then $T$ is invariant. Furthermore, $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
+%  \item $K\backslash B_\delta(M_0) \subset W^s(M_1)$ either.
+% \end{enumerate}
+\end{lemma}
+\begin{proof}
+ We calculate the inner product of the vector fields with inward normal vector on boundary.
+ (1) on $p=0$ plane, $\nu = (1,0,0)$ and $X\cdot\nu = \dot{p}=0$;\\
+ (2) on $q=0$ plane, $\nu = (0,1,0)$ and $X\cdot\nu=\dot{q} = bpr\ge0$,\\
+ (3) on $\pm\left(s-\frac{1+m}{1+\alpha}\right) = A \frac{\alpha-m}{\alpha(1+\alpha)}$ plane, $\nu = (0,0,\mp1)$. First, note that $s>\frac{m}{\alpha}>0$ in $K$. Now $X\cdot\nu = \mp\Big(-\frac{1+\alpha}{\lambda}\hat{r}s\big(s- \frac{1+m}{1+\alpha}\big)\Big) = \frac{1+\alpha}{\lambda}\hat{r}sA \frac{\alpha-m}{\alpha(1+\alpha)}\ge\delta_0>0$.\\
+ (4) on the affine plane $\hat{r}=\underbar{r}$, $\nu = (-\lambda \underbar{r}, -1,-\frac{\alpha}{\lambda}\underbar{r})$ and 
+ \begin{align}
+  -\lambda \underbar{r}\dot{p} -\dot{q}-\frac{\alpha}{\lambda}\underbar{r}\dot{s} &= -\lambda \underbar{r}p \Big(1-\lambda \underbar{r}p -q + \frac{1}{\lambda}(\underbar{r}-a)+1\Big) - q(1-\lambda \underbar{r}p -q\big) - \lambda \underbar{r}p\Big(\frac{b}{\lambda}\Big) + \frac{\alpha}{\lambda}\underbar{r}\frac{1+\alpha}{\lambda}\underbar{r}s\big(s- \frac{1+m}{1+\alpha}\big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - (1-\lambda \underbar{r}p -q) -\lambda \underbar{r}p\Big(\frac{1}{\lambda}(\underbar{r}-a)+1+\frac{b}{\lambda}\Big) + \frac{\alpha}{\lambda}\underbar{r}\frac{1+\alpha}{\lambda}\underbar{r}s\big(s- \frac{1+m}{1+\alpha}\big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) -\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big) -\underbar{r}p(\underbar{r}-1)+ \frac{\alpha}{\lambda}\underbar{r}\frac{1+\alpha}{\lambda}\underbar{r}s\big(s- \frac{1+m}{1+\alpha}\big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) -\underbar{r}p(\underbar{r}-1) + \frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big(-1+\frac{1+\alpha}{\lambda}\underbar{s}\Big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) -\underbar{r}p(\underbar{r}-1) + \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)^2\Big(\frac{1+\alpha}{\alpha}\Big) \nonumber\\
+  &+ \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)\Big(-1+ \frac{1+m}{\lambda}\Big)\nonumber\\
+  &\ge (1-\lambda \underbar{r}p -q)^2 -\underbar{r}p(\underbar{r}-1) + \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)^2\Big(\frac{1+\alpha}{\alpha}\Big) \nonumber\\
+  &- \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)(\underbar{r}-r_1) - \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)\underbar{r}\Big|\frac{\alpha(1+\alpha)}{\alpha-m}\big(s- \frac{1+m}{1+\alpha}\big)\Big|\Big|-1+ \frac{1+m}{\lambda}\Big|\nonumber\\
+  &\ge (1-\lambda \underbar{r}p -q)^2  -\underbar{r}p(\underbar{r}-1) + \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)^2\Big(\frac{1+\alpha}{\alpha}\Big) \nonumber\\
+  &- \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)\Big((1+A)\underbar{r}-r_1\Big) \ge \delta_1>0, \quad \text{if $0<\underbar{r} < \textrm{min}\,\left\{1, \frac{r_1}{1+A}\right\}$.} \label{eq:affine}
+ \end{align}
+\end{proof}
+\begin{lemma}[$n=0$] 
+$\textrm{int}\, K \subset W^s(M_1)$.
+% \begin{enumerate}
+%  \item The set $K$ is positively invariant.
+%  \item Let $T$ be a triangle $\{s=\frac{1+m}{1+\alpha}\} \cap K$. Then $T$ is invariant. Furthermore, $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
+%  \item $K\backslash B_\delta(M_0) \subset W^s(M_1)$ either.
+% \end{enumerate}
+\end{lemma}
+\begin{proof}
+ First, we prove $\textrm{int}\, T \subset W^s(M_1)$, where $T$ is the triangle $\{s=\frac{1+m}{1+\alpha}\} \cap K$. Note that the plane $s=\frac{1+m}{1+\alpha}$ is invariant to \eqref{eq:slow0}. Let $x$ be an interior point of $T$. Since $T$ is positively invariant and thus the $\omega$-limit set of $x$ is in $T$ and non-empty, but it cannot contain the limit cycle because there is no critical point in interior of $T$. By Poincar\'e-Bendixson Theorem, the $\omega$-limit set of $x$ consists of critical points. However, $M_0|_T$ is an unstable node, so the $\omega$-limit set coincides with a single point $M_1$.
+ 
+ Now, since 
+ $$\frac{\big(s- \frac{1+m}{1+\alpha}\big)^{\cdot}}{\big(s- \frac{1+m}{1+\alpha}\big)} = -\frac{1+\alpha}{\lambda}\hat{r}s\le -A$$
+ for the uniform constant $A>0$ in $K$, $s$ relaxes to the triangle $T$ as $\eta \rightarrow \infty$. If the orbit point is sufficiently close to the $T$, then it has to arrive at a point arbitrarily close to $M_1$ in a finite time because the point in $T$ does so and the time-$\eta$ flow map is $C^1$. By the stable manifold theorem at $M_1$, the orbit then converges to $M_1$ as $\eta \rightarrow \infty$.
+\end{proof}
+\begin{corollary}
+ Every point in $W^u(M_0)$ emanated into $T$ is a heteroclinic orbit connecting $M_0$ to $M_1$.
+\end{corollary}
+
+\subsection{Persistence for $n>0$}
+By the geometric singular perturbation theorem, for sufficiently small $n$, $\exists \hat{r}(p,q,s,n)$ defined on the $\tilde{K}$ such that
+$$G_n\triangleq \{\:(p,q,r,s)\: | \: r=\hat{r}(p,q,s,n), \quad (p,q,s)\in \tilde{K}\:\}$$
+is locally invariant to \eqref{eq:slow} and $\hat{r}$ is jointly smooth in $(p,q,s)$ and $n$.
+We define the reduced problem,
+\begin{equation} \label{eq:reduced}
+ \begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{\lambda}(\hat{r}-a) + 2- \lambda p r -q\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p \hat{r} -q\Big) + b p \hat{r},\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda pr + q - \frac{1}{\lambda}\hat{r}\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+Let $f_j(p,q,s,n)$, $j=1,2,3$ be the vector field of \eqref{eq:reduced}.
+Due to the smoothness of $\hat{r}$ and $f_j$ in $n$, 
+\begin{equation} \label{eq:uniform}
+ \begin{aligned}
+f_j(p,q,s,n) = f_j(p,q,s,0) +\mathcal{O}(n),\\
+ \lambda \hat{r}(n)p + q +\frac{\alpha}{\lambda}\hat{r}(n)\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-a) = \mathcal{O}(n),\\
+   \lambda \hat{r}(n)p + q-1 +\frac{\alpha}{\lambda}\hat{r}(n)\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-r_1) = \mathcal{O}(n),
+ \end{aligned}
+\end{equation}
+uniformly in $K$.
+
+
+\begin{lemma}[$n>0$]
+$K$ is positively invariant to $\eqref{eq:reduced}$ for $n>0$ sufficiently small.
+\end{lemma}
+\begin{proof}
+We check the inward normal component of the flow.
+ On plane (1) $p=0$ and (2) $q=0$, inward normal component is nonnegative for the same reason as before. On plane (3) $\pm\left(s-\frac{1+m}{1+\alpha}\right) = A \frac{\alpha-m}{\alpha(1+\alpha)}$ and the affine plane (4), inward normal component is nonnegative provided $n$ is sufficiently small because \eqref{eq:uniform} holds and $\delta_0$ and $\delta_1$ are fixed constants away from $0$.
+\end{proof}
+ $s = \frac{1+m+n}{1+\alpha}$ plane is not anymore invariant plane and thus we cannot confine the flow on $2$-dimensional object. Instead, we analyze the flow in a thin slab $|s - \frac{1+m+n}{1+\alpha}| \le Cn$. Because it is $3$-dimensional, we cannot apply the Poincar\'e-Bendixson Theorem anymore. We directly analyze the flow here.
+
+% \begin{claim} 
+% $\exists C>0$ such that $K$ contracts into a thin slab $|s - \frac{1+m+n}{1+\alpha}| \le Cn$ as $\eta \rightarrow \infty$.
+% \end{claim}
+% \begin{proof}
+%  Because of \eqref{eq:uniform}, we can write $\eqref{eq:reduced}_3$ as
+%  $$ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(n)s\big(s- \frac{1+m+n}{1+\alpha}\big) + \mathcal{O}(n).$$
+%  Then for each plane $\pm\big(s - \frac{1+m+n}{1+\alpha}\big) = A$, the flow is strictly inward provided $A>Cn$ for some $C>0$.
+% \end{proof}
+\begin{lemma}[$n>0$] \label{lem:3dstable}
+$\textrm{int}\, K \subset W^s(M_1(n))$.
+\end{lemma}
+\begin{claim}
+$\exists C>0$ that does not depend on $n$ and $(p,q,s)$ such that $K$ contracts into a $3$-dimensional trapezoid 
+$$ Z\triangleq \left\{ \: (p,q,s) \: | \:  p\ge0, ~~ q\ge 1-Cn, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le Cn, ~~ \hat{r}(p,q,s,0)\ge \frac{r_1}{1+Cn}\: \right\}$$
+\end{claim}
+\begin{proof}
+Note that the orbit cannot escape $K$ because of the Claim 3. 
+
+First, We show that $K$ contracts into a thin slab $|s - \frac{1+m+n}{1+\alpha}| \le Cn$ as $\eta \rightarrow \infty$. 
+Because of \eqref{eq:uniform}, we can re-write $\eqref{eq:reduced}_3$ as
+ $$ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(n)s\big(s- \frac{1+m+n}{1+\alpha}\big) + \mathcal{O}(n).$$
+Then for each plane $\pm\big(s - \frac{1+m+n}{1+\alpha}\big) = A\frac{\alpha-m}{\alpha(1+\alpha)}$, the flow is strictly toward the plane $s- \frac{1+m+n}{1+\alpha}=0$, provided $A\ge Cn$ for some $C>0$. 
+
+
+
+For each of the affine plane $\hat{r}(p,q,s,0)=r$ restricted in this thin slab, the $\delta_1>0$ away from $0$ in \eqref{eq:affine} can be taken with $A=Cn$, or the flow \eqref{eq:slow0} for $n=0$ is strictly toward origin as long as $r < \frac{r_1}{1+A} \le \frac{r_1}{1+Cn}$. Since $\delta_1$ is away from $0$, if $n$ is sufficiently small, the same holds for the flow \eqref{eq:reduced} for $n>0$.
+
+Now, consider the equation $\eqref{eq:reduced}_2$. Suppose that $\lambda\le b(n)$. Then so long as $q<1$, \\$\dot{q} \ge q(1-q)>0$. The proof for the claim is done.
+
+Now, we are left with the remaining case $\lambda > b(n)$. First, that $\lambda > b(n)$ and $r_1(n)>0$ implies a few combinatorial consequences that
+\begin{equation}\label{eq:combi}
+ \begin{aligned}
+  &\frac{1+m}{2(\alpha-m-n)} < \lambda < \frac{\alpha-m-n}{1+m+n}\Big(\frac{2+2\alpha-n}{1+\alpha}\Big),\\
+  &a_0(n)-1 = \frac{2(1+\alpha-n)}{D} - 1 = \frac{1+m}{D} > 0,\\
+  &a_0(n)-r_1(n)= \frac{n}{D} + \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda >\frac{n}{D} + \frac{(1+\alpha)(1+m+n)(1+m)}{2D(\alpha-m-n)^2}>0.
+ \end{aligned}
+\end{equation}
+In order to proceed, we give a different proof for the claim that $int~T \subset W^s(M_1(0))$ for the flow \eqref{eq:slow0} when $n=0$. We prove that the orbits in $T$ is pushed by the two families of lines $p=M$ and $\hat{r}(p,q,\frac{1+m}{1+\alpha},0)=N$. Remember that $T$ is positively invariant.
+
+For each of the contour line $\hat{r}(p,q,\frac{1+m}{1+\alpha},0)=N$, the normal component of the flow toward origin  is
+\begin{align*}
+ -(\lambda N \dot{p} + \dot{q}) &= -(1-\lambda Np -q)(\lambda Np+q) -pN(N-1) \\
+ &= \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)^2 (N-r_1)(N-a) -pN(N-1) \le -\delta_3(N) <0,
+\end{align*}
+if $\textrm{max}\{1,r_1\} <N<a$. By \eqref{eq:combi}, we can take $\underbar{N} = a_0(0) - \frac{1}{2}\textrm{min}\left\{\frac{1+m}{D},\frac{(1+\alpha)(1+m)^2}{2D(\alpha-m)^2}\right\}=a0-\delta_4$. Therefore, $T$ contracts to the region $\hat{r}(p,q,\frac{1+m}{1+\alpha},0)\le\underbar{N}$.
+Then, \eqref{eq:slow0} implies that $\dot{p} \le -\delta_5 p$, for some $\delta_5 >0$. Thus $p$ becomes arbitrarily small as $\eta \rightarrow \infty$. If $p$ is arbitrarily small, then $\dot{q} = q(1-q) -pr(\lambda q +b) > q(1-q) +\epsilon$, so $q$ increases arbitrarily close to $1$. Thus the orbits end up with being in the local stable manifold $W^s(M_1)$.
+
+Now, we return to the reduced flow \eqref{eq:reduced} with $n>0$ in the thin slab. We can improve \eqref{eq:uniform} so that
+\begin{equation} \label{eq:uniform2}
+ \begin{aligned}
+ \lambda \hat{r}(n)p + q + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-a(n)) &= \mathcal{O}(n),\\
+   \lambda \hat{r}(n)p + q-1 + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-r_1(n)) &= \mathcal{O}(n), \quad \text{uniformly in the thin slab}.
+ \end{aligned}
+\end{equation}
+Then $\eqref{eq:reduced}_1$ and $\eqref{eq:reduced}_2$ can be re-written as
+\begin{equation} \label{eq:reduced_slab}
+\begin{aligned}
+ \dot{p} &= p\big(\frac{D}{\lambda(1+\alpha)}(\hat{r}(0)-a_0(0)) + \mathcal{O}(n)\big),\\
+ \dot{q} &= q\big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}(0)-r_1(0))\big) + bp\hat{r}(0) + \mathcal{O}(n).
+\end{aligned}
+\end{equation}
+Having seen this and because $\delta_3$,$\delta_4$, and $\delta_5$ are all taken away from $0$, for sufficiently small $n$ that the thin slab is pushed by the two families of planes $\hat{r}(p,q,s,0)=N$ and $p=M$ and that $q$ increases close to $1$ remains to hold in the positively invariant thin slab. Thus the claim for the case $\lambda > b(n)$ follows.
+\end{proof}
+\begin{proof}[proof of Lemma \ref{lem:3dstable}]
+ Let $B_\delta(M_1)$ be contained in a local stable manifold $W^s(M_1)$. For given $\delta$, choose $n$ sufficiently small so that the trapezoid $Z$ is contained in $B_\delta(M_1)$.
+\end{proof}
+\begin{corollary}
+ Every point in $W^u(M_0(n))$ emanated into $T$ is a heteroclinic orbit connecting $M_0(n)$ to $M_1(n)$.
+\end{corollary}
+
+\begin{remark}[Non-normally hyperbolicity of $T$]
+ Now, the $2$-dimensional unstable manifold $W^u(M_0(n))$ exists, whose counter part for $n=0$  is in the plane $T$. The $W^u(M_0(n))$ near $M_1(n)$ may not diffeomorphic to $W^u(M_0(0))$ near $M_1(0)$ (flat), if the $s$-directional eigenvalue is the least at $M_1$, which actually takes place.
+\end{remark}
+
+
+
+% \subsection{Existence of the heteroclinic orbit} \label{sec:proof_proof}
+% 
+% \begin{theorem} \label{thm1}
+% Let $\lambda>0$ and $\alpha>0$. For any pair $(\lambda,\alpha)$, there exists $n_0$ such that for all $n \in (0,n_0)$
+% \begin{enumerate}
+%     \item[(i)] the triple $(\lambda,\alpha,n)$ satisfies the \eqref{eq:r1posineq}.
+%     \item[(ii)] $(p,q,r)$-system with parameters $(\lambda,\alpha,n)$ admits a heteroclinic orbit $\chi(\eta)$ such that
+%     \begin{equation} \label{eq:estimate}
+%         \chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\chi(\eta) - M_1\big) \rightarrow \kappa \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa>0$}.
+%     \end{equation}
+% \end{enumerate}
+% \end{theorem}
+% 
+% \smallskip
+% \noindent
+% \begin{proof}
+% %\mbox{}\\*\indent
+% \noindent{\bf Reduction to the $(p,q)$-system.}
+% \medskip
+% For $(\lambda,\alpha)$, by the Theorem of Geometric singular perturbation theory, there exists $n_1$ such that if $n\in(0,n_1)$, the locally invariant manifold $G(\lambda,\alpha,n)$ with respect to the $(p,q,r)$-system with parameter $(\lambda,\alpha,n)$ exists. Moreover, the graph is again given by the graph $r=h(p,q;\lambda,\alpha,n)$, where the function has the definition on $D$ again. The function is, jointly with $n$, smooth in $(p,q,n) \in D\times(0,n_1)$. Taking smaller $n_1$ if necessary can achieve the inequality \eqref{eq:r1posineq}. We can take $n_1$ even smaller to ensure $h(p,q,n)>0$ in $D\times(0,n_1)$.
+% 
+% 
+% Then, on the graph, $\big(p(\eta),q(\eta)\big)$ satisfies the planar system
+% \begin{equation} \tag*{(${R}$)} \label{eq:reduced}
+% \begin{aligned}
+%  {\dpp}&=p\bigg\{\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(h^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda ph\Big]\bigg\},\\
+%  {\dqq}&=q\Big(1-q-\lambda p h\Big) + bph,\\
+% \end{aligned}
+% \end{equation}
+% where $h$ is an abbreviation for $h(p,q;\lambda,\alpha,n)$.
+% 
+% \medskip
+% \noindent{\bf Claim 1.}
+% $M_0(\lambda,\alpha,n)$ and $M_1(\lambda,\alpha,n)$ are on the invariant manifold.
+% \medskip
+% 
+% The part of the geometric singular perturbation theory ensures that the hyperbolic equilibrium points that were on the critical manifold persists for $n>0$ and are on the subjected locally invariant manifold, dictating that the two equilibrium points $M_0(\lambda,\alpha,n)$ and $M_1(\lambda,m,n)$ are on the graph $r=h(p,q;\lambda,\alpha,n)$; the only exceptional case is when $\alpha=2n+1$, where $M_1$ fails to be hyperbolic. Nevertheless, $M_1$ is on the graph for the following reason. It is obvious from \eqref{eq:reduced} that $(\dot{p},\dot{q})=(0,0)$ at $(p,q)=(0,1)$. $\dot{r} = \frac{\partial h}{\partial p} \dot{p} + \frac{\partial h}{\partial q} \dot{q}$ has to be $0$ because the derivatives of $h(\lambda,\alpha,n)$ is close to the derivatives of $h(\lambda,\alpha,n=0)$ and the latters are bounded as seen from the graph formula. Hence the point $(0,1,h(p,q))$ is the equilibrium point and this must be $M_1$.
+% 
+% Next, we analyze the planar system $(R)$. %We focus on two points $(0,0)$ and $(0,1)$, which are the two projections of $M_0$ and $M_1$ and thus are two equilibrium points of $(R)$.
+% 
+% % \medskip
+% % \noindent{\bf Claim 1.}
+% % $(0,0)$ is an unstable node of $(R)$ and $(0,1)$ is an stable node of $(R)$. 
+% % \medskip
+% % 
+% % Linear stability of $R$ around the $\tilde{M}_0$ and $\tilde{M}_1$ respectively gives the proof. Linearized system around $\tilde{M}_0$ with perturbations $P$ and $Q$ is
+% % \begin{align*}
+% %  \begin{pmatrix} \dot{P}\\ \dot{Q} \end{pmatrix} =
+% %  \begin{pmatrix} 2 & 0 \\  br_0 & 1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix}
+% % \end{align*}
+% % and we see the two positive eigenvalues of the coefficient matrix. Linearized system around $\tilde{M}_1$ with perturbations $P$ and $Q$ is
+% % \begin{align*}
+% %  \begin{pmatrix} \dot{P}\\ \dot{Q} \end{pmatrix} =
+% %  \begin{pmatrix} -\frac{1+n}{\alpha-n} & 0 \\  (b- \lambda)r_1 & -1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix},
+% % \end{align*}
+% % and we see the two negative eigenvalues of the coefficient matrix. The claim is shown.
+% % 
+% \medskip
+% \noindent{\bf Claim 2.}
+% The triangle $T$  is positively invariant for the system $(R)$ with $(\lambda,\alpha,n=0)$.
+% \medskip
+% 
+% When $n=0$, the explicit formula for the graph is available, which makes $(R)$ even simpler,
+% \begin{align*}
+%  \dot{p} &= -\frac{D}{\alpha} p\Big(d_1+q+\lambda p h\Big),\\
+%  \dot{q} &= q\Big(1-q-\lambda p h\Big) + b p h.
+% \end{align*}
+% 
+% 
+% 
+% We compute the inward normal component of $(\dot{p},\dot{q})$ on three sides of the $T$. On $p$-axis, the inward normal vector is $(0,1)$ and $(\dot{p},\dot{q})\cdot(0,1)=bpr\ge0$. On $q$-axis, the inward normal vector is $(1,0)$ and $(\dot{p},\dot{q})\cdot(1,0)=0$. Lastly for the hypotenuse, recall that it is the contour line $\underbar{r}=h(p,q,n=0)$, or $q + \lambda p\underbar{r} = \frac{\alpha}{\lambda}(r_0-\underbar{r})$. Define $\underbar{p}$ and $\underbar{q}$ to be the $p$-intercept and $q$-intercept of the contour line, or $\underbar{q} = \lambda \underbar{p}\underbar{r} = \frac{\alpha}{\lambda}(r_0-\underbar{r})$. Then $(-\underbar{q},-\underbar{p})$ is an inward normal vector on the contour line. We compute
+% \begin{align*}
+%     (\dot{p},\dot{q}) \cdot (-\underbar{q},-\underbar{p}) &= \frac{D}{\alpha}\underbar{q}p\Big(d_1 + q + \lambda p \underbar{r}\Big) -\underbar{p}\bigg\{q\Big(1-q-\lambda p \underbar{r}\Big) + b p \underbar{r}\bigg\}\\
+%     &=\frac{D}{\alpha}\underbar{q}p\Big(d_1 +\underbar{q}\Big) -\underbar{p}\bigg\{\Big(\underbar{q}-\lambda p \underbar{r}\Big)\Big(1-\underbar{q}\Big) + b p \underbar{r}\bigg\}\\
+%     &=-\underbar{p}\underbar{q}(1-\underbar{q}) + \underbar{q}p\Big(\frac{D}{\alpha}d_1 + \frac{D}{\alpha}\underbar{q} + (1-\underbar{q}) - \frac{b}{\lambda}\Big)\\
+%     &=-\underbar{p}\underbar{q}(1-\underbar{q}) + \underbar{q}p\frac{1+\alpha}{\lambda}\Big(\frac{1}{1+\alpha}-\underbar{r}\Big)\\
+%     &\ge -\underbar{p}\underbar{q}(1-\underbar{q}) \quad \text{since $\underbar{r} < \frac{1}{1+\alpha}$}\\
+%     &\ge \delta_0 > 0.
+% \end{align*}
+% Thus the claim 2 is shown. In particular $\delta_0$ can be taken regardless of $n$.
+% 
+% \medskip
+% \noindent{\bf Claim 3.}
+% The triangle $T$  is positively invariant for the system $(R)$ with $(\lambda,\alpha,n)$ provided $n$ is sufficiently small.
+% \medskip
+% 
+% Same reasonings apply on the $p$-axis and the $q$-axis, so it is sufficient to show that the flow is inward on the hypotenuse. Now the hypotenuse is not anymore a contour line of the function $h(p,q;\lambda,\alpha,n)$. We arrange terms of right-hand-sides of $(R)$ in the form
+% \begin{align*}
+%  {\dpp}&=p\bigg\{\Big[\frac{1+\alpha}{\lambda }\Big(\underbar{r}-c_0\Big)\Big] -\Big[d_1 + q + \lambda p\underbar{r}\Big]\bigg\} + \underbrace{p\bigg\{\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(h^{1+n}-c_0\Big)\Big]-\Big[\frac{1+\alpha}{\lambda }\Big(\underbar{r}-c_0\Big)\Big] -\lambda p(h-\underbar{r})\Big]\bigg\}}_\text{$\triangleq g_1(p,q,n)$},\\
+%  {\dqq}&=q\Big(1-q-\lambda p \underbar{r}\Big) + bp\underbar{r} + \underbrace{(-q\lambda p+b) (h-\underbar{r})}_\text{$\triangleq g_2(p,q,n)$}.
+% \end{align*}
+% Since $h$ is a smooth function of $n$ and $D$ is compact, provided $n$ is sufficiently small, we have an estimate
+% \begin{equation}
+%  |g_1(p,q,n)| + |g_2(p,q,n)| \le C_0 n, \quad \text{where $C_0$ does not depend on $p$, $q$, and $n$.}
+% \end{equation}
+% Therefore
+% $$ (\dot{p},\dot{q}) \cdot(-\underbar{q},-\underbar{p}) \ge \delta_0 + C_0'n \quad \text{for another uniform constant $C_0'$}.$$
+% Taking $n$ sufficiently small, say $n<n_0<n_1$, so that the last expression is positive gives the proof of the claim. 
+% 
+% \medskip
+% Now, consider the orbit $\chi(\eta)$ emanates from $M_0$ that is on the graph $G(\lambda,\alpha,n)$ and in the same time through the direction $X_{02}$ (towards the first octant). This orbit segment exists due to the Stable(unstable) manifold theorem of the hyperbolic equilibrium point and it survives unless it leaves the locally invariant manifold $G(\lambda,\alpha,n)$ through the boundary. 
+% 
+% While the orbit is on the manifold, its projection $\tilde\chi(\eta)$ on $(p,q)$-plane satisfies \eqref{eq:reduced}. By Claim 2 and 3, the orbit $\tilde\chi(\eta)$ cannot escape the triangle $T$ and orbit exists for $\eta \in (-\infty,\infty)$ because the right-hand-sides of \eqref{eq:reduced} are bounded in $T$.
+% 
+% Next, consider the $\omega$-limit set of the $\tilde\chi(\eta)$. It cannot contain the limit cycle since there is no equilibrium point interior of $T$. Then, the Poincar\'e-Bendixson Theorem implies that its $\omega$-limit point consists of equlibrium points. $(0,0)$ cannot be the one because it is unstable node, concluding that $\tilde\chi(\eta) \rightarrow (0,1)$ as $\eta \rightarrow \infty$. The lifting of the orbit in the three dimensional phase space by $r=h(p,q;\lambda,\alpha,n)$ is the desired heteroclinic orbit.
+% \end{proof}
+
+\section{Existence of two-parameters family of self-similar shear banding solutions and asymptotics}
+% The dynamical system has a translation invariance, i.e., if $\chi(\eta)$ is a heteroclinic orbit, then so is a $\chi(\eta-\eta_0)$ for any $\eta_0\in \mathbb{R}$, implying that we have constructed in fact infinitely many heteroclinics. It turns out that all of them are relevant.  Besides of $\eta_0$, we have been using a few other parameters and this points to that we have constructed a family of solutions with a certain degrees of freedom. We precise relationships between parameters and the total number of independent parameters because not all of parameters are independent.
+% 
+% To begin with, fix any referential heteroclinic orbit $Z(\eta)=\big(P(\eta),Q(\eta),R(\eta)\big)$, which is characterized by the unique constant $\bar{\kappa}$ in the expansion around the $M_0$ such that
+% $$ Z(\eta) = \bar{\kappa}e^{2\eta}X_{02} + \text{higer-order terms as $\eta \rightarrow -\infty$.}$$%, with the associated constant $\bar{\kappa}$.}$$
+% We set our heteroclinic orbit $\chi(\eta) = Z(\eta-\eta_0)$ and show how to fix $\eta_0$. From the proposition \ref{prop1}, 
+% $$ \kappa = \Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}}=\lim_{\eta \rightarrow -\infty} e^{-2\eta}\chi(\eta)  = \lim_{\eta \rightarrow -\infty} e^{-2\eta} Z(\eta-\eta_0) =\bar{\kappa}e^{-2\eta_0}.$$
+% By treating $U(0)$ and $\Theta(0)$ as the primary parameters, $\eta_0$ is determined by
+% \begin{equation}
+%  \eta_0 = \frac{1}{2} \log\Big(\bar{\kappa} \Big(\frac{U(0)}{\Phi(0)}\Big)^{n}\Phi(0)^{-1-\frac{\alpha-n}{1+\alpha}}  \Big) = \frac{1}{2} \log\Big(\bar{\kappa} U(0)^n \Theta(0)^{-\alpha-\frac{1+\alpha}{1+n}}  \Big). \label{eq:eta0}
+% \end{equation}
+% 
+% Next, we check that 
+% $$ \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} = \lim_{\eta \rightarrow -\infty} r^{1+n} = c_0 = \frac{2}{D} + \frac{2+2n}{D}\lambda.$$
+% Again, by treating $U(0)$ and $\Theta(0)$ as the primary parameters, we obtain
+% \begin{equation}
+%  \lambda = \frac{D}{2+2n}\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} - \frac{2}{2+2n}. \label{eq:lambda}
+% \end{equation}
+% Now, we find the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ is restricted by \eqref{eq:r1posineq},
+% \begin{equation} \label{eq:restriction}
+%  \frac{2}{1+2\alpha-n} < \frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}} < \frac{2}{1+n}.
+% \end{equation}
+% 
+% 
+% 
+% The rest of the parameters $\alpha$ and $n$ are the material properties. In conclusion, for each of the material characterized by $\alpha$ and $n\ll1$, we have constructed the two-parameters family of heteroclinic orbits parameterized by $U(0)$ and $\Theta(0)$, where the localizing rate $\lambda$ and the translational factor $\eta_0$ are determined by \eqref{eq:lambda} and \eqref{eq:eta0} respectively, and the valid range of the ratio $\frac{U(0)^{1+n}}{\Theta(0)^{1+\alpha}}$ for the Theorem \ref{thm1} to apply is restricted by \eqref{eq:restriction}.
+
+
+\subsection{Asymptotic behavior of the solutions}
+By transforming back the \eqref{eq:ORItoCAP}, \eqref{eq:CAPtoBAR}, and \eqref{eq:BARtoTIL}, the self-similar profiles $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ and the original profiles $\big(\gamma(x,t),v(x,t),\theta(x,t),\sigma(x,t),u(x,t)\big)$ are recovered.
+We replace $t \leftarrow t+1$ in the final expressions,
+\begin{equation*}
+\begin{aligned}
+ \gamma(t,x) &= (t+1)^a\Gamma((t+1)^\lambda x), & v(t,x) &= (t+1)^b V((t+1)^\lambda x), &\theta(t,x) &= (t+1)^c \Theta((t+1)^\lambda x),\\
+ \sigma(t,x) &= (t+1)^d \Sigma((t+1)^\lambda x), & u(t,x) &= (t+1)^{b+\lambda} U((t+1)^\lambda x),
+\end{aligned}
+\end{equation*}
+by which we interpret $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)=\big(\gamma(0,x),v(0,x),\theta(0,x),\sigma(0,x),u(0,x)\big)|_{x=\xi}$,  the initial states that give rise to the localization. In the following sections, we examine characteristics of these two-parameter family of initial states and discuss the emergence of localization from them as time proceeds.
+
+\subsubsection{Initial non-uniformities}
+In this section, we state that each of the strain, strain-rate, and temperature has a small bump at the origin out of the asymptotically flat state, whose tip sizes are parameterized by $U(0)$ and $\Theta(0)$. Accordingly, the velocity is an increasing function of $x$ that has a slightly steeper slope at origin than the rest of the place; the stress is then the convex increasing function of $|x|$. These states are viewed as perturbations of a snapshot at a certain time of the uniform shearing motion. 
+
+% Now, we fix the two primary parameters $U(0)$ and $\Theta(0)$ and look into the 
+% 
+% 
+% In this section we contrast the initial non-uniformities $\big(\gamma(0,x),v(0,x),\theta(0,x),\sigma(0,x),u(0,x)\big)=\\ \big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)|_{\xi=x}$ from the one snapshot at a certain time of the uniform shearing motion. 
+\begin{proposition}
+Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be the self-similar profiles that a defined by transformations of \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, and \eqref{eq:pqrdef} upon to the heteroclinic orbit $\chi(\eta)=\big(p(\eta),q(\eta),r(\eta)\big)$ that is constructed by Theorem \ref{thm1} in the valid range of the parameters $U(0)$ and $\Theta(0)$ of \eqref{eq:restriction}. Then, 
+ \begin{enumerate}
+  \item[(i)] The self-similar profile achieves the boundary condition at $\xi=0$,
+    \begin{equation*}
+    {V}(0) = \Gamma_\xi(0) = \Theta_\xi(0)=\Sigma_\xi(0) = {U}_\xi(0)=0, \quad \text{$U(0), \Theta(0)$ are given parameters.}
+  \end{equation*}
+  \item[(ii)] Its asymptotic behavior as $\xi \rightarrow 0$ is given by 
+  \begin{equation} \label{eq:ss_asymp0}
+  \begin{aligned}
+    \Gamma(\xi) &= \frac{1}{a}U(0) + \Gamma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Gamma^{''}(0)&<0,\\
+    \Theta(\xi) &= \Theta(0) + \Theta^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Theta^{''}(0)&<0,\\
+    \Sigma(\xi) &= \Theta(0)^{-\alpha}{U(0)^n}+ \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Sigma^{''}(0)&>0, \\
+    U(\xi) &= U(0) + U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & U^{''}(0)&<0,\\
+    V(\xi) &= U(0)\xi + U^{''}(0)\frac{\xi^3}{6} + o(\xi^3), & U^{''}(0)&<0.
+  \end{aligned}
+  \end{equation}
+  \item[(iii)] Its asymptotic behavior as $\xi \rightarrow \infty$ is given by
+  \begin{equation} \label{eq:ss_asymp1}
+  \begin{aligned}
+    \Gamma(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-m-n}}), & V(\xi) &= O(1), &    \Theta(\xi) &= O(\xi^{-\frac{1+m+n}{\alpha-m-n}}),\\
+   \Sigma(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-m-n}}).
+  \end{aligned}
+  \end{equation}
+ \end{enumerate}
+ 
+\end{proposition}
+\begin{proof}
+The proof of the Proposition \ref{prop1} contains $(i)$ and $(ii)$ (See \eqref{eq:second_der}.) and thus we are left to prove $(iii)$. {\red proof for $(iii)$ !}
+
+% By \eqref{eq:estimate}, $p(\log\xi) \rightarrow 0$, $q(\log\xi) \rightarrow 1$, and $r^{1+n}(\log\xi)=\frac{U(\xi)^{1+n}}{\Theta(\xi)^{1+\alpha}} \rightarrow r_1^{1+n}$ as $\xi \rightarrow\infty$. From $\eqref{eq:ss-odes}_{3}$, we observe that
+% $$ \frac{\lambda}{1+\alpha} \frac{\xi\Theta'(\xi)}{\Theta(\xi)} \rightarrow r_1 - c = -\frac{1+n}{\alpha-n}, \quad \text{as $\xi \rightarrow \infty$}.$$
+% 
+% 
+% 
+\begin{align*}
+ \tv &= \frac{1}{b} \,p^{-\frac{\alpha-n}{D}} \,q\, r^{\frac{n(1+\alpha)}{D}}, & \tth&=p^{\frac{1+n}{D}}\,r^{\frac{n(1+n)}{D}}, & \ts&=p^{-\frac{\alpha-n}{D}}\,r^{\frac{n(1+\alpha)}{D}}, & \tu&=p^{\frac{1+\alpha}{D}}\,r^{\frac{n(1+\alpha)}{D}+1}
+\end{align*}
+% 
+% $p \sim \xi^{-\frac{1+n}{1+\alpha}}$
+% 
+% $$ \tv \sim \xi^{-\frac{1+n}{D}}, \quad \tth \sim \xi^{-\frac{(1+n)^2}{(\alpha-n)D}}, \quad \ts \sim \xi^{\frac{1+n}{D}}, \quad \tu \sim \xi^{-\frac{(1+n)(1+\alpha)}{(\alpha-n)D}}$$
+% 
+% $$ V \sim O(1), \quad \Theta \sim \xi^{-\frac{1+n}{\alpha-n}}, \quad \Sigma \sim \xi, \quad U \sim \xi^{-\frac{1+\alpha}{\alpha-n}}.$$
+\end{proof}
+
+\subsubsection{Emergence of localization}
+As time proceeds, the initial states evolve out emerging the localization and this section is devoted to specify this localization: the difference in the growth or decay rate at the origin and the rest of the place are contrasted in order to illustrate the emergence of the localization. 
+\begin{itemize}
+ \item Strain : The strain always increases at a fixed $x$ as time proceeds. However the growth rate at the origin is faster than the rest of the places,
+\begin{align*}
+ \gamma(t,0) &= (1+t)^{1+\frac{1+m}{D} + \frac{2+2\alpha}{D}\lambda}\Gamma(0), &
+ \gamma(t,x) &\sim t^{1+\frac{1+m}{D} - \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+Note that the rate of the latter always greater than $\frac{n}{1+n}$ in the valid range of the $\lambda$ of \eqref{eq:r1posineq}.
+\item Strain rate : The growth rates of the strain-rate is by definition less by one to those of the strain, again illustrating the localization.
+\begin{align*}
+ u(t,0) &= (1+t)^{\frac{1+m}{D} + \frac{2+2\alpha}{D}\lambda}U(0),&
+ u(t,x) &\sim t^{\frac{1+m}{D} - \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+\item Temperature : The temperature always increases at a fixed $x$ as time proceeds as well as the strain does. The growth rate at the origin is faster than the rest of the places,
+\begin{align*}
+ \theta(t,0) &= (1+t)^{\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda}\Theta(0),&
+ \theta(t,x) &\sim t^{\frac{2(1+m)}{D} - \frac{(1+m+n)^2}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+m+n}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+\item Stress : The stress always decreases at a fixed $x$ as time proceeds. However, the decay rate at the origin is faster than the rest of the places,
+\begin{align*}
+ \sigma(t,0) &= (1+t)^{\frac{-2\alpha+2m+n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda}\Sigma(0), &
+ \sigma(t,x) &\sim t^{\frac{-2\alpha+2m+n}{D} +\frac{1+m+n}{D}\lambda}|x|, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+{\red Note that the rate of the latter always less than $-\frac{n}{1+n}$ in the valid range of the $\lambda$.}
+\item Velocity : The velocity at time $t$ is an increasing function of $x$ that takes a transition from $-v_\infty$ to $v_\infty$, as $x$ runs from $-\infty$ to $\infty$. It is an odd function of $x$ and there $v_\infty\triangleq \lim_{x \rightarrow \infty} v(t,x)$. Because of the scaling law $\xi=(1+t)^\lambda x$, the region around the origin that the  most of transition takes place becomes narrower as time goes by and the slope becomes steeper accordingly. It eventually forms the step-function type singularity at origin. Note that the asymptotic limit $$v_\infty(t)=(1+t)^{b}V_\infty = (1+t)^{\frac{1+m}{D} + \frac{1+m+n}{D}\lambda}V_\infty, \quad V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi) <\infty$$
+grows at polynomial rate. This dictates that the far field loading condition for the velocity does not exactly coincide to that of uniform shearing motion, where one sets the time independent velocity at the boundary. Thus, the particle gets faster as it moves forward in our solution. This deviation is obviously a consequence of our simplifying assumption of self-similarity.
+\end{itemize}
+
+% \section*{Appendix A. Coefficient matrices for the linearized system} \label{append:linear}
+% Using
+% \begin{align*}
+%  (r+R)^{1+n} = \begin{cases}
+%                 R^{1+n} &\text{if $r=0$},\\
+%                 r^{1+n}\Big(1+\frac{R}{r}\Big)^{1+n} = r^{1+n} + (1+n)r^nR + \mathcal{O}(\delta^2), & \text{if $r>\bar{r}>0$,}
+%                \end{cases}
+% \end{align*}
+% the linearized system around the equilibrium point is:
+% 
+% \noindent
+% {\bf Cases $r=0$, $p=0$, $q=0$ or $q=1$}
+% \begin{align*}
+%  \dot{P} &=P\Big(-q-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1\Big),\\
+%  \dot{Q} &=Q(1-q) -qQ,\\
+%  \dot{R} &=\frac{R}{n}\Big(q-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1 \Big).
+% \end{align*}
+% \noindent
+% {\bf Cases $\Big( \frac{\alpha-n}{\lambda(1+n)} r^{1+n} - \frac{\alpha-n}{\lambda(1+n)}c_0 + d_1 + q \Big)=0$, $p=0$, $q=0$ or $q=1$}
+% \begin{align*}
+%  \dot{P}&=P\Big( \frac{1+\alpha}{\lambda(1+n)} r^{1+n} - \frac{1+\alpha}{\lambda(1+n)} c_0 -d_1-q\Big) = P\Big(-\frac{D}{\alpha-n}(d_1+q)\Big),\\
+%  \dot{Q}&=Q(1-q) +q(-Q-\lambda Pr) + bPr,\\
+%  \dot{R}&=\frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big) + \frac{R}{n}\Big(\frac{\alpha-n}{\lambda(1+n)}r^{1+n}-\frac{\alpha-n}{\lambda(1+n)}r^{1+n}c_0 + d_1 +q\Big) = \frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big)
+% \end{align*}
+% 
+% Coefficients Matrices $Mat_i$ for Linearized equations around $M_i$, $i=0,1,2,3$: 
+% \begin{align*}
+%  Mat_0 &= \begin{pmatrix}
+%           -\frac{D}{\alpha-n}(d_1) & 0 & 0\\
+%           br_0 & 1 & 0\\
+%           \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
+%          \end{pmatrix}
+%         = \begin{pmatrix}
+%           2 & 0 & 0\\
+%           br_0 & 1 & 0\\
+%           \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
+%          \end{pmatrix}\\
+%  Mat_1 &= \begin{pmatrix}
+%           -\frac{D}{\alpha-n}(d_1+1) & 0 & 0\\
+%           (b-\lambda)r_1 & -1 & 0\\
+%           \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
+%          \end{pmatrix}
+%         =\begin{pmatrix}
+%           -\frac{1+n}{\alpha-n} & 0 & 0\\
+%           (b-\lambda)r_1 & -1 & 0\\
+%           \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
+%          \end{pmatrix}\\
+%  Mat_2 &= \begin{pmatrix}
+% 	  -1-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
+% 	  0 & -1 & 0\\
+% 	  0 & 0 & \frac{1}{n}\Big(1-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+%          \end{pmatrix}
+%         = \begin{pmatrix}
+% 	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} + \frac{(1+n)^2}{D(1+\alpha)}\lambda\Big) & 0 & 0\\
+% 	  0 & -1 & 0\\
+% 	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_1^{1+n}
+%          \end{pmatrix}\\
+%  Mat_3 &= \begin{pmatrix}
+% 	  -\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
+% 	  0 & 1 & 0\\
+% 	  0 & 0 & \frac{1}{n}\Big(-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+%          \end{pmatrix}
+% 	=\begin{pmatrix}
+% 	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} - \frac{2(\alpha-n)(1+n)}{D(1+\alpha)}\lambda\Big)& 0 & 0\\
+% 	  0 & 1 & 0\\
+% 	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_0^{1+n}
+%          \end{pmatrix}
+% \end{align*}
+% The lower triangular matrix has the eigenvalues and eigenvectors such that
+% \begin{align*}
+%  MAT &= \begin{pmatrix}
+%         A & 0 & 0\\
+%         B & C & 0\\
+%         D & E & F
+%        \end{pmatrix}, \quad
+%  \mu_1 = A, \quad\mu_2 = C, \quad\mu_3 = F,\\
+%  v_1 &= \Big( \frac{ (A-C)(A-F) }{ D(A-C) + BE }, \frac{ B(A-F) }{ D(A-C) + BE }, 1), \quad  v_2 = (0, \frac{C-F}{E}, 1), \quad v_3 = (0,0,1).
+% \end{align*}
+% The eigenvectors in Section \ref{sec:equil} took the suitable normalization.
+% \begin{align*}
+%  &X_{01} = \bigg( \Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;1\bigg),\quad
+%  X_{02} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+%  X_{03} = (0,0,1),\\
+%  &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\
+%  &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+%  X_{13} = (0,0,1),
+% \end{align*}
+\begin{thebibliography}{10}
+
+\bibitem{bertsch_effect_1991}
+{\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel}, 
+The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
+{\em SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
+
+\bibitem{dafermos_adiabatic_1983}
+{\sc C.~M. Dafermos and L.~Hsiao}, 
+Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
+{\em Quart.  Applied Math.} {\bf 41} (1983), 45--58.
+
+\bibitem{fenichel_geometric_1979}
+{\sc N.~Fenichel}, 
+Geometric singular perturbation theory for ordinary differential equations, 
+{\it J. Differ. Equations} {\bf 31} (1979), 53--98.
+
+\bibitem{FM87}
+{\sc C.~Fressengeas and A.~Molinari}, 
+Instability and localization of plastic flow in shear at high strain rates, 
+  {\em J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
+
+\bibitem{jones_geometric_1995}
+{\sc C.~K. R.~T. Jones}, 
+Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+  
+  
+\bibitem{KOT14}
+{\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras}, 
+Emergence of coherent localized structures in shear deformations of
+  temperature dependent fluids, {\em Archive for Rational Mechanics and Analysis}, to appear.
+
+\bibitem{LT16}
+{\sc M.-G.~Lee and A.E.~Tzavaras},
+Existence of localizing solutions in plasticity via the geometric singular perturbation theory, arXiv preprint arXiv:xxxx.xxxxx,  (2016)
+
+\bibitem{KLT_2016}
+{\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras}, 
+Localization in inelastic rate dependent shearing deformations, arXiv preprint arXiv:1605.04564,  (2016).
+
+% \bibitem{perko_differential_2001}
+% {\sc L.~Perko}, 
+% {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).  
+
+\bibitem{Tz_1986}
+{\sc A.E. Tzavaras},
+Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
+{\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
+
+\bibitem{Tz_1987}
+{\sc A.E. Tzavaras}, 
+Effect of thermal softening in shearing of strain-rate dependent materials.
+{\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
+
+
+\end{thebibliography}
+
+\end{document}	
+
+\pagebreak
+
+\begin{proof}
+
+
+
+
+
+Note that $\tilde{X}_{02}$ is toward $T$. By the stable(unstable) manifold theorem, there is an orbit $\chi(\eta)$ in the neighborhood of $M_0$ in particular emanates through the ${X}_{02}$ and tangentially on the graph. The projected orbit $\tilde{\chi}(\eta)$ into $T$. In the positively invariant set $T$, the Poincar\'e-Bendixon theorem implies that the $\omega$-limit set of $\chi(\eta)$ cannot contain limit cycle because if so, there would be an equilibrium point in interior of the limit cycle but there are no equilibrium points in interior of $T$. In addition, recall that $\tilde{M_0}$ is an unstable node and $\tilde{M_1}$ is an stable node. In conclusion, the orbit $\chi(\eta)$ has to converge to $\tilde{M_1}$. The lifting of this orbit to the graph is the desired heteroclinic orbit.
+
+
+
+
+
+
+By Lemma \ref{lem:normal_hyper}, there exists $n_0$, such that for $n \in [0, n_0)$, locally invariant manifold $G^{\lambda,m,n}$ with respect to \eqref{eq:pqr_fast} exists. Moreover,   $G^{\lambda,m,n}$ is again given by the graph $(p,q,h(p,q;\lambda,\alpha,n))$ on $\bar{D}$. The condition that $G^{\lambda,m,n}$ is disjoint from $r=0$ plane for all $n \in [0, n_0)$ must persist by making $n_0$ smaller if necessary. In addition, $n_0$ is chosen in the valid range of inequalities \eqref{eq:a3} and \eqref{eq:a4}.%$h(p,q;\lambda,\alpha,n)>0$ in the domain of definition for all $0\le n\le n_2$ has to persist by taking $K^{\lambda,m,0}$ and $n_2$ appropriately.  %On this surface, $r$ evolves such a way staying in the surface.
+
+After achieving $h(p,q;\lambda,\alpha,n)$, substitution of the function in place of $r$ in system \eqref{eq:pqrsystem} leads to  the reduced systems that are parametrized by $\lambda$, $m$, and $n\in[0,n_0)$:
+% {\small
+% \begin{align} \tag*{($\tilde{*}$){\scriptsize re}\textsuperscript{$\lambda,m,n$}} \label{eq:reduced_fast}
+% %  \begin{split}
+%  {p}^\prime &=np\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+%  {q}^\prime &=nq\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + nb^{\lambda,m,n}ph(p,q;\lambda,\alpha,n), \
+% %  \end{split}
+% \end{align}
+% }
+% and the equivalent systems with independent variable $\eta$: %${(*)}^{\lambda,m,n}_{re}$ :
+
+
+\medskip \noindent{\bf Step 2.}
+ $M_0^{\lambda,m,n}$ and $M_1^{\lambda,m,n}$ are still on the graph.
+\medskip
+
+In fact, only $M_1^{ \lambda,1,n}$ needs to be checked because, other than that, the equilibrium points are hyperbolic. At $(p,q)=(0,1)$, from the system \eqref{eq:reduced}, we see $\dot{p} = \dot{q} = 0$. Now $\dot{r} = \frac{\partial h^{\lambda,1,n}}{\partial p} \dot{p} + \frac{\partial h^{\lambda,1,n}}{\partial q} \dot{q} = 0$ %unless possibly $\frac{\partial h^{\lambda,1,n}}{\partial p}$ or $\frac{\partial h^{\lambda,1,n}}{\partial q}$ diverges.
+because the derivatives of $h^{\lambda,1,0}$ do not diverge and derivatives of $h^{\lambda,1,n}$ are close to them. This equilibrium point must be $M_1^{\lambda,1,n}$ since there is no other equilibrium point near $M_1^{\lambda,1,n}$. Similar reasoning in fact applies for the hyperbolic equilibrium points.
+
+% {\red
+\medskip
+Recall that $M_0^{\lambda,m,n}$ is an unstable node and $M_1^{\lambda,m,n}$ is a saddle point. Here, we inspect the linear stability restricted in the tangent space of the surface $G^{\lambda,m,n}$ at $M_0^{\lambda,m,n}$ and at $M_1^{\lambda,m,n}$ respectively.
+
+\medskip \noindent{\bf Step 3.}
+ $(0,0)$, the projection on the $pq$-plane of $M_0^{\lambda,m,n}$, is an unstable node with respect to \eqref{eq:reduced}. $(0,1)$, that of $M_1^{\lambda,m,n}$, is a stable node with respect to \eqref{eq:reduced}.
+\medskip
+
+Let the perturbations of $p$ and $q$ be $P$ and $Q$, respectively and write
+$$h(p+P,q+Q) = h(p,q) + P\frac{\partial h}{\partial p}(p,q) + Q\frac{\partial h}{\partial q}(p,q) + \text{higer-order terms}.$$
+Around $(p,q) = (0,0)$, after discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} 2 & 0 \\  ab & 1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix}.
+\end{align*}
+from whose coefficient matrix we see two positive eigenvalues. Around $(p,q) = (0,1)$, after discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} -\frac{1-m+n}{m-n} & 0 \\  (b- \lambda)c & -1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix},
+\end{align*}
+from whose coefficient matrix we see two negative eigenvalues. %}
+
+\medskip \noindent{\bf Step 4.}
+ $T$ is positively invariant under the flow \eqref{eq:reduced} if $n$ is sufficiently small.
+\medskip
+
+First, we show the claim when $n=0$ and prove that it persists under the perturbation. Consider the system $(R)^{\lambda,m,0}$. On $p=0$, it is invariant; on $q=0$, the inward normal vector is $(0,1)$ and the inward flow $\dot{q} = b^{ \lambda,m,0}ph^{ \lambda,m,0} \ge 0$. On the hypotenuse contour line, if $\underbar{p}$ is the $p$-intercept and $\underbar{q}$ is the $q$-intercept, that is
+$$ \underbar{q} = \frac{2m}{1+m}-\frac{m}{ \lambda } \big( \underbar{r} - \frac{2}{1+m} \big), \quad \underbar{p} = \frac{ \underbar{q} }{ \lambda \underbar{r} },$$
+then $(-\underbar{q}, -\underbar{p})$ is an inward normal vector.
+% Then the inward normal vector is $(-\underbar{q}, -\underbar{p})$. We now compute the dot product of the inward normal vector and the vector field of system. we compute it can be written in terms of $q$ and $\underbar{r}$.
+The inward normal component of the vector field on the line is then
+\begin{align*}
+ (-\underbar{q}, &-\underbar{p}) \cdot ( \dot{p}, \dot{q} ) \\
+ %&= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(\underbar{r} - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p \underbar{r}\Big)-\underbar{p}q(1-q- \lambda p \underbar{r}) - \underbar{p}b(\lambda,m,0)p\underbar{r} \\
+ %&= -\underbar{q}p\Big( \big(\frac{2m}{1+m} -\underbar{q}\big) \big(1+ \frac{1}{m}\big)\Big)-\underbar{p}(\underbar{q} - \lambda \underbar{r}p)(1-\underbar{q}) - \frac{b^{\lambda,m,0}}{\lambda} \underbar{q} p \\
+ &=-\underbar{p}\underbar{q}(1-\underbar{q}) - p \frac{\underbar{q}}{m}\Big( \frac{2m}{1+m} - \frac{m}{ \lambda} \big( 1-\frac{2}{1+m} \big) - \underbar{q}\Big)\\
+ &\ge -\underbar{p}\underbar{q}(1-\underbar{q}) \\%\quad \text{if $\underbar{r} < 1$} \\
+ &=: \delta >0.
+%  -q(1-q- \lambda p \underbar{r}) - b(\lambda,m,0)p\underbar{r} \\
+%  &=-\lambda \underbar{r}p\Big(\frac{1+m}{ \lambda }\big(\underbar{r}- \frac{2}{1+m}\big)\Big) -q\Big(\frac{m}{ \lambda } \big(\underbar{r} - \frac{2}{1+m}\big) + \frac{1-m}{1+m}\Big) - \frac{1-m}{1+m}(1 + \lambda) p\underbar{r}\\
+%  &=-\lambda \underbar{r}p\Big(\frac{1+m}{ \lambda }\big(\underbar{r}- \frac{2}{1+m}\big) + \frac{1-m}{1+m} \frac{1 + \lambda}{ \lambda}\Big)
+\end{align*}
+The inequality comes from $0<\underbar{r} < c^{ \lambda,m,0} \le 1$. $\delta$ is a fixed constant that is strictly positive, proving that the triangle $T$ is invariant.
+
+
+Now, we show that this positively invariant property persists under perturbation. We examine the same triangle $T$ but with  the system ${(R)}^{\lambda,m,n}$ with $n>0$. % we took for $n=0$ case. %We may take $\underbar{r}$ so that $h(p,q;\lambda,\alpha,n)$ includes the triangle in the domain of definition.
+Again, sides of $p=0$ and $q=0$ are invariant or inward for the same reason. Now, the line of the hypotenuse of $T$ is no longer a contour line of $h^{ \lambda,m,n}(p,q)=\underbar{r}$, but $h^{ \lambda,m,n}(p,q)$ remains close to $\underbar{r}$, that is
+$$h^{ \lambda,m,n}(p,q) = \underbar{r} + ng_1(n,p,q), \quad \text{by Taylor theorem.}$$
+{$g_1$ is uniformly bounded  in $n$, $p$, and $q$.} The inward normal component of the vector field on the line is computed as
+\begin{align*}
+ (-\underbar{q}, &-\underbar{p}) \cdot ( \dot{p}, \dot{q} ) \\
+ &= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(h(p,q) - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p h(p,q)\Big)-\underbar{p}q(1-q- \lambda p h(p,q)) \\&- \underbar{p}b^{\lambda,m,n}ph(p,q) \\
+ &= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(\underbar{r} - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p \underbar{r}\Big)-\underbar{p}q(1-q- \lambda p \underbar{r}) - \underbar{p}b^{\lambda,m,0}p\underbar{r} \\
+ &+n\Big(-\underbar{q}p\big( \frac{1}{ \lambda } g_1 - \lambda p g_1\big) - \underbar{p}q\big(- \lambda p g_1\big)\Big) - \underbar{p}\big( \frac{b^{\lambda,m,n}-b^{\lambda,m,0}}{n}p\underbar{r} + b^{\lambda,m,n} p g_1\big)\Big)\\
+ &=-\underbar{p}\underbar{q}(1-\underbar{q}) - p \frac{\underbar{q}}{m}\Big( \frac{2m}{1+m} + \frac{m}{ \lambda} \big( \frac{2}{1+m}-1 \big) - \underbar{q}\Big)\\
+ &+n\Big(-\underbar{q}p\big( \frac{1}{ \lambda } g_1 - \lambda p g_1\big) - \underbar{p}q\big(- \lambda p g_1\big)\Big) - \underbar{p}\big( \frac{b^{\lambda,m,n}-b^{\lambda,m,0}}{n}p\underbar{r} + b^{\lambda,m,n} p g_1\big)\Big)\\
+ &\ge \delta + ng_2(n,p,q),
+\end{align*}
+where $g_2(n,p,q)$ is the expression in the parentheses of the last equality that is multiplied by $n$, which is also uniformly bounded in $n$, $p$, and $q$. We have used $ b^{\lambda,m,n}-b^{\lambda,m,0}=n\frac{(1-m) + 2 \lambda}{(1+m-n)(1+m)}$.
+Therefore, $n_0$ can be chosen, even smaller if necessary, so that the last expression becomes positive. This proves the claim.
+
+
+\medskip
+
+% {\red
+Note that $\vec{X}_{02}$ is pointing inward of the triangle $T$ from $(0,0)$. Thus, the orbit emanating in $\vec{X}_{02}$ is continued to the interior of $T$ by the stable(unstable) manifold theorem. The $\omega$-limit set of this orbit cannot contain the limit cycle because when $n>0$, there is no equilibrium point inside of $T$ other than $(0,0)$ and $(0,1)$. Recall that $(0,0)$ is the unstable node and $(0,1)$ is the stable node. Thus, the Poincar\'e-Bendixson theory (for example in \cite{perko_differential_2001}) implies that the orbit converges to $(0,1)$.  The lifting of this orbit to the three dimensional phase space is the desired heteroclinic orbit. %whole triangle $T \subset W^s\big( (0,1)\big)$, proving the continued orbit converges to $(0,1)$. This orbit  the orbit Since , it is certain that the triangle $T$ contains the orbit responsible for the second unstable eigenspace of $M_0^{ \lambda,m,n}$, which completes the proof.
+% }
+\end{proof}
+
+
+
+
+\section{The model description}
+We consider a 1-d shear deformation of a material whose material law of stress depends on 1) temperature, 2) strain, 3) strain rate. The motion is described by following field variables,
+\begin{equation} \label{eq:vars}
+\begin{aligned}
+ \gamma(t,x) &: \text{strain}\\
+ u(t,x)=\gamma_t &: \text{strain rate}\\
+ v(t,x) &: \text{vertical velocity}\\
+ \theta(t,x) &: \text{temperature}\\
+ \sigma(t,x) &: \text{stress}
+\end{aligned}
+\end{equation}
+The material exhibits 1) temperature-softening, 2) strain-hardening, 3) rate-hardening. we denote the shear stress
+$$ \sigma = \sigma(\theta,\gamma,u). $$
+and study a model
+\begin{equation}
+ \sigma = \theta^{-\alpha}\gamma^m u^n. \label{eq:stresslaw}
+\end{equation}
+
+A few forehand perspectives :
+\begin{enumerate}
+ \item The regime where $-\alpha+m+n <0$ will exhibit the localization, whereas the regime $-\alpha+m+n > 0$ will exhibit stabilization. {\blue Can we rigorously study the linearize stability to the uniform shearing solution?}
+ \item The uniform shearing solution will appear as one of the self-similar solution by a specific $\lambda$ that is negative.
+\end{enumerate}
+\subsection{A system of conservation laws}
+For the field variables \eqref{eq:vars}, equations describing the deformation are given by
+\begin{align}
+ \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
+ v_t &= \sigma_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
+ \theta_t &= \sigma u \quad \text{(energy conservation)}	\label{eq:th}\\
+ \sigma &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
+\end{align}
+
+
+
+
+
+\subsection{Scale invariance property of the system}
+The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppose $(\gamma,u,v,\theta,\sigma)$ is a solution. Then a rescaled version of it
+\begin{align*}
+ \gamma_\rho(t,x) &= \rho^a\gamma(\rho^{-1}t,\rho^\lambda x), &
+ v_\rho(t,x) &= \rho^bv(\rho^{-1}t,\rho^\lambda x),\\
+ \theta_\rho(t,x) &= \rho^c\theta(\rho^{-1}t,\rho^\lambda x) &
+ \sigma_\rho(t,x) &= \rho^d\sigma(\rho^{-1}t,\rho^\lambda x),\\
+ u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x).
+\end{align*}
+
+Calculations :
+\begin{align*}
+ \text{let} \;f(t,x) = \rho^k F(\rho^{-1}t,\rho^\lambda x), \\
+ \partial_t f(t,x) = \rho^k \partial_{t'} F(\rho^{-1}t,\rho^\lambda x) \rho^{-1} = \rho^{k-1} \partial_{t'}F, \\
+ \partial_x f(t,x) = \rho^k \partial_{x'} F(\rho^{-1}t,\rho^\lambda x) \rho^\lambda = \rho^{k+\lambda} \partial_{x'}F.
+\end{align*}
+Relations for invariance :
+\begin{align*}
+ a-1 = b+\lambda, \quad b-1 = d+\lambda, \quad c-1 = d+b+\lambda, \quad d = -\alpha c + m a + n (b+\lambda)
+\end{align*}
+From above, we reach to exponents
+\begin{align*}
+ D & = 1+2\alpha-m-n,\\
+ a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, & b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
+ c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda
+\end{align*}
+for each $\lambda \in \mathbb{R}$. For localization, $\lambda>0$. But uniform shearing solution takes a negative $\lambda$.
+\subsection{Self-Similar variables}
+We try the solutions of type, i.e. put $\rho =t$ in the rescaling,
+\begin{align*}
+ \gamma(t,x) &= t^a\Gamma(t^\lambda x),\\
+ v(t,x) &= t^b V(t^\lambda x),\\
+ \theta(t,x) &= t^c \Theta(t^\lambda x),\\
+ \sigma(t,x) &= t^d \Sigma(t^\lambda x),\\
+ u(t,x) &= t^{b+\lambda} U(t^\lambda x)
+\end{align*}
+and set $\xi = t^\lambda x$.
+
+Calculations:
+\begin{align*}
+ &\text{Suppose } \; f(t,x) = t^k F(t^\lambda x),\\
+ &\partial_t f = k t^{k-1} F + t^k F' \lambda t^{\lambda-1} x = t^{k-1} (kF + \lambda\xi F'),\\
+ &\partial_x f = t^k F' t^\lambda = t^{k+\lambda} F',
+\end{align*}
+
+At \eqref{eq:g}-\eqref{eq:tau}:
+
+\begin{align*}
+ t^{a-1}(a \Gamma(\xi) + \lambda \xi \Gamma'(\xi)) &= t^{b+ \lambda} U(\xi),\\
+ t^{b-1}(b V(\xi) + \lambda \xi V'(\xi)) &= t^{d+ \lambda} \Sigma'(\xi)\\
+ t^{c-1}(c \Theta(\xi) + \lambda \xi \Theta'(\xi))&=t^{b+d+\lambda} \Sigma U(\xi),\\
+ t^d\Sigma(\xi) &= t^{-\alpha c +ma +n(b+ \lambda)} \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ t^{b+\lambda}V'(\xi)&=t^{b+\lambda}U(\xi)
+\end{align*}
+\begin{equation}
+\begin{aligned}
+ a \Gamma(\xi) + \lambda \xi \Gamma'(\xi) &= U(\xi),\\
+ b V(\xi) + \lambda \xi V'(\xi) &= \Sigma'(\xi)\\
+ c \Theta(\xi) + \lambda \xi \Theta'(\xi)&=\Sigma(\xi) U(\xi),\\
+ \Sigma(\xi) &= \Theta(\xi)^{-\alpha} \Gamma(\xi)^m U(\xi)^n,\\
+ V'(\xi)&=U(\xi)
+\end{aligned} \label{eq:ss-odes}
+\end{equation}
+\subsection{de-singularization}
+Introduce new field variables
+\begin{equation}
+\begin{aligned}
+ \Gamma(\xi) &= \xi^\ta \tg(\xi),\\
+ V(\xi)&=\xi^\tb \tv(\xi),\\
+ \Theta(\xi)&=\xi^\tc \tth(\xi),\\
+ \Sigma(\xi)&=\xi^\td \ts(\xi),\\
+ U(\xi)&=\xi^{\tb-1} \tu(\xi).
+\end{aligned}
+\end{equation}
+Then at \eqref{eq:ss-odes}:
+\begin{align*}
+ \xi^\ta\Big( a\tg + \lambda \ta \tg + \lambda\xi\tg'\Big) &=\xi^{\tb-1} \tu,\\
+ \xi^\tb\Big( b\tv + \lambda \tb \tv + \lambda\xi\tv'\Big) &=\xi^{\td-1} \Big(\td\ts + \xi\ts'\Big),\\
+ \xi^\tc\Big( c\tth+ \lambda \tc \tth+ \lambda\xi\tth'\Big)&=\xi^{\td+\tb-1} \ts\tu,\\
+ \xi^\td\ts &= \xi^{-\alpha \tc +m\ta +n(\tb-1)} \tth^{-\alpha} \tg^m \tu^n,\\
+ \xi^{\tb-1}\Big(\tb\tv + \xi \tv'\Big)&= \xi^{\tb-1} \tu.
+\end{align*}
+
+$\ta, \tb, \tc, \td$ such that
+\begin{align*}
+ &\ta=\tb-1, \quad \tb=\td-1, \quad \tc=\td+\tb-1,\quad \td = -\alpha \tc + m\ta +n(\tb-1) \\
+ \Longrightarrow \quad&\ta = -a_1, \quad \td = -d_1, \quad \tc = -c_1, \quad \tb=-b_1.
+\end{align*}
+
+\begin{equation} \label{eq:tildesys}
+ \begin{aligned}
+  a_0\tg + \lambda\xi\tg' &=\tu,\\
+  b_0\tv + \lambda\xi\tv' &=-d_1 \ts + \xi\ts',\\
+  c_0\tth+ \lambda\xi\tth'&=\ts\tu,\\
+  \ts &=\tth^{-\alpha}\tg^m\tu^n,\\
+  -b_1\tv+\xi\tv' &= \tu.
+ \end{aligned}
+\end{equation}
+
+Introduce the new independent variable $\eta = \log\xi$.
+
+\section{temperature softening model}
+We first focus on the problem where
+$$ \sigma = \sigma(\theta,u) = \theta^{-\alpha}u^n.$$
+Then the first equation \eqref{eq:g} drops out from the system, and we focus on the system
+\begin{equation} \label{eq:orisys}
+ \begin{aligned}
+  v_t &= \sigma_x,\\
+  \theta_t &= \sigma u,\\
+  \sigma &=\theta^{-\alpha}u^n.
+ \end{aligned}
+\end{equation}
+
+
+
+
+\section{Equilibrium points and linear stability}
+$(p,q,r)$-system possesses four equilibrium points\footnotemark[1] and the exceptional equilibriums that we are not interested in. They are
+\begin{align*}
+  (0,0,0), \quad \Big(0,0,\big(c_0-d_1\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(c_0-(d_1+1)\frac{1+n}{\alpha-n}\lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).\\
+ (0,0,0), \quad \Big(0,0,\big(\frac{2}{D} + \frac{2(1+n)}{D} \lambda\big)^{\frac{1}{1+n}}\Big), \quad \Big(0,1,\big(\frac{2}{D} -\frac{(1+n)^2}{D(\alpha-n)} \lambda\big)^{\frac{1}{1+n}}\Big), \quad (0,1,0).
+\end{align*}
+
+\footnotetext[1]{
+As a matter of facts, the (p,q,r)-system has one more equilibrium point that is not lied in the first octant, which is
+$$p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}},$$
+and is out of our interest for $q$ being negative.
+Beside of this one, when $\lambda$ takes exceptional values, the system has a line of equilibria that entirely lies on the plane $r=0$.
+These line of equilibria are not of our interests because we only look for solutions whose $r$ is away from $0$. For the clarity, we specifies the exceptional line of equilibrium here,
+\begin{align*}
+ r&=0, \quad q=0, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1} = \frac{1+\alpha}{1+n} \frac{1}{\alpha-n},\\
+ r&=0, \quad q=1, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1-1}= \frac{1+\alpha}{1+n} \frac{2}{2(\alpha-n)-1},\\
+%  p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}}.
+\end{align*}
+}
+
+\noindent
+{\bf Exceptional cases}
+\medskip
+
+Exceptional equilibriums are,
+\begin{align*}
+ r=0, \quad q=0, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1} = \frac{1+\alpha}{1+n} \frac{1}{\alpha-n},\\
+ r=0, \quad q=1, \quad \lambda = \frac{1+\alpha}{1+n} \frac{c_0}{-d_1-1}= \frac{1+\alpha}{1+n} \frac{2}{2(\alpha-n)-1},\\
+ p = \frac{d_1b_1}{b_0} c_0^{-\frac{1}{1+n}}, \quad q=-\frac{d_1 b}{b_0}, \quad r=c_0^{\frac{1}{1+n}}.
+\end{align*}
+
+Linearized equation around the equilibrium points. Using
+\begin{align*}
+ (r+R)^{1+n} = \begin{cases}
+                R^{1+n} &\text{if $r=0$},\\
+                r^{1+n}\Big(1+\frac{R}{r}\Big)^{1+n} = r^{1+n} + (1+n)r^nR + \mathcal{O}(\delta^2), & \text{if $r>\bar{r}>0$}
+               \end{cases}
+\end{align*}
+
+\noindent
+{\bf Cases $r=0$, $p=0$, $q=0$ or $q=1$}
+\begin{align*}
+ \dot{P} &=P\Big(-q-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1\Big),\\
+ \dot{Q} &=Q(1-q) -qQ,\\
+ \dot{R} &=\frac{R}{n}\Big(q-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1 \Big).
+\end{align*}
+
+\noindent
+{\bf Cases $\Big( \frac{\alpha-n}{\lambda(1+n)} r^{1+n} - \frac{\alpha-n}{\lambda(1+n)}c_0 + d_1 + q \Big)=0$, $p=0$, $q=0$ or $q=1$}
+\begin{align*}
+ \dot{P}&=P\Big( \frac{1+\alpha}{\lambda(1+n)} r^{1+n} - \frac{1+\alpha}{\lambda(1+n)} c_0 -d_1-q\Big) = P\Big(-\frac{D}{\alpha-n}(d_1+q)\Big),\\
+ \dot{Q}&=Q(1-q) +q(-Q-\lambda Pr) + bPr,\\
+ \dot{R}&=\frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big) + \frac{R}{n}\Big(\frac{\alpha-n}{\lambda(1+n)}r^{1+n}-\frac{\alpha-n}{\lambda(1+n)}r^{1+n}c_0 + d_1 +q\Big) = \frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big)
+\end{align*}
+
+Coefficients Matrices for Linearized equations:
+\begin{align*}
+ Mat_0 &= \begin{pmatrix}
+          -\frac{D}{\alpha-n}(d_1) & 0 & 0\\
+          br_0 & 1 & 0\\
+          \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
+         \end{pmatrix}
+        = \begin{pmatrix}
+          2 & 0 & 0\\
+          br_0 & 1 & 0\\
+          \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
+         \end{pmatrix}\\
+ Mat_1 &= \begin{pmatrix}
+          -\frac{D}{\alpha-n}(d_1+1) & 0 & 0\\
+          (b-\lambda)r_1 & -1 & 0\\
+          \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
+         \end{pmatrix}
+        =\begin{pmatrix}
+          -\frac{1+n}{\alpha-n} & 0 & 0\\
+          (b-\lambda)r_1 & -1 & 0\\
+          \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
+         \end{pmatrix}\\
+ Mat_2 &= \begin{pmatrix}
+	  -1-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
+	  0 & -1 & 0\\
+	  0 & 0 & \frac{1}{n}\Big(1-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+         \end{pmatrix}
+        = \begin{pmatrix}
+	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} + \frac{(1+n)^2}{D(1+\alpha)}\lambda\Big) & 0 & 0\\
+	  0 & -1 & 0\\
+	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_1^{1+n}
+         \end{pmatrix}\\
+ Mat_3 &= \begin{pmatrix}
+	  -\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
+	  0 & 1 & 0\\
+	  0 & 0 & \frac{1}{n}\Big(-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
+         \end{pmatrix}
+	=\begin{pmatrix}
+	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} - \frac{2(\alpha-n)(1+n)}{D(1+\alpha)}\lambda\Big)& 0 & 0\\
+	  0 & 1 & 0\\
+	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_0^{1+n}
+         \end{pmatrix}
+\end{align*}
+The lower triangular matrix has the eigenvalues and eigenvectors such that
+\begin{align*}
+ MAT = \begin{pmatrix}
+        A & 0 & 0\\
+        B & C & 0\\
+        D & E & F
+       \end{pmatrix}, \quad
+ \mu_1 = A, \quad\mu_2 = C, \quad\mu_3 = F,\\
+ v_1 = \Big( \frac{ (A-C)(A-F) }{ D(A-C) + BE }, \frac{ B(A-F) }{ D(A-C) + BE }, 1), \quad  v_2 = (0, \frac{C-F}{E}, 1), \quad v_3 = (0,0,1).
+\end{align*}
+
+\begin{align*}
+ &X_{01} = \bigg( \Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;1\bigg),\quad
+ X_{02} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+ X_{03} = (0,0,1),\\
+ &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\
+ &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+ X_{13} = (0,0,1),
+\end{align*}
+
+\subsection{heteroclinic orbit}
+\begin{align*}
+  &\Phi(\xi) = \Theta(\xi)^{\frac{1+\alpha}{1+n}}, \quad \Sigma(\xi) = \Phi^{-\frac{\alpha-n}{1+\alpha}} \Big(\frac{U}{\Phi}\Big)^n\\
+  &c + \frac{1+n}{1+\alpha} \lambda \xi \big(\log\Phi\big)' = \Big(\frac{U}{\Phi}\Big)^{1+n},\\
+  &(b+\lambda)U = \Sigma^{''} = \Big(\Phi^{-\frac{\alpha-n}{1+\alpha}}\Big(\frac{U}{\Phi}\Big)^{n}\Big)^{''}\\
+  &(f^k)^{''} = k(k-1)f^{k-1}(f')^2 + kf^{k-1}f^{''} = kf^{k-1}f^{''}\\
+  &\Longrightarrow  \quad V(0)=0, U'(0)=\Phi'(0)=\Sigma'(0)=0, \quad V'(0)=U(0),\quad \frac{U(0)}{\Phi(0)} = r_0 = c^{\frac{1}{1+n}},\\
+  &\Big(\frac{U}{\Phi}\Big)'(0)=0, \quad \Big(\frac{U}{\Phi}\Big)^{''}(0) = \frac{ (b+\lambda) r_0^{1-n} U(0)\Phi(0)^{\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}} = \frac{ (b+\lambda) r_0^{2-n} \Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} }{ n - \frac{\alpha-n}{2\lambda}r_0^{(1+n)}}\\
+\end{align*}
+
+\begin{align*}
+ p(\log\xi) &= \frac{ \tth^{\frac{1+\alpha}{1+n}} }{\ts} = \frac{ \xi^{\frac{1+\alpha}{1+n}c_1} \Theta(\xi)^{\frac{1+\alpha}{1+n}}}{\xi^{d_1} \Sigma(\xi)} = \xi^2\frac{\Theta(\xi)^{\frac{1+\alpha}{1+n}}}{\Sigma(\xi)} = \xi^2\frac{\Theta(0)^{\frac{1+\alpha}{1+n}}}{\Sigma(0)} + \BO(\xi^3) = \xi^2\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + \cdots,\\
+ q(\log\xi) &= b\frac{\tv}{\ts} = b\frac{ \xi^{b_1} V(\xi) }{ \xi^{d_1} \Sigma(\xi)} = b\xi\frac{ V(\xi) }{ \Sigma(\xi)} = b\xi^2 \frac{U(0)}{\Sigma(0)}+ \BO(\xi^3) = \xi^2\Big(b\frac{U(0)}{\Phi(0)}\Big)\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + \cdots,\\
+ r(\log\xi) &= \frac{\tu}{ \tth^{\frac{1+\alpha}{1+n}} } = \frac{ \xi^{1+b_1}U(\xi) }{ \xi^{\frac{1+\alpha}{1+n}c_1}\Theta(\xi)^{\frac{1+\alpha}{1+n}} } = \frac{ U(0) }{ \Theta(0)^{\frac{1+\alpha}{1+n}} },\\
+ r(\log\xi) - \frac{ U(0) }{ \Phi(0)} &= \frac{  U }{ \Phi }(\xi) - \frac{ {U}(0)}{ \Phi(0)}\\
+  &= \xi \frac{U(0)}{ \Phi(0)} \bigg(\frac{ U'(0)}{U(0)} - \frac{ \Phi'(0)}{ \Phi(0)}\bigg) \\
+  &+ \frac{1}{2}\xi^2\bigg[ \frac{U^{''}(0)}{ \Phi(0)} - 2 \frac{ U'(0)\Phi'(0)}{\Phi(0)^2} + U(0) \bigg(- \frac{ \Phi^{''}(0) }{\Phi(0)^2} + 2 \frac{\Phi'(0)^2}{ \Phi(0)^3 }\bigg) \bigg] + \BO(\xi^3)\\
+  &=\frac{ (b+\lambda) r_0^{2} }{ 2n - \frac{\alpha-n}{\lambda}r_0^{(1+n)}} r_0^{-n} \Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + \cdots
+%  &=\big(\bG(0)^{1+m-n}a^{-n}\big)\frac{ -\lambda ad }{m-n}  \Bigg(\frac{1}{ 1 -  2  A^{-1}}\Bigg)   \xi^2 + o(\xi^2).
+\end{align*}
+
+
+\section{Normally hyperbolic invariant manifold}
+The critical manifold $r=h(p,q,n=0)$.
+\begin{equation}
+ r=h(p,q,n=0) = \frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}
+\end{equation}
+This is a smooth function of $p\ge0$ and $q$.
+
+The system in {\it fast scale} with the independent variable $\tilde{\eta} = \eta/n$ is
+
+\begin{align}
+ p^\prime &=np\Big( \Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \nonumber \\
+ q^\prime &=nq\Big(\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \tag*{($\tilde{P}$)\textsuperscript{$\lambda,m,n$}}\label{eq:pqr_fast} \\%%\textsuperscript{$\lambda,m,n$}}%\\
+ r^\prime&=r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big)\nonumber \\
+ &=:f^{\lambda,m,n}(p,q,r), \nonumber
+\end{align}
+
+\begin{align}
+ p^\prime &=0, \nonumber \\
+ q^\prime &=0, \tag*{($\tilde{P}$)\textsuperscript{$\lambda,m,0$}}\label{eq:pqr_fast} \\%%\textsuperscript{$\lambda,m,n$}}%\\
+ r^\prime&=r\Big( \Big[\frac{\alpha}{\lambda}\Big(r-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big)\nonumber \\
+ &=:f^{\lambda,m,0}(p,q,r), \nonumber
+\end{align}
+
+\begin{lemma} \label{lem:normal_hyper}
+ $G^{\lambda,m,0}$ is a normally hyperbolic invariant manifold with respect to the system $(\tilde{P})^{ \lambda,m,0}$.
+\end{lemma}
+\begin{proof}
+We linearize the system $(\tilde{P})^{ \lambda,m,0}$ around $G^{\lambda,m,0}$, and show that $0$ is the eigenvalue with a multiplicity of exactly $2$. Let the perturbations of $p$, $q$, and $r$ be $P$, $Q$, and $R$, respectively. After discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \\ {R}^\prime \end{pmatrix} =
+ \begin{pmatrix} 0 & 0& 0\\ 0 & 0 & 0\\ \lambda (h^{\lambda,\alpha,0})^2 & h^{\lambda,\alpha,0} & ( \frac{\alpha}{ \lambda} + \lambda p )h^{\lambda,\alpha,0} \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \\ {R} \end{pmatrix}.
+\end{align*}
+The coefficient matrix has eigenvalues of $0$ and $( \frac{m}{ \lambda} + \lambda p )h^{\lambda,m,0}$. Since we take $h^{\lambda,m,0}$ away from zero and $p \ge 0$, the latter eigenvalue is strictly greater than zero. Thus, $0$ is an eigenvalue with multiplicity $2$. %The claim that the graph $G^{\lambda,m,0}$ is a normally hyperbolic invariant manifold with respect to $(\tilde{*})^{ \lambda,m,0}$ has been shown.
+\end{proof}
+
+
+
+\begin{align*}
+ \frac{\dpp}{p}&=\Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\\
+ \frac{\dqq}{q}&=\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\\
+ n\frac{\drr}{r}&=\Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]
+\end{align*}
+
+\noindent where we denoted $(\cdot)^\prime = \frac{d}{d\tilde{\eta}}(\cdot)$.
+The right-hand side of the equation on $r$ is denoted by $f^{\lambda,m,n}(p,q,r)$. We specify the {\it critical manifold} $G^{\lambda,m,0}$ in the below that is a compact subset of $\{(p,q,r)\;|\; f^{\lambda,m,0}(p,q,r)=0\}$. The latter set consists of the equilibria of the system $\tilde{(P)}^{\lambda,m,0}$.
+
+In the region $r>0$, one solves the algebraic equation $f^{\lambda,m,0}(p,q,r)=0$,
+\begin{equation}\label{eq:hn0}
+ r=h(p,q,n=0) = \frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}
+\end{equation}
+from which we notice that its level lines are straight lines; after rearranging,
+\begin{equation}
+ q + \lambda \underbar{r}p =  -\frac{\alpha}{\lambda} \big( \underbar{r} - c_0\big)-d_1, \quad \text{for  $h^{\lambda,m,0}(p,q)=\underbar{r}$.} \label{eq:level}
+\end{equation}
+
+\begin{equation}
+ q + \lambda \underbar{r}p =  \frac{\alpha}{\lambda} \Big( \big(\frac{2}{D} + \frac{2}{D}\lambda\big) - \underbar{r} \Big)
+\end{equation}
+
+In view of \eqref{eq:level}, the contour lines in the $pq$-plane sweep out the first quadrant from the origin. See Figure \ref{fig:contour}. More precisely, the contour line passes the origin when $\underbar{r}=a^{ \lambda,m,0}$ at the same time as the level line passes the equilibrium $M_0^{ \lambda,m,0}$. As $\underbar{r}$ decreases, the contour line intersects the $p$ and $q$ axes and becomes steeper. When $\underbar{r}$ reaches $c^{ \lambda,m,0}$, the level line passes $M_1^{ \lambda,m,0}$. $\underbar{r}$ then further decreases until the level line immerses in the $r=0$ plane. Note that the inequality \eqref{eq:a4} implies $c^{ \lambda,m,0}>0$.
+
+
+We let $T$ be the triangle enclosed by the $p$-axis, $q$-axis and the one contour line of \eqref{eq:level} with $0<\underbar{r} < c^{\lambda,m,0}$. We let $D$ be an open set in the vicinity of the triangle $T$. The critical manifold for each $\lambda$ and $m$ is defined by
+\begin{equation}
+ G^{\lambda,m,0} = \{(p,q,r) \in \bar{D} \;|\; r=h^{\lambda,m,0}(p,q)\}.
+\end{equation}
+
+
+
+
+% \subsubsection{Flow on the critical manifold : the case $m=1$}
+%
+% The marginal case $m=1$ provides closer detail.
+% By substituting $h^{\lambda,1,0}(p,q)$ in place of $r$, the system is explicitly solved and
+% %we can solve the system explicitly and the whole critical graph is completely characterized.
+% the general solution on the graph is a family of parabolae $p=kq^2$ and $r=h^{\lambda,1,0}(p,q)$. This includes the two extremes $p=0$ and $q=0$, where $k$ takes $0$ and $\infty$ respectively. See Figure \ref{fig:hn0m1}. We focus on discussing two points: 1) In an effort to apprehend the flow of the rest of cases, we remark a few features for this marginal case, which in turn persist under the perturbation; and 2) we report features that do not persist too. These features do not play any role in our study, but this bifurcation is described here for clarity.
+%
+% We address the first point. Look at $M_0^{ \lambda,1,0}$ in Figure \ref{fig:hn0m1_b} surrounded by a family of parabolae in the neighborhood. Our interested direction $\vec{X}_{02}$ and the other $\vec{X}_{01}$ are annotated near $M_0^{ \lambda,1,0}$ by a dotted arrow. The family of parabolae is manifesting the fact that orbit curves meet $M_0^{ \lambda,1,0}$ tangentially to $\vec{X}_{01}$; one exception is the degenerate straight line that emanates in $\vec{X}_{02}$, which is depicted as the green one in Figure \ref{fig:hn0m1}, the target orbit. Another observation from the $pq$-plane is that the flow in the first quadrant far away from the origin is {\it inwards}. More precisely, as illustrated in Figure \ref{fig:hn0m1_b}, whenever $0<\underbar{r} < 1 = c^{\lambda,1,0}$ the flow on the contour line $\underbar{r} = h^{\lambda,1,0}$ is inwards. We make use of this observation in the proof of Section \ref{sec:proof_proof}.
+%
+% Now, we describe the bifurcation of this marginal case. The crucial difference is that $M_1^{\lambda,1,0}$ is replaced by a line of equilibria $h^{\lambda,1,0}(p,q) = c^{\lambda,1,0}=1$, which is the red line in Figure \ref{fig:hn0m1}. As a result, each of the parabolae emanated from $M_0^{\lambda,1,0}$ lands at a point among these equilibria. $\vec{X}_{02}$ is immersed on $q=0$ plane distinctively from all other cases and the target orbit in particular lands at the $q$-intercept of the line of equilibria. To compare this observation to the statement of Theorem \ref{thm:1}, the target orbit does not connect $M_0^{ \lambda,1,0}$ to $M_1^{ \lambda,1,0}$ but to this $q$-intercept. This observation does not spoil our proof in Section \ref{sec:proof_proof} because we assert the persistence of the critical manifold not the target orbit.
+
+\subsection{Asymptotic behavior of self-similar variables in $\xi$}
+\section{A $k$-parameter family of shear banding solutions}
+\subsection{Asymptotic behavior of field variables in $t$ and $x$}
+\section{Existence via Geometric theory of singular perturbation}
+\subsection{Proof of the theorem} \label{sec:proof_proof}
+
+\smallskip
+\noindent
+\begin{proof}
+%\mbox{}\\*\indent
+\medskip \noindent{\bf Step 1.}
+ Regularly perturbed reduced system.
+\medskip
+
+By Lemma \ref{lem:normal_hyper}, there exists $n_0$, such that for $n \in [0, n_0)$, locally invariant manifold $G^{\lambda,m,n}$ with respect to \eqref{eq:pqr_fast} exists. Moreover,   $G^{\lambda,m,n}$ is again given by the graph $(p,q,h(p,q;\lambda,\alpha,n))$ on $\bar{D}$. The condition that $G^{\lambda,m,n}$ is disjoint from $r=0$ plane for all $n \in [0, n_0)$ must persist by making $n_0$ smaller if necessary. In addition, $n_0$ is chosen in the valid range of inequalities \eqref{eq:a3} and \eqref{eq:a4}.%$h(p,q;\lambda,\alpha,n)>0$ in the domain of definition for all $0\le n\le n_2$ has to persist by taking $K^{\lambda,m,0}$ and $n_2$ appropriately.  %On this surface, $r$ evolves such a way staying in the surface.
+
+After achieving $h(p,q;\lambda,\alpha,n)$, substitution of the function in place of $r$ in system \eqref{eq:pqrsystem} leads to  the reduced systems that are parametrized by $\lambda$, $m$, and $n\in[0,n_0)$:
+% {\small
+% \begin{align} \tag*{($\tilde{*}$){\scriptsize re}\textsuperscript{$\lambda,m,n$}} \label{eq:reduced_fast}
+% %  \begin{split}
+%  {p}^\prime &=np\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+%  {q}^\prime &=nq\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + nb^{\lambda,m,n}ph(p,q;\lambda,\alpha,n), \
+% %  \end{split}
+% \end{align}
+% }
+% and the equivalent systems with independent variable $\eta$: %${(*)}^{\lambda,m,n}_{re}$ :
+{\small
+\begin{equation} \tag*{(${R}$)\textsuperscript{$\lambda,m,n$}} \label{eq:reduced}
+\begin{split}
+ \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
+ \dot{q} &=q\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + b^{\lambda,m,n}ph(p,q;\lambda,\alpha,n),
+\end{split}
+\end{equation}
+}
+
+\medskip \noindent{\bf Step 2.}
+ $M_0^{\lambda,m,n}$ and $M_1^{\lambda,m,n}$ are still on the graph.
+\medskip
+
+In fact, only $M_1^{ \lambda,1,n}$ needs to be checked because, other than that, the equilibrium points are hyperbolic. At $(p,q)=(0,1)$, from the system \eqref{eq:reduced}, we see $\dot{p} = \dot{q} = 0$. Now $\dot{r} = \frac{\partial h^{\lambda,1,n}}{\partial p} \dot{p} + \frac{\partial h^{\lambda,1,n}}{\partial q} \dot{q} = 0$ %unless possibly $\frac{\partial h^{\lambda,1,n}}{\partial p}$ or $\frac{\partial h^{\lambda,1,n}}{\partial q}$ diverges.
+because the derivatives of $h^{\lambda,1,0}$ do not diverge and derivatives of $h^{\lambda,1,n}$ are close to them. This equilibrium point must be $M_1^{\lambda,1,n}$ since there is no other equilibrium point near $M_1^{\lambda,1,n}$. Similar reasoning in fact applies for the hyperbolic equilibrium points.
+
+% {\red
+\medskip
+Recall that $M_0^{\lambda,m,n}$ is an unstable node and $M_1^{\lambda,m,n}$ is a saddle point. Here, we inspect the linear stability restricted in the tangent space of the surface $G^{\lambda,m,n}$ at $M_0^{\lambda,m,n}$ and at $M_1^{\lambda,m,n}$ respectively.
+
+\medskip \noindent{\bf Step 3.}
+ $(0,0)$, the projection on the $pq$-plane of $M_0^{\lambda,m,n}$, is an unstable node with respect to \eqref{eq:reduced}. $(0,1)$, that of $M_1^{\lambda,m,n}$, is a stable node with respect to \eqref{eq:reduced}.
+\medskip
+
+Let the perturbations of $p$ and $q$ be $P$ and $Q$, respectively and write
+$$h(p+P,q+Q) = h(p,q) + P\frac{\partial h}{\partial p}(p,q) + Q\frac{\partial h}{\partial q}(p,q) + \text{higer-order terms}.$$
+Around $(p,q) = (0,0)$, after discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} 2 & 0 \\  ab & 1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix}.
+\end{align*}
+from whose coefficient matrix we see two positive eigenvalues. Around $(p,q) = (0,1)$, after discarding  terms higher than the first order, we obtain
+\begin{align*}
+ \begin{pmatrix} {P}^\prime\\ {Q}^\prime \end{pmatrix} =
+ \begin{pmatrix} -\frac{1-m+n}{m-n} & 0 \\  (b- \lambda)c & -1 \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \end{pmatrix},
+\end{align*}
+from whose coefficient matrix we see two negative eigenvalues. %}
+
+\medskip \noindent{\bf Step 4.}
+ $T$ is positively invariant under the flow \eqref{eq:reduced} if $n$ is sufficiently small.
+\medskip
+
+First, we show the claim when $n=0$ and prove that it persists under the perturbation. Consider the system $(R)^{\lambda,m,0}$. On $p=0$, it is invariant; on $q=0$, the inward normal vector is $(0,1)$ and the inward flow $\dot{q} = b^{ \lambda,m,0}ph^{ \lambda,m,0} \ge 0$. On the hypotenuse contour line, if $\underbar{p}$ is the $p$-intercept and $\underbar{q}$ is the $q$-intercept, that is
+$$ \underbar{q} = \frac{2m}{1+m}-\frac{m}{ \lambda } \big( \underbar{r} - \frac{2}{1+m} \big), \quad \underbar{p} = \frac{ \underbar{q} }{ \lambda \underbar{r} },$$
+then $(-\underbar{q}, -\underbar{p})$ is an inward normal vector.
+% Then the inward normal vector is $(-\underbar{q}, -\underbar{p})$. We now compute the dot product of the inward normal vector and the vector field of system. we compute it can be written in terms of $q$ and $\underbar{r}$.
+The inward normal component of the vector field on the line is then
+\begin{align*}
+ (-\underbar{q}, &-\underbar{p}) \cdot ( \dot{p}, \dot{q} ) \\
+ %&= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(\underbar{r} - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p \underbar{r}\Big)-\underbar{p}q(1-q- \lambda p \underbar{r}) - \underbar{p}b(\lambda,m,0)p\underbar{r} \\
+ %&= -\underbar{q}p\Big( \big(\frac{2m}{1+m} -\underbar{q}\big) \big(1+ \frac{1}{m}\big)\Big)-\underbar{p}(\underbar{q} - \lambda \underbar{r}p)(1-\underbar{q}) - \frac{b^{\lambda,m,0}}{\lambda} \underbar{q} p \\
+ &=-\underbar{p}\underbar{q}(1-\underbar{q}) - p \frac{\underbar{q}}{m}\Big( \frac{2m}{1+m} - \frac{m}{ \lambda} \big( 1-\frac{2}{1+m} \big) - \underbar{q}\Big)\\
+ &\ge -\underbar{p}\underbar{q}(1-\underbar{q}) \\%\quad \text{if $\underbar{r} < 1$} \\
+ &=: \delta >0.
+%  -q(1-q- \lambda p \underbar{r}) - b(\lambda,m,0)p\underbar{r} \\
+%  &=-\lambda \underbar{r}p\Big(\frac{1+m}{ \lambda }\big(\underbar{r}- \frac{2}{1+m}\big)\Big) -q\Big(\frac{m}{ \lambda } \big(\underbar{r} - \frac{2}{1+m}\big) + \frac{1-m}{1+m}\Big) - \frac{1-m}{1+m}(1 + \lambda) p\underbar{r}\\
+%  &=-\lambda \underbar{r}p\Big(\frac{1+m}{ \lambda }\big(\underbar{r}- \frac{2}{1+m}\big) + \frac{1-m}{1+m} \frac{1 + \lambda}{ \lambda}\Big)
+\end{align*}
+The inequality comes from $0<\underbar{r} < c^{ \lambda,m,0} \le 1$. $\delta$ is a fixed constant that is strictly positive, proving that the triangle $T$ is invariant.
+
+
+Now, we show that this positively invariant property persists under perturbation. We examine the same triangle $T$ but with  the system ${(R)}^{\lambda,m,n}$ with $n>0$. % we took for $n=0$ case. %We may take $\underbar{r}$ so that $h(p,q;\lambda,\alpha,n)$ includes the triangle in the domain of definition.
+Again, sides of $p=0$ and $q=0$ are invariant or inward for the same reason. Now, the line of the hypotenuse of $T$ is no longer a contour line of $h^{ \lambda,m,n}(p,q)=\underbar{r}$, but $h^{ \lambda,m,n}(p,q)$ remains close to $\underbar{r}$, that is
+$$h^{ \lambda,m,n}(p,q) = \underbar{r} + ng_1(n,p,q), \quad \text{by Taylor theorem.}$$
+{$g_1$ is uniformly bounded  in $n$, $p$, and $q$.} The inward normal component of the vector field on the line is computed as
+\begin{align*}
+ (-\underbar{q}, &-\underbar{p}) \cdot ( \dot{p}, \dot{q} ) \\
+ &= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(h(p,q) - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p h(p,q)\Big)-\underbar{p}q(1-q- \lambda p h(p,q)) \\&- \underbar{p}b^{\lambda,m,n}ph(p,q) \\
+ &= -\underbar{q}p\Big(\frac{1}{ \lambda }\big(\underbar{r} - \frac{2}{1+m}\big) + \frac{2m}{1+m} -q- \lambda p \underbar{r}\Big)-\underbar{p}q(1-q- \lambda p \underbar{r}) - \underbar{p}b^{\lambda,m,0}p\underbar{r} \\
+ &+n\Big(-\underbar{q}p\big( \frac{1}{ \lambda } g_1 - \lambda p g_1\big) - \underbar{p}q\big(- \lambda p g_1\big)\Big) - \underbar{p}\big( \frac{b^{\lambda,m,n}-b^{\lambda,m,0}}{n}p\underbar{r} + b^{\lambda,m,n} p g_1\big)\Big)\\
+ &=-\underbar{p}\underbar{q}(1-\underbar{q}) - p \frac{\underbar{q}}{m}\Big( \frac{2m}{1+m} + \frac{m}{ \lambda} \big( \frac{2}{1+m}-1 \big) - \underbar{q}\Big)\\
+ &+n\Big(-\underbar{q}p\big( \frac{1}{ \lambda } g_1 - \lambda p g_1\big) - \underbar{p}q\big(- \lambda p g_1\big)\Big) - \underbar{p}\big( \frac{b^{\lambda,m,n}-b^{\lambda,m,0}}{n}p\underbar{r} + b^{\lambda,m,n} p g_1\big)\Big)\\
+ &\ge \delta + ng_2(n,p,q),
+\end{align*}
+where $g_2(n,p,q)$ is the expression in the parentheses of the last equality that is multiplied by $n$, which is also uniformly bounded in $n$, $p$, and $q$. We have used $ b^{\lambda,m,n}-b^{\lambda,m,0}=n\frac{(1-m) + 2 \lambda}{(1+m-n)(1+m)}$.
+Therefore, $n_0$ can be chosen, even smaller if necessary, so that the last expression becomes positive. This proves the claim.
+
+
+\medskip
+
+% {\red
+Note that $\vec{X}_{02}$ is pointing inward of the triangle $T$ from $(0,0)$. Thus, the orbit emanating in $\vec{X}_{02}$ is continued to the interior of $T$ by the stable(unstable) manifold theorem. The $\omega$-limit set of this orbit cannot contain the limit cycle because when $n>0$, there is no equilibrium point inside of $T$ other than $(0,0)$ and $(0,1)$. Recall that $(0,0)$ is the unstable node and $(0,1)$ is the stable node. Thus, the Poincar\'e-Bendixson theory (for example in \cite{perko_differential_2001}) implies that the orbit converges to $(0,1)$.  The lifting of this orbit to the three dimensional phase space is the desired heteroclinic orbit. %whole triangle $T \subset W^s\big( (0,1)\big)$, proving the continued orbit converges to $(0,1)$. This orbit  the orbit Since , it is certain that the triangle $T$ contains the orbit responsible for the second unstable eigenspace of $M_0^{ \lambda,m,n}$, which completes the proof.
+% }
+\end{proof}
+
+
+\end{document} 
