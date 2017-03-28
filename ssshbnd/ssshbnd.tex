@@ -419,8 +419,9 @@ Here and hereafter, we denote the four eigenvalues and four eigenvectors of $M_i
   where $\mu_0^\pm$ is a positive and negative solution respectively of the quadratic equation
  $$ \mu^2 - \mu\Big(\frac{r_0(1-s_0)}{n\lambda}-\frac{r_0s_0+1}{\lambda}\Big) - \frac{r_0^2s_0(\alpha-m-n)}{n\lambda^2}=0.$$
 We find the asymptotic formula for $\mu_0^\pm$ as,
-$$\mu_0^+ = \frac{r_0(1-s_0)}{n\lambda} + \frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n), \quad \mu_0^- = -\frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n).$$ 
- Four eigenvectors are collected in the matrix as columns. While the precise values of the components are presented here, signs of them are $y_1,y_2<0$, $y_3$ is indefinite, and $z_1=\BO(n)$, $z_2=\BO(n)$, $z_3<0$ for sufficiently small $n$. See the figure.
+$$\mu_0^+ = \frac{1}{n}\frac{1+\lambda}{\lambda} \frac{2(\alpha-m)}{1+2\alpha-m} + \frac{(1+\lambda)}{\lambda} \frac{2(1+m)(1+\alpha)}{1+2\alpha-m}+\BO(n), \quad\mu_0^- = -\frac{(1+\lambda)}{\lambda} \frac{2(1+m)(1+\alpha)}{1+2\alpha-m} + \BO(n).$$
+% $$\mu_0^+ = \frac{r_0(1-s_0)}{n\lambda} + \frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n), \quad \mu_0^- = -\frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n).$$ 
+ Four eigenvectors are collected in the matrix as columns. While the precise values of the components are presented here, we also find that $y_1,y_2,y_3<0$; $z_1,z_2,z_3 \sim\BO(n)$, provided $n$ is sufficiently small. See the figure.
 \begin{align*}
  S_0&=
  \begin{pmatrix}
@@ -431,12 +432,14 @@ $$\mu_0^+ = \frac{r_0(1-s_0)}{n\lambda} + \frac{1}{\lambda}\frac{{r_0^2s_0}(\alp
  \end{pmatrix},
  \quad \quad
  \begin{array}{l}
-   y_1=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{2}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+2)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) },\\
- y_2=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{1}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+1)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) },\\
- y_3=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)},\\
- z_1=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1, \quad
- z_2=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2, \\
- z_3=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg).
+   y_1=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - nA}, \quad A=\frac{\big(\frac{r_0}{\lambda}+\frac{2}{s_0}\big)\big(\frac{1}{\lambda}+2\big)\frac{1}{r_0}}{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0} }, \\
+ y_2=-\frac{1}{\frac{1-s_0}{\lambda} - nB }, \quad B=\frac{\big(\frac{r_0}{\lambda}+\frac{1}{s_0}\big)\big(\frac{1}{\lambda}+1\big)\frac{1}{r_0}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s_0} }\\
+ y_3=\frac{\frac{r_0}{\lambda}+\frac{\mu_0^-}{s_0}}{\frac{1-s_0}{\lambda}}, \quad
+ z_1=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r_0}}{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0} }\bigg)y_1, \\
+ z_2=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r_0}}{ \frac{1+\alpha}{\lambda}r_0 + \frac{1}{s_0} }\bigg)y_2, \quad
+ z_3=n\bigg(\frac{\frac{1-s_0}{\lambda}}{\frac{n r_0}{\lambda} + \frac{n\mu_{0}^+}{s_0}}\bigg)
+%  
+%  n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg).
  \end{array}
 \end{align*}
  \item $M_1$ is a saddle; it has one positive eigenvalue and three negative eigenvalues. Notice that the positive eigenvalue $\mu_{13}$ is $\mathcal{O}( \frac{1}{n})$. is $\mathcal{O}( \frac{1}{n})$.
@@ -550,21 +553,7 @@ To see that $\mu_0^+ = \BO(\frac{1}{n})$, and $\mu_0^-=\BO(1)$
 
 
 
-Other equilibrium points and rejections:
-\begin{align*}
- &p=0, \ q=0, \ {\bf r=0, \ s=0},\\
- &p=0, \ q=0, \ {\bf r=0},\ s=s, \ {\bf r_0 = \frac{-n}{\alpha-m-n}},\\
- &p=0, \ q=0, \ r = \frac{n\alpha - r_0(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
- &p=0, \ q=1, \ {\bf r=0, \ s=0}, \\
- &p=0, \ q=1, \ {\bf r=0},\ s=s, \ {\bf r_1 = \frac{-n}{\alpha-m-n}},\\
- &p=0, \ q=1, \ r = \frac{n\alpha - r_1(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
- &p=p, \ q=0, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=2, \\ 
- &p=p, \ q=1, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=1, \\
- &p=p, \ q=0, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=2, \ {\bf r_0 = \frac{-n}{\alpha-m-n}}, \\
- &p=p, \ q=1, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=1, \ {\bf r_1 = \frac{-n}{\alpha-m-n}}, \\
- &{\bf p=\#<0}, \ q=\frac{2(\alpha-m-n)}{1+m}, \ r=a_0, \ s=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)a_0},\\
- &p=\#, \ q=\#, \ r = \frac{2-n}{1-m-n}, {\bf s=0}.
-\end{align*}
+
 
 
 
@@ -1359,56 +1348,7 @@ Coefficients Matrices $Mat_i$ for Linearized equations around $M_i$, $i=0,1,2,3$
           s_0(\lambda r_0) & s_0 & s_0\frac{1}{\lambda}(1-s_0) & s_0(-\frac{r_0}{\lambda})
          \end{pmatrix}
 \end{align*}
-\begin{equation}
- \mu_{01}=2, \ \mu_{02}=1, \ \mu_{03}=\mu_0^+, \ \mu_{04}=\mu_0^-,
-\end{equation}
-where $\mu_0^\pm$ is the two roots of the 
-$$ \Big(\frac{r_0}{n}\frac{1}{\lambda}(1-s_0)-\frac{1}{\lambda}-\mu \Big)\Big(-\frac{s_0r_0}{\lambda}-\mu\Big) - \alpha\frac{r_0}{n}(\frac{s_0 r_0}{\lambda})\frac{1}{\lambda}(1-s_0)=0$$
-$$ \mu^2 - \mu\Big(\frac{r_0}{n}\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{r_0s_0}{\lambda} - \frac{\alpha}{\lambda(1+\alpha)}\Big) - \frac{r_0}{n}\frac{r_0s_0}{\lambda}(1+\alpha) = 0.$$
-$$ \mu^2 + \mu\Big(\frac{s_0r_0}{\lambda} + \frac{1}{\lambda}-\frac{r_0}{n}\frac{1-s_0}{\lambda}\Big) + \frac{s_0r_0}{n\lambda}\Big(\frac{n}{\lambda} - \frac{(1+\alpha)(1-s_0)}{\lambda}\Big).$$
-\begin{align*}
- \mu_0^+ &= \frac{A}{n} + D + \frac{BC}{A} + \cdots, \quad \mu_0^- = - \frac{BC}{A} + \cdots,
-\end{align*}
-where
-\begin{align*}
- \begin{pmatrix} \frac{A}{n} & \frac{B}{n} \\ C & D \end{pmatrix} = 
- \begin{pmatrix}
- \frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big) & \frac{r_0}{n}(\frac{\alpha r_0}{\lambda})\\
- s_0\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big) & s_0(-\frac{r_0}{\lambda})
- \end{pmatrix}.
-\end{align*}
 
-Four eigenvectors are the four columns of the matrix:
-\begin{align*}
- S_0&=
- \begin{pmatrix}
-    1 & 0 & 0 & 0\\
-    br_0 & 1 & 0 & 0\\
-    y_1 & y_2 & 1 & y_3\\
-    z_1 & z_2 & z_3 &1
- \end{pmatrix},
-\end{align*}
-where
-\begin{align*}
- y_1&=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{2}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+2)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) }\\
- y_2&=-\frac{(\lambda+b)r_0}{\frac{1-s_0}{\lambda} - n\Big(\frac{1}{s_0}+\frac{r_0}{\lambda}\Big)\Big(\frac{(\frac{1}{\lambda}+1)\frac{1}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) }\\
- y_3&=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)}\\
- z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1 \\
- z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2 \\
- z_3&=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg)
-\end{align*}
-
-% 
-% \begin{align*}
-%  y_1&=-\frac{(\lambda+b)r_0}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{2n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+2)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) }\\
-%  y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) }\\
-%  y_3&=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)}\\
-%  z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1 \\
-%  z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2 \\
-%  z_3&=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg)
-% \end{align*}
-
-\hrulefill
 \begin{align*}
  Mat_1 &= \begin{pmatrix}
           -\frac{1+m+n}{\alpha-m-n} & 0 & 0 & 0\\
@@ -1423,22 +1363,34 @@ where
           s_1(\lambda r_1) & s_1 & s_1\frac{1}{\lambda}(1-s_1) & s_1(-\frac{r_1}{\lambda})
          \end{pmatrix}
 \end{align*}
-\begin{equation}
- \mu_{11}=-\frac{1+m+n}{\alpha-m-n}, \ \mu_{12}=-1, \ \mu_{13}=\mu_1^+, \ \mu_{14}=\mu_1^-,
-\end{equation}
-where $\mu_1^\pm$ is the two roots of the 
-$$ \mu^2 - \mu\Big(\frac{r_1}{n}\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{r_1s_1}{\lambda} - \frac{\alpha}{\lambda(1+\alpha)}\Big) - \frac{r_1}{n}\frac{r_1s_1}{\lambda}(1+\alpha) = 0.$$
+
+Other equilibrium points and rejections:
 \begin{align*}
- \mu_1^+ &= \frac{A}{n} + D + \frac{BC}{A} + \cdots, \quad \mu_1^- = - \frac{BC}{A} + \cdots,
+ &p=0, \ q=0, \ {\bf r=0, \ s=0},\\
+ &p=0, \ q=0, \ {\bf r=0},\ s=s, \ {\bf r_0 = \frac{-n}{\alpha-m-n}},\\
+ &p=0, \ q=0, \ r = \frac{n\alpha - r_0(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
+ &p=0, \ q=1, \ {\bf r=0, \ s=0}, \\
+ &p=0, \ q=1, \ {\bf r=0},\ s=s, \ {\bf r_1 = \frac{-n}{\alpha-m-n}},\\
+ &p=0, \ q=1, \ r = \frac{n\alpha - r_1(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
+ &p=p, \ q=0, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=2, \\ 
+ &p=p, \ q=1, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=1, \\
+ &p=p, \ q=0, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=2, \ {\bf r_0 = \frac{-n}{\alpha-m-n}}, \\
+ &p=p, \ q=1, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=1, \ {\bf r_1 = \frac{-n}{\alpha-m-n}}, \\
+ &{\bf p=\#<0}, \ q=\frac{2(\alpha-m-n)}{1+m}, \ r=a_0, \ s=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)a_0},\\
+ &p=\#, \ q=\#, \ r = \frac{2-n}{1-m-n}, {\bf s=0}.
 \end{align*}
-where
-\begin{align*}
- \begin{pmatrix} \frac{A}{n} & \frac{B}{n} \\ C & D \end{pmatrix} = 
- \begin{pmatrix}
- \frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big) & \frac{r_1}{n}(\frac{\alpha r_1}{\lambda})\\
- s_1\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big) & s_1(-\frac{r_1}{\lambda})
- \end{pmatrix}.
-\end{align*}
+
+% 
+% \begin{align*}
+%  y_1&=-\frac{(\lambda+b)r_0}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{2n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+2)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) }\\
+%  y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) }\\
+%  y_3&=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)}\\
+%  z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1 \\
+%  z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2 \\
+%  z_3&=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg)
+% \end{align*}
+
+
 
 \begin{thebibliography}{10}
 
