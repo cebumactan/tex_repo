@@ -405,7 +405,7 @@ for the original variables $\theta(t,x)$ and $\gamma(t,x)$. These quantities pic
 In the problem configuration, the specimen keeps loading driven by the velocity assigned at far field. Thus, regardless of the position $x$, we expect the strain $\gamma(t,x)$ always increases and increases to  $\infty$ as $t \rightarrow\infty$. On the same time, since the process is adiabatic, the heat produced at a point $x$ accumulates. Clearly energy keeps pumped into the domain from the far field driving velocity. Thus, we expect the temperature $\theta(t,x)$ either always increases.
 
 Now, we return to the phase space analysis in the region of interest. To locate $M_0$ and $M_1$ in the region, wee see that $\lambda$ cannot be arbitrarily large with the same reason above but
-\begin{equation}
+\begin{equation} \label{eq:lambda-range}
  0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(1-\frac{n}{1+m+n}\right)
 \end{equation}
 
@@ -459,22 +459,22 @@ As to the eigenvectors, notice first that the eigenvalues for $M_1$, differently
 % \end{equation}
 
 \subsection{Boundary conditions as $\xi \rightarrow 0$}
-Recall that we imposed the boundary conditions \eqref{eq:bdry0} at $\xi=0$. These restrict the behavior of the heteroclinic orbit as $\eta \rightarrow -\infty$. Next proposition states how the conditions are transmitted to those of the $(p,q,r)$-system.
+Recall that we imposed the boundary conditions \eqref{eq:bdry0} at $\xi=0$. These restrict the behavior of the heteroclinic orbit as $\eta \rightarrow -\infty$. Next proposition states how the conditions are transmitted to those for the $(p,q,r,s)$-system.
 
 \begin{proposition} \label{prop1}
-    Suppose $\big(\Gamma,V,\Theta,\Sigma,U\big)$ is a solution of \eqref{eq:barsys}, \eqref{eq:bdry0} that is smooth and bounded in the neighborhood of $\xi=0$. Then the corresponding orbit defined by transformations \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, \eqref{eq:pqrdef} $\chi(\eta) = (p(\eta), q(\eta), r(\eta),s(\eta)) \rightarrow M_0$ as $\eta \rightarrow -\infty$. Furthermore, it meets $M_0$ along the direction of the first eigenvector $X_{01}$, i.e.,
+    Suppose $\big(\Gamma,V,\Theta,\Sigma,U\big)$ is a solution of \eqref{eq:ss-odes}, \eqref{eq:bdry0} that is smooth and bounded in the neighborhood of $\xi=0$. Then the corresponding orbit defined by transformations \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, \eqref{eq:pqrdef} $\chi(\eta) = (p(\eta), q(\eta), r(\eta),s(\eta)) \rightarrow M_0$ as $\eta \rightarrow -\infty$. Furthermore, it meets $M_0$ along the direction of the first eigenvector $X_{01}$, i.e.,
     \begin{equation} \label{eq:alpha}
      \big(\chi(\eta) - M_0 \big)e^{-2\eta} \rightarrow \kappa X_{01}, \quad \text{for some constant $\kappa\ne0$.}
     \end{equation}
 \end{proposition}
 
 \begin{remark} \label{rem:alpha}
-  That the orbit meets $M_0$ along $X_{02}$ is nontrivial. Any orbit $\psi(\eta)$ in the neighborhood of $M_0$ has the expansion
-  $$  \psi(\eta) = M_0 + \kappa_1 e^{\mu_{01}\eta} + \kappa_2 e^{\mu_{02}\eta} + \kappa_3 e^{\mu_{03}\eta} + \text{higher-order terms as $\eta \rightarrow -\infty$}.$$
-  Because $\mu_{01}=1<2=\mu_{02}$, the first term in the right-hand-side dominates other terms in the limit $\eta \rightarrow -\infty$ unless the orbit has $\kappa_1=0$. More precisely, among the three dimensional unstable manifold of $M_0$, there is only one slice of surface on which the orbits meet $M_0$ in the direction of $X_{02}$. This is the surface whose tangent space at $M_0$ is spanned by $X_{02}$ and $X_{03}$.
+  That the orbit meets $M_0$ along $X_{01}$ is nontrivial. Any orbit $\psi(\eta)$ in the unstable manifold of $M_0$  has the expansion in the neighborhood of $M_0$
+  $$  \psi(\eta) - M_0 = \kappa_1 e^{\mu_{01}\eta} + \kappa_2 e^{\mu_{02}\eta} + \kappa_3 e^{\mu_{03}\eta} + \text{higher-order terms as $\eta \rightarrow -\infty$}.$$
+  Because $\mu_{02}<\mu_{01}\ll\mu_{03}$, the second term in the right-hand-side dominates other terms in the limit $\eta \rightarrow -\infty$ unless the orbit has $\kappa_1=0$. More precisely, among the three dimensional unstable manifold of $M_0$, there is only one slice of surface on which the orbits meet $M_0$ in the direction of $X_{01}$. This is the surface whose tangent space at $M_0$ is spanned by $X_{01}$ and $X_{03}$.
 \end{remark}
 \begin{proof}
-From the smoothness and boundedness of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ in the neighborhood of $\xi=0$ and the boundary conditions \eqref{eq:bdry0}, derivatives of the variables evaluated at $\xi=0$ are obtained by differentiating the system \eqref{eq:ss-odes} repeatedly. 
+From the smoothness and boundedness of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ in the neighborhood of $\xi=0$ and the boundary conditions \eqref{eq:bdry0}, derivatives of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ evaluated at $\xi=0$ are obtained by differentiating the system \eqref{eq:ss-odes} repeatedly. 
 % First we check
 % \begin{align*}
 %  &\Gamma'(0)=U'(0)=\Sigma'(0)= \Big(\frac{U}{\Gamma}\Big)'(0)=\Big(\frac{\Sigma\Gamma}{\Theta}\Big)'(0)=0,\\
@@ -485,39 +485,39 @@ Re-write \eqref{eq:ss-odes}
   a + \lambda\xi\frac{\Gamma'}{\Gamma} &= \frac{U}{\Gamma},\\
   c + \lambda\xi\frac{\Theta'}{\Theta} &= \frac{\Sigma\Gamma}{\Theta} \frac{U}{\Gamma},\\
   (b+\lambda)U  + \lambda \xi U'(\xi) &= \Sigma^{''} = \Big(\frac{\Sigma\Gamma}{\Theta} \frac{\Theta}{\Gamma}\Big)^{''},\\
-  \Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''} &= (1+m+n)\frac{\Gamma^{''}}{\Gamma}-(1+\alpha) \frac{\Theta^{''}}{\Theta} + n \frac{ \big(\frac{U}{\Gamma}\big)^{''}}{\frac{U}{\Gamma}}
+  \frac{\Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}}{\frac{\Sigma\Gamma}{\Theta}} &= (1+m+n)\frac{\Gamma^{''}}{\Gamma}-(1+\alpha) \frac{\Theta^{''}}{\Theta} + n \frac{ \big(\frac{U}{\Gamma}\big)^{''}}{\frac{U}{\Gamma}}
 \end{align*}
 from which albeit cumbersome we conclude
 \begin{align*}
-&\frac{U}{\Gamma}(0) = a = r_0,  & \Big(\frac{U}{\Gamma}\Big)'(0)&=0, & \Big(\frac{U}{\Gamma}\Big)^{''}(0) &= \frac{\Gamma(0)}{\Sigma(0)} \frac{2(b+\lambda)r_0}{\frac{s_0-1}{\lambda}+n\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)},\\
+&\frac{U}{\Gamma}(0) = a = r_0,  & \Big(\frac{U}{\Gamma}\Big)'(0)&=0, & \Big(\frac{U}{\Gamma}\Big)^{''}(0) &= \frac{\Gamma(0)}{\Sigma(0)} \frac{-2(b+\lambda)r_0}{\frac{1-s_0}{\lambda}-\frac{n}{r_0}\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \frac{1}{\lambda}+2}{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)},\\
 &\frac{\Sigma\Gamma}{\Theta}(0) = \frac{c}{a} = s_0,  & \Big(\frac{\Sigma\Gamma}{\Theta}\Big)'(0)&=0, &
-\Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0) &= n \left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)\Big(\frac{U}{\Gamma}\Big)^{''}(0).
+\Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0) &= \frac{n}{r_0} \left(\frac{ \frac{1}{\lambda}+2 }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)\Big(\frac{U}{\Gamma}\Big)^{''}(0).
 \end{align*}
-In the valid range in $\lambda$ of \eqref{eq:r1posineq}, $\displaystyle \Big(\frac{U}{\Gamma}\Big)^{''}(0) <0$, and thus $\displaystyle \Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0) <0$.
+In the valid range in $\lambda$ of \eqref{eq:lambda-range}, $\displaystyle \Big(\frac{U}{\Gamma}\Big)^{''}(0) <0$, and thus $\displaystyle \Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0) <0$.
 Furthermore, we have
 \begin{equation} \label{eq:second_der}
 \begin{aligned}
-\frac{\Gamma^{''}(0)}{\Gamma(0)} &= \frac{1}{2\lambda}\Big(\frac{U}{\Gamma}\Big)^{''}(0) < 0,\\
-\frac{\Theta^{''}(0)}{\Theta(0)} &= \frac{1}{2\lambda}\Big(r_0\Big(\frac{U}{\Gamma}\Big)^{''}(0) + s_0\Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0)\Big)\Big)  < 0,\\
-\frac{U^{''}(0)}{U(0)} &=\frac{\Gamma^{''}(0)}{\Gamma(0)} + \frac{ \big(\frac{U}{\Gamma}\big)^{''}(0)}{\frac{U}{\Gamma}(0)}< 0,\\
+\frac{\Gamma^{''}(0)}{\Gamma(0)} &= \frac{1}{2\lambda}\Big(\frac{U}{\Gamma}\Big)^{''}(0) < 0, & 
+\frac{\Theta^{''}(0)}{\Theta(0)} &= \frac{1}{2\lambda}\Big(s_0\Big(\frac{U}{\Gamma}\Big)^{''}(0) + r_0\Big(\frac{\Sigma\Gamma}{\Theta}\Big)^{''}(0)\Big)\Big)  < 0,\\
+\frac{U^{''}(0)}{U(0)} &=\frac{\Gamma^{''}(0)}{\Gamma(0)} + \frac{ \big(\frac{U}{\Gamma}\big)^{''}(0)}{\frac{U}{\Gamma}(0)}< 0,& 
 \Sigma^{''}(0)&=(b+\lambda)U(0)>0.
 \end{aligned}
 \end{equation}
 
-Now, we consider the Taylor expansions of $p(\log\xi)$, $q(\log\xi)$, $s(\log\xi)$ and $s(\log\xi)$ at $\xi=0$ using above and \eqref{eq:bdry0}.
+Now, we consider the Taylor expansions of $p(\log\xi)$, $q(\log\xi)$, $r(\log\xi)$ and $s(\log\xi)$ at $\xi=0$ using above and \eqref{eq:bdry0}.
 \begin{align*}
  p(\log\xi) &= \frac{ \tg }{\ts} = \frac{ \xi^{a_1} \Gamma(\xi)}{\xi^{d_1} \Sigma(\xi)} = \xi^2\frac{\Gamma(\xi)}{\Sigma(\xi)} = \xi^2\frac{\Gamma(0)}{\Sigma(0)} + o(\xi^2) \\
  %&= \xi^2\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + o(\xi^2),\\
  q(\log\xi) &= b\frac{\tv}{\ts} = b\frac{ \xi^{b_1} V(\xi) }{ \xi^{d_1} \Sigma(\xi)} = b\xi\frac{ V(\xi) }{ \Sigma(\xi)} = b\xi^2 \frac{U(0)}{\Sigma(0)}+ o(\xi^2)=\xi^2 ~br_0\frac{\Gamma(0)}{\Sigma(0)} + o(\xi^2) \\
  %&= \xi^2\Big(b\frac{U(0)}{\Phi(0)}\Big)\Big(\frac{U(0)}{\Phi(0)}\Big)^{-n}\Phi(0)^{1+\frac{\alpha-n}{1+\alpha}} + o(\xi^2),\\
  r(\log\xi) &= \frac{\tu}{ \tg } = \frac{ \xi^{1+b_1}U(\xi) }{ \xi^{a_1}\Gamma(\xi) } = \frac{ U(0) }{ \Gamma(0) }+ \xi \Big(\frac{U}{\Gamma}\Big)'(0) + \frac{1}{2}\xi^2\Big(\frac{U}{\Gamma}\Big)^{''}(0) + o(\xi^2)\\
-  &=\frac{ U(0) }{ \Gamma(0) } + \xi^2\frac{\Gamma(0)}{\Sigma(0)} \frac{(b+\lambda)r_0}{\frac{s_0-1}{2}+2n\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)} + o(\xi^2),\\
- s(\log\xi) &= \frac{\ts\tg}{\tth} = \frac{ \xi^{a_1+d_1}\Sigma(\xi)\Gamma(\xi) }{\xi^{c_1} \Theta(\xi)} = \frac{ \Sigma(0)\Gamma(0) }{\Theta(0)} + \xi \Big(\frac{ \Sigma\Gamma }{\Theta}\Big)^{'}(0) + \frac{1}{2}\xi^2\Big(\frac{ \Sigma\Gamma }{\Theta}\Big)^{''}(0) + o(\xi^2)\\
- &=\frac{ \Sigma(0)\Gamma(0) }{\Theta(0)} + \xi^2 n \left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)\frac{(b+\lambda)r_0}{\frac{s_0-1}{2}+2n\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)}.
+  &=\frac{ U }{ \Gamma }(0) + \xi^2\frac{\Gamma(0)}{\Sigma(0)} \frac{-(b+\lambda)r_0}{\frac{1-s_0}{\lambda}-\frac{n}{r_0}\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \frac{1}{\lambda}+2}{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)} ,\\
+ s(\log\xi) &= \frac{\ts\tg}{\tth} = \frac{ \xi^{a_1+d_1}\Sigma(\xi)\Gamma(\xi) }{\xi^{c_1} \Theta(\xi)} = \frac{ \Sigma\Gamma }{\Theta}(0) + \xi \Big(\frac{ \Sigma\Gamma }{\Theta}\Big)^{'}(0) + \frac{1}{2}\xi^2\Big(\frac{ \Sigma\Gamma }{\Theta}\Big)^{''}(0) + o(\xi^2)\\
+ &=\frac{ \Sigma\Gamma }{\Theta}(0) + \xi^2 n \left(\frac{ \big(\frac{1}{\lambda}+2\big) \frac{1}{r_0} }{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)\frac{\Gamma(0)}{\Sigma(0)} \frac{-(b+\lambda)r_0}{\frac{1-s_0}{\lambda}-\frac{n}{r_0}\Big(\frac{2}{s_0} + \frac{r_0}{\lambda}\Big)\left(\frac{ \frac{1}{\lambda}+2}{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}}\right)}+ o(\xi^2).
 \end{align*}
 Therefore,
 \begin{align*}
-\chi(\log\xi) = \big(p(\log\xi),q(\log\xi),r(\log\xi),s(\log\xi)\big) -M_0 = \xi^2\Big(\frac{\Gamma(0)}{\Sigma(0)}\Big) X_{02} + o(\xi^2),
+\chi(\log\xi)-M_0  = \big(p(\log\xi),q(\log\xi),r(\log\xi),s(\log\xi)\big) -M_0 =  -\Big(\frac{\Gamma(0)}{\Sigma(0)}\Big)\Big(\frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}\Big)\xi^2 X_{01} + o(\xi^2),
 \end{align*}
 which is the \eqref{eq:alpha} for $\eta=\log\xi$.
 \end{proof}
@@ -1053,7 +1053,7 @@ In this section, we state that each of the strain, strain-rate, and temperature 
 % 
 % In this section we contrast the initial non-uniformities $\big(\gamma(0,x),v(0,x),\theta(0,x),\sigma(0,x),u(0,x)\big)=\\ \big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)|_{\xi=x}$ from the one snapshot at a certain time of the uniform shearing motion. 
 \begin{proposition}
-Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be the self-similar profiles that a defined by transformations of \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, and \eqref{eq:pqrdef} upon to the heteroclinic orbit $\chi(\eta)=\big(p(\eta),q(\eta),r(\eta)\big)$ that is constructed by Theorem \ref{thm1} in the valid range of the parameters $U(0)$ and $\Theta(0)$ of \eqref{eq:restriction}. Then, 
+Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be the self-similar profiles that a defined by transformations of \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, and \eqref{eq:pqrdef} upon to the heteroclinic orbit $\chi(\eta)=\big(p(\eta),q(\eta),r(\eta),s(\eta)\big)$ that is constructed by Theorem \ref{thm1} in the valid range of the parameters $U(0)$ and $\Theta(0)$ of \eqref{eq:restriction}. Then, 
  \begin{enumerate}
   \item[(i)] The self-similar profile achieves the boundary condition at $\xi=0$,
     \begin{equation*}
@@ -1064,31 +1064,48 @@ Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be the self-si
   \begin{aligned}
     \Gamma(\xi) &= \frac{1}{a}U(0) + \Gamma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Gamma^{''}(0)&<0,\\
     \Theta(\xi) &= \Theta(0) + \Theta^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Theta^{''}(0)&<0,\\
-    \Sigma(\xi) &= \Theta(0)^{-\alpha}{U(0)^n}+ \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Sigma^{''}(0)&>0, \\
+    \Sigma(\xi) &= \frac{1}{a^m}\Theta(0)^{-\alpha}{U(0)^{m+n}}+ \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Sigma^{''}(0)&>0, \\
     U(\xi) &= U(0) + U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & U^{''}(0)&<0,\\
     V(\xi) &= U(0)\xi + U^{''}(0)\frac{\xi^3}{6} + o(\xi^3), & U^{''}(0)&<0.
   \end{aligned}
   \end{equation}
-  \item[(iii)] Its asymptotic behavior as $\xi \rightarrow \infty$ is given by
+  \item[(iii)] Its asymptotic behavior as $\xi \rightarrow \infty$ is given by\\
+  if $\mu_{11}\ne-1$ or $\mu_{11}=-1$ but $b=\lambda$,
   \begin{equation} \label{eq:ss_asymp1}
   \begin{aligned}
-    \Gamma(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-m-n}}), & V(\xi) &= O(1), &    \Theta(\xi) &= O(\xi^{-\frac{1+m+n}{\alpha-m-n}}),\\
-   \Sigma(\xi) &= O(\xi), &   U(\xi) &= O(\xi^{-\frac{1+\alpha}{\alpha-m-n}}).
+    \Gamma(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}}), & V(\xi) &= \BO\big(1), &    \Theta(\xi) &= \BO\big(\xi^{-\frac{1+m+n}{\alpha-m-n}}),\\
+   \Sigma(\xi) &= \BO\big(\xi), &   U(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}})
+  \end{aligned}
+  \end{equation}
+  otherwise
+    \begin{equation} \label{eq:ss_asymp2}
+  \begin{aligned}
+    \Gamma(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}}\big(\log\xi\big)^{\frac{1+\alpha}{D}}\big), & V(\xi) &= \BO\big(\big(\log\xi\big)^{-\frac{\alpha-m-n}{D}}\big), &    \Theta(\xi) &= \BO\big(\xi^{-\frac{1+m+n}{\alpha-m-n}}\big(\log\xi\big)^{\frac{1+m+n}{D}}\big),\\
+   \Sigma(\xi) &= \BO\big(\xi\big(\log\xi\big)^{-\frac{\alpha-m-n}{D}}\big), &   U(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}}\big(\log\xi\big)^{\frac{1+\alpha}{D}}\big)
   \end{aligned}
   \end{equation}
  \end{enumerate}
  
 \end{proposition}
 \begin{proof}
-The proof of the Proposition \ref{prop1} contains $(i)$ and $(ii)$ (See \eqref{eq:second_der}.) and thus we are left to prove $(iii)$. {\red proof for $(iii)$ !}
-
-% By \eqref{eq:estimate}, $p(\log\xi) \rightarrow 0$, $q(\log\xi) \rightarrow 1$, and $r^{1+n}(\log\xi)=\frac{U(\xi)^{1+n}}{\Theta(\xi)^{1+\alpha}} \rightarrow r_1^{1+n}$ as $\xi \rightarrow\infty$. From $\eqref{eq:ss-odes}_{3}$, we observe that
-% $$ \frac{\lambda}{1+\alpha} \frac{\xi\Theta'(\xi)}{\Theta(\xi)} \rightarrow r_1 - c = -\frac{1+n}{\alpha-n}, \quad \text{as $\xi \rightarrow \infty$}.$$
-% 
-% 
-% 
+The proof of the Proposition \ref{prop1} contains $(i)$ and $(ii)$ (See \eqref{eq:second_der}.) and thus we are left to prove $(iii)$. 
+Around the hyperbolic equlibrium point $M_1$, there is a homeomorphism that maps the linearized flow to the non-linear flow and any orbit $\psi(\eta)$ attracted to $M_1$ in the neighborhood of $M_1$ has the expansion
+\begin{equation}
+\begin{aligned}
+ &\psi(\eta) -M_1\\
+ &= \begin{cases} \kappa_1'e^{\mu_{11}\eta}X_{11} + \kappa_2'e^{\mu_{12}\eta}X_{12} + \kappa_4'e^{\mu_{14}\eta}X_{14} + \text{high order terms} & \text{if $\mu_{11}\ne-1$ or $\mu_{11}=-1$ but $b=\lambda$,}\\
+ \kappa_1'\eta e^{\mu_{11}\eta}X_{11}' + \kappa_2'e^{\mu_{12}\eta}X_{12} + \kappa_4'e^{\mu_{14}\eta}X_{14} + \text{high order terms} & \text{otherwise}
+ \end{cases}
+\end{aligned}
+\end{equation}
+as $\eta \rightarrow \infty$. Because the plane $p\equiv0$ is an invariant plane for a non-linear flow either so the plane $p\equiv0$ is mapped to $p\equiv0$ in non-linear flow. The heteroclinic orbit $\chi(\eta)$ captured ventures out from the plane $p\equiv0$ and thus $\kappa_1'$ of $\chi(\eta)$ is nontrivial. This implies that the leading order of $p(\log\xi)$ is 
+$$p(\log\xi) = \begin{cases} \BO(\xi^{\mu_{11}}) & \text{if $\mu_{11}\ne-1$ or $\mu_{11}=-1$ but $b=\lambda$,}\\
+ \BO(\xi^{\mu_{11}}\log\xi) & \text{otherwise}
+ \end{cases}
+ $$
+as $\xi \rightarrow \infty$. Asymptotics \eqref{eq:ss_asymp1} and \eqref{eq:ss_asymp2} are the consequences of the reconstruction formulas of  \eqref{eq:CAPtoBAR},\eqref{eq:BARtoTIL} and
 \begin{align*}
- \tv &= \frac{1}{b} \,p^{-\frac{\alpha-n}{D}} \,q\, r^{\frac{n(1+\alpha)}{D}}, & \tth&=p^{\frac{1+n}{D}}\,r^{\frac{n(1+n)}{D}}, & \ts&=p^{-\frac{\alpha-n}{D}}\,r^{\frac{n(1+\alpha)}{D}}, & \tu&=p^{\frac{1+\alpha}{D}}\,r^{\frac{n(1+\alpha)}{D}+1}
+ \tg&=p^{\frac{1+\alpha}{D}}r^{\frac{n}{D}}s^{\frac{\alpha}{D}}, & \tv &= \frac{1}{b} p^{-\frac{\alpha-m-n}{D}}qr^{\frac{n}{D}}s^{\frac{\alpha}{D}}, & \tth&=p^{\frac{1+m+n}{D}}r^{\frac{2n}{D}}s^{-\frac{1-m-n}{D}}, \\ \ts&=p^{-\frac{\alpha-m-n}{D}}r^{\frac{n}{D}}s^{\frac{\alpha}{D}},  & \tu&=p^{\frac{1+\alpha}{D}}r^{\frac{n}{D}+1}s^{\frac{\alpha}{D}}.
 \end{align*}
 % 
 % $p \sim \xi^{-\frac{1+n}{1+\alpha}}$
@@ -1122,7 +1139,7 @@ Note that the rate of the latter always greater than $\frac{n}{1+n}$ in the vali
  \sigma(t,0) &= (1+t)^{\frac{-2\alpha+2m+n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda}\Sigma(0), &
  \sigma(t,x) &\sim t^{\frac{-2\alpha+2m+n}{D} +\frac{1+m+n}{D}\lambda}|x|, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
 \end{align*}
-{\red Note that the rate of the latter always less than $-\frac{n}{1+n}$ in the valid range of the $\lambda$.}
+Note that the rate of the latter always less than $-\frac{n}{1+m+n}$ in the valid range of the $\lambda$.
 \item Velocity : The velocity at time $t$ is an increasing function of $x$ that takes a transition from $-v_\infty$ to $v_\infty$, as $x$ runs from $-\infty$ to $\infty$. It is an odd function of $x$ and there $v_\infty\triangleq \lim_{x \rightarrow \infty} v(t,x)$. Because of the scaling law $\xi=(1+t)^\lambda x$, the region around the origin that the  most of transition takes place becomes narrower as time goes by and the slope becomes steeper accordingly. It eventually forms the step-function type singularity at origin. Note that the asymptotic limit $$v_\infty(t)=(1+t)^{b}V_\infty = (1+t)^{\frac{1+m}{D} + \frac{1+m+n}{D}\lambda}V_\infty, \quad V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi) <\infty$$
 grows at polynomial rate. This dictates that the far field loading condition for the velocity does not exactly coincide to that of uniform shearing motion, where one sets the time independent velocity at the boundary. Thus, the particle gets faster as it moves forward in our solution. This deviation is obviously a consequence of our simplifying assumption of self-similarity.
 \end{itemize}
@@ -1292,9 +1309,9 @@ Next, coefficients matrix for the Linearized equations around $M_1$ is
 
 The following exposition specifies all possible combinations; unless $\mu_{11}=\mu_{12}=-1$, the four linearly independent eigenvectors are attained, and when the exceptional case takes place the repeated eigenvalue $-1$ has one less geometric multiplicity than the algebraic multiplicity.% so we supplement one generalized eigenvector for the repeated eigenvalue $-1$.
 
-As to the eigenvectors, notice first that the eigenvalues for $M_1$, differently from those for $M_0$, have chances to be repeated. While the exposition in the Appendix \ref{append:lin} specifies quite a few possible combinations, what is explained there is that unless $\mu_{11}=\mu_{12}=-1$, the four linearly independent eigenvectors are attained, and when the exceptional case takes place we will supplement precisely one generalized eigenvector for the repeated eigenvalue $-1$.
+As to the eigenvectors, notice first that the eigenvalues for $M_1$, differently from those for $M_0$, have chances to be repeated. While the exposition in the Appendix \ref{append:lin} specifies quite a few possible combinations, what is explained in the below is that unless $\mu_{11}=\mu_{12}=-1$, the four linearly independent eigenvectors are attained, and when the exceptional case takes place we will supplement precisely one generalized eigenvector for the repeated eigenvalue $-1$.
 
-{\bf Case 1. $-\frac{1+m+n}{\alpha-m-n}\ne -1$; or $-\frac{1+m+n}{\alpha-m-n}= -1$ but $b=\lambda$. } This case yields the four linearly independent eigenvectors. The eigenvector $X_{1j}$ is collected in the matrix $S_1$ as $j$-th column vector, $j=1,2,3,4$, and in case eigenvalues are repeated the corresponding eigenvectors form a basis for the corresponding subspaces:
+{\bf Case 1. $-\frac{1+m+n}{\alpha-m-n}\ne -1$; or $-\frac{1+m+n}{\alpha-m-n}= -1$ but $b=\lambda$. } This case yields the four linearly independent eigenvectors. The eigenvector $X_{1j}$ is collected in the matrix $S_1$ as $j$-th column vector, $j=1,2,3,4$, and in cases eigenvalues are repeated the corresponding eigenvectors are understood as a basis for the corresponding subspaces:
 \begin{align*}
  S_1&=
  \begin{pmatrix}
