@@ -1046,13 +1046,13 @@ We replace $t \leftarrow t+1$ in the final expressions,
 by which we interpret $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)=\big(\gamma(0,x),v(0,x),\theta(0,x),\sigma(0,x),u(0,x)\big)|_{x=\xi}$,  the initial states that give rise to the localization. In the following sections, we examine characteristics of these two-parameter family of initial states and discuss the emergence of localization from them as time proceeds.
 
 \subsubsection{Initial non-uniformities}
-In this section, we state that each of the strain, strain-rate, and temperature has a small bump at the origin out of the asymptotically flat state, whose tip sizes are parameterized by $U(0)$ and $\Theta(0)$. Accordingly, the velocity is an increasing function of $x$ that has a slightly steeper slope at origin than the rest of the place; the stress is then the convex increasing function of $|x|$. These states are viewed as perturbations of a snapshot at a certain time of the uniform shearing motion. 
+We state that each of the strain, strain-rate, and temperature has a small bump at the origin out of the asymptotically flat state, whose tip sizes are parameterized by $U(0)$ and $\Theta(0)$. Accordingly, the velocity is an increasing function of $x$ that has a slightly steeper slope at origin than at the rest of the places; the stress is then the convex increasing function of $|x|$. These initial non-uniformities can be  viewed as perturbations of the uniform shearing motion at a certain time. 
 
 % Now, we fix the two primary parameters $U(0)$ and $\Theta(0)$ and look into the 
 % 
 % 
 % In this section we contrast the initial non-uniformities $\big(\gamma(0,x),v(0,x),\theta(0,x),\sigma(0,x),u(0,x)\big)=\\ \big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)|_{\xi=x}$ from the one snapshot at a certain time of the uniform shearing motion. 
-\begin{proposition}
+\begin{proposition} \label{prop:ss}
 Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be the self-similar profiles that a defined by transformations of \eqref{eq:CAPtoBAR}, \eqref{eq:BARtoTIL}, and \eqref{eq:pqrdef} upon to the heteroclinic orbit $\chi(\eta)=\big(p(\eta),q(\eta),r(\eta),s(\eta)\big)$ that is constructed by Theorem \ref{thm1} in the valid range of the parameters $U(0)$ and $\Theta(0)$ of \eqref{eq:restriction}. Then, 
  \begin{enumerate}
   \item[(i)] The self-similar profile achieves the boundary condition at $\xi=0$,
@@ -1116,32 +1116,37 @@ as $\xi \rightarrow \infty$. Asymptotics \eqref{eq:ss_asymp1} and \eqref{eq:ss_a
 \end{proof}
 
 \subsubsection{Emergence of localization}
-As time proceeds, the initial states evolve out emerging the localization and this section is devoted to specify this localization: the difference in the growth or decay rate at the origin and the rest of the place are contrasted in order to illustrate the emergence of the localization. 
+As time proceeds, the initial states evolve out emerging the localization and this section is devoted to specify this localization: the deviation in the growth or decay rate at the origin from those at the rest of the places are contrasted, which is the emergence of the localization. 
+
+For the illustrations of it, in the below we only present the cases $-\frac{1+m+n}{\alpha-m-n}\ne-1$  omitting the cases of $-\frac{1+m+n}{\alpha-m-n}=-1$ where we would have the logarithmic corrections according to the Proposition \ref{prop:ss}.
 \begin{itemize}
- \item Strain : The strain always increases at a fixed $x$ as time proceeds. However the growth rate at the origin is faster than the rest of the places,
+ \item Strain : The strain keeps increasing at a fixed $x$ as time proceeds. However the growth at the origin is faster than that at the rest of the places,
 \begin{align*}
- \gamma(t,0) &= (1+t)^{1+\frac{1+m}{D} + \frac{2+2\alpha}{D}\lambda}\Gamma(0), &
- \gamma(t,x) &\sim t^{1+\frac{1+m}{D} - \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+ \gamma(t,0) &= (1+t)^{\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda}\Gamma(0), &
+ \gamma(t,x) &\sim t^{\frac{2+2\alpha-n}{D} - \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
 \end{align*}
-Note that the rate of the latter always greater than $\frac{n}{1+n}$ in the valid range of the $\lambda$ of \eqref{eq:r1posineq}.
+Remember that the positivity of the growth rate $\frac{2+2\alpha-n}{D} - \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda$ was the ground for imposing the constraint \eqref{eq:lambda-range}.
+\item Temperature : The temperature keeps increasing at a fixed $x$ as time proceeds. The growth at the origin is faster than that at the rest of the places,
+\begin{align*}
+ \theta(t,0) &= (1+t)^{\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda}\Theta(0),&
+ \theta(t,x) &\sim t^{\frac{2(1+m)}{D} - \frac{(1+m+n)^2}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+m+n}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+\end{align*}
+Again, the positivity of the growth rate $\frac{2(1+m)}{D} - \frac{(1+m+n)^2}{D(\alpha-m-n)}\lambda$ was the ground for \eqref{eq:lambda-range}.
 \item Strain rate : The growth rates of the strain-rate is by definition less by one to those of the strain, again illustrating the localization.
 \begin{align*}
  u(t,0) &= (1+t)^{\frac{1+m}{D} + \frac{2+2\alpha}{D}\lambda}U(0),&
  u(t,x) &\sim t^{\frac{1+m}{D} - \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+\alpha}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
 \end{align*}
-\item Temperature : The temperature always increases at a fixed $x$ as time proceeds as well as the strain does. The growth rate at the origin is faster than the rest of the places,
-\begin{align*}
- \theta(t,0) &= (1+t)^{\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda}\Theta(0),&
- \theta(t,x) &\sim t^{\frac{2(1+m)}{D} - \frac{(1+m+n)^2}{D(\alpha-m-n)}\lambda}|x|^{-\frac{1+m+n}{\alpha-m-n}}, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
-\end{align*}
-\item Stress : The stress always decreases at a fixed $x$ as time proceeds. However, the decay rate at the origin is faster than the rest of the places,
+\item Stress : The stress keeps decreasing at a fixed $x$ as time proceeds. However, this collapsing down of the stress at the origin is severer than that at the rest of the places,
 \begin{align*}
  \sigma(t,0) &= (1+t)^{\frac{-2\alpha+2m+n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda}\Sigma(0), &
- \sigma(t,x) &\sim t^{\frac{-2\alpha+2m+n}{D} +\frac{1+m+n}{D}\lambda}|x|, \quad \text{as $t \rightarrow \infty$, $x\ne0$.}
+ \sigma(t,x) &\sim t^{\frac{-2\alpha+2m+n}{D} +\frac{1+m+n}{D}\lambda}|x|, \quad \text{as $t \rightarrow \infty$, $x\ne0$,}
 \end{align*}
-Note that the rate of the latter always less than $-\frac{n}{1+m+n}$ in the valid range of the $\lambda$.
-\item Velocity : The velocity at time $t$ is an increasing function of $x$ that takes a transition from $-v_\infty$ to $v_\infty$, as $x$ runs from $-\infty$ to $\infty$. It is an odd function of $x$ and there $v_\infty\triangleq \lim_{x \rightarrow \infty} v(t,x)$. Because of the scaling law $\xi=(1+t)^\lambda x$, the region around the origin that the  most of transition takes place becomes narrower as time goes by and the slope becomes steeper accordingly. It eventually forms the step-function type singularity at origin. Note that the asymptotic limit $$v_\infty(t)=(1+t)^{b}V_\infty = (1+t)^{\frac{1+m}{D} + \frac{1+m+n}{D}\lambda}V_\infty, \quad V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi) <\infty$$
-grows at polynomial rate. This dictates that the far field loading condition for the velocity does not exactly coincide to that of uniform shearing motion, where one sets the time independent velocity at the boundary. Thus, the particle gets faster as it moves forward in our solution. This deviation is obviously a consequence of our simplifying assumption of self-similarity.
+noticing that $\frac{-2\alpha+2m+n}{D} +\frac{1+m+n}{D}\lambda\le-\frac{n}{1+m+n}$ in the valid range of the $\lambda$.
+
+
+\item Velocity : The velocity is an odd function of $x$. At each time $t$, $v(t,x)$ is an increasing function of $x$ from $-v_\infty(t)$ to $v_\infty(t)$, as $x$ runs from $-\infty$ to $\infty$, where $v_\infty(t)\triangleq \lim_{x \rightarrow \infty} v(t,x)$. It can be viewed as a perturbation of the linear shear flow field. The self-similar scaling  $\xi=(1+t)^\lambda x$ implies that as time goes by the most of the transition takes place around the origin making the slope at origin steeper accordingly. It eventually forms a step-function type singularity at origin. Note that the asymptotic limit $$v_\infty(t)=(1+t)^{b}V_\infty = (1+t)^{\frac{1+m}{D} + \frac{1+m+n}{D}\lambda}V_\infty, \quad V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi) <\infty.$$
+This dictates that the particle of our solutions gets faster as it moves forward and we find that the far field loading condition for the velocity does not exactly coincide to that of uniform shearing motion where we have the constant velocity boundary condition. This deviation is a consequence of our simplifying assumption of self-similarity.
 \end{itemize}
 
 % \section*{Appendix A. Coefficient matrices for the linearized system} \label{append:linear}
