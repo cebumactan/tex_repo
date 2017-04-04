@@ -210,23 +210,23 @@
 % $$v_\infty(t)\triangleq \lim_{x \rightarrow \infty} v(t,x)=(1+t)^{b}V_\infty = (1+t)^{\frac{1}{D} + \frac{1+n}{D}\lambda}V_\infty, \quad V_\infty \triangleq \lim_{\xi \rightarrow \infty} V(\xi) <\infty.$$
 % It is observed that the far field velocity grows as time proceeds. The particle gets faster as it moves forward in $y$-direction and relatively more energy is pumped into the domain than the constant far field velocity does. This is a consequence of our simplifying assumption of the self-similarity inherited from the scaling property of \eqref{intro:system} and \eqref{intro:powerlaw}.
 % 
-% Throughout this paper,
-% \begin{equation} \label{eq:vars}
-% \begin{aligned}
-%  \gamma(t,x) &: \text{strain}\\
-%  u(t,x)=\gamma_t &: \text{strain rate}\\
-%  v(t,x) &: \text{vertical velocity}\\
-%  \theta(t,x) &: \text{temperature}\\
-%  \tau(t,x) &: \text{stress}
-% \end{aligned}
-% \end{equation}
-% in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$ and equations describing the deformation are given by
-% \begin{align}
-%  \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
-%  v_t &= \tau_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
-%  \theta_t &= \tau u \quad \text{(energy conservation)}	\label{eq:th}\\
-%  \tau &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
-% \end{align}
+Throughout this paper,
+\begin{equation} \label{eq:vars}
+\begin{aligned}
+ \gamma(t,x) &: \text{strain}\\
+ u(t,x)=\gamma_t &: \text{strain rate}\\
+ v(t,x) &: \text{vertical velocity}\\
+ \theta(t,x) &: \text{temperature}\\
+ \tau(t,x) &: \text{stress}
+\end{aligned}
+\end{equation}
+in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$ and equations describing the deformation are given by
+\begin{align}
+ \gamma_t &= u\triangleq v_x, \quad \text{(kinematic compatibility)} 	\label{eq:g}\\
+ v_t &= \tau_x, \quad \text{(momentum conservation)} 	\label{eq:v}\\
+ \theta_t &= \tau u \quad \text{(energy conservation)}	\label{eq:th}\\
+ \tau &=\theta^{-\alpha}\gamma^m u^n.			\label{eq:tau}
+\end{align}
 
 \section{Self-similar structure}
 
@@ -238,19 +238,18 @@ The system \eqref{eq:g}-\eqref{eq:tau} admits a scale invariance property. Suppo
  v_\rho(t,x) &= \rho^bv(\rho^{-1}t,\rho^\lambda x),\\
  \theta_\rho(t,x) &= \rho^c\theta(\rho^{-1}t,\rho^\lambda x), &
  \sigma_\rho(t,x) &= \rho^d\sigma(\rho^{-1}t,\rho^\lambda x),\\
- u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x),
+ u_\rho(t,x) &= \rho^{b+\lambda}\gamma(\rho^{-1}t,\rho^\lambda x)
 \end{aligned}
 \end{equation}
-again is a solution provided
+is again a solution provided
 \begin{equation} \label{eq:exponents}
 \begin{aligned}
- a&= \frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda =: a_0 + a_1 \lambda, & b&=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda =: b_0 + b_1\lambda,\\
- c&=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda =: c_0 + c_1\lambda, & d&=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda =: d_0 + d_1\lambda,
+ a&= a_0 + a_1 \lambda=\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda, & b&=b_0 + b_1\lambda=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda ,\\
+ c&=c_0 + c_1\lambda=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda, & d&=d_0 + d_1\lambda=\frac{-2\alpha + 2m +n}{D} + \frac{-2\alpha+2m+2n}{D}\lambda,
 \end{aligned}
 \end{equation}
-for each $\lambda \in \mathbb{R}$, where the denominator $D = 1+2\alpha-m-n$. Being $\lambda$ negative makes this scaling spatially spread the original profiles  as $\rho$ grows, and this is the sign that is used for instance in the parabolic problems. On the other hand, we are interested in the {\it localizing} phenomena and thus we focus on the opposite, with $\lambda>0$, throughout this paper.
+for each $\lambda \in \mathbb{R}$, with the denominator $D = 1+2\alpha-m-n$. Having $\lambda$ negative is the typical scaling for the dissipative problems. Since we are interested in the {\it localizing} phenomena, we look for the opposite self-similar scale $\lambda>0$, throughout this paper.
 
- But uniform shearing solution takes a negative $\lambda$.
 \subsection{Self-Similar field variables}
 Motivated by the scale invariance property parametrized by $\lambda>0$, we look for the solutions of type
 \begin{equation}\label{eq:ORItoCAP}
@@ -259,7 +258,7 @@ Motivated by the scale invariance property parametrized by $\lambda>0$, we look 
  \sigma(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x)
 \end{aligned}
 \end{equation}
-and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\eqref{eq:tau} gives us the system of ordinary differential and algebraic equations that $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ satisfies.
+setting $\xi = t^\lambda x$. Plugging the ansatz into the system \eqref{eq:g}-\eqref{eq:tau} gives us the system of ordinary differential and algebraic equations for $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ to satisfy:
 
 \begin{equation}
 \begin{aligned}
@@ -270,41 +269,45 @@ and set $\xi = t^\lambda x$. Plugging in the ansatz to the system \eqref{eq:g}-\
  V'(\xi)&=U(\xi).
 \end{aligned} \label{eq:ss-odes}
 \end{equation}
-This system is non-autonomous and the coefficient $\xi$ in front of the highest derivative of $\Theta, V, \Gamma$ makes the equations singular at $\xi=0$. Existence or non-existence of the singular ordinary differential equations requires case-by-case study and results depend on the characteristics of the problem. It is our main work to de-singularize \eqref{eq:ss-odes} and to reveal the proper existence theory of it. 
+This system is non-autonomous and the coefficient $\xi$ in front of the highest derivative of $\Theta, V, \Gamma$ shows that the equations are singular at $\xi=0$. Existence or non-existence of the singular ordinary differential equations differs from cases to cases and requires case-by-case study. %and results depend on the characteristics of the problem. 
+It is our main work to de-singularize \eqref{eq:ss-odes} discovering the proper existence theory of it. 
 
 \section{Heteroclinic orbit formulation}
-The goal of this section is to derive the equivalent $(p,q,r,s)$-system \eqref{eq:pqrsys} of \eqref{eq:ss-odes} that is autonomous and to turn the problem that seeks the self-similar solutions of \eqref{eq:ss-odes} into that seeks a heteroclinic orbit of \eqref{eq:pqrsys}. In the course, we devise a series of techniques to de-singularize the system \eqref{eq:ss-odes}. The series of techniques were first advanced in KOT, where the authors studied the similar temperature dependent viscosity with exponential law. 
-$$ \sigma = \mu(\theta)u^n = e^{-\alpha\theta} u^n.$$ 
-It turns out to be successful also in the power law type constitutive law for the solid model whose stress law exhibits strain softening
-$$ \sigma = \theta^{-\alpha}\gamma^{m}u^n, \quad -\alpha+m+n<0.$$
-It is of same spirit to extend in this paper the series of techniques to the power law type model for the fluid with temperature dependent viscosity.
+The goal of this section is to derive the equivalent $(p,q,r,s)$-system \eqref{eq:slow} of \eqref{eq:ss-odes} that is autonomous and to turn the problem that seeks the self-similar solutions of \eqref{eq:ss-odes} into that seeks a heteroclinic orbit of \eqref{eq:slow}. In the course, we devise a series of techniques to de-singularize the system \eqref{eq:ss-odes}. The series of techniques were first advanced in KOT, where the authors studied the fluid with temperature dependent viscous stress with exponential law $ \tau = \mu(\theta)u^n = e^{-\alpha\theta} u^n.$
+It turned out that the series of techniques are successfully adapted in our study where we employ the power law type constitutive law for the solid model whose stress law exhibits temperature softening
+$$ \tau = \theta^{-\alpha}\gamma^{m}u^n, \quad \alpha,m,n>0.$$
 
 \subsection{De-singularization}
-We begin by observing that if $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of \eqref{eq:ss-odes}, then so is \\$\big(\Gamma(-\xi), -V(-\xi), \Theta(-\xi), \Sigma(-\xi), U(-\xi)\big)$. From this fact, we seek self-similar profiles such that $\Gamma(\xi)$, $\Theta(\xi)$, $\Sigma(\xi)$, $U(\xi)$ are even functions of $\xi$, and $V(\xi)$ is an odd function of $\xi$. In addition, we consider profiles that are smooth and bounded around $\xi=0$, which leads to imposing conditions
+We begin by observing that if $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of \eqref{eq:ss-odes}, then so is \\$\big(\Gamma(-\xi), -V(-\xi), \Theta(-\xi), \Sigma(-\xi), U(-\xi)\big)$. From this fact, we look for self-similar profiles such that $\Gamma(\xi)$, $\Theta(\xi)$, $\Sigma(\xi)$, $U(\xi)$ are even functions of $\xi$, and $V(\xi)$ is an odd function of $\xi$. In doing so, we impose conditions
 \begin{equation}
  V(0)=U'(0)=\Gamma'(0)=\Sigma'(0)=\Theta'(0)=0 \label{eq:bdry0}
 \end{equation}
-and we regard \eqref{eq:ss-odes} as the boundary-value problem in the right half space $\xi \in [0,\infty)$ subject to the boundary conditions \eqref{eq:bdry0}. Later, we also append the far field condition as $\xi \rightarrow \infty$ and yet another boundary conditions at $\xi=0$, detailing in the issue of fixing the unique solution, but for the moment we work upon \eqref{eq:bdry0}.
+to focus on profiles smooth and bounded near $0$ and we regard \eqref{eq:ss-odes} as a boundary-value problem in the right half space $\xi \in [0,\infty)$ subject to the boundary conditions \eqref{eq:bdry0}. Because the system \eqref{eq:ss-odes} is singular, it is not clear in advance that how many conditions are needed to single out the solution. We will come to this point later in Section \ref{sec:char}.%, we also append the far field condition as $\xi \rightarrow \infty$ and yet another boundary conditions at $\xi=0$, detailing in the issue of fixing the unique solution, but for the moment we work upon \eqref{eq:bdry0}.
 
-To begin with, we study the scale invariance property of the system \eqref{eq:ss-odes}: \\Provided $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of it, then the scaled version \\$\big(\Gamma_\rho(\xi), V_\rho(\xi), \Theta_\rho(\xi), \Sigma_\rho(\xi), U_\rho(\xi)\big)$
+The system \eqref{eq:ss-odes} has its own scale invariance property: Provided $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ is a solution of it, then the scaled version $\big(\Gamma_\rho(\xi), V_\rho(\xi), \Theta_\rho(\xi), \Sigma_\rho(\xi), U_\rho(\xi)\big)$ where
 \begin{align*}
  \Gamma_\rho(\xi)&=\rho^{a_1}\Gamma(\rho\xi), & V_\rho(\xi)&=\rho^{b_1}V(\rho\xi), & \Theta_\rho(\xi)&=\rho^{c_1}\Theta(\rho\xi),\\
- \Sigma_\rho(\xi)&=\rho^{d_1}\Sigma(\rho\xi), & U_\rho(\xi)&=\rho^{b_1+1}U(\rho\xi),
+ \Sigma_\rho(\xi)&=\rho^{d_1}\Sigma(\rho\xi), & U_\rho(\xi)&=\rho^{b_1+1}U(\rho\xi)=\rho^{a_1}U(\rho\xi)
 \end{align*}
-is again a solution. It is tempting to seek the monomial solutions obtained by setting $\rho=\xi^{-1}$ as was the case of KOT, where the monomials served as the proper asymptotes as $\xi \rightarrow \infty$. Whereas for our power law viscosity, as soon one attempts to do it, one realizes that the exponent $-(b_1+1)$ of $U(\xi)$ is less than $-1$ and thus it is integrable in the whole space, or the leading order of $V(\xi) = -\int_\xi^\infty U(\xi') \; d\xi'$ is constant. This ruins the simple monomial ansatz and leads to that monomials do not constitute the meaningful solutions for our power law type model. The same was observed for the strain-softening model equipped with power law in KLT.
+is again a solution. 
 
-Nevertheless, we still exploit the scale invariance property to construct the profiles by constructing the multiplicative residuals to the monomials, namely
+It is tempting to examine the monomials $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)=\big(A\xi^{-a_1}, B\xi^{-b_1},C\xi^{-c_1},D\xi^{-d_1},E\xi^{-a_1}\big)$ obtained by setting $\rho=\xi^{-1}$, forgetting the boundary conditions \eqref{eq:bdry0} for the moment. This did play the role of asymptotes of other solutions as $\xi \rightarrow \infty$ in KOT. However, in our study with the power law constitutive relation, the exponent $-(b_1+1)$ of $U(\xi)$ is less than $-1$ or it is integrable from $\infty$ to result in $V(\xi) = -\int_\xi^\infty U(\xi') \; d\xi' =V_\infty + B\xi^{-b_1}$, which ruins the simple monomial ansatz from the first place.% and dictates that monomials do not constitute the meaningful solutions.
+
+% 
+% where the monomials served as the proper asymptotes as $\xi \rightarrow \infty$. Whereas for our power law viscosity, as soon one attempts to do it, one realizes that the exponent $-(b_1+1)$ of $U(\xi)$ is less than $-1$ , or the leading order of $V(\xi) = -\int_\xi^\infty U(\xi') \; d\xi'$ is constant. This  and leads to that . The same was observed for the strain-softening model equipped with power law in KLT.
+
+Nevertheless, the following multiplicative residuals to the monomials are the ones we work with, which give rise to a nice scaling property. For $(\bg,\bv,\bth,\bs,\tu)$ namely
 \begin{equation} \label{eq:CAPtoBAR}
 \begin{aligned}
  \bg(\xi)&=\xi^{a_1}\Gamma(\xi), &
  \bv(\xi)&=\xi^{b_1}V(\xi), &
  \bth(\xi)&=\xi^{c_1}\Theta(\xi), \\
  \bs(\xi)&=\xi^{d_1}\Sigma(\xi), &
- \bu(\xi)&=\xi^{b_1+1}U(\xi).
+ \bu(\xi)&=\xi^{b_1+1}U(\xi),
 \end{aligned}
 \end{equation}
-
-These variables result in a nice property; the system that $(\bg,\bv,\bth,\bs,\tu)$ satisfies is
+the system they satisfy is
+% These variables result in a nice property; 
 \begin{equation} \label{eq:barsys}
  \begin{aligned}
   a_0\bg + \lambda\xi\bg' &=\bu,\\
@@ -324,30 +327,30 @@ Now, introduce the new independent variable $\eta = \log\xi$ and define variable
  \tu(\log\xi)&=\bu(\xi).
 \end{aligned}
 \end{equation}
-Notice that $\frac{d}{d\eta}\tg(\eta) = \xi \frac{d}{d\xi}\bg(\xi)$ and we write the autonomous system
+Noticing that $\frac{d}{d\eta}\tg(\eta) = \xi \frac{d}{d\xi}\bg(\xi)$, we come to the autonomous system
 \begin{equation} \label{eq:tildesys}
  \begin{aligned}
   a_0\tg + \lambda\dtg &=\tu,\\
   b_0\tv + \lambda\dtv &=-d_1 \ts + \dts,\\
   c_0\tth+ \lambda\dtth&=\ts\tu,\\
-  \ts &=\tth^{-\alpha}\tg^m\tu^n,\\
+  \ts &=\tth^{-\alpha}\tg^m\tu^n.\\
   -b_1\tv+\dtv &= \tu,
  \end{aligned}
 \end{equation}
-where $\dot{f}=\frac{df}{d\eta}$.
+We used the notation $\dot{f}=\frac{df}{d\eta}$.
 
 
 
 \subsection{$(p,q,r,s)$-system derivation}
 At \eqref{eq:tildesys} we arrived  an autonomous system. For this system, we observe that not all the variables equilibrate. To see this, suppose $\tu \rightarrow \tu_\infty$ as $\eta \rightarrow \infty$. Then from the last equation in \eqref{eq:tildesys}, we conclude that $\tv \rightarrow \infty$ and thus $\ts \rightarrow \infty$ either by the second equation. This raises difficulties in analyzing system and we can come up with proper variables all of which equilibrate simultaneously as $\eta \rightarrow \infty$ and $\eta \rightarrow -\infty$.
 
-This can be done by looking at the system \eqref{eq:ss-odes} for $\big(\Gamma,V,\Theta,\Sigma,U)$ carefully. First, observe that
+This can be heuristically done by looking at the system \eqref{eq:ss-odes} for $\big(\Gamma,V,\Theta,\Sigma,U)$. First, observe that
 $$ f \sim \xi^\rho=e^{\rho\eta} \quad \text{as $\eta \rightarrow \infty$ (as $\xi \rightarrow \infty$) implies} \quad \frac{\dot{f}}{f} \rightarrow \rho,$$
 $$ f \sim \xi^{\rho'}=e^{\rho'\eta} \quad \text{as $\eta \rightarrow -\infty$ (as $\xi \rightarrow 0$) implies} \quad \frac{\dot{f}}{f} \rightarrow \rho',$$
 % $$ f \sim \xi^\rho'=e^{\rho'\eta} \quad \text{as $\eta \rightarrow \infty$ (as $\xi \rightarrow \infty$) implies} \quad \frac{\dot{f}}{f} \rightarrow \rho' \quad \text{as $\eta \rightarrow -\infty$ (as $\xi \rightarrow 0$) },$$
 % $$ \frac{\dot{f}}{f} \rightarrow 0 \quad \text{as $\eta \rightarrow -\infty$ implies that } \quad f \rightarrow const. \quad \text{as $\xi \rightarrow 0$ and}$$
 $$ \frac{\dot{(f/g)}}{f/g} = \frac{\dot{f}}{f} - \frac{\dot{g}}{g}. $$
-This dictates that if the asymptotic behavior of the variables as $\eta \rightarrow \infty$ (resp. $\eta \rightarrow -\infty$) are known a priori, then the ratio of two variables that share the asymptotic order will equilibrate as $\eta \rightarrow \infty$ (resp. $\eta \rightarrow -\infty$). By looking at the system \eqref{eq:ss-odes} and presuming heuristically the polynomial asymptotics, we find the ratios
+This dictates that if the asymptotic behavior of the variables as $\eta \rightarrow \infty$ (resp. $\eta \rightarrow -\infty$) are known a priori, then the ratio of two variables that share the asymptotic order will equilibrate as $\eta \rightarrow \infty$ (resp. $\eta \rightarrow -\infty$). By looking at the system \eqref{eq:ss-odes} and presuming the polynomial asymptotics, we find the ratios
 \begin{equation}\label{eq:pqrdef}
  \begin{aligned}
   p \triangleq \frac{ \xi^{a_1} \Gamma(\xi)}{\xi^{d_1} \Sigma(\xi)}=\frac{\tg}{\ts}, \quad q \triangleq b\frac{ \xi^{b_1} V(\xi) }{ \xi^{d_1} \Sigma(\xi)}=b \frac{\tv}{\ts},  \quad r \triangleq \frac{ U(\xi) }{ \Gamma(\xi) } = \frac{\tu}{\tg}, \quad s \triangleq \frac{\Sigma(\xi)\Gamma(\xi)}{\Theta(\xi)} = \frac{\ts\tg}{\tth}
@@ -355,12 +358,12 @@ This dictates that if the asymptotic behavior of the variables as $\eta \rightar
 \end{equation}
  work and $(p,q,r,s) \leftrightarrow (\tg,\tv, \tth,\ts)$ is a bijection.
  
-Define 
-\begin{equation}\label{eq:pqrsdef}
- \begin{aligned}
-  p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts}, &  r &= \frac{\tu}{\tg}, & s&=\frac{\ts\tg}{\tth}.
- \end{aligned}
-\end{equation} 
+% Define 
+% \begin{equation}\label{eq:pqrsdef}
+%  \begin{aligned}
+%   p &= \frac{\tg}{\ts}, & q&=b \frac{\tv}{\ts}, &  r &= \frac{\tu}{\tg}, & s&=\frac{\ts\tg}{\tth}.
+%  \end{aligned}
+% \end{equation} 
  
 With the calculation that is cumbersome but straightforward, we write
 \begin{align*}
@@ -374,7 +377,7 @@ Noticing that
 \begin{align*}
  \frac{\ts\tu}{\tth} = rs, \quad \frac{\tu}{\tv} = \frac{\ts}{\tv} \frac{\tg}{\ts} \frac{\tu}{\tg} = \frac{bpr}{q}, \quad \frac{\tu}{\tv} \frac{\tv}{\ts} = pr,
 \end{align*}
-we derive $(p,q,r,s)$-system:
+we derive the $(p,q,r,s)$-system:
 \begin{equation}\label{eq:slow}
  \begin{aligned}
  \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
@@ -383,30 +386,33 @@ we derive $(p,q,r,s)$-system:
  \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
  \end{aligned}
 \end{equation}
-
-
+{\blue
+In the following sections, we analyze \eqref{eq:slow}: We begin with sorting out the equilibrium points and conduct the linear stability for the relevant ones. Most importantly we reveal and exploit the singularly perturbed structure of \eqref{eq:slow}; $\eqref{eq:slow}_3$ with $n\ll1$ indicates the dynamics of $r$ can be distinctively fast and this suggests the use of asymptotic methods such as Chapman-Enskog type reduction.
+}
 \section{Equilibrium points and linear stability} \label{sec:equil}
-$(p,q,r,s)$-system \eqref{eq:slow} admits quite several equilibrium sets. Before we look into the phase space, we first set our region of interest that is an positively invariant manifold $\{(p,q,r,s) \; | \; p\ge0, q\ge0, r\ge0, s\ge0 \;\}$. Moreover, we will be able to conceive a three dimensional invariant manifold in the set
-\begin{align*}
- \left\{ \: (p,q,r,s) \: | \:  p,q\ge0, ~~ r,s\ge\delta>0, ~~\left|s-\frac{1+m}{1+\alpha}\right| \le A \frac{\alpha-m}{\alpha(1+\alpha)}\: \right\}.
-\end{align*}
-and only orbits those in the manifold is of our discussion. Because all the orbits are confined in this manifold and cannot escape in positive time, the only equilibrium points those in the region are of our interest. It turns out that only two equilibrium points resides.
+$(p,q,r,s)$-system \eqref{eq:slow} admits quite several equilibrium sets. They are listed in the Appendix \#. Other than examining all of them, we first set forth our region of interest in $\{(p,q,r,s) \; | \; p\ge0, q\ge0, r\ge0, s\ge0 \}$ whose positively invariance is easily proved. In fact, we will be able to conceive the three dimensional submanifold $G_0$ by \eqref{eq:G0} later that is positively invariant and is contained in
+the narrower region $I \triangleq\left\{ \: (p,q,r,s) \: | \:  p,q\ge0, ~~ r,s\ge\delta>0\right\}$.
+% \begin{align*}
+%  \left\{ \: (p,q,r,s) \: | \:  p,q\ge0, ~~ r,s\ge\delta>0, ~~\left|s-\frac{1+m}{1+\alpha}\right| \le A \frac{\alpha-m}{\alpha(1+\alpha)}\: \right\}.
+% \end{align*}
+We postpone showing the positively invariance of \eqref{eq:G0} until  Section \# while we only examine the equilibrium points in the manifold.
+
+The reason why we reject $r,s\le0$ is as follows. If we transform back to the original variables, then we find
+\begin{equation*}
+ r=t\partial_t\log \gamma(t,x), \quad rs=t\partial_t \log \theta(t,x).
+\end{equation*}
+%for the original variables $\theta(t,x)$ and $\gamma(t,x)$. 
+In case the variables $\theta(t,x)$ and $\gamma(t,x)$ have the polynomial asymptotic behaviors as $t \rightarrow \infty$ for a fixed $x$, above quantities pick the leading order exponents of the asymptotic expansions as $t \rightarrow \infty$, i.e., if $\gamma(t,x) = \mathcal{O}(t^\rho)$ as $t \rightarrow \infty$, then $t\partial_t\log \gamma(t,x) \rightarrow \rho$ as $t \rightarrow \infty$. Having $r,s>0$ is a reflection of our expectation that $\gamma(t,x) = \mathcal{O}(t^{\rho_1})$, $\theta(t,x) = \mathcal{O}(t^{\rho_2})$ for $\rho_1,\rho_2 >0$ as $t \rightarrow \infty$. Clearly, $t \rightarrow \infty$ when $\xi \rightarrow \infty$ for $x\ne0$. The reason is because the specimen keeps loading driven by the velocity assigned at far field in the problem configuration. Thus, regardless of the position $x$, we expect the strain $\gamma(t,x)$ always increases and does so to  $\infty$ as $t \rightarrow\infty$. On the same time, since the process is adiabatic, the heat produced at a point $x$ accumulates. Clearly energy keeps pumped into the domain from the far field driving velocity. If the domain was bounded then clearly $\theta(t,x)$ always increases and does so to  $\infty$ as $t \rightarrow\infty$. Though the domain here is the whole real line but we expect the similar behavior. The critical case where $r$ and $s$ can take $0$ will be quite subtle but we do not include those study here.
+
+Now, we return to the equilibrium points in the region of interest.
+Taking that interested orbits are confined in the region of positively invariance granted, we find only two equilibrium points relevant
 \begin{align*}
  M_0 &= (0,0,r_0,s_0), & r_0 &=\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda, & s_0&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_0},\\
  M_1 &= (0,1,r_1,s_1), & r_1 &= r_0-\frac{1+\alpha}{\alpha-m-n}\lambda, & s_1&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_1}.
 \end{align*}
-
-Before we going further, we first reason why we reject the region where $r,s\le0$. If we transform back, then we find
-\begin{equation*}
- t\partial_t \log \theta(t,x) = rs, \quad t\partial_t\log \gamma(t,x) = r.
-\end{equation*}
-for the original variables $\theta(t,x)$ and $\gamma(t,x)$. These quantities pick the leading exponents of quantity that asymptotically behaves similarly to the polynomial. If $\gamma(t,x) = \mathcal{O}(t^\rho)$ as $t \rightarrow \infty$, then $t\partial_t\log \gamma(t,x) \rightarrow \rho$ as $t \rightarrow \infty$. Having $r,s>0$ is a reflection of our expectation that $\gamma(t,x) = \mathcal{O}(t^{\rho_1})$, $\theta(t,x) = \mathcal{O}(t^{\rho_2})$ for $\rho_1,\rho_2 >0$ as $t \rightarrow \infty$.
-
-In the problem configuration, the specimen keeps loading driven by the velocity assigned at far field. Thus, regardless of the position $x$, we expect the strain $\gamma(t,x)$ always increases and increases to  $\infty$ as $t \rightarrow\infty$. On the same time, since the process is adiabatic, the heat produced at a point $x$ accumulates. Clearly energy keeps pumped into the domain from the far field driving velocity. Thus, we expect the temperature $\theta(t,x)$ either always increases.
-
-Now, we return to the phase space analysis in the region of interest. To locate $M_0$ and $M_1$ in the region, wee see that $\lambda$ cannot be arbitrarily large with the same reason above but
+Note that $M_1$ resides in $I$ under the constraint that $\lambda$ is not arbitrarily large but   
 \begin{equation} \label{eq:lambda-range}
- 0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(1-\frac{n}{1+m+n}\right)
+ 0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right).
 \end{equation}
 
 \subsection{Linear stability of $M_0$ and $M_1$}
@@ -440,7 +446,7 @@ We find the asymptotic expansion for $\mu_1^\pm$ as,
 As to the eigenvectors, notice first that the eigenvalues for $M_1$, differently from those for $M_0$, have chances to be repeated. While the exposition in the Appendix \ref{append:lin} specifies quite a few possible combinations, what is explained there is that unless $\mu_{11}=\mu_{12}=-1$, the four linearly independent eigenvectors are attained, and when the exceptional case takes place we will supplement precisely one generalized eigenvector for the repeated eigenvalue $-1$.
 \end{itemize}
 
-\section{Characterization of the heteroclinic orbit}
+\section{Characterization of the heteroclinic orbit} \label{sec:char}
 
 % \subsection{Far field condition as $\xi \rightarrow \infty$} \label{sec:far}
 % It is the specimen keeps loading that we are modeling in this paper. In other words, that the strain $\gamma(x,t)$ at a fixed point $x$ is an increasing function of $t$, for instance, Uniform shearing solution describes the specimen that keeps loading so that the strain grows linearly everywhere. Hence, we expect the self-similar solutions where strain $\gamma(x,t) \sim t^k$, for $k>0$.
@@ -653,6 +659,16 @@ As was discussed in Section \ref{sec:equil}, $M_1$ has two dimensions of stable 
 
 
 \section{Existence via Geometric theory of singular perturbation}
+\begin{enumerate}
+ \item We first proceed the proof for the case $n=0$ which will provide us a template trajectory. We have three step arguments.
+ \begin{enumerate}
+ \item The equation $\eqref{eq:slow0}_3$ becomes an algebraic equation. We set the our region of interest, a three dimensional trapezoid $K$ that is a part of the graph the algebraic equation specifies and in the same time a positively invariant. $K$ contains the two equilibrium points $M_0(0)$ and $M_1(0)$.
+ \item We prove that all points of the interior of $K$ are attracted to $M_1$, or $int\, K \subset W^s(M^1(0))$.
+ \item Then all orbits in the two dimensional unstable manifold of $M_0$ are the heteroclinics joining $M_0$ and $M_1$, but among them is the unique curve that meets $M_0$ tangentially $X_{01}$, which is the target orbit.
+ \end{enumerate}
+ \item Next, we proceed the proof for the case $0<n\ll1$. As to carrying out the step similar to (a), while the algebraic equation is not available, reduction to the three dimensional {\it slow manifold} is still conducted thanks to the geometric singular perturbation theory. We employ the concept of normally hyperbolicity and check the assumptions of the theory for this Chapman-Enskog type reduction done, proving the existence of the slow manifold that is a perturbation of the graph we previously had. Step (b) and (c) are then carried out in the spirit of the regularly perturbation problem.
+\end{enumerate}
+
 In slow time scale $\eta$,
 \begin{equation}
  \begin{aligned}
@@ -720,9 +736,9 @@ $3$-dimensional trapezoid $K$: ($\underbar{r}$ and $0<A<1$ is determined in the 
 \end{align*}
 Take $\tilde{K} \supset\supset K$, but sufficiently tight.
  %\right. \left.\frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-a) + \lambda p\underbar{r} + q +\frac{\alpha}{\lambda}\underbar{r}\big(y- \frac{1+m}{1+\alpha}\big) \le 0.\right\},\\
-\begin{align*}
+\begin{align} \label{eq:G0}
  G_0 &\triangleq \left\{ \: (p,q,r,s) \: | \: r=\hat{r}(p,q,s,0), \quad (p,q,s)\in \tilde{K}. \: \right\}.
-\end{align*}
+\end{align}
 
 The level-surface $\hat{r}(p,q,s,0) = \underbar{r}$ is an affine surface in $(p,q,s)$-space.
 \begin{equation}
@@ -743,7 +759,7 @@ $G_0$ is normally hyperbolic with respect to the flow \eqref{eq:fast0}.
  &= \hat{r}\Big(\frac{\alpha-m}{\lambda(1+\alpha)} + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big) + \lambda p\Big)\ge \underbar{r}\Big(A\underbar{r}\frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p\Big)>0.
  \end{align*}
 \end{proof}
-\subsection{Reduced flow \eqref{eq:slow0} for $n=0$}
+\subsubsection{Reduced flow \eqref{eq:slow0} for $n=0$}
 \begin{lemma}[$n=0$] 
 The set $K$ is positively invariant to the flow \eqref{eq:slow0}.
 % \begin{enumerate}
@@ -901,16 +917,16 @@ Having seen this and because $\delta_3$,$\delta_4$, and $\delta_5$ are all taken
 
 % \subsection{Existence of the heteroclinic orbit} \label{sec:proof_proof}
 % 
-% \begin{theorem} \label{thm1}
-% Let $\lambda>0$ and $\alpha>0$. For any pair $(\lambda,\alpha)$, there exists $n_0$ such that for all $n \in (0,n_0)$
-% \begin{enumerate}
-%     \item[(i)] the triple $(\lambda,\alpha,n)$ satisfies the \eqref{eq:r1posineq}.
-%     \item[(ii)] $(p,q,r)$-system with parameters $(\lambda,\alpha,n)$ admits a heteroclinic orbit $\chi(\eta)$ such that
-%     \begin{equation} \label{eq:estimate}
-%         \chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\chi(\eta) - M_1\big) \rightarrow \kappa \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa>0$}.
-%     \end{equation}
-% \end{enumerate}
-% \end{theorem}
+\begin{theorem} \label{thm1}
+Let $\lambda>0$ and $\alpha>0$. For any pair $(\lambda,\alpha)$, there exists $n_0$ such that for all $n \in (0,n_0)$
+\begin{enumerate}
+    \item[(i)] the tuple $(\lambda,\alpha,m,n)$ satisfies the \eqref{eq:lambda-range}.
+    \item[(ii)] $(p,q,r,s)$-system with parameters $(\lambda,\alpha,m,n)$ admits a heteroclinic orbit $\chi(\eta)$ such that
+    \begin{equation} \label{eq:estimate}
+        \chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\chi(\eta) - M_0\big) \rightarrow \kappa X_{01} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa$}.
+    \end{equation}
+\end{enumerate}
+\end{theorem}
 % 
 % \smallskip
 % \noindent
