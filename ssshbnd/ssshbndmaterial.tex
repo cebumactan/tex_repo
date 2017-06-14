@@ -83,10 +83,10 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
-\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}[section]
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
-
+\newtheorem{claim}{Claim}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \title{Note for the Self-similar shear bands problem}
@@ -281,10 +281,14 @@ $\ta, \tb, \tc, \td$ such that
   -b_1\tv+\xi\tv' &= \tu.
  \end{aligned}
 \end{equation}
-
 Introduce the new independent variable $\eta = \log\xi$.
 
+At $\xi=0$:
+$$V(0)=\Gamma'(0)=U'(0)=\Sigma'(0)=\Theta'(0)=0.$$
 
+As $\xi \rightarrow \infty$:
+$$ \frac{U(\xi)}{\Gamma(\xi)} \rightarrow r_1 >0.$$
+\pagebreak
 \section{$(p,q,r,s)$-system derivation}
 Auxiliary calculations:
 \begin{align*}
@@ -310,15 +314,444 @@ We have
  \frac{\dot{s}}{s} &= \frac{\dts}{\ts} + \frac{\dtg}{\tg} - \frac{\dtth}{\tth} & &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right] -\left[\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
 %  \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} &&= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}.
 \end{align*}
-In slow time scale $\eta$,
 \begin{equation}\label{eq:slow}
  \begin{aligned}
  \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
  \dot{q} &=q\Big(1 -\lambda p r -q\Big) + b p r,\\
- n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
- \dot{y} &=y\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
  \end{aligned}
 \end{equation}
+
+\section{Equilibrium points and linear stability}
+
+\begin{align*}
+ M_0 &= \Big(0,0,r_0,\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_0}\Big), & r_0 &=\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda,\\
+ M_1 &= \Big(0,1,r_1,\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_1}\Big), & r_1 &= r_0-\frac{1+\alpha}{\alpha-m-n}\lambda.
+\end{align*}
+
+Other equilibrium points and rejections:
+\begin{align*}
+ &p=0, \ q=0, \ {\bf r=0, \ s=0},\\
+ &p=0, \ q=0, \ {\bf r=0},\ s=s, \ {\bf r_0 = \frac{-n}{\alpha-m-n}},\\
+ &p=0, \ q=0, \ r = \frac{n\alpha - r_0(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
+ &p=0, \ q=1, \ {\bf r=0, \ s=0}, \\
+ &p=0, \ q=1, \ {\bf r=0},\ s=s, \ {\bf r_1 = \frac{-n}{\alpha-m-n}},\\
+ &p=0, \ q=1, \ r = \frac{n\alpha - r_1(\alpha-m-n)}{(1+\alpha)(m+n)},\ {\bf s=0},\\
+ &p=p, \ q=0, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=2, \\ 
+ &p=p, \ q=1, \ {\bf r=0, \ s=0}, \ \frac{r_0}{\lambda}=1, \\
+ &p=p, \ q=0, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=2, \ {\bf r_0 = \frac{-n}{\alpha-m-n}}, \\
+ &p=p, \ q=1, \ {\bf r=0}, \ s=s, \ \frac{r_0}{\lambda}=1, \ {\bf r_1 = \frac{-n}{\alpha-m-n}}, \\
+ &{\bf p=\#<0}, \ q=\frac{2(\alpha-m-n)}{1+m}, \ r=a_0, \ s=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)a_0},\\
+ &p=\#, \ q=\#, \ r = \frac{2-n}{1-m-n}, {\bf s=0}.
+\end{align*}
+
+Coefficients Matrices $Mat_i$ for Linearized equations around $M_i$, $i=0,1,2,3$: 
+\begin{align*}
+ Mat_0 &= \begin{pmatrix}
+          2 & 0 & 0 & 0 \\
+          br_0 & 1 & 0 & 0\\
+          \frac{r_0}{n}(\lambda r_0) & \frac{r_0}{n} & \frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big) & \frac{r_0}{n}(\frac{\alpha r_0}{\lambda})\\
+          s_0(\lambda r_0) & s_0 & s_0\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big) & s_0(-\frac{r_0}{\lambda})
+         \end{pmatrix}
+\end{align*}
+\begin{equation}
+ \mu_{01}=2, \ \mu_{02}=1, \ \mu_{03}=\mu_0^+, \ \mu_{04}=\mu_0^-,
+\end{equation}
+where $\mu_0^\pm$ is the two roots of the 
+$$ \mu^2 - \mu\Big(\frac{r_0}{n}\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{r_0s_0}{\lambda} - \frac{\alpha}{\lambda(1+\alpha)}\Big) - \frac{r_0}{n}\frac{r_0s_0}{\lambda}(1+\alpha) = 0.$$
+\begin{align*}
+ \mu_0^+ &= \frac{A}{n} + D + \frac{BC}{A} + \cdots, \quad \mu_0^- = - \frac{BC}{A} + \cdots,
+\end{align*}
+where
+\begin{align*}
+ \begin{pmatrix} \frac{A}{n} & \frac{B}{n} \\ C & D \end{pmatrix} = 
+ \begin{pmatrix}
+ \frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big) & \frac{r_0}{n}(\frac{\alpha r_0}{\lambda})\\
+ s_0\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big) & s_0(-\frac{r_0}{\lambda})
+ \end{pmatrix}.
+\end{align*}
+
+Four eigenvectors are collected in the matrix:
+\begin{align*}
+ S_0&=
+ \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    br_0 & 1 & 0 & 0\\
+    y_1 & y_2 & 1 & y_3\\
+    z_1 & z_2 & z_3 &1
+ \end{pmatrix},
+\end{align*}
+where
+\begin{align*}
+ y_1&=-\frac{(\lambda+b)r_0}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{2n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+2)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\Big) }\\
+ y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}+1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\Big) }\\
+ y_3&=\frac{\mu_0^- +\frac{r_0s_0}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_0}\Big)}\\
+ z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}+2\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{2}{s} }\bigg)y_1 \\
+ z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}+1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r + \frac{1}{s} }\bigg)y_2 \\
+ z_3&=n\bigg(\mu_0^+-\frac{r_0}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_0}\Big)\bigg)r_0(\frac{\alpha r_0}{\lambda})\bigg)
+\end{align*}
+
+\hrulefill
+\begin{align*}
+ Mat_1 &= \begin{pmatrix}
+          -\frac{1+m+n}{\alpha-m-n} & 0 & 0 & 0\\
+          (b-\lambda)r_1 & -1 & 0 & 0\\
+          \frac{r_1}{n}(\lambda r_1) & \frac{r_1}{n} & \frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big) & \frac{r_1}{n}(\frac{\alpha r_1}{\lambda})\\
+          s_1(\lambda r_1) & s_1 & s_1\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big) & s_1(-\frac{r_1}{\lambda})
+         \end{pmatrix}
+\end{align*}
+\begin{equation}
+ \mu_{11}=-\frac{1+m+n}{\alpha-m-n}, \ \mu_{12}=-1, \ \mu_{13}=\mu_1^+, \ \mu_{14}=\mu_1^-,
+\end{equation}
+where $\mu_1^\pm$ is the two roots of the 
+$$ \mu^2 - \mu\Big(\frac{r_1}{n}\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{r_1s_1}{\lambda} - \frac{\alpha}{\lambda(1+\alpha)}\Big) - \frac{r_1}{n}\frac{r_1s_1}{\lambda}(1+\alpha) = 0.$$
+\begin{align*}
+ \mu_1^+ &= \frac{A}{n} + D + \frac{BC}{A} + \cdots, \quad \mu_1^- = - \frac{BC}{A} + \cdots,
+\end{align*}
+where
+\begin{align*}
+ \begin{pmatrix} \frac{A}{n} & \frac{B}{n} \\ C & D \end{pmatrix} = 
+ \begin{pmatrix}
+ \frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big) & \frac{r_1}{n}(\frac{\alpha r_1}{\lambda})\\
+ s_1\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big) & s_1(-\frac{r_1}{\lambda})
+ \end{pmatrix}.
+\end{align*}
+
+{\bf case 1: $b=\lambda$}
+Four eigenvectors are collected in the matrix:
+\begin{align*}
+ S_1&=
+ \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    y_1 & y_2 & 1 & y_3\\
+    z_1 & z_2 & z_3 &1
+ \end{pmatrix},
+\end{align*}
+where
+\begin{align*}
+ y_1&=-\frac{\lambda r_1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + n\frac{1+m+n}{\alpha-m-n}\frac{1}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n})\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\Big) }\\
+ y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{r_1(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\Big) }\\
+ y_3&=\frac{\mu_1^- +\frac{r_1s_1}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big)}\\
+ z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n}\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\bigg)y_1 \\
+ z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}-1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\bigg)y_2 \\
+ z_3&=n\bigg(\mu_1^+-\frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big)\bigg)r_1(\frac{\alpha r_1}{\lambda})\bigg)
+\end{align*}
+{\bf case 2: $b\ne\lambda$ and $-\frac{1+m+n}{\alpha-m-n}\ne -1$}
+Four eigenvectors are collected in the matrix:
+\begin{align*}
+ S_1&=
+ \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    \frac{(b-\lambda)r_1}{1-\frac{1+m+n}{\alpha-m-n}} & 1 & 0 & 0\\
+    y_1 & y_2 & 1 & y_3\\
+    z_1 & z_2 & z_3 &1
+ \end{pmatrix},
+\end{align*}
+where
+\begin{align*}
+ y_1&=-\frac{\Big(\lambda + \frac{(b-\lambda)}{1-\frac{1+m+n}{\alpha-m-n}}\Big)r_1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + n\frac{1+m+n}{\alpha-m-n}\frac{1}{r_0(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n})\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\Big) }\\
+ y_2&=-\frac{1}{\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{r_1(1+\alpha)}\Big(1 + \frac{(\frac{1}{\lambda}-1)\frac{\alpha}{s}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\Big) }\\
+ y_3&=\frac{\mu_1^- +\frac{r_1s_1}{\lambda}}{s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} + \frac{n}{\lambda(1+\alpha)r_1}\Big)}\\
+ z_1&=n\bigg(\frac{\big(\frac{1}{\lambda}-\frac{1+m+n}{\alpha-m-n}\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r -\frac{1+m+n}{\alpha-m-n} \frac{1}{s} }\bigg)y_1 \\
+ z_2&=n\bigg(\frac{\big(\frac{1}{\lambda}-1\big)\frac{1}{r}}{ \frac{1+\alpha}{\lambda}r - \frac{1}{s} }\bigg)y_2 \\
+ z_3&=n\bigg(\mu_1^+-\frac{r_1}{n}\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)} - \frac{n\alpha}{\lambda(1+\alpha)r_1}\Big)\bigg)r_1(\frac{\alpha r_1}{\lambda})\bigg)
+\end{align*}
+
+
+{\bf case 3: $b\ne\lambda$ and $-\frac{1+m+n}{\alpha-m-n}= -1$}
+
+Generalized eigenvector
+\begin{align*}
+NONO\\
+ y_1 &= \frac{-\frac{1}{1+\alpha}\Big(\frac{n}{r}y_2 +\frac{\alpha}{s}z_2\Big) + br + 1}{\frac{\alpha-m-n}{\lambda(1+\alpha)}}\\
+ z_1 &= \frac{-\Big(\frac{n}{r}y_2 +\frac{1}{s}z_2\Big)+ \frac{n}{r}\frac{1}{\lambda}y_1}{\frac{1+\alpha}{\lambda}r}
+\end{align*}
+
+
+
+% \begin{align*}
+%  &X_{01} = \bigg( \Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;1\bigg),\quad
+%  X_{02} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+%  X_{03} = (0,0,1),\\
+%  &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\
+%  &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
+%  X_{13} = (0,0,1),
+% \end{align*}
+
+\section{Characterization of the heteroclinic orbit}
+\subsection{Asymptotic behavior of self-similar variables in $\xi$}
+\pagebreak
+\section{Existence via Geometric theory of singular perturbation}
+In slow time scale $\eta$,
+\begin{equation}
+ \begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p r -q\Big) + b p r,\\
+ n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+In fast time scale $\tilde\eta=\frac{\eta}{n}$,
+\begin{equation} \label{eq:fast}
+ \begin{aligned}
+ {p}' &=np\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
+ {q}' &=nq\Big(1 -\lambda p r -q\Big) + nb p r,\\
+ {r}' &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ {s}' &=ns\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+\eqref{eq:slow} at $n=0$:
+\begin{equation}\label{eq:slow0}
+ \begin{aligned}
+ r &=\hat{r}(p,q,s,n=0) \triangleq \frac{ \frac{\alpha-m}{\lambda(1+\alpha)}a - q }{  \frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big)},\\% \quad \text{$=\hat{r}(0)$ for simplicity },\\
+ \dot{p} &=p\Big(\frac{1}{\lambda}(\hat{r}-a) + 2- \lambda p \hat{r} -q\Big) & &= p\Big(\frac{D}{\lambda(1+\alpha)}(\hat{r}-a_0)\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p \hat{r} -q\Big) + b p \hat{r} & &=q\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-r_1)\Big) + b p \hat{r},\\
+ \dot{s} &=s\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda p\hat{r} + q - \frac{1}{\lambda}\hat{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big) &&= -\frac{1+\alpha}{\lambda}\hat{r}s\big(s- \frac{1+m}{1+\alpha}\big).
+ \end{aligned}
+\end{equation}
+\eqref{eq:fast} at $n=0$:
+\begin{equation} \label{eq:fast0}
+ \begin{aligned}
+ {p}' &=0,\\
+ {q}' &=0,\\
+ {r}' &=r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big),\\
+ {y}' &=0.
+ \end{aligned}
+\end{equation}
+
+% \subsection{Notion of Normally Hyperbolicity and the stable manifold theorem}
+% $x\in \mathbb{R}^n$: slow variables; $y \in \mathbb{R}^m$: fast variables with respect to a small parameter $\epsilon$.
+\begin{definition}[fast-slow case definition of normally hyperbolicity of invariant manifold]
+A compact set $\Lambda$ is called normally hyperbolic if the $m\times m$ matrix $(D_y f)(p)$ of first partial derivatives with respect to the fast variables $y$ has no eigenvalues with zero real part for all $p \in \Lambda$.
+\end{definition}
+% 
+% 
+% \subsection{Notion of Hyperbolic Set and the (topological) stable manifold theorem}
+% M.W. Hirsh, C.C. Pugh, {\it Stable manifolds and hyperbolic sets}, in Global Analysis \it{Proc. Symps. Pure Math.} {\bf 14}, Berkeley, Calif., 1968.
+% \begin{definition}[Hyperbolic set]
+% The invariant set $\Lambda \subset U$ is hyperbolic for the map $f: U \rightarrow M$ if $T_\Lambda M$ has a splitting (Whitney sum decomposition) $T_\Lambda M = E^u \oplus E^s$ satisfying:
+% \begin{enumerate}
+%  \item $E^u$ and $E^s$ are invariant under the bundle map $Tf$;
+%  \item there exist constants $c>0$ and $0<\tau <1$ such that for all $n \in \mathbb{Z}_+$,
+%  $$ max\{ ||Tf^n|_{E^s}||,~||Tf^{-n}|_{E^u}||\} < c\tau^n. $$
+% \end{enumerate}
+% \end{definition}
+% 
+% \begin{theorem}[Theorem 7.3 in HP68, Structural stability] Let $\Lambda \subset U$ be a compact hyperbolic set for the $C^1$ embedding $f: U\subset M \rightarrow M$. Given $\epsilon>0$ there is a compact neighborhood $V\subset U$ of $\Lambda$ and a neighborhood $\mathcal{N}$ of the map $f$ in $C^1(U,M)$ with the following properties: if $g_i\in N$ for $i=1,2$ then $g_i$ has a unique maximal hyperbolic set $\Lambda_i \subset V$ containing every invariant set of $g_i$ in $V$; and there is a unique homeomorphism $h_1: \Lambda_1 \rightarrow \Lambda_2$ such that $h_1 g_1 h_1^{-1} = g_2|_\Lambda$; and $d(h_1,1) \le \epsilon$. Moreover $h_1$ depends continuously on $(g_1,g_2) \in \mathcal{N}\times\mathcal{N}$.
+% \end{theorem}
+
+
+\subsection{Proof steps}
+
+$3$-dimensional trapezoid $K$: ($\underbar{r}$ and $0<A<1$ is determined in the below later.)
+\begin{align*}
+ K &\triangleq \left\{ \: (p,q,s) \: | \:  p\ge0, ~~ q\ge0, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le A \frac{\alpha-m}{\alpha(1+\alpha)}, ~~ \hat{r}(p,q,s,0)\ge \underbar{r}\: \right\}.
+\end{align*}
+Take $\tilde{K} \supset\supset K$, but sufficiently tight.
+ %\right. \left.\frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-a) + \lambda p\underbar{r} + q +\frac{\alpha}{\lambda}\underbar{r}\big(y- \frac{1+m}{1+\alpha}\big) \le 0.\right\},\\
+\begin{align*}
+ G_0 &\triangleq \left\{ \: (p,q,r,s) \: | \: r=\hat{r}(p,q,s,0), \quad (p,q,s)\in \tilde{K}. \: \right\}.
+\end{align*}
+
+The level-surface $\hat{r}(p,q,s,0) = \underbar{r}$ is an affine surface in $(p,q,s)$-space.
+\begin{equation}
+ \begin{aligned}
+  \lambda \underbar{r}p + q +\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big) + \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-a) = 0,\\
+  \Longleftrightarrow \lambda \underbar{r}p + q-1 +\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big) + \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) = 0
+ \end{aligned}
+\end{equation}
+
+
+\begin{proposition} 
+$G_0$ is normally hyperbolic with respect to the flow \eqref{eq:fast0}. 
+\end{proposition}
+\begin{proof}
+ Let $f(p,q,r,s) \triangleq r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big)$, the right hand side of $\eqref{eq:fast0}_3$. Then 
+ \begin{align*}
+ \frac{\partial f}{\partial r} &= \Big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda p\hat{r} + q +\frac{\alpha}{\lambda}\hat{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big) + \hat{r}\Big(\frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big)\Big)\\
+ &= \hat{r}\Big(\frac{\alpha-m}{\lambda(1+\alpha)} + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big) + \lambda p\Big)\ge \underbar{r}\Big(A\underbar{r}\frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p\Big)>0.
+ \end{align*}
+\end{proof}
+\subsection{Reduced flow \eqref{eq:slow0} for $n=0$}
+\begin{lemma}[$n=0$] 
+The set $K$ is positively invariant to the flow \eqref{eq:slow0}.
+% \begin{enumerate}
+%  \item The set $K$ is positively invariant.
+%  \item Let $T$ be a triangle $\{s=\frac{1+m}{1+\alpha}\} \cap K$. Then $T$ is invariant. Furthermore, $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
+%  \item $K\backslash B_\delta(M_0) \subset W^s(M_1)$ either.
+% \end{enumerate}
+\end{lemma}
+\begin{proof}
+ We calculate the inner product of the vector fields with inward normal vector on boundary.
+ (1) on $p=0$ plane, $\nu = (1,0,0)$ and $X\cdot\nu = \dot{p}=0$;\\
+ (2) on $q=0$ plane, $\nu = (0,1,0)$ and $X\cdot\nu=\dot{q} = bpr\ge0$,\\
+ (3) on $\pm\left(s-\frac{1+m}{1+\alpha}\right) = A \frac{\alpha-m}{\alpha(1+\alpha)}$ plane, $\nu = (0,0,\mp1)$. First, note that $s>\frac{m}{\alpha}>0$ in $K$. Now $X\cdot\nu = \mp\Big(-\frac{1+\alpha}{\lambda}\hat{r}s\big(s- \frac{1+m}{1+\alpha}\big)\Big) = \frac{1+\alpha}{\lambda}\hat{r}sA \frac{\alpha-m}{\alpha(1+\alpha)}\ge\delta_0>0$.\\
+ (4) on the affine plane $\hat{r}=\underbar{r}$, $\nu = (-\lambda \underbar{r}, -1,-\frac{\alpha}{\lambda}\underbar{r})$ and 
+ \begin{align}
+  -\lambda \underbar{r}\dot{p} -\dot{q}-\frac{\alpha}{\lambda}\underbar{r}\dot{s} &= -\lambda \underbar{r}p \Big(1-\lambda \underbar{r}p -q + \frac{1}{\lambda}(\underbar{r}-a)+1\Big) - q(1-\lambda \underbar{r}p -q\big) - \lambda \underbar{r}p\Big(\frac{b}{\lambda}\Big) + \frac{\alpha}{\lambda}\underbar{r}\frac{1+\alpha}{\lambda}\underbar{r}s\big(s- \frac{1+m}{1+\alpha}\big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - (1-\lambda \underbar{r}p -q) -\lambda \underbar{r}p\Big(\frac{1}{\lambda}(\underbar{r}-a)+1+\frac{b}{\lambda}\Big) + \frac{\alpha}{\lambda}\underbar{r}\frac{1+\alpha}{\lambda}\underbar{r}s\big(s- \frac{1+m}{1+\alpha}\big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) -\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big) -\underbar{r}p(\underbar{r}-1)+ \frac{\alpha}{\lambda}\underbar{r}\frac{1+\alpha}{\lambda}\underbar{r}s\big(s- \frac{1+m}{1+\alpha}\big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) -\underbar{r}p(\underbar{r}-1) + \frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big(-1+\frac{1+\alpha}{\lambda}\underbar{s}\Big)\nonumber\\
+  &= (1-\lambda \underbar{r}p -q)^2 - \frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-r_1) -\underbar{r}p(\underbar{r}-1) + \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)^2\Big(\frac{1+\alpha}{\alpha}\Big) \nonumber\\
+  &+ \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)\Big(-1+ \frac{1+m}{\lambda}\Big)\nonumber\\
+  &\ge (1-\lambda \underbar{r}p -q)^2 -\underbar{r}p(\underbar{r}-1) + \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)^2\Big(\frac{1+\alpha}{\alpha}\Big) \nonumber\\
+  &- \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)(\underbar{r}-r_1) - \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)\underbar{r}\Big|\frac{\alpha(1+\alpha)}{\alpha-m}\big(s- \frac{1+m}{1+\alpha}\big)\Big|\Big|-1+ \frac{1+m}{\lambda}\Big|\nonumber\\
+  &\ge (1-\lambda \underbar{r}p -q)^2  -\underbar{r}p(\underbar{r}-1) + \Big(\frac{\alpha}{\lambda}\underbar{r}\big(s- \frac{1+m}{1+\alpha}\big)\Big)^2\Big(\frac{1+\alpha}{\alpha}\Big) \nonumber\\
+  &- \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)\Big((1+A)\underbar{r}-r_1\Big) \ge \delta_1>0, \quad \text{if $0<\underbar{r} < \textrm{min}\,\left\{1, \frac{r_1}{1+A}\right\}$.} \label{eq:affine}
+ \end{align}
+\end{proof}
+\begin{lemma}[$n=0$] 
+$\textrm{int}\, K \subset W^s(M_1)$.
+% \begin{enumerate}
+%  \item The set $K$ is positively invariant.
+%  \item Let $T$ be a triangle $\{s=\frac{1+m}{1+\alpha}\} \cap K$. Then $T$ is invariant. Furthermore, $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
+%  \item $K\backslash B_\delta(M_0) \subset W^s(M_1)$ either.
+% \end{enumerate}
+\end{lemma}
+\begin{proof}
+ First, we prove $\textrm{int}\, T \subset W^s(M_1)$, where $T$ is the triangle $\{s=\frac{1+m}{1+\alpha}\} \cap K$. Note that the plane $s=\frac{1+m}{1+\alpha}$ is invariant to \eqref{eq:slow0}. Let $x$ be an interior point of $T$. Since $T$ is positively invariant and thus the $\omega$-limit set of $x$ is in $T$ and non-empty, but it cannot contain the limit cycle because there is no critical point in interior of $T$. By Poincar\'e-Bendixson Theorem, the $\omega$-limit set of $x$ consists of critical points. However, $M_0|_T$ is an unstable node, so the $\omega$-limit set coincides with a single point $M_1$.
+ 
+ Now, since 
+ $$\frac{\big(s- \frac{1+m}{1+\alpha}\big)^{\cdot}}{\big(s- \frac{1+m}{1+\alpha}\big)} = -\frac{1+\alpha}{\lambda}\hat{r}s\le -A$$
+ for the uniform constant $A>0$ in $K$, $s$ relaxes to the triangle $T$ as $\eta \rightarrow \infty$. If the orbit point is sufficiently close to the $T$, then it has to arrive at a point arbitrarily close to $M_1$ in a finite time because the point in $T$ does so and the time-$\eta$ flow map is $C^1$. By the stable manifold theorem at $M_1$, the orbit then converges to $M_1$ as $\eta \rightarrow \infty$.
+\end{proof}
+\begin{corollary}
+ Every point in $W^u(M_0)$ emanated into $T$ is a heteroclinic orbit connecting $M_0$ to $M_1$.
+\end{corollary}
+
+\subsection{Persistence for $n>0$}
+By the geometric singular perturbation theorem, for sufficiently small $n$, $\exists \hat{r}(p,q,s,n)$ defined on the $\tilde{K}$ such that
+$$G_n\triangleq \{\:(p,q,r,s)\: | \: r=\hat{r}(p,q,s,n), \quad (p,q,s)\in \tilde{K}\:\}$$
+is locally invariant to \eqref{eq:slow} and $\hat{r}$ is jointly smooth in $(p,q,s)$ and $n$.
+We define the reduced problem,
+\begin{equation} \label{eq:reduced}
+ \begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{\lambda}(\hat{r}-a) + 2- \lambda p r -q\Big),\\
+ \dot{q} &=q\Big(1 -\lambda p \hat{r} -q\Big) + b p \hat{r},\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda pr + q - \frac{1}{\lambda}\hat{r}\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+Let $f_j(p,q,s,n)$, $j=1,2,3$ be the vector field of \eqref{eq:reduced}.
+Due to the smoothness of $\hat{r}$ and $f_j$ in $n$, 
+\begin{equation} \label{eq:uniform}
+ \begin{aligned}
+f_j(p,q,s,n) = f_j(p,q,s,0) +\mathcal{O}(n),\\
+ \lambda \hat{r}(n)p + q +\frac{\alpha}{\lambda}\hat{r}(n)\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-a) = \mathcal{O}(n),\\
+   \lambda \hat{r}(n)p + q-1 +\frac{\alpha}{\lambda}\hat{r}(n)\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-r_1) = \mathcal{O}(n),
+ \end{aligned}
+\end{equation}
+uniformly in $K$.
+
+
+\begin{lemma}[$n>0$]
+$K$ is positively invariant to $\eqref{eq:reduced}$ for $n>0$ sufficiently small.
+\end{lemma}
+\begin{proof}
+We check the inward normal component of the flow.
+ On plane (1) $p=0$ and (2) $q=0$, inward normal component is nonnegative for the same reason as before. On plane (3) $\pm\left(s-\frac{1+m}{1+\alpha}\right) = A \frac{\alpha-m}{\alpha(1+\alpha)}$ and the affine plane (4), inward normal component is nonnegative provided $n$ is sufficiently small because \eqref{eq:uniform} holds and $\delta_0$ and $\delta_1$ are fixed constants away from $0$.
+\end{proof}
+ $s = \frac{1+m+n}{1+\alpha}$ plane is not anymore invariant plane and thus we cannot confine the flow on $2$-dimensional object. Instead, we analyze the flow in a thin slab $|s - \frac{1+m+n}{1+\alpha}| \le Cn$. Because it is $3$-dimensional, we cannot apply the Poincar\'e-Bendixson Theorem anymore. We directly analyze the flow here.
+
+% \begin{claim} 
+% $\exists C>0$ such that $K$ contracts into a thin slab $|s - \frac{1+m+n}{1+\alpha}| \le Cn$ as $\eta \rightarrow \infty$.
+% \end{claim}
+% \begin{proof}
+%  Because of \eqref{eq:uniform}, we can write $\eqref{eq:reduced}_3$ as
+%  $$ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(n)s\big(s- \frac{1+m+n}{1+\alpha}\big) + \mathcal{O}(n).$$
+%  Then for each plane $\pm\big(s - \frac{1+m+n}{1+\alpha}\big) = A$, the flow is strictly inward provided $A>Cn$ for some $C>0$.
+% \end{proof}
+\begin{lemma}[$n>0$] \label{lem:3dstable}
+$\textrm{int}\, K \subset W^s(M_1(n))$.
+\end{lemma}
+\begin{claim}
+$\exists C>0$ that does not depend on $n$ and $(p,q,s)$ such that $K$ contracts into a $3$-dimensional trapezoid 
+$$ Z\triangleq \left\{ \: (p,q,s) \: | \:  p\ge0, ~~ q\ge 1-Cn, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le Cn, ~~ \hat{r}(p,q,s,0)\ge \frac{r_1}{1+Cn}\: \right\}$$
+\end{claim}
+\begin{proof}
+Note that the orbit cannot escape $K$ because of the Claim 3. 
+
+First, We show that $K$ contracts into a thin slab $|s - \frac{1+m+n}{1+\alpha}| \le Cn$ as $\eta \rightarrow \infty$. 
+Because of \eqref{eq:uniform}, we can re-write $\eqref{eq:reduced}_3$ as
+ $$ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(n)s\big(s- \frac{1+m+n}{1+\alpha}\big) + \mathcal{O}(n).$$
+Then for each plane $\pm\big(s - \frac{1+m+n}{1+\alpha}\big) = A\frac{\alpha-m}{\alpha(1+\alpha)}$, the flow is strictly toward the plane $s- \frac{1+m+n}{1+\alpha}=0$, provided $A\ge Cn$ for some $C>0$. 
+
+
+
+For each of the affine plane $\hat{r}(p,q,s,0)=r$ restricted in this thin slab, the $\delta_1>0$ away from $0$ in \eqref{eq:affine} can be taken with $A=Cn$, or the flow \eqref{eq:slow0} for $n=0$ is strictly toward origin as long as $r < \frac{r_1}{1+A} \le \frac{r_1}{1+Cn}$. Since $\delta_1$ is away from $0$, if $n$ is sufficiently small, the same holds for the flow \eqref{eq:reduced} for $n>0$.
+
+Now, consider the equation $\eqref{eq:reduced}_2$. Suppose that $\lambda\le b(n)$. Then so long as $q<1$, \\$\dot{q} \ge q(1-q)>0$. The proof for the claim is done.
+
+Now, we are left with the remaining case $\lambda > b(n)$. First, that $\lambda > b(n)$ and $r_1(n)>0$ implies a few combinatorial consequences that
+\begin{equation}\label{eq:combi}
+ \begin{aligned}
+  &\frac{1+m}{2(\alpha-m-n)} < \lambda < \frac{\alpha-m-n}{1+m+n}\Big(\frac{2+2\alpha-n}{1+\alpha}\Big),\\
+  &a_0(n)-1 = \frac{2(1+\alpha-n)}{D} - 1 = \frac{1+m}{D} > 0,\\
+  &a_0(n)-r_1(n)= \frac{n}{D} + \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda >\frac{n}{D} + \frac{(1+\alpha)(1+m+n)(1+m)}{2D(\alpha-m-n)^2}>0.
+ \end{aligned}
+\end{equation}
+In order to proceed, we give a different proof for the claim that $int~T \subset W^s(M_1(0))$ for the flow \eqref{eq:slow0} when $n=0$. We prove that the orbits in $T$ is pushed by the two families of lines $p=M$ and $\hat{r}(p,q,\frac{1+m}{1+\alpha},0)=N$. Remember that $T$ is positively invariant.
+
+For each of the contour line $\hat{r}(p,q,\frac{1+m}{1+\alpha},0)=N$, the normal component of the flow toward origin  is
+\begin{align*}
+ -(\lambda N \dot{p} + \dot{q}) &= -(1-\lambda Np -q)(\lambda Np+q) -pN(N-1) \\
+ &= \Big(\frac{\alpha-m}{\lambda(1+\alpha)}\Big)^2 (N-r_1)(N-a) -pN(N-1) \le -\delta_3(N) <0,
+\end{align*}
+if $\textrm{max}\{1,r_1\} <N<a$. By \eqref{eq:combi}, we can take $\underbar{N} = a_0(0) - \frac{1}{2}\textrm{min}\left\{\frac{1+m}{D},\frac{(1+\alpha)(1+m)^2}{2D(\alpha-m)^2}\right\}=a0-\delta_4$. Therefore, $T$ contracts to the region $\hat{r}(p,q,\frac{1+m}{1+\alpha},0)\le\underbar{N}$.
+Then, \eqref{eq:slow0} implies that $\dot{p} \le -\delta_5 p$, for some $\delta_5 >0$. Thus $p$ becomes arbitrarily small as $\eta \rightarrow \infty$. If $p$ is arbitrarily small, then $\dot{q} = q(1-q) -pr(\lambda q +b) > q(1-q) +\epsilon$, so $q$ increases arbitrarily close to $1$. Thus the orbits end up with being in the local stable manifold $W^s(M_1)$.
+
+Now, we return to the reduced flow \eqref{eq:reduced} with $n>0$ in the thin slab. We can improve \eqref{eq:uniform} so that
+\begin{equation} \label{eq:uniform2}
+ \begin{aligned}
+ \lambda \hat{r}(n)p + q + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-a(n)) &= \mathcal{O}(n),\\
+   \lambda \hat{r}(n)p + q-1 + \frac{\alpha-m-n}{\lambda(1+\alpha)}(\hat{r}(n)-r_1(n)) &= \mathcal{O}(n), \quad \text{uniformly in the thin slab}.
+ \end{aligned}
+\end{equation}
+Then $\eqref{eq:reduced}_1$ and $\eqref{eq:reduced}_2$ can be re-written as
+\begin{equation} \label{eq:reduced_slab}
+\begin{aligned}
+ \dot{p} &= p\big(\frac{D}{\lambda(1+\alpha)}(\hat{r}(0)-a_0(0)) + \mathcal{O}(n)\big),\\
+ \dot{q} &= q\big(\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}(0)-r_1(0))\big) + bp\hat{r}(0) + \mathcal{O}(n).
+\end{aligned}
+\end{equation}
+Having seen this and because $\delta_3$,$\delta_4$, and $\delta_5$ are all taken away from $0$, for sufficiently small $n$ that the thin slab is pushed by the two families of planes $\hat{r}(p,q,s,0)=N$ and $p=M$ and that $q$ increases close to $1$ remains to hold in the positively invariant thin slab. Thus the claim for the case $\lambda > b(n)$ follows.
+\end{proof}
+\begin{proof}[proof of Lemma \ref{lem:3dstable}]
+ Let $B_\delta(M_1)$ be contained in a local stable manifold $W^s(M_1)$. For given $\delta$, choose $n$ sufficiently small so that the trapezoid $Z$ is contained in $B_\delta(M_1)$.
+\end{proof}
+\begin{corollary}
+ Every point in $W^u(M_0(n))$ emanated into $T$ is a heteroclinic orbit connecting $M_0(n)$ to $M_1(n)$.
+\end{corollary}
+
+\begin{remark}[Non-normally hyperbolicity of $T$]
+ Now, the $2$-dimensional unstable manifold $W^u(M_0(n))$ exists, whose counter part for $n=0$  is in the plane $T$. The $W^u(M_0(n))$ near $M_1(n)$ may not diffeomorphic to $W^u(M_0(0))$ near $M_1(0)$ (flat), if the $s$-directional eigenvalue is the least at $M_1$, which actually takes place.
+\end{remark}
+
+
+\pagebreak
+% \begin{claim}
+%  The flow \eqref{eq:slow0} in $K \backslash B_\delta(M_0)$ is structurally stable.
+% \end{claim}
+% \begin{proof}
+%  We claim that $K \backslash B_\delta(M_0)$ is a hyperbolic set for the reduced flow \eqref{eq:slow0} as a whole $3$-dimensional set that has only stable bundle. Note that $K \backslash B_\delta(M_0)$ is positively invariant but is not invariant. We cut-off the \eqref{eq:slow0} near the boundary so that the set is invariant and maximal with respect to the cut-off flow.
+% \end{proof}
+% 
+% 
+% Now, consider the reduced problem for $n>0$.
+% \begin{claim}
+% \begin{enumerate}
+%  \item Two dimensional $W^u(M_0(n))B_\delta(M_0) \subset K \subset W^s(M_1(n))$.
+%  \item The heteroclinic orbit $\varphi^*(\eta)$ exists as a unstable fiber passing $M_0(n)$. More precisely
+%     \begin{equation} \label{eq:estimate}
+%         \varphi^*(\eta) \rightarrow M_1(n) \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\varphi^*(\eta) - M_0(n)\big) \rightarrow \kappa\vec{X}_{02} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa>0$}.
+%     \end{equation} 
+% \end{enumerate}
+% \end{claim}
+
+
+
+
 
 Noticing that $\displaystyle a_0(1+m+n)-c_0(1+\alpha)=n$ and that
 
@@ -406,118 +839,13 @@ and look for solutions of this form. Then we have
 \end{equation}
 
 \pagebreak
-\section{Existence of the heteroclinic orbit $\varphi^*(\eta)$}
 
-In fast time scale $\tilde\eta=\frac{\eta}{n}$,
-\begin{equation} \label{eq:fast}
- \begin{aligned}
- {p}' &=np\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big),\\
- {q}' &=nq\Big(1 -\lambda p r -q\Big) + nb p r,\\
- {r}' &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
- {y}' &=ny\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(y- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
- \end{aligned}
-\end{equation}
-\eqref{eq:slow} at $n=0$:
-\begin{equation}\label{eq:slow0}
- \begin{aligned}
- r &=\hat{r}(p,q,y,n=0) \triangleq \frac{ \frac{\alpha-m}{\lambda(1+\alpha)}a - q }{  \frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(y- \frac{1+m}{1+\alpha}\big)}, \quad \text{$=\hat{r}(0)$ for simplicity },\\
- \dot{p} &=p\Big(\frac{1}{\lambda}(\hat{r}(0)-a) + 2- \lambda p \hat{r}(0) -q\Big),\\
- \dot{q} &=q\Big(1 -\lambda p \hat{r}(0) -q\Big) + b p \hat{r}(0),\\
- \dot{y} &=y\Big(\frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p\hat{r}(0) + q - \frac{1}{\lambda}\hat{r}(0)\big(y- \frac{1+m}{1+\alpha}\big)\Big) = -\frac{1+\alpha}{\lambda}\hat{r}(0)y\big(y- \frac{1+m}{1+\alpha}\big).
- \end{aligned}
-\end{equation}
-\eqref{eq:fast} at $n=0$:
-\begin{equation} \label{eq:fast0}
- \begin{aligned}
- {p}' &=0,\\
- {q}' &=0,\\
- {r}' &=r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(y- \frac{1+m}{1+\alpha}\big)\Big),\\
- {y}' &=0.
- \end{aligned}
-\end{equation}
-
-\subsection{Notion of Normally Hyperbolicity and the stable manifold theorem}
-$x\in \mathbb{R}^n$: slow variables; $y \in \mathbb{R}^m$: fast variables with respect to a small parameter $\epsilon$.
-\begin{definition}[fast-slow case definition of normally hyperbolicity of invariant manifold]
-A compact set $\Lambda$ is called normally hyperbolic if the $m\times m$ matrix $(D_y f)(p)$ of first partial derivatives with respect to the fast variables $y$ has no eigenvalues with zero real part for all $p \in \Lambda$.
-\end{definition}
-
-
-\subsection{Notion of Hyperbolic Set and the (topological) stable manifold theorem}
-M.W. Hirsh, C.C. Pugh, {\it Stable manifolds and hyperbolic sets}, in Global Analysis \it{Proc. Symps. Pure Math.} {\bf 14}, Berkeley, Calif., 1968.
-\begin{definition}[Hyperbolic set]
-The invariant set $\Lambda \subset U$ is hyperbolic for the map $f: U \rightarrow M$ if $T_\Lambda M$ has a splitting (Whitney sum decomposition) $T_\Lambda M = E^u \oplus E^s$ satisfying:
-\begin{enumerate}
- \item $E^u$ and $E^s$ are invariant under the bundle map $Tf$;
- \item there exist constants $c>0$ and $0<\tau <1$ such that for all $n \in \mathbb{Z}_+$,
- $$ max\{ ||Tf^n|_{E^s}||,~||Tf^{-n}|_{E^u}||\} < c\tau^n. $$
-\end{enumerate}
-\end{definition}
-
-\begin{theorem}[Theorem 7.3 in HP68, Structural stability] Let $\Lambda \subset U$ be a compact hyperbolic set for the $C^1$ embedding $f: U\subset M \rightarrow M$. Given $\epsilon>0$ there is a compact neighborhood $V\subset U$ of $\Lambda$ and a neighborhood $\mathcal{N}$ of the map $f$ in $C^1(U,M)$ with the following properties: if $g_i\in N$ for $i=1,2$ then $g_i$ has a unique maximal hyperbolic set $\Lambda_i \subset V$ containing every invariant set of $g_i$ in $V$; and there is a unique homeomorphism $h_1: \Lambda_1 \rightarrow \Lambda_2$ such that $h_1 g_1 h_1^{-1} = g_2|_\Lambda$; and $d(h_1,1) \le \epsilon$. Moreover $h_1$ depends continuously on $(g_1,g_2) \in \mathcal{N}\times\mathcal{N}$.
-\end{theorem}
-
-
-\subsection{Proof steps}
-
-Critical Manifold $K_0$: ($\underbar{r}$ is determined in the below later.)
-\begin{align*}
- K &\triangleq \left\{ \: (p,q,y) \: | \:  p\ge0, ~~ q\ge0, ~~ \left|y-\frac{1+m}{1+\alpha}\right| \le 0.5 \frac{\alpha-m}{\alpha(1+\alpha)}, \right.\\
-  &  \left.\frac{\alpha-m}{\lambda(1+\alpha)}(\underbar{r}-a) + \lambda p\underbar{r} + q +\frac{\alpha}{\lambda}\underbar{r}\big(y- \frac{1+m}{1+\alpha}\big) \le 0.\right\},\\
- G_0 &\triangleq \left\{ \: (p,q,r,y) \: | \: r=\hat{r}(p,q,y,0), \quad (p,q,y)\in K. \: \right\}.
-\end{align*}
-
-
-
-
-\begin{claim} 
-$G_0$ is normally hyperbolic with respect to the flow \eqref{eq:fast0}. 
-\end{claim}
-
-% \begin{claim}
-% \end{claim}
-% 
-% \begin{claim} 
-% Let $T$ be a triangle $\{y=\frac{1+m}{1+\alpha}\} \cap K_0$.  Then $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
-% \end{claim}
-
-\begin{claim} 
-Consider the reduced flow \eqref{eq:slow0} for $n=0$.
-\begin{enumerate}
- \item The set $K$ is positively invariant.
- \item Let $T$ be a triangle $\{y=\frac{1+m}{1+\alpha}\} \cap K$. Then $T$ is invariant. Furthermore, $T\backslash B_\delta(M_0) \subset W^s(M_1)$.
- \item $K\backslash B_\delta(M_0) \subset W^s(M_1)$ either.
-\end{enumerate}
-\end{claim}
-
-\begin{claim}
- The flow \eqref{eq:slow0} in $K \backslash B_\delta(M_0)$ is structurally stable.
-\end{claim}
-\begin{proof}
- We claim that $K \backslash B_\delta(M_0)$ is a hyperbolic set for the reduced flow \eqref{eq:slow0} as a whole $3$-dimensional set that has only stable bundle. Note that $K \backslash B_\delta(M_0)$ is positively invariant but is not invariant. We cut-off the \eqref{eq:slow0} near the boundary so that the set is invariant and maximal with respect to the cut-off flow.
-\end{proof}
-
-
-Now, consider the reduced problem for $n>0$.
-\begin{claim}
-\begin{enumerate}
- \item Two dimensional $W^u(M_0(n))B_\delta(M_0) \subset K \subset W^s(M_1(n))$.
- \item The heteroclinic orbit $\varphi^*(\eta)$ exists as a unstable fiber passing $M_0(n)$. More precisely
-    \begin{equation} \label{eq:estimate}
-        \varphi^*(\eta) \rightarrow M_1(n) \quad \text{as $\eta \rightarrow \infty$ and} \quad e^{2\eta}\big(\varphi^*(\eta) - M_0(n)\big) \rightarrow \kappa\vec{X}_{02} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa>0$}.
-    \end{equation} 
-\end{enumerate}
-\end{claim}
 
 \pagebreak
 
-\section{Normally hyperbolic invariant manifold}
-\section{Equilibrium points, Linear structure}
-\subsection{Characterization of the heteroclinic orbit : why and how}
-\subsection{Asymptotic behavior of self-similar variables in $\xi$}
-\section{A $k$-parameter family of shear banding solutions}
+\section{Two-parameters family of self-similar shear banding solutions asymptotics}
 \subsection{Asymptotic behavior of field variables in $t$ and $x$}
-\section{Existence via Geometric theory of singular perturbation}
+
 
 
 

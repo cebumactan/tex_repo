@@ -171,7 +171,7 @@
 $$\sigma=\sigma(\theta,\gamma){\red (\gamma_t)^n}, \quad 0<n\ll1$$
 where $\sigma(\theta,\gamma)$ is such that {\blue net softening response} is exhibited. This effect competes with the regularization due to the {\blue small rate-dependency}.
  \vfill
-The catastrophically ill-posed problem is regularized to result in the instablity that is yet tame without high frequency oscillations.
+The ill-posed problem is regularized by small viscosity to result in the yet orderly instability that is without growth of high frequency oscillations.
  \vfill
 \end{frame}
 
@@ -185,9 +185,9 @@ The catastrophically ill-posed problem is regularized to result in the instablit
     \psfrag{g}{\scriptsize strain $\gamma$}
 %     \psfrag{phi}{\scriptsize  $\varphi^{'}( \gamma ) < 0$}% = \frac{1}{\gamma}$}
     \includegraphics[width=5.5cm]{phi2.eps} 
-    \caption{Typical stress-strain curve for metals.}
+    \caption{Typical stress-strain curve for metals in uniaxial tensile test.}
  \end{figure} 
- Blue dotted box corresponds to the elastic regime; red dotted box corresponds to the instability regime.
+ Blue dotted box corresponds to the elastic regime; red dotted box is the regime of instability.
  \vfill
 \end{frame}
 
@@ -243,10 +243,10 @@ The catastrophically ill-posed problem is regularized to result in the instablit
 
 \begin{frame}
  \setstretch{1.5}
- \frametitle{Uniform Shearing Solution is unstable.}
- Regardless of $\sigma(\gamma)$, the model admits {\red uniform shearing solutions},
+ \frametitle{Is the Uniform Shearing Solution unstable?}
+ Regardless of the precise form of $\sigma(\theta,\gamma)$, the model admits {\red uniform shearing solutions},
  \begin{align*}
-  v_s(x) = x, \quad \gamma_s(t) = t + \gamma_0, \quad \sigma_s = \sigma(t + \gamma_0), \quad \text{$\gamma_0$ a constant}.
+  v_s(x) = x, \quad \gamma_s(t) = t + \gamma_0, \quad \sigma_s = \sigma_s(t), \quad \theta_s=\theta_s(t),\quad \text{$\gamma_0$ a constant}.
  \end{align*}
  
   \begin{figure}
@@ -292,7 +292,7 @@ The catastrophically ill-posed problem is regularized to result in the instablit
  \begin{itemize}
   \item It is certain that the loss of hyperbolicity leads to the material instability.
 %   \item Mismatch in model and material instability.
-  \item High oscillations are not observed. Rather, the instability is of localization.
+  \item High oscillations are not observed. Rather, the coherent localization is observed.
  \end{itemize}
  \vfill
 \end{frame}
@@ -300,10 +300,10 @@ The catastrophically ill-posed problem is regularized to result in the instablit
 \begin{frame}
  \frametitle{Rate sensitivity $0<n\ll1$}
  \setstretch{1.5}
- Consider
- $$\sigma=\sigma(\theta,\gamma){\red (\gamma_t)^n}$$
+ Consider a rate-dependent stress
+ $$\sigma=\sigma(\theta,\gamma){\red (\gamma_t)^n}.$$
  
- This provides a problem that is singularly perturbed from the inviscid problem.
+ We consider a singularly perturbed problem from its inviscid problem in the above form.
  \vfill
 \end{frame}
 
@@ -322,7 +322,7 @@ The catastrophically ill-posed problem is regularized to result in the instablit
  Modulo Initial data, only one of the temperature and strain plays the role.
  
  Roughly, $\theta\sim \gamma^{\frac{1+m}{1+\alpha}}$ or
- $$\sigma \sim \gamma^{\frac{-\alpha+m}{1+\alpha}}.$$
+ $$\sigma \sim \gamma^{\frac{\red-\alpha+m}{1+\alpha}}.$$
  \vfill
 \end{frame}
 
@@ -337,12 +337,34 @@ The catastrophically ill-posed problem is regularized to result in the instablit
   m\theta^{-\alpha}\gamma^{m-1} & -\alpha\theta^{-\alpha-1}\gamma^m & 0\end{pmatrix}}_\text{$\triangleq B$}
   \begin{pmatrix} \gamma_x \\ \theta_x \\ v_x \end{pmatrix}. 
 \end{equation}
+% {\scriptsize
+% \begin{align*}
+%  \det\big(B-\mu\textrm{I}\big) &= -\mu\big(\mu^2+\theta^{-\alpha}\gamma^{m-1}\Big(\frac{\alpha-m}{1+\alpha}+\alpha \frac{\gamma_0(x)^{1+m} - \frac{1+m}{1+\alpha}\theta_0(x)^{1+\alpha}}{\theta^{1+\alpha}}\Big),
+% \end{align*}
+% }
 \vfill
 $-\alpha+m<0$ implies the loss of hyperbolicity.
 %   \item $\sigma'(\gamma)<0$ results in the loss of hyperbolicity.
 %   \item Model predicts the exponential growth of oscillations in the initial-value-problem: {\blue Hadamard Instability}.
 %  \end{itemize}
 \end{frame}
+
+\begin{frame}
+ \frametitle{Cf. Stability results in large viscous regime}
+ \setstretch{1.5}
+ \begin{align*}
+  v_t &= \big(\theta^{-\alpha}\gamma^m {\red (v_x)^n}\big)_x,\\
+  \left(\frac{\theta^{1+\alpha}}{1+\alpha}\right)_t &= \left(\frac{\gamma^{1+m}}{1+m}\right)_t{\red (\gamma_t)^n},\\
+  \gamma_t&=v_x
+ \end{align*}
+ \begin{itemize}
+  \item $m=0$, $-\alpha+n>0$ :  USS is globally asymptotically stable {\footnotesize (Daefermos and Hsiao 1983, Tzavaras 1992)}.
+ \end{itemize}
+
+  
+  \vfill
+\end{frame}
+
 
 \begin{frame}
  \frametitle{Constitutive Law}
@@ -354,9 +376,11 @@ $-\alpha+m<0$ implies the loss of hyperbolicity.
     \psfrag{g}{\scriptsize strain }
 %     \psfrag{phi}{\scriptsize  $\varphi^{'}( \gamma ) < 0$}% = \frac{1}{\gamma}$}
     \includegraphics[width=2.5cm]{phi3.eps} 
+    \vskip -15pt
      \caption{Instability Regime}
     \end{figure} 
- We want to have a theory for the instability regime in the framework of Thermo-Visco-Plasticity,
+ \vskip -5pt
+ In summary, we study the instability during the plastic deformation that takes places in the red-dotted box, with the following form of the constitutive law
  \begin{align}
   \sigma &= \sigma(\gamma,\theta)(\gamma_t)^n=\theta^{-\alpha}\gamma^m(\gamma_t)^n, 
  \end{align}%\footnote[frame]{J.W. Hutchinson and K.W. Neale (1977), Tzavaras (1991,1992)}.
@@ -364,43 +388,24 @@ $-\alpha+m<0$ implies the loss of hyperbolicity.
 \end{frame}
 
 
-% 
-% 
-% 
-% 
-% 
-% \begin{frame}
-%  \frametitle{Adiabatic shear bands}
-%  \setstretch{1.5}
-%  Important features observed during the development of localizing singularity are :
-%  \vfill
-%  \begin{enumerate}
-% %   \item  is triggered.
-%   \item The role of strain rate $\gamma_t$ falls into two folds:
-%   \begin{enumerate}
-%    \item It enters in the constitutive law: dynamics depends on the rate.
-%    \item High speed of deformation makes the process almost {\it Adiabatic}; not enough time for heat to diffuse out.
-%   \end{enumerate}
-%   \item Albeit extremely fast development of singularity, the process is orderly: individual modes of oscillation are not observed and the localization occurs in {\red coherent} fashion.
-%  \end{enumerate}
-%  \vfill
-% \end{frame}
-
 \begin{frame}
- \frametitle{Cf. Large viscous regime}
+ \frametitle{Adiabatic shear bands}
  \setstretch{1.5}
- \begin{align*}
-  v_t &= \big(\theta^{-\alpha}\gamma^m {\red (v_x)^n}\big)_x,\\
-  \left(\frac{\theta^{1+\alpha}}{1+\alpha}\right)_t &= \left(\frac{\gamma^{1+m}}{1+m}\right)_t{\red (\gamma_t)^n},\\
-  \gamma_t&=v_x
- \end{align*}
- \begin{itemize}
-  \item $m=0$, $-\alpha+n>0$ :  USS is globally asymptotically stable {\footnotesize (Tzavaras 1992)}.
- \end{itemize}
-
-  
-  \vfill
+ Important features to recap:%observed during the development of localizing singularity are :
+ \vfill
+ \begin{enumerate}
+%   \item  is triggered.
+  \item The role of strain rate $\gamma_t$ falls into two folds:
+  \begin{enumerate}
+   \item It enters in the constitutive law%: dynamics depends on the rate.
+   \item High speed rate makes the loading condition close to {\it Adiabatic}; not enough time for heat to diffuse out.
+  \end{enumerate}
+  \item Albeit extremely fast development of singularity, the process is orderly: growths of oscillations are not observed and the localization occurs in {\red coherent} fashion.
+ \end{enumerate}
+ \vfill
 \end{frame}
+
+
 
 \begin{frame}
  \frametitle{Perturbative features in viscous problem}
@@ -465,7 +470,7 @@ where $x(1 + t)^{\lambda}=\xi$ is the similarity variable and $\lambda>0$ accoun
 
 
 \begin{frame}
- \frametitle{Localizing self-similar solution}
+ \frametitle{Scaling with $\lambda>0$ for even and odd functions: Localization}
  \setstretch{1.5}
    \setcounter{subfigure}{0}
    \begin{figure}
@@ -680,7 +685,7 @@ $\eta\in (-\infty,\infty)$, and ${B.C.}$ is transmitted.
 \begin{frame}
  \frametitle{Heteroclinic for the inviscid problem: $n=0$}
  \setstretch{1.3}
- 
+ Two limiting problems:
    \vfill
   {\footnotesize
     \hspace{3em} {Reduced Problem.} \hspace{12em} Layer Problem.
@@ -891,8 +896,12 @@ $$ \bv(t,x) \rightarrow (t+1)^b V_\infty, \: \text{as $x \rightarrow \infty$}; \
 \end{frame}
 
 \begin{frame}
- \centering
- \vfill{\bf \huge \blue  Thank you very much.}\vfill
+ \center
+ \vfill
+ 
+ {\bf \huge \blue  Thank you very much.}
+ 
+ \vfill
 \end{frame}
 
 
