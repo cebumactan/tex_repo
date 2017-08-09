@@ -1,0 +1,553 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    thermalelectric equation
+%
+%                                                      by
+%
+%                                       
+%
+%                                          version Aug 2017
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+%\doublespacing
+%\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{calrsfs}
+%\usepackage[notcite,notref]{showkeys}
+
+\usepackage{psfrag}
+\usepackage{graphicx,subfigure}
+\usepackage{color}
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+%\usepackage{verbatim}
+% \usepackage{alltt}
+%\usepackage{kotex}
+
+
+
+\usepackage{enumerate}
+
+%%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\tr{\,\textrm{tr}\,}
+\def\div{\,\textrm{div}\,}
+\def\sgn{\,\textrm{sgn}\,}
+
+\def\th{\tilde{h}}
+\def\tx{\tilde{x}}
+\def\tk{\tilde{\kappa}}
+
+
+\def\bg{{\bar{\gamma}}}
+\def\bv{{\bar{v}}}
+\def\bth{{\bar{\theta}}}
+\def\bs{{\bar{\sigma}}}
+\def\bu{{\bar{u}}}
+\def\bph{{\bar{\varphi}}}
+
+
+\def\tg{{\tilde{\gamma}}}
+\def\tv{{\tilde{v}}}
+\def\tth{{\tilde{\theta}}}
+\def\ts{{\tilde{\sigma}}}
+\def\tu{{\tilde{u}}}
+\def\tph{{\tilde{\varphi}}}
+
+\def\dtg{{\dot{\tilde{\gamma}}}}
+\def\dtv{{\dot{\tilde{v}}}}
+\def\dtth{{\dot{\tilde{\theta}}}}
+\def\dts{{\dot{\tilde{\sigma}}}}
+\def\dtu{{\dot{\tilde{u}}}}
+\def\dtph{{\dot{\tilde{\varphi}}}}
+
+\def\dpp{\dot{p}}
+\def\dqq{\dot{q}}
+\def\drr{\dot{r}}
+\def\dss{\dot{s}}
+
+\def\ta{{\tilde{a}}}
+\def\tb{{\tilde{b}}}
+\def\tc{{\tilde{c}}}
+\def\td{{\tilde{d}}}
+
+\def\BO{{\mathcal{O}}}
+\def\lio{{\mathcal{o}}}
+
+
+
+\def\bx{\bar{x}}
+\def\bm{\bar{\mathbf{m}}}
+\def\K{\mathcal{K}}
+\def\E{\mathcal{E}}
+\def\del{\partial}
+\def\eps{\varepsilon}
+
+\newcommand{\tcr}{\textcolor{red}}
+\newcommand{\tcb}{\textcolor{blue}}
+
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{claim}{Claim}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{thermoelectic problem}
+\author{Jaywan Chung\footnotemark[1] \and Min-Gi Lee\footnotemark[2]} %\ \footnotemark[3]  % \footnotemark[4]}
+\date{}
+
+\maketitle
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[2]{Min-Gi Lee \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia, \\ e-mail: mingi.lee@kaust.edu.sa}%{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
+\footnotetext[1]{Athanasios Tzavaras \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  e-mail: {athanasios.tzavaras@kaust.edu.sa}}
+
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\tableofcontents
+
+
+\begin{thebibliography}{10}
+
+\bibitem{bertsch_effect_1991}
+{\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel},
+The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
+{\it SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
+
+\bibitem{clifton_rev_1990}
+{\sc R.J. Clifton},  High strain rate behaviour of metals,
+% {\it Applied Mechanics Review}
+{\it Appl. Mech. Rev.}
+{\bf 43} (1990), S9-S22.
+
+\bibitem{DH_1983}
+{\sc C.M. Dafermos and L.~Hsiao},
+Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
+{\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
+
+% \bibitem{fenichel_persistence_1972}
+% {\sc N.~Fenichel},
+% Persistence and smoothness of invariant manifolds for  flows,
+% {\it Indiana Univ. Math. J.} {\bf 21} (1972) 193--226.
+
+\bibitem{fenichel_asymptotic_1974}
+{\sc N.~Fenichel},
+Asymptotic stability with rate conditions,
+{\it Indiana Univ. Math. J.} {\bf 23} (1974) 1109--1137.
+
+\bibitem{fenichel_asymptotic_1977}
+{\sc N.~Fenichel},
+Asymptotic stability with rate conditions \textrm{II},
+{\it Indiana Univ. Math. J.} {\bf 26} (1977) 81--93.
+
+\bibitem{fenichel_geometric_1979}
+{\sc N.~Fenichel},
+Geometric singular perturbation theory for ordinary differential equations,
+{\it J. Differ. Equations} {\bf 31} (1979), 53--98.
+
+%\bibitem{FM87}
+%{\sc C.~Fressengeas and A.~Molinari},
+%Instability and localization of plastic flow in shear at high strain rates,
+%{\it J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
+
+\bibitem{HPS_1977}
+{\sc M.W. Hirsch, C.C. Pugh, and M. Shub},
+{\it Invariant Manifolds}, LNM {\bf 583}, (Springer-Verlag, New York/Heidelberg/Berlin 1977)
+
+\bibitem{HN77}
+{\sc J.W.~Hutchinson and K.W.~Neale},
+Influence of strain-rate sensitivity on necking under uniaxial tension,
+{\it  Acta Metallurgica} {\bf 25} (1977), 839-846.
+
+\bibitem{KOT14}
+{\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras},
+Emergence of coherent localized structures in shear deformations of temperature dependent fluids,
+{\it Archive for Rational Mechanics and Analysis} {\bf 224} (2017), 173--208.
+
+\bibitem{KT09}
+{\sc Th. Katsaounis and A.E.~Tzavaras},
+Effective equations for localization and shear band formation,
+{\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
+
+\bibitem{KLT_2016}
+{\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras},
+Localization in inelastic rate dependent shearing deformations,
+{\it J. Mech. Phys. of Solids} {\bf 98} (2017), 106--125.
+
+\bibitem{KUEHN_2015}
+{\sc C.~ Kuehn}, 
+{\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
+
+\bibitem{LT16}
+{\sc M.-G.~Lee and A.E.~Tzavaras},
+Existence of localizing solutions in plasticity via the geometric singular perturbation theory,
+{\it Siam J. Appl. Dyn. Systems} {\bf 16} (2017), 337--360.
+
+\bibitem{KLT_HYP2016}
+{\sc M.-G. Lee, Th. Katsaounis, and A.E. Tzavaras},
+Localization of Adiabatic Deformations in Thermoviscoplastic Materials, In Proceedings of the 16th International Conference on Hyperbolic Problems: Theory, Numerics, Applications (HYP2016), to appear.
+
+%
+% \bibitem{jones_geometric_1995}
+% {\sc C.~K. R.~T. Jones},
+% Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+%
+%
+
+%
+% % \bibitem{perko_differential_2001}
+% % {\sc L.~Perko},
+% % {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
+%
+
+\bibitem{shawki_shear_1989}
+{\sc T.G. Shawki and R.J. Clifton},
+Shear band formation in thermal viscoplastic materials,
+% {\it Mechanics of Materials}
+{\it Mech. Mater.}
+{\bf 8 } (1989), 13--43.
+
+\bibitem{Sz1991}
+{\sc P.~Szmolyan},
+Transversal heteroclinic and homoclinic orbits in singular perturbation problems,
+{\it J. Differ. Equations}
+{\bf 92} (1991), 252--281.
+
+\bibitem{Tz_1986}
+{\sc A.E. Tzavaras},
+Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
+{\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
+
+\bibitem{Tz_1987}
+{\sc A.E. Tzavaras},
+Effect of thermal softening in shearing of strain-rate dependent materials.
+{\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
+
+\bibitem{tzavaras_plastic_1986}
+{\sc A.E. Tzavaras},
+Plastic shearing of materials exhibiting strain hardening or strain softening,
+% {\it Archive for Rational Mechanics and  Analysis}
+{\it Arch. Ration. Mech. Anal.}
+{\bf 94} (1986), 39--58.
+
+%\bibitem{tzavaras_strain_1991}
+%{\sc A.E. Tzavaras},
+%Strain softening in viscoelasticity of the rate type.
+%{\it J. Integral Equations Appl.} {\bf  3}  (1991), 195--238.
+
+\bibitem{tzavaras_nonlinear_1992}
+%\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
+{\sc A.E. Tzavaras},
+Nonlinear analysis techniques for shear band formation at high strain-rates,
+% {\it Applied Mechanics Reviews}
+{\it Appl. Mech. Rev.}
+{\bf  45} (1992), S82--S94.
+
+
+
+%
+% \bibitem{clifton_critical_1984}
+% {\sc R.~J. Clifton, J.~Duffy, K.~A. Hartley, and T.~G. Shawki},
+% On critical conditions for shear band formation at high strain rates.
+% % {\it Scripta Metallurgica}
+% {\it Scripta. Metall. Mater.}
+% {\bf 18} (1984), 443--448.
+%
+
+
+%
+% \bibitem{freistuhler_spectral_2002}
+% {\sc H.~Freistühler and P.~Szmolyan},
+% {Spectral stability of small shock waves},
+% {\it Arch. Ration. Mech. Anal.}
+% {\bf 164} (2002), 287--309.
+% %   \href{http://dx.doi.org/10.1007/s00205-002-0215-8}{doi:\nolinkurl{10.1007/s00205-002-0215-8}},
+% %   \url{http://dx.doi.org/10.1007/s00205-002-0215-8}.
+% \bibitem{fressengeas_instability_1987}
+% {\sc C.~Fressengeas, A.~Molinari},
+% {Instability and localization of plastic flow in shear at high strain rates},
+% {\it J. Mech. Phys. of Solids}
+% {\bf 35} (1987), 185--211.
+%
+% \bibitem{gasser_geometric_1993}
+% {\sc I.~Gasser and P.~Szmolyan},
+% {A geometric singular perturbation analysis of detonation and deflagration waves},
+% {\it {SIAM} J. Math. Anal.}
+% {\bf 24} (1993), 968--986.
+% %   \href{http://dx.doi.org/10.1137/0524058}{doi:\nolinkurl{10.1137/0524058}},
+% %   \url{http://dx.doi.org/10.1137/0524058}.
+% \bibitem{ghazaryan_traveling_2007}
+% {\sc A.~Ghazaryan, P.~Gordon, and C.~K. R.~T. Jones},
+% {Traveling waves in porous media combustion: uniqueness of waves for small thermal diffusivity},
+% {\it J. Dyn. Differ. Equ.}
+% {\bf 19} (2007), 951--966.
+% %   \href{http://dx.doi.org/10.1007/s10884-007-9079-9}{doi:\nolinkurl{10.1007/s10884-007-9079-9}},
+% %   \url{http://dx.doi.org/10.1007/s10884-007-9079-9}.
+%
+%
+
+% \bibitem{MC_1987}
+% {\sc A.~Molinari and R.~J. Clifton},
+% Analytical characterization of shear localization in thermoviscoplastic materials,
+% {\it Journal of Applied Mechanics}
+% {\it J. Appl. Mech.}
+% {\bf 54} (1987), 806--812.
+%
+%
+% \bibitem{jones_geometric_1995}
+% {\sc C.~K. R.~T. Jones},
+% Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+%
+%
+%
+%
+%
+%
+
+%
+% \bibitem{KUEHN_2015}
+% {\sc C.~ Kuehn},
+% {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
+%
+
+%
+% \bibitem{perko_differential_2001}
+% {\sc L.~Perko},
+% {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
+%
+%
+
+
+
+%
+% \bibitem{shawki_energy_1994}
+% {\sc T.~G. Shawki},
+% {An Energy Criterion for the Onset of Shear Localization in Thermal Viscoplastic Materials, Part II: Applications and Implications}, {\it ASME. J. Appl. Mech.}
+% {\bf 61} (1994), 538--547.
+%
+%
+% \bibitem{SS_2004}
+% {\sc S. Schecter and P. Szmolyan}
+% Composite waves in the Dafermos regularization.
+% {\it J. Dynamics Diff. Equations} {\bf 16} (2004), 847-867.
+%
+
+%
+% \bibitem{wiggins_normally_1994}
+% {\sc S.~Wiggins},
+% {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
+%
+\bibitem{wiggins_normally_1994}
+{\sc S.~Wiggins}, 
+{\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
+
+\bibitem{wright_survey_2002}
+{\sc T.W. Wright},
+{\it The Physics and Mathematics of Shear Bands.} (Cambridge Univ. Press 2002).
+%
+% \bibitem{xiao_stability_2003}
+% {\sc L.~Xiao-Biao and S.~ Schecter},
+% {Stability of self-similar solutions of the {D}afermos regularization of a system of conservation laws},
+% {SIAM J. Math. Anal.}
+% {\bf 35} (2003), 884--921.
+
+%\bibitem{WF83}
+%{\sc F.H. Wu and L.B. Freund},
+%Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
+%{\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132.
+
+\bibitem{zener_effect_1944}
+{\sc C.~Zener and J.~H. Hollomon},
+Effect of strain rate upon plastic flow of steel,
+% {\it  Journal of Applied Physics}
+{\it J. Appl. Phys.}
+{\bf 15} (1944), 22--32.
+
+\end{thebibliography}
+\end{document}
+
+% \hrulefill
+% \bibitem{dafermos_adiabatic_1983}
+% {\sc C.~M. Dafermos and L.~Hsiao},
+% Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
+% {\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
+
+% \bibitem{katsaounis_effective_2009}
+% {\sc Th. Katsaounis and A.E.~Tzavaras},
+%  Effective equations for localization and shear band formation,
+%  {\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
+
+% \bibitem{schecter_undercomp_2002}
+% {\sc S.~Schecter},
+% {Undercompressive shock waves and the {D}afermos regularization},
+% {\it Nonlinearity}
+% {\bf 15} (2002), 1361--1377.
+% \bibitem{deng_homoclinic_1990}
+% {\sc B.~Deng},
+% {Homoclinic bifurcations with nonhyperbolic equilibria},
+% {\it {SIAM} J. Math. Anal.}
+% {\bf 21} (1990),  693--720.
+% %   \href{http://dx.doi.org/10.1137/0521037}{doi:\nolinkurl{10.1137/0521037}},
+% %   \url{http://dx.doi.org/10.1137/0521037}.
+
+%
+% \bibitem{ghazaryan_travelling_2015}
+% {\sc A.~Ghazaryan, V.~Manukian, and S.~Schecter},
+% {Travelling waves in the holling-tanner model with weak diffusion},
+% {\it Proc. R. Soc. A}
+% {\bf 471} (2015), 20150045, 16.
+% %   \href{http://dx.doi.org/10.1098/rspa.2015.0045}{doi:\nolinkurl{10.1098/rspa.2015.0045}},
+% %   \url{http://dx.doi.org/10.1098/rspa.2015.0045}.
+%
+% \bibitem{gucwa_geometric_2009}
+% {\sc I.~Gucwa and P.~Szmolyan},
+% {Geometric singular perturbation analysis of an autocatalator model},
+% {\it Discrete Contin. Dyn. Syst. Ser. S}
+% {\bf 2} (2009), 783--806.
+% %   \href{http://dx.doi.org/10.3934/dcdss.2009.2.783}{doi:\nolinkurl{10.3934/dcdss.2009.2.783}},
+% %   \url{http://dx.doi.org/10.3934/dcdss.2009.2.783}.
+%
+% \bibitem{huber_geometric_2005}
+% {\sc A.~Huber and P.~Szmolyan},
+% {Geometric singular perturbation analysis of the yamada model},
+% {\it {SIAM} J. Appl. Dyn. Syst.}
+% {\bf 4} (2005), 607--648.
+% %   \href{http://dx.doi.org/10.1137/040604820}{doi:\nolinkurl{10.1137/040604820}},
+% %   \url{http://dx.doi.org/10.1137/040604820}.
+% \bibitem{jones_construction_1991}
+% {\sc C.~K. R.~T. Jones, N.~Kopell, and R.~Langer},
+% {Construction of the {FitzHugh}-nagumo pulse using differential forms.} In: {\it Patterns and dynamics
+%   in reactive media},
+% IMA Volumes Math Appl 37, Springer, 1989, 101--115.
+%
+% \bibitem{jones_tracking_1994}
+% {\sc C.~K. R.~T. Jones and N.~Kopell},
+% {Tracking invariant manifolds with differential forms in singularly perturbed systems},
+% {\it J. Differ. Equations}
+% {\bf 108} (1994), 64--88.
+% %   \href{http://dx.doi.org/10.1006/jdeq.1994.1025}{doi:\nolinkurl{10.1006/jdeq.1994.1025}},
+% %   \url{http://dx.doi.org/10.1006/jdeq.1994.1025}.
+% \bibitem{kaper_primer_2001}
+% {\sc T.~J. Kaper and C.~K. R.~T. Jones},
+% {A primer on the exchange lemma for fast-slow systems.} In: {\it Multiple-time-scale dynamical systems},
+% IMA Volumes Math Appl 122, Springer, 1997, 65--87.
+% \bibitem{katsaounis_localization_2011}
+% {\sc Th. Katsaounis and A.E.~Tzavaras},
+% Localization and shear bands in high strain-rate plasticity.
+% In: {\it Nonlinear conservation laws and  applications}, A.~Bressan, G.-Q.~Chen, M.~Lewicka, D.~Wang, eds;
+% IMA Volumes Math Appl 153, Springer, 2011, 365--377.
+% \bibitem{popovic_geometric_2004}
+% {\sc N.~Popović and P.~Szmolyan},
+% {A geometric analysis of the lagerstrom model problem},
+% {\it J. Differ. Equations}
+% {\bf 199} (2004), 290--325.
+% %   \href{http://dx.doi.org/10.1016/j.jde.2003.08.004}{doi:\nolinkurl{10.1016/j.jde.2003.08.004}},
+% %   \url{http://dx.doi.org/10.1016/j.jde.2003.08.004}.
+% \bibitem{bates_existence_1997}
+% {\sc P.~W. Bates, P.~C. Fife, R.~A. Gardner, and C.~K. R.~T. Jones},
+% {The existence of travelling wave solutions of a generalized phase-field model},
+% {\it {SIAM} J. Math. Anal.}
+% {\bf 28} (1997), 60--93.
+% %   \href{http://dx.doi.org/10.1137/S0036141095283820}{doi:\nolinkurl{10.1137/S0036141095283820}},
+% %   \url{http://dx.doi.org/10.1137/S0036141095283820}.
+%
+% \bibitem{beck_electrical_2008}
+% {\sc M.~Beck, C.~K. R.~T. Jones, D.~Schaeffer, and M.~Wechselberger},
+% {Electrical waves in a one-dimensional model of cardiac tissue},
+% {\it {SIAM} J. Appl. Dyn. Syst.}
+% {\bf 7} (2008),  1558--1581.
+% %   \href{http://dx.doi.org/10.1137/070709980}{doi:\nolinkurl{10.1137/070709980}},
+% %   \url{http://dx.doi.org/10.1137/070709980}.
+
+% \bibitem{schecter_exchange_2008}
+% {\sc S.~Schecter},
+% {Exchange lemmas. i. deng's lemma},
+% {\it J. Differ. Equations}
+% {\bf 245} (2008), 392--410.
+% %   \href{http://dx.doi.org/10.1016/j.jde.2007.08.011}{doi:\nolinkurl{10.1016/j.jde.2007.08.011}},
+% %   \url{http://dx.doi.org/10.1016/j.jde.2007.08.011}.
+%
+% \bibitem{schecter_exchange_2008-1}
+% {\sc S.~Schecter}, {Exchange lemmas. {ii}. general exchange lemma},
+% {\it J. Differ. Equations}
+% {\bf 245} (2008), 411--441.
+% %   \href{http://dx.doi.org/10.1016/j.jde.2007.10.021}{doi:\nolinkurl{10.1016/j.jde.2007.10.021}},
+% %   \url{http://dx.doi.org/10.1016/j.jde.2007.10.021}.
+
+% \bibitem{wright_stress_1987}
+% {\sc Thomas~W. Wright and John~W. Walter},
+% On stress collapse in adiabatic shear bands,
+% {\it J. Mech. Phys. of Solids} {\bf 35} (1987),
+%  701--720.
+%
+% \bibitem{WF83}
+% {\sc F.H. Wu and L.B. Freund},
+% Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
+% {\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132..
+%
+% \bibitem{AKS87}
+% L.~Anand, K.H.~Kim and T.G.~Shawki,
+% Onset of shear localization in viscoplastic solids,
+% {\it J. Mech. Phys. Solids}
+% {\bf 35} (1987), 407-429.
+%
+% \bibitem{BC04}
+% {\sc Th.~ Baxevanis and N.~Charalambakis},
+% The role of material non-homogeneities on the formation and evolution of strain non-uniformities in thermoviscoplastic shearing,
+% {\it Quart. Appl. Math.} {\bf 62} (2004), . 97-116.
+%
+% \bibitem{baxevanis_adaptive_2010}
+% {\sc Th~H. Baxevanis, Th~Katsaounis, and A.~E. Tzavaras},
+% Adaptive finite element computations of shear band formation,
+%   {\it Math. Models  Methods Appl. Sci.} {\bf 20}  (2010),  423--448.
+%
+% \bibitem{BD02}
+% {\sc T.J.~Burns and M.A.~Davies},
+% On repeated adiabatic shear band formation during high speed machining,
+% {\it International Journal of Plasticity} {\bf 18 } (2002),  507-530.
+%
+% \bibitem{CB99}
+% {\sc L.~ Chen and R.C.~Batra },
+% The asymptotic structure of a shear band in mode-II deformations.
+% {\it International Journal of Engineering Science} {\bf 37} (1999),  895-919.
+%
+% \bibitem{estep_2001}
+% {\sc Donald~J Estep, Sjoerd M~Verduyn Lunel, and Roy~D Williams},
+% {Analysis of Shear Layers in a Fluid with Temperature-Dependent Viscosity},
+%  {\it  J. Comp. Physics}  {\bf 173} (2001), 17--60.
+%
+% \bibitem{KCS85}
+% {\sc R.W. Klopp. R.J. Clifton, and T.G. Shawki},
+% Pressure-shear impact and the dynamic viscoplastic response of metals,
+% {\it Mechanics of Materials} {\bf 4} (1985), 375-385.
+
+% \bibliography{dynamical}
+\end{thebibliography}
+\end{document}
+
+
+\end{thebibliography}
+
+\end{document}	
+
+\pagebreak
