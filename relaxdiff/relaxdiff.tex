@@ -58,14 +58,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{thermoelectic problem}
-% \author{Jaywan Chung\footnotemark[1] \and Min-Gi Lee\footnotemark[2]} %\ \footnotemark[3]  % \footnotemark[4]}
+\title{Diffusion controlled by ode relaxation:\\stable regime $n-m>0$}
+% \author{Athanasios Tzavaras\footnotemark[1] \and Min-Gi Lee\footnotemark[2]} %\ \footnotemark[3]  % \footnotemark[4]}
 \date{}
 
 \maketitle
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\footnotetext[2]{Min-Gi Lee \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia, \\ e-mail: mingi.lee@kaust.edu.sa}%{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
-\footnotetext[1]{Athanasios Tzavaras \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  e-mail: {athanasios.tzavaras@kaust.edu.sa}}
+% \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% \footnotetext[2]{Min-Gi Lee \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia, \\ e-mail: mingi.lee@kaust.edu.sa}%{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
+% \footnotetext[1]{Athanasios Tzavaras \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  e-mail: {athanasios.tzavaras@kaust.edu.sa}}
 
 \renewcommand{\thefootnote}{\arabic{footnote}}
 
@@ -75,10 +75,292 @@
 \end{abstract}
 
 \tableofcontents
+\pagebreak 
+ 
+We study system of equations
+\begin{equation}\label{ug_system}
+\begin{aligned}
+ \partial_t u &= \Delta \Big(\frac{u^n}{\gamma}\Big),\\
+ \partial_t \gamma &= u^m - \gamma
+\end{aligned}
+\end{equation}
+in a bounded $C^{2,\alpha}$ domain $\Omega\subset \mathbb{R}^d$
+with initial conditions
+\begin{equation}
+ \gamma(0,x)=\gamma_0(x), \quad u(0,x)=u_0(x), \quad x\in \Omega,
+\end{equation}
+and boundary conditions
+\begin{equation}
+ \nabla\Big(\frac{u^n}{\gamma}\Big)\cdot \mathbf{n} = 0, \quad \partial\Omega. \label{bdrycond}
+\end{equation}
+\eqref{bdrycond} implies
+\begin{equation}
+ \frac{d}{dt} \int_\Omega u \: dx = 0. \quad \text{We normalize so that}  \int_\Omega u \: dx=1.
+\end{equation}
+We define $\sigma\triangleq\frac{|u|^{n-1}u}{\gamma}$. 
+We can formulate the problem with variables $\sigma$ and $\gamma$ by the relation 
+$\displaystyle u = \sigma^{\frac{1}{n}}\gamma^{\frac{1}{n}}$:
+\begin{align}
+%  \partial_t \big(\sigma^{\frac{1}{n}}\big) &= \gamma^{-\frac{1}{n}} \Delta \sigma - \frac{1}{n} \sigma^{\frac{1}{n}} \gamma^{-1+\frac{m}{n}}\Big(\sigma^{\frac{m}{n}}-\gamma^{1-\frac{m}{n}}\Big), \label{eq:s}\\
+ \partial_t \sigma &= n\gamma^{-\frac{1}{n}}\sigma^{\frac{n-1}{n}} \Delta \sigma - \gamma^{-1}\sigma\Big(\gamma^{\frac{m}{n}}\sigma^{\frac{m}{n}}-\gamma\Big) \label{eq:s},\\
+ \partial_t \gamma &= \gamma^{\frac{m}{n}}\sigma^{\frac{m}{n}} - \gamma. \label{eq:g}
+\end{align}
+Initial conditions:
+\begin{align}
+ \gamma(0,x)&=\gamma_0(x), \quad \sigma(0,x)=\sigma_0(x), \quad x\in \Omega. \label{initcond}
+\end{align}
+In particular, \eqref{eq:g} gives rise to the integral representation of $\gamma(t,x)$,
+\begin{equation}
+ \gamma(t,x)^{\frac{n-m}{n}} = e^{-\frac{n-m}{n}t}\gamma_0(x)^{\frac{n-m}{n}} + e^{-\frac{n-m}{n}t}\int_0^t \frac{n-m}{n} e^{\frac{n-m}{n}s} \sigma(s,x)^{\frac{m}{n}} \: ds. \label{eq:rep}
+\end{equation}
+In this paper, we study the stable regime, namely
+\begin{equation}
+ n-m>0. \label{stable}
+\end{equation}
+\section{Global Existence}
+The notations from the study of parabolic problem is used as in the below:
+\begin{align*}
+ \Omega \subset \mathbb{R}^d& \text{ is a bounded $C^{2,\alpha}$ domain with $0<\alpha <1$},\\
+ Q_T &\triangleq (0,T)\times \Omega,\\
+ Q &\triangleq (0,\infty)\times \Omega,\\
+ \Gamma_T &\triangleq (0,T)\times \partial\Omega \cup \{0\}\times\Omega,\\
+ \Gamma &\triangleq (0,\infty)\times \partial\Omega \cup \{0\}\times\Omega. 
+\end{align*}
+
+\begin{lemma}
+Suppose $\sigma,\gamma\in C^{2+\alpha,1+\alpha/2}(\bar{Q})$ is a solution of \eqref{eq:s}-\eqref{eq:g} such that $\gamma^- \le \gamma(0,x) \le \gamma^+$ and $\sigma^- \le \sigma(0,x) \le \sigma^+$, where $\gamma^-,\gamma^+,\sigma^-,\sigma^+$ are positive constants. Then 
+\begin{enumerate}
+ \item $\gamma^- \le \gamma(t,x) \le \gamma^+, \quad \sigma^- \le \sigma(t,x) \le \sigma^+ \quad \text{for all $(t,x)\in Q$}.$
+ \item $||\nabla\sigma||_{L^2(\Omega)} \le C(n,m,\gamma^-,\gamma^+,\sigma^-,\sigma^+).$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+ {\blue For the first assertion, we use the invariant region method.}
+ 
+ The second assertion is from the Energy dissipation equality
+\begin{align}
+ \partial_t\Big( \frac{u^{n+1}}{\gamma} &+ \frac{m}{n+1-m}\gamma^{\frac{n+1-m}{m}}\Big) + (n+1) \left|\nabla \big(\frac{u^n}{\gamma}\big)\right|^2 \nonumber \\
+ &= \div \Big( (n+1)\big(\frac{u^n}{\gamma}\big)\nabla \big(\frac{u^n}{\gamma}\big)\Big) - \frac{1}{\gamma^2}\Big( (u^m)^{\frac{n+1}{m}} - \gamma^{\frac{n+1}{m}}\Big)(u^m-\gamma). \label{eq:energy}
+\end{align}
+Note that $\displaystyle - \frac{1}{\gamma^2}\Big( (u^m)^{\frac{n+1}{m}} - \gamma^{\frac{n+1}{m}}\Big)(u^m-\gamma)\le0$. %From the energy equality, we have a uniform bound of $||\nabla\sigma||_{H^1(\Omega)}$.
+\end{proof}
+{\red 
+\begin{proposition}
+Suppose $\sigma,\gamma\in C^{2+\alpha,1+\alpha/2}(\bar{Q})$ is a solution of \eqref{eq:s}-\eqref{eq:g}. Then 
+$$ ||\sigma||_{C^{2+\alpha,1+\alpha/2}(\bar{Q})}, ||\gamma||_{C^{2+\alpha,1+\alpha/2}(\bar{Q})} \le C,$$
+where $C$ depends only on $d,\gamma^-,\gamma^+, \sigma^-, \sigma^+, ||\sigma(0,x)||_{C^{2,\alpha}(\Omega)}$, and $||\gamma(0,x)||_{C^{2,\alpha}(\Omega)}$.
+\end{proposition}
+\begin{proof}
+Krylov-Safonov theory needs the VMO or Holder coefficients, but $||\nabla\sigma||_{L^2(Q)}$ is not enough for that...
+%  Let us write the equation \eqref{eq:g} in the form
+%  \begin{equation}
+%   \partial_t \sigma = a(\gamma,\sigma) \Delta \sigma + f(\gamma,\sigma). \label{eq:abbrev}
+%  \end{equation}
+%  From the the lower and upper bounds of $\gamma,\sigma$, the $L^2$ bound of the $\nabla \sigma$ and the Poincar\'e inequality, $(i)$ the coefficient $a(\gamma,\sigma)$ has a uniform ellipticity constant; $(ii)$ $a(\gamma,\sigma)$ is in the space of VMO. By the parabolic regularity theory by the Krlov-Safonov, we obtain the $||\sigma||_{W^{2,p}(\Omega)}$ bound for any $1<p<\infty$ by the constant $C$ that only depends on $d$, the ellipticity constant, $||\nabla\sigma||_{L^2(\Omega)}$ and $p$. With a high enough $p$, this gives rise to the H\"older estimates of $\sigma$ and in turn that of $\gamma$, $\partial_t\sigma$, and $\partial_t\gamma$. The parabolic regularity theory with the coefficient in H\"older then gives $\sigma\in C^{2+\alpha,1+\alpha/2}(\bar{Q})$ bound as stated.
+\end{proof}
+}
+
+\begin{theorem} \label{thm:existence}
+ \eqref{eq:s}-\eqref{eq:g} with initial boundary conditions \eqref{bdrycond} and \eqref{initcond} has a unique globally defined classical solution.
+\end{theorem}
+ 
+% \begin{corollary} Suppose $\sigma,\gamma\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$ is a solution of \eqref{aux}.
+%  \begin{enumerate}
+% %   \item $\gamma^- \le \gamma(t,x) \le \gamma^+$ and $\sigma^- \le \sigma(t,x) \le \sigma^+$ for all $(t,x)\in Q_T$. %[0,\infty)\times \bar\Omega$.
+%   \item $||\sigma||_{C^{2,1,\alpha}(Q_T)} \le C\Big(\min_{t,x}a(t,x), \gamma^-,\gamma^+, \sigma^-, \sigma^+,||\sigma_0||_{C^{2,\alpha}(\bar\Omega)},||\gamma_0||_{C^{2,\alpha}(\bar\Omega)}\Big).$
+%   \item $||\gamma||_{C^{2,1,\alpha}(Q_T)} \le C\Big(\min_{t,x}a(t,x), \gamma^-,\gamma^+, \sigma^-, \sigma^+, ||\sigma_0||_{C^{2,\alpha}(\bar\Omega)},||\gamma_0||_{C^{2,\alpha}(\bar\Omega)}\Big).$
+%  \end{enumerate}
+% \end{corollary}
+
+% \begin{proposition}
+%  The auxilary system has a unique solution.
+% \end{proposition}
+\begin{proof}
+We first proceed with the short time existence in $\bar{Q}_{T}$ with $T>0$ small enough, with cruder estimate
+% $$ \underline{\gamma} \le \gamma(t,x) \le \overline{\gamma}$$
+\begin{equation}\underline\gamma \le \gamma(t,x) \le \overline\gamma, \quad \underline\sigma \le \sigma(t,x) \le \overline\sigma \quad \text{for all $(t,x)\in Q_T$}.\label{eq:cruder} \end{equation}
+$\underline\gamma$, $\overline\gamma$, $\underline\sigma$, and $\overline\sigma$ are positive constants. This lower bound is in particular necessary because the nonlinearities $a(\gamma,\sigma)$ and $f(\gamma,\sigma)$ are unbounded as $\gamma \rightarrow 0$ and are not Lipschitz as $\sigma \rightarrow 0$. 
+
+1. We choose $\underline{\sigma}\le \sigma^-$ and $\overline{\sigma}\ge 2\sigma^+$. Then from the integral expression \eqref{eq:rep}, $\gamma(t,x) \in [\underline{\gamma},\overline\gamma]$, where $\underline\gamma^{n-m} = \underline\sigma^m$; $(ii)$ $\overline\gamma^{n-m} = \overline\sigma^m$. Because $n-m>0$, we can have them so that the cube $K\triangleq[\underline{\gamma},\overline{\gamma}]\times[\underline\sigma,\overline\sigma] \supset [\gamma^-,2\gamma^+]\times[\sigma^-,2\sigma^+]$.
+% 
+% 
+% $\underline\gamma,\underline\sigma$ small enough and $\overline\gamma,\overline\sigma$ large enough so that the cube $K\triangleq[\underline{\gamma},\overline{\gamma}]\times[\underline\sigma,\overline\sigma] \supset [\gamma^-,2\gamma^+]\times[\sigma^-,2\sigma^+]$. We can choose them such that $(i)$ $\underline\gamma^{n-m} = \underline\sigma^m$; $(ii)$ $\overline\gamma^{n-m} = \overline\sigma^m$. This is possible because $n-m>0$. 
+
+
+% $\underline\gamma \le \gamma^-$, $\underline\sigma \le \sigma^-$, $\overline\gamma \ge 2\gamma^+$, $\overline\sigma \ge 2\sigma^+$. 
+
+% Now, let $M>0$ be bigger than the Lipschitz constant of $a(\gamma,\sigma)$ and $f(\gamma,\sigma)$ 
+2. Now, let $$B\triangleq\left\{\sigma \in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T) ~\Big|~ \sigma(t,x) \in [\underline\sigma, \overline\sigma] \quad \text{for all $(t,x)\in Q_T$}\right\},$$ 
 
 
 
 
+
+
+where $M>0$ is chosen later. We define the transformation $\Phi: B \mapsto B$ in the following way. For a given $\sigma_j \in B$, we first define $\gamma_j(t,x)$ in $Q_T$ via the integral expression \eqref{eq:rep}.  
+It is straightforward to check that $\sigma(t,x)\in [\underline\sigma,\overline\sigma]$ implies $\gamma(t,x) \in [\underline\gamma,\overline\gamma]$ and 
+{\blue$$||\gamma||_{C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)} \le C(blabla)||\sigma||_{C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)}.$$}
+Now we define $\sigma_{j+1}$ by the solution of 
+\begin{equation}
+\partial_t \sigma_{j+1} + M_1\sigma_{j+1} = a(\gamma_j,\sigma_j)\Delta \sigma_{j+1} + M_1\sigma_j + f(\gamma_j,\sigma_j), \label{eq:iteration}
+\end{equation}
+with the same initial boundary conditions. Let $M_1>0$ very large so that 
+$$ M|a(\gamma_j,\sigma_j)-a(\gamma_{j-1},\sigma_{j-1})|+ |f(\gamma_j,\sigma_j)-f(\gamma_{j-1},\sigma_{j-1})| \le M_1|\sigma_j - \sigma_{j-1}|.$$
+In the above the Lipschitz constant could be taken because $(\gamma(t,x),\sigma(t,x))\in K$. $|\gamma_j - \gamma_{j-1}|$ was estimated by $|\sigma_j-\sigma_{j+1}|$ via the integral expression. If $\tilde a(t,x)\triangleq a(\gamma_j(t,x),\sigma_j(t,x))$ and $\tilde f(t,x)\triangleq f(\gamma_j(t,x),\sigma_j(t,x))$ then the linear elliptic problem is solvable because $(\gamma_j(t,x),\sigma_j(t,x))\in K$ and thus $(i)$ $a(\gamma_j,\sigma_j)$ has the uniform ellipticity constant; $(ii)$ $\tilde a(t,x),\tilde f(t,x) \in C^{\alpha,\alpha/2}(\bar{Q}_T)$. Therefore $\sigma_{j+1}$ is well-defined and we must prove that $\sigma_{j+1} \in B$.% thanks to the lower bounds of $\gamma$ and $\sigma$. 
+
+3.  Let $\sigma_0 \equiv \underline\sigma$, $\gamma_0\equiv \underline\gamma$, $w_{j+1}=\sigma_{j+1} - \sigma_j$. We prove that $w_{j+1}\ge0$ by the induction. Suppose $w_j\ge0$. $w_{j+1}$ satisfies
+\begin{equation}
+\begin{aligned}
+\partial_t w_{j+1} + M_1w_{j+1} &= a(\gamma_j,\sigma_j)\Delta w_{j+1} + M_1w_j + \Delta \sigma_j\big( a(\gamma_j,\sigma_j)-a(\gamma_{j-1},\sigma_{j-1}\big) + f(\gamma_j,\sigma_j)-f(\gamma_{j-1},\sigma_{j-1})\\
+&=a(\gamma_j,\sigma_j)\Delta w_{j+1} + M_1w_j + F_j.
+\end{aligned}\label{eq:contraction}
+\end{equation}
+We have $|F_j| \le M_1|w_j|$ and because $w_j\ge0$, 
+$$\partial_t w_{j+1} + M'w_{j+1} - a(\gamma_j,\sigma_j)\Delta w_{j+1} \ge 0$$
+to conclude $w_{j+1} \ge 0$, or $\sigma_{j+1} \ge \sigma_{j}$. On account of the integral expression of $\gamma_{j+1}$, then $\gamma_{j+1}\ge \gamma_{j}$. On the other hand, by the maximum principle again we have
+$$||\sigma_{j+1}||_{L^\infty} \le T ||\tilde f||_{L^\infty}+ ||\sigma_{j+1}(0,x)||_{L^\infty},$$
+so we can choose $T$ small enough that $\sigma_{j+1} \le 2\sigma^+ \le \overline{\sigma}.$ This implies $\gamma_{j+1}\le \overline{\gamma}$. Since $(\gamma_{j+1}(t,x),\sigma_{j+1})$ is again in $K$, we have the same lower bound and H\"older estimate for $a(\gamma_{j+1},\sigma_{j+1})$ and $f(\gamma_{j+1},\sigma_{j+1})$. From the elliptic regularity theory, we can take $M>0$ that is preserved by the iteration. In conclusion, the map $\Phi$ is well-defined.
+
+4. Since the space $C^{\alpha,\alpha/2}(\bar{Q}_T)$ is compact, we have the existence of the solution. We show that $\Phi$ is a contraction in $L^\infty$ norm. From \eqref{eq:contraction} we have by the Maximum principle,
+$$||w_{j+1}||_{L^\infty(Q_T)} \le T M_1||w_{j+1}||_{L^\infty(Q_T)}.$$
+
+5. $T= \frac{1}{2} M_1$ only depends on $d$, the ellipticity constant, $||\tilde a||_{C^{\alpha,\alpha/2}}$, and $||\tilde f||_{C^{\alpha,\alpha/2}}$. In particular the latter norms depends on the bounds of the initial data $\gamma^\pm$ and $\sigma^\pm$. By the a priori estimate, the solution constructed has the same lower and upper bounds as before, or we can continue the solution in the same slab size $\frac{1}{2} M_1$ again. This gives the global existence of the unique solution.
+\end{proof}
+
+Now, because the elliptic regularity theory In conclusion, the map $\Phi$ is well-defined.
+
+
+
+Then, we note that $C^{\alpha,\alpha/2}$ norm of $a$ and $f$ is taken in the same cube $K$ again. are bounded by the same constant, which gives rise to the uniform bound of $\sigma$. This makes $\sigma_{j+1} \in B$.
+that will be chosen later. . Thanks to the lower bound of the $\gamma$ and $\sigma$,  Then by {\blue the solvability Theorem} of the linear elliptic problem, $\sigma_{j+1}$ is well-defined in $C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$ and we have $$||\sigma_{j+1}||_{C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)} \le C,$$ where $C$ only depends on $d$, the ellipticity constant, $||\tilde a||_{C^{\alpha,\alpha/2}}$, and $||\tilde f||_{C^{\alpha,\alpha/2}}$ 
+
+If $(\gamma,\sigma)(t,x) \in K$, then $\tilde a(t,x)\triangleq a(\gamma(t,x),\sigma(t,x))$ and $\tilde f(t,x)\triangleq f(\gamma(t,x),\sigma(t,x))$ in $C^{\alpha,\alpha/2}(\bar{Q}_T)$ and the elliptic regularity theory will give
+
+
+below. $C>0$ is the constant from the elliptic regularity theory that $||\sigma||_{C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)}$ would be bounded by, for given  This constant only depends on $d$, the ellipticity constant, $||\tilde a||_{C^{\alpha,\alpha/2}}$, and $||\tilde f||_{C^{\alpha,\alpha/2}}$. 
+
+
+
+Now, 
+
+
+
+
+
+
+\pagebreak
+
+
+Now, we define the transformation $B:\sigma_j\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T) \mapsto \sigma_{j+1}\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$ in the following way.
+
+$\underline\gamma \le \gamma^-$, $\underline\sigma \le \sigma^-$, $\overline\gamma \ge 2\gamma^+$, $\overline\sigma \ge 2\sigma^+$. We can choose them 
+
+
+
+% Let $V\triangleq \left\{(\sigma(t,x),\gamma(t,x)) \in C^{2+\alpha,1+\alpha/2}(\bar{Q}_\infty) ~|~ 
+1. Let $\sigma_{j},\gamma_{j}\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$ be given functions with the property $\gamma^- \le \gamma_j(t,x) \le \gamma^+$ and $\sigma^- \le \sigma_j(t,x) \le \sigma^+$ for all $(t,x)\in Q_T$. Then we define $\sigma_{j+1},\gamma_{j+1}\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$ in such a way that 
+$\gamma_{j+1}$ is given by the integral expression \eqref{eq:rep} with $\sigma_{j}(t,x)$ in the integral, or equivalently,  $\partial_t\gamma_{j+1} = \gamma_{j+1}^{\frac{m}{n}}\sigma_j^{\frac{m}{n}} - \gamma_{j+1}$ and $\sigma_{j+1}$ is defined by the solution of the linear equation
+ \begin{equation}\label{aux2}
+ \begin{aligned}
+ \partial_t \sigma_{j+1} &= a(t,x) \Delta \sigma_{j+1} -\sigma_{j+1}\frac{\gamma_{j+1}^{\frac{m}{n}}\sigma_j^{\frac{m}{n}} - \gamma_{j+1}}{\gamma_{j+1}}, \\
+ \end{aligned}
+ \end{equation}
+ subjected to the initial boundary conditions \eqref{initcond}, \eqref{bdrycond}. Denote $f(\gamma_{j+1},\sigma_j)\triangleq\frac{\gamma_{j+1}^{\frac{m}{n}}\sigma_j^{\frac{m}{n}} - \gamma_{j+1}}{\gamma_{j+1}}$ and $\tilde{f}(t,x) = f(\gamma_{j+1}(t,x),\sigma_j(t,x))$. From the integral expression of $\gamma_{j+1}$, $\gamma_{j+1}\ge \sigma^- >0$ so that $\tilde{f}(t,x)$ is bounded from above and $\tilde f (t,x), a(t,x)\in C^{\ell,\ell/2}(\bar{Q}_T)$. Then we can solve the linear equation for $\sigma_{j+1}\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$. 
+ 
+ 2. Note that the maximum and minimum of $\sigma_{j+1}$ is attained from the initial data. Therefore, the transformation $R:(\sigma_{j},\gamma_{j})\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T) \mapsto (\sigma_{j+1},\gamma_{j+1})\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$ is well-defined keeping the bounds
+ $$ \sigma^-\le \sigma_{j+1}(t,x),\gamma_{j+1}(t,x) \le \sigma^+\quad \text{for all $(t,x)\in Q_T$}$$
+ is kept.
+ 
+
+ 4. Since $f$ is smooth where $\gamma_{j+1}$ is away from $0$, there is a $L>0$
+ $$ |f(\gamma_{j+1},\sigma_j)- f(\gamma_{j},\sigma_{j-1})| \le L\Big(|\gamma_{j+1}-\gamma_{j}| + |\sigma_{j}-\sigma_{j-1}|\Big).$$
+ On account of the integral expression,
+ $$ |f(\gamma_{j+1},\sigma_j)- f(\gamma_{j},\sigma_{j-1})| \le L(n,m)|\sigma_{j}-\sigma_{j-1}|.$$
+ 
+ 5. Now, we show that this map is a contraction in $L^\infty(\bar{Q}_{T_*})$-norm provided $T_* < c_0$. {\blue specify this $c_0$.} If $w_{j+1}\triangleq \sigma_{j+1}-\sigma_{j}$, then it satisfies an equation
+ $$ \partial_t w_{j+1} = a(t,x)\Delta w_{j+1} - w_{j+1}\tilde{f}(t,x) - w_{j}g(t,x),$$
+ where $|g(t,x)| \le \sigma^+ L(n,m)$.
+ Since $w_j$ for any $j$ has vanishing initial condition, by the maximum principle, we have
+ $|w_{j+1}| \le T_*|w_j g(t,x)|$ and thus if $T_*$ is taken less than $\sigma^+ L(n,m)$, then the map is contraction in $L^\infty$-norm.
+ 
+
+
+% Claim 1. Let $R:(\sigma_{j+1},\gamma_{j+1})\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T) \mapsto (\sigma_{j},\gamma_{j})\in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)$ be the solution operator of the linear equation
+% 
+%  This is well-defined by the solvability of the linear parabolic equation \eqref{aux2} with
+
+
+% \end{proof}
+
+
+
+
+\section{Convergence to the globally asymptotically stable constant state}
+We have the formal Energy dissipation equality
+\begin{align}
+ \partial_t\Big( \frac{u^{n+1}}{\gamma} &+ \frac{m}{n+1-m}\gamma^{\frac{n+1-m}{m}}\Big) + (n+1) \left|\nabla \big(\frac{u^n}{\gamma}\big)\right|^2 \nonumber \\
+ &= \div \Big( (n+1)\big(\frac{u^n}{\gamma}\big)\nabla \big(\frac{u^n}{\gamma}\big)\Big) - \frac{1}{\gamma^2}\Big( (u^m)^{\frac{n+1}{m}} - \gamma^{\frac{n+1}{m}}\Big)(u^m-\gamma). \label{eq:energy}
+\end{align}
+Note that $\displaystyle - \frac{1}{\gamma^2}\Big( (u^m)^{\frac{n+1}{m}} - \gamma^{\frac{n+1}{m}}\Big)(u^m-\gamma)\le0$.
+\begin{theorem} Let $\gamma(t,x)$, $\sigma(t,x)$, and $u(t,x)$ be the global classical solution constructed by the Theorem \ref{thm:existence}.
+ \begin{enumerate}
+  \item $u(t,x) \rightarrow |\Omega|^{-1}$ as $t \rightarrow \infty$, %$|u(t,x) -|\Omega|^{-1}|=o\big(\frac{1}{\sqrt{t}}\big)$  
+  \item $\gamma(t,x) \rightarrow |\Omega|^{-m}$ as $t \rightarrow \infty$,
+  \item $\sigma(t,x) \rightarrow |\Omega|^{n-m}$ as $t \rightarrow \infty$.
+ \end{enumerate}
+\end{theorem}
+\begin{proof}
+ Seen from the energy estimate \eqref{eq:energy}, $||\nabla\sigma||_{L^2(\Omega)}(t)$ is $L^2( \mathbb{R}^+)$ in time, or $||\nabla\sigma||^2_{L^2(\Omega)}(t) = o(\frac{1}{t})$ as $t \rightarrow \infty$. Now from the integral representation \eqref{eq:rep} of $\gamma$, 
+ $$ \nabla\gamma^{\frac{n-m}{n}}(\tau,x) = e^{-\frac{n-m}{n}t}\nabla\gamma_0(x)^{\frac{n-m}{n}} + e^{-\frac{n-m}{n}t}\int_0^t \frac{n-m}{n} e^{\frac{n-m}{n}s} \nabla\sigma(s,x)^{\frac{m}{n}} \: ds.$$
+ \begin{align*}
+  \int_0^T \int_\Omega \left|\nabla\gamma^{\frac{n-m}{n}}(s,x)\right|^2 \: dxds &= \int_\Omega \left|\nabla\gamma_0(x)^{\frac{n-m}{n}}\right|^2 \: dx \int_0^T e^{-\frac{2(n-m)}{n}s}\:ds \\
+  &+ \int_0^T \int_0^t \frac{n-m}{n} e^{-\frac{2(n-m)}{n}t}e^{\frac{2(n-m)}{n}s} \int_\Omega\left|\nabla\sigma(s,x)^{\frac{m}{n}}\right|^2 \: dxdsdt\\
+  &+ 2\int_0^T \int_0^t \frac{n-m}{n} e^{-\frac{2(n-m)}{n}t}e^{\frac{(n-m)}{n}s} \int_\Omega \nabla\sigma(s,x)^{\frac{m}{n}}\cdot\nabla\gamma_0(x)^{\frac{n-m}{n}} \: dxdsdt\\
+  &\le C\Big(||\nabla\sigma^{\frac{m}{n}}||_{L^2(Q_T)}^2 + ||\nabla\gamma_0^{\frac{n-m}{n}}||_{L^2(\Omega)}^2\Big).
+ \end{align*}
+ Combined with the positive maximum and minimum estimates of $\sigma$ and $\gamma$, $||\nabla\gamma||_{L^2(\Omega)}$ is again an $L^2( \mathbb{R}^+)$ in time. In turn, $u=\sigma^{\frac{1}{n}}\gamma^{\frac{1}{n}}$ and $||\nabla u||_{L^2(\Omega)}$ is  an $L^2( \mathbb{R}^+)$ in time.
+
+ Now, 
+ \begin{align*}
+  u(t,x) &= u(t,y) + \int_0^1 \frac{d}{ds} u(t,x + s(y-x))\: ds,\\
+  \left|\int_\Omega u(t,x) -u(t,y) \: dy\right| &= \Big| ~|\Omega|u(t,x) -1~\Big| = \left|\int_\Omega \int_0^1 \frac{d}{ds} u(t,x + s(y-x))\: dsdy\right|\\
+  &\le\int_\Omega |\nabla u||y-x| \: dy \le (\textrm{diam }\Omega)|\Omega|^{\frac{1}{2}} \left( \int_\Omega |\nabla u|^2 \: dy\right)^{\frac{1}{2}} = o(\frac{1}{\sqrt{t}}).
+ \end{align*}
+ 
+ From the \eqref{eq:g},
+ $$ \partial_t \gamma + \gamma = \Big(|\Omega|^{-1} + o\big(\frac{1}{\sqrt{t}}\big)\Big)^m = |\Omega|^{-m} + o\big(\frac{1}{\sqrt{t}}\big).$$
+
+\end{proof}
+
+
+\section{Radial self-similar solutions}
+\subsection{Fundamental solution}
+
+\section{Relaxation limit to the effective equation}
+\subsection{energy structure}
+
+\appendix
+\section{Solvability of Linear Neumann boundary value problem}
+$Q_T\triangleq (0,T)\times\Omega$, $S_T\triangleq [0,T]\times\partial\Omega$.
+
+\begin{theorem}
+ $C^{\ell,\ell/2}(\bar{Q}_T)$ is the Banach space of functions $u(x,t)$ that are continuous in $\bar{Q}_T$, together with all derivatives of the form $D^r_t D^s_x$ for $2r+s<\ell$.
+ \begin{equation}
+  Lu\triangleq \partial_t u - \sum_{i,j=1}^d a_{ij}(t,x) \frac{\partial^2 u}{\partial x^i \partial x^j} + \sum_{i=1}^d a_i(t,x) \frac{\partial u}{\partial x^i} + a(t,x) u.
+ \end{equation}
+ We consider the Neumann boundary value problem
+ \begin{equation} \label{eq:lin_para}
+  \begin{aligned}
+   Lu &= f(t,x), \quad Q_T\\
+   \nabla u\cdot \mathbf{n} &= 0, \quad S_T\\
+   u(0,x) &= u_0(x).
+  \end{aligned}
+ \end{equation}
+ Suppose $\ell>0$ is a nonintegral number, $\partial\Omega \in C^{\ell+2}$, the coefficients in the operator belong to the class $C^{\ell,\ell/2}(\bar{Q}_T)$. Then for any $f \in C^{\ell,\ell/2}(\bar{Q}_T)$, $u_0\in C^{\ell+2}(\bar\Omega)$ with the {\blue compatibility conditions}, \eqref{eq:lin_para} has a unique solution from the class $C^{\ell+2,\ell/2+1}(\bar{Q}_T)$, with
+ \begin{equation}
+  ||u||_{C^{\ell+2,\ell/2+1}(\bar{Q}_T)} \le C\Big( ||f||_{C^{\ell,\ell/2}(\bar{Q}_T)} + ||u_0||_{C^{\ell+2,\ell/2+1}(\bar\Omega)}\Big). \label{regularity}
+ \end{equation}
+\end{theorem}
 
 
 
@@ -86,425 +368,259 @@
 
 \begin{thebibliography}{10}
 
-\bibitem{bertsch_effect_1991}
-{\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel},
-The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
-{\it SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
-
-\bibitem{clifton_rev_1990}
-{\sc R.J. Clifton},  High strain rate behaviour of metals,
-% {\it Applied Mechanics Review}
-{\it Appl. Mech. Rev.}
-{\bf 43} (1990), S9-S22.
-
-\bibitem{DH_1983}
-{\sc C.M. Dafermos and L.~Hsiao},
-Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
-{\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
-
-% \bibitem{fenichel_persistence_1972}
+% \bibitem{bertsch_effect_1991}
+% {\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel},
+% The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
+% {\it SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
+% 
+% \bibitem{clifton_rev_1990}
+% {\sc R.J. Clifton},  High strain rate behaviour of metals,
+% % {\it Applied Mechanics Review}
+% {\it Appl. Mech. Rev.}
+% {\bf 43} (1990), S9-S22.
+% 
+% \bibitem{DH_1983}
+% {\sc C.M. Dafermos and L.~Hsiao},
+% Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
+% {\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
+% 
+% % \bibitem{fenichel_persistence_1972}
+% % {\sc N.~Fenichel},
+% % Persistence and smoothness of invariant manifolds for  flows,
+% % {\it Indiana Univ. Math. J.} {\bf 21} (1972) 193--226.
+% 
+% \bibitem{fenichel_asymptotic_1974}
 % {\sc N.~Fenichel},
-% Persistence and smoothness of invariant manifolds for  flows,
-% {\it Indiana Univ. Math. J.} {\bf 21} (1972) 193--226.
-
-\bibitem{fenichel_asymptotic_1974}
-{\sc N.~Fenichel},
-Asymptotic stability with rate conditions,
-{\it Indiana Univ. Math. J.} {\bf 23} (1974) 1109--1137.
-
-\bibitem{fenichel_asymptotic_1977}
-{\sc N.~Fenichel},
-Asymptotic stability with rate conditions \textrm{II},
-{\it Indiana Univ. Math. J.} {\bf 26} (1977) 81--93.
-
-\bibitem{fenichel_geometric_1979}
-{\sc N.~Fenichel},
-Geometric singular perturbation theory for ordinary differential equations,
-{\it J. Differ. Equations} {\bf 31} (1979), 53--98.
-
-%\bibitem{FM87}
-%{\sc C.~Fressengeas and A.~Molinari},
-%Instability and localization of plastic flow in shear at high strain rates,
-%{\it J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
-
-\bibitem{HPS_1977}
-{\sc M.W. Hirsch, C.C. Pugh, and M. Shub},
-{\it Invariant Manifolds}, LNM {\bf 583}, (Springer-Verlag, New York/Heidelberg/Berlin 1977)
-
-\bibitem{HN77}
-{\sc J.W.~Hutchinson and K.W.~Neale},
-Influence of strain-rate sensitivity on necking under uniaxial tension,
-{\it  Acta Metallurgica} {\bf 25} (1977), 839-846.
-
-\bibitem{KOT14}
-{\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras},
-Emergence of coherent localized structures in shear deformations of temperature dependent fluids,
-{\it Archive for Rational Mechanics and Analysis} {\bf 224} (2017), 173--208.
-
-\bibitem{KT09}
-{\sc Th. Katsaounis and A.E.~Tzavaras},
-Effective equations for localization and shear band formation,
-{\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
-
-\bibitem{KLT_2016}
-{\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras},
-Localization in inelastic rate dependent shearing deformations,
-{\it J. Mech. Phys. of Solids} {\bf 98} (2017), 106--125.
-
-\bibitem{KUEHN_2015}
-{\sc C.~ Kuehn}, 
-{\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
-
-\bibitem{LT16}
-{\sc M.-G.~Lee and A.E.~Tzavaras},
-Existence of localizing solutions in plasticity via the geometric singular perturbation theory,
-{\it Siam J. Appl. Dyn. Systems} {\bf 16} (2017), 337--360.
-
-\bibitem{KLT_HYP2016}
-{\sc M.-G. Lee, Th. Katsaounis, and A.E. Tzavaras},
-Localization of Adiabatic Deformations in Thermoviscoplastic Materials, In Proceedings of the 16th International Conference on Hyperbolic Problems: Theory, Numerics, Applications (HYP2016), to appear.
-
-%
-% \bibitem{jones_geometric_1995}
-% {\sc C.~K. R.~T. Jones},
-% Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
-%
-%
-
-%
+% Asymptotic stability with rate conditions,
+% {\it Indiana Univ. Math. J.} {\bf 23} (1974) 1109--1137.
+% 
+% \bibitem{fenichel_asymptotic_1977}
+% {\sc N.~Fenichel},
+% Asymptotic stability with rate conditions \textrm{II},
+% {\it Indiana Univ. Math. J.} {\bf 26} (1977) 81--93.
+% 
+% \bibitem{fenichel_geometric_1979}
+% {\sc N.~Fenichel},
+% Geometric singular perturbation theory for ordinary differential equations,
+% {\it J. Differ. Equations} {\bf 31} (1979), 53--98.
+% 
+% %\bibitem{FM87}
+% %{\sc C.~Fressengeas and A.~Molinari},
+% %Instability and localization of plastic flow in shear at high strain rates,
+% %{\it J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
+% 
+% \bibitem{HPS_1977}
+% {\sc M.W. Hirsch, C.C. Pugh, and M. Shub},
+% {\it Invariant Manifolds}, LNM {\bf 583}, (Springer-Verlag, New York/Heidelberg/Berlin 1977)
+% 
+% \bibitem{HN77}
+% {\sc J.W.~Hutchinson and K.W.~Neale},
+% Influence of strain-rate sensitivity on necking under uniaxial tension,
+% {\it  Acta Metallurgica} {\bf 25} (1977), 839-846.
+% 
+% \bibitem{KOT14}
+% {\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras},
+% Emergence of coherent localized structures in shear deformations of temperature dependent fluids,
+% {\it Archive for Rational Mechanics and Analysis} {\bf 224} (2017), 173--208.
+% 
+% \bibitem{KT09}
+% {\sc Th. Katsaounis and A.E.~Tzavaras},
+% Effective equations for localization and shear band formation,
+% {\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
+% 
+% \bibitem{KLT_2016}
+% {\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras},
+% Localization in inelastic rate dependent shearing deformations,
+% {\it J. Mech. Phys. of Solids} {\bf 98} (2017), 106--125.
+% 
+% \bibitem{KUEHN_2015}
+% {\sc C.~ Kuehn}, 
+% {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
+% 
+% \bibitem{LT16}
+% {\sc M.-G.~Lee and A.E.~Tzavaras},
+% Existence of localizing solutions in plasticity via the geometric singular perturbation theory,
+% {\it Siam J. Appl. Dyn. Systems} {\bf 16} (2017), 337--360.
+% 
+% \bibitem{KLT_HYP2016}
+% {\sc M.-G. Lee, Th. Katsaounis, and A.E. Tzavaras},
+% Localization of Adiabatic Deformations in Thermoviscoplastic Materials, In Proceedings of the 16th International Conference on Hyperbolic Problems: Theory, Numerics, Applications (HYP2016), to appear.
+% 
+% %
+% % \bibitem{jones_geometric_1995}
+% % {\sc C.~K. R.~T. Jones},
+% % Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+% %
+% %
+% 
+% %
+% % % \bibitem{perko_differential_2001}
+% % % {\sc L.~Perko},
+% % % {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
+% %
+% 
+% \bibitem{shawki_shear_1989}
+% {\sc T.G. Shawki and R.J. Clifton},
+% Shear band formation in thermal viscoplastic materials,
+% % {\it Mechanics of Materials}
+% {\it Mech. Mater.}
+% {\bf 8 } (1989), 13--43.
+% 
+% \bibitem{Sz1991}
+% {\sc P.~Szmolyan},
+% Transversal heteroclinic and homoclinic orbits in singular perturbation problems,
+% {\it J. Differ. Equations}
+% {\bf 92} (1991), 252--281.
+% 
+% \bibitem{Tz_1986}
+% {\sc A.E. Tzavaras},
+% Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
+% {\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
+% 
+% \bibitem{Tz_1987}
+% {\sc A.E. Tzavaras},
+% Effect of thermal softening in shearing of strain-rate dependent materials.
+% {\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
+% 
+% \bibitem{tzavaras_plastic_1986}
+% {\sc A.E. Tzavaras},
+% Plastic shearing of materials exhibiting strain hardening or strain softening,
+% % {\it Archive for Rational Mechanics and  Analysis}
+% {\it Arch. Ration. Mech. Anal.}
+% {\bf 94} (1986), 39--58.
+% 
+% %\bibitem{tzavaras_strain_1991}
+% %{\sc A.E. Tzavaras},
+% %Strain softening in viscoelasticity of the rate type.
+% %{\it J. Integral Equations Appl.} {\bf  3}  (1991), 195--238.
+% 
+% \bibitem{tzavaras_nonlinear_1992}
+% %\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
+% {\sc A.E. Tzavaras},
+% Nonlinear analysis techniques for shear band formation at high strain-rates,
+% % {\it Applied Mechanics Reviews}
+% {\it Appl. Mech. Rev.}
+% {\bf  45} (1992), S82--S94.
+% 
+% 
+% 
+% %
+% % \bibitem{clifton_critical_1984}
+% % {\sc R.~J. Clifton, J.~Duffy, K.~A. Hartley, and T.~G. Shawki},
+% % On critical conditions for shear band formation at high strain rates.
+% % % {\it Scripta Metallurgica}
+% % {\it Scripta. Metall. Mater.}
+% % {\bf 18} (1984), 443--448.
+% %
+% 
+% 
+% %
+% % \bibitem{freistuhler_spectral_2002}
+% % {\sc H.~Freistühler and P.~Szmolyan},
+% % {Spectral stability of small shock waves},
+% % {\it Arch. Ration. Mech. Anal.}
+% % {\bf 164} (2002), 287--309.
+% % %   \href{http://dx.doi.org/10.1007/s00205-002-0215-8}{doi:\nolinkurl{10.1007/s00205-002-0215-8}},
+% % %   \url{http://dx.doi.org/10.1007/s00205-002-0215-8}.
+% % \bibitem{fressengeas_instability_1987}
+% % {\sc C.~Fressengeas, A.~Molinari},
+% % {Instability and localization of plastic flow in shear at high strain rates},
+% % {\it J. Mech. Phys. of Solids}
+% % {\bf 35} (1987), 185--211.
+% %
+% % \bibitem{gasser_geometric_1993}
+% % {\sc I.~Gasser and P.~Szmolyan},
+% % {A geometric singular perturbation analysis of detonation and deflagration waves},
+% % {\it {SIAM} J. Math. Anal.}
+% % {\bf 24} (1993), 968--986.
+% % %   \href{http://dx.doi.org/10.1137/0524058}{doi:\nolinkurl{10.1137/0524058}},
+% % %   \url{http://dx.doi.org/10.1137/0524058}.
+% % \bibitem{ghazaryan_traveling_2007}
+% % {\sc A.~Ghazaryan, P.~Gordon, and C.~K. R.~T. Jones},
+% % {Traveling waves in porous media combustion: uniqueness of waves for small thermal diffusivity},
+% % {\it J. Dyn. Differ. Equ.}
+% % {\bf 19} (2007), 951--966.
+% % %   \href{http://dx.doi.org/10.1007/s10884-007-9079-9}{doi:\nolinkurl{10.1007/s10884-007-9079-9}},
+% % %   \url{http://dx.doi.org/10.1007/s10884-007-9079-9}.
+% %
+% %
+% 
+% % \bibitem{MC_1987}
+% % {\sc A.~Molinari and R.~J. Clifton},
+% % Analytical characterization of shear localization in thermoviscoplastic materials,
+% % {\it Journal of Applied Mechanics}
+% % {\it J. Appl. Mech.}
+% % {\bf 54} (1987), 806--812.
+% %
+% %
+% % \bibitem{jones_geometric_1995}
+% % {\sc C.~K. R.~T. Jones},
+% % Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+% %
+% %
+% %
+% %
+% %
+% %
+% 
+% %
+% % \bibitem{KUEHN_2015}
+% % {\sc C.~ Kuehn},
+% % {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
+% %
+% 
+% %
 % % \bibitem{perko_differential_2001}
 % % {\sc L.~Perko},
 % % {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
-%
-
-\bibitem{shawki_shear_1989}
-{\sc T.G. Shawki and R.J. Clifton},
-Shear band formation in thermal viscoplastic materials,
-% {\it Mechanics of Materials}
-{\it Mech. Mater.}
-{\bf 8 } (1989), 13--43.
-
-\bibitem{Sz1991}
-{\sc P.~Szmolyan},
-Transversal heteroclinic and homoclinic orbits in singular perturbation problems,
-{\it J. Differ. Equations}
-{\bf 92} (1991), 252--281.
-
-\bibitem{Tz_1986}
-{\sc A.E. Tzavaras},
-Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
-{\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
-
-\bibitem{Tz_1987}
-{\sc A.E. Tzavaras},
-Effect of thermal softening in shearing of strain-rate dependent materials.
-{\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
-
-\bibitem{tzavaras_plastic_1986}
-{\sc A.E. Tzavaras},
-Plastic shearing of materials exhibiting strain hardening or strain softening,
-% {\it Archive for Rational Mechanics and  Analysis}
-{\it Arch. Ration. Mech. Anal.}
-{\bf 94} (1986), 39--58.
-
-%\bibitem{tzavaras_strain_1991}
-%{\sc A.E. Tzavaras},
-%Strain softening in viscoelasticity of the rate type.
-%{\it J. Integral Equations Appl.} {\bf  3}  (1991), 195--238.
-
-\bibitem{tzavaras_nonlinear_1992}
-%\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
-{\sc A.E. Tzavaras},
-Nonlinear analysis techniques for shear band formation at high strain-rates,
-% {\it Applied Mechanics Reviews}
-{\it Appl. Mech. Rev.}
-{\bf  45} (1992), S82--S94.
-
-
-
-%
-% \bibitem{clifton_critical_1984}
-% {\sc R.~J. Clifton, J.~Duffy, K.~A. Hartley, and T.~G. Shawki},
-% On critical conditions for shear band formation at high strain rates.
-% % {\it Scripta Metallurgica}
-% {\it Scripta. Metall. Mater.}
-% {\bf 18} (1984), 443--448.
-%
-
-
-%
-% \bibitem{freistuhler_spectral_2002}
-% {\sc H.~Freistühler and P.~Szmolyan},
-% {Spectral stability of small shock waves},
-% {\it Arch. Ration. Mech. Anal.}
-% {\bf 164} (2002), 287--309.
-% %   \href{http://dx.doi.org/10.1007/s00205-002-0215-8}{doi:\nolinkurl{10.1007/s00205-002-0215-8}},
-% %   \url{http://dx.doi.org/10.1007/s00205-002-0215-8}.
-% \bibitem{fressengeas_instability_1987}
-% {\sc C.~Fressengeas, A.~Molinari},
-% {Instability and localization of plastic flow in shear at high strain rates},
-% {\it J. Mech. Phys. of Solids}
-% {\bf 35} (1987), 185--211.
-%
-% \bibitem{gasser_geometric_1993}
-% {\sc I.~Gasser and P.~Szmolyan},
-% {A geometric singular perturbation analysis of detonation and deflagration waves},
-% {\it {SIAM} J. Math. Anal.}
-% {\bf 24} (1993), 968--986.
-% %   \href{http://dx.doi.org/10.1137/0524058}{doi:\nolinkurl{10.1137/0524058}},
-% %   \url{http://dx.doi.org/10.1137/0524058}.
-% \bibitem{ghazaryan_traveling_2007}
-% {\sc A.~Ghazaryan, P.~Gordon, and C.~K. R.~T. Jones},
-% {Traveling waves in porous media combustion: uniqueness of waves for small thermal diffusivity},
-% {\it J. Dyn. Differ. Equ.}
-% {\bf 19} (2007), 951--966.
-% %   \href{http://dx.doi.org/10.1007/s10884-007-9079-9}{doi:\nolinkurl{10.1007/s10884-007-9079-9}},
-% %   \url{http://dx.doi.org/10.1007/s10884-007-9079-9}.
-%
-%
-
-% \bibitem{MC_1987}
-% {\sc A.~Molinari and R.~J. Clifton},
-% Analytical characterization of shear localization in thermoviscoplastic materials,
-% {\it Journal of Applied Mechanics}
-% {\it J. Appl. Mech.}
-% {\bf 54} (1987), 806--812.
-%
-%
-% \bibitem{jones_geometric_1995}
-% {\sc C.~K. R.~T. Jones},
-% Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
-%
-%
-%
-%
-%
-%
-
-%
-% \bibitem{KUEHN_2015}
-% {\sc C.~ Kuehn},
-% {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
-%
-
-%
-% \bibitem{perko_differential_2001}
-% {\sc L.~Perko},
-% {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
-%
-%
-
-
-
-%
-% \bibitem{shawki_energy_1994}
-% {\sc T.~G. Shawki},
-% {An Energy Criterion for the Onset of Shear Localization in Thermal Viscoplastic Materials, Part II: Applications and Implications}, {\it ASME. J. Appl. Mech.}
-% {\bf 61} (1994), 538--547.
-%
-%
-% \bibitem{SS_2004}
-% {\sc S. Schecter and P. Szmolyan}
-% Composite waves in the Dafermos regularization.
-% {\it J. Dynamics Diff. Equations} {\bf 16} (2004), 847-867.
-%
-
-%
+% %
+% %
+% 
+% 
+% 
+% %
+% % \bibitem{shawki_energy_1994}
+% % {\sc T.~G. Shawki},
+% % {An Energy Criterion for the Onset of Shear Localization in Thermal Viscoplastic Materials, Part II: Applications and Implications}, {\it ASME. J. Appl. Mech.}
+% % {\bf 61} (1994), 538--547.
+% %
+% %
+% % \bibitem{SS_2004}
+% % {\sc S. Schecter and P. Szmolyan}
+% % Composite waves in the Dafermos regularization.
+% % {\it J. Dynamics Diff. Equations} {\bf 16} (2004), 847-867.
+% %
+% 
+% %
+% % \bibitem{wiggins_normally_1994}
+% % {\sc S.~Wiggins},
+% % {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
+% %
 % \bibitem{wiggins_normally_1994}
-% {\sc S.~Wiggins},
+% {\sc S.~Wiggins}, 
 % {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
-%
-\bibitem{wiggins_normally_1994}
-{\sc S.~Wiggins}, 
-{\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
-
-\bibitem{wright_survey_2002}
-{\sc T.W. Wright},
-{\it The Physics and Mathematics of Shear Bands.} (Cambridge Univ. Press 2002).
-%
-% \bibitem{xiao_stability_2003}
-% {\sc L.~Xiao-Biao and S.~ Schecter},
-% {Stability of self-similar solutions of the {D}afermos regularization of a system of conservation laws},
-% {SIAM J. Math. Anal.}
-% {\bf 35} (2003), 884--921.
-
-%\bibitem{WF83}
-%{\sc F.H. Wu and L.B. Freund},
-%Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
-%{\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132.
-
-\bibitem{zener_effect_1944}
-{\sc C.~Zener and J.~H. Hollomon},
-Effect of strain rate upon plastic flow of steel,
-% {\it  Journal of Applied Physics}
-{\it J. Appl. Phys.}
-{\bf 15} (1944), 22--32.
+% 
+% \bibitem{wright_survey_2002}
+% {\sc T.W. Wright},
+% {\it The Physics and Mathematics of Shear Bands.} (Cambridge Univ. Press 2002).
+% %
+% % \bibitem{xiao_stability_2003}
+% % {\sc L.~Xiao-Biao and S.~ Schecter},
+% % {Stability of self-similar solutions of the {D}afermos regularization of a system of conservation laws},
+% % {SIAM J. Math. Anal.}
+% % {\bf 35} (2003), 884--921.
+% 
+% %\bibitem{WF83}
+% %{\sc F.H. Wu and L.B. Freund},
+% %Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
+% %{\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132.
+% 
+% \bibitem{zener_effect_1944}
+% {\sc C.~Zener and J.~H. Hollomon},
+% Effect of strain rate upon plastic flow of steel,
+% % {\it  Journal of Applied Physics}
+% {\it J. Appl. Phys.}
+% {\bf 15} (1944), 22--32.
 
 \end{thebibliography}
 \end{document}
-
-% \hrulefill
-% \bibitem{dafermos_adiabatic_1983}
-% {\sc C.~M. Dafermos and L.~Hsiao},
-% Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
-% {\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
-
-% \bibitem{katsaounis_effective_2009}
-% {\sc Th. Katsaounis and A.E.~Tzavaras},
-%  Effective equations for localization and shear band formation,
-%  {\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
-
-% \bibitem{schecter_undercomp_2002}
-% {\sc S.~Schecter},
-% {Undercompressive shock waves and the {D}afermos regularization},
-% {\it Nonlinearity}
-% {\bf 15} (2002), 1361--1377.
-% \bibitem{deng_homoclinic_1990}
-% {\sc B.~Deng},
-% {Homoclinic bifurcations with nonhyperbolic equilibria},
-% {\it {SIAM} J. Math. Anal.}
-% {\bf 21} (1990),  693--720.
-% %   \href{http://dx.doi.org/10.1137/0521037}{doi:\nolinkurl{10.1137/0521037}},
-% %   \url{http://dx.doi.org/10.1137/0521037}.
-
-%
-% \bibitem{ghazaryan_travelling_2015}
-% {\sc A.~Ghazaryan, V.~Manukian, and S.~Schecter},
-% {Travelling waves in the holling-tanner model with weak diffusion},
-% {\it Proc. R. Soc. A}
-% {\bf 471} (2015), 20150045, 16.
-% %   \href{http://dx.doi.org/10.1098/rspa.2015.0045}{doi:\nolinkurl{10.1098/rspa.2015.0045}},
-% %   \url{http://dx.doi.org/10.1098/rspa.2015.0045}.
-%
-% \bibitem{gucwa_geometric_2009}
-% {\sc I.~Gucwa and P.~Szmolyan},
-% {Geometric singular perturbation analysis of an autocatalator model},
-% {\it Discrete Contin. Dyn. Syst. Ser. S}
-% {\bf 2} (2009), 783--806.
-% %   \href{http://dx.doi.org/10.3934/dcdss.2009.2.783}{doi:\nolinkurl{10.3934/dcdss.2009.2.783}},
-% %   \url{http://dx.doi.org/10.3934/dcdss.2009.2.783}.
-%
-% \bibitem{huber_geometric_2005}
-% {\sc A.~Huber and P.~Szmolyan},
-% {Geometric singular perturbation analysis of the yamada model},
-% {\it {SIAM} J. Appl. Dyn. Syst.}
-% {\bf 4} (2005), 607--648.
-% %   \href{http://dx.doi.org/10.1137/040604820}{doi:\nolinkurl{10.1137/040604820}},
-% %   \url{http://dx.doi.org/10.1137/040604820}.
-% \bibitem{jones_construction_1991}
-% {\sc C.~K. R.~T. Jones, N.~Kopell, and R.~Langer},
-% {Construction of the {FitzHugh}-nagumo pulse using differential forms.} In: {\it Patterns and dynamics
-%   in reactive media},
-% IMA Volumes Math Appl 37, Springer, 1989, 101--115.
-%
-% \bibitem{jones_tracking_1994}
-% {\sc C.~K. R.~T. Jones and N.~Kopell},
-% {Tracking invariant manifolds with differential forms in singularly perturbed systems},
-% {\it J. Differ. Equations}
-% {\bf 108} (1994), 64--88.
-% %   \href{http://dx.doi.org/10.1006/jdeq.1994.1025}{doi:\nolinkurl{10.1006/jdeq.1994.1025}},
-% %   \url{http://dx.doi.org/10.1006/jdeq.1994.1025}.
-% \bibitem{kaper_primer_2001}
-% {\sc T.~J. Kaper and C.~K. R.~T. Jones},
-% {A primer on the exchange lemma for fast-slow systems.} In: {\it Multiple-time-scale dynamical systems},
-% IMA Volumes Math Appl 122, Springer, 1997, 65--87.
-% \bibitem{katsaounis_localization_2011}
-% {\sc Th. Katsaounis and A.E.~Tzavaras},
-% Localization and shear bands in high strain-rate plasticity.
-% In: {\it Nonlinear conservation laws and  applications}, A.~Bressan, G.-Q.~Chen, M.~Lewicka, D.~Wang, eds;
-% IMA Volumes Math Appl 153, Springer, 2011, 365--377.
-% \bibitem{popovic_geometric_2004}
-% {\sc N.~Popović and P.~Szmolyan},
-% {A geometric analysis of the lagerstrom model problem},
-% {\it J. Differ. Equations}
-% {\bf 199} (2004), 290--325.
-% %   \href{http://dx.doi.org/10.1016/j.jde.2003.08.004}{doi:\nolinkurl{10.1016/j.jde.2003.08.004}},
-% %   \url{http://dx.doi.org/10.1016/j.jde.2003.08.004}.
-% \bibitem{bates_existence_1997}
-% {\sc P.~W. Bates, P.~C. Fife, R.~A. Gardner, and C.~K. R.~T. Jones},
-% {The existence of travelling wave solutions of a generalized phase-field model},
-% {\it {SIAM} J. Math. Anal.}
-% {\bf 28} (1997), 60--93.
-% %   \href{http://dx.doi.org/10.1137/S0036141095283820}{doi:\nolinkurl{10.1137/S0036141095283820}},
-% %   \url{http://dx.doi.org/10.1137/S0036141095283820}.
-%
-% \bibitem{beck_electrical_2008}
-% {\sc M.~Beck, C.~K. R.~T. Jones, D.~Schaeffer, and M.~Wechselberger},
-% {Electrical waves in a one-dimensional model of cardiac tissue},
-% {\it {SIAM} J. Appl. Dyn. Syst.}
-% {\bf 7} (2008),  1558--1581.
-% %   \href{http://dx.doi.org/10.1137/070709980}{doi:\nolinkurl{10.1137/070709980}},
-% %   \url{http://dx.doi.org/10.1137/070709980}.
-
-% \bibitem{schecter_exchange_2008}
-% {\sc S.~Schecter},
-% {Exchange lemmas. i. deng's lemma},
-% {\it J. Differ. Equations}
-% {\bf 245} (2008), 392--410.
-% %   \href{http://dx.doi.org/10.1016/j.jde.2007.08.011}{doi:\nolinkurl{10.1016/j.jde.2007.08.011}},
-% %   \url{http://dx.doi.org/10.1016/j.jde.2007.08.011}.
-%
-% \bibitem{schecter_exchange_2008-1}
-% {\sc S.~Schecter}, {Exchange lemmas. {ii}. general exchange lemma},
-% {\it J. Differ. Equations}
-% {\bf 245} (2008), 411--441.
-% %   \href{http://dx.doi.org/10.1016/j.jde.2007.10.021}{doi:\nolinkurl{10.1016/j.jde.2007.10.021}},
-% %   \url{http://dx.doi.org/10.1016/j.jde.2007.10.021}.
-
-% \bibitem{wright_stress_1987}
-% {\sc Thomas~W. Wright and John~W. Walter},
-% On stress collapse in adiabatic shear bands,
-% {\it J. Mech. Phys. of Solids} {\bf 35} (1987),
-%  701--720.
-%
-% \bibitem{WF83}
-% {\sc F.H. Wu and L.B. Freund},
-% Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
-% {\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132..
-%
-% \bibitem{AKS87}
-% L.~Anand, K.H.~Kim and T.G.~Shawki,
-% Onset of shear localization in viscoplastic solids,
-% {\it J. Mech. Phys. Solids}
-% {\bf 35} (1987), 407-429.
-%
-% \bibitem{BC04}
-% {\sc Th.~ Baxevanis and N.~Charalambakis},
-% The role of material non-homogeneities on the formation and evolution of strain non-uniformities in thermoviscoplastic shearing,
-% {\it Quart. Appl. Math.} {\bf 62} (2004), . 97-116.
-%
-% \bibitem{baxevanis_adaptive_2010}
-% {\sc Th~H. Baxevanis, Th~Katsaounis, and A.~E. Tzavaras},
-% Adaptive finite element computations of shear band formation,
-%   {\it Math. Models  Methods Appl. Sci.} {\bf 20}  (2010),  423--448.
-%
-% \bibitem{BD02}
-% {\sc T.J.~Burns and M.A.~Davies},
-% On repeated adiabatic shear band formation during high speed machining,
-% {\it International Journal of Plasticity} {\bf 18 } (2002),  507-530.
-%
-% \bibitem{CB99}
-% {\sc L.~ Chen and R.C.~Batra },
-% The asymptotic structure of a shear band in mode-II deformations.
-% {\it International Journal of Engineering Science} {\bf 37} (1999),  895-919.
-%
-% \bibitem{estep_2001}
-% {\sc Donald~J Estep, Sjoerd M~Verduyn Lunel, and Roy~D Williams},
-% {Analysis of Shear Layers in a Fluid with Temperature-Dependent Viscosity},
-%  {\it  J. Comp. Physics}  {\bf 173} (2001), 17--60.
-%
-% \bibitem{KCS85}
-% {\sc R.W. Klopp. R.J. Clifton, and T.G. Shawki},
-% Pressure-shear impact and the dynamic viscoplastic response of metals,
-% {\it Mechanics of Materials} {\bf 4} (1985), 375-385.
-
-% \bibliography{dynamical}
-\end{thebibliography}
-\end{document}
-
-
-\end{thebibliography}
-
-\end{document}	
-
-\pagebreak
