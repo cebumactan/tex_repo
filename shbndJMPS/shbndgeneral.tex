@@ -246,50 +246,6 @@ To apply the theorem of Coddington-Levinson, that the coefficient matrix is cont
  That all entries of $S_{ij}(\epsilon)$ and $S^{-1}_{ij}(\epsilon)$ are uniformly bounded follows from that the determinant is uniformly bounded. The latter assertion is true because $A(\epsilon)$ is uniformly bounded and the determinant is a continuous function of entries. Further, because $S_{ij}(\epsilon)$ is analytic, $S_{ij}'(\epsilon)$ is bounded in the $\epsilon_0$-ball and thus $\frac{d}{d\tau} S_{ij}(\tau) = -\frac{1}{\tau^2}S_{ij}'(\epsilon)$, which is integrable from $\tau_0$ to infinity. This completes the proof.
 \end{proof}
 
-% In each of the regime, the perturbation on $\epsilon$ is regular as exposed in the below.
-
-% \noindent{\bf Inviscid case $n=0$:}
-% When $n=0$, the polynomial \eqref{eq:poly} factorizes to get,
-% $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon (2\pi k)^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
-% 
-% \noindent{\bf subcase 1 $q=-\alpha+m>0$ for $\epsilon$ small:}
-% \begin{align*}
-%  \lambda_1(\epsilon) &= - \epsilon\frac{1+\alpha}{1+m} + i\sqrt{\epsilon}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}\Big(1+\epsilon \frac{1+\alpha}{4(2\pi k)^2(-\alpha+m)}\Big)},\\ 
-%  \lambda_2(\epsilon) &= - \epsilon\frac{1+\alpha}{1+m} - i\sqrt{\epsilon}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}\Big(1+\epsilon \frac{1+\alpha}{4(2\pi k)^2(-\alpha+m)}\Big)},\\
-%  \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0. 
-% \end{align*}
-% % Note that for sufficiently small $\epsilon$, we have an order 
-% % \begin{align*}
-% %  Re(\lambda_0)< Re(\lambda)=Re(\lambda^*) < 0, \quad \text{if $m>0$},\\
-% %  Re(\lambda)=Re(\lambda^*) < Re(\lambda_0) < 0, \quad \text{if $m<0$}
-% % \end{align*}
-% % and the order is preserved as $\epsilon \rightarrow 0^+$.
-% \noindent{\bf subcase 2 $q=-\alpha+m=0$:}
-% \begin{align*}
-%  \lambda_1(\epsilon)\equiv 0, \quad \lambda_2(\epsilon)= -\epsilon, \quad \lambda_3(\epsilon) = -\epsilon(1+\alpha).
-% \end{align*}
-% 
-% \noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\epsilon$ small:}
-% \begin{align*}
-%  \lambda_1(\epsilon) &= +\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{1+m} + \mathcal{O}(\epsilon^{\frac{3}{2}}) > 0,\\
-%  \lambda_2(\epsilon) &= -\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{1+m} + \mathcal{O}(\epsilon^{\frac{3}{2}}) < 0,\\
-%  \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0. 
-% \end{align*}
-% % Note that for sufficiently small $\epsilon$, we have an order
-% % \begin{align*}
-% %  Re(\lambda^-)<Re(\lambda_0) < 0 < Re(\lambda^+) \quad \text{with $Re(\lambda^+) = \mathcal{O}(\sqrt{\epsilon})$}
-% % \end{align*}
-% % and the order is preserved as $\epsilon \rightarrow 0^+$.
-% 
-% \noindent{\bf Viscous case $n>0$:}
-% 
-% \begin{proposition}
-%  $\exists \epsilon_0$ such that if $|\epsilon| \le \epsilon_0$, then the three roots of the characteristic polynomial is analytic in $\epsilon$.
-% \end{proposition}
-% \begin{proof}
-%  Implicit function theorem by Lars Hormander.
-% \end{proof}
-
 Now, we let $Y_k \triangleq S^{-1}(\tau)X_k$ then the simple calculation shows
 $$ \dot{Y}_k(\tau) = \Big(\Lambda(\tau;k) - S^{-1}\dot{S}\Big) Y_k,$$
 where $\Lambda(\tau;k)$ is the diagonal matrix of eigenvalues given by the proposition. By the proposition the latter term $- S^{-1}\dot{S}$ is an integrable remainder term. Further, we write $\Lambda(\tau;k) = \Lambda_0 + \frac{1}{\tau}\Lambda_1 + \frac{1}{\tau^2}\tilde{\Lambda}(\tau;k)$ which is the expansion of $\Lambda(\tau;k)$ in $\frac{1}{\tau}$. We see that $\frac{1}{\tau^2}\tilde{\Lambda}(\tau;k)$ and $- S^{-1}\dot{S}$ comprise the integrable remainder term. We write the equation
@@ -352,13 +308,6 @@ Now, when \eqref{eq:auxquad} has two complex roots with negative real parts so t
 \end{align*}
 
 
-% The polynomial cannot have the root with positive real part. For small enough $\epsilon$, the quadratic polynomial \eqref{eq:auxquad} has $\lambda_2$ and $\lambda_3$ as the two complex roots. %The real parts of two roots of \eqref{eq:auxquad} must be negative because $\frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m} > 0$ and $\frac{(1+\alpha)(-\alpha+m+n)}{1+m}>0$. 
-% Note that for sufficiently small $\epsilon$, we have an order
-% \begin{align*}
-%  Re(\lambda_1) < Re(\lambda)=Re(\lambda^*) < 0 \quad \text{with $Re(\lambda^*) = \mathcal{O}(\epsilon)$}
-% \end{align*}
-% and the order is preserved as $\epsilon \rightarrow 0^+$.
-
 \noindent{\bf subcase 2 $q=-\alpha+m+n=0$:} In this case, the roots of \eqref{eq:auxquad} are 
 $$ z_1(0)=0, \quad z_2(0) = -\frac{1+m+\alpha}{1+m}$$
 and the sign of $z_1(\epsilon)$ is determined by the next order term. Nevertheless we have 
@@ -395,99 +344,9 @@ Since the index condition holds for all $\ell=1,2,3$, $\varphi_\ell(\tau)$ const
 $$ \lim_{\tau \rightarrow \infty} \varphi_\ell(\tau)\left(\frac{\tau_0}{\tau}\right)^{z_1(0)} = 0, \quad \ell=2,3.$$
 Thus the second assertion follows.
 
-%  Recall that $A_k(\tau)$ has precisely one positive real eigenvalue and the three eigenvalues are of the form as in \eqref{eq:roots}. In conjugating by the eigenvector matrix, i.e. $A_k(\tau) = S^{-1}_k(\tau)\Lambda_k(\tau) S_k(\tau)$ with $S_k(\tau)$ bounded, let us expand the diagonal matrix $\Lambda_k(\tau)= \Lambda_{k,0}+ \frac{1}{\tau}\Lambda_{k,1} + o(\frac{1}{\tau})$. Then the first two terms only comprise the non-integrable part. Let $\lambda_{M,1}$ be the non-integrable leading order part of the positive eigenvalue that is
-%  \begin{align*}
-% \frac{1}{2n\tau}&\Bigg( - \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m} \\
-%  &+ \sqrt{\left(\frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\right)^2 -\frac{4n(-\alpha+m+n)(1+\alpha)}{1+m}}\Bigg).  
-%  \end{align*}
-%  Note that the leading order term is independent of the frequency $k$. With the same reasoning as above, we conclude $\exp^{-\int_{\tau_0}^{\tau} \lambda_{M,1}(s) ds} = C\tau^{-1}$ as $\tau \rightarrow \infty$, and $C$ does not depend on $k$.
 \end{proof}
 
-%In fact, without assuming smallness $\epsilon$, we check
-% \begin{align*}
-%  f(\lambda) &>0 \quad \text {as $\lambda\rightarrow \infty$,}\\
-%  f(0) &= (2\pi k)^2 \epsilon^2\frac{(-\alpha+m+n)(1+\alpha)}{(1+m)} < 0,\\
-%  \intertext{either $f\big(-\epsilon(1+\alpha)\big)$ or $f\big(-\epsilon(1+m+\alpha)\big)$ is positive according to the sign of $m$,}
-% %  f\big(-\frac{1+\alpha}{\tau}\big) &= (2\pi k)^2\alpha m n \frac{1+\alpha}{\tau^2} > 0, \quad \text{if $m>0$,}\\
-% %  f\big(-\frac{1+m+\alpha}{\tau}\big) &= (2\pi k)^2\frac{\alpha (1+\alpha)(-\alpha+m+n)m}{\tau^2(1+m)^2} + \frac{\alpha(1+m+\alpha)m^2}{\tau^3(1+m)^3} > 0, \quad\text{if $m<0$},\\
-%  f(\lambda) &<0 \quad \text {as $\lambda \rightarrow -\infty$.}
-% \end{align*}
-% Note that for sufficiently small $\epsilon$, we have an order
-% \begin{align*}
-%  Re(\lambda^-)<Re(\lambda_1) < 0 < Re(\lambda^+) \quad \text{with $Re(\lambda^+) = \mathcal{O}(\epsilon)$}
-% \end{align*}
-% and the order is preserved as $\epsilon \rightarrow 0^+$ and
-% 
-% 
-% 
-% \begin{proposition}
-% %  There is $\epsilon_0>0$ such that in the small neighborhood of $(-n(2\pi k)^2,0)$ with $0<\epsilon<\epsilon_0$ $f(\lambda,\epsilon)=0$ is uniquely solvable and in the small neighborhood of $(z,0)$, and $(z^*,0)$ with $0<\epsilon<\epsilon_0$ $\tilde{f}(z,\epsilon)=0$ is uniquely solvable respectively.
-% Let $n>0$ fixed and $-\alpha+m+n\ne0$. For $\epsilon>0$ sufficiently small,
-% \begin{equation}
-% \begin{aligned}
-%  \lambda_1(\epsilon) = -n(2\pi k)^2 + {o}(1), \quad
-%  \lambda_2(\epsilon) = \epsilon z_2 + {o}(\epsilon), \quad
-%  \lambda_3(\epsilon) = \epsilon z_3 + {o}(\epsilon),
-% \end{aligned} \label{eq:roots}
-% \end{equation}
-% where $z_2$ and $z_3$ are the two roots of the limiting polynomial \eqref{eq:auxquad}.
-% \end{proposition}
-% \begin{proof}
-%  First, note that $\lambda_1$ is a simple root of the polynomial $f(\lambda,0)$. It is well-known (Lars H\"ormander, An introduction to the complex analysis in several variable)  using the implicit function theorem that there is a radius of $\epsilon$ on which the simple root persists analytically. As to $\lambda_2$ and $\lambda_3$, we divide the proof into a few cases. If $z_2\ne z_3$ so that each of them is a simple root of \eqref{eq:reduced_poly}, then the claim follows similarly. %$\Big|\frac{\partial \tilde f}{\partial z} (z_2,0)\Big| = \Big|\frac{\partial \tilde f}{\partial z} (z_3,0)\Big|=nA_k|z_2-z_3|\ne 0$ and  the simple root is analytic in $\epsilon$ for $\epsilon$ small enough. 
-%  When $z_2=z_3\triangleq a$, the double root, then cases is divided into three subcases whether 
-%  $$\epsilon z\Big(z+\frac{1+\alpha}{1+m}\Big)\Big(z+(1+\alpha)\Big)=\epsilon z(z-b)(z-c)=0,$$
-%  from the perturbed third order term in \eqref{eq:reduced_poly}, shares any root with $a$. Note that $a$ cannot be $0$ when $-\alpha+m+n\ne0$ and thus we are interested in whether two roots $\displaystyle b=-\frac{1+\alpha}{1+m}$ or $c=-(1+\alpha)$ are shared or not. The cases are: first where $b\ne a$ and $c\ne a$; second where precisely one of the $b$ and $c$ equals to $a$; third where $b=c=a$.
-%  
-%  We start from the third case. This double root $a$ persists independently of $\epsilon$ as a double root. (despite irrelevant, it is easy to see the case happens when $\alpha=m=0$). In the second case, where let's say $b\ne a$ but $c=a$, we factor out $(z-a)$ from \eqref{eq:reduced_poly} and write
-%  $$ \tilde{f}(\lambda,\epsilon) = (z-a)\tilde{g}(\lambda,\epsilon) = (z-a)\big(nA_k(z-a) + \epsilon z(z-b)\big),$$
-% from which we can see the root $z=a$ persists as the root for $\epsilon>0$. Now, $\tilde{g}(\lambda,0)$ has $a$ as a simple root. Therefore, the other root is also analytic in $\epsilon$. Finally, if $b\ne a$ and $c\ne a$, then we define the transformations $T^\pm: \{ z\in \mathbb{C}~|~ |z-a| \le \delta\} \mapsto \{ z\in \mathbb{C}~|~ |z-a| \le \delta\}$ such that 
-%  $$T^+z = a + \sqrt{\epsilon z(z-b)(z-c)}, \quad T^-z = a - \sqrt{\epsilon z(z-b)(z-c)},$$
-%  where the square root takes the branch of nonnegative imaginary part. $\delta$ can be chosen so that all of $0$, $b$ and $c$ are away from the disk. Provided $\epsilon$ small enough, this map is well-defined. By the Brouwer's fixed point theorem, each of $T^\pm$ has a fixed point which is the root of \eqref{eq:reduced_poly}. The two fixed points differ from each other otherwise the $T^\pm z -a = 0$ that contradicts to the assumption of this subcase. Each of the fixed point is unique as well, being a root of the quadratic polynomial respectively. Note that $\delta$ can be chosen at most $\mathcal{O}(\sqrt{\epsilon})$.
-% \end{proof}
 
-% Let $P_3(\lambda)$ be the expression in r-h-s. For $\lambda>0$, $P_3(\lambda)$ is strictly increasing in $\lambda$. Its arguments of local maximum and local minimum are negative. Let $P_1(\lambda)$ be the expression in l-h-s. It is linear and passes $\big(-\frac{1+\alpha}{\tau},0\big)$.
-% 
-% 
-% 
-% 
-% \subsection{Long time behavior of Linear operator via Coddington-Levinson}
-% Via the theorem by Coddington-Levinson, we are able to capture the long time asymptotics of the linear operator. Let us write for $k\ge1$
-% $$A_k(t) = A_{k,\infty} + V_k(\tau) + R(\tau),$$
-% where $A_{k,\infty}+V_k(\tau)$ is the non-integrable part and $A_{k,\infty}$ is nonvanishing constant part as $\tau \rightarrow \infty$, and $R(\tau)$ is the integrable part. To apply the theorem, we first demonstrate that if the ordering of the real parts of the three eigenvalues of $A_{k,\infty} + V_k(\tau)$ is preserved up to infinity for  all $\tau\ge T_0$, then the assumptions of the theorem is fulfilled for every index $\ell=1,2,3$. 
-% \begin{lemma}
-%  Let $\lambda_\ell(t)$, $\ell=1,\cdots,n$ be the eigenvalues of $n\times n$ matrix $A_{\infty} + V(\tau)$ and let $\displaystyle\lambda_{\ell,\infty}=\lim_{\tau \rightarrow \infty} \lambda_{\ell}(\tau)$ that can be arranged as  eigenvalues of $A_{\infty}$. If the order of real parts of the $\lambda_{\ell,\infty}$ is as same as that of $\lambda_\ell(\tau)$ for all $\tau \ge T_0$, then the assumption of the theorem of Coddington-Levinson is fulfilled for all $\ell$.
-% \end{lemma}
-% \begin{proof}
-%  Let $D_{\ell j}(\tau) = Re(\lambda_\ell (\tau)) - Re(\lambda_j(\tau))$ for fixed $\ell$ and let $\displaystyle D_{\ell j,\infty}=Re(\lambda_{\ell,\infty}) - Re(\lambda_{j,\infty})$. Because the order is preserved for all $\tau>T_0$, $D_{\ell j}(\tau)$ has same sign after $T_0$. If $D_{\ell j,\infty}>0$ then $\int_0^t D_{\ell j}(\tau) \;d\tau \rightarrow \infty$ as $t \rightarrow \infty$ and $\int_{T_0}^{T_1} D_{\ell j}(\tau) \; d\tau > -1$. So $j \in I_1$. If $D_{\ell j,\infty}\le0$, then $\int_{T_0}^{T_1} D_{\ell j}(\tau) \; d\tau < 1$, so $j \in I_2$.
-% \end{proof}
-% 
-% \begin{theorem}[Stable regime]
-% Suppose $q=-\alpha+m+n>0$. Then for any vector $X_k(0)$, $X_k(\tau) \le C(\frac{1}{\tau})$ as $\tau \rightarrow \infty$. 
-% %   \item $-\alpha+m>0$ and $n=0$: $X_k(\tau) = \mathcal{O}(\frac{1}{\tau})$.
-% %   \item $n>0$ and $-\alpha+m+n<0$: $X_k(\tau) = \mathcal{O}(\tau)$.
-% %   \item $n=0$ and $-\alpha+m<0$  : $X_k(\tau) = \mathcal{O}(e^{C\sqrt{\tau}})$.
-% \end{theorem}
-% \begin{proof}
-%  Recall that all the eigenvalues are negative. Note that the order of the real parts of three eigenvalues is preserved for sufficiently large $\tau$. Via the Lemma and the theorem of Coddington-Levinson, for some $\tau_0$ the solution matrix $\begin{bmatrix} \varphi_1(\tau) & \varphi_2(\tau) & \varphi_3(\tau) \end{bmatrix}$ for $\tau\ge \tau_0$ has asymptotic behavior described by
-% $$ \begin{bmatrix} \varphi_1(\tau)\exp^{-\int_{\tau_0}^{\tau} \lambda_1(s) ds} & \varphi_2(\tau)\exp^{-\int_{\tau_0}^{\tau} \lambda_2(s) ds} & \varphi_3(\tau)\exp^{-\int_{\tau_0}^{\tau} \lambda_3(s) ds} \end{bmatrix} = \begin{bmatrix} p_1 & p_2 & p_3 \end{bmatrix}.$$
-%  Let $\lambda_M$ be the largest eigenvalue, which is $\mathcal{O}(\frac{1}{\tau})$. We have $\exp^{-\int_{\tau_0}^{\tau} \lambda_M(s) ds} = C\tau$ as $\tau \rightarrow \infty$.
-% \end{proof}
-% \begin{theorem}[Unstable regime $n>0$] Suppose $n>0$ and $q=-\alpha+m+n<0$. Then, for each $k\ge1$ there is a growing mode that is  $X_k(\tau) =\mathcal{O}(\tau)$ as $\tau \rightarrow \infty$ uniformly of the frequency $k$.
-% \end{theorem}
-% \begin{proof}
-%  Recall that $A_k(\tau)$ has precisely one positive real eigenvalue and the three eigenvalues are of the form as in \eqref{eq:roots}. In conjugating by the eigenvector matrix, i.e. $A_k(\tau) = S^{-1}_k(\tau)\Lambda_k(\tau) S_k(\tau)$ with $S_k(\tau)$ bounded, let us expand the diagonal matrix $\Lambda_k(\tau)= \Lambda_{k,0}+ \frac{1}{\tau}\Lambda_{k,1} + o(\frac{1}{\tau})$. Then the first two terms only comprise the non-integrable part. Let $\lambda_{M,1}$ be the non-integrable leading order part of the positive eigenvalue that is
-%  \begin{align*}
-% \frac{1}{2n\tau}&\Bigg( - \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m} \\
-%  &+ \sqrt{\left(\frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\right)^2 -\frac{4n(-\alpha+m+n)(1+\alpha)}{1+m}}\Bigg).  
-%  \end{align*}
-%  Note that the leading order term is independent of the frequency $k$. With the same reasoning as above, we conclude $\exp^{-\int_{\tau_0}^{\tau} \lambda_{M,1}(s) ds} = C\tau^{-1}$ as $\tau \rightarrow \infty$, and $C$ does not depend on $k$.
-% \end{proof}
-% 
-% \begin{theorem}[Unstable regime $n=0$] Suppose $n=0$ and $q=-\alpha+m<0$. Then, for each $k\ge1$ there is a growing mode that is $X_k(\tau) = \mathcal{O}\Big(\exp^{Ck\sqrt{\tau}}\Big)$ as $\tau \rightarrow \infty$. 
-% \end{theorem}
-% \begin{proof}
-%  Recall that in this case $A_k(\tau)$ has a positive real eigenvalue that is of $\mathcal{O}(k\sqrt{\tau}^{-1})$. Let $\lambda_M$ be the positive eigenvalue. With the same reasoning as above, we conclude $\exp^{-\int_{\tau_0}^{\tau} \lambda_M(s) ds} = C'\exp^{-Ck\sqrt{\tau}}$ as $\tau \rightarrow \infty$.
-% \end{proof}
 
 \section{Nonlinear stability of uniform shear}
 {\blue Can I use the method of invariant region?}
