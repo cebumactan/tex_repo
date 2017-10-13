@@ -205,8 +205,56 @@ Provided $n>0$, the limiting problem $\tilde{f}(z,0)=0$ has the two roots $z_1,z
 \begin{equation} 
 nz^2 + z\Big( \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \frac{(1+\alpha)(-\alpha+m+n)}{1+m} =0. \label{eq:auxquad} 
 \end{equation}
-From that we can see if $q=-\alpha+m+n>0$ then the real parts of two roots of \eqref{eq:auxquad} must be negative because $z_2+z_3 = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_2z_3=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$.% whereas if $q=-\alpha+m+n<0$, there must be one
+From that we can see if $q=-\alpha+m+n>0$ then the real parts of two roots of \eqref{eq:auxquad} must be negative because $z_2+z_3 = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_2z_3=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
+In each of the regime, the perturbation on $\epsilon$ is regular as exposed in the below.
 
+\subsection{Inviscid case $n=0$:}
+When $n=0$, the polynomial \eqref{eq:poly} factorizes to get,
+$$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon (2\pi k)^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
+
+\noindent{\bf subcase 1 $q=-\alpha+m>0$ for $\epsilon$ small:}
+\begin{align*}
+ \lambda_1(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} + i\sqrt{\epsilon}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\ 
+ \lambda_2(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} - i\sqrt{\epsilon}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\ 
+ \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0. 
+\end{align*}
+% Note that for sufficiently small $\epsilon$, we have an order 
+% \begin{align*}
+%  Re(\lambda_0)< Re(\lambda)=Re(\lambda^*) < 0, \quad \text{if $m>0$},\\
+%  Re(\lambda)=Re(\lambda^*) < Re(\lambda_0) < 0, \quad \text{if $m<0$}
+% \end{align*}
+% and the order is preserved as $\epsilon \rightarrow 0^+$.
+\noindent{\bf subcase 2 $q=-\alpha+m=0$:}
+\begin{align*}
+ \lambda_1(\epsilon)\equiv 0, \quad \lambda_2(\epsilon)= -\epsilon, \quad \lambda_3(\epsilon) = -\epsilon(1+\alpha).
+\end{align*}
+
+\noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\epsilon$ small:}
+\begin{align*}
+ \lambda_1(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} + \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\ 
+ \lambda_2(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} - \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\ 
+ \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0. 
+\end{align*}
+
+\begin{align*}
+ \lambda_1(\epsilon) &= +\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{2(1+m)} + \mathcal{O}(\epsilon^{\frac{3}{2}}) > 0,\\
+ \lambda_2(\epsilon) &= -\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{2(1+m)} + \mathcal{O}(\epsilon^{\frac{3}{2}}) < 0,\\
+ \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0. 
+\end{align*}
+% Note that for sufficiently small $\epsilon$, we have an order
+% \begin{align*}
+%  Re(\lambda^-)<Re(\lambda_0) < 0 < Re(\lambda^+) \quad \text{with $Re(\lambda^+) = \mathcal{O}(\sqrt{\epsilon})$}
+% \end{align*}
+% and the order is preserved as $\epsilon \rightarrow 0^+$.
+% 
+% \noindent{\bf Viscous case $n>0$:}
+% 
+% \begin{proposition}
+%  $\exists \epsilon_0$ such that if $|\epsilon| \le \epsilon_0$, then the three roots of the characteristic polynomial is analytic in $\epsilon$.
+% \end{proposition}
+% \begin{proof}
+%  Implicit function theorem by Lars Hormander.
+% \end{proof}
 
 \subsection{Viscous case $n>0$}
 For a technical reason we assume the following, which holds if and only if \eqref{eq:auxquad} does not have a double root.
@@ -340,7 +388,7 @@ We let $\ell=1$ and apply the Theorem \ref{thm:CL} on the diagonalized system \e
 $$ \lim_{\tau \rightarrow \infty} \phi^*(\tau)\exp\left(-\int_{\tau_0}^\tau z_1(0)\frac{1}{s}\; ds\right) = \lim_{\tau \rightarrow \infty} \phi^*(\tau)\left(\frac{\tau_0}{\tau}\right)^{z_1(0)} = \hat{\ell}.$$
 Now, $\displaystyle\lim_{\tau \rightarrow \infty} S(\tau)$ exists and let $\varphi^*(\tau) = S(\tau)\phi^*(\tau)$. We conclude
 $$ \lim_{\tau \rightarrow \infty} S(\tau)\phi^*(\tau)\left(\frac{\tau_0}{\tau}\right)^{z_1(0)} = \lim_{\tau \rightarrow \infty}S(\tau)\hat{\ell} = \begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha}\\1\\0\end{pmatrix}.$$
-Since the index condition holds for all $\ell=1,2,3$, $\varphi_\ell(\tau)$ constitutes a fundamental matrix for $\tau\ge\tau_0$. However, because $\frac{1}{\tau}z_1(0)$ is the biggest among $\frac{1}{\tau}z_1(0)$, $\frac{1}{\tau}z_2(0)$, and $-n(2\pi k)^2 + \frac{1}{\tau}\lambda_3'(0)$ 
+Since the index condition holds for all $\ell=1,2,3$, $\varphi_\ell(\tau)$ $\ell=1,2,3$ comprise a fundamental matrix for $\tau\ge\tau_0$. However, because $\frac{1}{\tau}z_1(0)$ is the biggest among $\frac{1}{\tau}z_1(0)$, $\frac{1}{\tau}z_2(0)$, and $-n(2\pi k)^2 + \frac{1}{\tau}\lambda_3'(0)$, in the applying the Theorem \ref{thm:CL} we find 
 $$ \lim_{\tau \rightarrow \infty} \varphi_\ell(\tau)\left(\frac{\tau_0}{\tau}\right)^{z_1(0)} = 0, \quad \ell=2,3.$$
 Thus the second assertion follows.
 
@@ -369,9 +417,9 @@ Thus the second assertion follows.
 
 For fixed $\ell$ and for some constant $K$, we say $j$ belongs to $I_1$ if 
 
-$(i)$ $\int_{a}^\infty Re(\lambda_k(s) -\lambda_j(s))\; ds \rightarrow \infty$ as $t \rightarrow \infty$ and $(ii)$ $\forall (t_2, t_1), \:t_2\ge t_1 \ge0$ $\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_j(s))\; ds > -K$.
+$(i)$ $\int_{a}^\infty Re(\lambda_k(s) -\lambda_j(s))\; ds \rightarrow \infty$ as $t \rightarrow \infty$ and $(ii)$ $\forall (t_2, t_1), \:t_2\ge t_1 \ge a$, $\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_j(s))\; ds > -K$.
 
-We say $j$ belongs to $I_2$ if $\forall (t_2, t_1), \: t_2\ge t_1 \ge0$ $\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_j(s))\; ds < K$.
+We say $j$ belongs to $I_2$ if $\forall (t_2, t_1), \: t_2\ge t_1 \ge a$, $\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_j(s))\; ds < K$.
 
 Suppose that we are in situation such that for some $K$ $\forall j, j=1,\cdots,d$ belongs to either $I_1$ or $I_2$. Then there is an orbit $\varphi_\ell(t)$ $t\ge a$ and $t_0$ such that
 \begin{equation}
