@@ -41,6 +41,7 @@
 \def\tr{\,\textrm{tr}\,}
 \def\div{\,\textrm{div}\,}
 \def\sgn{\,\textrm{sgn}\,}
+\def\k{(2\pi k)}
 
 \newcommand{\tcr}{\textcolor{red}}
 \newcommand{\tcb}{\textcolor{blue}}
@@ -78,8 +79,93 @@
 %
 % \tableofcontents
 % \pagebreak
+\section{Linear stability of uniform shear}
+In the below we assume
+$$ \alpha\ge0, \quad n\ge0, \quad 1+m>0.$$
+We consider
+\begin{equation} \label{eq:system}
+ \begin{aligned}
+  \partial_\tau U &= \Sigma_{xx},\\
+  \partial_\tau\Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U-\Gamma),\\
+  \partial_\tau\Theta &= \frac{1}{\tau}\Big(\Sigma U -\Theta\Big),\\
+  \Sigma &= \Theta^{-\alpha}\Gamma^m U^n
+ \end{aligned}
+\end{equation}
+in $(\tau,x)\in \mathbb{R}^+\times [0,1]$ with boundary conditions
+\begin{equation}
+ \Sigma_x(\tau,0)=\Sigma_x(\tau,1)=0.
+\end{equation}
+The boundary conditions imply that
+\begin{equation}
+ \frac{d}{d\tau}\int_0^1 U(\tau,x) \: dx = 0, \quad \text{and we set } \int_0^1 U(\tau,x) \: dx = 1.
+\end{equation}
+$ U=\Gamma=\Theta=\Sigma=1 $ corresponds to the uniform shearing solution.
+Let
+\begin{align*}
+ U &= 1 + \delta U_1 + \mathcal{O}(\delta^2), & \Gamma &= 1 + \delta \Gamma_1 + \mathcal{O}(\delta^2), &
+ \Sigma &= 1 + \delta \Sigma_1 + \mathcal{O}(\delta^2), & \Theta &= 1 + \delta \Theta_1 + \mathcal{O}(\delta^2).
+\end{align*}
+By collecting the leading order terms and neglecting terms higher than the  second order,
+\begin{equation} \label{eq:linsystem}
+ \begin{aligned}
+  \partial_\tau U_1 &= \Sigma_{1xx},\\
+  \partial_\tau\Gamma_1 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_1-\Gamma_1),\\
+  \partial_\tau\Theta_1 &= \frac{1}{\tau}\Big(\Sigma_1+ U_1 -\Theta_1\Big),\\
+  0&=\Sigma_1 + \alpha\Theta_1 -m\Gamma_1 - nU_1 .
+ \end{aligned}
+\end{equation}
+The boundary conditions and the constraint equation read
+\begin{equation} \label{eq:linbdry}
+ \Sigma_{1x}(\tau,0)=\Sigma_{1x}(\tau,1)=0, \quad \int_0^1 U_1(t,x) \: dx = 0.
+\end{equation}
+In the sequel, we drop the subscript $1$ in studying the linear system \eqref{eq:linsystem}. From the fourth equation in \eqref{eq:linsystem}, we remove one of the variable. We remove $\Theta$ and get three linear equations
+\begin{equation}
+ \begin{aligned}
+  \partial_\tau U &= \Sigma_{xx},\\
+  \partial_\tau\Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U-\Gamma),\\
+  \partial_\tau\Sigma
+%   &= -\alpha \partial_\tau\Sigma + m \partial_\tau\Gamma +n \partial_\tau U\\
+%   &=\frac{1}{\tau}\Big(-\alpha\Big(\Sigma + U - \Big(\Big(\frac{-\Sigma+m\Gamma+nU}{\alpha}\Big)\Big) +\frac{m(1+\alpha)}{1+m}(U-\Gamma)\Big) + n\Sigma_{xx}\\
+  &= n\Sigma_{xx} +\frac{1}{\tau}\Big( -(1+\alpha)\Sigma + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma\Big).
+ \end{aligned}
+\end{equation}
+We consider the even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-1,1]$ which is compatible with the system and the boundary conditions in \eqref{eq:linbdry}. We consider the cosine series of the variables,
+\begin{align*}
+ U(\tau,x) = U_0(\tau) + \sum_{k=1}^\infty U_k(\tau)\cos(2\pi kx),\\
+ \Gamma(\tau,x) = \Gamma_0(\tau) + \sum_{k=1}^\infty \Gamma_k(\tau)\cos(2\pi kx),\\
+ \Theta(\tau,x) = \Theta_0(\tau) + \sum_{k=1}^\infty \Theta_k(\tau)\cos(2\pi kx),\\
+ \Sigma(\tau,x) = \Sigma_0(\tau) + \sum_{k=1}^\infty \Sigma_k(\tau)\cos(2\pi kx).
+\end{align*}
+In particular, the constraint equation implies $U_0(\tau)\equiv0$. For each $k$-th mode, we collect terms in the matrix form $\dot{X}_k = A_k(\tau)X_k$. At $0$-th mode,
+\begin{align*}
+   \partial_\tau U_0 &= 0,\\
+  \partial_\tau\Gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_0-\Gamma_0),\\
+  \partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U_0 + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma_0\Big).
+\end{align*}
+Since $U_0=0$, $\Gamma_0(\tau)$ decays to $0$, and $\Sigma_0(\tau)$ decays to $0$.
+At $k$-th mode $k\ge1$,
+\begin{align}
+  \frac{d}{d\tau}
+  \begin{pmatrix}
+   U_k \\ \Gamma_k \\ \Sigma_k
+  \end{pmatrix} &=
+  \begin{pmatrix}
+   0 & 0 & -(2\pi k)^2\\
+   \frac{1}{\tau}\frac{1+\alpha}{1+m} & -\frac{1}{\tau}\frac{1+\alpha}{1+m} & 0\\
+   \frac{1}{\tau}\Big( n+ \frac{-\alpha+m}{1+m}\Big) &
+   \frac{1}{\tau}\Big(m\frac{-\alpha+m}{1+m}\Big) &
+   -\frac{1}{\tau}(1+\alpha) -n(2\pi k)^2
+  \end{pmatrix}
+  \begin{pmatrix}
+   U_k \\ \Gamma_k \\ \Sigma_k
+  \end{pmatrix} \nonumber\\
+  &=A_k(\tau)\begin{pmatrix}
+   U_k \\ \Gamma_k \\ \Sigma_k
+  \end{pmatrix}.  \label{eq:k-system}
+\end{align}
 
-\section{Stability analysis of a non-autonomous system}
+
+\subsection{Preliminaries: stability analysis of a non-autonomous system}
 We study the stability of a linear non-autonomous system
 $$ x'=A(t) x.$$
 The entries $A_{ij}(t)$, $i,j=1,\cdots,d$ are assumed to be bounded. As the vector field is Lipschitz in $x$, it admits the semi-group $F(t)$ (in fact a group for all $t$) characterized by the property $y(t)=F(t)y(0)$. When it is a system of non-autonomous equations, due to the coupling, the maximum of the real parts of the eigenvalues does not necessarily accounts for the operator norm of $F(t)$; $A(t)$ with negative eigenvalues can results in having an exponentially growing solution, showing $\|F(t)\|$ exponentially grows.
@@ -163,269 +249,110 @@ Suppose that we are in situation such that for some $K$ $\forall j, j=1,\cdots,d
 
 We can attempt to generalize the Coddington-Levinson for it to work even for block diagonal matrices, which we do not need here. However the spectral gap condition has to be strengthened to isolate a block because in general block diagonal matrix gains the polynomial factor in its semi-group operator norm.
 
-to have $A(t)$ have eigenvalues with negative real parts does not necessarily imply the stability of the system. Among the various classes of the general linear group, the upper triangular matrix does not have this undesired property while it provides quite wide subclasses of matrices (by the similarity transform or the QR decomposition) and the spectral properties are explicitly accessible. When one can further transforms the matrix into the form of the diagonal matrix or the Jordan block matrix, then one can infer more information on the stability. In the below, we study the stability of the system whose coefficient matrix is upper triangular with a small perturbation. Separation of the solution subspaces by the spectral gap conditions will be demonstrated in the below.
-
-We consider a system
- \begin{align} \label{eq:tri-linear}
-  x' &= T(t)x + \mathcal{E}(t)x,
- \end{align}
-$x\in \mathbb{R}^d$ and $T(t)$ is a upper triangular matrix. We denote the diagonal entries by $\lambda_i(t)$, $i=1,\cdots,d$. We say $T(t)$ is a block upper triangular matrix with $T_I(t)$, $I=1,\cdots,M$ if it is a block diagonal matrix with upper triangular blocks $T_I$, $I=1,\cdots,M$. $I$ denotes the block index and we identify the block index $I$ with the set of indices that are the rows the block resides in $T$, i.e., we use the expression $j\in I$, $j=1,\cdots N_I$. $\hat{\ell}$ for some index $\ell$ denotes the $\ell$-th unit length standard coordinate basis vector.
-
-
-
-
-
-\begin{lemma} \label{lemma:expT}
- Suppose $T(t)$ is an upper triangular matrix and $T(t) = \Lambda(t) + T_0$. Let entries of $T_0$ integrable. Then
- $$ \exp\left(\int_{t_1}^{t_2}T(s)\; ds\right) = \exp\left(\int_{t_1}^{t_2}T_0(s)\; ds\right) \exp\left(\int_{t_1}^{t_2}\Lambda(s)\; ds\right)$$
- and
- $$\left\Vert\exp\left(\int_{t_1}^{t_2}T_0(s)\; ds\right)\right\Vert < C.$$
-\end{lemma}
-\begin{proof}
- $\int_{t_1}^{t_2}T_0(s)\; ds < C$ by the assumption.
- $$ \exp(T_0) = \textrm{Id} + T_0 + \frac{1}{2!}T_0^2 + \cdots \frac{1}{(d-1)!}T_0^{(d-1)}$$
- because $T_0^d = 0$. Then the assertion follows.
-\end{proof}
-\begin{lemma} \label{lemma:expT0}
- Suppose $T$ is a triangular matrix whose diagonal $\lambda_i$, $i=1,\cdots,d$ are dominated by $A$ from above. Then
- $$ \exp(T) \le C e^A,$$
- where $C$ depends on the upper bound of off-diagonal entries.
-\end{lemma}
-\begin{proof}
- $\exp(T) = \exp(diag[\lambda_i])\exp(T_0)$, where $T_0 = T-diag[\lambda_i]$ whose diagonals are all $0$. Then the exponential of $T_0$ equals to the finite sum
- $$ \exp(T_0) = \textrm{Id} + T_0 + \frac{1}{2!}T_0^2 + \cdots \frac{1}{(d-1)!}T_0^{(d-1)}$$
- because $T_0^d = 0$. Then the assertion follows.
-\end{proof}
-
-{\red write everything diagonal + bounded$\Big\|$}
-
-\begin{theorem}
-Suppose that the diagonal entries of $T(t)$ are $L^1_{loc}(a,\infty)$, off-diagonal entries are $L^1(a,\infty)$ and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}(t)$ that is integrable, i.e.,
- $$ \int_a^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a$.}$$
-Fix one of the block index $L$. Suppose there is a function $\theta_L(t)$ and a constant $A$ such that
-\begin{align} \label{eq:Lcond}
-  \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_\ell(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$}
-\end{align}
-and for all diagonal entries $\lambda_\ell$ of $T_L$, $\ell\in L$.
-Furthermore suppose for every block index $I\ne L$, either of the two following membership conditions holds.
-
-We say $I\in I_1$ if
-\begin{equation}\label{eq:I1cond}
-\begin{aligned}
- &\int_0^\infty \theta_L(s) - Re\lambda_i(s) \; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for all $i\in I$.}\\
- &\int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds > - A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
-\end{aligned}
-\end{equation}
-We say $I\in I_2$ if
-\begin{align} \label{eq:I2cond}
- \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
-\end{align}
-Then for $y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_L(t)$ of \eqref{eq:tri-linear} with respect to some constant $a$ such that
-\begin{align}
- \lim_{t \rightarrow\infty} \exp\left(-\int_a^t T_L(s)\; ds\right) x_L(s) &= y_L(a),\\
- \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta_L(s)\; ds\right) x_I(s) &= 0, \quad I\ne L.
-\end{align}
-\end{theorem}
-\begin{proof}
- Let $y(t)$ be the solution of the
- \begin{align*}
-  y' &= T(t)y, \quad y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}, \quad \text{and writes}\\
-  (x-y)' &= T(t)(x-y) + \mathcal{E}(x-y) + \mathcal{E}y.
- \end{align*}
-Component-wisely,
-\begin{align*}
-  \left[\exp\left(\int_a^t -T_L(s)\; ds\right) (x_L-y_L)\right]' &= \exp\left(\int_a^t -T_L(s)\; ds\right)\Big[\mathcal{E}_{LJ}(x_J-y_J+y_J\big)\Big],\\
- \left[\exp\left(\int_a^t -\theta_L(s)\; ds\right) (x_I-y_I)\right]' &= \exp\left(\int_a^t -\theta_L(s)\; ds\right)\Big[\big(T_I(t)-\theta_L(t)\big) (x_I-y_I) + \mathcal{E}_{IJ}(x_J-y_J +y_J)\Big],
-\end{align*}
-for $I\ne L$.
-Now, we define the weighted differences
-\begin{align*}
- \xi_I(t) \triangleq
-% \begin{cases}
-%  \exp\left(\int_a^t -T_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{if $I=L$},\\
-  \exp\left(\int_a^t -\theta_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{otherwise}
-% \end{cases}
-\end{align*}
-to write
-\begin{align*}
-%\xi_L'&= \exp\left(\int_a^t -T_L(s)+\theta_L(s)\; ds\right)\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big],\\
-\xi_I'&= \big(T_I(t)-\theta_L(t)\big) \xi_I +\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big], \quad I\ne L,
-\end{align*}
-where $J_1$ runs among block indices in $I_1$ and $J_2$ in $I_2$.
-From above, after some algebraic manipulations, we look for $\xi = [\xi_{I_1}, \xi_L, \xi_{I_2}]$ a solution of the following integral representation.
-\begin{align}
- \xi_I &= \int_a^t \bigg[ \exp\left(\int_\tau^t T_I(s)-\theta_L(s)\; ds\right) \nonumber\\
- &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L}\Big] \bigg] \;d\tau \quad I \in I_1. \label{eq:reprI1}
- \intertext{This is to specify $x_I(a) = y_I(a) = 0$, for $I\in I_1$. Also pose the representation}
- \xi_I &= -\int_t^\infty \bigg[ \exp\left(\int_t^\tau -T_I(s)+\theta_L(s)\; ds\right) \nonumber \\
- &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau \quad I \in I_2, \label{eq:reprI2}\\
- \xi_L &= -\int_t^\infty \bigg[ \exp\left(\int_a^\tau -T_L(s)+\theta_L(s)\; ds\right) \nonumber\\
- &\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau. \label{eq:reprL}
-\end{align}
-We will show $(i)$ that there is the unique bounded solution of above integral equation; $(ii)$ that any bounded solution $\xi(t) \rightarrow 0$ as $t \rightarrow 0$.
-
-1. The first assertion is shown by the contraction mapping principle. Let the right-hand-sides of the representation define the operator $S$ that sends $\xi$ to $S\xi$. Then \eqref{eq:Lcond}, \eqref{eq:I1cond}, and \eqref{eq:I2cond} implies respectively
-\begin{align*}
- \Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_1\\
-\Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_2\\
-\Big|\big(S\xi - S\bar\xi\big)_L\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in L
-\end{align*}
-We used the Lemma \ref{lemma:expT}. Then $a$ can be chosen so big and let $t\ge a$ that $C(1+e^{2A})\int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$, $C(1+e^{2A})\int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$. Then $S$ is a contraction and thus has the unique solution. To prove the solution $\xi$ is bounded, we observe $|S\mathbf{0}| \le C$ by the same estimate and
-$$ ||\xi||_\infty \le ||S\xi - S\mathbf{0}||_\infty + ||S\mathbf{0}||_\infty \le \frac{1}{2} ||\xi||_\infty + C, \quad \text{or} \quad ||\xi||_\infty \le 2C.$$
-
-2. Now we prove that $\xi(t) \rightarrow 0$ as $t \rightarrow \infty$.
-\end{proof}
-
-
-
-
-\begin{theorem}
- Suppose the assumptions of Theorem hold. Assume further that $L = L_1 \cup L_2$ so that \eqref{eq:I1cond} holds for $\lambda_\ell$, $\ell\in L_1$ and \eqref{eq:I2cond} holds for $\lambda_\ell$, $\ell\in L_2$. Then for $y_L(0)\in \underset{\ell\in L_2}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_{L2}(t)$ of \eqref{eq:tri-linear} with respect to some $a$ such that
-\begin{align}
- \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta(s)\; ds\right) x_{L_2}(s) = y_{L_2}(0).
-\end{align}
-\end{theorem}
-
-
-
-\section{Linear stability of uniform shear}
-In the below we assume
-$$ \alpha>0, \quad n\ge0, \quad 1+m>0.$$
-We consider
-\begin{equation} \label{eq:system}
- \begin{aligned}
-  \partial_\tau U &= \Sigma_{xx},\\
-  \partial_\tau\Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U-\Gamma),\\
-  \partial_\tau\Theta &= \frac{1}{\tau}\Big(\Sigma U -\Theta\Big),\\
-  \Sigma &= \Theta^{-\alpha}\Gamma^m U^n
- \end{aligned}
-\end{equation}
-in $(\tau,x)\in \mathbb{R}^+\times [0,1]$ with boundary conditions
-\begin{equation}
- \Sigma_x(\tau,0)=\Sigma_x(\tau,1)=0.
-\end{equation}
-The boundary conditions imply that
-\begin{equation}
- \frac{d}{d\tau}\int_0^1 U(\tau,x) \: dx = 0, \quad \text{and we set } \int_0^1 U(\tau,x) \: dx = 1.
-\end{equation}
-$ U=\Gamma=\Theta=\Sigma=1 $ corresponds to the uniform shearing solution.
-Let
-\begin{align*}
- U &= 1 + \delta U_1 + \mathcal{O}(\delta^2), & \Gamma &= 1 + \delta \Gamma_1 + \mathcal{O}(\delta^2), &
- \Sigma &= 1 + \delta \Sigma_1 + \mathcal{O}(\delta^2), & \Theta &= 1 + \delta \Theta_1 + \mathcal{O}(\delta^2).
-\end{align*}
-By collecting the leading order terms and neglecting terms higher than the  second order,
-\begin{equation} \label{eq:linsystem}
- \begin{aligned}
-  \partial_\tau U_1 &= \Sigma_{1xx},\\
-  \partial_\tau\Gamma_1 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_1-\Gamma_1),\\
-  \partial_\tau\Theta_1 &= \frac{1}{\tau}\Big(\Sigma_1+ U_1 -\Theta_1\Big),\\
-  0&=\Sigma_1 + \alpha\Theta_1 -m\Gamma_1 - nU_1 .
- \end{aligned}
-\end{equation}
-The boundary conditions and the constraint equation read
-\begin{equation} \label{eq:linbdry}
- \Sigma_{1x}(\tau,0)=\Sigma_{1x}(\tau,1)=0, \quad \int_0^1 U_1(t,x) \: dx = 0.
-\end{equation}
-In the sequel, we drop the subscript $1$ in studying the linear system \eqref{eq:linsystem}. From the fourth equation in \eqref{eq:linsystem}, we remove one of the variable. We remove $\Theta$ and get three linear equations
-\begin{equation}
- \begin{aligned}
-  \partial_\tau U &= \Sigma_{xx},\\
-  \partial_\tau\Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U-\Gamma),\\
-  \partial_\tau\Sigma
-%   &= -\alpha \partial_\tau\Sigma + m \partial_\tau\Gamma +n \partial_\tau U\\
-%   &=\frac{1}{\tau}\Big(-\alpha\Big(\Sigma + U - \Big(\Big(\frac{-\Sigma+m\Gamma+nU}{\alpha}\Big)\Big) +\frac{m(1+\alpha)}{1+m}(U-\Gamma)\Big) + n\Sigma_{xx}\\
-  &= n\Sigma_{xx} +\frac{1}{\tau}\Big( -(1+\alpha)\Sigma + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma\Big).
- \end{aligned}
-\end{equation}
-We consider the even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-1,1]$ which is compatible with the system and the boundary conditions in \eqref{eq:linbdry}. We consider the cosine series of the variables,
-\begin{align*}
- U(\tau,x) = U_0(\tau) + \sum_{k=1}^\infty U_k(\tau)\cos(2\pi kx),\\
- \Gamma(\tau,x) = \Gamma_0(\tau) + \sum_{k=1}^\infty \Gamma_k(\tau)\cos(2\pi kx),\\
- \Theta(\tau,x) = \Theta_0(\tau) + \sum_{k=1}^\infty \Theta_k(\tau)\cos(2\pi kx),\\
- \Sigma(\tau,x) = \Sigma_0(\tau) + \sum_{k=1}^\infty \Sigma_k(\tau)\cos(2\pi kx).
-\end{align*}
-In particular, the constraint equation implies $U_0(\tau)\equiv0$. For each $k$-th mode, we collect terms in the matrix form $\dot{X}_k = A_k(\tau)X_k$. At $0$-th mode,
-\begin{align*}
-   \partial_\tau U_0 &= 0,\\
-  \partial_\tau\Gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_0-\Gamma_0),\\
-  \partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U_0 + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma_0\Big).
-\end{align*}
-Since $U_0=0$, $\Gamma_0(\tau)$ decays to $0$, and $\Sigma_0(\tau)$ decays to $0$.
-At $k$-th mode $k\ge1$,
-\begin{align}
-  \frac{d}{d\tau}
-  \begin{pmatrix}
-   U_k \\ \Gamma_k \\ \Sigma_k
-  \end{pmatrix} &=
-  \begin{pmatrix}
-   0 & 0 & -(2\pi k)^2\\
-   \frac{1}{\tau}\frac{1+\alpha}{1+m} & -\frac{1}{\tau}\frac{1+\alpha}{1+m} & 0\\
-   \frac{1}{\tau}\Big( n+ \frac{-\alpha+m}{1+m}\Big) &
-   \frac{1}{\tau}\Big(m\frac{-\alpha+m}{1+m}\Big) &
-   -\frac{1}{\tau}(1+\alpha) -n(2\pi k)^2
-  \end{pmatrix}
-  \begin{pmatrix}
-   U_k \\ \Gamma_k \\ \Sigma_k
-  \end{pmatrix} \nonumber\\
-  &=A_k(\tau)\begin{pmatrix}
-   U_k \\ \Gamma_k \\ \Sigma_k
-  \end{pmatrix}.  \label{eq:k-system}
-\end{align}
-
-\subsection{Characteristic polynomial of $A_k(\tau)$}
-Let $\lambda_i(\tau)$, $i=1,2,3$ be the three eigenvalues of $A_k(\tau)$. %We have
-% \begin{equation} \label{eq:eig_sum_mult}
-%  \begin{aligned}
-%  \lambda_1 + \lambda_2 + \lambda_3 &< 0,\\
-%  \lambda_1\lambda_2\lambda_3 &= -(2\pi k)^2(-\alpha+m+n)\frac{1+\alpha}{\tau^2(1+m)}.
-%  \end{aligned}
+% 
+% 
+% \begin{theorem}
+% Suppose that the diagonal entries of $T(t)$ are $L^1_{loc}(a,\infty)$, off-diagonal entries are $L^1(a,\infty)$ and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}(t)$ that is integrable, i.e.,
+%  $$ \int_a^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a$.}$$
+% Fix one of the block index $L$. Suppose there is a function $\theta_L(t)$ and a constant $A$ such that
+% \begin{align} \label{eq:Lcond}
+%   \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_\ell(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$}
+% \end{align}
+% and for all diagonal entries $\lambda_\ell$ of $T_L$, $\ell\in L$.
+% Furthermore suppose for every block index $I\ne L$, either of the two following membership conditions holds.
+% 
+% We say $I\in I_1$ if
+% \begin{equation}\label{eq:I1cond}
+% \begin{aligned}
+%  &\int_0^\infty \theta_L(s) - Re\lambda_i(s) \; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for all $i\in I$.}\\
+%  &\int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds > - A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
+% \end{aligned}
 % \end{equation}
-The characteristic polynomial of $A_k(\tau)$ reads
-% $$-\frac{m(1+\alpha)}{\tau(1+m)}\Big(\lambda + \frac{1}{\tau}\Big) = \frac{1}{(2\pi k)^2}\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda^2 + \lambda\big(\frac{1+\alpha}{\tau} + n(2\pi k)^2\big) + \frac{n-\alpha}{\tau}(2\pi k)^2\Big).$$
-%
-% $$\frac{\alpha-m-n-mn}{\tau(1+m)}\lambda - \frac{(1+\alpha)(-\alpha+m+n)}{\tau^2(1+m)}=\frac{1}{(2\pi k)^2}\lambda\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda + \frac{1+\alpha}{\tau} + n(2\pi k)^2\Big).$$
-%
-%
-% $$\frac{\alpha-m-n}{\tau(1+m)}\Big(\lambda + \frac{1+\alpha}{\tau}\Big) = \frac{1}{(2\pi k)^2}\lambda\Big(\lambda^2 + \lambda\Big(\frac{1+\alpha}{\tau(1+m)} + \frac{1+\alpha}{\tau} + n(2\pi k)^2\Big) + \frac{n(1+m+\alpha)}{\tau(1+m)}(2\pi k)^2\Big).$$
-%
-% \begin{equation}
-% -(2\pi k)^2\frac{-\alpha+m+n}{\tau(1+m)}\Big(\lambda + \frac{1+\alpha}{\tau}\Big) = \lambda\Big[\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda + \frac{1+\alpha}{\tau}\Big) + n(2\pi k)^2\Big(\lambda + \frac{1+m+\alpha}{\tau(1+m)}\Big)\Big]. \label{eq:charpoly}
-% \end{equation}
-\begin{align}
-0&= \lambda\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda + \frac{1+\alpha}{\tau}\Big) + n(2\pi k)^2\lambda\Big(\lambda + \frac{1+m+\alpha}{\tau(1+m)}\Big)\nonumber\\
-&+ (2\pi k)^2\frac{-\alpha+m+n}{\tau(1+m)}\Big(\lambda + \frac{1+\alpha}{\tau}\Big)\triangleq f(\lambda). \label{eq:poly}
-\end{align}
-Let $\epsilon = \frac{1}{\tau}$. In general, the polynomial $f=f(\lambda,m,n,q,\epsilon)$, where $q=-\alpha+m+n$. Its behavior could be qualitatively altered passing parameter values of $m=-1$, $n=0$, $q=0$, and $\epsilon=0$. We  let $m>-1$ but let other critical parameters reachable; we fix $n$ and $q$ in a certain regime and study the perturbative behaviors on $\epsilon$ according to the regime. We write $f= f^{\alpha,m,n}(\lambda,\epsilon)$ and suppress the superscript when the context of the regime is clear.
-
-\noindent{\bf Summary:}
-\begin{align}
-f^{\alpha,m,n}(\lambda,\epsilon)&= \lambda\Big(\lambda + \epsilon\frac{1+\alpha}{(1+m)}\Big)\Big(\lambda + \epsilon(1+\alpha)\Big) + n(2\pi k)^2\lambda\Big(\lambda + \epsilon\frac{1+m+\alpha}{1+m}\Big) \nonumber \\
-&+ \epsilon(2\pi k)^2\frac{-\alpha+m+n}{(1+m)}\Big(\lambda + \epsilon(1+\alpha)\Big).
-\end{align}
-The limiting problem $f^{\alpha,m,n}(\lambda,0)=0$ gives
-$$ \lambda_1=\lambda_2=0, \quad \lambda_3 = -n(2\pi k)^2,$$
-where we see the bifurcation at $n=0$. To analyze the roots $\lambda_1=\lambda_2=0$  of $f(\lambda,0)$, let $z = \frac{\lambda}{\epsilon}$, and $\epsilon^2\tilde{f}(z,\epsilon) =  f(\lambda, \epsilon)$. Then
-\begin{align}
- \tilde{f}(z,\epsilon) &= n(2\pi k)^2 z\Big(z + \frac{1+m+\alpha}{1+m}\Big)+ (2\pi k)^2\left(\frac{-\alpha+m+n}{1+m}\right)\Big(z + (1+\alpha)\Big) \nonumber\\
- &+ \epsilon z\Big(z+\frac{1+\alpha}{1+m}\Big)\Big(z+(1+\alpha)\Big). \label{eq:reduced_poly}
-\end{align}
-Provided $n>0$, the limiting problem $\tilde{f}(z,0)=0$ has the two roots $z_1,z_2$ that are the roots of the quadratic polynomial
-\begin{equation}
-nz^2 + z\Big( \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \frac{(1+\alpha)(-\alpha+m+n)}{1+m} =0. \label{eq:auxquad}
-\end{equation}
-From that we can see if $q=-\alpha+m+n>0$ then the real parts of two roots of \eqref{eq:auxquad} must be negative because $z_2+z_3 = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_2z_3=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
-In each of the regime, the perturbation on $\epsilon$ is regular as exposed in the below.
+% We say $I\in I_2$ if
+% \begin{align} \label{eq:I2cond}
+%  \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
+% \end{align}
+% Then for $y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_L(t)$ of \eqref{eq:tri-linear} with respect to some constant $a$ such that
+% \begin{align}
+%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t T_L(s)\; ds\right) x_L(s) &= y_L(a),\\
+%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta_L(s)\; ds\right) x_I(s) &= 0, \quad I\ne L.
+% \end{align}
+% \end{theorem}
+% \begin{proof}
+%  Let $y(t)$ be the solution of the
+%  \begin{align*}
+%   y' &= T(t)y, \quad y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}, \quad \text{and writes}\\
+%   (x-y)' &= T(t)(x-y) + \mathcal{E}(x-y) + \mathcal{E}y.
+%  \end{align*}
+% Component-wisely,
+% \begin{align*}
+%   \left[\exp\left(\int_a^t -T_L(s)\; ds\right) (x_L-y_L)\right]' &= \exp\left(\int_a^t -T_L(s)\; ds\right)\Big[\mathcal{E}_{LJ}(x_J-y_J+y_J\big)\Big],\\
+%  \left[\exp\left(\int_a^t -\theta_L(s)\; ds\right) (x_I-y_I)\right]' &= \exp\left(\int_a^t -\theta_L(s)\; ds\right)\Big[\big(T_I(t)-\theta_L(t)\big) (x_I-y_I) + \mathcal{E}_{IJ}(x_J-y_J +y_J)\Big],
+% \end{align*}
+% for $I\ne L$.
+% Now, we define the weighted differences
+% \begin{align*}
+%  \xi_I(t) \triangleq
+% % \begin{cases}
+% %  \exp\left(\int_a^t -T_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{if $I=L$},\\
+%   \exp\left(\int_a^t -\theta_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{otherwise}
+% % \end{cases}
+% \end{align*}
+% to write
+% \begin{align*}
+% %\xi_L'&= \exp\left(\int_a^t -T_L(s)+\theta_L(s)\; ds\right)\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big],\\
+% \xi_I'&= \big(T_I(t)-\theta_L(t)\big) \xi_I +\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big], \quad I\ne L,
+% \end{align*}
+% where $J_1$ runs among block indices in $I_1$ and $J_2$ in $I_2$.
+% From above, after some algebraic manipulations, we look for $\xi = [\xi_{I_1}, \xi_L, \xi_{I_2}]$ a solution of the following integral representation.
+% \begin{align}
+%  \xi_I &= \int_a^t \bigg[ \exp\left(\int_\tau^t T_I(s)-\theta_L(s)\; ds\right) \nonumber\\
+%  &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L}\Big] \bigg] \;d\tau \quad I \in I_1. \label{eq:reprI1}
+%  \intertext{This is to specify $x_I(a) = y_I(a) = 0$, for $I\in I_1$. Also pose the representation}
+%  \xi_I &= -\int_t^\infty \bigg[ \exp\left(\int_t^\tau -T_I(s)+\theta_L(s)\; ds\right) \nonumber \\
+%  &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau \quad I \in I_2, \label{eq:reprI2}\\
+%  \xi_L &= -\int_t^\infty \bigg[ \exp\left(\int_a^\tau -T_L(s)+\theta_L(s)\; ds\right) \nonumber\\
+%  &\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau. \label{eq:reprL}
+% \end{align}
+% We will show $(i)$ that there is the unique bounded solution of above integral equation; $(ii)$ that any bounded solution $\xi(t) \rightarrow 0$ as $t \rightarrow 0$.
+% 
+% 1. The first assertion is shown by the contraction mapping principle. Let the right-hand-sides of the representation define the operator $S$ that sends $\xi$ to $S\xi$. Then \eqref{eq:Lcond}, \eqref{eq:I1cond}, and \eqref{eq:I2cond} implies respectively
+% \begin{align*}
+%  \Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_1\\
+% \Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_2\\
+% \Big|\big(S\xi - S\bar\xi\big)_L\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in L
+% \end{align*}
+% We used the Lemma \ref{lemma:expT}. Then $a$ can be chosen so big and let $t\ge a$ that $C(1+e^{2A})\int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$, $C(1+e^{2A})\int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$. Then $S$ is a contraction and thus has the unique solution. To prove the solution $\xi$ is bounded, we observe $|S\mathbf{0}| \le C$ by the same estimate and
+% $$ ||\xi||_\infty \le ||S\xi - S\mathbf{0}||_\infty + ||S\mathbf{0}||_\infty \le \frac{1}{2} ||\xi||_\infty + C, \quad \text{or} \quad ||\xi||_\infty \le 2C.$$
+% 
+% 2. Now we prove that $\xi(t) \rightarrow 0$ as $t \rightarrow \infty$.
+% \end{proof}
+% 
+% 
+% 
+% 
+% \begin{theorem}
+%  Suppose the assumptions of Theorem hold. Assume further that $L = L_1 \cup L_2$ so that \eqref{eq:I1cond} holds for $\lambda_\ell$, $\ell\in L_1$ and \eqref{eq:I2cond} holds for $\lambda_\ell$, $\ell\in L_2$. Then for $y_L(0)\in \underset{\ell\in L_2}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_{L2}(t)$ of \eqref{eq:tri-linear} with respect to some $a$ such that
+% \begin{align}
+%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta(s)\; ds\right) x_{L_2}(s) = y_{L_2}(0).
+% \end{align}
+% \end{theorem}
 
 \subsection{Inviscid case $n=0$:}
 When $n=0$, the polynomial \eqref{eq:poly} factorizes to get,
 $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon (2\pi k)^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
+Three roots are explicitly listed:
 
-\noindent{\bf subcase 1 $q=-\alpha+m>0$ for $\epsilon$ small:}
+\noindent{\bf subcase 1 $q=-\alpha+m=0$}
 \begin{align*}
- \lambda_1(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} + i\sqrt{\epsilon}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
- \lambda_2(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} - i\sqrt{\epsilon}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
- \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0.
+ \lambda_1(\tau)\equiv 0, \quad \lambda_2(\tau)= -\frac{1}{\tau}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
+\end{align*}
+
+\noindent{\bf subcase 2 $q=-\alpha+m>0$ for $\tau$ large}
+\begin{align*}
+ \lambda_1(\tau) &= - \frac{1}{\tau}\frac{1+\alpha}{2(1+m)} + i\frac{1}{\sqrt{\tau}}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\frac{1}{\tau} \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
+ \lambda_2(\epsilon) &= - \frac{1}{\tau}\frac{1+\alpha}{2(1+m)} - i\frac{1}{\sqrt{\tau}}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\frac{1}{\tau} \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
+ \lambda_3(\epsilon) &= -\frac{1}{\tau}(1+\alpha)<0.
 \end{align*}
 % Note that for sufficiently small $\epsilon$, we have an order
 % \begin{align*}
@@ -433,12 +360,9 @@ $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon
 %  Re(\lambda)=Re(\lambda^*) < Re(\lambda_0) < 0, \quad \text{if $m<0$}
 % \end{align*}
 % and the order is preserved as $\epsilon \rightarrow 0^+$.
-\noindent{\bf subcase 2 $q=-\alpha+m=0$:}
-\begin{align*}
- \lambda_1(\epsilon)\equiv 0, \quad \lambda_2(\epsilon)= -\epsilon, \quad \lambda_3(\epsilon) = -\epsilon(1+\alpha).
-\end{align*}
 
-\noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\epsilon$ small:}
+
+\noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\tau$ large:}
 \begin{align*}
  \lambda_1(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} + \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
  \lambda_2(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} - \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
@@ -450,6 +374,14 @@ $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon
  \lambda_2(\epsilon) &= -\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{2(1+m)} + \mathcal{O}(\epsilon^{\frac{3}{2}}) < 0,\\
  \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0.
 \end{align*}
+By letting $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \k^2\frac{-\alpha+m}{\tau(1+m)}$ we denote the three roots by
+\begin{equation}
+\begin{aligned}
+ &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda(\tau) = -\frac{1+\alpha}{\tau},
+\end{aligned}
+\end{equation}
+where the square root is understood as the branch of nonnegative imaginary part.
+
 % Note that for sufficiently small $\epsilon$, we have an order
 % \begin{align*}
 %  Re(\lambda^-)<Re(\lambda_0) < 0 < Re(\lambda^+) \quad \text{with $Re(\lambda^+) = \mathcal{O}(\sqrt{\epsilon})$}
@@ -495,6 +427,54 @@ where the square root is understood to take the branch of nonnegative imaginary 
  \end{pmatrix}
 \end{align*}
 }
+
+
+
+
+\subsection{Characteristic polynomial of $A_k(\tau)$}
+Let $\lambda_i(\tau)$, $i=1,2,3$ be the three eigenvalues of $A_k(\tau)$. %We have
+% \begin{equation} \label{eq:eig_sum_mult}
+%  \begin{aligned}
+%  \lambda_1 + \lambda_2 + \lambda_3 &< 0,\\
+%  \lambda_1\lambda_2\lambda_3 &= -(2\pi k)^2(-\alpha+m+n)\frac{1+\alpha}{\tau^2(1+m)}.
+%  \end{aligned}
+% \end{equation}
+The characteristic polynomial of $A_k(\tau)$ reads
+% $$-\frac{m(1+\alpha)}{\tau(1+m)}\Big(\lambda + \frac{1}{\tau}\Big) = \frac{1}{(2\pi k)^2}\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda^2 + \lambda\big(\frac{1+\alpha}{\tau} + n(2\pi k)^2\big) + \frac{n-\alpha}{\tau}(2\pi k)^2\Big).$$
+%
+% $$\frac{\alpha-m-n-mn}{\tau(1+m)}\lambda - \frac{(1+\alpha)(-\alpha+m+n)}{\tau^2(1+m)}=\frac{1}{(2\pi k)^2}\lambda\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda + \frac{1+\alpha}{\tau} + n(2\pi k)^2\Big).$$
+%
+%
+% $$\frac{\alpha-m-n}{\tau(1+m)}\Big(\lambda + \frac{1+\alpha}{\tau}\Big) = \frac{1}{(2\pi k)^2}\lambda\Big(\lambda^2 + \lambda\Big(\frac{1+\alpha}{\tau(1+m)} + \frac{1+\alpha}{\tau} + n(2\pi k)^2\Big) + \frac{n(1+m+\alpha)}{\tau(1+m)}(2\pi k)^2\Big).$$
+%
+% \begin{equation}
+% -(2\pi k)^2\frac{-\alpha+m+n}{\tau(1+m)}\Big(\lambda + \frac{1+\alpha}{\tau}\Big) = \lambda\Big[\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda + \frac{1+\alpha}{\tau}\Big) + n(2\pi k)^2\Big(\lambda + \frac{1+m+\alpha}{\tau(1+m)}\Big)\Big]. \label{eq:charpoly}
+% \end{equation}
+\begin{align}
+0&= \lambda\Big(\lambda + \frac{1+\alpha}{\tau(1+m)}\Big)\Big(\lambda + \frac{1+\alpha}{\tau}\Big) + n(2\pi k)^2\lambda\Big(\lambda + \frac{1+m+\alpha}{\tau(1+m)}\Big)\nonumber\\
+&+ (2\pi k)^2\frac{-\alpha+m+n}{\tau(1+m)}\Big(\lambda + \frac{1+\alpha}{\tau}\Big)\triangleq f(\lambda). \label{eq:poly}
+\end{align}
+Let $\epsilon = \frac{1}{\tau}$. In general, the polynomial $f=f(\lambda,m,n,q,\epsilon)$, where $q=-\alpha+m+n$. Its behavior could be qualitatively altered passing parameter values of $m=-1$, $n=0$, $q=0$, and $\epsilon=0$. We  let $m>-1$ but let other critical parameters reachable; we fix $n$ and $q$ in a certain regime and study the perturbative behaviors on $\epsilon$ according to the regime. We write $f= f^{\alpha,m,n}(\lambda,\epsilon)$ and suppress the superscript when the context of the regime is clear.
+
+\noindent{\bf Summary:}
+\begin{align}
+f^{\alpha,m,n}(\lambda,\epsilon)&= \lambda\Big(\lambda + \epsilon\frac{1+\alpha}{(1+m)}\Big)\Big(\lambda + \epsilon(1+\alpha)\Big) + n(2\pi k)^2\lambda\Big(\lambda + \epsilon\frac{1+m+\alpha}{1+m}\Big) \nonumber \\
+&+ \epsilon(2\pi k)^2\frac{-\alpha+m+n}{(1+m)}\Big(\lambda + \epsilon(1+\alpha)\Big).
+\end{align}
+The limiting problem $f^{\alpha,m,n}(\lambda,0)=0$ gives
+$$ \lambda_1=\lambda_2=0, \quad \lambda_3 = -n(2\pi k)^2,$$
+where we see the bifurcation at $n=0$. To analyze the roots $\lambda_1=\lambda_2=0$  of $f(\lambda,0)$, let $z = \frac{\lambda}{\epsilon}$, and $\epsilon^2\tilde{f}(z,\epsilon) =  f(\lambda, \epsilon)$. Then
+\begin{align}
+ \tilde{f}(z,\epsilon) &= n(2\pi k)^2 z\Big(z + \frac{1+m+\alpha}{1+m}\Big)+ (2\pi k)^2\left(\frac{-\alpha+m+n}{1+m}\right)\Big(z + (1+\alpha)\Big) \nonumber\\
+ &+ \epsilon z\Big(z+\frac{1+\alpha}{1+m}\Big)\Big(z+(1+\alpha)\Big). \label{eq:reduced_poly}
+\end{align}
+Provided $n>0$, the limiting problem $\tilde{f}(z,0)=0$ has the two roots $z_1,z_2$ that are the roots of the quadratic polynomial
+\begin{equation}
+nz^2 + z\Big( \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \frac{(1+\alpha)(-\alpha+m+n)}{1+m} =0. \label{eq:auxquad}
+\end{equation}
+From that we can see if $q=-\alpha+m+n>0$ then the real parts of two roots of \eqref{eq:auxquad} must be negative because $z_2+z_3 = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_2z_3=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
+In each of the regime, the perturbation on $\epsilon$ is regular as exposed in the below.
+
 
 \subsection{Viscous case $n>0$}
 For a technical reason we assume the following, which holds if and only if \eqref{eq:auxquad} does not have a double root.
