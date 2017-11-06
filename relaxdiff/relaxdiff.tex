@@ -191,15 +191,17 @@ $\underline\gamma$, $\overline\gamma$, $\underline\sigma$, and $\overline\sigma$
 
 % Now, let $M>0$ be bigger than the Lipschitz constant of $a(\gamma,\sigma)$ and $f(\gamma,\sigma)$ 
 2. Now, let $$B\triangleq\left\{\sigma \in C^{2+\alpha,1+\alpha/2}(\bar{Q}_T) ~\Big|~ \sigma(t,x) \in [\underline\sigma, \overline\sigma] \quad \text{for all $(t,x)\in Q_T$}\right\},$$ 
-
-
-
-
-
-
-where $M>0$ is chosen later. We define the transformation $\Phi: B \mapsto B$ in the following way. For a given $\sigma_j \in B$, we first define $\gamma_j(t,x)$ in $Q_T$ via the integral expression \eqref{eq:rep}.  
-It is straightforward to check that $\sigma(t,x)\in [\underline\sigma,\overline\sigma]$ implies $\gamma(t,x) \in [\underline\gamma,\overline\gamma]$ and 
+We define the transformation $\Phi: B \mapsto B$ in the following way. For a given $\sigma_j \in B$, we first define $\gamma_j(t,x)$ in $Q_T$ via the integral expression \eqref{eq:rep}. It is straightforward to check that $\sigma(t,x)\in [\underline\sigma,\overline\sigma]$ implies $\gamma(t,x) \in [\underline\gamma,\overline\gamma]$ and 
 {\blue$$||\gamma||_{C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)} \le C(blabla)||\sigma||_{C^{2+\alpha,1+\alpha/2}(\bar{Q}_T)}.$$}
+
+3. By the maximum principle we have
+$$||\sigma_{j+1}||_{L^\infty} \le T ||\tilde f||_{L^\infty}+ ||\sigma_{j+1}(0,x)||_{L^\infty},$$
+so we can choose $T$ small enough that $\sigma_{j+1} \le 2\sigma^+ \le \overline{\sigma}.$ Since $|\tilde f|$ is bounded in $K$ and the bound depends only on the $\underline{\gamma}$, $\overline{\gamma}$, $\underline{\sigma}$, and $\overline{\sigma}$, so is $T$.
+
+
+
+where $M>0$ is chosen later.   
+
 Now we define $\sigma_{j+1}$ by the solution of 
 \begin{equation}
 \partial_t \sigma_{j+1} + M_1\sigma_{j+1} = a(\gamma_j,\sigma_j)\Delta \sigma_{j+1} + M_1\sigma_j + f(\gamma_j,\sigma_j), \label{eq:iteration}
@@ -217,9 +219,7 @@ In the above the Lipschitz constant could be taken because $(\gamma(t,x),\sigma(
 \end{equation}
 We have $|F_j| \le M_1|w_j|$ and because $w_j\ge0$, 
 $$\partial_t w_{j+1} + M'w_{j+1} - a(\gamma_j,\sigma_j)\Delta w_{j+1} \ge 0$$
-to conclude $w_{j+1} \ge 0$, or $\sigma_{j+1} \ge \sigma_{j}$. On account of the integral expression of $\gamma_{j+1}$, then $\gamma_{j+1}\ge \gamma_{j}$. On the other hand, by the maximum principle again we have
-$$||\sigma_{j+1}||_{L^\infty} \le T ||\tilde f||_{L^\infty}+ ||\sigma_{j+1}(0,x)||_{L^\infty},$$
-so we can choose $T$ small enough that $\sigma_{j+1} \le 2\sigma^+ \le \overline{\sigma}.$ This implies $\gamma_{j+1}\le \overline{\gamma}$. Since $(\gamma_{j+1}(t,x),\sigma_{j+1})$ is again in $K$, we have the same lower bound and H\"older estimate for $a(\gamma_{j+1},\sigma_{j+1})$ and $f(\gamma_{j+1},\sigma_{j+1})$. From the elliptic regularity theory, we can take $M>0$ that is preserved by the iteration. In conclusion, the map $\Phi$ is well-defined.
+to conclude $w_{j+1} \ge 0$, or $\sigma_{j+1} \ge \sigma_{j}$. On account of the integral expression of $\gamma_{j+1}$, then $\gamma_{j+1}\ge \gamma_{j}$. On the other hand,  Since $(\gamma_{j+1}(t,x),\sigma_{j+1})$ is again in $K$, we have the same lower bound and H\"older estimate for $a(\gamma_{j+1},\sigma_{j+1})$ and $f(\gamma_{j+1},\sigma_{j+1})$. From the elliptic regularity theory, we can take $M>0$ that is preserved by the iteration. In conclusion, the map $\Phi$ is well-defined.
 
 4. Since the space $C^{\alpha,\alpha/2}(\bar{Q}_T)$ is compact, we have the existence of the solution. We show that $\Phi$ is a contraction in $L^\infty$ norm. From \eqref{eq:contraction} we have by the Maximum principle,
 $$||w_{j+1}||_{L^\infty(Q_T)} \le T M_1||w_{j+1}||_{L^\infty(Q_T)}.$$

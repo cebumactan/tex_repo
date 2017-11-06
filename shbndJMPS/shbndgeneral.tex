@@ -53,6 +53,9 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{claim}{Claim}
 
+\newcounter{mycounter}
+\newtheorem{step}{Step}[mycounter]
+
 \theoremstyle{remark}
 \newtheorem{remark}{Remark}[section]
 
@@ -77,9 +80,215 @@
 % \begin{abstract}
 % \end{abstract}
 %
-% \tableofcontents
-% \pagebreak
+\tableofcontents
+\pagebreak
+\section{Introduction}
 \section{Linear stability of uniform shear}
+\subsection{Preliminaries: stability analysis of a non-autonomous system}
+We study the stability of a linear non-autonomous system
+$$ x'=A(t) x.$$
+The entries $A_{ij}(t)$, $i,j=1,\cdots,d$ are assumed to be bounded. As the vector field is Lipschitz in $x$, it admits the semi-group $F(t)$ (in fact a group for all $t$) characterized by the property $y(t)=F(t)y(0)$. When it is a system of non-autonomous equations, due to the coupling, the maximum of the real parts of the eigenvalues does not necessarily accounts for the operator norm of $F(t)$; $A(t)$ with negative eigenvalues can results in having an exponentially growing solution, showing $\|F(t)\|$ exponentially grows.
+
+On the contrary, like from diagonal matrices, $\|F(t)\|$ can be read off from $A(t)$ when the coupling is in an appropriate sense weaker. $A(t)$ can be by similarity transform turned into the form that has less coupling such as diagonal or Jordan normal form. The price is an additional term due that the decomposition is also time dependent. More precisely, If $A(t) = P(t)T(t)P(t)^{-1}$, and if $y\triangleq P(t)^{-1}x$ then $y$ satisfies the system
+$$ y' = T(t)y - P(t)^{-1}P'(t)y.$$
+
+Assuming the operator norm of the solution map $F(t)$ associated to $T(t)$ is computable, we look if the coupling by the remainder term is negligible. Following proposition sheds light on which cases are feasible ones.
+\begin{proposition} \label{prop:stab}
+ Suppose
+ \begin{equation}
+x' = T(t)x + \mathcal{E}(t)x, \label{eq:x}
+ \end{equation}
+where $T_{ij}(t)$ are bounded and the associated solution map $F(t)$ has the norm $\|F(t)\| \le h(t)=\exp\left(\int_0^t \theta(s)\; ds\right)$ for some $\theta(t)$. Assume that $\mathcal{E}_{ij}(t)$ decay as $t \rightarrow \infty$ so that they are integrable, i.e.,
+ $$ \int_a^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a$.}$$
+ Then for $t\ge a$,\\every solution $\|x\|_{L^\infty[a,t]} \le 2h(t)$. Furthermore, if $y(t)=F(t)y(0)$ is the one attains the operator norm, i.e.,
+ $$ \lim_{t \rightarrow \infty}\frac{y(t)}{\|F(t)\|} = y_\infty \quad \text{nontrivial,}$$
+ there is a solution $x(t)$ of \eqref{eq:x} such that $\displaystyle \frac{\|x(t)-y(t)\|_\infty}{\|F(t)\|} \le \frac{1}{2}\frac{\|x(t)\|_\infty}{\|F(t)\|}.$
+\end{proposition}
+\begin{proof}
+%  Without loss, we may set $h(t) = \exp\left(\int_0^t \theta(s)\; ds\right)$ by setting $\theta(t) = \log(h(t))'$.
+We rewrite \eqref{eq:x} in the form
+ \begin{align*}
+  x' - \theta(t)x &= \big(T(t)-\theta(t)\big)x + \mathcal{E}x \quad \text{or}\\
+  \xi' &=\big(T(t)-\theta(t)\big)\xi + \mathcal{E}\xi, \quad \text{where $\xi\triangleq \exp\left(-\int_0^t \theta(s)\; ds\right) x$}.
+ \end{align*}
+ Let $G(t)$ be the solution map associated to $T(t)-\theta(t)$. Since $F(t)x(0)=x(t)$ \\$= \exp\left(\int_0^t \theta(s)\; ds\right)\xi(t)= \exp\left(\int_0^t \theta(s)\; ds\right)G(t)\xi(0)=\exp\left(\int_0^t \theta(s)\; ds\right)G(t)x(0)$, for all $x(0)\in \mathbb{R}^d$, $G(t) = F(t)\exp\left(-\int_0^t \theta(s)\; ds\right)$ and $\|G(t)\|$ is bounded. Using $G(t)$ we further write
+ $$ \xi(t) = G(t-a)\xi(a) + \int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau.$$
+ Note that if $\bar\xi$ is a bounded function then the the expression right-hand-side well-defines an operator that maps $\bar\xi$ to the one which is again bounded and has a same initial value $\xi(a)$ because $t\ge \tau\ge a$, $G$ is bounded and $\mathcal{E}$ is integrable. If $a$ is chosen so large that $\int_a^\infty \|G\| \; |\xi-\bar\xi| \; |\mathcal{E}_{ij}|\; d\tau < \frac{1}{2} \|\xi-\bar\xi\|_\infty$ then this is a contraction mapping. Therefore solution exists with the initial value $\xi(a)$. Since $G(t-a)$ is an invertible map, every independent solution is attained.
+ From the integral representation of $\xi(t)$, we have
+ $$\|\xi(t)\|_\infty \le \|G(t-a)\xi(a)\|_\infty + \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_\infty \le \|G(t-a)\xi(a)\|_\infty + \frac{1}{2} \|\xi(t)\|_\infty$$
+ $\|\xi(t)\|_\infty \le 2 \|G(t-a)\xi(a)\|_\infty \le 2\|G\|$. This gives the boundedness of the solution. Now, let $\xi(t)$ and $\xi(a)$ be that its semi-group part is the $y(t)$ grows as same as the operator norm does. The second assertion follows from
+ $$\big\|\xi(t) - G(t-a)\xi(a)\big\|_\infty = \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_\infty \le \frac{1}{2} \|\xi(t)\|_\infty.$$
+\end{proof}
+Later, we are going to use the various similarity transform. In the below we give a bound of the operator norm associated to an upper triangular matrix. Also the proof for the Coddington-Levinson Theorem for the diagonal matrix is provided.
+ \begin{proposition}[stability of triangular matrix] \label{prop:tri-stab}
+ Suppose $y' = T(t) y$ and $T(t)$ be an upper triangular matrix with bounded entries. Suppose that there is a function $\theta(t)$ and a constant $A$ such that for all diagonal entries $\lambda_i(t)$,
+ \begin{align} \label{eq:stabcond}
+%   &\lim_{t \rightarrow \infty} t^{-d} \int_0^t \theta(s)- Re\lambda_i(s)\; ds \rightarrow \infty,\\
+  &\int_{t_1}^{t_2} \theta(s)-Re\lambda_i(s)\; ds > -A \quad \text{whenever $0\le t_1 \le t_2$.}
+ \end{align}
+ Then for $i=1,\cdots,d$
+ \begin{equation} \label{eq:triestim}
+|y_{i}(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)% \rightarrow 0 \quad \text{as $t \rightarrow \infty$.}
+ \end{equation}
+\end{proposition}
+\begin{proof}
+ We prove the assertion by induction in the descending order. For $i=d$, $y_d(t)=y_d(0)\exp\left( \int_0^t \lambda_d(s)\;ds\right)=y_d(0)\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_d(s)\;ds\right)$ and thus $|y_d(t)| \le Ce^A\exp\left( \int_0^t \theta(s)\;ds\right)$ by \eqref{eq:stabcond}. Now, if the statement holds for $i$, we see that
+ \begin{align*}
+  y_{i-1}' -\lambda_{i-1}y_{i-1} = \sum_{j\ge i} T_{i-1,j}(t)y_j(t) = g(t)
+ \end{align*}
+ and $|g(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)$ for some another constant $C$ because $T_{ij}(t)$ are bounded. Therefore
+ \begin{align*}
+  y_{i-1}(t) &= \exp\left( \int_0^t \lambda_{i-1}(s)\;ds\right) \left(y_{i-1}(0) + \int_0^t \exp\left( \int_0^\tau -\lambda_{i-1}(s)\;ds\right)g(\tau) \; d\tau\right)\\
+  &=\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_{i-1}(s)\;ds\right) y_{i-1}(0) \\
+  &+ \exp\left( \int_0^t \theta(s)\;ds\right)\underbrace{\int_0^t \exp\left( \int_\tau^t \lambda_{i-1}(s)-\theta(s)\;ds\right)g(\tau)\exp\left( -\int_0^\tau \theta(s)\;ds\right) \; d\tau}_{\triangleq \varphi(t)}
+  \end{align*}
+ Note that $\varphi(0)=0$ and $|\varphi'(t)| = \left|g(t)\exp\left( \int_0^t -\theta(s)\;ds\right)\right|\le C\big( 1 + t + \cdots + t^{d-i}\big)$ by the assumptions. Thus $|\varphi(t)|\le C\big( 1 + t + \cdots + t^{d-i+1}\big)$ for some another constant $C$. Therefore
+ $$|y_{i-1}(t)| \le C\big( 1 + t + \cdots + t^{d-i+1}\big)\exp\left( \int_0^t \theta(s)\;ds\right).$$
+\end{proof}
+\begin{remark}
+ Considering that the matrix we discuss are those whose eigenvalues are of order $\tfrac{1}{t} \rightarrow 0$, the gains by the polynomial factor in the estimate \eqref{eq:triestim} can be critical because $\exp\left( \int_1^t \theta(s)\;ds\right) =\exp\left( -\int_1^t \frac{k}{s}\;ds\right) =t^{-k}.$ This is the typical behavior of the Jordan block.
+\end{remark}
+Now, we provide the proof of the Coddington-Levinson Theorem.
+
+\begin{theorem}{\cite[Diagonal Version]{CL1955}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{1}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$.
+Fix an index $\ell$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
+
+$i \in I_1$ if
+\begin{align}
+ &\int_{1}^\infty Re(\lambda_\ell(s) -\lambda_i(s))\; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$},\label{eq:I1cond1}\\
+ &\int_{t_1}^{t_2} Re(\lambda_\ell(s) -\lambda_i(s))\; ds > -A, \quad \text{whenever $t_2\ge t_1\ge 0$} \label{eq:I1cond2}
+\end{align}
+and $i \in I_2$ if
+\begin{align}
+ &\int_{t_1}^{t_2} Re(\lambda_\ell(s) -\lambda_i(s))\; ds < A, \quad \text{whenever $t_2\ge t_1\ge 0$}. \label{eq:I2cond}
+\end{align}
+Then there is an orbit $\varphi_\ell(t)$ $t\ge a$ for some $a$,
+\begin{equation}
+ \lim_{t \rightarrow \infty} \varphi_\ell(t) \exp\left(-\int_{a}^t \lambda_\ell(s)\; ds\right) = \hat{\ell}, \quad \text{where $\hat{\ell}$ is the $\ell$-th coordinate basis of $\mathbb{R}^d$.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Component-wisely, we can write
+\begin{align*}
+ \xi_i' & = (\lambda_i-\lambda_\ell)\xi_i + \mathcal{E}_{ij}\xi_j, \quad \text{where $\xi = \exp\left(-\int_a^t \lambda_\ell(s) \; ds\right)x$.}
+\end{align*}
+We look for a solution of the integral representation
+\begin{align*}
+ \xi_i(t) &= \hat\ell_i + \int_a^t \exp\left(\int_\tau^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau
+\end{align*}
+if $i\in I_1$, where $\hat{\ell}_i = \delta_{\ell i}$ of Kronecker delta and
+\begin{align*}
+ \xi_i(t) &= \hat\ell_i -\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau
+\end{align*}
+if $i\in I_2$. Let $t\ge a$ so large that $e^A\int_a^\infty |\mathcal{E}_{ij}(\tau)|\; d\tau < \frac{1}{2}$. Then by \eqref{eq:I1cond2} and \eqref{eq:I2cond}, for given $\bar\xi(t)$ bounded $t\ge a$, the expression right-hand-side defines an operator $S$ that maps $\bar\xi$ to another bounded function that is defined by the expression. In particular, $\xi=S\bar\xi$ has same initial data $\xi_i(a) = \hat{\ell}_i$ if $i\in I_1$.
+% and has same finial data $\displaystyle\lim_{t \rightarrow \infty} \xi_i(t) = \hat{\ell}_i$ if $i\in I_2$.
+By the choice of $a$, $\|S\xi - S\bar\xi\|_\infty \le \frac{1}{2}\|\xi-\bar\xi\|_\infty$, $t\ge a$ and thus $S$ is a contraction mapping. The integral equation has the unique solution and $\|\xi_i(t)\|_\infty \le 2$ because the integral is bounded above by $ \frac{1}{2} \|\xi\|_\infty$ and $|\hat{\ell}|=1$.
+
+Now we show that $|\xi(t)-\hat\ell| \rightarrow 0$ as $t \rightarrow \infty$. If $i\in I_1$ and for given $\epsilon>0$, we divide the integral into two parts
+\begin{align*}
+ &\big|\xi_i(t)-\hat{\ell}_i\big| \le \left|\left\{ \int_a^{t_1} + \int_{t_1}^t \right\} \exp\left(\int_\tau^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|.
+\end{align*}
+By choosing $t_1$ so large the second integral can be made smaller than $ \frac{\epsilon}{2}$ for all $t\ge t_1$. The first integral $$\left|\exp\left(\int_a^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\int_a^{t_1} \exp\left(\int_a^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|$$
+can be made smaller than $ \frac{\epsilon}{2}$ because the integral in the compact interval $[a, t_1]$ is finite and $\exp\left(\int_a^t \lambda_i(s)-\lambda_\ell(s) \; ds\right) \rightarrow 0$ as $t \rightarrow \infty$ by \eqref{eq:I1cond1}.
+
+If $i\in I_2$, then $\left|\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau\right| \rightarrow 0$ as $t \rightarrow \infty$.
+
+
+
+
+\end{proof}
+
+We can attempt to generalize the Coddington-Levinson for it to work even for block diagonal matrices, which we do not need here. However the spectral gap condition has to be strengthened to isolate a block because in general block diagonal matrix gains the polynomial factor in its semi-group operator norm; the spectrum of a block semi-group operators may impinge the spectrum of the other.
+
+%
+%
+% \begin{theorem}
+% Suppose that the diagonal entries of $T(t)$ are $L^1_{loc}(a,\infty)$, off-diagonal entries are $L^1(a,\infty)$ and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}(t)$ that is integrable, i.e.,
+%  $$ \int_a^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a$.}$$
+% Fix one of the block index $L$. Suppose there is a function $\theta_L(t)$ and a constant $A$ such that
+% \begin{align} \label{eq:Lcond}
+%   \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_\ell(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$}
+% \end{align}
+% and for all diagonal entries $\lambda_\ell$ of $T_L$, $\ell\in L$.
+% Furthermore suppose for every block index $I\ne L$, either of the two following membership conditions holds.
+%
+% We say $I\in I_1$ if
+% \begin{equation}\label{eq:I1cond}
+% \begin{aligned}
+%  &\int_0^\infty \theta_L(s) - Re\lambda_i(s) \; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for all $i\in I$.}\\
+%  &\int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds > - A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
+% \end{aligned}
+% \end{equation}
+% We say $I\in I_2$ if
+% \begin{align} \label{eq:I2cond}
+%  \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
+% \end{align}
+% Then for $y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_L(t)$ of \eqref{eq:tri-linear} with respect to some constant $a$ such that
+% \begin{align}
+%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t T_L(s)\; ds\right) x_L(s) &= y_L(a),\\
+%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta_L(s)\; ds\right) x_I(s) &= 0, \quad I\ne L.
+% \end{align}
+% \end{theorem}
+% \begin{proof}
+%  Let $y(t)$ be the solution of the
+%  \begin{align*}
+%   y' &= T(t)y, \quad y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}, \quad \text{and writes}\\
+%   (x-y)' &= T(t)(x-y) + \mathcal{E}(x-y) + \mathcal{E}y.
+%  \end{align*}
+% Component-wisely,
+% \begin{align*}
+%   \left[\exp\left(\int_a^t -T_L(s)\; ds\right) (x_L-y_L)\right]' &= \exp\left(\int_a^t -T_L(s)\; ds\right)\Big[\mathcal{E}_{LJ}(x_J-y_J+y_J\big)\Big],\\
+%  \left[\exp\left(\int_a^t -\theta_L(s)\; ds\right) (x_I-y_I)\right]' &= \exp\left(\int_a^t -\theta_L(s)\; ds\right)\Big[\big(T_I(t)-\theta_L(t)\big) (x_I-y_I) + \mathcal{E}_{IJ}(x_J-y_J +y_J)\Big],
+% \end{align*}
+% for $I\ne L$.
+% Now, we define the weighted differences
+% \begin{align*}
+%  \xi_I(t) \triangleq
+% % \begin{cases}
+% %  \exp\left(\int_a^t -T_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{if $I=L$},\\
+%   \exp\left(\int_a^t -\theta_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{otherwise}
+% % \end{cases}
+% \end{align*}
+% to write
+% \begin{align*}
+% %\xi_L'&= \exp\left(\int_a^t -T_L(s)+\theta_L(s)\; ds\right)\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big],\\
+% \xi_I'&= \big(T_I(t)-\theta_L(t)\big) \xi_I +\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big], \quad I\ne L,
+% \end{align*}
+% where $J_1$ runs among block indices in $I_1$ and $J_2$ in $I_2$.
+% From above, after some algebraic manipulations, we look for $\xi = [\xi_{I_1}, \xi_L, \xi_{I_2}]$ a solution of the following integral representation.
+% \begin{align}
+%  \xi_I &= \int_a^t \bigg[ \exp\left(\int_\tau^t T_I(s)-\theta_L(s)\; ds\right) \nonumber\\
+%  &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L}\Big] \bigg] \;d\tau \quad I \in I_1. \label{eq:reprI1}
+%  \intertext{This is to specify $x_I(a) = y_I(a) = 0$, for $I\in I_1$. Also pose the representation}
+%  \xi_I &= -\int_t^\infty \bigg[ \exp\left(\int_t^\tau -T_I(s)+\theta_L(s)\; ds\right) \nonumber \\
+%  &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau \quad I \in I_2, \label{eq:reprI2}\\
+%  \xi_L &= -\int_t^\infty \bigg[ \exp\left(\int_a^\tau -T_L(s)+\theta_L(s)\; ds\right) \nonumber\\
+%  &\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau. \label{eq:reprL}
+% \end{align}
+% We will show $(i)$ that there is the unique bounded solution of above integral equation; $(ii)$ that any bounded solution $\xi(t) \rightarrow 0$ as $t \rightarrow 0$.
+%
+% 1. The first assertion is shown by the contraction mapping principle. Let the right-hand-sides of the representation define the operator $S$ that sends $\xi$ to $S\xi$. Then \eqref{eq:Lcond}, \eqref{eq:I1cond}, and \eqref{eq:I2cond} implies respectively
+% \begin{align*}
+%  \Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_1\\
+% \Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_2\\
+% \Big|\big(S\xi - S\bar\xi\big)_L\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in L
+% \end{align*}
+% We used the Lemma \ref{lemma:expT}. Then $a$ can be chosen so big and let $t\ge a$ that $C(1+e^{2A})\int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$, $C(1+e^{2A})\int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$. Then $S$ is a contraction and thus has the unique solution. To prove the solution $\xi$ is bounded, we observe $|S\mathbf{0}| \le C$ by the same estimate and
+% $$ ||\xi||_\infty \le ||S\xi - S\mathbf{0}||_\infty + ||S\mathbf{0}||_\infty \le \frac{1}{2} ||\xi||_\infty + C, \quad \text{or} \quad ||\xi||_\infty \le 2C.$$
+%
+% 2. Now we prove that $\xi(t) \rightarrow 0$ as $t \rightarrow \infty$.
+% \end{proof}
+%
+%
+%
+%
+% \begin{theorem}
+%  Suppose the assumptions of Theorem hold. Assume further that $L = L_1 \cup L_2$ so that \eqref{eq:I1cond} holds for $\lambda_\ell$, $\ell\in L_1$ and \eqref{eq:I2cond} holds for $\lambda_\ell$, $\ell\in L_2$. Then for $y_L(0)\in \underset{\ell\in L_2}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_{L2}(t)$ of \eqref{eq:tri-linear} with respect to some $a$ such that
+% \begin{align}
+%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta(s)\; ds\right) x_{L_2}(s) = y_{L_2}(0).
+% \end{align}
+% \end{theorem}
+\pagebreak
 In the below we assume
 $$ \alpha\ge0, \quad n\ge0, \quad 1+m>0.$$
 We consider
@@ -163,185 +372,17 @@ At $k$-th mode $k\ge1$,
    U_k \\ \Gamma_k \\ \Sigma_k
   \end{pmatrix}.  \label{eq:k-system}
 \end{align}
-
-
-\subsection{Preliminaries: stability analysis of a non-autonomous system}
-We study the stability of a linear non-autonomous system
-$$ x'=A(t) x.$$
-The entries $A_{ij}(t)$, $i,j=1,\cdots,d$ are assumed to be bounded. As the vector field is Lipschitz in $x$, it admits the semi-group $F(t)$ (in fact a group for all $t$) characterized by the property $y(t)=F(t)y(0)$. When it is a system of non-autonomous equations, due to the coupling, the maximum of the real parts of the eigenvalues does not necessarily accounts for the operator norm of $F(t)$; $A(t)$ with negative eigenvalues can results in having an exponentially growing solution, showing $\|F(t)\|$ exponentially grows.
-
-On the contrary, like from diagonal matrices, $\|F(t)\|$ can be read off from $A(t)$ when the coupling is in an appropriate sense weaker. $A(t)$ can be by similarity transform turned into the form that has less coupling such as diagonal or Jordan normal form. The price is an additional term due that the decomposition is also time dependent. More precisely, If $A(t) = P(t)T(t)P(t)^{-1}$, and if $y\triangleq P(t)^{-1}y$ then $y$ satisfies the system
-$$ y' = T(t)y - P(t)^{-1}P'(t)y.$$
-
-Assuming the operator norm of the solution map $F(t)$ associated to $T(t)$ is computable, we look if the coupling by the remainder term is negligible. Following proposition sheds light on which cases are feasible ones.
-\begin{proposition}
- Suppose 
- \begin{equation}
-x' = T(t)x + \mathcal{E}(t)x, \label{eq:x}  
- \end{equation}
-where $T_{ij}(t)$ are bounded and the associated solution map $F(t)$ has the norm $\|F(t)\| \le h(t)$. Assume that $\mathcal{E}_{ij}(t)$ decay as $t \rightarrow \infty$ so that they are integrable, i.e.,
- $$ \int_a^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a$.}$$
- Then every solution $x(t) \le Ch(t)$, $t\ge a$. Furthermore, if $y(t)=F(t)y(0)$ is the one attains the operator norm, i.e.,
- $$ \lim_{t \rightarrow \infty}\frac{y(t)}{\|F(t)\|} = y_\infty \quad \text{nontrivial,}$$
- there is a solution $x(t)$ of \eqref{eq:x} such that $\displaystyle \frac{|x(t)-y(t)|}{\|F(t)\|} \le \frac{1}{2}\frac{|x(t)|}{\|F(t)\|}.$
-\end{proposition}
-\begin{proof}
- Without loss, we may set $h(t) = \exp\left(\int_0^t \theta(s)\; ds\right)$ by setting $\theta(t) = \log(h(t))'$. We rewrite \eqref{eq:x} in the form
- \begin{align*}
-  x' - \theta(t)x &= \big(T(t)-\theta(t)\big)x + \mathcal{E}x \quad \text{or}\\
-  \xi' &=\big(T(t)-\theta(t)\big)\xi + \mathcal{E}\xi, \quad \text{where $\xi\triangleq \exp\left(-\int_0^t \theta(s)\; ds\right) x$}.
- \end{align*}
- Let $G(t)$ be the solution map associated to $T(t)-\theta(t)$. Since $F(t)x(0)=x(t)$ \\$= \exp\left(\int_0^t \theta(s)\; ds\right)\xi(t)= \exp\left(\int_0^t \theta(s)\; ds\right)G(t)\xi(0)=\exp\left(\int_0^t \theta(s)\; ds\right)G(t)x(0)$, for all $x(0)\in \mathbb{R}^d$, $G(t) = F(t)\exp\left(-\int_0^t \theta(s)\; ds\right)$ and $\|G(t)\|$ is bounded. Using $G(t)$ we further write
- $$ \xi(t) = G(t-a)\xi(a) + \int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau.$$
- Note that if $\bar\xi$ is a bounded function then the the expression right-hand-side well-defines an operator that maps $\bar\xi$ to the one which is again bounded and has a same initial value $\xi(a)$ because $t\ge \tau\ge a$, $G$ is bounded and $\mathcal{E}$ is integrable. If $a$ is chosen so large that $\int_a^\infty \|G\| \; |\xi-\bar\xi| \; |\mathcal{E}_{ij}|\; d\tau < \frac{1}{2} |\xi-\bar\xi|$ then this is a contraction mapping. Therefore solution exists with the initial value $\xi(a)$. Since $G(t-a)$ is an invertible map, every independent solution is attained.
- From the integral representation of $\xi(t)$, we have
- Since $$|\xi(t)| \le |G(t-a)\xi(a)| + \left|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right| \le |G(t-a)\xi(a)| + \frac{1}{2} |\xi(t)|$$
- $|\xi(t)| \le 2 |G(t-a)\xi(a)| \le 2\|G\|$. This gives the boundedness of the solution. Now, let $\xi(t)$ and $\xi(a)$ be that its semi-group part is the $y(t)$ grows as same as the operator norm does. The second assertion follows from
- $$\big|\xi(t) - G(t-a)\xi(a)\big| = \left|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right| \le \frac{1}{2} |\xi(t)|.$$
-\end{proof} 
-In the below, we are going to use the various similarity transform. In the below, we give a bound of the operator norm associated to an upper triangular matrix. Also the proof for the Coddington-Levinson Theorem for the diagonal matrix is provided.
- \begin{proposition}[stability of triangular matrix]
- Suppose $y' = T(t) y$ and $T(t)$ be an upper triangular matrix with bounded entries. Suppose that there is a function $\theta(t)$ and a constant $A$ such that for all diagonal entries $\lambda_i(t)$,
- \begin{align} \label{eq:stabcond}
-%   &\lim_{t \rightarrow \infty} t^{-d} \int_0^t \theta(s)- Re\lambda_i(s)\; ds \rightarrow \infty,\\
-  &\int_{t_1}^{t_2} \theta(s)-Re\lambda_i(s)\; ds > -A \quad \text{whenever $0\le t_1 \le t_2$.}
- \end{align}
- Then for $i=1,\cdots,d$
- \begin{equation} \label{eq:triestim}
-|y_{i}(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)% \rightarrow 0 \quad \text{as $t \rightarrow \infty$.}
- \end{equation}
-\end{proposition}
-\begin{proof}
- We prove the assertion by induction in the descending order. For $i=d$, $y_d(t)=y_d(0)\exp\left( \int_0^t \lambda_d(s)\;ds\right)=y_d(0)\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_1(s)\;ds\right)$ and thus $|y_d(t)| \le Ce^A\exp\left( \int_0^t \theta(s)\;ds\right)$ by \eqref{eq:stabcond}. Now, if the statement holds for $i$, we see that
- \begin{align*}
-  y_{i-1}' -\lambda_{i-1}y_{i-1} = \sum_{j\ge i} T_{i-1,j}(t)y_j(t) = g(t)
- \end{align*}
- and $|g(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)$ for some another constant $C$ because $T_{ij}(t)$ are bounded. Therefore
- \begin{align*}
-  y_{i-1}(t) &= \exp\left( \int_0^t \lambda_{i-1}(s)\;ds\right) \left(y_{i-1}(0) + \int_0^t \exp\left( \int_0^\tau -\lambda_{i-1}(s)\;ds\right)g(\tau) \; d\tau\right)\\
-  &=\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_{i-1}(s)\;ds\right) y_{i-1}(0) \\
-  &+ \exp\left( \int_0^t \theta(s)\;ds\right)\underbrace{\int_0^t \exp\left( \int_\tau^t \lambda_{i-1}(s)-\theta(s)\;ds\right)g(\tau)\exp\left( -\int_0^\tau \theta(s)\;ds\right) \; d\tau}_{\triangleq \varphi(t)}
-  \end{align*}
- Note that $\varphi(0)=0$ and $|\varphi'(t)| = \left|g(t)\exp\left( \int_0^t -\theta(s)\;ds\right)\right|\le C\big( 1 + t + \cdots + t^{d-i}\big)$ by the assumptions. Thus $|\varphi(t)|\le C\big( 1 + t + \cdots + t^{d-i+1}\big)$ for some another constant $C$. Therefore
- $$|y_{i-1}(t)| \le C\big( 1 + t + \cdots + t^{d-i+1}\big)\exp\left( \int_0^t \theta(s)\;ds\right).$$
-\end{proof}
-\begin{remark}
- Considering that the matrix we discuss are those whose eigenvalues are of order $\tfrac{1}{t} \rightarrow 0$, the gains by the polynomial factor in the estimate \eqref{eq:triestim} can be critical because $\exp\left( \int_1^t \theta(s)\;ds\right) =\exp\left( -\int_1^t \frac{k}{s}\;ds\right) =t^{-k}.$ This is the typical behavior of the Jordan block.
-\end{remark}
-Now, we provide the proof of the Coddington-Levinson Theorem.
-
-\begin{theorem}{\cite[Diagonal Version]{CL1955}}\label{thm:CL} Let $X(t)\in \mathbb{R}^d$ and $X'(t) = \big(\Lambda(t) + R(t)\big)X$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ continuous and $R(t)$ is a matrix with entries $R_{ij}$ integrable, i.e., $\int_{a}^\infty |R_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$.
-
-For fixed $\ell$ and for some constant $K$, we say $j$ belongs to $I_1$ if
-
-$(i)$ $\int_{a}^\infty Re(\lambda_k(s) -\lambda_j(s))\; ds \rightarrow \infty$ as $t \rightarrow \infty$ and $(ii)$ $\forall (t_2, t_1), \:t_2\ge t_1 \ge a$, $\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_j(s))\; ds > -K$.
-
-We say $j$ belongs to $I_2$ if $\forall (t_2, t_1), \: t_2\ge t_1 \ge a$, $\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_j(s))\; ds < K$.
-
-Suppose that we are in situation such that for some $K$ $\forall j, j=1,\cdots,d$ belongs to either $I_1$ or $I_2$. Then there is an orbit $\varphi_\ell(t)$ $t\ge a$ and $t_0$ such that
-\begin{equation}
- \lim_{t \rightarrow \infty} \varphi_\ell(t) \exp\left(-\int_{t_0}^t \lambda_\ell(s)\; ds\right) = \hat{\ell}, \quad \text{where $\hat{\ell}$ is the $\ell$-th coordinate basis of $\mathbb{R}^d$.}
-\end{equation}
-\end{theorem}
-\begin{proof}
-{\blue proof}
-\end{proof}
-
-We can attempt to generalize the Coddington-Levinson for it to work even for block diagonal matrices, which we do not need here. However the spectral gap condition has to be strengthened to isolate a block because in general block diagonal matrix gains the polynomial factor in its semi-group operator norm.
-
-% 
-% 
-% \begin{theorem}
-% Suppose that the diagonal entries of $T(t)$ are $L^1_{loc}(a,\infty)$, off-diagonal entries are $L^1(a,\infty)$ and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}(t)$ that is integrable, i.e.,
-%  $$ \int_a^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a$.}$$
-% Fix one of the block index $L$. Suppose there is a function $\theta_L(t)$ and a constant $A$ such that
-% \begin{align} \label{eq:Lcond}
-%   \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_\ell(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$}
-% \end{align}
-% and for all diagonal entries $\lambda_\ell$ of $T_L$, $\ell\in L$.
-% Furthermore suppose for every block index $I\ne L$, either of the two following membership conditions holds.
-% 
-% We say $I\in I_1$ if
-% \begin{equation}\label{eq:I1cond}
-% \begin{aligned}
-%  &\int_0^\infty \theta_L(s) - Re\lambda_i(s) \; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for all $i\in I$.}\\
-%  &\int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds > - A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
-% \end{aligned}
-% \end{equation}
-% We say $I\in I_2$ if
-% \begin{align} \label{eq:I2cond}
-%  \int_{t_1}^{t_2} \theta_L(s) - Re\lambda_i(s) \; ds <  A, \quad \text{whenever $0\le t_1\le t_2$ and for all $i\in I$.}
-% \end{align}
-% Then for $y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_L(t)$ of \eqref{eq:tri-linear} with respect to some constant $a$ such that
-% \begin{align}
-%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t T_L(s)\; ds\right) x_L(s) &= y_L(a),\\
-%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta_L(s)\; ds\right) x_I(s) &= 0, \quad I\ne L.
-% \end{align}
-% \end{theorem}
-% \begin{proof}
-%  Let $y(t)$ be the solution of the
-%  \begin{align*}
-%   y' &= T(t)y, \quad y(a)\in \underset{\ell\in L}{ \textrm{Span}}\{\hat{\ell}\}, \quad \text{and writes}\\
-%   (x-y)' &= T(t)(x-y) + \mathcal{E}(x-y) + \mathcal{E}y.
-%  \end{align*}
-% Component-wisely,
-% \begin{align*}
-%   \left[\exp\left(\int_a^t -T_L(s)\; ds\right) (x_L-y_L)\right]' &= \exp\left(\int_a^t -T_L(s)\; ds\right)\Big[\mathcal{E}_{LJ}(x_J-y_J+y_J\big)\Big],\\
-%  \left[\exp\left(\int_a^t -\theta_L(s)\; ds\right) (x_I-y_I)\right]' &= \exp\left(\int_a^t -\theta_L(s)\; ds\right)\Big[\big(T_I(t)-\theta_L(t)\big) (x_I-y_I) + \mathcal{E}_{IJ}(x_J-y_J +y_J)\Big],
-% \end{align*}
-% for $I\ne L$.
-% Now, we define the weighted differences
-% \begin{align*}
-%  \xi_I(t) \triangleq
-% % \begin{cases}
-% %  \exp\left(\int_a^t -T_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{if $I=L$},\\
-%   \exp\left(\int_a^t -\theta_L(s)\; ds\right)(x_I(t)-y_I(t)), & \text{otherwise}
-% % \end{cases}
-% \end{align*}
-% to write
-% \begin{align*}
-% %\xi_L'&= \exp\left(\int_a^t -T_L(s)+\theta_L(s)\; ds\right)\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big],\\
-% \xi_I'&= \big(T_I(t)-\theta_L(t)\big) \xi_I +\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^t T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big], \quad I\ne L,
-% \end{align*}
-% where $J_1$ runs among block indices in $I_1$ and $J_2$ in $I_2$.
-% From above, after some algebraic manipulations, we look for $\xi = [\xi_{I_1}, \xi_L, \xi_{I_2}]$ a solution of the following integral representation.
-% \begin{align}
-%  \xi_I &= \int_a^t \bigg[ \exp\left(\int_\tau^t T_I(s)-\theta_L(s)\; ds\right) \nonumber\\
-%  &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L}\Big] \bigg] \;d\tau \quad I \in I_1. \label{eq:reprI1}
-%  \intertext{This is to specify $x_I(a) = y_I(a) = 0$, for $I\in I_1$. Also pose the representation}
-%  \xi_I &= -\int_t^\infty \bigg[ \exp\left(\int_t^\tau -T_I(s)+\theta_L(s)\; ds\right) \nonumber \\
-%  &\Big[\mathcal{E}_{I{J_1}}\xi_{J_1} + \mathcal{E}_{I{J_2}}\xi_{J_2} + \mathcal{E}_{IL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau \quad I \in I_2, \label{eq:reprI2}\\
-%  \xi_L &= -\int_t^\infty \bigg[ \exp\left(\int_a^\tau -T_L(s)+\theta_L(s)\; ds\right) \nonumber\\
-%  &\Big[\mathcal{E}_{L{J_1}}\xi_{J_1} + \mathcal{E}_{L{J_2}}\xi_{J_2} + \mathcal{E}_{LL'}\exp\left(\int_a^\tau T_L(s)-\theta_L(s)\; ds\right) \xi_{L'}\Big] \bigg] \;d\tau. \label{eq:reprL}
-% \end{align}
-% We will show $(i)$ that there is the unique bounded solution of above integral equation; $(ii)$ that any bounded solution $\xi(t) \rightarrow 0$ as $t \rightarrow 0$.
-% 
-% 1. The first assertion is shown by the contraction mapping principle. Let the right-hand-sides of the representation define the operator $S$ that sends $\xi$ to $S\xi$. Then \eqref{eq:Lcond}, \eqref{eq:I1cond}, and \eqref{eq:I2cond} implies respectively
-% \begin{align*}
-%  \Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_1\\
-% \Big|\big(S\xi - S\bar\xi\big)_I\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in I_2\\
-% \Big|\big(S\xi - S\bar\xi\big)_L\Big| &\le C(1+e^{2A})|\xi - \bar\xi| \int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau, \quad I\in L
-% \end{align*}
-% We used the Lemma \ref{lemma:expT}. Then $a$ can be chosen so big and let $t\ge a$ that $C(1+e^{2A})\int_a^t |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$, $C(1+e^{2A})\int_t^\infty |\mathcal{E}_{IJ}(\tau)| \; d\tau < \frac{1}{2}$. Then $S$ is a contraction and thus has the unique solution. To prove the solution $\xi$ is bounded, we observe $|S\mathbf{0}| \le C$ by the same estimate and
-% $$ ||\xi||_\infty \le ||S\xi - S\mathbf{0}||_\infty + ||S\mathbf{0}||_\infty \le \frac{1}{2} ||\xi||_\infty + C, \quad \text{or} \quad ||\xi||_\infty \le 2C.$$
-% 
-% 2. Now we prove that $\xi(t) \rightarrow 0$ as $t \rightarrow \infty$.
-% \end{proof}
-% 
-% 
-% 
-% 
-% \begin{theorem}
-%  Suppose the assumptions of Theorem hold. Assume further that $L = L_1 \cup L_2$ so that \eqref{eq:I1cond} holds for $\lambda_\ell$, $\ell\in L_1$ and \eqref{eq:I2cond} holds for $\lambda_\ell$, $\ell\in L_2$. Then for $y_L(0)\in \underset{\ell\in L_2}{ \textrm{Span}}\{\hat{\ell}\}$ there exists a solution $x_{L2}(t)$ of \eqref{eq:tri-linear} with respect to some $a$ such that
-% \begin{align}
-%  \lim_{t \rightarrow\infty} \exp\left(-\int_a^t \theta(s)\; ds\right) x_{L_2}(s) = y_{L_2}(0).
-% \end{align}
-% \end{theorem}
-
 \subsection{Inviscid case $n=0$:}
 When $n=0$, the polynomial \eqref{eq:poly} factorizes to get,
 $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon (2\pi k)^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
-Three roots are explicitly listed:
+By letting $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \k^2\frac{-\alpha+m}{\tau(1+m)}$ we denote the three roots by
+\begin{equation}
+\begin{aligned}
+ &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
+\end{aligned}
+\end{equation}
+Note that $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$. For $\tau$ large, $\gamma(\tau)$ dominates $\beta(\tau)^2$ inside of the square root.
+% Three roots are explicitly listed:
 
 \noindent{\bf subcase 1 $q=-\alpha+m=0$}
 \begin{align*}
@@ -349,38 +390,112 @@ Three roots are explicitly listed:
 \end{align*}
 
 \noindent{\bf subcase 2 $q=-\alpha+m>0$ for $\tau$ large}
+
+$\lambda_1(\tau)$ and $\lambda_2(\tau)$ are complex conjugate of each other with the same negative real parts $-\beta(\tau)$ that is of order $\frac{1}{\tau}$.
+
+\noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\tau$ large}
+
+All eigenvalues are real. $\lambda_1(\tau)>0$ and $\lambda_2(\tau),\lambda_3(\tau)<0$. While $\lambda_3(\tau)$ is of order $\mathcal{O}\big(\frac{1}{\tau}\big)$, $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are of order $\mathcal{O}(\sqrt{\gamma(\tau)})$. This leads to $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$.
+
+\begin{theorem}[inviscid linear stability of uniform shear] Asymptotic stability of the uniform shear bifurcates by the sign of $q=-\alpha+m$:
+ \begin{enumerate}
+  \item If $q=-\alpha+m=0$, $\alpha>0$ then the uniform shear is marginally stable: For all $k\ge 1$ and for any solution $x_k(t)$ of the system $\eqref{eq:k-system}_k$, $|x_k(t)| < C$.
+  \item If $q=-\alpha+m>0$, then the uniform shear is stable: For all $k\ge 1$ and for any solution $x_k(t)$ of the system $\eqref{eq:k-system}_k$, $|x_k(t)| = \mathcal{O}\big(\tau^{-z}\big)$ as $t \rightarrow \infty$, $z = \min \left\{\frac{1+\alpha}{1+m}, 1+\alpha\right\}$.
+  \item If $q=-\alpha+m<0$, then the uniform shear is unstable: For each $k\ge 1$, there is a growing mode $x_k(t)$ of the system $\eqref{eq:k-system}_k$, $\exp\left(-C_1\k\sqrt{\tau}\right)|x_k(t)| \rightarrow C_2$ for some $C_1,C_2> 0$.
+ \end{enumerate}
+\end{theorem}
+\begin{proof}
+We are studying non-autonomous system with coefficient
+$$ A(\tau) =
+   \begin{pmatrix}
+   0 & 0 & -(2\pi k)^2\\
+   \frac{1}{\tau}\frac{1+\alpha}{1+m} & -\frac{1}{\tau}\frac{1+\alpha}{1+m} & 0\\
+   \frac{1}{\tau}\Big( \frac{-\alpha+m}{1+m}\Big) &
+   \frac{1}{\tau}\Big(m\frac{-\alpha+m}{1+m}\Big) &
+   -\frac{1}{\tau}(1+\alpha)
+  \end{pmatrix}.$$
+First, the degenerate case $\alpha=m=n=0$ can be dealt with from \eqref{eq:linsystem}, where $\Sigma\equiv U \equiv 0$ and $\Gamma$, $\Theta$ decays exponentially to $0$.
+When $-\alpha+m=0$, $\alpha>0$ straightforward calculations give the expression for the general solution
+$$x_k(t) = C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix} + C_2 \begin{pmatrix} 0 \\ \frac{1}{\tau} \\0 \end{pmatrix} + C_3 \begin{pmatrix} -\k^2 \int_1^\tau \frac{1}{s^{1+\alpha}}\; ds \\ \frac{-\k^2}{\tau}\int_1^\tau  \int_1^t \frac{1}{s^{1+\alpha}}\; ds dt\\ \frac{1}{\tau^{1+\alpha}} \end{pmatrix}  \rightarrow C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix}\quad \text{as $\tau \rightarrow \infty$ if $\alpha>0$.}$$
+
+Now we prove the second assertion for $-\alpha+m>0$. We find the following similarity transform suitable for its study which is a {\it modified version} of the real Jordan normal from.
+\begin{align}
+ y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} 1 & 0 & -m\\0 & \frac{1+\alpha}{1+m} & 1\\0 & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
+ y_k' &= \begin{pmatrix} 0 & \frac{1}{\tau} & 0\\-\k^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & 0\\0 & 0 & -\frac{1+\alpha}{\tau}\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block1}
+\end{align}
+To justify this similarity transform, not diagonalizing $A(\tau)_k$, observe the following spectral properties of $A(\tau)_k$: All three eigenvalues are distinct and have negative real parts for finite $\tau$ but collapse down to a single value $0$ as $\tau \rightarrow \infty.$ Furthermore, the eigenvectors associated to $\lambda_1$, $\lambda_2$, and $\lambda_3$ are respectively
 \begin{align*}
- \lambda_1(\tau) &= - \frac{1}{\tau}\frac{1+\alpha}{2(1+m)} + i\frac{1}{\sqrt{\tau}}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\frac{1}{\tau} \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
- \lambda_2(\epsilon) &= - \frac{1}{\tau}\frac{1+\alpha}{2(1+m)} - i\frac{1}{\sqrt{\tau}}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\frac{1}{\tau} \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
- \lambda_3(\epsilon) &= -\frac{1}{\tau}(1+\alpha)<0.
+ s_1&=s^+, \quad s_2=s^-, \quad s_3 = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
+ s^\pm &= s_{re} \pm is_{im} = \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix} \pm i\frac{1}{\sqrt{\tau}}\begin{pmatrix}  \sqrt{\gamma(\tau)-\beta(\tau)^2}\\0\\0 \end{pmatrix}.
 \end{align*}
-% Note that for sufficiently small $\epsilon$, we have an order
+They are linearly independent for finite $\tau$ but the first two collapse down to one because the real parts of $s^\pm$ vanishes in the limit. Nevertheless, we can appeal to the block diagonalization.
+
+We claim that the norms of the solution operator $G_1(\tau)$ associated to the block $B_1=\begin{pmatrix} 0 & \frac{1}{\tau} \\-\k^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & \end{pmatrix}$ and $G_2(\tau)$ of $B_2 = -\frac{1+\alpha}{\tau}$ decays as $\tau \rightarrow \infty.$ The latter one is obvious.
+In view of the discussion in the preceding section, it is not enough to have spectrum with negative real parts especially for the block matrices when eigenvalues are of order $\mathcal{O}\big(\frac{1}{\tau}\big)$ because the gain of the polynomial factor in the solution operator norm becomes fatal in the stability.
+Let $$\xi' = \frac{1}{\tau} \eta, \quad \eta' = -\k^2\frac{-\alpha+m}{1+m}\xi -\frac{1+\alpha}{\tau(1+m)}\eta.$$
+First note that unless otherwise $\xi\equiv\eta\equiv 0$, $\displaystyle\lim_{\tau \rightarrow 0} \frac{\tau^{\frac{1+\alpha}{1+m}}\eta(\tau)}{\xi(\tau)}$ exists and coincides with $0$.
+
+Given that and for $\tau\ge0$,
+\begin{align*}
+% \left(\frac{\eta}{\xi}\right)' &= -\k^2\frac{-\alpha+m}{1+m} - \frac{1+\alpha}{\tau(1+m)}\left(\frac{\eta}{\xi}\right)-\frac{1}{\tau}\left(\frac{\eta}{\xi}\right)^2,\\
+ \left(\tau^{\frac{1+\alpha}{1+m}}\frac{\eta}{\xi}\right)' &=  -\k^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}  -\tau^{\frac{1+\alpha}{1+m}+1}\left(\frac{\eta}{\xi}\right)^2 \le -\k^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}},\\
+ \frac{\tau \xi'}{\xi} &\le -\k^2\frac{-\alpha+m}{2+\alpha+m}\tau,\\
+ \frac{|\xi(t)|}{|\xi(0)|} &\le \exp\left(-\k^2\frac{-\alpha+m}{2+\alpha+m}\tau\right).
+\end{align*}
+Now,
+\begin{align*}
+ \left(\tau^{\frac{1+\alpha}{1+m}} \eta\right)' &= -\k^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}\xi \le \k^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|,\\
+ \tau^{\frac{1+\alpha}{1+m}} \eta &\le \int_0^t C(k)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \int_0^\infty C(k)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \tilde{C}(k).
+\end{align*}
+We have proved that $\|G_1(\tau)\| \le C(k)\tau^{-\frac{1+\alpha}{1+m}}$=. Since two blocks $B_1$ and $B_2$ are decoupled, if $G(\tau)$ is the solution map, then $\|G(\tau)\| \le \max\left\{C(k)\tau^{-\frac{1+\alpha}{1+m}},\tau^{-(1+\alpha)}\right\}$. By Proposition \ref{prop:stab}, the solution $y_k$ of \eqref{eq:block1} and $x_k$ as well decays with the same order.
+
+Now, we prove the third assertion. If $-\alpha+m < 0$, then all eigenvalues are real. We find the following triangularization suitable. Same reasoning applies for not diagonalizing $A(\tau)_k$.
+\begin{align}
+ y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \frac{1}{\sqrt{\tau}}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
+ y_k' &= \begin{pmatrix} \lambda_1(\tau) & \frac{\lambda_1(\tau)}{\sqrt{\tau}} & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
+\end{align}
+As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix is regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix. It is enough for our purpose to show that there exists a solution that grows as much as the semi-group part does. The operator norm of $H(\tau)$ is easily computed by Proposition \ref{prop:tri-stab}. To be precise, as the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ the growth is $\exp\left( \int_a^t \lambda_1(s)\;ds\right)$.% \sim \exp\left(C_1\k\sqrt{\tau}\right).$
+\end{proof}
+
+
+%
+%
+%
 % \begin{align*}
-%  Re(\lambda_0)< Re(\lambda)=Re(\lambda^*) < 0, \quad \text{if $m>0$},\\
-%  Re(\lambda)=Re(\lambda^*) < Re(\lambda_0) < 0, \quad \text{if $m<0$}
+% %  \lambda_1(\tau) &= - \frac{1}{\tau}\frac{1+\alpha}{2(1+m)} + i\frac{1}{\sqrt{\tau}}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\frac{1}{\tau} \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
+% %  \lambda_2(\epsilon) &= - \frac{1}{\tau}\frac{1+\alpha}{2(1+m)} - i\frac{1}{\sqrt{\tau}}(2\pi k)\sqrt{\frac{-\alpha+m}{1+m}}\sqrt{\Big(1-\frac{1}{\tau} \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
+% %  \lambda_3(\epsilon) &= -\frac{1}{\tau}(1+\alpha)<0.
 % \end{align*}
-% and the order is preserved as $\epsilon \rightarrow 0^+$.
-
-
-\noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\tau$ large:}
-\begin{align*}
- \lambda_1(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} + \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
- \lambda_2(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} - \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
- \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0.
-\end{align*}
-
-\begin{align*}
- \lambda_1(\epsilon) &= +\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{2(1+m)} + \mathcal{O}(\epsilon^{\frac{3}{2}}) > 0,\\
- \lambda_2(\epsilon) &= -\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{2(1+m)} + \mathcal{O}(\epsilon^{\frac{3}{2}}) < 0,\\
- \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0.
-\end{align*}
-By letting $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \k^2\frac{-\alpha+m}{\tau(1+m)}$ we denote the three roots by
-\begin{equation}
-\begin{aligned}
- &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda(\tau) = -\frac{1+\alpha}{\tau},
-\end{aligned}
-\end{equation}
-where the square root is understood as the branch of nonnegative imaginary part.
+% % Note that for sufficiently small $\epsilon$, we have an order
+% % \begin{align*}
+% %  Re(\lambda_0)< Re(\lambda)=Re(\lambda^*) < 0, \quad \text{if $m>0$},\\
+% %  Re(\lambda)=Re(\lambda^*) < Re(\lambda_0) < 0, \quad \text{if $m<0$}
+% % \end{align*}
+% % and the order is preserved as $\epsilon \rightarrow 0^+$.
+%
+%
+% \noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\tau$ large:}
+% \begin{align*}
+%  \lambda_1(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} + \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
+%  \lambda_2(\epsilon) &= - \epsilon\frac{1+\alpha}{2(1+m)} - \sqrt{\epsilon}(2\pi k)\sqrt{\frac{\alpha-m}{1+m}}\sqrt{\Big(1-\epsilon \frac{(1+\alpha)^2}{4(2\pi k)^2(-\alpha+m)(1+m)}\Big)},\\
+%  \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0.
+% \end{align*}
+% By letting $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \k^2\frac{-\alpha+m}{\tau(1+m)}$ we denote the three roots by
+% \begin{equation}
+% \begin{aligned}
+%  &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau},
+% \end{aligned}
+% \end{equation}
+% $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$. If $-\alpha+m=0$ then $\gamma \equiv 0$
+%
+%
+% where the square root is understood as the branch of nonnegative imaginary part.
+% \begin{align*}
+%  \lambda_1(\epsilon) &= +\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{2(1+m)} + \mathcal{O}(\epsilon^{\frac{3}{2}}) > 0,\\
+%  \lambda_2(\epsilon) &= -\sqrt{\epsilon} (2\pi k)\sqrt{\frac{\alpha-m}{1+m}} - \epsilon\frac{1+\alpha}{2(1+m)} + \mathcal{O}(\epsilon^{\frac{3}{2}}) < 0,\\
+%  \lambda_3(\epsilon) &= -\epsilon(1+\alpha)<0.
+% \end{align*}
+%
 
 % Note that for sufficiently small $\epsilon$, we have an order
 % \begin{align*}
@@ -396,42 +511,42 @@ where the square root is understood as the branch of nonnegative imaginary part.
 % \begin{proof}
 %  Implicit function theorem by Lars Hormander.
 % \end{proof}
-\noindent{\bf Diagonalization:}
-
-We have eigenvectors expansion as in the below, which says the matrix becomes singular in the limit.
-\begin{align*}
- S(\epsilon) =
- \begin{pmatrix}
-  1 & 1 & 1 \\
-  0 & 0 & 0 \\
-  0 & 0 & 0
- \end{pmatrix}
- &+\sqrt\epsilon  \begin{pmatrix}
-  \frac{1+m}{1+\alpha}(2\pi k) \sqrt{-\frac{-\alpha+m}{1+m}} & -\frac{1+m}{1+\alpha}(2\pi k) \sqrt{-\frac{-\alpha+m}{1+m}} & 0 \\
-  0 & 0 & 0 \\
-  -\frac{1}{2\pi k}\sqrt{-\frac{-\alpha+m}{1+m}} & \frac{1}{2\pi k}\sqrt{-\frac{-\alpha+m}{1+m}} & 0
- \end{pmatrix}\\
- &+\epsilon\begin{pmatrix}
-  - \frac{1}{2} & - \frac{1}{2} & -(1+m) \\
-  1 & 1 & 1 \\
-  \frac{-\alpha+m}{1+\alpha}+\frac{1+\alpha}{2(2\pi k)^2(1+m)}  & -\frac{-\alpha+m}{1+\alpha} +\frac{1+\alpha}{2(2\pi k)^2(1+m)} & \frac{1+\alpha}{(2\pi k)^2}
- \end{pmatrix}
- + \cdots,
-\end{align*}
-where the square root is understood to take the branch of nonnegative imaginary part.
-
-{\blue Eigenvector formula
-\begin{align*}
- \begin{pmatrix}
-  \epsilon+ \frac{1+m}{1+\alpha}\lambda(\epsilon) \\ \epsilon \\ -\frac{\lambda(\epsilon)}{(2\pi k)^2} \Big(\epsilon + \frac{1+m}{1+\alpha}\lambda(\epsilon)\Big)
- \end{pmatrix}
-\end{align*}
-}
-
-
+% \noindent{\bf Diagonalization:}
+%
+% We have eigenvectors expansion as in the below, which says the matrix becomes singular in the limit.
+% \begin{align*}
+%  S(\epsilon) =
+%  \begin{pmatrix}
+%   1 & 1 & 1 \\
+%   0 & 0 & 0 \\
+%   0 & 0 & 0
+%  \end{pmatrix}
+%  &+\sqrt\epsilon  \begin{pmatrix}
+%   \frac{1+m}{1+\alpha}(2\pi k) \sqrt{-\frac{-\alpha+m}{1+m}} & -\frac{1+m}{1+\alpha}(2\pi k) \sqrt{-\frac{-\alpha+m}{1+m}} & 0 \\
+%   0 & 0 & 0 \\
+%   -\frac{1}{2\pi k}\sqrt{-\frac{-\alpha+m}{1+m}} & \frac{1}{2\pi k}\sqrt{-\frac{-\alpha+m}{1+m}} & 0
+%  \end{pmatrix}\\
+%  &+\epsilon\begin{pmatrix}
+%   - \frac{1}{2} & - \frac{1}{2} & -(1+m) \\
+%   1 & 1 & 1 \\
+%   \frac{-\alpha+m}{1+\alpha}+\frac{1+\alpha}{2(2\pi k)^2(1+m)}  & -\frac{-\alpha+m}{1+\alpha} +\frac{1+\alpha}{2(2\pi k)^2(1+m)} & \frac{1+\alpha}{(2\pi k)^2}
+%  \end{pmatrix}
+%  + \cdots,
+% \end{align*}
+% where the square root is understood to take the branch of nonnegative imaginary part.
+%
+% {\blue Eigenvector formula
+% \begin{align*}
+%  \begin{pmatrix}
+%   \epsilon+ \frac{1+m}{1+\alpha}\lambda(\epsilon) \\ \epsilon \\ -\frac{\lambda(\epsilon)}{(2\pi k)^2} \Big(\epsilon + \frac{1+m}{1+\alpha}\lambda(\epsilon)\Big)
+%  \end{pmatrix}
+% \end{align*}
+% }
 
 
-\subsection{Characteristic polynomial of $A_k(\tau)$}
+
+
+% \subsection{Characteristic polynomial of $A_k(\tau)$}
 Let $\lambda_i(\tau)$, $i=1,2,3$ be the three eigenvalues of $A_k(\tau)$. %We have
 % \begin{equation} \label{eq:eig_sum_mult}
 %  \begin{aligned}
@@ -474,7 +589,6 @@ nz^2 + z\Big( \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \frac{(1+\alpha)(
 \end{equation}
 From that we can see if $q=-\alpha+m+n>0$ then the real parts of two roots of \eqref{eq:auxquad} must be negative because $z_2+z_3 = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_2z_3=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
 In each of the regime, the perturbation on $\epsilon$ is regular as exposed in the below.
-
 
 \subsection{Viscous case $n>0$}
 For a technical reason we assume the following, which holds if and only if \eqref{eq:auxquad} does not have a double root.
@@ -685,26 +799,56 @@ for $\ell_1$ \emph{positive} and $\ell_2$ \emph{negative}. Their expansions in $
 % Thus the second assertion follows.
 %
 % \end{proof}
-
-
-
-\section{Nonlinear stability of uniform shear}
-{\blue Can I use the method of invariant region?}
 %
-% \noindent{\bf Case $-\alpha+m+<0$, $n>0$:}
 %
-% \noindent{\bf Case $-\alpha+m+<0$, $n=0$:}
-% The positive real root is unbounded?
+%
+% \section{Nonlinear stability of uniform shear}
+% {\blue Can I use the method of invariant region?}
+% %
+% % \noindent{\bf Case $-\alpha+m+<0$, $n>0$:}
+% %
+% % \noindent{\bf Case $-\alpha+m+<0$, $n=0$:}
+% % The positive real root is unbounded?
+%
+\section{Localizing self-similar solutions}
 
 \section{Numerical computation of the heteroclinic orbit}
+To summarize the goal of this section, we aim to capture the single heteroclinic orbit curve that emanates from $M_0$ in the direction of $X_{01}$ and is attracted to $M_1$. It exists as a curve on 2-surface of $W^u(M_0)\cap W^s(M_1)$, the intersection of two 3-dimensional manifolds in $\mathbb{R}^4$. The difficulty lies in that both of $M_0$ and $M_1$ are saddle points: The numerical time integration in both forward and backward time direction suffers the instability due to the extra unstable dimension.
+
+The method of continuation developed in {\blue (Doedle, Friedman)} was successfully applied on our objective.
+
+In the below, we demonstrate the procedure for the characterization of the heteroclinic.
+\subsection{Continuation by AUTO}
+{\bf \noindent Step 1}
+The system when $\alpha=0$ is especial that the equations for $p$, $q$, and $r$ decouples from that for $s$. The reduced system carries only the three dimensional unstable manifold of $M_0$, characterizing the heteroclinic orbit a node-saddle connection. In principle, by running time backward and shooting the orbit in the small neighborhood of $M_1$, any heteroclinic orbit can be computed as accurate as the numerical time integrator allows. Even more exact preparation has been carried out. The plane $p\equiv0$ is especial that the equation $q$ decouples from the rest. The following 1-parameter family of explicit solutions precisely specifies one curve on the plane. These explicit formulas are available when $n= \frac{1}{k}$, $k$ integer.
+\begin{align}
+ p&\equiv0, \quad q(t) = \frac{1}{1+C_1e^{-t}},\\
+ r(t) &= \frac{r_0 \left(C_1 + e^t\right)^k}{ \displaystyle \sum_{j=0}^k \frac{kW_0}{kW_0 -j}\begin{pmatrix} k\\j\end{pmatrix}C_1^{k-j} e^{jt}} , \quad \text{where $W_0= - \frac{(m+n)r_0}{\lambda}$}.
+\end{align}
+$C_1$ accounts for the time translation factor and we pick $C_1=1$.
+
+{\bf \noindent Step 2}
+In the step 2, we integrate $s$ by numerical time integrator in $[-10,10]$. The timespan was so chosen for $(p,q,r,s)|_{t=\pm10}$ respectively falls into the point within our tolerance of closeness to $M_0$ and $M_1$. The starting point of shooting is $(p,q,r,s)|_{t=-10} = M_0 + \epsilon_0 \nu_0$, $\nu_0 = X_{02}$, meaning that the distance from $M_0$ is $\epsilon_0$ and the orbit is on the $p\equiv0$ plane. Having those fixed, the following non-autonomous equation is integrated from $-10$ to $10$.
+$$\dot{s} =s\Big(\frac{-m-n}{\lambda}(r(t)-a) + \lambda p(t)r(t) + q(t) - \frac{1}{\lambda}r(t)\big(s- (1+m+n)\big) - \frac{n}{\lambda}\Big).$$
+
+After calculation, at the finial point $(p,q,r,s)|_{t=10}$, we project the vector $(p,q,r,s)|_{t=10}- M_1$ to the stable {\it subspace} of $M_1$, where we can explicitly calculate $\epsilon_1$ and $\nu_1 \in \underset{}{ \textrm{Span}}\{X_{11},X_{12},X_{14}\}$, $|\nu_1|=1$ such that
+$\pi\big((p,q,r,s)|_{t=10}- M_1\big) =\epsilon_1 \nu_1$.
+
+At this stage, the data $(p,q,r,s)(t)$ for a fixed orbit, which is for $\alpha=0$ and is on the $p\equiv0$ plane,  $t\in[-10,10]$ at $t_i$, $i=0,\cdots,N$ grid points are at ready. This can be prepared as accurate as the numerical time integrator allows. 
+
+{\bf \noindent Step 3}
+We run \texttt{AUTO} that starts off from the above prepared data. In this first run, we keep $\nu_0$ fixed but allowing $\alpha$, $m$, $\lambda$, $\epsilon_0$, $\epsilon_1$, $\nu_1$ continued.  The goal is to let \texttt{AUTO} capture the orbit that is still on $p\equiv0$ plane but with $\alpha$ not anymore trivial.
+
+{\bf \noindent Step 4}
+Among orbits captured in the Step 3, we pick one and conduct the second \texttt{AUTO} run from it. Importantly, we keep now $\alpha$, $m$, $\lambda$, $n$ fixed but vary $\nu_0$ in $\underset{}{ \textrm{Span}}\{X_{01},X_{02},X_{03}\}$. The goal is to capture {\it the heteroclinic orbit} with $\nu_0=X_{01}$. By this run, we are capturing the 2-surface of the heteroclinic orbits that is $W^u(M_0)\cap W^s(M_1)$. \texttt{AUTO} not only was able to capture as many heteroclinics on the 2-surface as we demanded but to capture the heteroclinic with $\nu_0$ practically coincides with $X_{01}$.
 
 \pagebreak
 \appendix
-\section*{Appendix}
+% \section*{Appendix}
 \renewcommand\thetheorem{\Alph{theorem}}
 \newcounter{tmp}
 \setcounter{theorem}{\thetmp}
-% \section{Analyticity of a simple root of a polynomial}
+\section{Analyticity of a simple root of a polynomial}
 
 
 
@@ -713,7 +857,7 @@ $$ \det\Big( \frac{\partial f_j}{\partial w_k} \Big)_{j,k=1}^m \ne 0 \quad \text
 Then the equations $f_j(w,z)=0$, $j=1,\cdots,m$ have a uniquely determined analytic solution $w(z)$ in a neighborhood of $z_0$, such that $w(z^0)=w^0$.
 \end{theorem}
 
-\section{Index conditions of Coddington-Levinson} \label{sec:Index}
+% \section{Index conditions of Coddington-Levinson} \label{sec:Index}
 
 In the below we check the index condition of the Coddington-Levinson.
 
