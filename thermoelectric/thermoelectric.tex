@@ -2,7 +2,7 @@
 %
 %    thermalelectric equation
 %
-%                                                      by
+%                                                      
 %
 %                                       
 %
@@ -42,58 +42,8 @@
 \def\div{\,\textrm{div}\,}
 \def\sgn{\,\textrm{sgn}\,}
 
-\def\th{\tilde{h}}
-\def\tx{\tilde{x}}
-\def\tk{\tilde{\kappa}}
-
-
-\def\bg{{\bar{\gamma}}}
-\def\bv{{\bar{v}}}
-\def\bth{{\bar{\theta}}}
-\def\bs{{\bar{\sigma}}}
-\def\bu{{\bar{u}}}
-\def\bph{{\bar{\varphi}}}
-
-
-\def\tg{{\tilde{\gamma}}}
-\def\tv{{\tilde{v}}}
-\def\tth{{\tilde{\theta}}}
-\def\ts{{\tilde{\sigma}}}
-\def\tu{{\tilde{u}}}
-\def\tph{{\tilde{\varphi}}}
-
-\def\dtg{{\dot{\tilde{\gamma}}}}
-\def\dtv{{\dot{\tilde{v}}}}
-\def\dtth{{\dot{\tilde{\theta}}}}
-\def\dts{{\dot{\tilde{\sigma}}}}
-\def\dtu{{\dot{\tilde{u}}}}
-\def\dtph{{\dot{\tilde{\varphi}}}}
-
-\def\dpp{\dot{p}}
-\def\dqq{\dot{q}}
-\def\drr{\dot{r}}
-\def\dss{\dot{s}}
-
-\def\ta{{\tilde{a}}}
-\def\tb{{\tilde{b}}}
-\def\tc{{\tilde{c}}}
-\def\td{{\tilde{d}}}
-
-\def\BO{{\mathcal{O}}}
-\def\lio{{\mathcal{o}}}
-
-
-
-\def\bx{\bar{x}}
-\def\bm{\bar{\mathbf{m}}}
-\def\K{\mathcal{K}}
-\def\E{\mathcal{E}}
-\def\del{\partial}
-\def\eps{\varepsilon}
-
 \newcommand{\tcr}{\textcolor{red}}
 \newcommand{\tcb}{\textcolor{blue}}
-
 \newcommand{\ubar}[1]{\text{\b{$#1$}}}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}[section]
@@ -109,7 +59,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \title{thermoelectic problem}
-\author{Jaywan Chung\footnotemark[1] \and Min-Gi Lee\footnotemark[2]} %\ \footnotemark[3]  % \footnotemark[4]}
+% \author{Jaywan Chung\footnotemark[1] \and Min-Gi Lee\footnotemark[2]} %\ \footnotemark[3]  % \footnotemark[4]}
 \date{}
 
 \maketitle
@@ -125,6 +75,58 @@
 \end{abstract}
 
 \tableofcontents
+
+\begin{equation}
+ \begin{aligned}
+  u_t &= \nabla\cdot\big(k(u)\nabla u\big) - J[u]\cdot\alpha'(u)u\nabla u + |J[u]|^2 \rho(u), & &\text{in $U\in \mathbb{R}^d$},\\
+  u&= g, & &\text{on $\partial U$},
+ \end{aligned}
+\end{equation}
+
+\section{1-dimensional problem}
+\begin{equation}
+ \begin{aligned}
+  u_t &= \big(k(u)u_x\big)_x - J[u]\alpha'(u)uu_x + |J[u]|^2 \rho(u), \quad\text{in $[0,L]$},\\
+  u(t,0)&=u_H, \quad u(t,L)=u_C, \quad u_H>u_C>0,\\
+  u(0,x) &= u_0(x),\\
+  J[u](t)&= \frac{\int_{u_C}^{u_H} \alpha(s)\; ds}{ \int_0^L \rho(u(t,x))\; dx + \rho_0} = \frac{V(u_H,u_C)}{\int_0^L \rho(u(t,x))\; dx + \rho_0}, \quad \rho_0>0
+ \end{aligned}\label{eq:S1}
+\end{equation}
+
+Note that $J[u] \le \frac{V(u_H,u_C)}{\rho_0}$ and thus the reaction term $J[u]^2\rho(u) \le M\rho(u)$ and the reactive behavior depends mainly on the growth of $\rho$. If $\rho$ is like quadratic, solution in general is expected to blow up in a finite time. If $\rho$ grows at most linearly, then solution is expected to exists globally in time and in this case according to the size of $J[u]$, the solution would either grow exponentially or converges to the stationary solution. Lastly, if $\rho$ is just bounded then the solution at most grows linearly and under the assumption on the growth of $\alpha$, we expect the solution is even bounded. The paper by Chung and Ryu captures the linear growth pictures. In the below, we focus on studying the last case.
+
+\begin{definition} $\alpha(u)$ and $\rho(u)$ are sufficiently smooth functions that satisfy
+\begin{enumerate}
+ \item $0\le\rho(u)\le C$.
+%  \item $\rho\ge0$ and $\rho$ is globally lipshitz with $Lip(\rho) \le \lambda_1$, where $\lambda_1$ is the first eigenvalue.
+ \item $\alpha>0$, $|\alpha'(u)|\le C$.
+\end{enumerate}
+\end{definition}
+
+Note that $J[u] \le \frac{V(u_H,u_C)}{\rho_0}$ and $\rho(u)\le C$, so the reaction term $J[u]^2\rho(u) \le M$. Thus we expect at most linear growth of the solution. Moreover since we are prescribing the Dirichilet boundary condition with diffusion, we may expect the heat produced internally is transported and cooled down through the boundary. This consideration leads to probe possibility of having envelop of the solution.
+
+Let $A$ be the operator
+$$A[u] \triangleq \big(k(u)u_x\big)_x - J[u]\alpha'(u)uu_x - u_t$$
+
+\begin{lemma}
+ $A$ is a nonlinear parabolic operator.
+\end{lemma}
+\begin{lemma}
+ $u\equiv0$ is a lower solution.
+\end{lemma}
+\begin{proposition}
+$w(x) = -\frac{a}{2}x^2 + bx + c$ is an upper solution 
+\end{proposition}
+\begin{theorem}
+ The parabolic problem \eqref{eq:S1} has the unique classical solution.
+ 
+ The elliptic problem has the classical solution.
+\end{theorem}
+
+
+
+
+
 
 
 \begin{thebibliography}{10}
