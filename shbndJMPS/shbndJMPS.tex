@@ -118,7 +118,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{Localization in thermo-plasticity}
+\title{Dynamic shear band formation in thermoplastic material}
 \author{Theodoros Katsaounis\footnotemark[1]\ \footnotemark[2]
 \and Min-Gi Lee\footnotemark[1]
 \and Athanasios Tzavaras\footnotemark[1]\  \footnotemark[2]  \footnotemark[3]}
@@ -132,11 +132,10 @@
 %\footnotetext[4]{Research supported by the King Abdullah University of Science and Technology (KAUST) }
 \renewcommand{\thefootnote}{\arabic{footnote}}
 \begin{abstract}
-This article is devoted to the explanation of
-the onset of localization and the formation of shear bands in high strain-rate plasticity of metals.
-We employ a power law constitutive model and show Hadamard instability for the
-linearized problem. For the nonlinear model,  ....  We construct self-similar solutions that describe
-the self-organization into a localized solution starting from well prepared data.
+
+
+This article is devoted to the explanation of the onset of localizing instability and the dynamic formation of shear band in high strain-rate plasticity of metals. Our objective is to scrutinize the power law constitutive model in a designated range of exponents. The linearized problem is first treated, to observe the critical role of the viscosity; we show Hadamard type instability in the inviscid law and Turing type instability in the viscous law. Typical difficulty of having non-autonomous terms in the linearized problem arises, which stems from that the uniform shearing solution, around which the system is linearized, is not a steady state but an evolutionary state. Next, for the nonlinear model we construct self-similar solutions that describe
+the self-organization into a localized solution starting from well prepared data. These special solutions are formulated to be found as associated heteroclinic orbits of the certain parametrized dynamical system. The actual construction is achieved via geometric singular perturbation theory. This captured heteroclinic orbit is then numerically constructed as well. To this end we employed the method of continuation, using the package \texttt{AUTO}, in capturing the saddle-saddle heteroclinic connection. 
 \end{abstract}
 
 % \tableofcontents
@@ -849,7 +848,7 @@ Through the series of works of \cite{KOT14,KLT_16, KLT_HYP2016, KLT17}, solution
 
 Our main results are stated in the following two Theorems.
 \begin{theorem}[\cite{KLT17}] \label{mainthm1}
-Let $(\alpha, m, n)$ be the material parameters such that \eqref{eq:range}, $-\alpha+m+n<0$,  and . Provided $n>0$ is sufficiently small, for each $U_0>0$ and $\Gamma_0>0$ whose ratio is in the interval
+Let $(\alpha, m, n)$ be the material parameters such that \eqref{eq:range}, $-\alpha+m+n<0$. Provided $n>0$ is sufficiently small, for each $U_0>0$ and $\Gamma_0>0$ whose ratio is in the interval
 \begin{equation} \label{eq:restriction}
  \frac{2(1+\alpha) -n}{D} < \frac{U _0}{\Gamma _0} < \frac{2(1+\alpha) -n}{D} + \frac{4(1+\alpha)(\alpha-m-n)(1+m)}{D(1+m+n)^2},
 \end{equation}
@@ -940,7 +939,7 @@ Second we observe is its own scale invariance of the system for self-similar var
 \bS _R(\xi)&=\rho^ \frac{2(-\alpha+m+n)}{D}\bS(\rho\xi), & \bV _R(\xi) &=\rho^ {\frac{2(1+ \alpha)}{D}-1}\bV(\rho\xi)
 \end{align*}
 }
-One could consider the monomial solutions that are self-similar to \eqref{eq:sseq}. This is not compatible to \eqref{eq:extension_cond} but this symetry allows us to consider a sort of relatively perturbed variables which entail the nice scaling property to some extent. We introduce residuals
+One could consider the monomial solutions that are self-similar to \eqref{eq:sseq}. This is not compatible to \eqref{eq:extension_cond} but this symetry allows us to consider a sort of relatively perturbed variables which entail the nice scaling property. We introduce residuals
 \begin{align*}
 \bg(\xi) &= \xi^ \frac{2(1+ \alpha)}{D}\bG(\xi), & \bu(\xi) &= \xi^ \frac{2(1+ m+n)}{D}\bU(\xi), &
 \bth(\xi)&=\xi^ \frac{2(1+ \alpha)}{D}\bTh(\xi), \\
@@ -958,8 +957,8 @@ Along defining new variables, we also introduce the independent variable $\eta =
 \end{equation}
 Again, $\eqref{eq:tildesys}_1$ is replaceble by
 $$\frac{1+ \alpha}{D} \tv + \lambda \dot\tv = d_1 \ts -\dot\ts, \quad \text{with relation} \quad \tu = -\frac{1+m+n}{D}\tv + \dot\tv.$$
-Note that this is an autonomous system. Before we complete the formulation, one technical point needs to be clarified. The existence theorem in \cite{KLT17} will be quoted in our presentation but the system (18) in \cite{KLT17} has different numerical numbers from \eqref{eq:tildesys} has; it has been derived from \eqref{PLS} of the original formulation while we derived \eqref{eq:tildesys} from \eqref{eq:system} of relative perturbations. The constant multiple of $(\tu_1,\tg_1,\tth_1,\tv_1)=\frac{1+m}{1+\alpha}^{\frac{1}{-\alpha+m+n}}(\tu,\tg,\tth,\tv)$ with the $\lambda_1 =\frac{1+m}{1+\alpha}\lambda$ give the system (18), saying there are no essential differences between the two. While we find the current formulation more systematic, not to reproduce the proof over again, we proceed with the system (18) in \cite{KLT17} without annotating subscripts, which is
-\begin{equation} \label{eq:tildesys}
+Note that this is an autonomous system. Before we complete the formulation, one technical point needs to be clarified. The existence theorem in \cite{KLT17} will be quoted in our presentation but the system (18) in \cite{KLT17} has different numerical numbers from \eqref{eq:tildesys} has; it has been derived from \eqref{PLS} of the original formulation while we derived \eqref{eq:tildesys} from \eqref{eq:system} of relative perturbations. The constant multiple of $(\tu_1,\tg_1,\tth_1,\tv_1)=\frac{1+m}{1+\alpha}^{\frac{1}{-\alpha+m+n}}(\tu,\tg,\tth,\tv)$ with the $\lambda_1 =\frac{1+m}{1+\alpha}\lambda$ give the system (18), saying there are no essential differences between the two. While we find the current formulation more systematic, not to reproduce the proof over again, we proceed with the system (18) in \cite{KLT17} without annotating any subscripts, which is
+\begin{equation} \label{eq:tildesys2}
  \begin{aligned}
   a_0\tg + \lambda\dtg &=\tu, & a_0&=\frac{2+2\alpha-n}{D},\\
   b_0\tv + \lambda\dtv &=-d_1 \ts + \dts,& b_0&=\frac{1+m}{D},\\
@@ -970,9 +969,9 @@ Note that this is an autonomous system. Before we complete the formulation, one 
 \end{equation}
 
 Lastly, we come up with a new choice of variables that tend to equilibria as $\eta \rightarrow \pm \infty$ and accommodate
-orbits with power growth or decay at infinities. \eqref{eq:tildesys} can be rewritten in the form
+orbits with power growth or decay at infinities. \eqref{eq:tildesys2} can be rewritten in the form
 \begin{equation}
- \label{eq:tildesys2}
+ \label{eq:tildesys3}
 \begin{aligned}
 \frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\lambda} \big (- a_0 +  \frac{\tu}{\tg} \big ),
 \\
@@ -995,7 +994,7 @@ orbits with power growth or decay at infinities. \eqref{eq:tildesys} can be rewr
 % \frac{d}{d\eta}{(\ln{\tth})} &= \frac{2(-\alpha+m+n)}{D} + \left( \frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right) \frac{\tv}{\ts} + \lambda + \frac{\tu}{\ts}
 % \end{aligned}
 % \end{equation}
-and presume the right-hand-sides are bounded quantities. Here we view it as describing the evolution of $(\tg,\tv,\tth,\ts)$ with $\tu$ determined by $\tu = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^m} \right )^\frac{1}{n}$.
+and the right-hand-sides are presumed to be bounded. Here we view it as describing the evolution of $(\tg,\tv,\tth,\ts)$ with $\tu$ determined by $\tu = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^m} \right )^\frac{1}{n}$.
 
 This leads us to define
 \begin{equation}\label{eq:pqrdef}
@@ -1028,6 +1027,30 @@ Next, we computationally capture the orbit and illustrate the results in terms o
 
 \begin{figure}[ht]
  \centering
+  \subfigure[temperature]{
+  \includegraphics[width=6cm]{heteroPQR.pdf}\label{fig:temperature}
+  }
+  \quad \quad
+  \subfigure[strain]{
+  \includegraphics[width=6cm]{heteroPQS.pdf}\label{fig:strain}
+  }
+  \subfigure[strain-rate]{
+  \includegraphics[width=6cm]{heteroPQR.pdf}\label{fig:strain rate}
+  }
+  \quad \quad
+  \subfigure[velocity]{
+  \includegraphics[width=6cm]{heteroPQS.pdf}\label{fig:velocity}
+  }
+  \subfigure[stress]{
+  \includegraphics[width=6cm]{heteroPQR.pdf}\label{fig:stress}
+  }
+  \caption{{\red Physical variables. pdf files to be replaced!}} \label{fig:physical}
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[ht]
+ \centering
   \subfigure[First \texttt{AUTO} continuation]{
   \includegraphics[width=6cm]{firstrun.pdf}\label{fig:run1}
   }
@@ -1050,27 +1073,7 @@ Next, we computationally capture the orbit and illustrate the results in terms o
   \caption{Heteroclinic orbit captured by \texttt{AUTO} at $(\alpha,m,n,\lambda) = (7.663,2.584,0.100,2.323)$} \label{fig:hetero}
 \end{figure}
 
-\begin{figure}[ht]
- \centering
-  \subfigure[temperature]{
-  \includegraphics[width=6cm]{heteroPQR.pdf}\label{fig:PQR}
-  }
-  \quad \quad
-  \subfigure[strain]{
-  \includegraphics[width=6cm]{heteroPQS.pdf}\label{fig:PQS}
-  }
-  \subfigure[strain-rate]{
-  \includegraphics[width=6cm]{heteroPQR.pdf}\label{fig:PQR}
-  }
-  \quad \quad
-  \subfigure[velocity]{
-  \includegraphics[width=6cm]{heteroPQS.pdf}\label{fig:PQS}
-  }
-  \subfigure[stress]{
-  \includegraphics[width=6cm]{heteroPQR.pdf}\label{fig:PQR}
-  }
-  \caption{{\red Physical variables. pdf files to be replaced!}} \label{fig:hetero}
-\end{figure}
+
 
 To summarize the goal of this section, we aim to capture the single heteroclinic orbit curve that emanates from $M_0$ in the direction of $X_{01}$ and is attracted to $M_1$. It exists as a curve on 2-surface of $W^u(M_0)\cap W^s(M_1)$, the intersection of two 3-dimensional manifolds in $\mathbb{R}^4$. The difficulty lies in that both of $M_0$ and $M_1$ are saddle points: The numerical time integration in both forward and backward time direction suffers the instability due to the extra unstable dimension.
 
