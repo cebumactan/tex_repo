@@ -134,8 +134,8 @@
 \begin{abstract}
 
 
-This article is devoted to the explanation of the onset of localizing instability and the dynamic formation of shear band in high strain-rate plasticity of metals. Our objective is to scrutinize the power law constitutive model in a validly designated range of exponents. The linearized problem is first treated, to find the role of the viscosity critical; we show Hadamard type instability in the inviscid law and Turing type instability in the viscous law. Typical difficulty of having non-autonomous terms in the linearized problem arises, which stems from having the uniform shearing solution, around which the system is linearized, not steady but evolutionay. Next, we begin nonlinear analysis. For the given nonlinear model we construct self-similar solutions that describe
-the self-organization into a localized solution starting from well prepared data. In particular, these special solutions are found as associated heteroclinic orbits of the certain parametrized dynamical system. The actual construction is achieved via geometric singular perturbation theory. The recognized heteroclinic orbit is then numerically constructed as well. This is to capture a saddle-saddle heteroclinic connection in a four dimensional phase space. For its capturing, we employed the method of continuation, using the software package \texttt{AUTO}. The physical variables acquired from the abstractly and numerically captured heteroclinic orbit clearly show the dynamic formation of the shear band in the corresponding power law model.
+This article is devoted to the explanation of the onset of localizing instability and the dynamic formation of shear band in high strain-rate plasticity of metals. Our objective is to scrutinize the power law constitutive model in a validly designated range of exponents. The linearized problem is first treated, to find the role of the viscosity critical; we show Hadamard type instability in the inviscid law and Turing type instability in the viscous law. The typical difficulty of having non-autonomous terms in the linearized problem arises, which stems from having the uniform shearing solution, around which the system is linearized, not steady but evolutionary. Next, we begin nonlinear analysis. For the given nonlinear model we construct self-similar solutions that describe
+the self-organization into a localized solution starting from well-prepared data. In particular, these special solutions are found as associated heteroclinic orbits of the certain parametrized dynamical system. The actual construction is achieved via geometric singular perturbation theory. The recognized heteroclinic orbit is then numerically constructed as well. This is to capture a saddle-saddle heteroclinic connection in a four-dimensional phase space. For its capturing, we employed the method of continuation, using the software package \texttt{AUTO}. The physical variables acquired from the abstractly and numerically captured heteroclinic orbit clearly show the dynamic formation of the shear band in the corresponding power law model.
 \end{abstract}
 
 % \tableofcontents
@@ -146,12 +146,12 @@ the self-organization into a localized solution starting from well prepared data
 
 
 
-The phenomenon of shear localization and the formation of shear bands appear in several different instances of material instability in thermo-mechanics. We aim to explain the dynamic formation of shear band in a shear deformation of a rate dependent thermo-plastic metals. It is often associated with ill-posedness of an initial value problem of the underlying model what has coined the term Hadamard instability in mechanics literature. It should be however noted, at least from modelling perspective, that the Hadamard instability cannot by itself explain the coherent strucures in localizing process. The instability indicated by Hadamard instability is the catastrophic growth of oscillations around the mean state while such a wild oscillation are not observed in the experiments. The explanation of this coherent strucures in localization is of our central objective and it is a nonlinear effect in the corresponding model.
+The phenomenon of shear localization and the formation of shear bands appear in several different instances of material instability in thermo-mechanics. We aim to explain the dynamic formation of shear band in a shear deformation of a rate dependent thermo-plastic metals. It is often associated with ill-posedness of an initial value problem of the underlying model what has coined the term Hadamard instability in mechanics literature. It should be however noted, at least from a modelling perspective, that the Hadamard instability cannot by itself explain the coherent structures in localizing process. The instability indicated by Hadamard instability is the catastrophic growth of oscillations around the mean state while such a wild oscillation are not observed in the experiments. The explanation of this coherent structures in localization is of our central objective and it is a nonlinear effect in the corresponding model.
 
 
-Projecting above paradigm, the mathematical theory of the shear band formation in high strain rate thermo-plasticity poses analytical challnges at the problem of parabolic regularizations of ill-posed problem. In the underlying model, the constitutive law is such that the (net) softening response offers a destabilizing mechanism exhibiting Hadamard instability while the higher order nonlinear effect of viscosity offers an opposing mechanism on it. We aim to understand how the Hadamard instability interacts with the nonlinear features of the problem to form \emph{a localized coherent state}. To be concrete, here we draw attention to the material that obeys the power law and conduct various of analysis to come to a few conclusions.
+Projecting above paradigm, the mathematical theory of the shear band formation in high strain rate thermo-plasticity poses analytical challenges to the problem of parabolic regularizations of ill-posed problem. In the underlying model, the constitutive law is such that the (net) softening response offers a destabilizing mechanism exhibiting Hadamard instability while the higher order nonlinear effect of viscosity offers an opposing mechanism on it. We aim to understand how the Hadamard instability interacts with the nonlinear features of the problem to form \emph{a localized coherent state}. To be concrete, here we draw attention to the material that obeys the power law and conduct various of analysis to come to a few conclusions.
 
-A caricature of shear bands formation is illustrated in Fig. \ref{ShearFlow} while more detailed description of the model is followed in the section below. The shear strain localizes in a narrow band in the specimen and concurrently an elevation of the temperature takes place in the interior of the band. 
+A caricature of shear bands formation is illustrated in Fig. \ref{ShearFlow} while the more detailed description of the model is followed in the section below. The shear strain localizes in a narrow band in the specimen and concurrently an elevation of the temperature takes place in the interior of the band. 
 
 \begin{figure}[ht]
 \centering
@@ -164,7 +164,7 @@ A caricature of shear bands formation is illustrated in Fig. \ref{ShearFlow} whi
 
 
 
-The shear bands formation of steels during rapid shearing deformations \cite{CCHD,HDH,ZH} is one of the most striking instance of material instability in mechanics that often precedes ruptures. The study of shear bands formation has attracted substantial attentions in the mechanics and mathematics literature including experimental works  \cite{CCHD,HDH}, mechanical modeling
+The shear bands formation of steels during rapid shearing deformations \cite{CCHD,HDH,ZH} is one of the most striking instances of material instability in mechanics that often precedes ruptures. The study of shear bands formation has attracted substantial attentions in the mechanics and mathematics literature including experimental works  \cite{CCHD,HDH}, mechanical modeling
 and  linearized analysis studies  (\cite{CDHS,FM,MC,WW,Wr} and references therein), asymptotic analysis \cite{DO, WrOc},
 nonlinear analysis  \cite{DH,Tzavaras87,Tzavaras91,BPV}, and numerical  investigations \cite{Wa,ELW,BKT}.
 
@@ -185,7 +185,7 @@ kinematic compatibility, and the balance of energy equations.
 
 
 It was recognized by Zener and Hollomon \cite{ZH} that the effect of the deformation speed is twofold:
-First, high speed in the deformation alters the loading conditions from isothermal to that close to adiabatic. Having adiabatic conditions projects the belief that, at high strain rates, heat diffuses at a slower time scale than that of the deformation takes place so that effectively heat accumulates during the operating time. Under such conditions, since materials often thermally soften, in such a case where the thermal softening coutweighs the strain hardening the combined effect can lead to net softening response. This is to associate the rate dependent effect  in the corresponding model to the Hadamard instability.%(Indeed, experimental observations of shear bands are  typically associated  with strain softening response -- past a critical strain -- of the measured stress-strain curve \cite{CDHS}.)
+First, high speed in the deformation alters the loading conditions from isothermal to that close to adiabatic. Having adiabatic conditions projects the belief that, at high strain rates, heat diffuses at a slower time scale than that of the deformation takes place so that effectively heat accumulates during the operating time. Under such conditions, since materials often thermally soften, in such a case where the thermal softening outweighs the strain hardening the combined effect can lead to a net softening response. This is to associate the rate dependent effect  in the corresponding model to the Hadamard instability.%(Indeed, experimental observations of shear bands are  typically associated  with strain softening response -- past a critical strain -- of the measured stress-strain curve \cite{CDHS}.)
 
 Second, strain rate has an effect {\it per se}, or it should be included in the constitutive modeling. In other words, it is reasonable to consider the shear stress that is described by a constitutive law $\sigma = f(\theta, \gamma, u)$ where $u=\gamma_t$ the strain rate, with $f_u > 0$. The inequality gives rise to the effect of parabolic regularization. Although this falls into the framework of thermoviscoelasticity, this may be better interpreted as a plastic flow rule what suggests the following terminology: we say the material exhibits thermal softening at state variables $(\theta, \gamma, u)$
 where $f_\theta(\theta, \gamma, u) < 0$, strain hardening at state variables where $f_\gamma(\theta, \gamma, u) > 0$ , and strain softening when $f_\gamma(\theta, \gamma, u) < 0$. The slopes of $f$ measure the strength of thermal softening, strain hardening (or softening) and strain-rate sensitivity, respectively. Due to the difficulty of performing high strain-rate experiments, uncertainty in determining the specific form of $f( \theta, \gamma, u)$ presences and in practice data in a certain range are fit to curves of varieties of algebraic functions. We focus on the \emph{power law},
@@ -227,10 +227,10 @@ Observe that the $\sigma$ is always decreasing in time. The graph $\sigma - t$  
 
 
 \subsection{Challenges posed by the localization problem}
-In this review work we seek rather wide range of understanding regarding the shear bands formation of thermoviscoplastic power law materials. We carry out linear and nonlinear stability of the uniform shear and aim to compute numerical solutions as well. We listed the tasks of this work:
+In this review work, we seek a rather wide range of understanding regarding the shear bands formation of thermoviscoplastic power law materials. We carry out linear and nonlinear stability of the uniform shear and aim to compute numerical solutions as well. We listed the tasks of this work:
 \begin{itemize}
-\item To define a notion of stability (or instability) for the uniform shear; as this base solution is evolutionay as addressed, this task becomes nontrivial due to the the time dependent non-autonomous nature of the system.
-\item To derive quantitative criteria for stability (or instability) for the linearized problem and to give a complete analysis of linear stability by the criteria. This gives a mathematical accounts pinpointing the onset of localization. 
+\item To define a notion of stability (or instability) for the uniform shear; as this base solution is evolutionary as addressed, this task becomes nontrivial due to the time dependent non-autonomous nature of the system.
+\item To derive quantitative criteria for stability (or instability) for the linearized problem and to give a complete analysis of linear stability by the criteria. This gives a mathematical account pinpointing the onset of localization. 
 \item To describe the dynamic formation of shear bands, taking the full nonlinear effects into account. We construct a family of focusing self-similar solution. To this end, it is crucial to formulate the problem in the realm of nonlinear dynamical systems. %into that finding a heteroclinic orbit of an associated dynamical system.
 
 {\red up to here}
@@ -241,7 +241,7 @@ In this review work we seek rather wide range of understanding regarding the she
 The point of view this paper takes is to distinguish two stages of the process. In the initial stage, the stability or instability of the uniform shearing solutions is considered in the realm of linearized analysis. As addressed, we encounter the difficulty of having time independent coefficients in the linearized system. In the course of linearized analysis we adapt the formulation of relative perturbations espoused by Molinari and Clfton \cite{MC,FM}. Following that framework we conduct the linear stability analysis
 for linear non-autonomous systems.
 
-In the second stage, the localizing phenomenon lie within the realm of nonlinear analysis. The focal issue is then how the catastrophic growth of high frequency oscillations resulting from Hadamard instability competes with the nonlinearity to form a coherent emergence of shear bands. A quantitative criterion that accounts for the nonlinear aspects of localization was derived in \cite{KT}, using ideas from the theory of relaxation system and the Chapman Enskog expansion. In follow-up work \cite{KOT14, KLT_16, KLT17, KLT_HYP2016}, a study of self-similar solutions has been developed. Numerical computation of self-similar solutions turns out to be nontrivial task because it is a numerical construction of a saddle-saddle heteroclinic connection. Numerical computations of the self-similar solutions illustrate how a well prepared initial data emerges the shear band. %We refer to \cite{KT} and \cite{KT2} for the numerical results for system \eqref{PLS}.
+In the second stage, the localizing phenomenon lies within the realm of nonlinear analysis. The focal issue is then how the catastrophic growth of high frequency oscillations resulting from Hadamard instability competes with the nonlinearity to form a coherent emergence of shear bands. A quantitative criterion that accounts for the nonlinear aspects of localization was derived in \cite{KT}, using ideas from the theory of relaxation system and the Chapman Enskog expansion. In follow-up work \cite{KOT14, KLT_16, KLT17, KLT_HYP2016}, a study of self-similar solutions has been developed. Numerical computation of self-similar solutions turns out to be a nontrivial task because it is a numerical construction of a saddle-saddle heteroclinic connection. Numerical computations of the self-similar solutions illustrate how a well prepared initial data emerges the shear band. %We refer to \cite{KT} and \cite{KT2} for the numerical results for system \eqref{PLS}.
 %\vfil\eject
 
 %%%%%%%%%SECTION  3   %%%%%%%%%%%%
@@ -251,12 +251,12 @@ In the second stage, the localizing phenomenon lie within the realm of nonlinear
 
 \tcr{ To Do - Edit Intro}
 
-\section{Formulation of Relative perturbation}
+\section{Formulation of Relative perturbations}
 
-In the dynamic shear band formation, the referenced solution of the uniform shear is not a steady state solution but is an evolutionary one, represented by strain rate being constant. It has been pointed out that the study of the stability has to be different from that for the steady solution; indeed, the term Hadamard instability  was coined to refer to the instability of a steady state in the initial value problem of equation of elliptic type. 
+In the dynamic shear band formation, the referenced solution of the uniform shear is not a steady state solution but is an evolutionary one, represented by strain rate being constant. It has been pointed out that the study of the stability has to be different from that for the steady solution; indeed, the term Hadamard instability was coined to refer to the instability of a steady state in the initial value problem of an equation of elliptic type. 
 
 
-There has been a formulation of relative perturbation \cite{MC,FM,Tzavaras92} that is an effort to take this aspect into account. %In this formulation we define variables that are relative residuals upon those of the dynamic uniform shear and the uniform shearing solution corresponds to the one with constant ratio and thus is a steady state. 
+There has been a formulation of relative perturbation \cite{MC,FM,Tzavaras92} that is an effort to take this aspect into account. %In this formulation we define variables that are relative residuals upon those of the dynamic uniform shear and the uniform shearing solution corresponds to the one with the constant ratio and thus is a steady state. 
 It is this relative perturbation formulation that we carry out the linear stability and for that we construct the self-similar solutions.
 %Although it is not yet certain how to study the instability or stability of the dynamic solution, 
 
@@ -321,16 +321,16 @@ When $\kappa=0$, it retains simpler form,
 
 This section is devoted to the linear stability of the uniform shear in the formulation of relative perturbations. It was Fressengeas and Molinary \cite{FM} that conducted the linear stability of the uniform shear for the case of power law, applying the Theorem of Coddington-Levinson \cite{CL1955}. A version of the theorem, which is about the linear stability of a non-autonomous linear system, is provided in the Appendix for the completeness. The theorem is further extended to fully cover and classify the general case of $3\times3$ system for $(U,\Gamma,\Theta)$. 
 
-%We find a few mathematical issues in \cite{FM} unresolved and the general case of $3\times3$ system for $(U,\Gamma,\Theta)$ were not fully covered. We conducted the analysis in more systematic way but to reach roughly the same conclusion.
+%We find a few mathematical issues in \cite{FM} unresolved and the general case of $3\times3$ system for $(U,\Gamma,\Theta)$ were not fully covered. We conducted the analysis in a more systematic way but to reach roughly the same conclusion.
 
 Throughout this section we assume
 \begin{equation} \alpha\ge0, \quad n>0, \quad 1+m>0. \label{eq:range} \end{equation}
 
-%We focus on the system with $\kappa=0$ and various aspects of this adiabatic process are  analyzed in the following sections. %We are interested in those instability that are partly attributed to that the process is adiabatic.
-%If the heat dissipation enters into the system, numerical computation shows that the localization does take places but there is much longer time scale where the heat dissipation exerts so that in the limit $t \rightarrow \infty$, the instability dies out. Our interests are on the dynamics of localization.
+%We focus on the system with $\kappa=0$ and various aspects of this adiabatic process are analyzed in the following sections. %We are interested in those instabilities that are partly attributed to that the process is adiabatic.
+%If the heat dissipation enters into the system, numerical computation shows that the localization does take places but there is much longer time scale where the heat dissipation exerts so that in the limit $t \rightarrow \infty$, the instability dies out. Our interests are in the dynamics of localization.
 
 
-% The inviscid case $n=0$ is also of our interest but its linear stability requires quite more technicality and this is beyond of our purpose of exposition. We focus on  observing the role of viscosity against the destabilizing mechanism.
+% The inviscid case $n=0$ is also of our interest but its linear stability requires quite more technicality and this is beyond of our purpose of exposition. We focus on observing the role of viscosity against the destabilizing mechanism.
 We consider
 \begin{equation} \label{eq:system}
  \begin{aligned}
@@ -374,7 +374,7 @@ In the sequel, we drop the bar over the variables in studying the linear system 
 
 
 
-% The results on the long time asymptotics of the system in this section rely on the collected materials on the stability of non-autonomous linear dynamical system in Appendix.
+% The results on the long-time asymptotics of the system in this section rely on the collected materials on the stability of a non-autonomous linear dynamical system in Appendix.
 
 Next, we consider even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-1,1]$ which is compatible with the system and the boundary conditions in \eqref{eq:linbdry}. We consider the cosine series of the variables,
 \begin{align*}
@@ -401,7 +401,7 @@ The $0$-th mode is resolved: We have
 \end{align*}
 Since $U_0\equiv0$ from \eqref{eq:linbdry}, $\Gamma_0(\tau)$ decays to $0$, and so do $\Sigma_0(\tau)$ and $\Theta_0(\tau)$.
 
-From the fourth equation in \eqref{eq:l-system}, we remove one of the variable. We choose to remove $\Theta$ and get three linear equations in the form 
+From the fourth equation in \eqref{eq:l-system}, we remove one of the variables. We choose to remove $\Theta$ and get three linear equations in the form 
 $x'=A(\tau)x$, where
 $x\triangleq (
    U_\ell, \Gamma_\ell, \Sigma_\ell
@@ -438,7 +438,7 @@ For our study, we focus on showing following two relevant results for adiabatic 
 %  We derive the instability criterion $q=-\alpha+m+n$. We show that the uniform shearing solution is $(i)$ stable if $q>0$; $(ii)$ unstable if $q<0$. Moreover, we find the Turing type instability in the unstable regime:
 % \begin{enumerate}
 %  \item the asymptotic growths are limited to be of polynomial order;
-%  \item saturation of the polynomial order are found as the oscillations in the perturbations get wilder.
+%  \item saturation of the polynomial order is found as the oscillations in the perturbations get wilder.
 % \end{enumerate}
 %   \item $n=0$, $\kappa=0$ or linear stability of the inviscid adiabatic cases: 
 %   
@@ -447,12 +447,12 @@ For our study, we focus on showing following two relevant results for adiabatic 
 %Analysis comes separately, one for the inviscid case $n=0$ and the other for the viscous case $n>0$.
 In the below, the core of the linear stability results are summarized:
 \begin{enumerate}
- \item Assume $\kappa=0$. The linearized system bifurcates by the quantity $q=-\alpha+m+n$ (or $-\alpha+m$ when $n=0$). If $-\alpha+m+n>0$, where the thermal softening is not strong enough to dominate other hardening mechanisms, uniform shearing solution is linearly stable. On the other hand if $-\alpha+m+n<0$, where the thermal softening dominates other hardening mechanisms, the uniform shearing solution is linearly unstable.%; more precisely, there is a positive eigenvalue for each oscillatory initial data with frequency $2\pi\ell$.
- \item In the unstable regime $q<0$, the system with viscosity and the one without it ($n=0$) exhibits qualitatively different instability: If $n>0$, the growth is at most polynomial and the growth rate saturates as $\ell \rightarrow \infty$. This is one of the type that are referred to as the Turing instability. By contrast if $n=0$, the growth is of order $\exp\left(C\ell\sqrt{\tau}\right)$ showing much catastrophic instability as $\ell \rightarrow \infty$. This is referred to as the Hadamard Instability.
+ \item Assume $\kappa=0$. The linearized system bifurcates by the quantity $q=-\alpha+m+n$ (or $-\alpha+m$ when $n=0$). If $-\alpha+m+n>0$, where the thermal softening is not strong enough to dominate other hardening mechanisms, the uniform shearing solution is linearly stable. On the other hand if $-\alpha+m+n<0$, where the thermal softening dominates other hardening mechanisms, the uniform shearing solution is linearly unstable.%; more precisely, there is a positive eigenvalue for each oscillatory initial data with frequency $2\pi\ell$.
+ \item In the unstable regime $q<0$, the system with viscosity and the one without it ($n=0$) exhibits qualitatively different instability: If $n>0$, the growth is at most polynomial and the growth rate saturates as $\ell \rightarrow \infty$. This is one of the types that are referred to as the Turing instability. By contrast if $n=0$, the growth is of order $\exp\left(C\ell\sqrt{\tau}\right)$ showing much catastrophic instability as $\ell \rightarrow \infty$. This is referred to as the Hadamard Instability.
 \end{enumerate}
 %The last remark for the case $n=0$ is quoted without proof but is appeared in our companion paper in preparation.
 
-Let us be more specific with the following exposition. For each $\ell\ge 1$ the three linearly independent modes $x_1(\gamma_s)$, $x_2(\gamma_s)$, and $x_3(\gamma_s)$ %$x_1\circ\tau(\gamma_s)$, $x_2\circ\tau(\gamma_s)$, and $x_3\circ\tau(\gamma_s)$ 
+Let us be more specific with the following exposition for cases $\kappa=0$ and $n>0$. For each $\ell\ge 1$ the three linearly independent modes $x_1(\gamma_s)$, $x_2(\gamma_s)$, and $x_3(\gamma_s)$ %$x_1\circ\tau(\gamma_s)$, $x_2\circ\tau(\gamma_s)$, and $x_3\circ\tau(\gamma_s)$ 
 always are found, comprising a fundamental matrix, and this gives us the complete characterization of the behaviors of the system. Their precise asymptotic behaviors will be shown:
 \begin{equation}
 \begin{aligned}
@@ -461,7 +461,7 @@ always are found, comprising a fundamental matrix, and this gives us the complet
 &\lim_{\gamma_s \rightarrow \infty} C_3 x_3(\gamma_s) \exp\left(C_4n\l^2 \gamma_s^{\chi_4}\right)\gamma_s^{\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3,4$}.
  \end{aligned}
 \end{equation}
-$p_i$, $i=1,2,3$ are the eigenvectors of $A_\infty$ which are
+Signs of $\chi_i$ indicate the stability in the respective mode. $p_i$, $i=1,2,3$ are the eigenvectors of $A_\infty$ which are
 % \begin{align*}
 %   p_1=\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_1(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
 %   p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_2(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
@@ -473,7 +473,7 @@ $p_i$, $i=1,2,3$ are the eigenvectors of $A_\infty$ which are
   p_3 = \begin{pmatrix} 1 \\ 0 \\ n \end{pmatrix}.
  \end{align*}
 $z_1(0)$ and $z_2(0)$ are defined in the following section and $C_j=C_j(\alpha,m,n)$, $j=1,2,3,4$ are complex constants. %As the third eigenvalue $\lambda_3(\tau)$ always has a leading order $-n\l$, we find
-Signs of $\chi_i$ indicate the stability in the respective mode. Notably, $x_1$ and $x_2$ has the polynomial behavior; $\chi_4=\frac{1+\alpha}{1+m}>0$ in all cases we discuss and so $x_3$ decays exponentially regardeless of the sign of $\chi_3$.  Given above, we state our theorem: %what bifurcate are the polynomial growth or decay of $x_1$ and $x_2$.
+ Notably, $x_1$ and $x_2$ has the polynomial behavior; $\chi_4=\frac{1+\alpha}{1+m}>0$ and so $x_3$ decays exponentially regardeless of the sign of $\chi_3$.  Given above, we state our theorem: %what bifurcate are the polynomial growth or decay of $x_1$ and $x_2$.
 \begin{theorem} \label{thm:1} Assume \eqref{eq:nodoubleroot}. $\chi_1$ and $\chi_2$ are independent of $\ell$ and their signs bifurcate by $q=-\alpha+m+n$:
  \begin{enumerate}
   \item If $q=-\alpha+m+n=0$, then the uniform shear is marginally stable: $\chi_1=0$, $\chi_2>0$.
@@ -487,7 +487,7 @@ Signs of $\chi_i$ indicate the stability in the respective mode. Notably, $x_1$ 
 
 
 \subsection{Spectrum of $A(\tau)$}
-In this section, we compute the three eigenvalues of the matrix $A(\tau)$ of \eqref{eq:A} for $\kappa=0$. For non-autonomous system, as illustrated in the Appendix, having negative eigenvalues does not necessarily imply the asymptotic stability and the operator norm of the solution map has to be assessed case by case. Nevertheless, the eigenvalues of the system are indispensable information.
+In this section, we compute the three eigenvalues of the matrix $A(\tau)$ of \eqref{eq:A} for $\kappa=0$. For a non-autonomous system, as illustrated in the Appendix, having negative eigenvalues does not necessarily imply the asymptotic stability and the operator norm of the solution map has to be assessed case by case. Nevertheless, the eigenvalues of the system are indispensable information.
 
 
 Let $\lambda_i(\tau)$, $i=1,2,3$ be the three eigenvalues of $A_k(\tau)$. %We have
@@ -524,11 +524,11 @@ We retrieve information on the roots from the limiting problem. Provided $n>0$, 
 nz^2 + z\Big( \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \frac{(1+\alpha)(-\alpha+m+n)}{1+m} =0. \label{eq:auxquad}
 \end{equation}
 whose two roots are  denote by $z_1(0)$ and $z_2(0)$ respectively.
-Note that $z_1(0)$ and $z_2(0)$ are independent of $\ell$. Provided the two roots of \eqref{eq:auxquad} are not repeated, we apply the well known theorem of analyticity of a simple root to conclude the two roots $z_1(\epsilon)$ and $z_2(\epsilon)$ are near to $z_1(0)$ and $z_2(0)$ respectively. Precise statements are provided in the following section and the case of double root is also treated separately.
+Note that $z_1(0)$ and $z_2(0)$ are independent of $\ell$. Provided the two roots of \eqref{eq:auxquad} are not repeated, we apply the well-known theorem of analyticity of a simple root to conclude the two roots $z_1(\epsilon)$ and $z_2(\epsilon)$ are near to $z_1(0)$ and $z_2(0)$ respectively. Precise statements are provided in the following section and the case of a double root is also treated separately.
 
 These two roots obtained in the case $n>0$ show the bifurcation by $q=-\alpha+m+n$. If $q=-\alpha+m+n>0$ then $z_1(0)+z_2(0) = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_1(0)z_2(0)=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ and thus the real parts of two roots must be negative whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
 
-\subsection{Asymptotic behaviors of viscous model}
+\subsection{Asymptotic behaviors of linearized equations for viscous model}
 For the technical reason we assume the following
  \begin{equation}
   \alpha\ne m \quad \text{and} \quad (-\alpha+m)(1+n)^2 \ne 4nm(1+\alpha), \tag{$A0$} \label{eq:nodoubleroot}
@@ -542,7 +542,7 @@ S(\epsilon) =   \begin{pmatrix}
     -\frac{\epsilon z_1(\epsilon)}{\l^2}\Big(1 + z_1(\epsilon)\frac{1+m}{1+\alpha}\Big) & -\frac{\epsilon z_2(\epsilon)}{\l^2}\Big(1 + z_2(\epsilon)\frac{1+m}{1+\alpha}\Big) & -\frac{\lambda_3(\epsilon)}{\l^2}
    \end{pmatrix}. \label{eq:S}
 \end{equation}
-In the following proposition, we prove the detailed properties of the diagonalization. %that $A(\tau)$ is absolutely continuously diagonalizable.
+In the following proposition, we prove the diagonalization process is smoothly achieved.  %that $A(\tau)$ is absolutely continuously diagonalizable.
 % To apply the theorem of Coddington-Levinson, that the coefficient matrix is continuously diagonalizable up to the infinity is necessary.
 \begin{proposition}[Globally Smooth Diagonalization] \label{prop:ctsdiag}
  Assume that $(\alpha,m,n)$ is such that \eqref{eq:nodoubleroot} holds. Then for some $\tau_0$, $\exists$ $\lambda_1(\tau)$, $\lambda_2(\tau)$, $\lambda_3(\tau)$, and $S(\tau)$ the matrix of right eigenvectors that is invertible, for $\tau\ge\tau_0$  with the following properties.
@@ -626,9 +626,9 @@ To be explicit, we write
 \end{remark}
 
 \subsection{Contrasting behavior of inviscid model: Hadamard instability}
-Having seen the conclusions for the viscous model, particularly its power behavior in the unstable regime, the purpose of this section is to contrast the behavior for the inviscid model in the unstable regime $n=0$ and $q=-\alpha+m<0$. As addressed, the instability exhibited in the inviscid case is of \emph{Hadamard instability} and the growth is contrasted by its exponential behavior.
+Having seen the conclusions for the viscous model, particularly its polynomial behavior in the unstable regime, the purpose of this section is to contrast the behavior for the inviscid model in the unstable regime $n=0$ and $q=-\alpha+m<0$. As addressed, the instability exhibited in the inviscid case is of \emph{Hadamard instability} and the growth is contrasted by its exponential behavior.
 
-When $n=0$ the polynomial \eqref{eq:poly} factorizes to get,
+We proceed from the coefficient matrix $A(\tau)$ in the previous section. When $n=0$ the polynomial \eqref{eq:poly} factorizes to get,
 $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
 For convenience of computations later, we let $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \l^2\frac{-\alpha+m}{\tau(1+m)}$ and denote the three roots by
 \begin{equation} \label{eq:inviscid_roots}
@@ -661,14 +661,14 @@ $$  A(\tau)=\begin{pmatrix}
    \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
    \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
   \end{pmatrix} = A_\infty + \frac{1}{\tau}A_1.$$
-Three eigenvalues are explicit as written in \eqref{eq:inviscid_roots}. For this coefficient matrix, we cannot proceed similarly as before because the matrix does not admit the smooth diagonalization up to infinity: The three eigenvalues all merge into the single value $0$ in the limit $\tau \rightarrow \infty$ and it is easy to check that this eigenvalue $0$ of $A_\infty$ has a geometric multiplicity $2$. Therefore despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit. 
+Three eigenvalues are explicit as written in \eqref{eq:inviscid_roots}. For this coefficient matrix, we cannot proceed similarly as before because the matrix does not admit a smooth diagonalization up to infinity: The three eigenvalues all merge into the single value $0$ in the limit $\tau \rightarrow \infty$ and it is easy to check that this eigenvalue $0$ of $A_\infty$ has a geometric multiplicity $2$. Therefore despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit. 
 
-Smooth factorization of a one parameter family of matrices is yet another substantial subject @CITE@. For our problem fortunately, it turns out that the coefficient admits a smooth block diagonal factorization. What is in the below explains how we proceed. 
+Smooth factorization of a one-parameter family of matrices is yet another substantial subject @CITE@. For our problem fortunately, it turns out that the coefficient admits a smooth block diagonal factorization. What is in the below explains how we proceed. 
 
-As the order $\frac{1}{\tau}$ perturbation is explicitly given, straightforward calculation shows that eigenvectors for finite $\tau$ can be chosen
+As the order $\frac{1}{\tau}$ perturbation of $A(\tau)$ is explicitly given, straightforward calculation shows that eigenvectors for finite $\tau$ can be chosen
 \begin{align*}
- s_1(\tau)&=x(\tau) + y(\tau), \quad s_2(\tau)=x(\tau)-y(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
- x(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  y(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
+ s_1(\tau)&=E(\tau) + F(\tau), \quad s_2(\tau)=E(\tau)-F(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
+ E(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  F(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
 \end{align*}
 Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$, what merges up in the limit are $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$.
 %In the below, two of our choice of basis are from $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ and one is from $\mathbf{N}\Big(A - \lambda_3\Big)$. From $\mathbf{N}\Big(A - \lambda_3\Big)$ we keep $s_3$. From $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ we keep $s_1\in\mathbf{N}\Big(A - \lambda_1\Big)$ but will be with a different normalization. As we cannot simultaneously choose the other in $\mathbf{N}\Big(A - \lambda_2\Big)$, we find $\tilde s_2$ such that $\tilde s_2\notin\mathbf{N}\Big(A - \lambda_2\Big)$, $y = (A-\lambda_2)\tilde s_2 \in \mathbf{N}\Big(A - \lambda_1\Big)$. To justify the solvability of this program, we observe following. If $\lambda_2\ne\lambda_1$, every element in $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. If $\lambda_2=\lambda_1$ and the geometric multiplicity is strictly less than the algebraic multiplicity, then the nontrivial subspace of $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. While to capture this subspace is in general nontrivial, for our problem, the dimension of $\mathbf{N}\Big(A - \lambda_1\Big)$ restricted in $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ is merely $1$ and thus every element of the kernel is in the range of $(A - \lambda_2\big)$.
@@ -679,7 +679,7 @@ With this new basis, we factorize the linear system similarly as before
 \begin{equation}\label{eq:block1}
 \begin{aligned}
  y &= P(\tau)^{-1} x, \quad P(\tau) = \begin{pmatrix} -\tau\gamma& 0 & -m\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}, \\
- y' &= \begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y - P(\tau)^{-1}P'(\tau) y.
+ y' &= \underbrace{\begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix}}_{\triangleq B(\tau)} y - P(\tau)^{-1}P'(\tau) y.
 \end{aligned}
 \end{equation}
 \begin{proposition} Assume $-\alpha+m < 0$. Then
@@ -693,129 +693,10 @@ $$ \lim_{\tau \rightarrow \infty} P(\tau) = \begin{pmatrix} -\l^2\frac{-\alpha+m
 whose determinant is $\l^2 \left(\frac{-\alpha+m}{1+m}\right)^2$. Since $P(\tau)$ is smooth function of $\tau$, $\exists \tau_0$ such that $P(\tau)$, $\tau\ge\tau_0$ is invertible with uniformly bounded determinant. The second assertion follows from straightforward calculation of $P_{ij}'(\tau)$ whose leading order is $\mathcal{O}\big(\frac{1}{\tau^{3/2}}\big)$.
 \end{proof}
 
-Now, we prove the third assertion. If $-\alpha+m < 0$, then all eigenvalues are real. We find the factorization \eqref{eq:block1} suitable.
-% following triangularization suitable. Same reasoning applies for not diagonalizing $A(\tau)_k$.
-% \begin{align}
-%  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \frac{1}{\sqrt{\tau}}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
-%  y_k' &= \begin{pmatrix} \lambda_1(\tau) & \frac{\lambda_1(\tau)}{\sqrt{\tau}} & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
-% \end{align}
-As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix is regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix. It is enough for our purpose to show that there exists a solution that grows as much as the semi-group part does. The operator norm of $H(\tau)$ is easily computed by Proposition \ref{prop:tri-stab}. To be precise, as the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ the growth is $\exp\left( \int_a^t \lambda_1(s)\;ds\right)= \mathcal{O}\Big(\exp\left(C_1\k\sqrt{\tau}\right)\Big).$ Again, maximum growth of $y$ is as same as that of $x$ and the third assertion follows.
-\begin{remark}
- Theorem \ref{thm:3} shows that the linear stability bifurcates by sign of $-\alpha+m$ and if $-\alpha+m<0$ there is a exponentially growing mode having exponent $\sim \l \gamma_s^{\frac{1+m}{2(1+\alpha)}}$. This indicates that the system exhibits the Hadamard Instability. In the following section, we see the nature of the instability is qualitatively altered in the presence of the viscosity.
-\end{remark}
-
-
-
-
-The cases $-\alpha+m=0$ can be treated too; in this case we solve the system explicitly. See Theorem \ref{thm:3}.
-
-Later, although not entirely necessary, we find it convenient to pick another but related pure real factorization in cases $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are complex conjugate of each other. In the below is a real block diagonalization. We omit the proof of the invertibility of $\bar P(\tau)$ and integrability of $\bar P'(\tau)$.
-\begin{equation}
-\begin{aligned}
- \bar y &= P(\tau)^{-1} x, \quad \bar P(\tau) = \begin{pmatrix} 1 & 0 & -m\\0 & \frac{1+\alpha}{1+m} & 1\\0 & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}, \\
- \bar y' &= \begin{pmatrix} 0 & \frac{1}{\tau} & 0\\-\l^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & 0\\0 & 0 & -\frac{1+\alpha}{\tau}\end{pmatrix} \bar y - \bar P(\tau)^{-1}\bar P'(\tau) \bar y.
-\end{aligned}\label{eq:block2}
-\end{equation}
-
-We also listed the qualitative properties of eigenvalues respectively in each regime.
-
-\noindent{\bf subcase 1 $q=-\alpha+m=0$}
-\begin{align*}
- \lambda_1(\tau)\equiv 0, \quad \lambda_2(\tau)= -\frac{1}{\tau}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
-\end{align*}
-
-\noindent{\bf subcase 2 $q=-\alpha+m>0$ for $\tau$ large}
-
-$\lambda_1(\tau)$ and $\lambda_2(\tau)$ are complex conjugate of each other with the same negative real parts $-\beta(\tau)$ that is of order $\frac{1}{\tau}$.
-
-\noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\tau$ large}
-% \begin{align}
-%  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \sqrt{\tau}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m}\frac{1}{\sqrt{\tau}\lambda_1(\tau)} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m}\frac{1}{\sqrt{\tau}\lambda_1(\tau)} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
-%  y_k' &= \begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
-% \end{align}
-
-
-% the polynomial \eqref{eq:poly} factorizes to get,
-% $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
-% By letting $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \k^2\frac{-\alpha+m}{\tau(1+m)}$ we denote the three roots by
-% \begin{equation}
-% \begin{aligned}
-%  &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
-% \end{aligned}
-% \end{equation}
-% Note that $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$. For $\tau$ large, $\gamma(\tau)$ dominates $\beta(\tau)^2$ inside of the square root.
-% % Three roots are explicitly listed:
-
-All eigenvalues are real. $\lambda_1(\tau)>0$ and $\lambda_2(\tau),\lambda_3(\tau)<0$. While $\lambda_3(\tau)$ is of order $\mathcal{O}\big(\frac{1}{\tau}\big)$, $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are of order $\mathcal{O}(\sqrt{\gamma(\tau)})$. This leads to $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$.
-
-Lastly reporting that the degenerate case $\alpha=m=n=0$ is solved explicitly to see $\Sigma\equiv U \equiv 0$ and $\Gamma$, $\Theta$ that decay exponentially to $0$, the next theorem gives a characterization of the aysmptotic stability.
-\begin{theorem}[inviscid linear stability of uniform shear] \label{thm:3} Asymptotic stability of the uniform shear bifurcates by the sign of $q=-\alpha+m$:
- \begin{enumerate}
-  \item If $q=-\alpha+m=0$, $\alpha>0$ then the uniform shear is marginally stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| < C$.
-  \item If $q=-\alpha+m>0$, then the uniform shear is stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| = \mathcal{O}\big(\gamma_s^{\chi}\big)$ as $t \rightarrow \infty$, $\chi = \max \left\{-1, -(1+m)\right\}$.
-  \item If $q=-\alpha+m<0$, then the uniform shear is unstable: For each $\ell\ge 1$, there is a growing mode $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| \ge C\exp\left(C'\l \gamma_s^{\frac{1+m}{2(1+\alpha)}}\right)$ for $\gamma_s\ge\gamma_{s0}$ large enough for some positive constant $C(\alpha,m,n)$ and $C'(\alpha,m,n)$.
- \end{enumerate}
-\end{theorem}
-
-
-\begin{proof}
-When $-\alpha+m=0$, $\alpha>0$ straightforward calculations give the expression for the general solution
-$$x(\tau) = C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix} + C_2 \begin{pmatrix} 0 \\ \frac{1}{\tau} \\0 \end{pmatrix} + C_3 \begin{pmatrix} -\k^2 \int_1^\tau \frac{1}{s^{1+\alpha}}\; ds \\ \frac{-\k^2}{\tau}\int_1^\tau  \int_1^t \frac{1}{s^{1+\alpha}}\; ds dt\\ \frac{1}{\tau^{1+\alpha}} \end{pmatrix}  \rightarrow C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix}\quad \text{as $\tau \rightarrow \infty$ if $\alpha>0$.}$$
-
-Now we prove the second assertion for $-\alpha+m>0$. We find the factorization in \eqref{eq:block2} suitable for its study.
-% To justify this similarity transform, not diagonalizing $A(\tau)_k$, observe the following spectral properties of $A(\tau)_k$: All three eigenvalues are distinct and have negative real parts for finite $\tau$ but collapse down to a single value $0$ as $\tau \rightarrow \infty.$ Furthermore, the eigenvectors associated to $\lambda_1$, $\lambda_2$, and $\lambda_3$ are respectively
-% \begin{align*}
-%  s_1&=s^+, \quad s_2=s^-, \quad s_3 = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
-%  s^\pm &= s_{re} \pm is_{im} = \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix} \pm i\frac{1}{\sqrt{\tau}}\begin{pmatrix}  \sqrt{\gamma(\tau)-\beta(\tau)^2}\\0\\0 \end{pmatrix}.
-% \end{align*}
-% They are linearly independent for finite $\tau$ but the first two collapse down to one because the real parts of $s^\pm$ vanishes in the limit. Nevertheless, we can appeal to the block diagonalization.
-We claim that the norms of the solution operator $G_1(\tau)$ associated to the block $B_1=\begin{pmatrix} 0 & \frac{1}{\tau} \\-\k^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & \end{pmatrix}$ and $G_2(\tau)$ of $B_2 = -\frac{1+\alpha}{\tau}$ decays as $\tau \rightarrow \infty.$ The latter one is obvious.
-In view of the discussion in the Appendix, having spectrum in left half complex plane is not enough to conclude the asymptotic stability especially for the block matrices with real parts of eigenvalues of order $\mathcal{O}\big(\frac{1}{\tau}\big)$. While the diagonal entry does give the decay, it is merely of polynomial order and this can be overwhelmed by the growth gains by interactions in the block.
-Having that said, we directly prove the stability of the first block.
-We consider $2$ by $2$ system, $$\xi' = \frac{1}{\tau} \eta, \quad \eta' = -\l^2\frac{-\alpha+m}{1+m}\xi -\frac{1+\alpha}{\tau(1+m)}\eta.$$
-First note that unless otherwise $\xi\equiv\eta\equiv 0$, $\displaystyle\lim_{\tau \rightarrow 0} \frac{\tau^{\frac{1+\alpha}{1+m}}\eta(\tau)}{\xi(\tau)}$ exists and coincides with $0$.
-
-Given that and for $\tau\ge0$,
-\begin{align*}
-% \left(\frac{\eta}{\xi}\right)' &= -\k^2\frac{-\alpha+m}{1+m} - \frac{1+\alpha}{\tau(1+m)}\left(\frac{\eta}{\xi}\right)-\frac{1}{\tau}\left(\frac{\eta}{\xi}\right)^2,\\
- \left(\tau^{\frac{1+\alpha}{1+m}}\frac{\eta}{\xi}\right)' &=  -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}  -\tau^{\frac{1+\alpha}{1+m}+1}\left(\frac{\eta}{\xi}\right)^2 \le -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}},\\
- \frac{\tau \xi'}{\xi} &\le -\l^2\frac{-\alpha+m}{2+\alpha+m}\tau,\\
- \frac{|\xi(t)|}{|\xi(0)|} &\le \exp\left(-\l^2\frac{-\alpha+m}{2+\alpha+m}\tau\right).
-\end{align*}
-Now,
-\begin{align*}
- \left(\tau^{\frac{1+\alpha}{1+m}} \eta\right)' &= -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}\xi \le \l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|,\\
- \tau^{\frac{1+\alpha}{1+m}} \eta &\le \int_0^t C(l)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \int_0^\infty C(\ell)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \tilde{C}(\ell).
-\end{align*}
-We have proved that $\|G_1\|(\tau) \le C(\ell)\tau^{-\frac{1+\alpha}{1+m}}$, $\tau\ge0$. Since two blocks $B_1$ and $B_2$ are decoupled, if $G(\tau)$ is the solution map, then $\|G\|(\tau) \le C(\ell)\max\left\{C(\ell)\tau^{-\frac{1+\alpha}{1+m}},\tau^{-(1+\alpha)}\right\}$, $\tau\ge0$. To go back to the independent variable $\gamma_s$, we recall that $\tau(\gamma_s)=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}$. By Proposition \ref{prop:stab}, the least decaying solution $x$ is attained with same decaying order. %$\bar y$ of \eqref{eq:block2} and  as well decays with the same order.
-
-Now, we prove the third assertion. If $-\alpha+m < 0$, then all eigenvalues are real. We find the factorization \eqref{eq:block1} suitable.
-% following triangularization suitable. Same reasoning applies for not diagonalizing $A(\tau)_k$.
-% \begin{align}
-%  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \frac{1}{\sqrt{\tau}}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
-%  y_k' &= \begin{pmatrix} \lambda_1(\tau) & \frac{\lambda_1(\tau)}{\sqrt{\tau}} & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
-% \end{align}
-As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix is regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix. It is enough for our purpose to show that there exists a solution that grows as much as the semi-group part does. The operator norm of $H(\tau)$ is easily computed by Proposition \ref{prop:tri-stab}. To be precise, as the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ the growth is $\exp\left( \int_a^t \lambda_1(s)\;ds\right)= \mathcal{O}\Big(\exp\left(C_1\k\sqrt{\tau}\right)\Big).$ Again, maximum growth of $y$ is as same as that of $x$ and the third assertion follows.
-\end{proof}
-\begin{remark}
- Theorem \ref{thm:3} shows that the linear stability bifurcates by sign of $-\alpha+m$ and if $-\alpha+m<0$ there is a exponentially growing mode having exponent $\sim \l \gamma_s^{\frac{1+m}{2(1+\alpha)}}$. This indicates that the system exhibits the Hadamard Instability. In the following section, we see the nature of the instability is qualitatively altered in the presence of the viscosity.
-\end{remark}
-
-
-
-
-% \begin{theorem}\label{thm:2} Suppose $q=-\alpha+m<0$, then the uniform shear is unstable: For each $\ell\ge 1$, there is a growing mode $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| \ge C\exp\left(C'\l \gamma_s^{\frac{1+m}{2(1+\alpha)}}\right)$ for $\gamma_s\ge\gamma_{s0}$ large enough for some positive constant $C(\alpha,m,n)$ and $C'(\alpha,m,n)$. Asymptotic stability of the uniform shear bifurcates by the sign of $q=-\alpha+m$:
-%  \begin{enumerate}
-%   \item If $q=-\alpha+m=0$, $\alpha>0$ then the uniform shear is marginally stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| < C$.
-%   \item If $q=-\alpha+m>0$, then the uniform shear is stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| = \mathcal{O}\big(\gamma_s^{\chi}\big)$ as $t \rightarrow \infty$, $\chi = \max \left\{-1, -(1+m)\right\}$.
-%   \item 
-%  \end{enumerate}
-% \end{theorem}
-
-
+Now, we prove our assertion that if $-\alpha+m < 0$, there is an exponenitally growing mode. As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix $B(\tau)$ better be regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix $B(\tau)$. By Theorem \ref{prop:stab}, it is enough for our purpose to show that the unperturbed part $B(\tau)$ develops an unstable mode $x$ growing exponentially. If so, there is a $y$ grows as much as $x$ does and the assertion follows. The calculation of the operator norm of $H(\tau)$ is given in the Appendix. To brief, this computation is possible because the coefficient matrix is upper triangular and has a certain spectral gap structure: the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ diverges as $t_1-t_0$ gets large.  
 
 \section{Localizing self-similar solutions}
-Through the series of works of \cite{KOT14,KLT_16, KLT_HYP2016, KLT17}, solutions of \eqref{eq:system} those emerge dynamic localization have been constructed by similarity methods and techniques of dynamical systems. The objective of this section is to present the results and essential ideas, which will be exposed in a slightly more systematic way. The idea of constructing localizing solution by similarity methods were first introduced in \cite{KOT14} for a viscous shear flow of fluid, where the exponential law of viscosity was employed. Despite of our models being for a plastic solid, the governing equations take the same form but with the suitable constitutive law interpreted accordingly to the context, and this enabled us to adapt the method for our current study. The constructed family are an ample demonstration of the onset of localization for the constitutive law (in the form of a power law) and the corresponding model.
+Through the series of works of \cite{KOT14,KLT_16, KLT_HYP2016, KLT17}, solutions of \eqref{eq:system} those emerge dynamic localization have been constructed by similarity methods and techniques of dynamical systems. The objective of this section is to present the results and essential ideas, which will be exposed in a slightly more systematic way. The idea of constructing localizing solution by similarity methods was first introduced in \cite{KOT14} for a viscous shear flow of fluid, where the exponential law of viscosity was employed. Despite our models being for a plastic solid, the governing equations take the same form but with the suitable constitutive law interpreted accordingly to the context, and this enabled us to adapt the method for our current study. The constructed family are an ample demonstration of the onset of localization for the constitutive law (in the form of a power law) and the corresponding model.
 
 Our main results are stated in the following two Theorems.
 \begin{theorem}[\cite{KLT17}] \label{mainthm1}
@@ -894,7 +775,7 @@ We address that the formulation with $\bV(\xi)$ instead of $\bU(=\bV_\xi)$ is po
 $$ (1+2 \lambda) \left(\frac{1 + \alpha}{D}\right) \bV - \lambda \bV + \lambda \xi \bV_\xi=\bS_\xi,$$
 instead of $\eqref{eq:sseq}_1$.
 
-It turns out that the classical o.d.e. theory to solve this system does not apply because of the singularity at $\xi=0$. Note that the coefficient $\xi$ not only makes the system non-autonomous but also singular because it is at terms of highest derivatives. The major ingredient advanced in \cite{KOT14,KLT17} is to turn this singular non-autonomous system into autonomous dynamical system and formulate the problem to find the suitable heteroclinic orbit of the derived autonomous system.
+It turns out that the classical o.d.e. theory to solve this system does not apply because of the singularity at $\xi=0$. Note that the coefficient $\xi$ not only makes the system non-autonomous but also singular because it is at terms of highest derivatives. The major ingredient advanced in \cite{KOT14,KLT17} is to turn this singular non-autonomous system into an autonomous dynamical system and formulate the problem to find the suitable heteroclinic orbit of the derived autonomous system.
 
 To this end, we introduce nonlinear transformations and the new independent variable $\eta = \log\xi$. First we notice is the reflexive symmetry that if $\big(\bG(\xi)$, $\bU(\xi)$, $\bTh(\xi)$, $\bS(\xi)$, $\bV(\xi)\big)$ is a solution of \eqref{eq:sseq} then $\big(\bG(-\xi)$, $\bU(-\xi)$, $\bTh(-\xi)$, $\bS(-\xi)$, $-\bV(-\xi)\big)$ again is a solution. We thus look for $\bG(\xi)$, $\bU(\xi)$, $\bTh(\xi)$, $\bS(\xi)$ that are even and $\bV(\xi)$ that is odd function of $\xi$. This symmetry leads to imposing conditions
 \begin{equation} \label{eq:extension_cond}
@@ -1121,7 +1002,7 @@ Then the equations $f_j(w,z)=0$, $j=1,\cdots,m$ have a uniquely determined analy
 
 \section{Index conditions of Coddington-Levinson} \label{sec:Index}
 
-In the below we check the index condition of the Coddington-Levinson.
+In the below, we check the index condition of the Coddington-Levinson.
 
 \noindent{\bf subcase 1 $q=-\alpha+m+n>0$:} The real parts of eigenvalues are all negative for large $\tau$. Suppose \eqref{eq:auxquad} has two negative real roots so that  $-n\l^2 + \frac{1}{\tau}\lambda_3'(0)<\frac{1}{\tau}z_2(0)<\frac{1}{\tau}z_1(0)<0$, for large $\tau<\infty$.  Then we can check for instance
 $\displaystyle\int_{\tau_1}^{\tau_2} (z_1(0)-z_1(0))\frac{1}{s} \; ds = 0< 1$,
@@ -1215,7 +1096,7 @@ We rewrite \eqref{eq:x} in the form
  \end{enumerate}
 \end{remark}
 
-It remains how we can estimate $\|F\|(t)$ that is associated to $U(t)$. For completness, we next provide an estimate of $\|F\|(t)$ associated to an upper triangular matrix. This is extended to a $U(t)$ that is block diagonal with upper triangular blocks because the solution map $F(t)$ is then decoupled as well block-wisely.
+It remains how we can estimate $\|F\|(t)$ that is associated with $U(t)$. For completeness, we next provide an estimate of $\|F\|(t)$ associated to an upper triangular matrix. This is extended to a $U(t)$ that is block diagonal with upper triangular blocks because the solution map $F(t)$ is then decoupled as well block-wisely.
 
  \begin{proposition}[stability of triangular matrix] \label{prop:tri-stab}
  Suppose $y' = U(t) y$ and $U(t)$ be an upper triangular matrix with bounded entries. Suppose that there is a function $\theta(t)$ and a constant $A$ such that for all diagonal entries $\lambda_i(t)$,
@@ -1248,7 +1129,7 @@ It remains how we can estimate $\|F\|(t)$ that is associated to $U(t)$. For comp
   This estimate shows that the couplings through off-diagonal terms does spoil the asymptotic stability when the eigenvalues decay to $0$ as $t \rightarrow \infty$ but not so much to be integrable. Suppose that every eigenvalue has negative real parts bounded by $\theta(t) = -\frac{k}{t}$ for some $k$. Then the estimate \eqref{eq:triestim} fails to guarantee the asymptotic stability unless otherwise $k\ge d$ because $\exp\left( \int_1^t \theta(s)\;ds\right) =\exp\left( -\int_1^t \frac{k}{s}\;ds\right) =t^{-k}.$ This is the typical behavior of the Jordan block.
 \end{remark}
 
-Lastly, the case where $U(t)$ is diagonal is considered. In this case, not only the explicit formula of the solution map $F(t) = \textrm{diag}\left[ \exp\left(\int_0^t \lambda_i(s)\; ds\right) \right]$ is available but also it is possible to spot every modes. Indeed, the unperturbed system is totally decoupled so that every mode remains unmixed and survives. This property is in fact shared by the upper triangular matrix; this can be seen by just taking $\hat{\ell}$ the coordinate basis as an initial data. The next Coddington-Levinson theorem shows that for diagonal matrix, under the suitable spectral gap conditions, the ability to discern all modes persists after adding a weak coupling $\mathcal{E}(t)$. The spectral condition is notably precise where the accumulated contribution by non-integrable real parts of eigenvalues matters.
+Lastly, the case where $U(t)$ is diagonal is considered. In this case, not only the explicit formula of the solution map $F(t) = \textrm{diag}\left[ \exp\left(\int_0^t \lambda_i(s)\; ds\right) \right]$ is available but also it is possible to spot every modes. Indeed, the unperturbed system is totally decoupled so that every mode remains unmixed and survives. This property is in fact shared by the upper triangular matrix; this can be seen by just taking $\hat{\ell}$ the coordinate basis as an initial data. The next Coddington-Levinson theorem shows that for a diagonal matrix, under the suitable spectral gap conditions, the ability to discern all modes persists after adding a weak coupling $\mathcal{E}(t)$. The spectral condition is notably precise where the accumulated contribution by non-integrable real parts of eigenvalues matters.
 
 \begin{theorem}{\cite[Diagonal Version]{CL1955}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{a_0}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$ for some $a_0$.
 Fix an index $\ell$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
