@@ -452,14 +452,13 @@ In the below, the core of the linear stability results are summarized:
 \end{enumerate}
 %The last remark for the case $n=0$ is quoted without proof but is appeared in our companion paper in preparation.
 
-
-The results are stated neatly with To state above clearly,
-
-More precise objective is as follows. For each $\ell\ge 1$ the three linearly independent modes $x_1\circ\tau(\gamma_s)$, $x_2\circ\tau(\gamma_s)$, and $x_3\circ\tau(\gamma_s)$ always are found, comprising a fundamental matrix, and this gives us the complete characterization of the behaviors of the system. We will show
+Let us be more specific with the following exposition. For each $\ell\ge 1$ the three linearly independent modes $x_1(\gamma_s)$, $x_2(\gamma_s)$, and $x_3(\gamma_s)$ %$x_1\circ\tau(\gamma_s)$, $x_2\circ\tau(\gamma_s)$, and $x_3\circ\tau(\gamma_s)$ 
+always are found, comprising a fundamental matrix, and this gives us the complete characterization of the behaviors of the system. Their precise asymptotic behaviors will be shown:
 \begin{equation}
 \begin{aligned}
- &\lim_{\gamma_s \rightarrow \infty} C_1 x_1(\gamma_s) \gamma_s^{-\chi_1} = p_1, \quad \lim_{\gamma_s \rightarrow \infty} C_2x_2(\gamma_s)  \gamma_s^{-\chi_2} = p_2, \\
- &\lim_{\gamma_s \rightarrow \infty} C_3 x_3(\gamma_s) \exp\left(C_4n\l^2 \gamma_s^{\frac{1+\alpha}{1+m}}\right)\gamma_s^{-\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3$}.
+ &\lim_{\gamma_s \rightarrow \infty} C_1 x_1(\gamma_s) \gamma_s^{\chi_1} = p_1, \quad \lim_{\gamma_s \rightarrow \infty} C_2x_2(\gamma_s)  \gamma_s^{\chi_2} = p_2, \\
+%  &\lim_{\gamma_s \rightarrow \infty} C_3 x_3(\gamma_s) \exp\left(C_4n\l^2 \gamma_s^{\frac{1+\alpha}{1+m}}\right)\gamma_s^{-\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3$}.
+&\lim_{\gamma_s \rightarrow \infty} C_3 x_3(\gamma_s) \exp\left(C_4n\l^2 \gamma_s^{\chi_4}\right)\gamma_s^{\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3,4$}.
  \end{aligned}
 \end{equation}
 $p_i$, $i=1,2,3$ are the eigenvectors of $A_\infty$ which are
@@ -473,24 +472,15 @@ $p_i$, $i=1,2,3$ are the eigenvectors of $A_\infty$ which are
   p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1  \\ 0 \end{pmatrix}, \quad
   p_3 = \begin{pmatrix} 1 \\ 0 \\ n \end{pmatrix}.
  \end{align*}
-$z_1(0)$ and $z_2(0)$ are defined in the following section and $C_j=C_j(\alpha,m,n)$, $j=1,2,3,4$ are positive constants. %As the third eigenvalue $\lambda_3(\tau)$ always has a leading order $-n\l$, we find
-$x_3$ decays exponentially in all cases. Notably, $x_1$ and $x_2$ has the polynomial behavior. Given above, we state our theorem: %what bifurcate are the polynomial growth or decay of $x_1$ and $x_2$.
+$z_1(0)$ and $z_2(0)$ are defined in the following section and $C_j=C_j(\alpha,m,n)$, $j=1,2,3,4$ are complex constants. %As the third eigenvalue $\lambda_3(\tau)$ always has a leading order $-n\l$, we find
+Signs of $\chi_i$ indicate the stability in the respective mode. Notably, $x_1$ and $x_2$ has the polynomial behavior; $\chi_4=\frac{1+\alpha}{1+m}>0$ in all cases we discuss and so $x_3$ decays exponentially regardeless of the sign of $\chi_3$.  Given above, we state our theorem: %what bifurcate are the polynomial growth or decay of $x_1$ and $x_2$.
 \begin{theorem} \label{thm:1} Assume \eqref{eq:nodoubleroot}. $\chi_1$ and $\chi_2$ are independent of $\ell$ and their signs bifurcate by $q=-\alpha+m+n$:
  \begin{enumerate}
-  \item If $q=-\alpha+m+n=0$, then the uniform shear is marginally stable: $\chi_1=0$, $\chi_2<0$.
-  \item If $q=-\alpha+m+n>0$, then the uniform shear is stable: $\chi_1<0$ and $\chi_2<0$.
-  \item If $q=-\alpha+m+n<0$, then the uniform shear is saddle: $\chi_1>0$ and $\chi_2<0$.
+  \item If $q=-\alpha+m+n=0$, then the uniform shear is marginally stable: $\chi_1=0$, $\chi_2>0$.
+  \item If $q=-\alpha+m+n>0$, then the uniform shear is stable: $\chi_1>0$ and $\chi_2>0$.
+  \item If $q=-\alpha+m+n<0$, then the uniform shear is saddle: $\chi_1<0$ and $\chi_2>0$.
  \end{enumerate}
 \end{theorem}
-
-
-
-
-
-
-
-
-
 
 % We introduce some quantities. Let $x$ denotes a vector $\big(U_\ell,\Gamma_\ell, \Sigma_\ell)^T$. $\Theta_\ell$, which is linearly dependent, may be included in the statement and we denote $\tilde{x}$ by a vector $\big(U_\ell,\Gamma_\ell, \Theta_\ell, \Sigma_\ell)^T$. Three eigenvectors of $A_\infty$ are also appended by $\Theta$ component to get
 
@@ -538,164 +528,7 @@ Note that $z_1(0)$ and $z_2(0)$ are independent of $\ell$. Provided the two root
 
 These two roots obtained in the case $n>0$ show the bifurcation by $q=-\alpha+m+n$. If $q=-\alpha+m+n>0$ then $z_1(0)+z_2(0) = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_1(0)z_2(0)=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ and thus the real parts of two roots must be negative whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
 
-% Characteristic for cases $n=0$ are as follows. When $n=0$ the polynomial \eqref{eq:poly} factorizes to get,
-% $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
-% For convenience of computations later, we let $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \l^2\frac{-\alpha+m}{\tau(1+m)}$ and denote the three roots by
-% \begin{equation} \label{eq:inviscid_roots}
-% \begin{aligned}
-%  &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
-% \end{aligned}
-% \end{equation}
-% Note that $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$. For $\tau$ large, $\gamma(\tau)$ dominates $\beta(\tau)^2$ inside of the square root. Hence, roots are complex or pure real according to the sign of $-\alpha+m$. The square root in the above formulas are understood as taking the branch of nonnegative imaginary part.
-
-% In the following section, long time asymptotics are analyzed case by case.
-
-% \subsection{Inviscid case $n=0$}
-% We are studying non-autonomous system with coefficient
-% % $$ A(\tau) =
-% %    \begin{pmatrix}
-% %    0 & 0 & -\l^2\\
-% %    \frac{1}{\tau}\frac{1+\alpha}{1+m} & -\frac{1}{\tau}\frac{1+\alpha}{1+m} & 0\\
-% %    \frac{1}{\tau}\Big( \frac{-\alpha+m}{1+m}\Big) &
-% %    \frac{1}{\tau}\Big(m\frac{-\alpha+m}{1+m}\Big) &
-% %    -\frac{1}{\tau}(1+\alpha)
-% %   \end{pmatrix}=$$
-% %
-% $$  A(\tau)=\begin{pmatrix}
-%    0 & 0 & -\l^2\\
-%    0 & 0 & 0\\
-%    0 & 0 & 0
-%   \end{pmatrix}
-%   + \frac{1}{\tau}   \begin{pmatrix}
-%    0 & 0 & 0\\
-%    \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
-%    \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
-%   \end{pmatrix} = A_\infty + \frac{1}{\tau}A_1.$$
-% Three eigenvalues are explicit as written in \eqref{eq:inviscid_roots}. First observation is that the three eigenvalues all merges to the single value $0$ in the limit $\tau \rightarrow \infty$. It is obvious to see that this eigenvalue $0$ of $A_\infty$ has a geometric multiplicity $2$. In other words, despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit. As the order $\frac{1}{\tau}$ perturbation is explicitly given, straightforward calculation shows that eigenvectors for finite $\tau$ are
-% \begin{align*}
-%  s_1(\tau)&=x(\tau) + y(\tau), \quad s_2(\tau)=x(\tau)-y(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
-%  x(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  y(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
-% \end{align*}
-% Recall that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$. What merges up in the limit are $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$.
-%
-% In the below, two of our choice of basis are from $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ and one is from $\mathbf{N}\Big(A - \lambda_3\Big)$. From $\mathbf{N}\Big(A - \lambda_3\Big)$ we keep $s_3$. From $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ we keep $s_1\in\mathbf{N}\Big(A - \lambda_1\Big)$ but will be with a different normalization. As we cannot simultaneously choose the other in $\mathbf{N}\Big(A - \lambda_2\Big)$, we find $\tilde s_2$ such that $\tilde s_2\notin\mathbf{N}\Big(A - \lambda_2\Big)$, $y = (A-\lambda_2)\tilde s_2 \in \mathbf{N}\Big(A - \lambda_1\Big)$. To justify the solvability of this program, we observe following. If $\lambda_2\ne\lambda_1$, every element in $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. If $\lambda_2=\lambda_1$ and the geometric multiplicity is strictly less than the algebraic multiplicity, then the nontrivial subspace of $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. While to capture this subspace is in general nontrivial, for our problem, the dimension of $\mathbf{N}\Big(A - \lambda_1\Big)$ restricted in $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ is merely $1$ and thus every element of the kernel is in the range of $(A - \lambda_2\big)$.
-%
-% To summarize, we pick $s_1$, renormalized by a factor of $\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)$, then the pre-image $\tilde s_2$ is found such that
-% $$ (A-\lambda_2) \tilde s_2 = s_1, \quad \text{$\tilde s_2 = \begin{pmatrix}  0 \\ \tfrac{1+\alpha}{1+m} \\ \tfrac{-\alpha+m}{1+m} \end{pmatrix}$}.$$
-%
-% With this new basis, we re-write the linear system
-% \begin{equation}\label{eq:block1}
-% \begin{aligned}
-%  y &= P(\tau)^{-1} x, \quad P(\tau) = \begin{pmatrix} -\tau\gamma& 0 & -m\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}, \\
-%  y' &= \begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y - P(\tau)^{-1}P'(\tau) y.
-% \end{aligned}
-% \end{equation}
-% \begin{proposition} Assume $-\alpha+m \ne 0$. Then
-%  \begin{enumerate}
-%   \item $\exists \tau_0$ such that for $\tau\ge\tau_0$ $\big|P_{ij}(\tau)\big|$ and $\big|P^{-1}_{ij}(\tau)\big|$ are uniformly bounded.
-%   \item $\displaystyle \int_{\tau_0}^\infty \big|P_{ij}'(s)\big|\; ds < \infty$ for all $i,j=1,2,3$.
-%  \end{enumerate}
-% \end{proposition}
-% \begin{proof}
-% $$ \lim_{\tau \rightarrow \infty} P(\tau) = \begin{pmatrix} -\l^2\frac{-\alpha+m}{1+m}& 0 & -m\\ 0 & \frac{1+\alpha}{1+m} & 1\\ 0 & \frac{-\alpha+m}{1+m} & 0\end{pmatrix}$$
-% whose determinant is $\l^2 \left(\frac{-\alpha+m}{1+m}\right)^2$. Since $P(\tau)$ is smooth function of $\tau$, $\exists \tau_0$ such that $P(\tau)$, $\tau\ge\tau_0$ is invertible with uniformly bounded determinant. The second assertion follows from straightforward calculation of $P_{ij}'(\tau)$ whose leading order is $\mathcal{O}\big(\frac{1}{\tau^{3/2}}\big)$.
-% \end{proof}
-% The cases $-\alpha+m=0$ can be treated too; in this case we solve the system explicitly. See Theorem \ref{thm:3}.
-%
-% Later, although not entirely necessary, we find it convenient to pick another but related pure real factorization in cases $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are complex conjugate of each other. In the below is a real block diagonalization. We omit the proof of the invertibility of $\bar P(\tau)$ and integrability of $\bar P'(\tau)$.
-% \begin{equation}
-% \begin{aligned}
-%  \bar y &= P(\tau)^{-1} x, \quad \bar P(\tau) = \begin{pmatrix} 1 & 0 & -m\\0 & \frac{1+\alpha}{1+m} & 1\\0 & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}, \\
-%  \bar y' &= \begin{pmatrix} 0 & \frac{1}{\tau} & 0\\-\l^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & 0\\0 & 0 & -\frac{1+\alpha}{\tau}\end{pmatrix} \bar y - \bar P(\tau)^{-1}\bar P'(\tau) \bar y.
-% \end{aligned}\label{eq:block2}
-% \end{equation}
-%
-% We also listed the qualitative properties of eigenvalues respectively in each regime.
-%
-% \noindent{\bf subcase 1 $q=-\alpha+m=0$}
-% \begin{align*}
-%  \lambda_1(\tau)\equiv 0, \quad \lambda_2(\tau)= -\frac{1}{\tau}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
-% \end{align*}
-%
-% \noindent{\bf subcase 2 $q=-\alpha+m>0$ for $\tau$ large}
-%
-% $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are complex conjugate of each other with the same negative real parts $-\beta(\tau)$ that is of order $\frac{1}{\tau}$.
-%
-% \noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\tau$ large}
-% % \begin{align}
-% %  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \sqrt{\tau}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m}\frac{1}{\sqrt{\tau}\lambda_1(\tau)} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m}\frac{1}{\sqrt{\tau}\lambda_1(\tau)} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
-% %  y_k' &= \begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
-% % \end{align}
-%
-%
-% % the polynomial \eqref{eq:poly} factorizes to get,
-% % $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
-% % By letting $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \k^2\frac{-\alpha+m}{\tau(1+m)}$ we denote the three roots by
-% % \begin{equation}
-% % \begin{aligned}
-% %  &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
-% % \end{aligned}
-% % \end{equation}
-% % Note that $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$. For $\tau$ large, $\gamma(\tau)$ dominates $\beta(\tau)^2$ inside of the square root.
-% % % Three roots are explicitly listed:
-%
-% All eigenvalues are real. $\lambda_1(\tau)>0$ and $\lambda_2(\tau),\lambda_3(\tau)<0$. While $\lambda_3(\tau)$ is of order $\mathcal{O}\big(\frac{1}{\tau}\big)$, $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are of order $\mathcal{O}(\sqrt{\gamma(\tau)})$. This leads to $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$.
-%
-% Lastly reporting that the degenerate case $\alpha=m=n=0$ is solved explicitly to see $\Sigma\equiv U \equiv 0$ and $\Gamma$, $\Theta$ that decay exponentially to $0$, the next theorem gives a characterization of the aysmptotic stability.
-% \begin{theorem}[inviscid linear stability of uniform shear] \label{thm:3} Asymptotic stability of the uniform shear bifurcates by the sign of $q=-\alpha+m$:
-%  \begin{enumerate}
-%   \item If $q=-\alpha+m=0$, $\alpha>0$ then the uniform shear is marginally stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| < C$.
-%   \item If $q=-\alpha+m>0$, then the uniform shear is stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| = \mathcal{O}\big(\gamma_s^{\chi}\big)$ as $t \rightarrow \infty$, $\chi = \max \left\{-1, -(1+m)\right\}$.
-%   \item If $q=-\alpha+m<0$, then the uniform shear is unstable: For each $\ell\ge 1$, there is a growing mode $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| \ge C\exp\left(C'\l \gamma_s^{\frac{1+m}{2(1+\alpha)}}\right)$ for $\gamma_s\ge\gamma_{s0}$ large enough for some positive constant $C(\alpha,m,n)$ and $C'(\alpha,m,n)$.
-%  \end{enumerate}
-% \end{theorem}
-%
-%
-% \begin{proof}
-% When $-\alpha+m=0$, $\alpha>0$ straightforward calculations give the expression for the general solution
-% $$x(\tau) = C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix} + C_2 \begin{pmatrix} 0 \\ \frac{1}{\tau} \\0 \end{pmatrix} + C_3 \begin{pmatrix} -\k^2 \int_1^\tau \frac{1}{s^{1+\alpha}}\; ds \\ \frac{-\k^2}{\tau}\int_1^\tau  \int_1^t \frac{1}{s^{1+\alpha}}\; ds dt\\ \frac{1}{\tau^{1+\alpha}} \end{pmatrix}  \rightarrow C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix}\quad \text{as $\tau \rightarrow \infty$ if $\alpha>0$.}$$
-%
-% Now we prove the second assertion for $-\alpha+m>0$. We find the factorization in \eqref{eq:block2} suitable for its study.
-% % To justify this similarity transform, not diagonalizing $A(\tau)_k$, observe the following spectral properties of $A(\tau)_k$: All three eigenvalues are distinct and have negative real parts for finite $\tau$ but collapse down to a single value $0$ as $\tau \rightarrow \infty.$ Furthermore, the eigenvectors associated to $\lambda_1$, $\lambda_2$, and $\lambda_3$ are respectively
-% % \begin{align*}
-% %  s_1&=s^+, \quad s_2=s^-, \quad s_3 = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
-% %  s^\pm &= s_{re} \pm is_{im} = \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix} \pm i\frac{1}{\sqrt{\tau}}\begin{pmatrix}  \sqrt{\gamma(\tau)-\beta(\tau)^2}\\0\\0 \end{pmatrix}.
-% % \end{align*}
-% % They are linearly independent for finite $\tau$ but the first two collapse down to one because the real parts of $s^\pm$ vanishes in the limit. Nevertheless, we can appeal to the block diagonalization.
-% We claim that the norms of the solution operator $G_1(\tau)$ associated to the block $B_1=\begin{pmatrix} 0 & \frac{1}{\tau} \\-\k^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & \end{pmatrix}$ and $G_2(\tau)$ of $B_2 = -\frac{1+\alpha}{\tau}$ decays as $\tau \rightarrow \infty.$ The latter one is obvious.
-% In view of the discussion in the Appendix, having spectrum in left half complex plane is not enough to conclude the asymptotic stability especially for the block matrices with real parts of eigenvalues of order $\mathcal{O}\big(\frac{1}{\tau}\big)$. While the diagonal entry does give the decay, it is merely of polynomial order and this can be overwhelmed by the growth gains by interactions in the block.
-% Having that said, we directly prove the stability of the first block.
-% We consider $2$ by $2$ system, $$\xi' = \frac{1}{\tau} \eta, \quad \eta' = -\l^2\frac{-\alpha+m}{1+m}\xi -\frac{1+\alpha}{\tau(1+m)}\eta.$$
-% First note that unless otherwise $\xi\equiv\eta\equiv 0$, $\displaystyle\lim_{\tau \rightarrow 0} \frac{\tau^{\frac{1+\alpha}{1+m}}\eta(\tau)}{\xi(\tau)}$ exists and coincides with $0$.
-%
-% Given that and for $\tau\ge0$,
-% \begin{align*}
-% % \left(\frac{\eta}{\xi}\right)' &= -\k^2\frac{-\alpha+m}{1+m} - \frac{1+\alpha}{\tau(1+m)}\left(\frac{\eta}{\xi}\right)-\frac{1}{\tau}\left(\frac{\eta}{\xi}\right)^2,\\
-%  \left(\tau^{\frac{1+\alpha}{1+m}}\frac{\eta}{\xi}\right)' &=  -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}  -\tau^{\frac{1+\alpha}{1+m}+1}\left(\frac{\eta}{\xi}\right)^2 \le -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}},\\
-%  \frac{\tau \xi'}{\xi} &\le -\l^2\frac{-\alpha+m}{2+\alpha+m}\tau,\\
-%  \frac{|\xi(t)|}{|\xi(0)|} &\le \exp\left(-\l^2\frac{-\alpha+m}{2+\alpha+m}\tau\right).
-% \end{align*}
-% Now,
-% \begin{align*}
-%  \left(\tau^{\frac{1+\alpha}{1+m}} \eta\right)' &= -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}\xi \le \l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|,\\
-%  \tau^{\frac{1+\alpha}{1+m}} \eta &\le \int_0^t C(l)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \int_0^\infty C(\ell)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \tilde{C}(\ell).
-% \end{align*}
-% We have proved that $\|G_1\|(\tau) \le C(\ell)\tau^{-\frac{1+\alpha}{1+m}}$, $\tau\ge0$. Since two blocks $B_1$ and $B_2$ are decoupled, if $G(\tau)$ is the solution map, then $\|G\|(\tau) \le C(\ell)\max\left\{C(\ell)\tau^{-\frac{1+\alpha}{1+m}},\tau^{-(1+\alpha)}\right\}$, $\tau\ge0$. To go back to the independent variable $\gamma_s$, we recall that $\tau(\gamma_s)=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}$. By Proposition \ref{prop:stab}, the least decaying solution $x$ is attained with same decaying order. %$\bar y$ of \eqref{eq:block2} and  as well decays with the same order.
-%
-% Now, we prove the third assertion. If $-\alpha+m < 0$, then all eigenvalues are real. We find the factorization \eqref{eq:block1} suitable.
-% % following triangularization suitable. Same reasoning applies for not diagonalizing $A(\tau)_k$.
-% % \begin{align}
-% %  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \frac{1}{\sqrt{\tau}}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
-% %  y_k' &= \begin{pmatrix} \lambda_1(\tau) & \frac{\lambda_1(\tau)}{\sqrt{\tau}} & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
-% % \end{align}
-% As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix is regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix. It is enough for our purpose to show that there exists a solution that grows as much as the semi-group part does. The operator norm of $H(\tau)$ is easily computed by Proposition \ref{prop:tri-stab}. To be precise, as the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ the growth is $\exp\left( \int_a^t \lambda_1(s)\;ds\right)= \mathcal{O}\Big(\exp\left(C_1\k\sqrt{\tau}\right)\Big).$ Again, maximum growth of $y$ is as same as that of $x$ and the third assertion follows.
-% \end{proof}
-% \begin{remark}
-%  Theorem \ref{thm:3} shows that the linear stability bifurcates by sign of $-\alpha+m$ and if $-\alpha+m<0$ there is a exponentially growing mode having exponent $\sim \l \gamma_s^{\frac{1+m}{2(1+\alpha)}}$. This indicates that the system exhibits the Hadamard Instability. In the following section, we see the nature of the instability is qualitatively altered in the presence of the viscosity.
-% \end{remark}
-
-
-\subsection{Application of Coddington-Levinson Theorem}
+\subsection{Asymptotic behaviors of viscous model}
 For the technical reason we assume the following
  \begin{equation}
   \alpha\ne m \quad \text{and} \quad (-\alpha+m)(1+n)^2 \ne 4nm(1+\alpha), \tag{$A0$} \label{eq:nodoubleroot}
@@ -778,7 +611,7 @@ Having that checked, by Coddington-Levinson Theorem, we find $y_i(\tau;\ell)$, $
 To compute the $\chi_1$ and $\chi_2$, we go back to the independent variable $\gamma_s$; we recall $\tau(\gamma_s)= \theta_s^*=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}$.
 \end{proof}
 \begin{remark}
-Just to be explicit, we write
+To be explicit, we write
 \begin{align*}
  z_1(0) &= -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{2n(1+m)} \\
  &+ \sqrt{\left(\frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\right)^2 -4 \frac{n(1+\alpha)(-\alpha+m+n)}{1+m}},\\
@@ -791,6 +624,195 @@ Just to be explicit, we write
  \chi_2 = -(1+m)  + \mathcal{O}(n).
 \end{align*}
 \end{remark}
+
+\subsection{Contrasting behavior of inviscid model: Hadamard instability}
+Having seen the conclusions for the viscous model, particularly its power behavior in the unstable regime, the purpose of this section is to contrast the behavior for the inviscid model in the unstable regime $n=0$ and $q=-\alpha+m<0$. As addressed, the instability exhibited in the inviscid case is of \emph{Hadamard instability} and the growth is contrasted by its exponential behavior.
+
+When $n=0$ the polynomial \eqref{eq:poly} factorizes to get,
+$$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
+For convenience of computations later, we let $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \l^2\frac{-\alpha+m}{\tau(1+m)}$ and denote the three roots by
+\begin{equation} \label{eq:inviscid_roots}
+\begin{aligned}
+ &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
+\end{aligned}
+\end{equation}
+Note that $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$ and thus $\lambda_1(\tau)$ and $\lambda_2(\tau)$  $\sim$ $\mathcal{O}\big(\frac{1}{\sqrt{\tau}}\big)$. For $\tau$ large, since $-\alpha+m<0$ one can check that $(i)$ $f(\tau)$ attains only three real roots; $(ii)$ $\lambda_1(\tau) > 0 > \lambda_3(\tau) \gg \lambda_2(\tau)$. %  Hence, roots are complex or pure real according to the sign of $-\alpha+m$. The square root in the above formulas are understood as taking the branch of nonnegative imaginary part.
+
+% In the following section, long time asymptotics are analyzed case by case.
+
+% \subsection{Inviscid case $n=0$}
+We are to study a non-autonomous system with coefficient
+% $$ A(\tau) =
+%    \begin{pmatrix}
+%    0 & 0 & -\l^2\\
+%    \frac{1}{\tau}\frac{1+\alpha}{1+m} & -\frac{1}{\tau}\frac{1+\alpha}{1+m} & 0\\
+%    \frac{1}{\tau}\Big( \frac{-\alpha+m}{1+m}\Big) &
+%    \frac{1}{\tau}\Big(m\frac{-\alpha+m}{1+m}\Big) &
+%    -\frac{1}{\tau}(1+\alpha)
+%   \end{pmatrix}=$$
+%
+$$  A(\tau)=\begin{pmatrix}
+   0 & 0 & -\l^2\\
+   0 & 0 & 0\\
+   0 & 0 & 0
+  \end{pmatrix}
+  + \frac{1}{\tau}   \begin{pmatrix}
+   0 & 0 & 0\\
+   \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
+   \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
+  \end{pmatrix} = A_\infty + \frac{1}{\tau}A_1.$$
+Three eigenvalues are explicit as written in \eqref{eq:inviscid_roots}. For this coefficient matrix, we cannot proceed similarly as before because the matrix does not admit the smooth diagonalization up to infinity: The three eigenvalues all merge into the single value $0$ in the limit $\tau \rightarrow \infty$ and it is easy to check that this eigenvalue $0$ of $A_\infty$ has a geometric multiplicity $2$. Therefore despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit. 
+
+Smooth factorization of a one parameter family of matrices is yet another substantial subject @CITE@. For our problem fortunately, it turns out that the coefficient admits a smooth block diagonal factorization. What is in the below explains how we proceed. 
+
+As the order $\frac{1}{\tau}$ perturbation is explicitly given, straightforward calculation shows that eigenvectors for finite $\tau$ can be chosen
+\begin{align*}
+ s_1(\tau)&=x(\tau) + y(\tau), \quad s_2(\tau)=x(\tau)-y(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
+ x(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  y(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
+\end{align*}
+Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$, what merges up in the limit are $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$.
+%In the below, two of our choice of basis are from $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ and one is from $\mathbf{N}\Big(A - \lambda_3\Big)$. From $\mathbf{N}\Big(A - \lambda_3\Big)$ we keep $s_3$. From $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ we keep $s_1\in\mathbf{N}\Big(A - \lambda_1\Big)$ but will be with a different normalization. As we cannot simultaneously choose the other in $\mathbf{N}\Big(A - \lambda_2\Big)$, we find $\tilde s_2$ such that $\tilde s_2\notin\mathbf{N}\Big(A - \lambda_2\Big)$, $y = (A-\lambda_2)\tilde s_2 \in \mathbf{N}\Big(A - \lambda_1\Big)$. To justify the solvability of this program, we observe following. If $\lambda_2\ne\lambda_1$, every element in $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. If $\lambda_2=\lambda_1$ and the geometric multiplicity is strictly less than the algebraic multiplicity, then the nontrivial subspace of $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. While to capture this subspace is in general nontrivial, for our problem, the dimension of $\mathbf{N}\Big(A - \lambda_1\Big)$ restricted in $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ is merely $1$ and thus every element of the kernel is in the range of $(A - \lambda_2\big)$.
+To proceed with {\it the generalized eigenvector}, we pick $s_1$, renormalized by a factor of $\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)$, with its notation not changed, then the pre-image $\tilde s_2$ is found such that
+$$ (A-\lambda_2) \tilde s_2 = s_1, \quad \text{$\tilde s_2 = \begin{pmatrix}  0 \\ \tfrac{1+\alpha}{1+m} \\ \tfrac{-\alpha+m}{1+m} \end{pmatrix}$}.$$
+
+With this new basis, we factorize the linear system similarly as before
+\begin{equation}\label{eq:block1}
+\begin{aligned}
+ y &= P(\tau)^{-1} x, \quad P(\tau) = \begin{pmatrix} -\tau\gamma& 0 & -m\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}, \\
+ y' &= \begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y - P(\tau)^{-1}P'(\tau) y.
+\end{aligned}
+\end{equation}
+\begin{proposition} Assume $-\alpha+m < 0$. Then
+ \begin{enumerate}
+  \item $\exists \tau_0$ such that for $\tau\ge\tau_0$ $\big|P_{ij}(\tau)\big|$ and $\big|P^{-1}_{ij}(\tau)\big|$ are uniformly bounded.
+  \item $\displaystyle \int_{\tau_0}^\infty \big|P_{ij}'(s)\big|\; ds < \infty$ for all $i,j=1,2,3$.
+ \end{enumerate}
+\end{proposition}
+\begin{proof}
+$$ \lim_{\tau \rightarrow \infty} P(\tau) = \begin{pmatrix} -\l^2\frac{-\alpha+m}{1+m}& 0 & -m\\ 0 & \frac{1+\alpha}{1+m} & 1\\ 0 & \frac{-\alpha+m}{1+m} & 0\end{pmatrix}$$
+whose determinant is $\l^2 \left(\frac{-\alpha+m}{1+m}\right)^2$. Since $P(\tau)$ is smooth function of $\tau$, $\exists \tau_0$ such that $P(\tau)$, $\tau\ge\tau_0$ is invertible with uniformly bounded determinant. The second assertion follows from straightforward calculation of $P_{ij}'(\tau)$ whose leading order is $\mathcal{O}\big(\frac{1}{\tau^{3/2}}\big)$.
+\end{proof}
+
+Now, we prove the third assertion. If $-\alpha+m < 0$, then all eigenvalues are real. We find the factorization \eqref{eq:block1} suitable.
+% following triangularization suitable. Same reasoning applies for not diagonalizing $A(\tau)_k$.
+% \begin{align}
+%  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \frac{1}{\sqrt{\tau}}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
+%  y_k' &= \begin{pmatrix} \lambda_1(\tau) & \frac{\lambda_1(\tau)}{\sqrt{\tau}} & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
+% \end{align}
+As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix is regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix. It is enough for our purpose to show that there exists a solution that grows as much as the semi-group part does. The operator norm of $H(\tau)$ is easily computed by Proposition \ref{prop:tri-stab}. To be precise, as the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ the growth is $\exp\left( \int_a^t \lambda_1(s)\;ds\right)= \mathcal{O}\Big(\exp\left(C_1\k\sqrt{\tau}\right)\Big).$ Again, maximum growth of $y$ is as same as that of $x$ and the third assertion follows.
+\begin{remark}
+ Theorem \ref{thm:3} shows that the linear stability bifurcates by sign of $-\alpha+m$ and if $-\alpha+m<0$ there is a exponentially growing mode having exponent $\sim \l \gamma_s^{\frac{1+m}{2(1+\alpha)}}$. This indicates that the system exhibits the Hadamard Instability. In the following section, we see the nature of the instability is qualitatively altered in the presence of the viscosity.
+\end{remark}
+
+
+
+
+The cases $-\alpha+m=0$ can be treated too; in this case we solve the system explicitly. See Theorem \ref{thm:3}.
+
+Later, although not entirely necessary, we find it convenient to pick another but related pure real factorization in cases $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are complex conjugate of each other. In the below is a real block diagonalization. We omit the proof of the invertibility of $\bar P(\tau)$ and integrability of $\bar P'(\tau)$.
+\begin{equation}
+\begin{aligned}
+ \bar y &= P(\tau)^{-1} x, \quad \bar P(\tau) = \begin{pmatrix} 1 & 0 & -m\\0 & \frac{1+\alpha}{1+m} & 1\\0 & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}, \\
+ \bar y' &= \begin{pmatrix} 0 & \frac{1}{\tau} & 0\\-\l^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & 0\\0 & 0 & -\frac{1+\alpha}{\tau}\end{pmatrix} \bar y - \bar P(\tau)^{-1}\bar P'(\tau) \bar y.
+\end{aligned}\label{eq:block2}
+\end{equation}
+
+We also listed the qualitative properties of eigenvalues respectively in each regime.
+
+\noindent{\bf subcase 1 $q=-\alpha+m=0$}
+\begin{align*}
+ \lambda_1(\tau)\equiv 0, \quad \lambda_2(\tau)= -\frac{1}{\tau}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
+\end{align*}
+
+\noindent{\bf subcase 2 $q=-\alpha+m>0$ for $\tau$ large}
+
+$\lambda_1(\tau)$ and $\lambda_2(\tau)$ are complex conjugate of each other with the same negative real parts $-\beta(\tau)$ that is of order $\frac{1}{\tau}$.
+
+\noindent{\bf subcase 3 $q=-\alpha+m<0$ for $\tau$ large}
+% \begin{align}
+%  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \sqrt{\tau}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m}\frac{1}{\sqrt{\tau}\lambda_1(\tau)} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m}\frac{1}{\sqrt{\tau}\lambda_1(\tau)} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
+%  y_k' &= \begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
+% \end{align}
+
+
+% the polynomial \eqref{eq:poly} factorizes to get,
+% $$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
+% By letting $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \k^2\frac{-\alpha+m}{\tau(1+m)}$ we denote the three roots by
+% \begin{equation}
+% \begin{aligned}
+%  &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
+% \end{aligned}
+% \end{equation}
+% Note that $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$. For $\tau$ large, $\gamma(\tau)$ dominates $\beta(\tau)^2$ inside of the square root.
+% % Three roots are explicitly listed:
+
+All eigenvalues are real. $\lambda_1(\tau)>0$ and $\lambda_2(\tau),\lambda_3(\tau)<0$. While $\lambda_3(\tau)$ is of order $\mathcal{O}\big(\frac{1}{\tau}\big)$, $\lambda_1(\tau)$ and $\lambda_2(\tau)$ are of order $\mathcal{O}(\sqrt{\gamma(\tau)})$. This leads to $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$.
+
+Lastly reporting that the degenerate case $\alpha=m=n=0$ is solved explicitly to see $\Sigma\equiv U \equiv 0$ and $\Gamma$, $\Theta$ that decay exponentially to $0$, the next theorem gives a characterization of the aysmptotic stability.
+\begin{theorem}[inviscid linear stability of uniform shear] \label{thm:3} Asymptotic stability of the uniform shear bifurcates by the sign of $q=-\alpha+m$:
+ \begin{enumerate}
+  \item If $q=-\alpha+m=0$, $\alpha>0$ then the uniform shear is marginally stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| < C$.
+  \item If $q=-\alpha+m>0$, then the uniform shear is stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| = \mathcal{O}\big(\gamma_s^{\chi}\big)$ as $t \rightarrow \infty$, $\chi = \max \left\{-1, -(1+m)\right\}$.
+  \item If $q=-\alpha+m<0$, then the uniform shear is unstable: For each $\ell\ge 1$, there is a growing mode $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| \ge C\exp\left(C'\l \gamma_s^{\frac{1+m}{2(1+\alpha)}}\right)$ for $\gamma_s\ge\gamma_{s0}$ large enough for some positive constant $C(\alpha,m,n)$ and $C'(\alpha,m,n)$.
+ \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+When $-\alpha+m=0$, $\alpha>0$ straightforward calculations give the expression for the general solution
+$$x(\tau) = C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix} + C_2 \begin{pmatrix} 0 \\ \frac{1}{\tau} \\0 \end{pmatrix} + C_3 \begin{pmatrix} -\k^2 \int_1^\tau \frac{1}{s^{1+\alpha}}\; ds \\ \frac{-\k^2}{\tau}\int_1^\tau  \int_1^t \frac{1}{s^{1+\alpha}}\; ds dt\\ \frac{1}{\tau^{1+\alpha}} \end{pmatrix}  \rightarrow C_1 \begin{pmatrix} 1\\ 1\\0\end{pmatrix}\quad \text{as $\tau \rightarrow \infty$ if $\alpha>0$.}$$
+
+Now we prove the second assertion for $-\alpha+m>0$. We find the factorization in \eqref{eq:block2} suitable for its study.
+% To justify this similarity transform, not diagonalizing $A(\tau)_k$, observe the following spectral properties of $A(\tau)_k$: All three eigenvalues are distinct and have negative real parts for finite $\tau$ but collapse down to a single value $0$ as $\tau \rightarrow \infty.$ Furthermore, the eigenvectors associated to $\lambda_1$, $\lambda_2$, and $\lambda_3$ are respectively
+% \begin{align*}
+%  s_1&=s^+, \quad s_2=s^-, \quad s_3 = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
+%  s^\pm &= s_{re} \pm is_{im} = \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix} \pm i\frac{1}{\sqrt{\tau}}\begin{pmatrix}  \sqrt{\gamma(\tau)-\beta(\tau)^2}\\0\\0 \end{pmatrix}.
+% \end{align*}
+% They are linearly independent for finite $\tau$ but the first two collapse down to one because the real parts of $s^\pm$ vanishes in the limit. Nevertheless, we can appeal to the block diagonalization.
+We claim that the norms of the solution operator $G_1(\tau)$ associated to the block $B_1=\begin{pmatrix} 0 & \frac{1}{\tau} \\-\k^2\frac{-\alpha+m}{1+m} & -\frac{1+\alpha}{\tau(1+m)} & \end{pmatrix}$ and $G_2(\tau)$ of $B_2 = -\frac{1+\alpha}{\tau}$ decays as $\tau \rightarrow \infty.$ The latter one is obvious.
+In view of the discussion in the Appendix, having spectrum in left half complex plane is not enough to conclude the asymptotic stability especially for the block matrices with real parts of eigenvalues of order $\mathcal{O}\big(\frac{1}{\tau}\big)$. While the diagonal entry does give the decay, it is merely of polynomial order and this can be overwhelmed by the growth gains by interactions in the block.
+Having that said, we directly prove the stability of the first block.
+We consider $2$ by $2$ system, $$\xi' = \frac{1}{\tau} \eta, \quad \eta' = -\l^2\frac{-\alpha+m}{1+m}\xi -\frac{1+\alpha}{\tau(1+m)}\eta.$$
+First note that unless otherwise $\xi\equiv\eta\equiv 0$, $\displaystyle\lim_{\tau \rightarrow 0} \frac{\tau^{\frac{1+\alpha}{1+m}}\eta(\tau)}{\xi(\tau)}$ exists and coincides with $0$.
+
+Given that and for $\tau\ge0$,
+\begin{align*}
+% \left(\frac{\eta}{\xi}\right)' &= -\k^2\frac{-\alpha+m}{1+m} - \frac{1+\alpha}{\tau(1+m)}\left(\frac{\eta}{\xi}\right)-\frac{1}{\tau}\left(\frac{\eta}{\xi}\right)^2,\\
+ \left(\tau^{\frac{1+\alpha}{1+m}}\frac{\eta}{\xi}\right)' &=  -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}  -\tau^{\frac{1+\alpha}{1+m}+1}\left(\frac{\eta}{\xi}\right)^2 \le -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}},\\
+ \frac{\tau \xi'}{\xi} &\le -\l^2\frac{-\alpha+m}{2+\alpha+m}\tau,\\
+ \frac{|\xi(t)|}{|\xi(0)|} &\le \exp\left(-\l^2\frac{-\alpha+m}{2+\alpha+m}\tau\right).
+\end{align*}
+Now,
+\begin{align*}
+ \left(\tau^{\frac{1+\alpha}{1+m}} \eta\right)' &= -\l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}}\xi \le \l^2\frac{-\alpha+m}{1+m}\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|,\\
+ \tau^{\frac{1+\alpha}{1+m}} \eta &\le \int_0^t C(l)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \int_0^\infty C(\ell)\tau^{\frac{1+\alpha}{1+m}} |\xi(\tau)|\; d\tau \le \tilde{C}(\ell).
+\end{align*}
+We have proved that $\|G_1\|(\tau) \le C(\ell)\tau^{-\frac{1+\alpha}{1+m}}$, $\tau\ge0$. Since two blocks $B_1$ and $B_2$ are decoupled, if $G(\tau)$ is the solution map, then $\|G\|(\tau) \le C(\ell)\max\left\{C(\ell)\tau^{-\frac{1+\alpha}{1+m}},\tau^{-(1+\alpha)}\right\}$, $\tau\ge0$. To go back to the independent variable $\gamma_s$, we recall that $\tau(\gamma_s)=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}$. By Proposition \ref{prop:stab}, the least decaying solution $x$ is attained with same decaying order. %$\bar y$ of \eqref{eq:block2} and  as well decays with the same order.
+
+Now, we prove the third assertion. If $-\alpha+m < 0$, then all eigenvalues are real. We find the factorization \eqref{eq:block1} suitable.
+% following triangularization suitable. Same reasoning applies for not diagonalizing $A(\tau)_k$.
+% \begin{align}
+%  y_k &= P(\tau)^{-1} x_k, \quad P(\tau) = \begin{pmatrix} \frac{1}{\sqrt{\tau}}(\beta + \sqrt{\beta^2-\gamma})& 0 & -m\\ \frac{1}{\sqrt{\tau}}\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \frac{1}{\sqrt{\tau}} \frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\k^2}\end{pmatrix}, \\
+%  y_k' &= \begin{pmatrix} \lambda_1(\tau) & \frac{\lambda_1(\tau)}{\sqrt{\tau}} & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix} y_k - P(\tau)^{-1}P'(\tau) y_k. \label{eq:block2}
+% \end{align}
+As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix is regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix. It is enough for our purpose to show that there exists a solution that grows as much as the semi-group part does. The operator norm of $H(\tau)$ is easily computed by Proposition \ref{prop:tri-stab}. To be precise, as the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ the growth is $\exp\left( \int_a^t \lambda_1(s)\;ds\right)= \mathcal{O}\Big(\exp\left(C_1\k\sqrt{\tau}\right)\Big).$ Again, maximum growth of $y$ is as same as that of $x$ and the third assertion follows.
+\end{proof}
+\begin{remark}
+ Theorem \ref{thm:3} shows that the linear stability bifurcates by sign of $-\alpha+m$ and if $-\alpha+m<0$ there is a exponentially growing mode having exponent $\sim \l \gamma_s^{\frac{1+m}{2(1+\alpha)}}$. This indicates that the system exhibits the Hadamard Instability. In the following section, we see the nature of the instability is qualitatively altered in the presence of the viscosity.
+\end{remark}
+
+
+
+
+% \begin{theorem}\label{thm:2} Suppose $q=-\alpha+m<0$, then the uniform shear is unstable: For each $\ell\ge 1$, there is a growing mode $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| \ge C\exp\left(C'\l \gamma_s^{\frac{1+m}{2(1+\alpha)}}\right)$ for $\gamma_s\ge\gamma_{s0}$ large enough for some positive constant $C(\alpha,m,n)$ and $C'(\alpha,m,n)$. Asymptotic stability of the uniform shear bifurcates by the sign of $q=-\alpha+m$:
+%  \begin{enumerate}
+%   \item If $q=-\alpha+m=0$, $\alpha>0$ then the uniform shear is marginally stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| < C$.
+%   \item If $q=-\alpha+m>0$, then the uniform shear is stable: For all $\ell\ge 1$ and for any solution $x(\gamma_s)$ of the system $\eqref{eq:l-system}_\ell$, $|x(\gamma_s)| = \mathcal{O}\big(\gamma_s^{\chi}\big)$ as $t \rightarrow \infty$, $\chi = \max \left\{-1, -(1+m)\right\}$.
+%   \item 
+%  \end{enumerate}
+% \end{theorem}
+
+
 
 \section{Localizing self-similar solutions}
 Through the series of works of \cite{KOT14,KLT_16, KLT_HYP2016, KLT17}, solutions of \eqref{eq:system} those emerge dynamic localization have been constructed by similarity methods and techniques of dynamical systems. The objective of this section is to present the results and essential ideas, which will be exposed in a slightly more systematic way. The idea of constructing localizing solution by similarity methods were first introduced in \cite{KOT14} for a viscous shear flow of fluid, where the exponential law of viscosity was employed. Despite of our models being for a plastic solid, the governing equations take the same form but with the suitable constitutive law interpreted accordingly to the context, and this enabled us to adapt the method for our current study. The constructed family are an ample demonstration of the onset of localization for the constitutive law (in the form of a power law) and the corresponding model.
