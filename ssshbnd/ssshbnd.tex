@@ -1,10 +1,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Self-Similar shear bands, Existence, Numerics, Asymptotics
+%   Localization in adiabatic shear flow via geometric theory of singular perturbations
 %
 %                                                      by
 %
-%                                       Min-Gi Lee
+%                                       Min-Gi Lee, Th. Katsaounis and A.E. Tzavaras
 %
 %                                          version Sep 2016
 %
@@ -21,7 +21,7 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{calrsfs}
-%\usepackage[notcite,notref]{showkeys}
+\usepackage[notcite,notref]{showkeys}
 
 \usepackage{psfrag}
 \usepackage{graphicx,subfigure}
@@ -109,15 +109,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \title{Localization in adiabatic shear flow \\via geometric theory of singular perturbations}
-\author{Min-Gi Lee\footnotemark[1] \and Athanasios Tzavaras\footnotemark[2]} %\ \footnotemark[3]  % \footnotemark[4]}
+\author{ Min-Gi Lee\footnotemark[1] \and Theodoros Katsaounis\footnotemark[2] \footnotemark[3]  \and Athanasios E. Tzavaras\footnotemark[4]} %\ \footnotemark[3]  % \footnotemark[4]}
 \date{}
 
 \maketitle
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\footnotetext[1]{Min-Gi Lee \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia, \\ e-mail: mingi.lee@kaust.edu.sa}%{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
-\footnotetext[2]{Athanasios Tzavaras \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,\\  e-mail: {athanasios.tzavaras@kaust.edu.sa}}
-% \footnotetext[2]{Department of Mathematics and Applied Mathematics, University of Crete, Heraklion, Greece}
+\footnotetext[1]{Min-Gi Lee \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,  e-mail: mingi.lee@kaust.edu.sa}%{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
+\footnotetext[2]{Theodoros Katsaounis \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia, e-mail: mingi.lee@kaust.edu.sa}%{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
 \footnotetext[3]{Institute of Applied and Computational Mathematics, FORTH, Heraklion, Greece}
+\footnotetext[4]{Athanasios E. Tzavaras \\ King Abdullah University of Science and Technology (KAUST), Computer, Electrical and Mathematical Sciences \& Engineering Division, KAUST, Thuwal, Saudi Arabia,  e-mail: {athanasios.tzavaras@kaust.edu.sa}}
+% \footnotetext[2]{Department of Mathematics and Applied Mathematics, University of Crete, Heraklion, Greece}
+%\footnotetext[3]{Institute of Applied and Computational Mathematics, FORTH, Heraklion, Greece}
 % \footnotetext[4]{Corresponding author : \texttt{athanasios.tzavaras@kaust.edu.sa}}
 %\footnotetext[4]{Research supported by the King Abdullah University of Science and Technology (KAUST) }
 \renewcommand{\thefootnote}{\arabic{footnote}}
@@ -125,7 +127,12 @@
 
 \maketitle
 
-\baselineskip=14pt
+
+%baseline for working
+\baselineskip=18pt
+
+%baseline for submission
+%\baselineskip=14pt
 
 \begin{abstract}
 We study localization occurring during high speed shear deformations of metals leading to the formation of shear bands.
@@ -144,6 +151,13 @@ with respect to a small parameter capturing the strength of strain-rate hardenin
 Shear bands are narrow zones of intensely localized shear that are formed during the high speed shear motion of metals \cite{zener_effect_1944, clifton_rev_1990}. 
 They often precede rupture and are one of the striking instances of material instability leading to failure. 
 Our main objective is to capture this phenomenon in the simplest possible meaningful framework of one-dimensional thermo-visoco-plasticity. 
+
+
+
+
+\section{Description of the problem and statement of the main results}
+{\red new section}
+
 
 A specimen located in the $xy$-plain undergoes shear motion in the $y$-direction. The motion is described by the (plastic) shear strain
 $\gamma(x,t)$, the strain rate $u(x,t) = \gamma_t (x,t)$, the velocity $v(x,t)$ in the shear direction, the temperature $\theta(x,t)$ and the shear stress
@@ -277,7 +291,7 @@ The evolution turns out to be a relaxation process towards a slow manifold that 
 %We let this identity be exact at a space time point $(t_0,x_0)$ and let this constraint propagate through the space-time by having its derivatives vanish. Later in the study on the self-similar solutions, space-time infinity ($\xi=\infty$) is chosen for the point of prescribed exact identity. It turns out that this propagation is a relaxation process towards a slow manifold that is perturbed from the one at the singular limit $n=0$. %This relaxation is singularly perturbed in a sense that if the starting point values of $(\gamma,v,\theta,\sigma)|_{(t_0,x_0)}$ are off the manifold then layer is formed.
 
 The above mechanism manifests itself in the $(p,q,r,s)$-system \eqref{intro:slow} by $(i)$ the presence of so called {\it fast-slow} structure with respect to the small parameter $n$ and $(ii)$ the appearance of the invariant manifold that is two dimensional. {\it Geometric singular perturbation theory} is employed 
-to construct the perturbed heteroclinic orbit. We detail this in Section \ref{sec:proof}. More advanced results on Geometric singular perturbation theory can be found in \cite{fenichel_asymptotic_1974, fenichel_asymptotic_1977,fenichel_geometric_1979,HPS_1977,Sz1991,wiggins_normally_1994,KUEHN_2015}.
+to construct the perturbed heteroclinic orbit. We detail this in Section \ref{sec:proof}. More advanced results on Geometric singular perturbation theory can be found in \cite{fenichel_asymptotic_1974, fenichel_asymptotic_1977,fenichel_geometric_1979,HPS_1977,Sz1991,wiggins_normally_1994,Jones_1995,KUEHN_2015}.
 In section \ref{sec:localization}, we describe the emergence of localization in the constructed two-parameter family of solutions via asymptotic analysis. The numerical computations of the solution, which have been described in \cite{KLT_HYP2016}, are provided again here for illustrative purposes. 
 
 The emerging self-similar solutions depend on two parameters $(U(0), \Gamma (0))$ describing the initial nonuniformity; the rate of localization $\lambda$ is 
@@ -296,6 +310,9 @@ of Hadamard instability with small viscosity effects.
 %the solution the size of the nonuniformity $(\Gamma_0, U_0)$ and the rate $\lambda$ are interconnected through
 
 
+
+
+\vfil\eject
 
 \section{Self-similar solutions} \label{sec:scale}
 
@@ -365,6 +382,10 @@ Note that the uniform shear solution is attained as a self-similar solution at $
 The system \eqref{eq:ss-odes} is non-autonomous and  singular at $\xi=0$.
 %Existence or non-existence of the singular ordinary differential equations differs from cases to cases and requires case-by-case study. %and results depend on the characteristics of the problem.
 In the sequel, we de-singularize \eqref{eq:ss-odes} and turn it into an autonomous system.
+
+
+
+\vfil\eject
 
 \section{Reduction to the construction of a heteroclinic orbit} \label{sec:formulation}
 The goal of this section is to derive an equivalent system \eqref{eq:slow} to \eqref{eq:ss-odes} that is autonomous and to turn the problem of
@@ -457,11 +478,11 @@ orbits that have power behavior at infinities. We rewrite \eqref{eq:tildesys} in
 \begin{aligned}
 \frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\lambda} \big (- a_0 +  \frac{\tu}{\tg} \big ),
 \\
-\frac{d}{d\eta}{(\ln{\tv})}  &=  - b_1 + \frac{\tu}{\tv} , 
+ \frac{d}{d\eta}{(\ln{\tv})}  &=  {\red b_1 + \frac{\tu}{\tv} , }
 \\
 \frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\lambda} \big (- c_0 +  \frac{\ts \tu}{\tth} \big ), 
 \\
-\frac{d}{d\eta}{(\ln{\tth})} &= d_1 + b \frac{\tv}{\ts} + \lambda + \frac{\tu}{\ts}
+\frac{d}{d\eta}{( {\red \ln{\ts} } )} &= d_1 + b \frac{\tv}{\ts} +  {\red  \lambda \frac{\tu}{\ts}  }
 \end{aligned}
 \end{equation}
 and view it as describing the evolution of $(\tg,\tv,\tth,\ts)$ with $\tu$ determined by $\tu = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^m} \right )^\frac{1}{n}$.
@@ -482,10 +503,14 @@ $$
 $$
 Using \eqref{eq:tildesys2} and \eqref{eq:pqrdef}, we write
 \begin{align*}
- \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right]\\
- n\frac{\drr}{r}&=-(m+n)\frac{\dtg}{\tg}+\frac{\dts}{\ts} + \alpha\frac{\dtth}{\tth} & &=\left[\frac{-(m+n)}{\lambda}\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right] + \left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
- \frac{\dot{s}}{s} &= \frac{\dtg}{\tg} + \frac{\dts}{\ts} - \frac{\dtth}{\tth} & &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+\left[d_1 + b\frac{\tv}{\ts} + \lambda\frac{\tu}{\tv}\frac{\tv}{\ts}\right] -\left[\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
+ \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + 
+ \lambda   {\red  \frac{\tu}{\tg} \frac{\tg}{\ts}   }  \right]
+ \\
+ \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda  {\red  \frac{\tu}{\tg} \frac{\tg}{\ts}   }   \right]
+ \\
+ n\frac{\drr}{r}&=-(m+n)\frac{\dtg}{\tg}+\frac{\dts}{\ts} + \alpha\frac{\dtth}{\tth} & &=\left[\frac{-(m+n)}{\lambda}\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda  {\red  \frac{\tu}{\tg} \frac{\tg}{\ts} }  \right] + \left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
+ \frac{\dot{s}}{s} &= \frac{\dtg}{\tg} + \frac{\dts}{\ts} - \frac{\dtth}{\tth} & &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+\left[d_1 + b\frac{\tv}{\ts} 
+ + \lambda  {\red  \frac{\tu}{\tg} \frac{\tg}{\ts} }  \right] -\left[\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
 %  \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} &&= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}.
 \end{align*}
 We note that
@@ -504,6 +529,8 @@ and using \eqref{eq:exponents} and \eqref{defD}, after a cumbersome but straight
 In the sequel, we analyze \eqref{eq:slow} as an autonomous system: We begin with sorting its equilibria and analyzing their linear stability. Most importantly, \eqref{eq:slow} possesses the {\it fast-slow} structure because of the small parameter $n$ in the left-hand-side of $\eqref{eq:slow}_3$; the dynamics of $r$ can be distinctively faster than those of the other variables.
 
 
+
+\vfil\eject
 
 \section{Equilibria and their linear stability} \label{sec:equil}
 
@@ -851,6 +878,10 @@ $\kappa_1 = \frac{\Gamma(0)}{\Sigma(0)}$, or
 %
 % Now, we describe the bifurcation of this marginal case. The crucial difference is that $M_1^{\lambda,1,0}$ is replaced by a line of equilibria $h^{\lambda,1,0}(p,q) = c^{\lambda,1,0}=1$, which is the red line in Figure \ref{fig:hn0m1}. As a result, each of the parabolae emanated from $M_0^{\lambda,1,0}$ lands at a point among these equilibria. $\vec{X}_{02}$ is immersed on $q=0$ plane distinctively from all other cases and the target orbit in particular lands at the $q$-intercept of the line of equilibria. To compare this observation to the statement of Theorem \ref{thm:1}, the target orbit does not connect $M_0^{ \lambda,1,0}$ to $M_1^{ \lambda,1,0}$ but to this $q$-intercept. This observation does not spoil our proof in Section \ref{sec:proof_proof} because we assert the persistence of the critical manifold not the target orbit.
 
+
+
+\vfil\eject
+
 \section{Existence via Geometric theory of singular perturbations} \label{sec:proof}
 This section is devoted to proving the existence of a heteroclinic orbit $\chi(\eta)$ with limiting behavior as determined in the preceding section.
 
@@ -982,48 +1013,26 @@ We begin by writing the Reduced problem and the Layer problem for \eqref{eq:slow
 is the Reduced problem while
 \begin{equation} \label{eq:fast0} 
  \begin{aligned}
- {p}' &=0, \quad {q}' =0, \quad {r}' =r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big), \quad{y}' =0,
+ {p}' &=0, \quad {q}' =0, \quad {r}' =r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big), {\red  \quad{s}' =0 },
  \end{aligned}
 \end{equation}
-is the Layer problem, where $(\cdot)'= \frac{d}{d\tilde{\eta}} = \frac{d}{d(\eta/n)}$ denotes differentiation with respect to the fast independent variable $\tilde{\eta}$. The zero-set  
-$$g(p,q,r,s)\triangleq r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big)$$
-consists entirely of the equilibria of \eqref{eq:fast0}. We simply take one branch $\mathcal{S}_H$ and $K\subset\mathcal{S}_H$ compact, which will be called a {\it critical manifold}. We choose $K$ to be a graph $\big(D,\hat{r}(D)\big)$, where
+is the Layer problem, where $(\cdot)'= \frac{d}{d\tilde{\eta}} = \frac{d}{d(\eta/n)}$ denotes differentiation with respect to the fast independent variable $\tilde{\eta}$. The zero-set
+\begin{equation}
+g(p,q,r,s)\triangleq r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big)=0 \label{eq:zeroset} 
+\end{equation}
+consists entirely of the equilibria of \eqref{eq:fast0}. We simply take one branch $\mathcal{S}_H$ and {\red $K_0\subset\mathcal{S}_H$} compact, which will be called a {\it critical manifold}. 
+
+\subsubsection{Choice of the critical manifold $K_0$}
+The algebraic equation \eqref{eq:zeroset} specifies the three dimensional hypersurface. In particular, away from $r\equiv0$ plane, one obtains the hypersurface by the graph. The function $\hat{r}(p,q,r)$ can be found to be
 \begin{equation*}
 \hat{r}(p,q,s) = \frac{ \frac{\alpha-m}{\lambda(1+\alpha)}a - q }{  \frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big)}
 \end{equation*}
 or implicitly
 \begin{equation}
-\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda p\hat{r} + q +\frac{\alpha}{\lambda}\hat{r}\big(s- \frac{1+m}{1+\alpha}\big)=0 \label{eq:implicit}
+\frac{\alpha-m}{\lambda(1+\alpha)}(\hat{r}-a) + \lambda p\hat{r} + q +\frac{\alpha}{\lambda}\hat{r}\big(s- \frac{1+m}{1+\alpha}\big)=0. \label{eq:implicit}
 \end{equation}
-and $D$ is a trapezoid in $pqs$-space
-\begin{align*}
- D &\triangleq \left\{ \: (p,q,s) \: \Big| \:  p\ge-\epsilon, ~~ |q|\le2, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le \frac{1}{2}\min\left\{\frac{\alpha-m}{\alpha(1+\alpha)},\frac{1+m}{(1+\alpha)}\right\},\right.  \\
- &\left. \hat{r}(p,q,s)\ge \frac{1}{2}\min\{1,r_1\}\right\}.
-\end{align*}
-% \begin{align*}
-%  K &\triangleq \left\{ \: (p,q,r,s) \: \big| \:  p\ge-\epsilon, ~~ |q|\le2, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le \frac{1}{2}\min\left\{\frac{\alpha-m}{\alpha(1+\alpha)},\frac{1+m}{(1+\alpha)}\right\}, \right. \\
-%  &\left. \hat{r}(p,q,s)\ge \frac{1}{2}\min\{1,r_1\},~~ r=\hat{r}(p,q,s), ~~\hat{r}(p,q,s) = \frac{ \frac{\alpha-m}{\lambda(1+\alpha)}a - q }{  \frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big)}\: \right\}.
-% \end{align*}
-Now $K\triangleq\big(D,\hat{r}(D)\big)$. In particular, $K$ is chosen so that $M_0$ and $M_1$ are on $K$; $s$ and $r=\hat{r}(p,q,s)$ have positive lower bound on $K$. See the trapezoid $D$ in Figure \ref{fig:D}. $\epsilon$ will be taken sufficiently small later.
 
-
-We notice that the implicit formula \eqref{eq:implicit} defines affine level sets of $\hat{r}$. In Figure \ref{fig:affine} are the level sets $\hat{r}(p,q,s)=R$ in the $pqs$-space, $0\le R\le a$. When $R=a$, it passes the origin, which is the equilibrium point $M_0$. As $R$ decreases the affine level sets sweep out the positive $p,q$ sector. 
-\begin{figure}
- \centering
-  \psfrag{p}{\scriptsize \hskip -2pt $p$}%=\frac{\gamma}{\sigma}$}
-  \psfrag{q}{\scriptsize~~~$q$}%=n\frac{v}{\sigma}$}
-  \psfrag{s}{\scriptsize $s-\frac{1+m}{1+\alpha}$}%=n\frac{v}{\sigma}$}
-  \psfrag{x0}{\scriptsize \hskip -4pt$M_0$}
-  \psfrag{x1}{\scriptsize $M_1$}
-  \psfrag{K}{\scriptsize \hskip -85pt $\hat{r}(p,q,s)= \frac{1}{2}\min\{1,r_1\}$}
-%   \psfrag{R1}{\scriptsize $\hat{r}(p,q,s)=a$}
-%   \psfrag{R2}{\scriptsize $\hat{r}(p,q,s)=R_1$}
-%   \psfrag{R3}{\scriptsize $\hat{r}(p,q,s)=R_2$}
-  \includegraphics[width=5cm]{trapezoid.eps}
-%   }
-  \caption{The trapezoid $D$, the domain of the graph.} \label{fig:D}
-\end{figure}
-\begin{figure}
+\begin{figure}[ht]
  \centering
   \psfrag{p}{\scriptsize $p$}%=\frac{\gamma}{\sigma}$}
   \psfrag{q}{\scriptsize~~~$q$}%=n\frac{v}{\sigma}$}
@@ -1044,12 +1053,44 @@ We notice that the implicit formula \eqref{eq:implicit} defines affine level set
   \caption{Affine level sets $\hat{r}(p,q,s)=R$, $0\le R\le a$  in $pqs$-space} \label{fig:affine}
 \end{figure}
 
-Now, we verify $K\subset \mathcal{S}_H$. %the {\it Normally Hyperbolicity} of $K$. % upon the definition in \cite[p. 255]{Sz1991}.
+Level sets of $\hat{r}$ depicted in the $pqs$-space envisions the hypersurface. Level sets are directly checked to be affine, from the implicit formula \eqref{eq:implicit}. Figure \ref{fig:affine} illustrates a few marked affine surfaces of $\hat{r}(p,q,s)=R$, in the range $0\le R\le a$. When $R=a(=r_0)$, it passes the origin, which is the equilibrium point $M_0$. As $R$ decreases the affine level sets sweep out the positive $p,q$ sector. The surface meets the other equilibrium $M_1$ when $R=r_1$. $R$ then further decreases until it touches the $r\equiv0$ plane.
+
+
+
+
+The critical manifold $K_0$ is then chosen in considerations of the function $\hat{r}(p,q,r)$. We choose the domain of $\hat{r}$ as a trapezoid in $pqs$-space as in the below, and then $K_0\triangleq\big(D,\hat{r}(D)\big)$.
+\begin{align*}
+ D &\triangleq \left\{ \: (p,q,s) \: \Big| \:  p\ge-\epsilon, ~~ |q|\le2, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le \frac{1}{2}\min\left\{\frac{\alpha-m}{\alpha(1+\alpha)},\frac{1+m}{(1+\alpha)}\right\},\right.  \\
+ &\left. \hat{r}(p,q,s)\ge \frac{1}{2}\min\{1,r_1\}\right\}.
+\end{align*}
+$\epsilon$ will be taken sufficiently small later.
+% \begin{align*}
+%  K &\triangleq \left\{ \: (p,q,r,s) \: \big| \:  p\ge-\epsilon, ~~ |q|\le2, ~~ \left|s-\frac{1+m}{1+\alpha}\right| \le \frac{1}{2}\min\left\{\frac{\alpha-m}{\alpha(1+\alpha)},\frac{1+m}{(1+\alpha)}\right\}, \right. \\
+%  &\left. \hat{r}(p,q,s)\ge \frac{1}{2}\min\{1,r_1\},~~ r=\hat{r}(p,q,s), ~~\hat{r}(p,q,s) = \frac{ \frac{\alpha-m}{\lambda(1+\alpha)}a - q }{  \frac{\alpha-m}{\lambda(1+\alpha)} + \lambda p + \frac{\alpha}{\lambda}\big(s- \frac{1+m}{1+\alpha}\big)}\: \right\}.
+% \end{align*}
+\begin{figure}[ht]
+ \centering
+  \psfrag{p}{\scriptsize \hskip -2pt $p$}%=\frac{\gamma}{\sigma}$}
+  \psfrag{q}{\scriptsize~~~$q$}%=n\frac{v}{\sigma}$}
+  \psfrag{s}{\scriptsize $s-\frac{1+m}{1+\alpha}$}%=n\frac{v}{\sigma}$}
+  \psfrag{x0}{\scriptsize \hskip -4pt$M_0$}
+  \psfrag{x1}{\scriptsize $M_1$}
+  \psfrag{K}{\scriptsize \hskip -85pt $\hat{r}(p,q,s)= \frac{1}{2}\min\{1,r_1\}$}
+%   \psfrag{R1}{\scriptsize $\hat{r}(p,q,s)=a$}
+%   \psfrag{R2}{\scriptsize $\hat{r}(p,q,s)=R_1$}
+%   \psfrag{R3}{\scriptsize $\hat{r}(p,q,s)=R_2$}
+  \includegraphics[width=5cm]{trapezoid.eps}
+%   }
+  \caption{The trapezoid $D$, the domain of the graph.} \label{fig:D}
+\end{figure}
+In particular, $K_0$ is chosen so that $(i)$ $M_0$ and $M_1$ are on $K$; $(ii)$ $s$ and $r=\hat{r}(p,q,s)$ have positive lower bound on $K_0$. See the trapezoid $D$ in Figure \ref{fig:D}. 
+
+Now, we verify $K_0\subset \mathcal{S}_H$. %the {\it Normally Hyperbolicity} of $K$. % upon the definition in \cite[p. 255]{Sz1991}.
 % \begin{definition}[fast-slow case definition of normally hyperbolicity of invariant manifold \cite{K}]
 % A compact set $\Lambda$ is called normally hyperbolic if the $m\times m$ matrix $(D_y f)(p)$ of first partial derivatives with respect to the fast variables $y$ has no eigenvalues with zero real part for all $p \in \Lambda$.
 % \end{definition}
 \begin{proposition}
-$K\subset \mathcal{S}_H$, i.e., the partial jacobian $\frac{\partial g}{\partial r}(p,q,r,s)|_{r=\hat{r}(p,q,s)} >0 $ for all $(p,q,r,s)\in K$. %$K$ is normally hyperbolic with respect to the Layer problem \eqref{eq:fast0}.
+$K_0\subset \mathcal{S}_H$, i.e., the partial jacobian $\frac{\partial g}{\partial r}(p,q,r,s)|_{r=\hat{r}(p,q,s)} >0 $ for all $(p,q,r,s)\in K$. %$K$ is normally hyperbolic with respect to the Layer problem \eqref{eq:fast0}.
 \end{proposition}
 \begin{proof}
  %Let $g(p,q,r,s) \triangleq r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big)$, the right hand side of $\eqref{eq:fast0}_3$.  We need to show that $K\subset \mathcal{S}_H$, i.e., the partial jacobian $\frac{\partial g}{\partial r}$ is a nontrivial real number for all $m\in K$.
@@ -1059,6 +1100,12 @@ $K\subset \mathcal{S}_H$, i.e., the partial jacobian $\frac{\partial g}{\partial
  \end{align*}
  Taking $\epsilon < \frac{\alpha-m}{4\lambda^2(1+\alpha)}$, independently of $n$, is enough.
 \end{proof}
+Having set up $K_0$ normally hyperbolic, the family $K_n$ of {\it slow manifolds} now persistently exist by the invariant manifold theory provided $n$ is sufficiently small.
+\subsubsection{Nested invariant manifold structure in $K_0$}
+It is necessary to reveal a few finer structures of $K_0$, several of which will be persistent as well and we make uses of this facts. To summarize, in this three dimensional invariant manifold $K_0$, embeddings 
+$$ M_0, M_1 \quad \hookrightarrow \quad \text{$q$-axis} \quad \hookrightarrow \quad \text{$s\equiv\frac{1+m}{1+\alpha}$ plane} \quad \hookrightarrow \quad K_0$$
+are notable as all of them are invariant under the flow \eqref{eq:slow0}.
+
 
 Let us rewrite \eqref{eq:slow0}, for the reduced vector field $X_R$, in an amenable form with the identity \eqref{eq:implicit}:
 \begin{equation}\label{eq:slow02}
@@ -1286,6 +1333,18 @@ Now Theorem \ref{thm1} follows in the same way as in \cite[Theorem 3.1]{Sz1991} 
 % Next, consider the $\omega$-limit set of the $\tilde\chi(\eta)$. It cannot contain the limit cycle since there is no equilibrium point interior of $T$. Then, the Poincar\'e-Bendixson Theorem implies that its $\omega$-limit point consists of equlibrium points. $(0,0)$ cannot be the one because it is unstable node, concluding that $\tilde\chi(\eta) \rightarrow (0,1)$ as $\eta \rightarrow \infty$. The lifting of the orbit in the three dimensional phase space by $r=h(p,q;\lambda,\alpha,n)$ is the desired heteroclinic orbit.
 % \end{proof}
 
+
+\vfil\eject
+\section{Numerical computation of the heteroclinic orbits}
+{\red new section}
+
+We compute here the .....
+
+
+
+
+
+\vfil\eject
 \section{Emergence of localization}
 \label{sec:localization}
 % The dynamical system has a translation invariance, i.e., if $\chi(\eta)$ is a heteroclinic orbit, then so is a $\chi(\eta-\eta_0)$ for any $\eta_0\in \mathbb{R}$, implying that we have constructed in fact infinitely many heteroclinics. It turns out that all of them are relevant.  Besides of $\eta_0$, we have been using a few other parameters and this points to that we have constructed a family of solutions with a certain degrees of freedom. We precise relationships between parameters and the total number of independent parameters because not all of parameters are independent.
@@ -1331,7 +1390,7 @@ $$0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right).$$
 
 In the following sections, we examine characteristics of these two-parameters family of initial states and discuss the emergence of localization from them as time proceeds.
 
-\subsubsection{Properties of the self-similar solutions}
+\subsection{Properties of the self-similar solutions}
 We state that each of the strain, strain-rate, and temperature has a small bump at the origin out of the asymptotically flat state, whose tip sizes are parameterized by $\Gamma(0)$ and $U(0)$. Accordingly, the velocity is an increasing function of $x$ that has a slightly steeper slope at origin than at the rest of the places; the stress is then the convex increasing function of $|x|$. These initial non-uniformities can be viewed as perturbations of the uniform shearing motion at a certain time.
 
 % Now, we fix the two primary parameters $U(0)$ and $\Theta(0)$ and look into the
@@ -1408,10 +1467,10 @@ Asymptotics \eqref{eq:ss_asymp1} and \eqref{eq:ss_asymp2} are the straightforwar
 % $$ V \sim O(1), \quad \Theta \sim \xi^{-\frac{1+n}{\alpha-n}}, \quad \Sigma \sim \xi, \quad U \sim \xi^{-\frac{1+\alpha}{\alpha-n}}.$$
 \end{proof}
 
-\subsubsection{Emergence of localization}
+\subsection{Emergence of localization}
 As time proceeds, the initial states evolve out emerging the localization and this section is devoted to describing this localization: the deviation in the growth or decay rate at the origin from those at the rest of the places are contrasted, which is the emergence of the localization.
 
-For its illustrations, we presented in the below the generic cases of $-\frac{1+m+n}{\alpha-m-n}\ne-1$; in non-generic cases we would have the logarithmic corrections according to the Proposition \ref{prop:ss}.
+{\red For illustration}, we present below the generic cases of $-\frac{1+m+n}{\alpha-m-n}\ne-1$; in non-generic cases we would have the logarithmic corrections according to Proposition \ref{prop:ss}.
 \begin{itemize}
  \item Strain : The strain keeps increasing at a fixed $x$ as time proceeds. However the growth at the origin is faster than that at the rest of the places,
 \begin{align*}
@@ -1566,6 +1625,11 @@ for the temperature and in  Figure \ref{fig:v}, which eventually looks like a st
 %  &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
 %  X_{13} = (0,0,1),
 % \end{align*}
+
+
+\vfil\eject
+
+
 \appendix
 \section{The loss of hyperbolicity} \label{append:hadamard}
 Consider the system \eqref{intro-system0} for $n=0$ when the viscoplastic effects are turned off. It is rewritten in the form of  first order transport equations,
@@ -1810,7 +1874,7 @@ For this case $-1$ has one less geometric multiplicity than the algebraic multip
 % \end{align*}
 
 
-
+\vfil\eject
 \begin{thebibliography}{10}
 
 \bibitem{bertsch_effect_1991}
@@ -1877,6 +1941,13 @@ Effective equations for localization and shear band formation,
 {\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras},
 Localization in inelastic rate dependent shearing deformations,
 {\it J. Mech. Phys. of Solids} {\bf 98} (2017), 106--125.
+
+{\blue
+\bibitem{Jones_1995}
+{\sc Christopher K. R. T.  Jones}, 
+Geometric singular perturbation theory. 
+Dynamical systems (Montecatini Terme, 1994), pp 44Ð118, {\it Lecture Notes in Math.}, 1609, Springer, Berlin, 1995.
+}
 
 \bibitem{KUEHN_2015}
 {\sc C.~ Kuehn}, 
