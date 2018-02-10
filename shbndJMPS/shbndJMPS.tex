@@ -59,8 +59,9 @@
 \def\tr{\,\textrm{tr}\,}
 \def\div{\,\textrm{div}\,}
 \def\sgn{\,\textrm{sgn}\,}
-\def\l{(2\pi \ell)}
-\def\k{(2\pi \ell)}
+% \def\l{(2\pi \ell)}
+\def\l{{\ell}}
+% \def\k{(2\pi \ell)}
 
 
 \def\bG{{\bar{\Gamma}}}
@@ -267,18 +268,16 @@ Consider the uniform shearing solution \eqref{eq:uss} of the system \eqref{eq:sy
 %   u_s(t) &=1, & \sigma_s(t)&=\left(\frac{1+\alpha}{1+m} (t+\gamma_0)^{1+m} - \frac{1+\alpha}{1+m} \gamma_0^{1+m} + \theta_0^{1+\alpha}   \right)^{\frac{-\alpha}{1+\alpha}}(t+\gamma_0)^m.
 % \end{aligned}
 % \end{equation}
-In the uniform shearing motion, strain $\gamma_s$ and the temperature $\theta_s$ as well as time $t$ are regarded as interchangeable measures of time elapsed. % and each can serve as an independent variable. 
-We find having $\gamma_s$ as an independent variable neat. We define quantities homogeneous in $\gamma _s$, which are leading orders of the uniform shearing solutions,
+In the uniform shearing motion, strain $\gamma_s$ and the temperature $\theta_s$ as well as time $t$ are regarded as interchangeable measures of time elapsed. We find defining the following quantities homogeneous in $\gamma_s$ neat, 
 $$ \gamma_s^* = \gamma_s, \quad \theta_s^*=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}, \quad \sigma^*_s = \left( \frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\gamma_s^{\frac{-\alpha+m}{1+\alpha}} \Big( = (\theta_s^*)^{-\alpha}(\gamma_s^*)^m\Big).$$
-
-Then $\Gamma\big(\tau,x\big)$, $\Theta\big(\tau,x\big)$, $U\big(\tau,x\big)$, $\Sigma\big(\tau,x\big)$ are defined by relations $\tau=\tau(\gamma_s)$ and
-\begin{equation}
+These are the leading orders of the uniform shearing solutions in $\gamma_s$. The new independent variable $\tau$ will also be probed. Given that, $\Gamma\big(\tau,x\big)$, $\Theta\big(\tau,x\big)$, $U\big(\tau,x\big)$, $\Sigma\big(\tau,x\big)$ are defined by %relations $\tau=\tau(\gamma_s)$ and
+\begin{equation*}
  \begin{aligned}
-  \gamma(\gamma_s,x) &= \gamma^*_s\Gamma\big(\tau(\gamma_s),x\big), \quad \theta(\gamma_s,x) = \theta^*_s\Theta\big(\tau(\gamma_s),x\big), \quad u(\gamma_s,x)=U\big(\tau(\gamma_s),x\big),\\
-  \sigma(\gamma_s,x) &= \sigma^*_s\Sigma\big(\tau(\gamma_s),x\big) \quad \Longrightarrow \quad \Sigma = \Theta^{-\alpha}\Gamma^m U^n.
+  \gamma(\tau,x) &= \gamma^*_s(\tau)\Gamma\big(\tau,x\big), \quad \theta(\tau,x) = \theta^*_s(\tau)\Theta\big(\tau,x\big), \quad u(\tau,x)=U\big(\tau,x\big),\\
+  \sigma(\tau,x) &= \sigma^*_s(\tau)\Sigma\big(\tau,x\big) \quad \Longrightarrow \quad \Sigma = \Theta^{-\alpha}\Gamma^m U^n.
  \end{aligned}
-\end{equation}
-New variables of relative perturbations compares the growths homogeneous in $\gamma_s$ of variables to those of uniform shearing. In this formulation, the uniform shearing solutions are mapped to (asymptotically) constant states. The price is to have non-autonomous terms in the system as in the below. %In an effort of having non-autonomous coefficient as little as possible,  
+\end{equation*}
+ %In an effort of having non-autonomous coefficient as little as possible,  
 % $\tau( \gamma _s)$ is defined later. We find the new variables satisfy
 % \begin{equation*}
 %  \begin{aligned}
@@ -307,7 +306,7 @@ When $\kappa=0$, it retains simpler form,
   \Sigma&=\Theta^{-\alpha}\Gamma^m U^n.
  \end{aligned}
 \end{equation}
-
+New variables of relative perturbations compares the growths homogeneous in $\gamma_s$ of variables to those of uniform shearing. In this formulation, the uniform shearing solutions are mapped to (asymptotically) constant states. The price is to have non-autonomous terms in the system as shown above.
 
 % For later use, we record a few symbolic formulas
 % \begin{equation}
@@ -340,14 +339,14 @@ We consider
   \Sigma &= \Theta^{-\alpha}\Gamma^m U^n
  \end{aligned}
 \end{equation}
-in $(\tau,x)\in \mathbb{R}^+\times [0,1]$ with boundary conditions
+in $(\tau,x)\in \mathbb{R}^+\times [0,\pi]$ with boundary conditions
 \begin{equation}
- \Sigma_x(\tau,0)=\Sigma_x(\tau,1)=0,
+ \Sigma_x(\tau,0)=\Sigma_x(\tau,\pi)=0.
 \end{equation}
-where the uniform shearing solution corresponds to $\big(U, \Gamma, \Theta, \Sigma\big) = (1,1,1,1)$.
+The uniform shearing solution corresponds to $\big(U, \Gamma, \Theta, \Sigma\big) = (1,1,1,1)$. The domain $[0,\pi]$ of \eqref{eq:system}, understood as that for a non-dimensionalized problem, has been chosen at our convenience without loss (by the scaling arguments).
 The boundary conditions imply that
 \begin{equation*}
- \frac{d}{d\tau}\int_0^1 U(\tau,x) \: dx = 0, \quad \text{and we set } \int_0^1 U(\tau,x) \: dx = 1.
+ \frac{d}{d\tau}\int_0^\pi U(\tau,x) \: dx = 0, \quad \text{and we normalize } \int_0^\pi U(\tau,x) \: dx = 1.
 \end{equation*}
 % $ U=\Gamma=\Theta=\Sigma=1 $ corresponds to the uniform shearing solution.
 Let
@@ -355,7 +354,7 @@ Let
  U &= 1 + \delta \bar{U} + \mathcal{O}(\delta^2), & \Gamma &= 1 + \delta \bar\Gamma + \mathcal{O}(\delta^2), &
  \Sigma &= 1 + \delta \bar\Sigma + \mathcal{O}(\delta^2), & \Theta &= 1 + \delta \bar\Theta + \mathcal{O}(\delta^2).
 \end{align*}
-By collecting the leading order terms and neglecting terms higher than the second order,
+By collecting the leading order terms and neglecting terms higher than or equal to the second order,
 \begin{equation} \label{eq:linsystem}
  \begin{aligned}
   \partial_\tau \bar U &= \bar\Sigma_{xx},\\
@@ -366,9 +365,9 @@ By collecting the leading order terms and neglecting terms higher than the secon
 \end{equation}
 The boundary conditions and the constraint equation read
 \begin{equation} \label{eq:linbdry}
- \bar\Sigma_{x}(\tau,0)=\bar\Sigma_{x}(\tau,1)=0, \quad \int_0^1 \bar U(t,x) \: dx = 0.
+ \bar\Sigma_{x}(\tau,0)=\bar\Sigma_{x}(\tau,\pi)=0, \quad \int_0^\pi \bar U(t,x) \: dx = 0.
 \end{equation}
-In the sequel, we drop the bar over the variables in studying the linear system \eqref{eq:linsystem}.
+In the sequel, we drop the bar over the variables and continue to study the linear system \eqref{eq:linsystem}.
 
 
 
@@ -376,7 +375,7 @@ In the sequel, we drop the bar over the variables in studying the linear system 
 
 % The results on the long-time asymptotics of the system in this section rely on the collected materials on the stability of a non-autonomous linear dynamical system in Appendix.
 
-Next, we consider even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-1,1]$ which is compatible with the system and the boundary conditions in \eqref{eq:linbdry}. We consider the cosine series of the variables,
+Next, we consider even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-\pi,\pi]$ which is compatible with the system and the boundary conditions in \eqref{eq:linbdry}. The cosine series of the variables are
 \begin{align*}
  U(\tau,x) &= U_0(\tau) + \sum_{\ell=1}^\infty U_\ell(\tau)\cos(\l x), &
  \Gamma(\tau,x) &= \Gamma_0(\tau) + \sum_{\ell=1}^\infty \Gamma_\ell(\tau)\cos(\l x),\\
@@ -401,32 +400,51 @@ The $0$-th mode is resolved: We have
 \end{align*}
 Since $U_0\equiv0$ from \eqref{eq:linbdry}, $\Gamma_0(\tau)$ decays to $0$, and so do $\Sigma_0(\tau)$ and $\Theta_0(\tau)$.
 
-From the fourth equation in \eqref{eq:l-system}, we remove one of the variables. We choose to remove $\Theta$ and get three linear equations in the form 
-$x'=A(\tau)x$, where
-$x\triangleq (
-   U_\ell, \Gamma_\ell, \Sigma_\ell
-  )^T$ for each $\ell\ge1$, and
-\begin{equation}
+Turning to \eqref{eq:l-system} for $\ell\ge 1$, by the fourth equation we remove one of the variables. The choice of removing $\Theta_\ell$ gives the linear system
+\begin{equation} \label{eq:l-system2}
 \begin{aligned}
-  A(\tau)=
-  &\overbrace{\begin{pmatrix}
+ \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}
+ &= \left[\overbrace{\begin{pmatrix}
    0 & 0 & -\l^2\\
    0 & 0 & 0\\
    0 & 0 & -n\l^2
-  \end{pmatrix} }^{\triangleq A_\infty}
+  \end{pmatrix} }^{\triangleq A_{\ell,\infty}}
   + \frac{1}{\tau}
   \overbrace{\begin{pmatrix}
    0 & 0 & 0\\
    \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
    n+ \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
-  \end{pmatrix} }^{\triangleq A_1}\\
-  &+\kappa(\tau) \begin{pmatrix}
+  \end{pmatrix} }^{\triangleq A_{\ell,1}} \right.\\
+  &\left.+\kappa(\tau) \begin{pmatrix}
    0 & 0 & 0\\
    0 & 0 & 0\\
    n\l^2 & m\l^2 & -\alpha\l^2
-  \end{pmatrix}.%\\
-\end{aligned} \label{eq:A}
+  \end{pmatrix}\right] \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}. 
+\end{aligned}
 \end{equation}
+We will denote the vector $(U_\ell, \Gamma_\ell, \Sigma_\ell)^T$ by $x_\ell$ and the coefficient by $A_\ell(\tau)$. Two constant matrices $A_{\ell,\infty}$ and $A_{\ell,1}$ are also defined to be the $O(1)$ part and the $O(\tfrac{1}{\tau})$ part as $\tau \rightarrow \infty$ respectively as in \eqref{eq:l-system2}. As the linear system is going to be analyzed frequency by frequency, if there is no confusion, we suppress the subscript $\ell$.  
+% Having that said, for fixed $\ell\ge 1$ we decompose $A(\tau)$ as
+% \begin{equation}
+% \begin{aligned}
+%   A(\tau)=
+%   &\overbrace{\begin{pmatrix}
+%    0 & 0 & -\l^2\\
+%    0 & 0 & 0\\
+%    0 & 0 & -n\l^2
+%   \end{pmatrix} }^{\triangleq A_\infty}
+%   + \frac{1}{\tau}
+%   \overbrace{\begin{pmatrix}
+%    0 & 0 & 0\\
+%    \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
+%    n+ \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
+%   \end{pmatrix} }^{\triangleq A_1}\\
+%   &+\kappa(\tau) \begin{pmatrix}
+%    0 & 0 & 0\\
+%    0 & 0 & 0\\
+%    n\l^2 & m\l^2 & -\alpha\l^2
+%   \end{pmatrix}.%\\
+% \end{aligned} \label{eq:A}
+% \end{equation}
 
 
 %Look at the coefficient matrix \eqref{eq:A}, which is non-autonomous as expected from its non-linear origin. The stability of a non-autonomous linear system is quite different from that of an autonomous linear one; we can find an example where all of (time-dependent) spectrum lie in the left half complex plane but solution grows exponentially. Here enters the Theorem of Coddington-Levinson that exploits the special structures of the coefficient matrix to get the linear stability done.
@@ -445,43 +463,42 @@ For our study, we focus on showing following two relevant results for adiabatic 
 %   For this we focus on contrasting differences in the unstable regime $q=-\alpha+m<0$. If $q=-\alpha+m<0$, the uniform shearing solution is again unstable but is of Hadamard type; the asymptotic growths are exponential and no saturation in the exponent is observed; exponent diverges as the oscillations in the perturbations get wilder.
 % \end{enumerate}
 %Analysis comes separately, one for the inviscid case $n=0$ and the other for the viscous case $n>0$.
-In the below, the core of the linear stability results are summarized:
+In the below, what has been included are summarized:
 \begin{enumerate}
- \item Assume $\kappa=0$. The linearized system bifurcates by the quantity $q=-\alpha+m+n$ (or $-\alpha+m$ when $n=0$). If $-\alpha+m+n>0$, where the thermal softening is not strong enough to dominate other hardening mechanisms, the uniform shearing solution is linearly stable. On the other hand if $-\alpha+m+n<0$, where the thermal softening dominates other hardening mechanisms, the uniform shearing solution is linearly unstable.%; more precisely, there is a positive eigenvalue for each oscillatory initial data with frequency $2\pi\ell$.
- \item In the unstable regime $q<0$, the system with viscosity and the one without it ($n=0$) exhibits qualitatively different instability: If $n>0$, the growth is at most polynomial and the growth rate saturates as $\ell \rightarrow \infty$. This is one of the types that are referred to as the Turing instability. By contrast if $n=0$, the growth is of order $\exp\left(C\ell\sqrt{\tau}\right)$ showing much catastrophic instability as $\ell \rightarrow \infty$. This is referred to as the Hadamard Instability.
+ \item Assume $\kappa=0$ and $n>0$. The linearized system bifurcates by the quantity $q=-\alpha+m+n$. If $-\alpha+m+n>0$, where the thermal softening is not strong enough to dominate other hardening mechanisms, the uniform shearing solution is linearly stable. On the other hand if $-\alpha+m+n<0$, where the thermal softening dominates other hardening mechanisms, the uniform shearing solution is linearly unstable.%; more precisely, there is a positive eigenvalue for each oscillatory initial data with frequency $2\pi\ell$.
+ \item In the unstable regime $q=-\alpha+m+n<0$, the system with viscosity and the one without it ($n=0$) exhibits qualitatively different instability: If $n>0$, the growth is at most polynomial and the saturation of the growth rate as $\ell \rightarrow \infty$ is observed. This is one of the types that are referred to as the Turing instability. By contrast if $n=0$, the growth is of order $\exp\left(C\ell\sqrt{\tau}\right)$ showing much catastrophic instability as $\ell \rightarrow \infty$. This is referred to as the Hadamard Instability.
 \end{enumerate}
 %The last remark for the case $n=0$ is quoted without proof but is appeared in our companion paper in preparation.
-
-Let us be more specific with the following exposition for cases $\kappa=0$ and $n>0$. For each $\ell\ge 1$ the three linearly independent modes $x_1(\gamma_s)$, $x_2(\gamma_s)$, and $x_3(\gamma_s)$ %$x_1\circ\tau(\gamma_s)$, $x_2\circ\tau(\gamma_s)$, and $x_3\circ\tau(\gamma_s)$ 
-always are found, comprising a fundamental matrix, and this gives us the complete characterization of the behaviors of the system. Their precise asymptotic behaviors will be shown:
+To enhance the clarity of our statement of the linear stability, a few selected expressions and facts in Section \ref{sec:lin_viscous} are exposed in this early stage. In Section \ref{sec:lin_viscous} it will be shown that three linearly independent solutions of \eqref{eq:l-system2} are always found for each $\ell\ge 1$, comprising a fundamental matrix. The three linearly independent solutions will be referred to as $x_1(\tau)$, $x_2(\tau)$, and $x_3(\tau)$ respectively. We express the precise asymptotic behaviors via 
 \begin{equation}
 \begin{aligned}
- &\lim_{\gamma_s \rightarrow \infty} C_1 x_1(\gamma_s) \gamma_s^{\chi_1} = p_1, \quad \lim_{\gamma_s \rightarrow \infty} C_2x_2(\gamma_s)  \gamma_s^{\chi_2} = p_2, \\
+ &\lim_{\tau \rightarrow \infty} C_1 x_1(\tau) \tau^{\chi_1} = p_1, \quad \lim_{\tau \rightarrow \infty} C_2x_2(\tau)  \tau^{\chi_2} = p_2, \quad
 %  &\lim_{\gamma_s \rightarrow \infty} C_3 x_3(\gamma_s) \exp\left(C_4n\l^2 \gamma_s^{\frac{1+\alpha}{1+m}}\right)\gamma_s^{-\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3$}.
-&\lim_{\gamma_s \rightarrow \infty} C_3 x_3(\gamma_s) \exp\left(C_4n\l^2 \gamma_s^{\chi_4}\right)\gamma_s^{\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3,4$}.
+\lim_{\tau \rightarrow \infty} C_3 x_3(\tau) \exp\left(n\l^2 \tau^{\chi_4}\right)\tau^{\chi_3} = p_3, %, \quad \text{for exponents $\chi_i$, $i=1,2,3,4$}.
  \end{aligned}
 \end{equation}
-Signs of $\chi_i$ indicate the stability in the respective mode. $p_i$, $i=1,2,3$ are the eigenvectors of $A_\infty$ which are
+where $C_i=C_i(\alpha,m,n)$, $i=1,2,3$ are complex constants, $p_i=p_i(\alpha,m,n,\ell)$, $i=1,2,3$ are the constant eigenvectors of $A_{\infty,\ell}$ (see the leading order term \eqref{eq:S(0)} for the explicit formulas). Further, $\chi_4=\frac{1+\alpha}{1+m}>0$ and $x_3(\tau)$ is always a decaying mode (with exponential rate). To conclude, the signs of $\chi_1$ and $\chi_2$ determine the stability and in the same time the magnitues determine the rates. The  techical assumption \eqref{eq:nodoubleroot} appeared in the below will be visited in Section \ref{sec:lin_viscous}.
 % \begin{align*}
-%   p_1=\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_1(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
-%   p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_2(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
-%   p_3 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ n \end{pmatrix}.
+% %   p_1=\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_1(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
+% %   p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_2(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
+% %   p_3 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ n \end{pmatrix}.
+% %  \end{align*}
+% \begin{align*}
+%   p_1=\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha} \\ 1 \\  0 \end{pmatrix}, \quad
+%   p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1  \\ 0 \end{pmatrix}, \quad
+%   p_3 = \begin{pmatrix} 1 \\ 0 \\ n \end{pmatrix}.
 %  \end{align*}
-\begin{align*}
-  p_1=\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha} \\ 1 \\  0 \end{pmatrix}, \quad
-  p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1  \\ 0 \end{pmatrix}, \quad
-  p_3 = \begin{pmatrix} 1 \\ 0 \\ n \end{pmatrix}.
- \end{align*}
-$z_1(0)$ and $z_2(0)$ are defined in the following section and $C_j=C_j(\alpha,m,n)$, $j=1,2,3,4$ are complex constants. %As the third eigenvalue $\lambda_3(\tau)$ always has a leading order $-n\l$, we find
- Notably, $x_1$ and $x_2$ has the polynomial behavior; $\chi_4=\frac{1+\alpha}{1+m}>0$ and so $x_3$ decays exponentially regardeless of the sign of $\chi_3$.  Given above, we state our theorem: %what bifurcate are the polynomial growth or decay of $x_1$ and $x_2$.
-\begin{theorem} \label{thm:1} Assume \eqref{eq:nodoubleroot}. $\chi_1$ and $\chi_2$ are independent of $\ell$ and their signs bifurcate by $q=-\alpha+m+n$:
+% $z_1(0)$ and $z_2(0)$ are defined in the following section and . %As the third eigenvalue $\lambda_3(\tau)$ always has a leading order $-n\l$, we find
+%   Given above, we state our theorem: %what bifurcate are the polynomial growth or decay of $x_1$ and $x_2$.
+\begin{theorem} \label{thm:1} Let $(\alpha,m,n)$ be given in the range \eqref{eq:range} but with \eqref{eq:nodoubleroot} being fulfilled. Then signs of $\chi_1$ and $\chi_2$ bifurcate by $q=-\alpha+m+n$:
  \begin{enumerate}
   \item If $q=-\alpha+m+n=0$, then the uniform shear is marginally stable: $\chi_1=0$, $\chi_2>0$.
   \item If $q=-\alpha+m+n>0$, then the uniform shear is stable: $\chi_1>0$ and $\chi_2>0$.
   \item If $q=-\alpha+m+n<0$, then the uniform shear is saddle: $\chi_1<0$ and $\chi_2>0$.
  \end{enumerate}
+ Furthermore, $\chi_i=\chi_i(\alpha,m,n)$, $i=1,2$ independently of $\ell$. 
 \end{theorem}
-
+Note that $x_1(\tau)$ and $x_2(\tau)$ exhibit merely polynomial behaviors in any case.
 % We introduce some quantities. Let $x$ denotes a vector $\big(U_\ell,\Gamma_\ell, \Sigma_\ell)^T$. $\Theta_\ell$, which is linearly dependent, may be included in the statement and we denote $\tilde{x}$ by a vector $\big(U_\ell,\Gamma_\ell, \Theta_\ell, \Sigma_\ell)^T$. Three eigenvectors of $A_\infty$ are also appended by $\Theta$ component to get
 
 
@@ -528,7 +545,7 @@ Note that $z_1(0)$ and $z_2(0)$ are independent of $\ell$. Provided the two root
 
 These two roots obtained in the case $n>0$ show the bifurcation by $q=-\alpha+m+n$. If $q=-\alpha+m+n>0$ then $z_1(0)+z_2(0) = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_1(0)z_2(0)=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ and thus the real parts of two roots must be negative whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
 
-\subsection{Asymptotic behaviors of linearized equations for viscous model}
+\subsection{Asymptotic behaviors of linearized equations for viscous model} \label{sec:lin_viscous}
 For the technical reason we assume the following
  \begin{equation}
   \alpha\ne m \quad \text{and} \quad (-\alpha+m)(1+n)^2 \ne 4nm(1+\alpha), \tag{$A0$} \label{eq:nodoubleroot}
@@ -557,7 +574,7 @@ In the following proposition, we prove the diagonalization process is smoothly a
    \lambda_3(\epsilon) &= -n\l^2 + \epsilon\dot\lambda_3(0) + \cdots, \nonumber\\
    S(\epsilon)
    &=\begin{pmatrix}
-    1 + z_1(0)\frac{1+m}{1+\alpha} & 1 + z_2(0)\frac{1+m}{1+\alpha} & 1 \nonumber\\
+    1 + z_1(0)\frac{1+m}{1+\alpha} & 1 + z_2(0)\frac{1+m}{1+\alpha} & 1 \label{eq:S(0)}\\
     1 & 1 & 0\\
     0 & 0 & n
    \end{pmatrix} \\&+ \epsilon
@@ -667,7 +684,7 @@ Smooth factorization of a one-parameter family of matrices is yet another substa
 
 As the order $\frac{1}{\tau}$ perturbation of $A(\tau)$ is explicitly given, straightforward calculation shows that eigenvectors for finite $\tau$ can be chosen
 \begin{align*}
- s_1(\tau)&=E(\tau) + F(\tau), \quad s_2(\tau)=E(\tau)-F(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\k^2} \end{pmatrix},\\
+ s_1(\tau)&=E(\tau) + F(\tau), \quad s_2(\tau)=E(\tau)-F(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\l^2} \end{pmatrix},\\
  E(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  F(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
 \end{align*}
 Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$, what merges up in the limit are $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$.
@@ -963,21 +980,17 @@ To Do :
 
 1. workout introduction
 
-2. workout n=0 instability
+1. workout section 4
 
-3. add paragraphs on $n=0$ case phase space analysis in section 4
+1. continuation method explanation in section 5
 
-4. streamline the Appendix
+1. add paragraphs on $n=0$ case phase space analysis in section 4
 
-5. proofreading
+1. streamline the Appendix
 
-6. work through section 3 to include n=0 unstable case. 
+1. workout the bibliography
 
-7. work through section 4
-
-8. work through introduction
-
-9. 
+1. proofreading
 
 }
 
