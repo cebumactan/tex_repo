@@ -1047,7 +1047,7 @@ or implicitly
   \caption{Affine level sets $\hat{r}(p,q,s)=R$, $0\le R\le a$  in $pqs$-space} \label{fig:affine}
 \end{figure}
 
-Level sets of $\hat{r}$ depicted in $pqs$-space envisions the hypersurface. Level sets are checked to be affine, from the implicit formula \eqref{eq:implicit}. Fig. \ref{fig:affine} illustrates a few marked affine surfaces of $\hat{r}(p,q,s)=R$, in the range $0\le R\le a$. When $R=a(=r_0)$, it passes the origin, which is the equilibrium point $M_0$. As $R$ decreases the affine level sets sweep out the positive $p,q$ sector. The surface meets the other equilibrium $M_1$ when $R=r_1$. $R$ then further decreases until it touches the $r\equiv0$ plane.
+Level sets of $\hat{r}$ depicted in $pqs$-space envisions the hypersurface. Level sets are checked to be affine, from the implicit formula \eqref{eq:implicit}. Fig. \ref{fig:affine} illustrates a few marked affine surfaces of $\hat{r}(p,q,s)=R$, in the range $0\le R\le a$. When $R=a(=r_0)$, it passes $\left(0,0,\tfrac{1+m}{1+\alpha}\right)$, which is the equilibrium point $M_0$. As $R$ decreases the affine level sets sweep out the positive $p,q$ sector. The surface meets the other equilibrium $M_1$ when $R=r_1$. $R$ then further decreases until it touches the $r\equiv0$ plane.
 
 
 
@@ -1105,7 +1105,7 @@ The flow \eqref{eq:slow0}, strictly restricted on $K$, is further analyzed. The 
 appended by the other dimension with the component $r=\hat{r}(p,q,s)$ is the flow of \eqref{eq:slow0}. 
 
 It is necessary to reveal a few finer invariant structures of the reduced flow \eqref{eq:slow02}, where the invariant manifold theory is equally applied and thus several of which will be persistent as well. This will be crucial ingredients of our arguments. To summarize, in this three dimensional reduced space $K$, we see embeddings 
-$$ M_0, M_1 \quad \hookrightarrow \quad \text{$q$-axis} \quad \hookrightarrow \quad \text{$s\equiv\tfrac{1+m}{1+\alpha}$ plane} \quad \hookrightarrow \quad K$$
+$$ M_0, M_1 \quad \hookrightarrow \quad \text{$p\equiv0$, $s\equiv\tfrac{1+m}{1+\alpha}$ line} \quad \hookrightarrow \quad \text{$s\equiv\tfrac{1+m}{1+\alpha}$ plane} \quad \hookrightarrow \quad K$$
 which consist of manifolds all of those are invariant under the flow \eqref{eq:slow02}. Indeed, on the plane $s\equiv\tfrac{1+m}{1+\alpha}$, \eqref{eq:slow02} decouples,
 \begin{equation}\label{eq:slow03}
  \begin{aligned}
@@ -1199,7 +1199,7 @@ With those in mind, the following Lemma via the planar dynamical systems theory 
 \end{lemma}
 \begin{proof}
 $T$ is a two dimensional compact positively invariant set: (1) on $p=0$, $\nu = (1,0)$ and $X_R\cdot\nobreak\nu = \dot{p}=0$, where $X_R$ stands for the reduced vector field of \eqref{eq:slow02};
- (2) on $q=0$, $\nu = (0,1)$ and $X_R\cdot\nobreak\nu=\dot{q} = bp\hat{r}\ge0$ ($b$ in \eqref{eq:exponents} is always positive); lastly on the hypotenuse, let $\underbar{r}=\frac{1}{2}\min\{1,r_1\}$. The inward normal pointing the origin is $\nu = (-\lambda\underbar{r}, -1)$. We compute
+ (2) on $q=0$, $\nu = (0,1)$ and $X_R\cdot\nobreak\nu=\dot{q} = bp\hat{r}\ge0$ ($b$ in \eqref{eq:exponents} is always positive); lastly on the hypotenuse, let $\underbar{r}=\frac{1}{2}\min\{1,r_1\}$. The inward normal vector is $\nu = (-\lambda\underbar{r}, -1)$. We compute
   \begin{align}
   X_R\cdot\nu=-\lambda\underbar{r}\dot{p} -\dot{q}&= -\lambda \underbar{r}p \Big(1-\lambda \underbar{r}p -q + \frac{1}{\lambda}(\underbar{r}-a)+1\Big) - q(1-\lambda \underbar{r}p -q\big) - b \underbar{r}p \nonumber\\
   &= (1-\lambda \underbar{r}p -q)(-\lambda \underbar{r}p -q) -\underbar{r}p\Big((\underbar{r}-a)+\lambda+b\Big)\nonumber\\
@@ -1230,7 +1230,7 @@ Having set forth the critical manifold $K$ in $\mathcal{S}_H$ and the reduced ve
  Let $\mathcal{N}_0=M_0$, $\mathcal{F}^u_{M_0}\subset W_0^u$ the strongly unstable manifold of $M_0$ satisfying \eqref{eq:rapid}. Then, for sufficiently small $n$, $\mathcal{F}^u_{M_0}$ perturbs in a $C^{r-1}$ manner to $\mathcal{F}^{u,n}_{M_0^n}$ the strongly unstable manifold of $M_0^n$ satisfying \eqref{eq:rapid}. 
 \end{lemma}
 \begin{proof}
- We pick the line segment $q\in [- \frac{1}{2}, \frac{1}{2}]$ on $q$-axis, which we will denote ${\mathcal{N}}'$. This is an one dimensional orbit portraits in $W_0^u$ that is not strongly unstable. We claim that ${\mathcal{N}}'$ is an overflowing invariant manifold as in Definition \ref{def:over} of the reduced problem. More precisely, it satisfies \eqref{eq:A} and \eqref{eq:B} with $r'=r-1$ and $E$ the tangent $pq$-plane. 
+ We pick the line segment $q\in [- \frac{1}{2}, \frac{1}{2}]$, $p\equiv0$ on $T$, which we will denote ${\mathcal{N}}'$. This is an one dimensional orbit portraits in $W_0^u$ that is not strongly unstable. We claim that ${\mathcal{N}}'$ is an overflowing invariant manifold as in Definition \ref{def:over} of the reduced problem. More precisely, it satisfies \eqref{eq:A} and \eqref{eq:B} with $r'=r-1$ and $E$ the tangent $pq$-plane. 
  
  From \eqref{eq:slow03}, $\dot{q}=q(1-q)$ on $q$-axis, it is clear that ${\mathcal{N}}'$ is overflowing invariant. Let $E$ be $pq$-plane along ${\mathcal{N}}'$ and $E'$ be the lines parallel to the $s$-axis. Then, $T \mathbb{R}^3|{\mathcal{N}}'$ splits into three one dimensional bundles $T{\mathcal{N}}'\oplus N \oplus E'$ with $N$ complementary to $T{\mathcal{N}}'$ in $E$ such that $N_{M_0}$ is parallel to $X_{01}$.  %defined by the three coordinate basis in $pqs$-space, i.e., $\mathbf{e}_q\in T\Lambda$, $\mathbf{e}_p\in N$, and $\mathbf{e}_s\in E'$. 
  Asymptotic rates are determined at $M_0$ by the eigenvalues of $M_0$. At $M_0$, $E'_{M_0}$ is the stable subspace with eigenvalue $-\mu_{04}$ and $N_{M_0}$ and $T_{M_0}{\mathcal{N}}'$ are the unstable ones with $\mu_{01}=2$ and $\mu_{02}=1$ respectively. From these, we compute 
@@ -1568,9 +1568,9 @@ happens along the uniform shearing solutions \eqref{intro:uss}  as $t \rightarro
 
 
 \section{Complete list of equilibria}\label{append:equi_reject}
-Complete list of equilibria of system \eqref{eq:slow} other than $M_0$ and $M_1$ are listed below. They are totally functions of $(\alpha,m,n,\lambda)$. Underlined the reader will find the components that show the point lies outside the region of interest and leads to rejection of them. $t$ ($t_1$ and $t_2$ as well) in the below denotes an arbitrary real number. 
+Complete list of equilibria of system \eqref{eq:slow} other than $M_0$ and $M_1$ are listed below. They are functions of only $(\alpha,m,n,\lambda)$. Underlined the reader will find the components that show the point lies outside the region of interest and leads to rejection of them. $t$ ($t_1$ and $t_2$ as well) in the below denotes an arbitrary real number. 
 
-To recall, $a=\frac{2+2\alpha-n}{1+2\alpha-m-n} + \frac{2(1 + \alpha)}{1+2\alpha-m-n}\lambda$ and $b=\frac{1+m}{1+2\alpha-m-n} + \frac{1+m+n}{1+2\alpha-m-n}\lambda$. 
+To recall, $a=\frac{2+2\alpha-n}{1+2\alpha-m-n} + \frac{2(1 + \alpha)}{1+2\alpha-m-n}\lambda$, $b=\frac{1+m}{1+2\alpha-m-n} + \frac{1+m+n}{1+2\alpha-m-n}\lambda$, and $D=1+2\alpha-m-n$. 
 \allowdisplaybreaks
 \begin{align*}
  \begin{array}{lllllll}
@@ -1644,8 +1644,8 @@ The corresponding eigenvectors $X_{0j}$ are collected in the matrix $S_0$ as $j$
  y_1\\z_1
 \end{pmatrix}
 =-(\lambda+b)r_0\begin{pmatrix}
-  \frac{ \frac{1+\alpha}{\lambda}r_0 + \frac{\mu_{01}}{s_0} }{ \Delta_1 }\\
-  \frac{ \frac{n}{r_0}\big(\frac{1}{\lambda} + \mu_{01}\big) }{ \Delta_1 }
+  \frac{ \frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0} }{ \Delta_1 }\\
+  \frac{ \frac{n}{r_0}\big(\frac{1}{\lambda} + 2\big) }{ \Delta_1 }
   \end{pmatrix},
   \quad
  \begin{pmatrix}
@@ -1663,10 +1663,10 @@ The corresponding eigenvectors $X_{0j}$ are collected in the matrix $S_0$ as $j$
  \end{array}
 \end{aligned}
 \end{equation}
-where $\Delta_1 = \frac{1-s_0}{\lambda}\big(\frac{1+\alpha}{\lambda}r_0 + \frac{\mu_{01}}{s_0}\big) -\frac{n}{r_0} \big( \frac{1}{\lambda} + \mu_{01}\big)\big(\frac{r_0}{\lambda} + \frac{\mu_{01}}{s_0}\big)$
-%=\frac{-n}{r_0s_0}\det \left[\begin{pmatrix} \frac{r_0}{n}\big(\frac{1-s_0}{\lambda}-\frac{n}{\lambda r_0}\big) & \frac{r_0}{n}\frac{\alpha r_0}{\lambda}\\ s_0\frac{1-s_0}{\lambda} & -s_0\frac{r_0}{\lambda} \end{pmatrix} -\mu_{01}\textrm{I}\right]\ne0$
-and $\Delta_2 = \frac{1-s_0}{\lambda}\big(\frac{1+\alpha}{\lambda}r_0 + \frac{\mu_{02}}{s_0}\big) -\frac{n}{r_0} \big( \frac{1}{\lambda} + \mu_{02}\big)\big(\frac{r_0}{\lambda} + \frac{\mu_{02}}{s_0}\big)$.
-%=\frac{-n}{r_0s_0}\det \left[\begin{pmatrix} \frac{r_0}{n}\big(\frac{1-s_0}{\lambda}-\frac{n}{\lambda r_0}\big) & \frac{r_0}{n}\frac{\alpha r_0}{\lambda}\\ s_0\frac{1-s_0}{\lambda} & -s_0\frac{r_0}{\lambda} \end{pmatrix} -\mu_{02}\textrm{I}\right]\ne0$ respectively for the corresponding cases.
+where $\Delta_1 = \frac{1-s_0}{\lambda}\big(\frac{1+\alpha}{\lambda}r_0 + \frac{2}{s_0}\big) -\frac{n}{r_0} \big( \frac{1}{\lambda} + 2\big)\big(\frac{r_0}{\lambda} + \frac{2}{s_0}\big)$
+%=\frac{-n}{r_0s_0}\det \left[\begin{pmatrix} \frac{r_0}{n}\big(\frac{1-s_0}{\lambda}-\frac{n}{\lambda r_0}\big) & \frac{r_0}{n}\frac{\alpha r_0}{\lambda}\\ s_0\frac{1-s_0}{\lambda} & -s_0\frac{r_0}{\lambda} \end{pmatrix} -2\textrm{I}\right]\ne0$
+and $\Delta_2 = \frac{1-s_0}{\lambda}\big(\frac{1+\alpha}{\lambda}r_0 + \frac{1}{s_0}\big) -\frac{n}{r_0} \big( \frac{1}{\lambda} + 1\big)\big(\frac{r_0}{\lambda} + \frac{1}{s_0}\big)$.
+%=\frac{-n}{r_0s_0}\det \left[\begin{pmatrix} \frac{r_0}{n}\big(\frac{1-s_0}{\lambda}-\frac{n}{\lambda r_0}\big) & \frac{r_0}{n}\frac{\alpha r_0}{\lambda}\\ s_0\frac{1-s_0}{\lambda} & -s_0\frac{r_0}{\lambda} \end{pmatrix} -1\textrm{I}\right]\ne0$ respectively for the corresponding cases.
 We find that $y_1,y_2,y_4<0$; $z_1,z_2,z_3 \sim\BO(n)$, provided $n$ is sufficiently small.
 
 Next, the coefficient matrix for the linearized equations around $M_1$ is
