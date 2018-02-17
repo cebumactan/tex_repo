@@ -531,8 +531,8 @@ System \eqref{eq:slow} admits several equilibria listed in the Appendix \ref{app
 %for the original variables $\theta(t,x)$ and $\gamma(t,x)$.
 Shear band initiation is related to conditions of loading where both the plastic strain and the temperature are increasing. This motivates to restrict on the region $r > 0$, $s > 0$. While all of the equilibrium points of \eqref{eq:slow} are listed in the Appendix \ref{append:lin}, it shows that at most two equilibria can reside in this region:
 \begin{align*}
- M_0 &= (0,0,r_0,s_0), & r_0 &=\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda, & s_0&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_0},\\
- M_1 &= (0,1,r_1,s_1), & r_1 &= r_0-\frac{1+\alpha}{\alpha-m-n}\lambda, & s_1&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_1}.
+ M_0 &= (0,0,r_0,s_0), & r_0 &=a=\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda, & s_0&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_0},\\
+ M_1 &= (0,1,r_1,s_1), & r_1 &= a-\frac{1+\alpha}{\alpha-m-n}\lambda, & s_1&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_1}.
 \end{align*}
 We find $r_0>0$ and $r_0s_0 = \frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda>0$, or $r_0, s_0>0$. Thus $M_0$ always resides in the region. However, $M_1$ can be out of the region $r>0$, $s>0$ if $\lambda$ is large enough. Note that $r_1,s_1>0$ only if $\frac{1+m+n}{1+\alpha}r_1 > \frac{n}{(1+\alpha)}$. This reads
 $$\frac{1+m+n}{1+\alpha}\Big(\frac{2+2\alpha-n}{D} - \frac{(1+\alpha)(1+m+n)}{D(\alpha-m-n)}\lambda\Big) > \frac{n}{(1+\alpha)},$$
@@ -1568,25 +1568,50 @@ happens along the uniform shearing solutions \eqref{intro:uss}  as $t \rightarro
 
 
 \section{Complete list of equilibria}\label{append:equi_reject}
-Complete list of equilibria of System \eqref{eq:slow} are listed below. Underlined the reader will find the components that show the point lies outside the region
-of interest and leads to rejection of them.
+Complete list of equilibria of system \eqref{eq:slow} other than $M_0$ and $M_1$ are listed below. They are totally functions of $(\alpha,m,n,\lambda)$. Underlined the reader will find the components that show the point lies outside the region of interest and leads to rejection of them. $t$ ($t_1$ and $t_2$ as well) in the below denotes an arbitrary real number. 
+
+To recall, $a=\frac{2+2\alpha-n}{1+2\alpha-m-n} + \frac{2(1 + \alpha)}{1+2\alpha-m-n}\lambda$ and $b=\frac{1+m}{1+2\alpha-m-n} + \frac{1+m+n}{1+2\alpha-m-n}\lambda$. 
 \allowdisplaybreaks
 \begin{align*}
- &(1) & & p=0, \ q=0, \ \underline{ r=0, \ s=0},\\
- &(2) & & p=0, \ q=0, \ \underline{ r=0},\ s=s, \ \underline{ r_0 = \frac{-n}{\alpha-m-n}},\\
- &(3) & & p=0, \ q=0, \ r = \frac{n\alpha - r_0(\alpha-m-n)}{(1+\alpha)(m+n)},\ \underline{ s=0},\\
- &(4) & & p=0, \ q=1, \ \underline{ r=0, \ s=0}, \\
- &(5) & & p=0, \ q=1, \ \underline{ r=0},\ s=s, \ \underline{ r_1 = \frac{-n}{\alpha-m-n}},\\
- &(6) & & p=0, \ q=1, \ r = \frac{n\alpha - r_1(\alpha-m-n)}{(1+\alpha)(m+n)},\ \underline{ s=0},\\
- &(7) & & p=p, \ q=0, \ \underline{ r=0, \ s=0}, \ \frac{r_0}{\lambda}=2, \\
- &(8) & & p=p, \ q=1, \ \underline{ r=0, \ s=0}, \ \frac{r_0}{\lambda}=1, \\
- &(9) & & p=p, \ q=0, \ \underline{ r=0}, \ s=s, \ \frac{r_0}{\lambda}=2, \ \underline{ r_0 = \frac{-n}{\alpha-m-n}}, \\
- &(10) & & p=p, \ q=1, \ \underline{ r=0}, \ s=s, \ \frac{r_0}{\lambda}=1, \ \underline{ r_1 = \frac{-n}{\alpha-m-n}}, \\
- &(11) & & \underline{ p=-\frac{(\alpha-m-n)(1+m+n)}{(1+\alpha)(1+m)}<0}, \ q=\frac{2(\alpha-m-n)}{1+m}b, \ r=a_0, \ s=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)a_0},\\
- &(12) & & p=\Big ( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\Big)\Big(\frac{2\alpha(1+m)}{D(1-m-n)} - \frac{1+m+n}{D}\lambda\Big)\frac{1-m-n}{\lambda(2-n)}\frac{1-m-n}{\lambda(1+m)}, \\
- & & &q=\left( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\right)\left(\frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right)\frac{1-m-n}{\lambda(1+m)},\\
- & & &r = \frac{2-n}{1-m-n}, \ \underline{ s=0}.
+ \begin{array}{lllllll}
+  (1) &\Big(0,&0,& \underline{0},&\underline{0}&\Big), \\%&\text{and } \lambda = 111,\\
+  (2) &\Big(0,&0,& \underline{0},&t&            \Big) &\text{provided } \lambda = \frac{-2\alpha+2m+n}{2(\alpha-m-n)},\\
+  (3) &\Big(0,&0,& \frac{n\alpha - a(\alpha-m-n)}{(1+\alpha)(m+n)}, &\underline{0}&\Big),\\
+  (4) &\Big(0,&1,& \underline{0},&\underline{0}&\Big), \\
+  (5) &\Big(0,&1,& \underline{0},&t&           \Big) &\text{provided } \lambda = \frac{2\alpha-2m-n}{1+m+n},\\
+  (6) &\Big(0,&1,& \frac{n\alpha - a(\alpha-m-n)}{(1+\alpha)(m+n)}+\frac{\lambda}{m+n}, &\underline{0}&\Big),\\
+  (7) &\Big(t,&0,& \underline{0},&\underline{0}&\Big) &\text{provided } \lambda=\frac{2+2\alpha-n}{2(\alpha-m-n)}, \\
+  (8) &\Big(t,&1,& \underline{0},&\underline{0}&\Big) &\text{provided } \lambda=\frac{-2-2\alpha+n}{1+m+n}, \\
+  (9) &\Big(t_1,&0,& \underline{0},&t_2&           \Big) &\text{provided $1+2\alpha-m-n=0$ and $\lambda=\frac{-1-m}{1+m+n}$}, \\
+ (10) &\Big(t_1,&1,& \underline{0},&t_2&           \Big) &\text{provided $1+2\alpha-m-n=0$ and $\lambda=\frac{-1-m}{1+m+n}$}, \\
+ \end{array}
 \end{align*}
+% \begin{align*}
+%  \begin{array}{lllllll}
+% (11) &\Big(\underline{ -\frac{(\alpha-m-n)(1+m+n)}{(1+\alpha)(1+m)}},&\frac{2(\alpha-m-n)}{1+m}b, &r=\frac{2(1+\alpha)}{1+2\alpha-m-n}, &s=\frac{1+m+n}{1+\alpha} - \frac{n(1+2\alpha-m-n)}{2(1+\alpha)^2}&\Big),\\
+% \end{array}
+% \end{align*}
+\begin{align*}
+(11) \Big(&\underline{ -\frac{(\alpha-m-n)(1+m+n)}{(1+\alpha)(1+m)}}, \:\frac{2(\alpha-m-n)}{1+m}b, \:\frac{2(1+\alpha)}{1+2\alpha-m-n}, \:\frac{1+m+n}{1+\alpha} - \frac{n(1+2\alpha-m-n)}{2(1+\alpha)^2}\Big),\\
+(12) \bigg(&\Big ( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\Big)\Big(\frac{2\alpha(1+m)}{D(1-m-n)} - \frac{1+m+n}{D}\lambda\Big)\frac{1-m-n}{\lambda(2-n)}\frac{1-m-n}{\lambda(1+m)}, \\
+ &\left( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\right)\left(\frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right)\frac{1-m-n}{\lambda(1+m)}, \ \frac{2-n}{1-m-n}, \ \underline{0}\bigg).
+\end{align*}
+% \begin{align*}
+%  &(1) & & p=0, \ q=0, \ \underline{ r=0, \ s=0},\\
+%  &(2) & & p=0, \ q=0, \ \underline{ r=0},\ s=s, \ \underline{ \lambda = -1 - \frac{n}{2(\alpha-m-n)}},\\
+%  &(3) & & p=0, \ q=0, \ r = \frac{n\alpha - a(\alpha-m-n)}{(1+\alpha)(m+n)},\ \underline{ s=0},\\
+%  &(4) & & p=0, \ q=1, \ \underline{ r=0, \ s=0}, \\
+%  &(5) & & p=0, \ q=1, \ \underline{ r=0},\ s=s, \ \underline{ \lambda = \frac{2\alpha-2m-n}{1+m+n}},\\
+%  &(6) & & p=0, \ q=1, \ r = \frac{n\alpha - a(\alpha-m-n)}{(1+\alpha)(m+n)}+\frac{\lambda}{m+n},\ \underline{ s=0},\\
+%  &(7) & & p=p, \ q=0, \ \underline{ r=0, \ s=0}, \ \frac{r_0}{\lambda}=2, \\
+%  &(8) & & p=p, \ q=1, \ \underline{ r=0, \ s=0}, \ \frac{r_0}{\lambda}=1, \\
+%  &(9) & & p=p, \ q=0, \ \underline{ r=0}, \ s=s, \ \frac{r_0}{\lambda}=2, \ \underline{ r_0 = \frac{-n}{\alpha-m-n}}, \\
+%  &(10) & & p=p, \ q=1, \ \underline{ r=0}, \ s=s, \ \frac{r_0}{\lambda}=1, \ \underline{ r_1 = \frac{-n}{\alpha-m-n}}, \\
+%  &(11) & & \underline{ p=-\frac{(\alpha-m-n)(1+m+n)}{(1+\alpha)(1+m)}<0}, \ q=\frac{2(\alpha-m-n)}{1+m}b, \ r=a_0, \ s=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)a_0},\\
+%  &(12) & & p=\Big ( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\Big)\Big(\frac{2\alpha(1+m)}{D(1-m-n)} - \frac{1+m+n}{D}\lambda\Big)\frac{1-m-n}{\lambda(2-n)}\frac{1-m-n}{\lambda(1+m)}, \\
+%  & & &q=\left( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\right)\left(\frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right)\frac{1-m-n}{\lambda(1+m)},\\
+%  & & &r = \frac{2-n}{1-m-n}, \ \underline{ s=0}.
+% \end{align*}
 \section{Linearized problems around $M_0$ and $M_1$}\label{append:lin}
 The coefficient matrix for the linearized system around the equlibrium $M_0$ is
 \begin{align*}
