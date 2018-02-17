@@ -543,37 +543,6 @@ and thus $M_1$ resides in the region only under the constraint
 \end{equation}
 Henceforth, we restrict attention to rates $\lambda$ satisfying \eqref{eq:lambda-range}.
 
-
-
-
-% \eqref{eq:slow} admits several equilibria listed in the Appendix \ref{append:lin}. Our region of interest is the sector $\{(p,q,r,s) \; | \; p\ge0, q\ge0, r\ge0, s\ge0 \}$. We will establish later, in section \ref{sec:proof}, 
-% that the three dimensional submanifold $K$ defined by \eqref{eq:implicit} 
-% is positively invariant and $r$ and $s$ have strictly positive lower bounds on it. 
-% %is contained in the narrower region $I \triangleq\left\{ \: (p,q,r,s) \: | \:  p,q\ge0, ~~ r,s\ge\delta>0\right\}$.
-% % \begin{align*}
-% %  \left\{ \: (p,q,r,s) \: | \:  p,q\ge0, ~~ r,s\ge\delta>0, ~~\left|s-\frac{1+m}{1+\alpha}\right| \le A \frac{\alpha-m}{\alpha(1+\alpha)}\: \right\}.
-% % \end{align*}
-% For the moment we examine the two equilibrium points $M_0$ and $M_1$ that reside on $K$.
-% 
-% The reason we reject the region $r,s\le0$ stems from mechanical considerations: If we transform back to the original variables, then we find
-% \begin{equation*}
-%  r(\eta)|_{\eta=t^\lambda x}=t\partial_t\log \gamma(t,x), \quad r(\eta)s(\eta)|_{\eta=t^\lambda x}=t\partial_t \log \theta(t,x).
-% \end{equation*}
-% %for the original variables $\theta(t,x)$ and $\gamma(t,x)$.
-% Shear band initiation is related to conditions of loading where both the plastic strain and the temperature are increasing. This motivates to
-% restrict on the region $r > 0$, $s > 0$.
-% 
-% There are two equilibria that lie in this region:
-% \begin{align*}
-%  M_0 &= (0,0,r_0,s_0), & r_0 &=\frac{2+2\alpha-n}{D} + \frac{2+2\alpha}{D}\lambda, & s_0&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_0},\\
-%  M_1 &= (0,1,r_1,s_1), & r_1 &= r_0-\frac{1+\alpha}{\alpha-m-n}\lambda, & s_1&=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)r_1}.
-% \end{align*}
-% We find $r_0$ and $r_0s_0 = c = \frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda$ strictly positive, or $r_0, s_0>0$. However $r_1,s_1$ become negative for large $\lambda$. We find $r_1,s_1>0$ only under the constraint that %$\lambda$ is not arbitrarily large but
-% \begin{equation} \label{eq:lambda-range}
-%  0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right).
-% \end{equation}
-
-% \subsection{Linear stability of $M_0$ and $M_1$}
 We denote the four eigenvalues and four eigenvectors of the vector field linearized at $M_i$, $i=0,1$,  by $\mu_{ij}$ and $X_{ij}$ with $j=1,2,3,4$. %Appendix \ref{append:lin} contains the complete exposition of what this section discusses. 
 \begin{itemize}
  \item $M_0$ is a saddle; the matrix of the linearized vector field at $M_0$ has three positive eigenvalues and one negative eigenvalue. 
@@ -658,11 +627,6 @@ Now, we begin clarifying what has been suggested. The following proposition stat
 
 \begin{proof}
 Assuming smoothness and boundedness of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ in the neighborhood of $\xi=0$ and from the boundary conditions \eqref{eq:bdry0}, the derivatives of $\big(\Gamma,V,\Theta,\Sigma,U\big)$ evaluated at $\xi=0$ are obtained by differentiating the system \eqref{eq:ss-odes} repeatedly.
-% First we check
-% \begin{align*}
-%  &\Gamma'(0)=U'(0)=\Sigma'(0)= \Big(\frac{U}{\Gamma}\Big)'(0)=\Big(\frac{\Sigma\Gamma}{\Theta}\Big)'(0)=0,\\
-%  &\frac{U}{\Gamma}(0) = a, \quad \frac{\Sigma\Gamma}{\Theta}(0)=\frac{c}{a}.
-% \end{align*}
 Re-write \eqref{eq:ss-odes}
 \begin{align*}
   a + \lambda\xi\frac{\Gamma'}{\Gamma} &= \frac{U}{\Gamma}, &
@@ -743,133 +707,6 @@ $\kappa_1 = \frac{\Gamma(0)}{\Sigma(0)}$, or
 \begin{equation}
  \eta_0 = \frac{1}{2}\log \left(\frac{\Sigma(0)}{\Gamma(0)}\bar\kappa_1\right).%\log \sqrt{\frac{\bar\kappa_1}{\frac{\Gamma(0)}{\Sigma(0)}}}.
 \end{equation}
-%The closer description of the $\big(\Gamma,V,\Theta,\Sigma,U\big)$ is supplemented in the last section.
-
-% \section{Existence via Geometric theory of singular perturbation}
-% In this section, we give a proof for the existence of the heteroclinic orbit hypothesized in the preceding section. It is accomplished by the two consecutive chunks of arguments, the geometric singular perturbation theory and the theorem of Poincar\'e-Bendixson on the positively invariant set.
-%
-% Considering $n$ as a small parameter, we take a point of view on the $(p,q,r)$-system regarding it a singularly perturbed problem. See the term $n\dot{r}$ in $\eqref{eq:pqrsys}_3$, which indicates that the evolution of $r$ is of faster time scale, and we refer to $r$ as a fast variable and the others $p$ and $q$ two slow variables.
-%
-% The geometric singular perturbation theory considers the dynamics that takes place near the zeroset of the right-hand-side of $\eqref{eq:pqrsys}_3$, where the time scale of the evolution of the fast variable possibly becomes comparable to that of slow variables. In particular for the critical case $n=0$, the orbits that are upon the zeroset are considered, on where the problem is essentially reduced to that of slow variables only and it becomes regularly perturbed problem. The upshot of the geometric singular perturbation theory is to enable continuing this reduction to $n>0$ provided $n$ is small.
-%
-% To be concrete and to get prepared to apply the geometric singular perturbation theory, in this section we examine two objects and one verification of the property of the latter: First, we examine the zeroset of the right-hand-side of $\eqref{eq:pqrsys}_3$ when $n=0$, which is given by the graph
-% $$r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}\triangleq h(p,q;\lambda,\alpha,n=0) \quad \text{for $r>0$}.$$
-% We decribe this graph in the phase space to probe an idea of developing arguments. A suitable compact piece of the graph is subjected to applying the theory and we refer to it as the {\it critical manifold}. This is our second object and we give the precise specification of this object. The critical manifold serves as the template invariant manifold when $n=0$ from which the perturbed invariant manifold when $n>0$ is disposed of.  Lastly, the {\it normally hyperbolicity} of the critical manifold is verified. This is in regard with the system \eqref{eq:pqr_fast} in the fast independent variable. By rescailing $\tilde\eta=\frac{\eta}{n}$ for $n>0$, we see the dynamics that occurs in the fast time scale. The critical case $n=0$ in this format describes the fast relaxation toward the critical manifold or escape from it. The critical manifold is the set of equilibrium for the \eqref{eq:fastn0} and is the center manifold of the individual equilibrium points in it. Normally hyperbolicity concerns the hyperbolicity in the rest of the dimensions and this is the key property that enables us to continue the invariant manifold for $n>0$.
-% %In the first chunk, we exploit the fact that the $(p,q,r)$-system is of multiple time scale: Observe  the small parameter $n$ multiplied to $\dot{r}$ in \eqref{eq:pqrsys}, which makes the evolution of $r$ fast, i.e., if
-% %\begin{equation}
-% % f(p,q,r;\lambda,\alpha,n) = r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big).
-% %\end{equation}
-% %the right-hand-side of the equation on $r$, $\dot{r} \sim \frac{1}{n}$ away from the zero set of $f(p,q,r;\lambda,\alpha,n)$ When $n=0$, the orbit is strictly restricted on the zero set
-% %\begin{equation}
-% % Z \triangleq \{\,(p,q,r)\; | \; f(p,q,r,\lambda,\alpha,n=0)\, \} \label{eq:zeroset}
-% %\end{equation}
-% %and the problem is essentially reduced to the one of only slow variable $p$ and $q$, provided $r$ is solved from the algebraic equation \eqref{eq:zeroset}.
-% %
-% %The graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.
-% %is taken and is referred to as the critical manifold.
-% %
-% %
-% %
-% %In order to take the suitable compact piece of the zero set $Z$, we detail in the graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.
-% %
-% %
-% %
-% %
-% %
-% %
-% %\hrulefill
-% %
-% %
-% %
-% %
-% %
-% %
-% %
-% %
-% %This exploits the fact that the (p,q,r)-system is of multiple time scale, i.e., the presence of the small parameter $n$ in front of  $\dot{r}$ indicates the time scale of $\dot{r}\sim \frac{1}{n}$ unless the right-hand-side of the equation is small enough to compensate.
-% %
-% %Let $f(p,q,r;\lambda,\alpha,n)$ be the right-hand-side of the equation on $r$, i.e.,
-% %\begin{equation}
-% % f(p,q,r,\lambda,\alpha,n) = r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big).
-% %\end{equation}
-% %The compact subset of the zero set of $f(p,q,r;\lambda,\alpha,n=0)$
-% %$$ Z \triangleq \{\,(p,q,r)\; | \; f(p,q,r,\lambda,\alpha,n=0)\, \} $$
-% %is taken and is referred to as the critical manifold.
-% %
-% %
-% %\subsection{Reduction to the slow system}
-%
-% \subsection*{The graph $\displaystyle r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p}$.}
-% The equation of the graph can be written in the form
-% \begin{equation}
-%  q + \lambda {r}p + \frac{\alpha}{\lambda} \Big( r-r_0\Big)=0, \label{eq:level}
-% \end{equation}
-% where we observe that the level line $r=\bar{r}$ is the straight line in the phase space. On the $(p,q)$-plane, for $r$ in the range of $(0,r_0)$ the contour line crosses the first quadrant with the negative slope, intersecting $p$-axis and $q$-axis. When $r=r_0$ it is the line passing the origin and this point $(0,0,r_0) = M_0$. When $r=r_1$, the level line passes the $(0,1,r_1)=M_1$.
-%
-% \subsection*{Critical manifold}
-% Inequality
-% $$ \lambda < \frac{2(\alpha-n)}{(1+n)^2} $$
-% prevents $r_1$ from being less than equal to $0$. Therefore, we always can take the value $0<\underbar{R}<r_1$. Having fixed the value $\underbar{R}$, we take the closed set $T$ that is the triangle in the first quadrant enclosed by $p$-axis, $q$-axis and the contour line $\underbar{R} = \bar{r}(p,q)$. Observe that $h\ge\underbar{R}>0$ on the graph if $(p,q) \in T$. Since $h$ is continuous in the neighborhood of $T$, we can take another closed set $K$ in the vicinity of $T$ on which $h$ is still away from $0$. We take the compact piece of the set $Z$ by
-% \begin{equation}
-%  G(\lambda,\alpha,n=0) \triangleq \Big\{\, (p,q,r) \;|\; (p,q) \in K, \text{ and } r=\frac{ \frac{\alpha c_0}{\lambda} - d_1 -q }{ \frac{\alpha}{\lambda} + \lambda p} \,\Big\} \subset Z
-% \end{equation}
-%
-% \subsection*{Normally hyperbolicity}
-% The system in {\it fast scale} with the independent variable $\tilde{\eta} = \eta/n$ is
-% \begin{equation}\label{eq:pqr_fast} \tag*{($\tilde{P}$)}
-% \begin{aligned}
-%  p^\prime &=np\Big( \Big[\frac{1+\alpha}{1+n}\,\frac{1}{\lambda }\Big(r^{1+n}-c_0\Big)\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \\
-%  q^\prime &=nq\Big(\Big[b_1 +\frac{bpr}{q}\Big] -\Big[d_1 + q + \lambda pr\Big]\Big), \\
-%  r^\prime &=r\Big( \Big[\frac{\alpha-n}{\lambda(1+n)}\Big(r^{1+n}-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big)\triangleq f(p,q,r;\lambda,\alpha,n),
-% \end{aligned}
-% \end{equation}
-% where we denoted $\displaystyle(\cdot)^\prime = \frac{d}{d\tilde{\eta}}(\cdot)$. In particular, the system $(\tilde{P})|_{n=0}$ reads
-% \begin{align}
-%  p^\prime =0, \quad q^\prime =0, \quad r^\prime=r\Big( \Big[\frac{\alpha}{\lambda}\Big(r-c_0\Big)\Big]+\Big[d_1 + q + \lambda pr\Big]\Big) = f(p,q,r;\lambda,\alpha,0). \label{eq:fastn0}
-% \end{align}
-%
-% \begin{lemma} \label{lem:normal_hyper}
-%  $G(\lambda,\alpha,0)$ is a normally hyperbolic invariant manifold with respect to the system $(\tilde{P})|_{n=0}$.
-% \end{lemma}
-% \begin{proof}
-% To prove the normally hyperbolicity of the graph $G(\lambda,\alpha,n=0)$, we show that the coefficient matrix of the linearized system of $(\tilde{P})|_{n=0}$ around $G(\lambda,\alpha,n=0)$ has the eigenvalue $0$ exactly with the multiplicity $2$. Let $P$, $Q$, and $R$ be the perturbations of $p$, $q$, and $r$ respectively. The linearized equations after discarding terms higher than the first order are
-% \begin{align*}
-%  \begin{pmatrix} {P}^\prime\\ {Q}^\prime \\ {R}^\prime \end{pmatrix} =
-%  \begin{pmatrix} 0 & 0& 0\\ 0 & 0 & 0\\ \lambda h^2 & h & ( \frac{\alpha}{ \lambda} + \lambda p )h \end{pmatrix} \begin{pmatrix} {P}\\ {Q} \\ {R} \end{pmatrix},
-% \end{align*}
-% where $h$ is a shorthand for $h(p,q;\lambda,\alpha,n=0)$. $( \frac{\alpha}{ \lambda} + \lambda p )h > 0$ because $\alpha>0$, $p\ge0$ and $h > \underbar{R}>0$ on the $G(\lambda,\alpha,n=0)$, which proves that $0$ is an eigenvalue with multiplicity $2$.
-% \end{proof}
-%
-% \begin{proposition}
-% For $n>0$ sufficiently small, there is a function $h(p,q;\lambda,\alpha,n) : T\subset \mathbb{R}^2 \mapsto \mathbb{R}$ such that
-% \begin{equation} \tag*{(${R}$)} \label{eq:reduced}
-% \begin{aligned}
-%  \dot{p} &=p\Big(\frac{1}{ \lambda }\big(h(p,q;\lambda,\alpha,n) - \frac{2-n}{1+m-n}\big) - \frac{1-m+n}{1+m-n} + 1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big),\\
-%  \dot{q} &=q\Big(                                                                          1-q- \lambda p h(p,q;\lambda,\alpha,n)\Big) + b^{\lambda,m,n}ph(p,q;\lambda,\alpha,n),
-% \end{aligned}
-% \end{equation}
-%
-%
-% \begin{enumerate}
-%  \item $h$ is jointly smooth function of $p$, $q$, and $n$ in $T \times I$
-%  \item The graph $r=h(p,q;\lambda,\alpha,n)$ is locally invariant, i.e., The orbit $(p,q,r)$
-% \end{enumerate}
-%
-% \end{proposition}
-%
-%
-% \subsubsection{Flow on the critical manifold : the case $m=1$}
-%
-% The marginal case $m=1$ provides closer detail.
-% By substituting $h^{\lambda,1,0}(p,q)$ in place of $r$, the system is explicitly solved and
-% %we can solve the system explicitly and the whole critical graph is completely characterized.
-% the general solution on the graph is a family of parabolae $p=kq^2$ and $r=h^{\lambda,1,0}(p,q)$. This includes the two extremes $p=0$ and $q=0$, where $k$ takes $0$ and $\infty$ respectively. See Fig. \ref{fig:hn0m1}. We focus on discussing two points: 1) In an effort to apprehend the flow of the rest of cases, we remark a few features for this marginal case, which in turn persist under the perturbation; and 2) we report features that do not persist too. These features do not play any role in our study, but this bifurcation is described here for clarity.
-%
-% We address the first point. Look at $M_0^{ \lambda,1,0}$ in Fig. \ref{fig:hn0m1_b} surrounded by a family of parabolae in the neighborhood. Our interested direction $\vec{X}_{02}$ and the other $\vec{X}_{01}$ are annotated near $M_0^{ \lambda,1,0}$ by a dotted arrow. The family of parabolae is manifesting the fact that orbit curves meet $M_0^{ \lambda,1,0}$ tangentially to $\vec{X}_{01}$; one exception is the degenerate straight line that emanates in $\vec{X}_{02}$, which is depicted as the green one in Fig. \ref{fig:hn0m1}, the target orbit. Another observation from the $pq$-plane is that the flow in the first quadrant far away from the origin is {\it inwards}. More precisely, as illustrated in Fig. \ref{fig:hn0m1_b}, whenever $0<\underbar{R} < 1 = c^{\lambda,1,0}$ the flow on the contour line $\underbar{R} = h^{\lambda,1,0}$ is inwards. We make use of this observation in the proof of Section \ref{sec:proof_proof}.
-%
-% Now, we describe the bifurcation of this marginal case. The crucial difference is that $M_1^{\lambda,1,0}$ is replaced by a line of equilibria $h^{\lambda,1,0}(p,q) = c^{\lambda,1,0}=1$, which is the red line in Fig. \ref{fig:hn0m1}. As a result, each of the parabolae emanated from $M_0^{\lambda,1,0}$ lands at a point among these equilibria. $\vec{X}_{02}$ is immersed on $q=0$ plane distinctively from all other cases and the target orbit in particular lands at the $q$-intercept of the line of equilibria. To compare this observation to the statement of Theorem \ref{thm:1}, the target orbit does not connect $M_0^{ \lambda,1,0}$ to $M_1^{ \lambda,1,0}$ but to this $q$-intercept. This observation does not spoil our proof in Section \ref{sec:proof_proof} because we assert the persistence of the critical manifold not the target orbit.
-
-
 
 \vfil\eject
 
@@ -1453,95 +1290,6 @@ for the temperature and in  Fig. \ref{fig:v}, which eventually looks like a step
 
 
 
-% \section*{Appendix A. Coefficient matrices for the linearized system} \label{append:linear}
-% Using
-% \begin{align*}
-%  (r+R)^{1+n} = \begin{cases}
-%                 R^{1+n} &\text{if $r=0$},\\
-%                 r^{1+n}\Big(1+\frac{R}{r}\Big)^{1+n} = r^{1+n} + (1+n)r^nR + \mathcal{O}(\delta^2), & \text{if $r>\bar{r}>0$,}
-%                \end{cases}
-% \end{align*}
-% the linearized system around the equilibrium point is:
-%
-% \noindent
-% {\bf Cases $r=0$, $p=0$, $q=0$ or $q=1$}
-% \begin{align*}
-%  \dot{P} &=P\Big(-q-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1\Big),\\
-%  \dot{Q} &=Q(1-q) -qQ,\\
-%  \dot{R} &=\frac{R}{n}\Big(q-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1 \Big).
-% \end{align*}
-% \noindent
-% {\bf Cases $\Big( \frac{\alpha-n}{\lambda(1+n)} r^{1+n} - \frac{\alpha-n}{\lambda(1+n)}c_0 + d_1 + q \Big)=0$, $p=0$, $q=0$ or $q=1$}
-% \begin{align*}
-%  \dot{P}&=P\Big( \frac{1+\alpha}{\lambda(1+n)} r^{1+n} - \frac{1+\alpha}{\lambda(1+n)} c_0 -d_1-q\Big) = P\Big(-\frac{D}{\alpha-n}(d_1+q)\Big),\\
-%  \dot{Q}&=Q(1-q) +q(-Q-\lambda Pr) + bPr,\\
-%  \dot{R}&=\frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big) + \frac{R}{n}\Big(\frac{\alpha-n}{\lambda(1+n)}r^{1+n}-\frac{\alpha-n}{\lambda(1+n)}r^{1+n}c_0 + d_1 +q\Big) = \frac{r}{n}\Big( \frac{\alpha-n}{\lambda} r^nR + Q + \lambda Pr\Big)
-% \end{align*}
-%
-% Coefficients Matrices $Mat_i$ for Linearized equations around $M_i$, $i=0,1,2,3$:
-% \begin{align*}
-%  Mat_0 &= \begin{pmatrix}
-%           -\frac{D}{\alpha-n}(d_1) & 0 & 0\\
-%           br_0 & 1 & 0\\
-%           \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
-%          \end{pmatrix}
-%         = \begin{pmatrix}
-%           2 & 0 & 0\\
-%           br_0 & 1 & 0\\
-%           \frac{\lambda r_0^2}{n} & \frac{r_0}{n} & \frac{\alpha-n}{n\lambda}r_0^{1+n}
-%          \end{pmatrix}\\
-%  Mat_1 &= \begin{pmatrix}
-%           -\frac{D}{\alpha-n}(d_1+1) & 0 & 0\\
-%           (b-\lambda)r_1 & -1 & 0\\
-%           \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
-%          \end{pmatrix}
-%         =\begin{pmatrix}
-%           -\frac{1+n}{\alpha-n} & 0 & 0\\
-%           (b-\lambda)r_1 & -1 & 0\\
-%           \frac{\lambda r_1^2}{n} & \frac{r_1}{n} & \frac{\alpha-n}{n\lambda}r_1^{1+n}
-%          \end{pmatrix}\\
-%  Mat_2 &= \begin{pmatrix}
-% 	  -1-\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
-% 	  0 & -1 & 0\\
-% 	  0 & 0 & \frac{1}{n}\Big(1-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
-%          \end{pmatrix}
-%         = \begin{pmatrix}
-% 	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} + \frac{(1+n)^2}{D(1+\alpha)}\lambda\Big) & 0 & 0\\
-% 	  0 & -1 & 0\\
-% 	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_1^{1+n}
-%          \end{pmatrix}\\
-%  Mat_3 &= \begin{pmatrix}
-% 	  -\frac{1+\alpha}{\lambda(1+n)} c_0 -d_1 & 0 & 0\\
-% 	  0 & 1 & 0\\
-% 	  0 & 0 & \frac{1}{n}\Big(-\frac{\alpha-n}{\lambda(1+n)} c_0 +d_1\Big)
-%          \end{pmatrix}
-% 	=\begin{pmatrix}
-% 	  -\frac{1+\alpha}{\lambda(1+n)} \Big(\frac{2}{D} - \frac{2(\alpha-n)(1+n)}{D(1+\alpha)}\lambda\Big)& 0 & 0\\
-% 	  0 & 1 & 0\\
-% 	  0 & 0 & -\frac{\alpha-n}{\lambda n(1+n)}r_0^{1+n}
-%          \end{pmatrix}
-% \end{align*}
-% The lower triangular matrix has the eigenvalues and eigenvectors such that
-% \begin{align*}
-%  MAT &= \begin{pmatrix}
-%         A & 0 & 0\\
-%         B & C & 0\\
-%         D & E & F
-%        \end{pmatrix}, \quad
-%  \mu_1 = A, \quad\mu_2 = C, \quad\mu_3 = F,\\
-%  v_1 &= \Big( \frac{ (A-C)(A-F) }{ D(A-C) + BE }, \frac{ B(A-F) }{ D(A-C) + BE }, 1), \quad  v_2 = (0, \frac{C-F}{E}, 1), \quad v_3 = (0,0,1).
-% \end{align*}
-% The eigenvectors in Section \ref{sec:equil} took the suitable normalization.
-% \begin{align*}
-%  &X_{01} = \bigg( \Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big) \;,\;\Big( \frac{2n - \frac{\alpha-n}{\lambda}r_0^{1+n}}{\big({\lambda}+b\big) r_0^2}\Big)br_0\;,\;1\bigg),\quad
-%  X_{02} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
-%  X_{03} = (0,0,1),\\
-%  &X_{11} = \bigg(  \Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)\Big(1-\frac{1+n}{\alpha-n}\Big) \;,\;\Big(\frac{-n\frac{1+n}{\alpha-n} - \frac{\alpha-n}{\lambda}r_1^{1+n}}{\big(-\frac{1+n}{\alpha-n} \lambda +b\big) r_1^2}\Big)(b-\lambda)r_1\;,\;1\bigg),\\
-%  &X_{12} = \bigg(0, \Big(\frac{n- \frac{\alpha-n}{\lambda}r_0^{1+n}}{r_0}\Big), 1\bigg), \quad
-%  X_{13} = (0,0,1),
-% \end{align*}
-
-
 \vfil\eject
 
 
@@ -1596,22 +1344,6 @@ To recall, $a=\frac{2+2\alpha-n}{1+2\alpha-m-n} + \frac{2(1 + \alpha)}{1+2\alpha
 (12) \bigg(&\Big ( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\Big)\Big(\frac{2\alpha(1+m)}{D(1-m-n)} - \frac{1+m+n}{D}\lambda\Big)\frac{1-m-n}{\lambda(2-n)}\frac{1-m-n}{\lambda(1+m)}, \\
  &\left( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\right)\left(\frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right)\frac{1-m-n}{\lambda(1+m)}, \ \frac{2-n}{1-m-n}, \ \underline{0}\bigg).
 \end{align*}
-% \begin{align*}
-%  &(1) & & p=0, \ q=0, \ \underline{ r=0, \ s=0},\\
-%  &(2) & & p=0, \ q=0, \ \underline{ r=0},\ s=s, \ \underline{ \lambda = -1 - \frac{n}{2(\alpha-m-n)}},\\
-%  &(3) & & p=0, \ q=0, \ r = \frac{n\alpha - a(\alpha-m-n)}{(1+\alpha)(m+n)},\ \underline{ s=0},\\
-%  &(4) & & p=0, \ q=1, \ \underline{ r=0, \ s=0}, \\
-%  &(5) & & p=0, \ q=1, \ \underline{ r=0},\ s=s, \ \underline{ \lambda = \frac{2\alpha-2m-n}{1+m+n}},\\
-%  &(6) & & p=0, \ q=1, \ r = \frac{n\alpha - a(\alpha-m-n)}{(1+\alpha)(m+n)}+\frac{\lambda}{m+n},\ \underline{ s=0},\\
-%  &(7) & & p=p, \ q=0, \ \underline{ r=0, \ s=0}, \ \frac{r_0}{\lambda}=2, \\
-%  &(8) & & p=p, \ q=1, \ \underline{ r=0, \ s=0}, \ \frac{r_0}{\lambda}=1, \\
-%  &(9) & & p=p, \ q=0, \ \underline{ r=0}, \ s=s, \ \frac{r_0}{\lambda}=2, \ \underline{ r_0 = \frac{-n}{\alpha-m-n}}, \\
-%  &(10) & & p=p, \ q=1, \ \underline{ r=0}, \ s=s, \ \frac{r_0}{\lambda}=1, \ \underline{ r_1 = \frac{-n}{\alpha-m-n}}, \\
-%  &(11) & & \underline{ p=-\frac{(\alpha-m-n)(1+m+n)}{(1+\alpha)(1+m)}<0}, \ q=\frac{2(\alpha-m-n)}{1+m}b, \ r=a_0, \ s=\frac{1+m+n}{1+\alpha} - \frac{n}{(1+\alpha)a_0},\\
-%  &(12) & & p=\Big ( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\Big)\Big(\frac{2\alpha(1+m)}{D(1-m-n)} - \frac{1+m+n}{D}\lambda\Big)\frac{1-m-n}{\lambda(2-n)}\frac{1-m-n}{\lambda(1+m)}, \\
-%  & & &q=\left( \frac{2\alpha(1+m)}{D(1-m-n)} + \frac{2(\alpha-m-n)}{D}\lambda\right)\left(\frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right)\frac{1-m-n}{\lambda(1+m)},\\
-%  & & &r = \frac{2-n}{1-m-n}, \ \underline{ s=0}.
-% \end{align*}
 \section{Linearized problems around $M_0$ and $M_1$}\label{append:lin}
 The coefficient matrix for the linearized system around the equlibrium $M_0$ is
 \begin{align*}
