@@ -144,36 +144,36 @@ the self-organization into a localized solution starting from well-prepared data
 % \tableofcontents
 % \pagebreak
 
-
-\section{Introduction}
-
-
-
-The phenomenon of shear localization and the formation of shear bands appear in several different instances of material instability in thermo-mechanics. We aim to explain the dynamic formation of shear band in a shear deformation of a rate dependent thermo-plastic metals. It is often associated with ill-posedness of an initial value problem of the underlying model what has coined the term Hadamard instability in mechanics literature. It should be however noted from a modelling perspective that the Hadamard instability cannot by itself explain the coherent structures in localizing process. The instability indicated by Hadamard instability is the catastrophic growth of oscillations around the mean state while such a wild oscillation are not observed in the experiments. The explanation of this coherent structures in localization is of our central objective and it is a nonlinear effect in the corresponding model.
+{\red
+\section{Introduction to series}
+}
 
 
-Projecting above paradigm, the mathematical theory of the shear band formation in high strain rate thermo-plasticity poses analytical challenges to the problem of parabolic regularizations of ill-posed problem. In the underlying model, the constitutive law is such that the (net) softening response offers a destabilizing mechanism exhibiting Hadamard instability while the higher order nonlinear effect of viscosity offers an opposing mechanism. We aim to understand how the Hadamard instability interacts with the nonlinear features of the problem to form \emph{a localized coherent state}. To be concrete, here we draw attention to the material that obeys the power law and conduct various of analysis to come to a few conclusions.
-
-A caricature of shear bands formation is illustrated in Fig. \ref{ShearFlow} while the more detailed description of the model is followed in the section below. The shear strain localizes in a narrow band in the specimen and concurrently an elevation of the temperature takes place in the interior of the band.
-
-\begin{figure}[ht]
-\centering
-\vspace{-0.1cm}
-\includegraphics[scale=0.5]{Shflow-w-sb}
-\vspace{0.1cm}
-\caption{Uniform shear versus shear band}.
-\label{ShearFlow}
-\end{figure}
-
-
-
-The shear bands formation of steels during rapid shearing deformations \cite{CCHD,HDH,ZH} is one of the most striking instances of material instability in mechanics that often precedes ruptures. The study of shear bands formation has attracted substantial attentions in the mechanics and mathematics literature including experimental works  \cite{CCHD,HDH}, mechanical modeling
-and  linearized analysis studies  (\cite{CDHS,FM,MC,WW,Wr} and references therein), asymptotic analysis \cite{DO, WrOc},
-nonlinear analysis  \cite{DH,Tzavaras87,Tzavaras91,BPV}, and numerical  investigations \cite{Wa,ELW,BKT}.
-
-\subsection{Modeling shear bands in high strain-rate deformations of metals}
-As a simple paradigm towards understanding the posed problem, we consider the one dimensional shear between two parallel plates of a thermoviscoplastic material, Fig. \ref{ShearFlow}. The plate shears in $y$ direction and $\gamma(x,t)$ denotes the strain in the shearing direction of the material that was initially at $x$. $\sigma(x,t)$ denotes similarly the shear stress, $v(x,t)$ the velocity in the shearing direction, and $\theta(x,t)$ the temperature. Having those introduced, the associated model
-(see \cite{CDHS,WW,KT} for details) reads
+% The phenomenon of shear localization and the formation of shear bands appear in several different instances of material instability in thermo-mechanics. We aim to explain the dynamic formation of shear band in a shear deformation of a rate dependent thermo-plastic metals. It is often associated with ill-posedness of an initial value problem of the underlying model what has coined the term Hadamard instability in mechanics literature. It should be however noted from a modelling perspective that the Hadamard instability cannot by itself explain the coherent structures in localizing process. The instability indicated by Hadamard instability is the catastrophic growth of oscillations around the mean state while such a wild oscillation are not observed in the experiments. The explanation of this coherent structures in localization is of our central objective and it is a nonlinear effect in the corresponding model.
+%
+%
+% Projecting above paradigm, the mathematical theory of the shear band formation in high strain rate thermo-plasticity poses analytical challenges to the problem of parabolic regularizations of ill-posed problem. In the underlying model, the constitutive law is such that the (net) softening response offers a destabilizing mechanism exhibiting Hadamard instability while the higher order nonlinear effect of viscosity offers an opposing mechanism. We aim to understand how the Hadamard instability interacts with the nonlinear features of the problem to form \emph{a localized coherent state}. To be concrete, here we draw attention to the material that obeys the power law and conduct various of analysis to come to a few conclusions.
+%
+% A caricature of shear bands formation is illustrated in Fig. \ref{ShearFlow} while the more detailed description of the model is followed in the section below. The shear strain localizes in a narrow band in the specimen and concurrently an elevation of the temperature takes place in the interior of the band.
+%
+% \begin{figure}[ht]
+% \centering
+% \vspace{-0.1cm}
+% \includegraphics[scale=0.5]{Shflow-w-sb}
+% \vspace{0.1cm}
+% \caption{Uniform shear versus shear band}.
+% \label{ShearFlow}
+% \end{figure}
+%
+%
+%
+% The shear bands formation of steels during rapid shearing deformations \cite{CCHD,HDH,ZH} is one of the most striking instances of material instability in mechanics that often precedes ruptures. The study of shear bands formation has attracted substantial attentions in the mechanics and mathematics literature including experimental works  \cite{CCHD,HDH}, mechanical modeling
+% and  linearized analysis studies  (\cite{CDHS,FM,MC,WW,Wr} and references therein), asymptotic analysis \cite{DO, WrOc},
+% nonlinear analysis  \cite{DH,Tzavaras87,Tzavaras91,BPV}, and numerical  investigations \cite{Wa,ELW,BKT}.
+%
+% \subsection{Modeling shear bands in high strain-rate deformations of metals}
+% As a simple paradigm towards understanding the posed problem, we consider the one dimensional shear between two parallel plates of a thermoviscoplastic material, Fig. \ref{ShearFlow}. The plate shears in $y$ direction and $\gamma(x,t)$ denotes the strain in the shearing direction of the material that was initially at $x$. $\sigma(x,t)$ denotes similarly the shear stress, $v(x,t)$ the velocity in the shearing direction, and $\theta(x,t)$ the temperature. Having those introduced, the associated model
+% (see \cite{CDHS,WW,KT} for details) reads
 \begin{equation}
   \label{sbeq}
   \begin{aligned}
@@ -182,21 +182,21 @@ As a simple paradigm towards understanding the posed problem, we consider the on
     & \gamma_{t} = v_{x},
   \end{aligned}
 \end{equation}
-where $r$, $\kappa$ are non-dimensional constants. There we see the variables interact through the equations of balance of linear momentum, kinematic compatibility, and the balance of energy.
-
-It was recognized by Zener and Hollomon \cite{ZH} that the effect of the deformation speed is twofold:
-First, high speed in the deformation alters the loading conditions from isothermal to that close to adiabatic. Having adiabatic conditions projects the belief that, at high strain rates, heat diffuses at a slower time scale than that of the deformation takes place so that effectively heat merely accumulates during the operating time. Under such conditions, since materials often thermally soften, in such a case where the thermal softening outweighs the strain hardening, the combined effect can lead to a net softening response. %(Indeed, experimental observations of shear bands are  typically associated  with strain softening response -- past a critical strain -- of the measured stress-strain curve \cite{CDHS}.)
-
-Second, strain rate has an effect {\it per se}, or it should be included in the constitutive modeling. In other words, it is reasonable to consider the shear stress that is described by a constitutive law $\sigma = f(\theta, \gamma, u)$ where $u=\gamma_t$ the strain rate, with $f_u > 0$. The inequality indicates the effect of parabolic regularization. The law given above falls into the framework of thermoviscoelasticity, while the law may be better interpreted as a {\it plastic flow rule}, what justifies the following terminology: we say the material exhibits thermal softening at state variables $(\theta, \gamma, u)$
-where $f_\theta(\theta, \gamma, u) < 0$, strain hardening at state variables where $f_\gamma(\theta, \gamma, u) > 0$, and strain softening when $f_\gamma(\theta, \gamma, u) < 0$. The slopes of $f$ measure the strengths of thermal softening, strain hardening (or softening) and strain-rate sensitivity, respectively. Due to the difficulty of performing high strain-rate experiments, uncertainty in determining the specific form of $f( \theta, \gamma, u)$ stands and in practice data obtained in a certain range are fit to curves of varieties of algebraic functions. We focus on the \emph{power law},
+% where $r$, $\kappa$ are non-dimensional constants. There we see the variables interact through the equations of balance of linear momentum, kinematic compatibility, and the balance of energy.
+%
+% It was recognized by Zener and Hollomon \cite{ZH} that the effect of the deformation speed is twofold:
+% First, high speed in the deformation alters the loading conditions from isothermal to that close to adiabatic. Having adiabatic conditions projects the belief that, at high strain rates, heat diffuses at a slower time scale than that of the deformation takes place so that effectively heat merely accumulates during the operating time. Under such conditions, since materials often thermally soften, in such a case where the thermal softening outweighs the strain hardening, the combined effect can lead to a net softening response. %(Indeed, experimental observations of shear bands are  typically associated  with strain softening response -- past a critical strain -- of the measured stress-strain curve \cite{CDHS}.)
+%
+% Second, strain rate has an effect {\it per se}, or it should be included in the constitutive modeling. In other words, it is reasonable to consider the shear stress that is described by a constitutive law $\sigma = f(\theta, \gamma, u)$ where $u=\gamma_t$ the strain rate, with $f_u > 0$. The inequality indicates the effect of parabolic regularization. The law given above falls into the framework of thermoviscoelasticity, while the law may be better interpreted as a {\it plastic flow rule}, what justifies the following terminology: we say the material exhibits thermal softening at state variables $(\theta, \gamma, u)$
+% where $f_\theta(\theta, \gamma, u) < 0$, strain hardening at state variables where $f_\gamma(\theta, \gamma, u) > 0$, and strain softening when $f_\gamma(\theta, \gamma, u) < 0$. The slopes of $f$ measure the strengths of thermal softening, strain hardening (or softening) and strain-rate sensitivity, respectively. Due to the difficulty of performing high strain-rate experiments, uncertainty in determining the specific form of $f( \theta, \gamma, u)$ stands and in practice data obtained in a certain range are fit to curves of varieties of algebraic functions. We focus on the \emph{power law},
 \begin{align}
 &  \sigma =  f(\theta, \gamma, u) = \theta^{-\alpha} \gamma^{m} u^{n} \quad \quad \text{Power Law}. \label{PL0}
 \end{align}
-
-Now we set up the boundary conditions. In dimensional variables, the upper plate at $x=d$ is subjected to a prescribed constant velocity $V$ in dimensional variables while the lower plate at $x=0$ is held at rest. In non-dimensional variables we simply impose $d=1$, $v(0,t) = 0$,  $v(1,t) = 1$. Further, we assume that the plates are thermally insulated:  $ \theta_{x}(0,t) = 0$,  $\theta_{x}(1,t) = 0$. For the heat flux $Q$ we either uses a Fourier  law $Q = \kappa \theta_{x}$ with thermal diffusivity
-parameter $\kappa$ or the adiabatic assumption $Q = 0$, equivalently $\kappa = 0$. Imposing adiabatic conditions appears plausible for the initiation of the shear band but not necessarily for the evolution of a pre-existing band, because of the high temperature differences therein.
-
-We summarize the equations describing the model. We simply take $r=1$ and the resulting system reads
+%
+% Now we set up the boundary conditions. In dimensional variables, the upper plate at $x=d$ is subjected to a prescribed constant velocity $V$ in dimensional variables while the lower plate at $x=0$ is held at rest. In non-dimensional variables we simply impose $d=1$, $v(0,t) = 0$,  $v(1,t) = 1$. Further, we assume that the plates are thermally insulated:  $ \theta_{x}(0,t) = 0$,  $\theta_{x}(1,t) = 0$. For the heat flux $Q$ we either uses a Fourier  law $Q = \kappa \theta_{x}$ with thermal diffusivity
+% parameter $\kappa$ or the adiabatic assumption $Q = 0$, equivalently $\kappa = 0$. Imposing adiabatic conditions appears plausible for the initiation of the shear band but not necessarily for the evolution of a pre-existing band, because of the high temperature differences therein.
+%
+% We summarize the equations describing the model. We simply take $r=1$ and the resulting system reads
 \begin{equation}
   \label{PLS}
   \begin{aligned}
@@ -213,158 +213,107 @@ subjected to the boundary conditions
 \begin{equation} \label{BCOND2}
  \theta_x(0,t)=\theta_x(1,t)=0, \quad \text{in case of $\kappa\ne0$.}
 \end{equation}
-
-The models \eqref{PLS}-\eqref{BCOND2} admit a class of special solutions of constant strain rate namely the
-uniform shearing solutions. For the Power law model \eqref{PL0}, the uniform shearing solutions for constants $\gamma_0$ and $\theta_0$ read
+%
+% The models \eqref{PLS}-\eqref{BCOND2} admit a class of special solutions of constant strain rate namely the
+% uniform shearing solutions. For the Power law model \eqref{PL0}, the uniform shearing solutions for constants $\gamma_0$ and $\theta_0$ read
 \begin{equation} \label{eq:uss}
 \begin{aligned}
  \gamma_s(t) &= t+\gamma_0, & \theta_s(t) &= \left(\frac{1+\alpha}{1+m} (t+\gamma_0)^{1+m} - \frac{1+\alpha}{1+m} \gamma_0^{1+m} + \theta_0^{1+\alpha}   \right)^{\frac{1}{1+\alpha}}\\
   u_s(t) &=1, & \sigma_s(t)&=\left(\frac{1+\alpha}{1+m} (t+\gamma_0)^{1+m} - \frac{1+\alpha}{1+m} \gamma_0^{1+m} + \theta_0^{1+\alpha}   \right)^{\frac{-\alpha}{1+\alpha}}(t+\gamma_0)^m.
 \end{aligned}
 \end{equation}
-Observe that the $\sigma$ is always decreasing in time (in the regime $\alpha>0$, $1+m>0$). Note that the graph $\sigma - t$  is viewed as describing the stress vs. average strain response. Thus in the uniform shearing motion it is always net softening which makes its stability study relevant.
-
-
-
-\subsection{Challenges posed by the localization problem}
-In this series of papers, we seek a rather wide range of understanding regarding the shear bands formation of thermoviscoplastic power law materials. We carry out linear and nonlinear analysis as to the uniform shear and aim to compute numerical solutions as well. We listed the tasks of this work:
-\begin{itemize}
-\item To define a notion of stability (or instability) for the uniform shear. This is to draw attention to that the base solution itself is a growing state, as seen in \eqref{eq:uss}. Hence, the stability study around a steady state cannot be applied to our problem.
-\item To derive quantitative criteria for stability (or instability) for the linearized problem and to give a complete analysis of linear stability by the criteria. This gives a mathematical account pinpointing the onset of localization.
-
-\item To demonstrate the dynamic formation of shear bands, taking the full nonlinear effects into account. For those power laws accounting of the unstable regime, a family of self-similar solutions to the nonlinear problem \eqref{PLS}-\eqref{BCOND1} is constructed. This is a far reaching demonstration of the onset of the localizing instability and this serious task is solely treated in the second part of this series.
-\end{itemize}
-
-The point of view this paper takes is to distinguish two stages of the process. In the initial stage, the stability or instability of the uniform shearing solutions is considered in the realm of linearized analysis. As addressed, we encounter the difficulty of having time independent coefficients in the linearized system. In the course of linearized analysis we adapt the formulation of relative perturbations espoused by Molinari and Clfton \cite{MC,FM}. Following that framework we conduct the linear stability analysis for linear non-autonomous systems.
-
-In the second stage, the localizing phenomenon lies within the realm of nonlinear analysis. The focal issue is then how the catastrophic growth of high frequency oscillations resulting from Hadamard instability competes with the nonlinearity to form a coherent emergence of shear bands. A quantitative criterion that accounts for the nonlinear aspects of localization was derived in \cite{KT}, using ideas from the theory of relaxation system and the Chapman Enskog expansion. In follow-up work \cite{KOT14, KLT_16, KLT17, KLT_HYP2016}, techniques to construct self-similar solutions has been developed, but for simpler models. The construction for the fully general model \eqref{PLS} is done in the second part of the series. Those self-similar localizing solutions are numerically captured as well. In search of the self-similar solutions, they arise as a family of heteroclinic orbits of associated dynamical systems. It turns out that the heteroclinic orbit is a saddle-saddle connection between two equilibrium points. Numerical continuation software package \texttt{AUTO} is adopted to capture the saddle-saddle connection. Computational results illustrate how a well prepared initial data emerges the shear band. %We refer to \cite{KT} and \cite{KT2} for the numerical results for system \eqref{PLS}.
-%\vfil\eject
-
-%%%%%%%%%SECTION  3   %%%%%%%%%%%%
+% Observe that the $\sigma$ is always decreasing in time (in the regime $\alpha>0$, $1+m>0$). Note that the graph $\sigma - t$  is viewed as describing the stress vs. average strain response. Thus in the uniform shearing motion it is always net softening which makes its stability study relevant.
 %
-%   Stability for the Arrhenius model
 %
+%
+% \subsection{Challenges posed by the localization problem}
+% In this series of papers, we seek a rather wide range of understanding regarding the shear bands formation of thermoviscoplastic power law materials. We carry out linear and nonlinear analysis as to the uniform shear and aim to compute numerical solutions as well. We listed the tasks of this work:
+% \begin{itemize}
+% \item To define a notion of stability (or instability) for the uniform shear. This is to draw attention to that the base solution itself is a growing state, as seen in \eqref{eq:uss}. Hence, the stability study around a steady state cannot be applied to our problem.
+% \item To derive quantitative criteria for stability (or instability) for the linearized problem and to give a complete analysis of linear stability by the criteria. This gives a mathematical account pinpointing the onset of localization.
+%
+% \item To demonstrate the dynamic formation of shear bands, taking the full nonlinear effects into account. For those power laws accounting of the unstable regime, a family of self-similar solutions to the nonlinear problem \eqref{PLS}-\eqref{BCOND1} is constructed. This is a far reaching demonstration of the onset of the localizing instability and this serious task is solely treated in the second part of this series.
+% \end{itemize}
+%
+% The point of view this paper takes is to distinguish two stages of the process. In the initial stage, the stability or instability of the uniform shearing solutions is considered in the realm of linearized analysis. As addressed, we encounter the difficulty of having time independent coefficients in the linearized system. In the course of linearized analysis we adapt the formulation of relative perturbations espoused by Molinari and Clfton \cite{MC,FM}. Following that framework we conduct the linear stability analysis for linear non-autonomous systems.
+%
+% In the second stage, the localizing phenomenon lies within the realm of nonlinear analysis. The focal issue is then how the catastrophic growth of high frequency oscillations resulting from Hadamard instability competes with the nonlinearity to form a coherent emergence of shear bands. A quantitative criterion that accounts for the nonlinear aspects of localization was derived in \cite{KT}, using ideas from the theory of relaxation system and the Chapman Enskog expansion. In follow-up work \cite{KOT14, KLT_16, KLT17, KLT_HYP2016}, techniques to construct self-similar solutions has been developed, but for simpler models. The construction for the fully general model \eqref{PLS} is done in the second part of the series. Those self-similar localizing solutions are numerically captured as well. In search of the self-similar solutions, they arise as a family of heteroclinic orbits of associated dynamical systems. It turns out that the heteroclinic orbit is a saddle-saddle connection between two equilibrium points. Numerical continuation software package \texttt{AUTO} is adopted to capture the saddle-saddle connection. Computational results illustrate how a well prepared initial data emerges the shear band. %We refer to \cite{KT} and \cite{KT2} for the numerical results for system \eqref{PLS}.
+% %\vfil\eject
 
-\tcr{ To Do - Edit Intro}
+{\blue
 
-\section{Stability of a dynamically growing coherent state -- study of modes in a non-autonomous linear system}
-\begin{enumerate}
-  \item emphasize its dynamical nature and that we obtain a non-autonomous system.
-  \item mention on the Relative perturbations
-  \item mention on the Coddington-Levinson Theorem for a system with ditinct eigenvalues.
-  \item draw a few issues in linear stability problem of a non-autonomous system.
-  \begin{enumerate}
-    \item periodic coefficient system example: exponential grow under eigenvalues with negative real parts.
-    \item convergent coefficient system example: resonance can result in growing mode for eigenvalues with negative real parts merging in the limit.
-  \end{enumerate}
-\end{enumerate}
+\begin{center}
+  \textbf{PART I.}
+\end{center}
+
+% \section{Stability of a dynamically growing coherent state -- study of modes in a non-autonomous linear system}
+% \begin{enumerate}
+%   \item emphasize its dynamical nature and that we obtain a non-autonomous system.
+%   \item mention on the Relative perturbations
+%   \item mention on the Coddington-Levinson Theorem for a system with ditinct eigenvalues.
+%   \item draw a few issues in linear stability problem of a non-autonomous system.
+%   \begin{enumerate}
+%     \item periodic coefficient system example: exponential grow under eigenvalues with negative real parts.
+%     \item convergent coefficient system example: resonance can result in growing mode for eigenvalues with negative real parts merging in the limit.
+%   \end{enumerate}
+% \end{enumerate}
+% }
+
 Throughout this paper, the material parameters $(\alpha,m,n)$ run only through the ranges
 \begin{equation}
  \begin{aligned}
   \alpha>0\quad&\text{(thermal softening)},\\
   m>-1 \quad&\text{(strain softening/hardening)}, \\%\label{eq:a1}\\
-  n>0 \quad&\text{(strain rate sensitivity)},\\ %\label{eq:a2}\\
-  -\alpha+m<0 \quad&\text{(loss of hyperbolicity)}.% \\%\label{eq:a3}\\
+  -\alpha+m<0 \quad&\text{(loss of hyperbolicity)},\\% \\%\label{eq:a3}\\
+  n\ge0 \quad&\text{(strain rate sensitivity)}. %\label{eq:a2}\\
 %   0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right) \quad&\text{(localizing rate bound)}. %\label{eq:a4}
 \end{aligned}\label{eq:paramrange}
 \end{equation}
 
 \section{Adiabatic model}
 \subsection{Formulation of Relative perturbations}
-In the dynamic shear band formation, the referenced solution of the uniform shear is not a steady state solution but is an evolutionary one, represented by strain rate being constant. It has been pointed out that the study of the stability has to be different from that for the steady solution; indeed, the term Hadamard instability was coined to refer to the instability of a steady state in the initial value problem of an equation of elliptic type.
-
-
-There has been a formulation of relative perturbation \cite{MC,FM,Tzavaras92} that is an effort to take this aspect into account. %In this formulation we define variables that are relative residuals upon those of the dynamic uniform shear and the uniform shearing solution corresponds to the one with the constant ratio and thus is a steady state.
-It is this relative perturbation formulation that we carry out the linear stability and for that we construct the self-similar solutions.
-%Although it is not yet certain how to study the instability or stability of the dynamic solution,
-
-Consider the uniform shearing solution \eqref{eq:uss} of the system \eqref{eq:system}.
-% \begin{equation}
-% \begin{aligned}
-%  \gamma_s(t) &= t+\gamma_0, & \theta_s(t) &= \left(\frac{1+\alpha}{1+m} (t+\gamma_0)^{1+m} - \frac{1+\alpha}{1+m} \gamma_0^{1+m} + \theta_0^{1+\alpha}   \right)^{\frac{1}{1+\alpha}}\\
-%   u_s(t) &=1, & \sigma_s(t)&=\left(\frac{1+\alpha}{1+m} (t+\gamma_0)^{1+m} - \frac{1+\alpha}{1+m} \gamma_0^{1+m} + \theta_0^{1+\alpha}   \right)^{\frac{-\alpha}{1+\alpha}}(t+\gamma_0)^m.
-% \end{aligned}
-% \end{equation}
-In the uniform shearing motion, strain $\gamma_s$ and the temperature $\theta_s$ as well as time $t$ are regarded as interchangeable measures of time elapsed. We find defining the following quantities homogeneous in $\gamma_s$ convenient,
-$$ \gamma_s^* = \gamma_s, \quad \theta_s^*=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}, \quad \sigma^*_s = \left( \frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\gamma_s^{\frac{-\alpha+m}{1+\alpha}} \Big( = (\theta_s^*)^{-\alpha}(\gamma_s^*)^m\Big).$$
+Consider the uniform shearing solution \eqref{eq:uss} of the system \eqref{PLS}. In the uniform shearing motion, strain $\gamma_s$ and the temperature $\theta_s$ as well as time $t$ are regarded as interchangeable measures of time elapsed. We find defining the following quantities homogeneous in $\gamma_s(=t+\gamma_0)$ convenient,
+$$ \gamma_s^* = \gamma_s, \quad \theta_s^*=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}, \quad \sigma^*_s = \left( \frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\gamma_s^{\frac{-\alpha+m}{1+\alpha}} \Big( = (\theta_s^*)^{-\alpha}(\gamma_s^*)^m\Big),$$
+and $u^*_s=1$ as well.
 These are the leading orders of the uniform shearing solutions in $\gamma_s$. The new independent variable $\tau$ will also be probed. Given that, $\Gamma\big(\tau,x\big)$, $\Theta\big(\tau,x\big)$, $U\big(\tau,x\big)$, $\Sigma\big(\tau,x\big)$ are defined by %relations $\tau=\tau(\gamma_s)$ and
 \begin{equation*}
  \begin{aligned}
-  \gamma(\tau,x) &= \gamma^*_s(\tau)\Gamma\big(\tau,x\big), \quad \theta(\tau,x) = \theta^*_s(\tau)\Theta\big(\tau,x\big), \quad u(\tau,x)=U\big(\tau,x\big),\\
-  \sigma(\tau,x) &= \sigma^*_s(\tau)\Sigma\big(\tau,x\big) \quad \Longrightarrow \quad \Sigma = \Theta^{-\alpha}\Gamma^m U^n.
+  \Gamma\big(\tau,x\big)&=\frac{\gamma(\tau,x)}{\gamma^*_s(\tau)}, \quad \Theta\big(\tau,x\big)=\frac{\theta(\tau,x)}{\theta^*_s(\tau)}, \quad U\big(\tau,x\big)=\frac{u(\tau,x)}{u^*}=u(\tau,x),\\
+  \Sigma\big(\tau,x\big)&=\frac{\sigma(\tau,x)}{\sigma^*_s(\tau)} \quad \Longrightarrow \quad \Sigma = \Theta^{-\alpha}\Gamma^m U^n.
  \end{aligned}
 \end{equation*}
- %In an effort of having non-autonomous coefficient as little as possible,
-% $\tau( \gamma _s)$ is defined later. We find the new variables satisfy
-% \begin{equation*}
-%  \begin{aligned}
-%   \partial_\tau U &= \left(\frac{\dot\theta^*_s}{\dot{\tau}}\right) \Sigma_{xx}, \quad \text{where $\dot{(\cdot)}=\frac{d}{d\gamma_s}(\cdot)=\frac{d}{dt}(\cdot)$.} \\
-%   \partial_\tau \Gamma &= \left(\frac{\tau}{\dot\tau} \frac{\dot\gamma^*_s}{\gamma^*_s}\right) \frac{U-\Gamma}{\tau},\\
-%   \partial_\tau \Theta &= \left(\frac{\tau}{\dot\tau} \frac{\dot\theta^*_s}{\theta^*_s}\right) \frac{\Sigma U - \Theta}{\tau} + \kappa\left(\frac{1}{\dot\tau}\right) \Theta_{xx}\\
-%   \Sigma&=\Theta^{-\alpha}\Gamma^m U^n.
-%  \end{aligned}
-% \end{equation*}
-% We see that we cannot avoid from having non-autonomous system: More precisely, interactions comes with three different time scales, the viscous dissipation with $\left(\frac{\dot\theta^*_s}{\dot{\tau}}\right)$, the heat dissipation with $\left(\frac{1}{\dot\tau}\right)$, and the rest of time derivatives and relaxation type terms with $\frac{1}{\tau}$, no matter what time scale $\tau(\gamma)$ we choose. Interesting to look at is to compare those of the two dissipative terms. As $\dot\theta^*_s = \left( \frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\gamma_s^{\frac{-\alpha+m}{1+\alpha}}$, the heat dissipation enters with more significance when $-\alpha+m<0$ or when mechanical interaction is unstable.
-We choose $\tau(\gamma_s) = \theta_s^*(\gamma_s)$ to obtain
-% \begin{equation}
-%  \begin{aligned}
-%   \partial_\tau U &= \Sigma_{xx},\\
-%   \partial_\tau \Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m} \Big(U-\Gamma\Big),\\
-%   \partial_\tau \Theta &= \frac{1}{\tau}\Big(\Sigma U - \Theta\Big) + \kappa\left(\frac{1+\alpha}{1+m}\right)^{\frac{m}{1+m}}\tau^{\frac{\alpha-m}{1+m}}\Theta_{xx}, \\
-%   \Sigma&=\Theta^{-\alpha}\Gamma^m U^n.
-%  \end{aligned}
-% \end{equation}
-% When $\kappa=0$, it retains simpler form,
-\begin{equation*}
+
+New variables of relative perturbations compares the growths homogeneous in $\gamma_s$ of variables to those of uniform shearing. In this formulation, the uniform shearing solutions are mapped to (asymptotically) a constant state $\big(\Gamma, \Theta,\Sigma,U\big)=(1,1,1,1)$. The price is to have non-autonomous terms. We choose $\tau(\gamma_s) = \theta_s^*(\gamma_s)$ to obtain
+\begin{equation} \label{eq:PLS_rel}
  \begin{aligned}
   \partial_\tau U &= \Sigma_{xx},\\
   \partial_\tau \Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m} \Big(U-\Gamma\Big),\\
   \partial_\tau \Theta &= \frac{1}{\tau}\Big(\Sigma U - \Theta\Big), \\
-  \Sigma&=\Theta^{-\alpha}\Gamma^m U^n.
- \end{aligned}
-\end{equation*}
-New variables of relative perturbations compares the growths homogeneous in $\gamma_s$ of variables to those of uniform shearing. In this formulation, the uniform shearing solutions are mapped to (asymptotically) constant states. The price is to have non-autonomous terms in the system as shown above.
-
-% For later use, we record a few symbolic formulas
-% \begin{equation}
-% \begin{aligned} \label{eq:gamma_theta}
-%  \dot\theta_s &= \sigma_s = \theta_s^{-\alpha}\gamma_s^m, \quad %\quad \frac{\dot\gamma_s}{\gamma_s} = \frac{\dot\theta_s}{\theta_s} \frac{\theta_s^{1+\alpha}}{\gamma_s^{1+m}},
-%  \frac{\theta_s^{1+\alpha}}{\gamma_s^{1+m}}(t) = \frac{1+\alpha}{1+m} + \frac{1}{(t+\gamma_0)^{1+m}}\left(- \frac{1+\alpha}{1+m}\gamma_0^{1+m} + \theta_0^{1+\alpha}\right)
-% \end{aligned}
-% \end{equation}
-
-
-This section is devoted to the linear stability of the uniform shear in the formulation of relative perturbations. It was Fressengeas and Molinary \cite{FM} that conducted the linear stability of the uniform shear for the case of power law, applying the Theorem of Coddington-Levinson \cite{CL1955}. A version of the theorem, which is about the linear stability of a non-autonomous linear system, is provided in the Appendix for the completeness. The theorem is further extended to fully cover and classify the general case of $3\times3$ system for $(U,\Gamma,\Theta)$.
-
-%We find a few mathematical issues in \cite{FM} unresolved and the general case of $3\times3$ system for $(U,\Gamma,\Theta)$ were not fully covered. We conducted the analysis in a more systematic way but to reach roughly the same conclusion.
-
-Throughout this section we assume
-\begin{equation} \alpha\ge0, \quad n>0, \quad 1+m>0. \label{eq:range} \end{equation}
-
-%We focus on the system with $\kappa=0$ and various aspects of this adiabatic process are analyzed in the following sections. %We are interested in those instabilities that are partly attributed to that the process is adiabatic.
-%If the heat dissipation enters into the system, numerical computation shows that the localization does take places but there is much longer time scale where the heat dissipation exerts so that in the limit $t \rightarrow \infty$, the instability dies out. Our interests are in the dynamics of localization.
-
-
-% The inviscid case $n=0$ is also of our interest but its linear stability requires quite more technicality and this is beyond of our purpose of exposition. We focus on observing the role of viscosity against the destabilizing mechanism.
-We consider
-\begin{equation} \label{eq:system}
- \begin{aligned}
-  \partial_\tau U &= \Sigma_{xx},\\
-  \partial_\tau\Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U-\Gamma),\\
-  \partial_\tau\Theta &= \frac{1}{\tau}\Big(\Sigma U -\Theta\Big) + \kappa(\tau)\Theta_{xx}, \quad \text{$\kappa(\tau)\triangleq\kappa\left(\frac{1+\alpha}{1+m}\right)^{\frac{m}{1+m}}\tau^{\frac{\alpha-m}{1+m}}$,}\\
-  \Sigma &= \Theta^{-\alpha}\Gamma^m U^n
+  \Sigma&=\Theta^{-\alpha}\Gamma^m U^n,
  \end{aligned}
 \end{equation}
+which is a non-autonomous reaction-diffusion system.
+%
+%
+%
+% {\blue
+% The vector field accounting for the reaction parts specifies an equilibrium manifold $U=\Gamma$ and $\Sigma U =\Theta$. The study of an asymptotic aspect as to the relaxation phenomenon to a slow manifold has been conducted, which is analogous to the Chapman-Enskog expansion, in \cite{KT09}. From that the competition between the Hadamard Instability and the nonlinear effect is seen in another angle. The effectively reduced scalar equation, passing $-\alpha+m$ from positive to negative, becomes a backward parabolic equation with a fourth-order correction, which respectively account for the Hadamard Instability and the opposing mechanism. The linear stability, that this paper is subjected to, aims to reveals this nature of instability in yet another perspective.
+% }
+
+
+\subsection{Linearization of \eqref{eq:PLS_rel} around the uniform shear}
+
+
+We consider \eqref{eq:PLS_rel}
 in $(\tau,x)\in \mathbb{R}^+\times [0,\pi]$ with boundary conditions
-\begin{equation}
+\begin{equation} \label{BCOND3}
  \Sigma_x(\tau,0)=\Sigma_x(\tau,\pi)=0.
 \end{equation}
-The uniform shearing solution corresponds to $\big(U, \Gamma, \Theta, \Sigma\big) = (1,1,1,1)$. The domain $[0,\pi]$ of \eqref{eq:system}, understood as that for a non-dimensionalized problem, has been chosen at our convenience without loss (by the scaling arguments).
-The boundary conditions imply that
+The domain $[0,\pi]$ of \eqref{eq:PLS_rel}, understood as that for a non-dimensionalized problem, has been chosen at our convenience without loss (by the scaling arguments).
+The boundary condition \eqref{BCOND3} implies that
 \begin{equation*}
- \frac{d}{d\tau}\int_0^\pi U(\tau,x) \: dx = 0, \quad \text{and we normalize } \int_0^\pi U(\tau,x) \: dx = 1.
+ \frac{d}{d\tau}\int_0^\pi U(\tau,x) \: dx = 0, \quad \text{and we normalize } \int_0^\pi U(\tau,x) \: dx = \pi.
 \end{equation*}
-% $ U=\Gamma=\Theta=\Sigma=1 $ corresponds to the uniform shearing solution.
 Let
 \begin{align*}
  U &= 1 + \delta \bar{U} + \mathcal{O}(\delta^2), & \Gamma &= 1 + \delta \bar\Gamma + \mathcal{O}(\delta^2), &
@@ -375,52 +324,39 @@ By collecting the leading order terms and neglecting terms higher than or equal 
  \begin{aligned}
   \partial_\tau \bar U &= \bar\Sigma_{xx},\\
   \partial_\tau \bar\Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(\bar U-\bar\Gamma_1),\\
-  \partial_\tau \bar\Theta &= \frac{1}{\tau}\Big(\bar\Sigma+ \bar U -\bar\Theta\Big) + \kappa(\tau)\bar\Theta_{xx},\\
+  \partial_\tau \bar\Theta &= \frac{1}{\tau}\Big(\bar\Sigma+ \bar U -\bar\Theta\Big),\\ % + \kappa(\tau)\bar\Theta_{xx},\\
   0&=\bar\Sigma + \alpha\bar\Theta -m\bar\Gamma - n\bar U .
  \end{aligned}
 \end{equation}
-The boundary conditions and the constraint equation read
+The boundary condition and the constraint equation read
 \begin{equation} \label{eq:linbdry}
  \bar\Sigma_{x}(\tau,0)=\bar\Sigma_{x}(\tau,\pi)=0, \quad \int_0^\pi \bar U(t,x) \: dx = 0.
 \end{equation}
 In the sequel, we drop the bar over the variables and continue to study the linear system \eqref{eq:linsystem}-\eqref{eq:linbdry}.
 
-
-
-
-
-% The results on the long-time asymptotics of the system in this section rely on the collected materials on the stability of a non-autonomous linear dynamical system in Appendix.
-
-Next, we consider even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-\pi,\pi]$ which is compatible with the system and the boundary conditions \eqref{eq:linbdry}. The cosine series of the variables are
+Next, we probe studies on the frequency-wise response of \eqref{eq:linsystem} conducting Fourier series analysis. We consider even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-\pi,\pi]$ which is compatible with the system and the boundary condition in \eqref{eq:linbdry}. The cosine series of the variables are considered:
 \begin{align*}
  U(\tau,x) &= U_0(\tau) + \sum_{\ell=1}^\infty U_\ell(\tau)\cos(\l x), &
  \Gamma(\tau,x) &= \Gamma_0(\tau) + \sum_{\ell=1}^\infty \Gamma_\ell(\tau)\cos(\l x),\\
  \Theta(\tau,x) &= \Theta_0(\tau) + \sum_{\ell=1}^\infty \Theta_\ell(\tau)\cos(\l x), &
  \Sigma(\tau,x) &= \Sigma_0(\tau) + \sum_{\ell=1}^\infty \Sigma_\ell(\tau)\cos(\l x).
 \end{align*}
-For each $\ell\ge1$ we obtain
+For each $\ell\ge0$ we obtain
 \begin{equation} \label{eq:l-system}
  \begin{aligned}
   \partial_\tau U_\ell &= -\l^2 \Sigma_\ell,\\
   \partial_\tau\Gamma_\ell &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_\ell-\Gamma_\ell),\\
-  \partial_\tau\Theta_\ell &= \frac{1}{\tau}\Big(\Sigma_\ell+ U_\ell -\Theta_\ell\Big) - \kappa(\tau)\l^2\Theta_\ell,\\
+  \partial_\tau\Theta_\ell &= \frac{1}{\tau}\Big(\Sigma_\ell+ U_\ell -\Theta_\ell\Big),\\% - \kappa(\tau)\l^2\Theta_\ell,\\
   0&=\Sigma_\ell + \alpha\Theta_\ell -m\Gamma_\ell - nU_\ell .
  \end{aligned}
 \end{equation}
-The $0$-th mode is resolved: We have
-\begin{align*}
-   \partial_\tau U_0 &= 0,\\
-  \partial_\tau\Gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_0-\Gamma_0),\\
-  \partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n\frac{-\alpha+m}{1+m}\big)U_0 + \big(\frac{m(-\alpha+m))}{1+m}\big)\Gamma_0\Big).
-  %\partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U_0 + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma_0\Big).
-\end{align*}
-Since $U_0\equiv0$ from \eqref{eq:linbdry}, $\Gamma_0(\tau)$ decays to $0$, and so do $\Sigma_0(\tau)$ and $\Theta_0(\tau)$.
 
-Turning to \eqref{eq:l-system} for $\ell\ge 1$, with the fourth equation we remove one of the variables. The choice of removing $\Theta_\ell$ gives the linear system
+
+With the fourth equation we remove one of the variables. The choice of removing $\Theta_\ell$ gives the linear system
 \begin{equation} \label{eq:l-system2}
 \begin{aligned}
- \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}
- &= \left[\overbrace{\begin{pmatrix}
+ \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}'
+ &= \left[\underbrace{\overbrace{\begin{pmatrix}
    0 & 0 & -\l^2\\
    0 & 0 & 0\\
    0 & 0 & -n\l^2
@@ -430,50 +366,156 @@ Turning to \eqref{eq:l-system} for $\ell\ge 1$, with the fourth equation we remo
    0 & 0 & 0\\
    \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
    n+ \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
-  \end{pmatrix} }^{\triangleq A_{\ell,1}} \right.\\
-  &\left.+\kappa(\tau) \begin{pmatrix}
-   0 & 0 & 0\\
-   0 & 0 & 0\\
-   n\l^2 & m\l^2 & -\alpha\l^2
-  \end{pmatrix}\right] \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}.
+  \end{pmatrix} }^{\triangleq A_{\ell,1}}}_{\triangleq A_\ell(\tau)} \right] \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}
 \end{aligned}
 \end{equation}
-We will denote the vector $(U_\ell, \Gamma_\ell, \Sigma_\ell)^T$ by $x_\ell$ and the coefficient by $A_\ell(\tau)$. Two constant matrices $A_{\ell,\infty}$ and $A_{\ell,1}$ are also defined as in \eqref{eq:l-system2} to be the $O(1)$ part and the $O(\tfrac{1}{\tau})$ part as $\tau \rightarrow \infty$ respectively. As the linear system is going to be analyzed frequency by frequency, if there is no confusion, we suppress the subscript $\ell$.
+and and we denote $x_\ell(\tau)$ by the vector $(U_\ell,\Gamma_\ell, \Sigma_\ell)^T$. Note we also defined the coefficient matrix $A_\ell(\tau)$, and the two constant matrices $A_{\ell,\infty}$ and $A_{\ell,1}$ as in the above.
 
+The $0$-th mode is treated separately here to read off the stability at once and is not visited again in the sequel: We have
+\begin{align*}
+   \partial_\tau U_0 &= 0,\\
+  \partial_\tau\Gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_0-\Gamma_0),\\
+  \partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n\frac{-\alpha+m}{1+m}\big)U_0 + \big(\frac{m(-\alpha+m))}{1+m}\big)\Gamma_0\Big).
+  %\partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U_0 + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma_0\Big).
+\end{align*}
+Since $U_0\equiv0$ from \eqref{eq:linbdry}, $\Gamma_0(\tau)$ decays to $0$, and so do $\Sigma_0(\tau)$ and $\Theta_0(\tau)$.
 
-\subsection{Turing Instability of viscous model}
-\begin{theorem}
-  Unstable regime result
-  1. infinitely many unstable model
+\subsection{Hadamard Instability in inviscid model ($n=0$)} \label{sec:Hadamard}
+We have seen the loss of hyperbolicity of the system \eqref{PLS} passing the parameter value $-\alpha+m$ from positive to negative, along the uniform shear. The Hadamard Instability is often associated to the loss of hyperbolicity in the system with respect to the {\it constant mean states}. It can be characterized by the exponential growth of the amplitude in the linearized system around the constant state for given an oscillatory mode in the initial data. On the other hand, the instability exhibiting here, is in fact not exactly same, due to the time-dependent nature and has not been clarified. The purpose of this section is to clarify the instability exhibited in the linearized problem around the {\it growing mean state} with respect to the system hyperbolicity is lost.
 
-  1. saturation phenomenon
-
-  1. polynomial growth
+\begin{theorem} \label{thm:Hadamard} Suppose $n=0$ among material parameters $(\alpha,m,n)$ in ranges \eqref{eq:paramrange}. Then
+  \begin{enumerate}
+    \item There is a growing mode $x_\ell^+(\tau)$ for each $\ell\ge1$, thus there are infinitely many growing modes.
+    \item $x_\ell^+(\tau)$ grows exponentially as $\tau \rightarrow \infty$, more precisely, there are constants $\chi>0$, $\tau_0>0$ and a constant vector $x_{\ell,\infty}^+$ such that
+    \begin{equation}
+      \lim_{\tau \rightarrow \infty} e^{-\chi \big(\sqrt{\tau}-\sqrt{\tau_0}\big)} x_\ell^+(\tau) = x_{\ell,\infty}^+.
+    \end{equation}
+    \item The exponent $\chi=\chi(\ell,\alpha,m)=2\l\sqrt{\frac{\alpha-m}{(1+m)}}$ and is unbounded as $\ell \rightarrow \infty$.
+  \end{enumerate}
 \end{theorem}
 
-Why methods work?
+\begin{remark} By Theorem \ref{thm:Hadamard} we come to a conclusion that the nature of instability exhibited in our occasion is qualitatively not a different kind, compared to the Hadamard Instability exhibited around the constant state: $(i)$ the growth is exponential; $(ii)$ the growth rate is unbounded as $\ell \rightarrow \infty$.
+\end{remark}
 
-1. stability of non-autonomous diagonal system with enough accumulative spectral gap.
+\subsubsection{Stability of a non-autonomous linear system}
+To quickly summarize our perspective to come to the conclusion, a few points as to the stability problem of a non-autonomous system needs to be illustrated. First, we specialize the fact that the coefficient in \eqref{eq:l-system2} is {\it frozen} in the limit $\tau \rightarrow \infty$. An example of instability in the complementary case where
+$$ A(t) = \left(\begin{array}{cc} -1 + \frac{3}{2}\cos^2 t & 1-\frac{3}{2}\cos t \sin t \\ -1 -\frac{3}{2}\cos t \sin t & -1 + \frac{3}{2}\sin^2 t \end{array}\right), \quad \lambda_\pm = \frac{-1 + i\sqrt{7}}{4}, \quad x(t) = \left(\begin{array}{c} -\cos t\\ \sin t \end{array}\right) e^{\tfrac{t}{2}}$$
+shows that the spectral information  $\textrm{Re}\, \lambda_\pm(t)<0$ does not help much in determining the asymptotic stability.
 
-2. smooth diagonalization of a one-parameter family of matrices.
+In such a case where the coefficient is frozen in the limit however, the classical analysis, for example as in \cite{CL1955}, shows that the spectral information of the limit coefficient $\displaystyle A_\infty=\lim_{t \rightarrow\infty} A(t)$ coveys an important piece of information but does not fully account for the asymptotic behavior. The part contributed by an order of $O(\tfrac{1}{\tau})$ in the coefficient accumulates effect in the asymptotic behavior, which can be enough to alter the nature of stability.
 
-Inviscid case:
+This, in turn, calls for a simultaneous diagonalization of the whole one-parameter family of matrices $A(t)$ to sort out all the contribution. It is well-known that the simultaneous diagonalization in general fails. One sufficient condition for this to be done is to have $A_\infty$ have eigenvalues all distinct. This is the case of the classical Coddington-Levsinson Theorem \cite{CL1955} that states the precise stability by inspecting the time dependent spectrum.
 
-1. stability of non-autonomous Upper triangular system with largest growing mode with enough accumulative spectral gap.
-
-2. smooth triangularization of a one-parameter family of matrices.
+It is this point to which our linear system is contrasted; the limit coefficient $A_{\ell,\infty}$ in \eqref{eq:l-system2} has the repeated eigenvalue $0$. Its consequences are varied in the inviscid ($n=0$) and the viscous ($n>0$) case. For the inviscid case, the simultaneous diagonalization is unachievable and we will have to rely on mere the upper triangularization of the one-parameter family of matrices, whereas for the viscous case the simultaneous diagonalization is achievable despite of the repeated eigenvalues. In the former case, the third effect of resonance also has to be taken account in determining the asymptotic stability. To summarize, our study boils down to studying the stability of a system where the coefficient is upper triangular or diagonal for all $t\ge0$.
 
 \subsubsection{Spectrum of $A_\ell(\tau)$}
-In this section, we compute the three eigenvalues of the matrix $A(\tau)$ of \eqref{eq:A} for $\kappa=0$. For a non-autonomous system, as illustrated in the Appendix, having negative eigenvalues does not necessarily imply the asymptotic stability and the operator norm of the solution map has to be assessed case by case. Nevertheless, the eigenvalues of the system are indispensable information.
 
+We are to study a non-autonomous system with a coefficient
+\begin{equation} \label{eq:n0A}
+  A_\ell(\tau)=\begin{pmatrix}
+   0 & 0 & -\l^2\\
+   0 & 0 & 0\\
+   0 & 0 & 0
+  \end{pmatrix}
+  + \frac{1}{\tau}   \begin{pmatrix}
+   0 & 0 & 0\\
+   \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
+   \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
+  \end{pmatrix} = A_{\ell,\infty} + \frac{1}{\tau}A_{\ell,1}.
+\end{equation}
+The characteristic polynomial $\det\big(\lambda \textrm{I} - A_\ell(\tau)\big)=0$ reads
+$$ \Big(\lambda +\frac{1}{\tau}(1+\alpha)\Big)\Big( \lambda^2 + \frac{1}{\tau}\lambda \frac{1+\alpha}{1+m} + \frac{1}{\tau} \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
+For convenience of computations later, we define $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \l^2\frac{-\alpha+m}{\tau(1+m)}$ and denote the three eigenvalues by
+\begin{equation} \label{eq:inviscid_roots}
+\begin{aligned}
+ &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
+\end{aligned}
+\end{equation}
+Note that all the eigenvalues vanish in the limit. In particular, $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$ and thus $\lambda_1(\tau)$ and $\lambda_2(\tau)$  are $\mathcal{O}\big(\frac{1}{\sqrt{\tau}}\big)$ while $\lambda_3(\tau)=\mathcal{O}(\frac{1}{\tau})$. For $\tau$ large (since $-\alpha+m<0$), $(i)$ all roots are real; $(ii)$ $\lambda_1(\tau) > 0 > \lambda_3(\tau) \gg \lambda_2(\tau)$. %  Hence, roots are complex or pure real according to the sign of $-\alpha+m$. The square root in the above formulas are understood as taking the branch of nonnegative imaginary part.
 
-Let $\lambda_i(\tau)$, $i=1,2,3$ be the three eigenvalues of $A_k(\tau)$. %We have
-% \begin{equation} \label{eq:eig_sum_mult}
-%  \begin{aligned}
-%  \lambda_1 + \lambda_2 + \lambda_3 &< 0,\\
-%  \lambda_1\lambda_2\lambda_3 &= -\l^2(-\alpha+m+n)\frac{1+\alpha}{\tau^2(1+m)}.
-%  \end{aligned}
+\subsubsection{Factorization of $A_\ell(\tau)$}
+That $A_\ell(\tau)$ does not admit the smooth diagonalization can be seen as in the below. The three eigenvalues all merge into the single value $0$ in the limit $\tau \rightarrow \infty$ and it is readily checked that this eigenvalue $0$ of $A_{\ell,\infty}$ has a geometric multiplicity $2$. Therefore, despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit.
+The precise asymptotic behaviors of the eigenspaces are further available. %As the order $\frac{1}{\tau}$ perturbation of $A(\tau)$ is explicitly given,
+Eigenvectors $s_i(\tau)$, $i=1,2,3$ can be chosen by straightfoward calculation as
+\begin{align*}
+ s_1(\tau)&=E(\tau) + F(\tau), \quad s_2(\tau)=E(\tau)-F(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\l^2} \end{pmatrix},\\
+ E(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  F(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
+\end{align*}
+Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$, $E(\tau)=\mathcal{O}(\frac{1}{\sqrt{\tau}})$ and $F(\tau)=\mathcal{O}(1)$. Thus in the limit $s_1(\tau)$ and $s_2(\tau)$ become parallel, or the null spaces $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$ merge up in the limit.
+
+Having above done, we consider following triangularization. We pick $s_1$, renormalized by a factor of $\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)$ at our convenience, then the pre-image $\tilde s_2$ is found such that
+$$ (A-\lambda_2) \tilde s_2 = \Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1, \quad \text{$\tilde s_2 = \begin{pmatrix}  0 \\ \tfrac{1+\alpha}{1+m} \\ \tfrac{-\alpha+m}{1+m} \end{pmatrix}$}.$$
+
+With this new basis $\left\{\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1,\tilde s_2, s_3 \right\}$, we factorize $A(\tau) = P(\tau)B(\tau)P^{-1}(\tau)$ and define the linear system:
+\begin{equation}\label{eq:factor}
+\begin{aligned}
+ y &= P(\tau)^{-1} x, \quad  y' = \underbrace{\begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix}}_{\triangleq B(\tau)} y - P(\tau)^{-1}P'(\tau) y,\\
+ P(\tau) &= \begin{pmatrix} -\tau\gamma& 0 & -m\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}.
+\end{aligned}
+\end{equation}
+\begin{proposition} \label{prop:factor}$\exists \tau_0$ such that for $\tau\ge\tau_0$
+ \begin{enumerate}
+  \item  $\big|P_{ij}(\tau)\big|$ and $\big|P^{-1}_{ij}(\tau)\big|$ are uniformly bounded for all $i,j=1,2,3$.
+  \item $\displaystyle \int_{\tau_0}^\infty \big|P_{ij}'(s)\big|\; ds < \infty$ for all $i,j=1,2,3$.
+ \end{enumerate}
+\end{proposition}
+\begin{proof}
+$$ \lim_{\tau \rightarrow \infty} P(\tau) = \begin{pmatrix} -\l^2\frac{-\alpha+m}{1+m}& 0 & -m\\ 0 & \frac{1+\alpha}{1+m} & 1\\ 0 & \frac{-\alpha+m}{1+m} & 0\end{pmatrix}$$
+whose determinant is $\l^2 \left(\frac{-\alpha+m}{1+m}\right)^2$. Since $P(\tau)$ is a smooth function of $\tau$, $\exists \tau_0$ such that $\big|P_{ij}(\tau)\big|$ for $\tau\ge\tau_0$ is uniformly bounded, and also that $P(\tau)$, $\tau\ge\tau_0$ is invertible with uniformly bounded determinant. Since the determinant is a continuous function of entries, $\big|P^{-1}_{ij}(\tau)\big|$ is also uniformly bounded for $\tau\ge \tau_0$. The second assertion follows from straightforward calculation of $P_{ij}'(\tau)$ whose leading order is $\mathcal{O}\big(\frac{1}{\tau^{3/2}}\big)$.
+\end{proof}
+\subsubsection{Proof of Hadamard Instability}
+
+We view \eqref{eq:factor} as a system perturbed from
+\begin{equation} \label{eq:trisystem}
+  \hat{y}' = B(\tau)\hat{y} \quad \text{with $B(\tau)$ upper triangular}
+\end{equation}
+by the error of $o(\frac{1}{\tau})$ (more precisely $O(\frac{1}{\tau^{3/2}})$) that is $- P(\tau)^{-1}P'(\tau)$. The latter size estimate is in particular a result of the Proposition \ref{prop:factor}. We merely inspect the asymptotic behavior of \eqref{eq:trisystem} and the Theorem \ref{prop:stab} in the Appendix furnishes the proof by showing that the maximum growths of \eqref{eq:trisystem} and \eqref{eq:factor} are same (by a factor of a constant). %sThe maximum growth of a system with an upper triangular coefficient is computable in an abstract setting, but we rather use an explicit formula for our specific case.
+
+\begin{proof}[proof of Theorem \ref{thm:Hadamard}]
+Let $\tau_0$ be large enough so that $\lambda_2(\tau) < \lambda_3(\tau) < 0 < \lambda_1(\tau)$ and all eigenvalues are real for $\tau\ge \tau_0$. Explicit formulas for the general solutions of \eqref{eq:trisystem} are available. The maximum growth  takes place when
+$$ \hat{y}(\tau)=\left(\exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds} \right)\hat y_1(\tau_0) +  \left(\exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds}\right) \underbrace{\int_{\tau_0}^\tau \exp{\left(-\int_{\tau_0}^z \lambda_1(s)-\lambda_2(s)\,ds\right)}\hat y_2(\tau_0) \, dz}_{\triangleq \varphi(\tau)}$$
+for some constants $\hat{y}_1(\tau_0)$ and $\hat{y}_2(\tau_0)$. Inspired from the proof of the Coddington-Levinson Theorem \cite{CL1955}, we examine the accumulated spectral gap $\int_{\tau_0}^\tau \lambda_1(s)-\lambda_2(s)\,ds$. In particular, we use the special fact that the accumulated spectral gap is ${O}(\sqrt{\tau})$ as $\tau \rightarrow 0$. This implies that the integrand in $\varphi(\tau)$ is integrable and that $\varphi(\tau)$ is bounded. Hence
+$$|\hat{y}(\tau)|\le C \left| \exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds}\right| \quad \text{for }\tau\ge\tau_0$$
+and there is a $y^+(\tau)$ that attains the maximum growth. By Proposition \ref{prop:stab}, there is a $x^+(\tau)$ and a constant vector $x^+_\infty$ such that
+\begin{equation*}
+  \lim_{\tau \rightarrow \infty}\exp{\left(-\int_{\tau_0}^\tau \lambda_1(s)\, ds\right)} x^+(\tau) = x^+_\infty.
+\end{equation*}
+Recalling that $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, $\gamma(\tau)= \l^2\frac{-\alpha+m}{\tau(1+m)}$ and $\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}$, the above gives the estimate
+% \begin{equation}
+%   \lim_{\tau \rightarrow \infty}\exp{\left(-\int_{\tau_0}^\tau \l\sqrt{\frac{-\alpha+m}{s(1+m)}}\, ds\right)} x^+(\tau) = x^+_\infty.
 % \end{equation}
+\begin{equation}
+  \lim_{\tau \rightarrow \infty}\exp{\left(-2\l\sqrt{\frac{\alpha-m}{(1+m)}}\big(\sqrt{\tau}-\sqrt{\tau_0}\big)\right)} x^+(\tau) = x^+_\infty.
+\end{equation}
+\end{proof}
+
+\subsection{Turing Instability of viscous model}
+While the purpose of the previous section was to clarify a type of Hadamard Instability for the inviscid case ($n=0$), the purpose of this section is to reveal a type of Turing Instability for the viscous case ($n>0$). Again, the term Turing Instability is to be understood properly. To brief, the Turing instability in the {morphogenesis} and in many other interesting pattern forming phenomena, it refers to an instability due to the interaction of two or a few different  mechanisms each of that would stabilize by acting itself alone. In the pattern formation, it is important to have a few but finite unstable modes that give rise to interesting patterns and these patterns are quite often steady states.
+
+By contrast, for the localizing instability exhibited in the shear band problem, we view it as a consequence attributed to a different kind of mechanism. The results in Theorem \ref{thm:Turing} in this section can be summarized by the appearance of infinitely many unstable modes for each frequency and the saturation of the growth rates, meaning that the growths of modes are all comparable. These two phenomena was observed in the simpler model that corresponds to $\alpha=0$ and $m=-1$ in \cite{KLT_16}, where the linearized system happened to be an autonomous one.
+
+In our point of view, the appearance of infinitely many unstable modes for each frequency and their growth rates being saturated are important for the formation of initial peak-like coherent profile. In the later dynamics, the nonlinear effect takes over and this is a subject of our second paper of the series.
+
+\begin{theorem} \label{thm:Turing} Suppose $n>0$ among material parameters $(\alpha,m,n)$ in ranges \eqref{eq:paramrange}. Then
+  \begin{enumerate}
+    \item There is a growing mode $x_\ell^+(\tau)$ for each $\ell\ge1$, thus there are  infinitely many growing modes.
+    \item $x_\ell^+(\tau)$ grows in a polynomial order as $\tau \rightarrow \infty$, more specifically, there are constants $\chi>0$ and $\tau_0$ and a constant vector $x_{\ell,\infty}^+$ such that
+    \begin{equation}
+      \lim_{\tau \rightarrow \infty} \left(\frac{\tau}{\tau_0}\right)^{\chi} x_\ell^+(\tau) = x_{\ell,\infty}^+.
+    \end{equation}
+    \item The exponent $\chi=\chi(\alpha,m,n)$, is bounded and independent of $\ell$.
+  \end{enumerate}
+\end{theorem}
+\begin{remark}
+ The asymptotic expansion of $\chi$ as $n \rightarrow 0$ is given by
+\begin{align*}
+ \chi = -\frac{-\alpha+m+n}{n(1+m)} + \frac{\alpha m}{1+m} + \mathcal{O}(n) \quad \text{as } n \rightarrow 0. \quad \text{(See proof of Theorem \ref{thm:Turing} and \eqref{eq:rootformulas})}.%, \quad
+ % z_2(0) = -(1+m)  + \mathcal{O}(n).
+\end{align*}
+\end{remark}
+\subsubsection{Spectrum of $A_\ell(\tau)$}
+
+Let $\lambda_i(\tau)$, $i=1,2,3$ be the three eigenvalues of $A_\ell(\tau)$. %We have
 The characteristic polynomial $\det\big(\lambda \textrm{I} - A(\tau)\big)$ reads
 \begin{equation}
 \begin{aligned}
@@ -483,292 +525,206 @@ The characteristic polynomial $\det\big(\lambda \textrm{I} - A(\tau)\big)$ reads
  &+ \l^2\tfrac{(-\alpha+m+n)(1+\alpha)}{\tau^2(1+m)} \: \triangleq \: f(\lambda,\tau,\alpha,m,n). \label{eq:poly}
 \end{aligned}
 \end{equation}
-In the below, we let $\epsilon\triangleq \frac{1}{\tau}$ and write $f = f^{\alpha,m,n}(\lambda,\epsilon)$ and suppress the superscript when the context  is clear.
+In the below, we let $\epsilon\triangleq \frac{1}{\tau}$ and write $f = f^{\alpha,m,n}(\lambda,\epsilon)$. If context is clear, this abuse of notation keeping same symbol for functions with the different aruments $\epsilon$ and $\tau$ will be applied in other occasions as well.
 
-The limiting problem $f^{\alpha,m,n}(\lambda,0)=0$ gives
-$$ \lambda_1=\lambda_2=0, \quad \lambda_3 = -n\l^2.$$
-Hence if $n>0$ $\lambda_3$ is a simple root and we see the bifurcation by $n=0$ for that. We consider another limiting problem by following procedure.
-We let $z = \frac{\lambda}{\epsilon}$, and $\epsilon^2 g(z,\epsilon) =  f(\lambda, \epsilon)$. For $\epsilon\ne0$, $g(z,\epsilon)=0$ if and only if $f(\lambda,\epsilon)=0$. Now,
+While explicit formulas for eigenvalues are not available anymore, we retrieve enough information from the asymptotic expansion of $f(\lambda,\epsilon)$ with respect to $\epsilon$. The three roots will be denoted as functions of $\epsilon$, i.e., $\lambda_i(\epsilon)$, $i=1,2,3$. The limiting problem $f^{\alpha,m,n}(\lambda,0)=0$ gives
+$$ \lambda_1(0)=\lambda_2(0)=0, \quad \lambda_3(0) = -n\l^2.$$
+Hence if $n>0$ $\lambda_3(0)$ is a simple root and we see the bifurcation by $n=0$ for that.
+
+To discern the behaviors of $\lambda_1(\epsilon)$ and $\lambda_2(\epsilon)$, we consider another limiting problem by following procedure.
+We let $z = \frac{\lambda}{\epsilon}$ and $\epsilon^2 g(z,\epsilon) =  f(\lambda, \epsilon)$. For $\epsilon\ne0$, $g(z,\epsilon)=0$ if and only if $f(\lambda,\epsilon)=0$. Now,
 \begin{align}
- g(z,\epsilon) &= \epsilon\left( z^3 + z^2\left(1+\alpha + \frac{1+\alpha}{1+m}\right) + z\left(\frac{(1+\alpha)^2}{1+m}\right)\right) \nonumber\\
- +& \l^2\left(nz^2 + z\Big( \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \frac{(1+\alpha)(-\alpha+m+n)}{1+m}  \right) \label{eq:reduced_poly}
-%  &+ \epsilon z\Big(z+\frac{1+\alpha}{1+m}\Big)\Big(z+(1+\alpha)\Big).
-%  \tilde{g}(z,\epsilon) &= n\l^2 z\Big(z + \frac{1+m+\alpha}{1+m}\Big)+ \l^2\left(\frac{-\alpha+m+n}{1+m}\right)\Big(z + (1+\alpha)\Big) \nonumber\\
-%  &+ \epsilon z\Big(z+\frac{1+\alpha}{1+m}\Big)\Big(z+(1+\alpha)\Big). \label{eq:reduced_poly}
+ g(z,\epsilon) &= \epsilon\left( z^3 + z^2\left(1+\alpha + \tfrac{1+\alpha}{1+m}\right) + z\left(\tfrac{(1+\alpha)^2}{1+m}\right)\right) \nonumber\\
+ +& \l^2\left(nz^2 + z\Big( \tfrac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \tfrac{(1+\alpha)(-\alpha+m+n)}{1+m}  \right). \label{eq:reduced_poly}
 \end{align}
-We retrieve information on the roots from the limiting problem. Provided $n>0$, the limiting problem $g(z,0)=0$ is a quadratic polynomial
+Provided $n>0$, the limiting problem $g(z,0)=0$ is a quadratic polynomial
 \begin{equation}
 nz^2 + z\Big( \frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\Big) + \frac{(1+\alpha)(-\alpha+m+n)}{1+m} =0. \label{eq:auxquad}
 \end{equation}
-whose two roots are  denote by $z_1(0)$ and $z_2(0)$ respectively.
-Note that $z_1(0)$ and $z_2(0)$ are independent of $\ell$. Provided the two roots of \eqref{eq:auxquad} are not repeated, we apply the well-known theorem of analyticity of a simple root to conclude the two roots $z_1(\epsilon)$ and $z_2(\epsilon)$ are near to $z_1(0)$ and $z_2(0)$ respectively. Precise statements are provided in the following section and the case of a double root is also treated separately.
-
-These two roots obtained in the case $n>0$ show the bifurcation by $q=-\alpha+m+n$. If $q=-\alpha+m+n>0$ then $z_1(0)+z_2(0) = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_1(0)z_2(0)=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ and thus the real parts of two roots must be negative whereas if $q=-\alpha+m+n<0$, there must be one positive and one negative real roots.
-
-\subsubsection{a}
-% For the technical reason we assume the following
-%  \begin{equation}
-%   \alpha\ne m \quad \text{and} \quad (-\alpha+m)(1+n)^2 \ne 4nm(1+\alpha), \tag{$A0$} \label{eq:nodoubleroot}
-% \end{equation}
-% which holds if and only if \eqref{eq:auxquad} does not have a double root.
-When this is the case, even though $\lambda_1(\tau)$ and $\lambda_2(\tau)$ converges to the single value $0$ in the limit $\tau \rightarrow \infty$, the subspaces $\mathbf{N}\Big(A(\tau)-\lambda_1(\tau)\Big)$ and  $\mathbf{N}\Big(A(\tau)-\lambda_2(\tau)\Big)$ survive to be linearly independent up to infinity, making eigenvalue $0$ of $A_\infty$ have the full geometric multiplicity. The eigenvectors are computable in terms of $\lambda_{i}$ and $A_{ij}$, $i,j=1,2,3$,
-\begin{equation}
-S(\epsilon) =   \begin{pmatrix}
-    1 + z_1(\epsilon)\frac{1+m}{1+\alpha} & 1 + z_2(\epsilon)\frac{1+m}{1+\alpha} & 1\\
-    1 & 1 & \frac{\epsilon \tfrac{1+\alpha}{1+m}}{\lambda_3(\epsilon) + \epsilon\tfrac{1+\alpha}{1+m}}\\
-    -\frac{\epsilon z_1(\epsilon)}{\l^2}\Big(1 + z_1(\epsilon)\frac{1+m}{1+\alpha}\Big) & -\frac{\epsilon z_2(\epsilon)}{\l^2}\Big(1 + z_2(\epsilon)\frac{1+m}{1+\alpha}\Big) & -\frac{\lambda_3(\epsilon)}{\l^2}
-   \end{pmatrix}. \label{eq:S}
+Two roots are  denote by $z_1(0)$ and $z_2(0)$ respectively.  The explicit formulas for $z_1(0)$ and $z_2(0)$ are available,
+\begin{equation}\label{eq:rootformulas}
+\begin{aligned}
+ z_1(0) &= -\tfrac{n(1+m+\alpha) + (-\alpha+m+n)}{2n(1+m)} + \sqrt{\left(\tfrac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\right)^2 -4 \tfrac{n(1+\alpha)(-\alpha+m+n)}{1+m}},\\
+z_2(0) &= -\tfrac{n(1+m+\alpha) + (-\alpha+m+n)}{2n(1+m)}  - \sqrt{\left(\tfrac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\right)^2 -4 \tfrac{n(1+\alpha)(-\alpha+m+n)}{1+m}}.
+\end{aligned}
 \end{equation}
-In the following proposition, we prove the diagonalization process is smoothly achieved.  %that $A(\tau)$ is absolutely continuously diagonalizable.
-% To apply the theorem of Coddington-Levinson, that the coefficient matrix is continuously diagonalizable up to the infinity is necessary.
-\begin{proposition}[Globally Smooth Diagonalization] \label{prop:ctsdiag}
- Assume that $(\alpha,m,n)$ is such that \eqref{eq:nodoubleroot} holds. Then for some $\tau_0$, $\exists$ $\lambda_1(\tau)$, $\lambda_2(\tau)$, $\lambda_3(\tau)$, and $S(\tau)$ the matrix of right eigenvectors that is invertible, for $\tau\ge\tau_0$  with the following properties.
+Note that $z_1(0)$ and $z_2(0)$ are independent of $\ell$. Provided the two roots  \eqref{eq:rootformulas} are not repeated, we apply the well-known theorem of analyticity of a simple root to conclude the two roots $z_1(\epsilon)$ and $z_2(\epsilon)$ are near to $z_1(0)$ and $z_2(0)$ respectively. Precise statements are provided in the following section.
+
+These two roots obtained in the case $n>0$ show the bifurcation by $q=-\alpha+m+n$. If $q=-\alpha+m+n<0$, there must be one positive and one negative real roots whereas if $q=-\alpha+m+n>0$ then $z_1(0)+z_2(0) = -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{n(1+m)} < 0$ and $z_1(0)z_2(0)=\frac{(1+\alpha)(-\alpha+m+n)}{n(1+m)}>0$ and thus the real parts of two roots must be negative.
+
+
+
+
+\subsubsection{Diagonalization of $A(\tau)$}
+Since $\lambda_1(\tau) \rightarrow 0$ and $\lambda_2(\tau) \rightarrow 0$ as $\tau \rightarrow \infty$, the limit coefficient has a reapeted eigenvalues $0$. The classical Coddington-Levinson Thoerem assumes a limit coefficient who has distinct eigenvalues, and it cannot be applied to our system. We take the first ingredient of proof of the Coddington-Levinson Theorem, namely the stability of a system with diagonal coefficient matrices. Without using the assumption of distinct eigenvalues, we directly provide the simultaneous diagonalization of $A_\ell(\tau)$ from the fact that the repeated eigenvalue $0$ has a full geometric multiplicity, or in other words that the subspaces $\mathbf{N}\Big(A(\tau)-\lambda_1(\tau)\Big)$ and  $\mathbf{N}\Big(A(\tau)-\lambda_2(\tau)\Big)$ survive to be linearly independent up to infinity. The proof of the first ingredient, for completeness, is provided in the Appendix.
+
+\begin{proposition}\label{prop:ctsdiag} $\exists \tau_0$ such that for $\tau\ge \tau_0$% $\lambda_1(\tau)$, $\lambda_2(\tau)$, $\lambda_3(\tau)$, and $S(\tau)$ the matrix of right eigenvectors that is invertible exist with the following properties.
  \begin{enumerate}
-  \item $A(\tau) = S(\tau) \begin{pmatrix} \lambda_1(\tau) & 0 & 0\\ 0 & \lambda_2(\tau) & 0 \\ 0 & 0 & \lambda_3(\tau) \end{pmatrix} S^{-1}(\tau)$.%= S(\tau) \Lambda(\tau) S^{-1}(\tau)$.
+  %\item $A(\tau) = S(\tau) \begin{pmatrix} \lambda_1(\tau) & 0 & 0\\ 0 & \lambda_2(\tau) & 0 \\ 0 & 0 & \lambda_3(\tau) \end{pmatrix} S^{-1}(\tau)$.%= S(\tau) \Lambda(\tau) S^{-1}(\tau)$.
   \item $|S_{ij}(\tau)|, |S^{-1}_{ij}(\tau)|$ are uniformly bounded and % $S(\tau)$ is absolutely continuous, i.e.,
-  $\int_{\tau_0}^\infty |\dot{S}_{ij}(s)|\; ds <\infty$, $\forall i,j=1,2,3$.
-  \item If $\epsilon\triangleq \frac{1}{\tau}$ and $\dot{(\cdot)}=\frac{d}{d\epsilon}(\cdot)$ then $\lambda_1(\epsilon)$, $\lambda_2(\epsilon)$, $\lambda_3(\epsilon)$, and $S(\epsilon)$ are analytic in the radius $\frac{1}{\tau_0}$ ball of $0$ and their leading order expansions are
+  $\int_{\tau_0}^\infty |{S}'_{ij}(s)|\; ds <\infty$, $\forall i,j=1,2,3$.
+  \item If $\epsilon\triangleq \frac{1}{\tau}$ then $\lambda_1(\epsilon)$, $\lambda_2(\epsilon)$, $\lambda_3(\epsilon)$, and $S(\epsilon)$ are analytic in the radius $\frac{1}{\tau_0}$ ball of $0$ and their leading order expansions are
   \begin{align}
-   \lambda_1(\epsilon) &= \epsilon z_1(\epsilon) = \epsilon z_1(0) + \epsilon^2 \dot z_1(0) + \cdots,\nonumber\\
-   \lambda_2(\epsilon) &= \epsilon z_2(\epsilon) =\epsilon z_2(0) + \epsilon^2 \dot z_1(0) + \cdots,\nonumber\\ &\text{where $z_1(\epsilon)$ and $z_2(\epsilon)$ are from the two roots of \eqref{eq:reduced_poly},}\nonumber \\
-   \lambda_3(\epsilon) &= -n\l^2 + \epsilon\dot\lambda_3(0) + \cdots, \nonumber\\
+   \lambda_1(\epsilon) & = \epsilon z_1(0) + \mathcal{O}(\epsilon^2),\quad %\epsilon^2 \dot z_1(0) + \cdots,\nonumber\\
+   \lambda_2(\epsilon) = \epsilon z_2(0) + \mathcal{O}(\epsilon^2),\quad %\epsilon^2 \dot z_1(0) + \cdots,\nonumber\\ &\text{where $z_1(\epsilon)$ and $z_2(\epsilon)$ are from the two roots of \eqref{eq:reduced_poly},}\nonumber \\
+   \lambda_3(\epsilon) = -n\l^2 + \mathcal{O}(\epsilon),\\%\epsilon\dot\lambda_3(0) + \cdots, \nonumber\\
    S(\epsilon)
    &=\begin{pmatrix}
     1 + z_1(0)\frac{1+m}{1+\alpha} & 1 + z_2(0)\frac{1+m}{1+\alpha} & 1 \label{eq:S(0)}\\
     1 & 1 & 0\\
     0 & 0 & n
-   \end{pmatrix} \\&+ \epsilon
-   \begin{pmatrix}
-    z_1'(0)\frac{1+m}{1+\alpha} & z_2'(0)\frac{1+m}{1+\alpha} & 0 \nonumber\\
-    0 & 0 & -\frac{\frac{1+\alpha}{1+m}}{n\l^2}\\
-    -\frac{z_1(0)\big(1+z_1(0)\frac{1+m}{1+\alpha}\big)}{\l^2} & -\frac{z_2(0)\big(1+z_2(0)\frac{1+m}{1+\alpha}\big)}{\l^2} & -\frac{\lambda_3'(0)}{n\l^2} \nonumber\\
-   \end{pmatrix} + \cdots.
+   \end{pmatrix} + \mathcal{O}(\epsilon).%\\&+ \epsilon
   \end{align}
  \end{enumerate}
 \end{proposition}
 \begin{proof}
- First we prove the assertion 3. That the eigenvalues are analytic in $\epsilon$ in some neighborhood of $0$ follows from that $-n\l^2$ is a simple root of \eqref{eq:poly} and $z_1(0)$ and $z_2(0)$ are the simple roots of \eqref{eq:auxquad}: For a fixed $n>0$, $\lambda_3(0)= -n\l^2$ is a simple root of \eqref{eq:poly} which leads to that $\frac{\partial f}{\partial \lambda}(-n\l^2,0)\ne 0$ and the existence of an analytic $\lambda_3(\epsilon)$ follows from the Theorem \ref{thm:anal}. By the same reasoning there are analytic functions $z_1(\epsilon)$ and $z_2(\epsilon)$ in some neighborhood of $0$. Note that $f(\epsilon z(\epsilon),\epsilon)=0$ if and only if $g(z(\epsilon),\epsilon)=0$ for $\epsilon\ne0$. For a fixed $n>0$, we take $\epsilon_0$ sufficiently small so that $\epsilon z_i(\epsilon)\ne \lambda_3(\epsilon)$, $i=1,2$ are assured in $\epsilon_0$-ball and all of the eigenvalues are analytic. We set $\epsilon_0$ be this radius of analyticity and let $\tau_0 = \frac{1}{\epsilon_0}$.
+ First we prove the assertion 2. That the eigenvalues are analytic in $\epsilon$ in some neighborhood of $0$ follows from that $-n\l^2$ is a simple root of \eqref{eq:poly} and $z_1(0)$ and $z_2(0)$ are the simple roots of \eqref{eq:auxquad}: For a fixed $n>0$, $\lambda_3(0)= -n\l^2$ is a simple root of \eqref{eq:poly} which leads to that $\frac{\partial f}{\partial \lambda}(-n\l^2,0)\ne 0$ and the existence of an analytic $\lambda_3(\epsilon)$ follows from the Theorem \ref{thm:anal}. By the same reasoning there are analytic functions $z_1(\epsilon)$ and $z_2(\epsilon)$ in some neighborhood of $0$. Note that $f(\epsilon z(\epsilon),\epsilon)=0$ if and only if $g(z(\epsilon),\epsilon)=0$ for $\epsilon\ne0$. For a fixed $n>0$, we take $\epsilon_0$ sufficiently small so that $\epsilon z_i(\epsilon)\ne \lambda_3(\epsilon)$, $i=1,2$ are assured in $\epsilon_0$-ball. We set $\epsilon_0$ be this radius of analyticity and let $\tau_0 = \frac{1}{\epsilon_0}$.
 
- The right eigenvector matrix is directly computable in terms of $\lambda_i(\epsilon)$ and $A_{ij}(\epsilon)$. We prove its non-degeneracy. Note that we chose the normalization so that expansion of $S(\epsilon)$ appears as in \eqref{eq:S}. Since $z_1(0)\ne z_2(0)$, the constant part $S(0)$ is invertible. Thus, by taking $\epsilon_0$ smaller if necessary, $S(\epsilon)$ is invertible $\epsilon\in[0,\epsilon_0]$. Thus the assertion 1 follows.
+ The right eigenvector matrix is computable, in terms of $\lambda_i(\epsilon)$ and entries $A_{ij}(\epsilon)$.
+ \begin{equation} \label{eq:S}
+  \begin{aligned}
+ S(\epsilon) &=   \begin{pmatrix}
+     1 + z_1(\epsilon)\frac{1+m}{1+\alpha} & 1 + z_2(\epsilon)\frac{1+m}{1+\alpha} & 1\\
+     1 & 1 & \frac{\epsilon \tfrac{1+\alpha}{1+m}}{\lambda_3(\epsilon) + \epsilon\tfrac{1+\alpha}{1+m}}\\
+     -\frac{\epsilon z_1(\epsilon)}{\l^2}\Big(1 + z_1(\epsilon)\frac{1+m}{1+\alpha}\Big) & -\frac{\epsilon z_2(\epsilon)}{\l^2}\Big(1 + z_2(\epsilon)\frac{1+m}{1+\alpha}\Big) & -\frac{\lambda_3(\epsilon)}{\l^2}
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+     1 + z_1(0)\frac{1+m}{1+\alpha} & 1 + z_2(0)\frac{1+m}{1+\alpha} & 1 \\
+     1 & 1 & 0\\
+     0 & 0 & n
+    \end{pmatrix}\\&+ \epsilon
+    \begin{pmatrix}
+     \dot z_1(0)\frac{1+m}{1+\alpha} & \dot z_2(0)\frac{1+m}{1+\alpha} & 0 \nonumber\\
+     0 & 0 & -\frac{\frac{1+\alpha}{1+m}}{n\l^2}\\
+     -\frac{z_1(0)\big(1+z_1(0)\frac{1+m}{1+\alpha}\big)}{\l^2} & -\frac{z_2(0)\big(1+z_2(0)\frac{1+m}{1+\alpha}\big)}{\l^2} & -\frac{\dot\lambda_3(0)}{n\l^2} \nonumber\\
+    \end{pmatrix} + \cdots,
+  \end{aligned}
+ \end{equation}
+ where $\dot{(\cdot)}=\frac{d}{d\epsilon}(\cdot)$.
 
- That all entries of $S_{ij}(\epsilon)$ and $S^{-1}_{ij}(\epsilon)$ are uniformly bounded follows from that the determinant is uniformly bounded. The latter assertion is true because $A(\epsilon)$ is uniformly bounded and the determinant is a continuous function of entries. Further, because $S_{ij}(\epsilon)$ is analytic, $S_{ij}'(\epsilon)$ is bounded in the $\epsilon_0$-ball and thus $\frac{d}{d\tau} S_{ij}(\tau) = -\frac{1}{\tau^2}\dot S_{ij}(\epsilon)$, which is integrable from $\tau_0$ to infinity. This completes the proof.
+Now we prove the first assertion. Since $z_1(0)\ne z_2(0)$, the constant part $S(0)$ is invertible. Since $S(\epsilon)$ is analytic, by taking $\epsilon_0$ smaller if necessary, $S(\epsilon)$ is invertible $\epsilon\in[0,\epsilon_0]$. With the similar arguments in the proof of Theorem \ref{thm:Hadamard}, $\big|S_{ij}(\epsilon)\big|$ and $\big|S^{-1}_{ij}(\epsilon)\big|$ are uniformly bounded.
+Now, because $S_{ij}(\epsilon)$ is analytic, $\frac{d}{d\epsilon}S_{ij}(\epsilon)$ is bounded in the $\epsilon_0$-ball and $\frac{d}{d\tau} S_{ij}(\tau) = -\frac{1}{\tau^2}\frac{d}{d\epsilon} S_{ij}(\epsilon)$, which is integrable from $\tau_0$ to infinity. %Thus the assertion 1 follows.
 \end{proof}
 
-Now, we let $y\triangleq S^{-1}(\tau)x$ then the simple calculation shows
-$$ y'(\tau) = \Big(\Lambda(\tau) - S^{-1}S'\Big) y,$$
-where $\Lambda(\tau)$ is the diagonal matrix of eigenvalues given by the proposition. By the proposition the latter term $- S^{-1}S'$ is an integrable remainder term. Further, we write $\Lambda(\tau) = \Lambda_0 + \frac{1}{\tau}\Lambda_1 + \frac{1}{\tau^2}\tilde{\Lambda}$ which is the expansion of $\Lambda(\tau)$ in $\frac{1}{\tau}$. We see that $\frac{1}{\tau^2}\tilde{\Lambda}$ and $- S^{-1}S'$ comprise the integrable remainder term. We write the equation
-\begin{align}
-y'(\tau) &= \Big(\Lambda_0 + \frac{1}{\tau}\Lambda_1\Big) y + R(\tau) y, \quad R(\tau) = \frac{1}{\tau^2}\Big(\tilde{\Lambda}(\tau)+ S^{-1}\frac{d}{d\epsilon}{S}\Big), \label{eq:diagonalsystem} \\
+Now, we similarly as in Section \ref{sec:Hadamard} consider the diagonal system:
+\begin{equation*}
+\begin{aligned}
+ y &= S(\tau)^{-1} x, \quad  y' = \underbrace{\begin{pmatrix} \lambda_1(\tau) & 0 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix}}_{\triangleq \Lambda(\tau)} y - S(\tau)^{-1}S'(\tau) y.
+\end{aligned}
+\end{equation*}
+Since $\Lambda(\tau)$ is analytic in $\frac{1}{\tau}$, we can further take out the high order contribution in $\frac{1}{\tau}$ from $\Lambda(\tau)$. Let $\Lambda(\tau) = \Lambda_0 + \frac{1}{\tau}\Lambda_1 + \frac{1}{\tau^2}\tilde{\Lambda}(\tau)$.
+
+\begin{equation}\label{eq:diagonalsystem}
+\begin{aligned}
+y'(\tau) &= \Big(\Lambda_0 + \frac{1}{\tau}\Lambda_1\Big) y + R(\tau) y, \quad R(\tau) = \frac{1}{\tau^2}\Big(\tilde{\Lambda}(\tau)+ S^{-1}\frac{d}{d\epsilon}{S}\Big), \\
  \Lambda_0 + \frac{1}{\tau}\Lambda_1 &=
  \begin{pmatrix}
   \frac{z_1(0)}{\tau} & 0 & 0\\
   0 & \frac{z_2(0)}{\tau} & 0\\
-  0 & 0 & -n\l^2 + \frac{\lambda_3'(0)}{\tau} \label{eq:order1diag}
+  0 & 0 & -n\l^2 + \frac{\lambda_3'(0)}{\tau}
  \end{pmatrix}.
-\end{align}
-Now we are ready to prove the Thoerem \ref{thm:1}.
-\begin{proof}[proof of Theorem \ref{thm:1}]
-We fix the parameter $(\alpha,m,n)$ and fix the row index $j$ and apply the Coddington-Levinson Theorem on the system \eqref{eq:diagonalsystem}. That for every parameter $(\alpha,m,n)$ and for every row index $j$, the spectral gap condition in Theorem \ref{thm:CL} is fulfilled is to be checked upon the regime change because signs of $z_1(0)$ and $z_2(0)$ change accordingly. In all cases the results are affirmative and this is done in the Appendix.
+\end{aligned}
+\end{equation}
+Note the error $R(\tau)$ is $o(\frac{1}{\tau})$. %This size estimate is in particular a result of the Proposition \ref{prop:ctsdiag}.
 
-Having that checked, by Coddington-Levinson Theorem, we find $y_i(\tau;\ell)$, $i=1,2,3$ the solutions of \eqref{eq:diagonalsystem} such that
+\subsubsection{Proof of Turing Instability}
+Now we are ready to prove the Thoerem \ref{thm:Turing}, applying Theorem \ref{thm:CL}.
+\begin{proof}[proof of Theorem \ref{thm:Turing}]
+We fix parameter $(\alpha,m,n)$ and apply the Theorem \ref{thm:CL} on the system \eqref{eq:diagonalsystem}. That for every parameter $(\alpha,m,n)$ and for every row index $k$, the spectral gap condition in Theorem \ref{thm:CL} is fulfilled is to be checked:
+For large $\tau<\infty$,
+\begin{align*}
+  \text{Fix $k=1$:}&& 2,3&\in I_1, & 1&\in I_2\\
+  \text{Fix $k=2$:}&& 3&\in I_1, & 1,2&\in I_2\\
+  \text{Fix $k=3$:}&& & & 1,2,3&\in I_2.
+\end{align*}
+
+Having that checked, by Theorem \ref{thm:CL}, we find $y_i(\tau;\ell)$, $i=1,2,3$ the solutions of \eqref{eq:diagonalsystem} such that
  \begin{align*}
  &\lim_{\tau \rightarrow \infty} y_1(\tau) \exp\left(-\int_{\tau_0}^\tau z_1(0)\frac{1}{s}\; ds\right) = \lim_{\tau \rightarrow \infty} y_1(\tau)\left(\frac{\tau}{\tau_0}\right)^{-z_1(0)} = \hat{1}, \\
  &\lim_{\tau \rightarrow \infty} y_2(\tau)\left(\frac{\tau}{\tau_0}\right)^{-z_2(0)} = \hat{2}, \\
  &\lim_{\tau \rightarrow \infty} y_2(\tau)\left(\frac{\tau}{\tau_0}\right)^{-\lambda_3'(0)}\exp\Big(n\l^2(\tau-\tau_0)\Big) = \hat{3},
  %\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha}\\1\\0\end{pmatrix}.
  \end{align*}
- where $\hat{i}$, $i=1,2,3$ denotes the standard coordinate basis vectors. We define $x_i(\tau)\triangleq S(\tau)y_i(\tau)$. We check that the eigenvector matrix $S(\tau)$ is continuous and $S(\tau) \rightarrow S_\infty$ as $\tau \rightarrow \infty$ and that multiplication of $S(\tau)$ in the limits on the left hand side converge to $S_\infty \hat{i}=p_i$, $i=1,2,3$ the eigenvector of $A_\infty$.
+ where $\hat{i}$, $i=1,2,3$ denotes the standard coordinate basis vectors. We define $x_i(\tau)\triangleq S(\tau)y_i(\tau)$. We check that the eigenvector matrix $S(\tau)$ is continuous and $S(\tau) \rightarrow S_\infty$ as $\tau \rightarrow \infty$ and that multiplication of $S(\tau)$ in the limits on the left hand side converge to $S_\infty \hat{i}$, $i=1,2,3$ the eigenvector of $A_{\ell,\infty}$.
 
- The exponents $z_1(0)$ and $z_2(0)$ are two roots of \eqref{eq:auxquad} and are independent of $\ell$. As discussed earlier,
- \begin{enumerate}
-  \item If $-\alpha+m+n=0$, then $z_1(0)=0$ and $z_2(0)= -\frac{1+m+\alpha}{1+m}$.
-  \item If $-\alpha+m+n>0$, then $Re ~z_1(0)<0$ and $Re ~z_2(0)<0$.
-  \item If $-\alpha+m+n<0$, then $z_1(0)>0$ and $z_2(0)<0$.
- \end{enumerate}
-To compute the $\chi_1$ and $\chi_2$, we go back to the independent variable $\gamma_s$; we recall $\tau(\gamma_s)= \theta_s^*=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}$.
-\end{proof}
-\begin{remark}
-To be explicit, we write
-\begin{align*}
- z_1(0) &= -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{2n(1+m)} \\
- &+ \sqrt{\left(\frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\right)^2 -4 \frac{n(1+\alpha)(-\alpha+m+n)}{1+m}},\\
- z_2(0) &= -\frac{n(1+m+\alpha) + (-\alpha+m+n)}{2n(1+m)} \\
- &- \sqrt{\left(\frac{n(1+m+\alpha) + (-\alpha+m+n)}{1+m}\right)^2 -4 \frac{n(1+\alpha)(-\alpha+m+n)}{1+m}}.
-\end{align*}
- If $n$ is sufficiently small then $z_1(0)$ and $z_2(0)$ are attained as pure real number, and their asymptotic expansions in $n$ are found to be
-\begin{align*}
- \chi_1 = -\frac{-\alpha+m+n}{n(1+\alpha)} + \frac{\alpha m}{1+\alpha} + \mathcal{O}(n), \quad
- \chi_2 = -(1+m)  + \mathcal{O}(n).
-\end{align*}
-\end{remark}
-
-
-\begin{theorem}[stability criteria]
-  criteria result
-\end{theorem}
-
-\subsection{Hadamard Instability of inviscid model}
-\begin{theorem}
-  Unstable regime result
-  1. infinitely many unstable model
-
-  1. no-saturation phenomenon
-
-  1. exponential growth
-\end{theorem}
-
-
-Having seen the conclusions for the viscous model, particularly its polynomial behavior in the unstable regime, the purpose of this section is to contrast the behavior for the inviscid model in the unstable regime $n=0$ and $q=-\alpha+m<0$. As addressed, the instability exhibited in the inviscid case is of \emph{Hadamard instability} and the growth is contrasted by its exponential behavior.
-
-We proceed from the coefficient matrix $A(\tau)$ in the previous section. When $n=0$ the polynomial \eqref{eq:poly} factorizes to get,
-$$ f(\lambda,\epsilon) = (\lambda +\epsilon(1+\alpha))\Big( \lambda^2 + \epsilon\lambda \frac{1+\alpha}{1+m} + \epsilon \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
-For convenience of computations later, we let $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \l^2\frac{-\alpha+m}{\tau(1+m)}$ and denote the three roots by
-\begin{equation} \label{eq:inviscid_roots}
-\begin{aligned}
- &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
-\end{aligned}
-\end{equation}
-Note that $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$ and thus $\lambda_1(\tau)$ and $\lambda_2(\tau)$  $\sim$ $\mathcal{O}\big(\frac{1}{\sqrt{\tau}}\big)$. For $\tau$ large, since $-\alpha+m<0$ one can check that $(i)$ $f(\tau)$ attains only three real roots; $(ii)$ $\lambda_1(\tau) > 0 > \lambda_3(\tau) \gg \lambda_2(\tau)$. %  Hence, roots are complex or pure real according to the sign of $-\alpha+m$. The square root in the above formulas are understood as taking the branch of nonnegative imaginary part.
-
-% In the following section, long time asymptotics are analyzed case by case.
-
-% \subsection{Inviscid case $n=0$}
-We are to study a non-autonomous system with coefficient
-% $$ A(\tau) =
-%    \begin{pmatrix}
-%    0 & 0 & -\l^2\\
-%    \frac{1}{\tau}\frac{1+\alpha}{1+m} & -\frac{1}{\tau}\frac{1+\alpha}{1+m} & 0\\
-%    \frac{1}{\tau}\Big( \frac{-\alpha+m}{1+m}\Big) &
-%    \frac{1}{\tau}\Big(m\frac{-\alpha+m}{1+m}\Big) &
-%    -\frac{1}{\tau}(1+\alpha)
-%   \end{pmatrix}=$$
+ Recalling that $z_1(0)>0$ and $z_2(0)<0$, $x_1(\tau)$ is the only growing mode. The exponent $\chi=z_1(0)$ is bounded and determined solely by $(\alpha,m,n)$.
 %
-$$  A(\tau)=\begin{pmatrix}
-   0 & 0 & -\l^2\\
-   0 & 0 & 0\\
-   0 & 0 & 0
-  \end{pmatrix}
-  + \frac{1}{\tau}   \begin{pmatrix}
-   0 & 0 & 0\\
-   \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
-   \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
-  \end{pmatrix} = A_\infty + \frac{1}{\tau}A_1.$$
-Three eigenvalues are explicit as written in \eqref{eq:inviscid_roots}. For this coefficient matrix, we cannot proceed similarly as before because the matrix does not admit a smooth diagonalization up to infinity: The three eigenvalues all merge into the single value $0$ in the limit $\tau \rightarrow \infty$ and it is easy to check that this eigenvalue $0$ of $A_\infty$ has a geometric multiplicity $2$. Therefore despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit.
-
-Smooth factorization of a one-parameter family of matrices is yet another substantial subject @CITE@. For our problem fortunately, it turns out that the coefficient admits a smooth block diagonal factorization. What is in the below explains how we proceed.
-
-As the order $\frac{1}{\tau}$ perturbation of $A(\tau)$ is explicitly given, straightforward calculation shows that eigenvectors for finite $\tau$ can be chosen
-\begin{align*}
- s_1(\tau)&=E(\tau) + F(\tau), \quad s_2(\tau)=E(\tau)-F(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\l^2} \end{pmatrix},\\
- E(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  F(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
-\end{align*}
-Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$, what merges up in the limit are $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$.
-%In the below, two of our choice of basis are from $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ and one is from $\mathbf{N}\Big(A - \lambda_3\Big)$. From $\mathbf{N}\Big(A - \lambda_3\Big)$ we keep $s_3$. From $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ we keep $s_1\in\mathbf{N}\Big(A - \lambda_1\Big)$ but will be with a different normalization. As we cannot simultaneously choose the other in $\mathbf{N}\Big(A - \lambda_2\Big)$, we find $\tilde s_2$ such that $\tilde s_2\notin\mathbf{N}\Big(A - \lambda_2\Big)$, $y = (A-\lambda_2)\tilde s_2 \in \mathbf{N}\Big(A - \lambda_1\Big)$. To justify the solvability of this program, we observe following. If $\lambda_2\ne\lambda_1$, every element in $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. If $\lambda_2=\lambda_1$ and the geometric multiplicity is strictly less than the algebraic multiplicity, then the nontrivial subspace of $\mathbf{N}\Big(A - \lambda_1\Big)$ is in the range of $(A - \lambda_2\big)$. While to capture this subspace is in general nontrivial, for our problem, the dimension of $\mathbf{N}\Big(A - \lambda_1\Big)$ restricted in $\mathbf{N}\Big(\big(A -\lambda_1\big)\big(A - \lambda_2\big)\Big)$ is merely $1$ and thus every element of the kernel is in the range of $(A - \lambda_2\big)$.
-To proceed with {\it the generalized eigenvector}, we pick $s_1$, renormalized by a factor of $\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)$, with its notation not changed, then the pre-image $\tilde s_2$ is found such that
-$$ (A-\lambda_2) \tilde s_2 = s_1, \quad \text{$\tilde s_2 = \begin{pmatrix}  0 \\ \tfrac{1+\alpha}{1+m} \\ \tfrac{-\alpha+m}{1+m} \end{pmatrix}$}.$$
-
-With this new basis, we factorize the linear system similarly as before
-\begin{equation}\label{eq:block1}
-\begin{aligned}
- y &= P(\tau)^{-1} x, \quad P(\tau) = \begin{pmatrix} -\tau\gamma& 0 & -m\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}, \\
- y' &= \underbrace{\begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix}}_{\triangleq B(\tau)} y - P(\tau)^{-1}P'(\tau) y.
-\end{aligned}
-\end{equation}
-\begin{proposition} Assume $-\alpha+m < 0$. Then
- \begin{enumerate}
-  \item $\exists \tau_0$ such that for $\tau\ge\tau_0$ $\big|P_{ij}(\tau)\big|$ and $\big|P^{-1}_{ij}(\tau)\big|$ are uniformly bounded.
-  \item $\displaystyle \int_{\tau_0}^\infty \big|P_{ij}'(s)\big|\; ds < \infty$ for all $i,j=1,2,3$.
- \end{enumerate}
-\end{proposition}
-\begin{proof}
-$$ \lim_{\tau \rightarrow \infty} P(\tau) = \begin{pmatrix} -\l^2\frac{-\alpha+m}{1+m}& 0 & -m\\ 0 & \frac{1+\alpha}{1+m} & 1\\ 0 & \frac{-\alpha+m}{1+m} & 0\end{pmatrix}$$
-whose determinant is $\l^2 \left(\frac{-\alpha+m}{1+m}\right)^2$. Since $P(\tau)$ is smooth function of $\tau$, $\exists \tau_0$ such that $P(\tau)$, $\tau\ge\tau_0$ is invertible with uniformly bounded determinant. The second assertion follows from straightforward calculation of $P_{ij}'(\tau)$ whose leading order is $\mathcal{O}\big(\frac{1}{\tau^{3/2}}\big)$.
+%  The exponents $z_1(0)$ and $z_2(0)$ are two roots of \eqref{eq:auxquad} and are independent of $\ell$. As discussed earlier,
+%  \begin{enumerate}
+%   \item If $-\alpha+m+n=0$, then $z_1(0)=0$ and $z_2(0)= -\frac{1+m+\alpha}{1+m}$.
+%   \item If $-\alpha+m+n>0$, then $Re ~z_1(0)<0$ and $Re ~z_2(0)<0$.
+%   \item If $-\alpha+m+n<0$, then $z_1(0)>0$ and $z_2(0)<0$.
+%  \end{enumerate}
+% To compute the $\chi_1$ and $\chi_2$, we go back to the independent variable $\gamma_s$; we recall $\tau(\gamma_s)= \theta_s^*=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}$.
 \end{proof}
 
-Now, we prove our assertion that if $-\alpha+m < 0$, there is an exponenitally growing mode. As discussed earlier, $\lambda_2(\tau) \ll \lambda_3(\tau) < 0 < \lambda_1(\tau)$ for large but finite $\tau$. As $\lambda_3(\tau)$ intervenes, the whole upper triangular matrix $B(\tau)$ better be regarded as one block. Let $H(\tau)$ be the semi-group associated to the upper triangular matrix $B(\tau)$. By Theorem \ref{prop:stab}, it is enough for our purpose to show that the unperturbed part $B(\tau)$ develops an unstable mode $x$ growing exponentially. If so, there is a $y$ grows as much as $x$ does and the assertion follows. The calculation of the operator norm of $H(\tau)$ is given in the Appendix. To brief, this computation is possible because the coefficient matrix is upper triangular and has a certain spectral gap structure: the largest eigenvalue $\lambda_1(\tau)$ is on the top row and the spectral gap $\int_{t_0}^{t_1} \lambda_1(s)-\lambda_j(s)\; ds > C (\sqrt{t_1}-\sqrt{t_0})$, $j=2,3$ diverges as $t_1-t_0$ gets large.
-
-
+%
+%
+% \begin{theorem}[stability criteria]
+%   criteria result
+% \end{theorem}
 
 \section{Heat conducting model}
 
 \subsection{Formulation of Relative perturbations}
-
-
-
-{\blue
-For our study, we focus on showing following two relevant results for adiabatic cases, or $\kappa=0$, for the sake of conciseness. Though the complete classification of all cases is possible, it is beyond of our purpose of exposition because the linear stability of a non-autonomous system requires quite vast prerequisites.
-}
-
-In the below, what has been included are summarized:
-\begin{enumerate}
- \item Assume $\kappa=0$ and $n>0$. The linearized system bifurcates by the quantity $q=-\alpha+m+n$. If $-\alpha+m+n>0$, where the thermal softening is not strong enough to dominate other hardening mechanisms, the uniform shearing solution is linearly stable. On the other hand if $-\alpha+m+n<0$, where the thermal softening dominates other hardening mechanisms, the uniform shearing solution is linearly unstable.%; more precisely, there is a positive eigenvalue for each oscillatory initial data with frequency $2\pi\ell$.
- \item In the unstable regime $q=-\alpha+m+n<0$, the system with viscosity and the one without it ($n=0$) exhibits qualitatively different instability: If $n>0$, the growth is at most polynomial and the saturation of the growth rate as $\ell \rightarrow \infty$ is observed. This is one of the types that are referred to as the Turing instability. By contrast if $n=0$, the growth is of order $\exp\left(C\ell\sqrt{\tau}\right)$ showing much catastrophic instability as $\ell \rightarrow \infty$. This is referred to as the Hadamard Instability.
-\end{enumerate}
-%The last remark for the case $n=0$ is quoted without proof but is appeared in our companion paper in preparation.
-To enhance the clarity of our statement of the linear stability, a few selected expressions and facts in Section \ref{sec:lin_viscous} are exposed in this early stage. In Section \ref{sec:lin_viscous} it will be shown that three linearly independent solutions of \eqref{eq:l-system2} are always found for each $\ell\ge 1$, comprising a fundamental matrix. The three linearly independent solutions will be referred to as $x_1(\tau)$, $x_2(\tau)$, and $x_3(\tau)$ respectively (for fixed $\ell\ge 1$). We express the precise asymptotic behaviors via
+% \begin{equation}
+%  \begin{aligned}
+%   \partial_\tau U &= \Sigma_{xx},\\
+%   \partial_\tau \Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m} \Big(U-\Gamma\Big),\\
+%   \partial_\tau \Theta &= \frac{1}{\tau}\Big(\Sigma U - \Theta\Big) + \kappa\left(\frac{1+\alpha}{1+m}\right)^{\frac{m}{1+m}}\tau^{\frac{\alpha-m}{1+m}}\Theta_{xx}, \\
+%   \Sigma&=\Theta^{-\alpha}\Gamma^m U^n.
+%  \end{aligned}
+% \end{equation}
+% When $\kappa=0$, it retains simpler form,
+The new independent variable $\zeta$ will also be probed. Given that, $\Gamma\big(\zeta,x\big)$, $\Theta\big(\zeta,x\big)$, $U\big(\zeta,x\big)$, $\Sigma\big(\zeta,x\big)$ are defined by \begin{equation*}
+ \begin{aligned}
+  \Gamma\big(\zeta,x\big)&=\frac{\gamma(\zeta,x)}{\gamma^*_s(\zeta)}, \quad \Theta\big(\zeta,x\big)=\frac{\theta(\zeta,x)}{\theta^*_s(\zeta)}, \quad U\big(\zeta,x\big)=\frac{u(\zeta,x)}{u^*}=u(\zeta,x),\\
+  \Sigma\big(\zeta,x\big)&=\frac{\sigma(\zeta,x)}{\sigma^*_s(\zeta)} \quad \Longrightarrow \quad \Sigma = \Theta^{-\alpha}\Gamma^m U^n.
+ \end{aligned}
+\end{equation*}
 \begin{equation}
-\begin{aligned}
- &\lim_{\tau \rightarrow \infty} C_1 x_1(\tau) \tau^{\chi_1} = p_1, \quad \lim_{\tau \rightarrow \infty} C_2x_2(\tau)  \tau^{\chi_2} = p_2, \quad
-%  &\lim_{\gamma_s \rightarrow \infty} C_3 x_3(\gamma_s) \exp\left(C_4n\l^2 \gamma_s^{\frac{1+\alpha}{1+m}}\right)\gamma_s^{-\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3$}.
-\lim_{\tau \rightarrow \infty} C_3 x_3(\tau) \exp\left(n\l^2 \tau^{\chi_3}\right)\tau^{\chi_4} = p_3, %, \quad \text{for exponents $\chi_i$, $i=1,2,3,4$}.
+ \begin{aligned}
+  \partial_\zeta U &= \left( \frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\zeta^{\frac{-\alpha+m}{1+\alpha}} \Sigma_{xx},\\
+  \partial_\zeta \Gamma &= \frac{1}{\zeta} \Big(U-\Gamma\Big),\\
+  \partial_\zeta \Theta &= \frac{1}{\zeta}\Big(\Sigma U - \Theta\Big) + \kappa\Theta_{xx}, \\
+  \Sigma&=\Theta^{-\alpha}\Gamma^m U^n.
  \end{aligned}
 \end{equation}
-where $C_i=C_i(\alpha,m,n)$, $i=1,2,3$ are complex constants, $p_i=p_i(\alpha,m,n,\ell)$, $i=1,2,3$ are the constant eigenvectors of $A_{\infty,\ell}$ (see the leading order term \eqref{eq:S(0)} for the explicit formulas). Further, $\chi_3=\frac{1+\alpha}{1+m}>0$ and $x_3(\tau)$ is always a decaying mode (with exponential rate). To conclude, the signs of $\chi_1$ and $\chi_2$ determine the stability and in the same time the magnitues determine the rates. The  techical assumption \eqref{eq:nodoubleroot} appeared in the below will be visited in Section \ref{sec:lin_viscous}.
-% \begin{align*}
-% %   p_1=\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_1(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
-% %   p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1 \\ \frac{m+n}{\alpha} + z_2(0)\frac{n(1+m)}{\alpha(1+\alpha)} \\ 0 \end{pmatrix}, \quad
-% %   p_3 = \begin{pmatrix} 1 \\ 0 \\ 0 \\ n \end{pmatrix}.
-% %  \end{align*}
-% \begin{align*}
-%   p_1=\begin{pmatrix} 1+z_1(0)\frac{1+m}{1+\alpha} \\ 1 \\  0 \end{pmatrix}, \quad
-%   p_2 = \begin{pmatrix} 1+z_2(0)\frac{1+m}{1+\alpha} \\ 1  \\ 0 \end{pmatrix}, \quad
-%   p_3 = \begin{pmatrix} 1 \\ 0 \\ n \end{pmatrix}.
-%  \end{align*}
-% $z_1(0)$ and $z_2(0)$ are defined in the following section and . %As the third eigenvalue $\lambda_3(\tau)$ always has a leading order $-n\l$, we find
-%   Given above, we state our theorem: %what bifurcate are the polynomial growth or decay of $x_1$ and $x_2$.
-\begin{theorem} \label{thm:1} Let $(\alpha,m,n)$ be given in the range \eqref{eq:range} but with \eqref{eq:nodoubleroot} being fulfilled. Then signs of $\chi_1$ and $\chi_2$ bifurcate by $q=-\alpha+m+n$:
- \begin{enumerate}
-  \item If $q=-\alpha+m+n=0$, then the uniform shear is marginally stable: $\chi_1=0$, $\chi_2>0$.
-  \item If $q=-\alpha+m+n>0$, then the uniform shear is stable: $\chi_1>0$ and $\chi_2>0$.
-  \item If $q=-\alpha+m+n<0$, then the uniform shear is saddle: $\chi_1<0$ and $\chi_2>0$.
- \end{enumerate}
- Furthermore, $\chi_i=\chi_i(\alpha,m,n)$, $i=1,2$ independently of $\ell$.
-\end{theorem}
-Note that $x_1(\tau)$ and $x_2(\tau)$ exhibit merely polynomial behaviors in any case.
-% We introduce some quantities. Let $x$ denotes a vector $\big(U_\ell,\Gamma_\ell, \Sigma_\ell)^T$. $\Theta_\ell$, which is linearly dependent, may be included in the statement and we denote $\tilde{x}$ by a vector $\big(U_\ell,\Gamma_\ell, \Theta_\ell, \Sigma_\ell)^T$. Three eigenvectors of $A_\infty$ are also appended by $\Theta$ component to get
-\begin{theorem}
- theorem 2
-\end{theorem}
+
+For each $\ell\ge0$ we obtain
+\begin{equation} \label{eq:l-system_heat}
+ \begin{aligned}
+  \partial_\zeta U_\ell &= -\left(\frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\zeta^{\frac{-\alpha+m}{1+\alpha}}\l^2 \Sigma_\ell,\\
+  \partial_\zeta\Gamma_\ell &= \frac{1}{\zeta}(U_\ell-\Gamma_\ell),\\
+  \partial_\zeta\Theta_\ell &= \frac{1}{\zeta}\frac{1+m}{1+\alpha}\Big(\Sigma_\ell+ U_\ell -\Theta_\ell\Big) - \kappa\l^2\Theta_\ell,\\
+  0&=\Sigma_\ell + \alpha\Theta_\ell -m\Gamma_\ell - nU_\ell .
+ \end{aligned}
+\end{equation}
 
 
-
-
-
-
-
-
-{\red
-To Do :
-
-1. workout introduction
-
-1. workout section 4
-
-1. continuation method explanation in section 5
-
-1. add paragraphs on $n=0$ case phase space analysis in section 4
-
-1. streamline the Appendix
-
-1. workout the bibliography
-
-1. proofreading
-
-}
-
-
-
-
+With the fourth equation we remove one of the variables. The choice of removing $\Theta_\ell$ gives the linear system
+\begin{equation} \label{eq:l-system_heat2}
+\begin{aligned}
+  \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}'
+  &= \left[\overbrace{\kappa\begin{pmatrix}
+   0 & 0 & 0\\
+   0 & 0 & 0\\
+   n\l^2 & m\l^2 & -\l^2
+  \end{pmatrix} }^{\triangleq A_{\ell,\infty}}
+  + \zeta^{\tfrac{-\alpha+m}{1+\alpha}}
+  \overbrace{\left(\frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\begin{pmatrix}
+   0 & 0 & -\l^2\\
+   0 & 0 & 0\\
+   0 & 0 & -n\l^2
+ \end{pmatrix} }^{\triangleq A_{\ell,\frac{-\alpha+m}{1+\alpha}}}\right.\\
+  &+  \left.  \frac{1}{\zeta}\overbrace{\frac{1+m}{1+\alpha}
+  \begin{pmatrix}
+   0 & 0 & 0\\
+   \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
+   n+ \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
+  \end{pmatrix} }^{\triangleq A_{\ell,1}}\right] \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}
+\end{aligned}
+\end{equation}
 
 \pagebreak
 \appendix
@@ -785,63 +741,10 @@ $$ \det\Big( \frac{\partial f_j}{\partial w_k} \Big)_{j,k=1}^m \ne 0 \quad \text
 Then the equations $f_j(w,z)=0$, $j=1,\cdots,m$ have a uniquely determined analytic solution $w(z)$ in a neighborhood of $z_0$, such that $w(z^0)=w^0$.
 \end{theorem}
 
-\section{Index conditions of Coddington-Levinson} \label{sec:Index}
 
-In the below, we check the index condition of the Coddington-Levinson.
-
-\noindent{\bf subcase 1 $q=-\alpha+m+n>0$:} The real parts of eigenvalues are all negative for large $\tau$. Suppose \eqref{eq:auxquad} has two negative real roots so that  $-n\l^2 + \frac{1}{\tau}\lambda_3'(0)<\frac{1}{\tau}z_2(0)<\frac{1}{\tau}z_1(0)<0$, for large $\tau<\infty$.  Then we can check for instance
-$\displaystyle\int_{\tau_1}^{\tau_2} (z_1(0)-z_1(0))\frac{1}{s} \; ds = 0< 1$,
-or $1\in I_2$ for the fixed index $1$. $K=1$ is used in the computation. On the other hand,
-$$ \lim_{\tau \rightarrow \infty}\int_{\tau_0}^\tau (z_1(0)-z_2(0))\frac{1}{s} \; ds = \infty, \quad  \int_{\tau_1}^{\tau_2} Re (z_1(0)-z_2(0))\frac{1}{s} \; ds > -1,$$
-or $2\in I_1$ for the fixed index $1$ and
-$$ \lim_{\tau \rightarrow \infty}\int_{\tau_0}^\tau (z_1(0)-\lambda_3'(0))\frac{1}{s} + n\l^2 \; ds =\infty, \quad  \int_{\tau_1}^{\tau_2} (z_1(0)-\lambda_3'(0))\frac{1}{s} + n\l^2 \; ds > -1,$$
-or $3\in I_1$ for the fixed index $1$.
-
- Similarly we can proceed to check the index condition for all other cases, with $K=1$.
-%For $2$ fixed, on the other hand, $\displaystyle\int_{t_1}^{t_2} Re (z_2(0)-z_1(0))\frac{1}{s} \; ds < 1$, or $1\in I_2$.
-We summarized the result in the below. In all cases in the below $K=1$ is enough as were in the examples.
-\begin{align*}
-  \text{Fix $\ell=1$:}&& 2,3&\in I_1, & 1&\in I_2\\
-  \text{Fix $\ell=2$:}&& 3&\in I_1, & 1,2&\in I_2\\
-  \text{Fix $\ell=3$:}&& & & 1,2,3&\in I_2.
-\end{align*}
-Now, when \eqref{eq:auxquad} has two complex roots with negative real parts so that $-n\l^2 + \frac{1}{\tau}\lambda_3'(0)<Re\Big(\frac{1}{\tau}z_2(0)\Big)=Re\Big(\frac{1}{\tau}z_1(0)\Big)<0$ for large $\tau<\infty$, the results are
-\begin{align*}
-  \text{Fix $\ell=1$:}&& 3&\in I_1, & 1,2&\in I_2,\\
-  \text{Fix $\ell=2$:}&& 3&\in I_1, & 1,2&\in I_2,\\
-  \text{Fix $\ell=3$:}&& & & 1,2,3&\in I_2.
-\end{align*}
-
-
-\noindent{\bf subcase 2 $q=-\alpha+m+n=0$:} In this case, the roots of \eqref{eq:auxquad} are
-$$ z_1(0)=0, \quad z_2(0) = -\frac{1+m+\alpha}{1+m}$$
-and the sign of $z_1(\epsilon)$ is determined by the next order term. Nevertheless we have
-$-n\l^2 + \frac{1}{\tau}\lambda_3'(0)<\frac{1}{\tau}z_2(0)<0=\frac{1}{\tau}z_1(0)$ for large $\tau<\infty$ and
-\begin{align*}
-  \text{Fix $\ell=1$:}&& 2,3&\in I_1, & 1&\in I_2\\
-  \text{Fix $\ell=2$:}&& 3&\in I_1, & 1,2&\in I_2\\
-  \text{Fix $\ell=3$:}&& & & 1,2,3&\in I_2.
-\end{align*}
-
-\noindent{\bf subcase 3 $q=-\alpha+m+n<0$:}
-The characteristic polynomial has precisely one positive real root and two negative real roots. If we label them so that
-$-n\l^2 + \frac{1}{\tau}\lambda_3'(0)<\frac{1}{\tau}z_2(0)<0<\frac{1}{\tau}z_1(0)$, for large $\tau<\infty$ then
-\begin{align*}
-  \text{Fix $\ell=1$:}&& 2,3&\in I_1, & 1&\in I_2\\
-  \text{Fix $\ell=2$:}&& 3&\in I_1, & 1,2&\in I_2\\
-  \text{Fix $\ell=3$:}&& & & 1,2,3&\in I_2.
-\end{align*}
 
 \section{Stability analysis of a non-autonomous system}
-We study the stability of a linear non-autonomous system
-$$ x'=A(t) x.$$%, \quad A(t) \rightarrow A_\infty \quad \text{as $t \rightarrow \infty$}.$$
-The entries $A_{ij}(t)$, $i,j=1,\cdots,d$ are assumed to be bounded. As the vector field is Lipschitz in $x$, it admits the semi-group $F(t)$ (in fact a group for all $t$) characterized by the property $y(t)=F(t)y(0)$. When it is a system of non-autonomous equations, due to the coupling, the maximum of the real parts of the eigenvalues does not necessarily accounts for the operator norm of $F(t)$; $A(t)$ with negative eigenvalues can results in having an exponentially growing solution, showing $\|F(t)\|$ exponentially grows.
-
-On the contrary, like for diagonal matrices, $\|F(t)\|$ can be read off from $A(t)$ when the coupling is in an appropriate sense weaker. $A(t)$ can be by similarity transform turned into the form that has less coupling such as diagonal or Jordan normal form. The price is an additional term due to that the decomposition is also time dependent. More precisely, If $A(t) = P(t)U(t)P(t)^{-1}$, and if $y\triangleq P(t)^{-1}x$ then $y$ satisfies the system
-\begin{equation} y' = U(t)y - P(t)^{-1}P'(t)y. \label{eq:after_fact} \end{equation}
-
-Assuming the operator norm of the solution map $F(t)$ associated to $U(t)$ is computable, we look if the coupling by the remainder term is negligible. Following proposition sheds light on which cases are feasible ones.
-\begin{proposition} \label{prop:stab}
+\begin{theorem} \label{prop:stab}
  Suppose
  \begin{equation}
 x' = U(t)x + \mathcal{E}(t)x, \label{eq:x}
@@ -851,7 +754,7 @@ where $U_{ij}(t)$ are bounded and the associated solution map $F(t)$ has the nor
  Then, for some $a$ every solution $\|x\|_{L^\infty[a,t]} \le 2h(t)$. Furthermore, if $y(t)=F(t)y(0)$ is the one attains the operator norm, i.e.,
  $$ \lim_{t \rightarrow \infty}\frac{y(t)}{\|F\|(t)} = y_\infty \quad \text{nontrivial,}$$
  there is a solution $x(t)$ of \eqref{eq:x} such that $\displaystyle \frac{2}{3}\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)}\le\frac{\|x(t)\|_{L^\infty[a,t]}}{\|F\|(t)} \le 2\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)}.$
-\end{proposition}
+\end{theorem}
 \begin{proof}
 %  Without loss, we may set $h(t) = \exp\left(\int_0^t \theta(s)\; ds\right)$ by setting $\theta(t) = \log(h(t))'$.
 We rewrite \eqref{eq:x} in the form
@@ -874,109 +777,216 @@ We rewrite \eqref{eq:x} in the form
 &\big\|G(t-a)\xi(a)\big\|_{L^\infty([a,t])} \le \big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} + \big\|\xi(t)\big\|_{L^\infty([a,t])} \le \frac{3}{2} \|\xi(t)\|_{L^\infty([a,t])}.
  \end{align*}
 \end{proof}
-\begin{remark}
- \begin{enumerate}
-  \item Proposition \ref{prop:stab} does not assume a special structure of $U(t)$ but assumes its associated $\|F\|(t)$ has estimated, no matter what couplings take place. Given the estimate, it persists under the perturbation by $\mathcal{E}$, whose entries are integrable. Moreover, the largest growth of the perturbed system is precisely as same as unperturbed one.
-  \item The condition that the $\mathcal{E}_{ij}(t)$ is integrable cannot be relaxed. $x=t$ of  $x'=\frac{x}{t}$, is an example in which the asymptotic stability fails by the contribution of the non-integrable coefficient.
- \end{enumerate}
-\end{remark}
+%
+% \begin{proposition}[stability of triangular matrix] \label{prop:tri-stab}
+% Suppose $y' = U(t) y$ and $U(t)$ be an upper triangular matrix with bounded entries. Suppose that there is a function $\theta(t)$ and a constant $A$ such that for all diagonal entries $\lambda_i(t)$,
+% \begin{align} \label{eq:stabcond}
+% %   &\lim_{t \rightarrow \infty} t^{-d} \int_0^t \theta(s)- Re\lambda_i(s)\; ds \rightarrow \infty,\\
+%  &\int_{t_1}^{t_2} \theta(s)-Re\lambda_i(s)\; ds > -A \quad \text{whenever $0\le t_1 \le t_2$.}
+% \end{align}
+% Then for $i=1,\cdots,d$
+% \begin{equation} \label{eq:triestim}
+% |y_{i}(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)% \rightarrow 0 \quad \text{as $t \rightarrow \infty$.}
+% \end{equation}
+% \end{proposition}
+% \begin{proof}
+% We prove the assertion by induction in the descending order. For $i=d$, $y_d(t)=y_d(0)\exp\left( \int_0^t \lambda_d(s)\;ds\right)=y_d(0)\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_d(s)\;ds\right)$ and thus $|y_d(t)| \le Ce^A\exp\left( \int_0^t \theta(s)\;ds\right)$ by \eqref{eq:stabcond}. Now, if the statement holds for $i$, we see that
+% \begin{align*}
+%  y_{i-1}' -\lambda_{i-1}y_{i-1} = \sum_{j\ge i} U_{i-1,j}(t)y_j(t) = g(t)
+% \end{align*}
+% and $|g(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)$ for some another constant $C$ because $U_{ij}(t)$ are bounded. Therefore
+% \begin{align*}
+%  y_{i-1}(t) &= \exp\left( \int_0^t \lambda_{i-1}(s)\;ds\right) \left(y_{i-1}(0) + \int_0^t \exp\left( \int_0^\tau -\lambda_{i-1}(s)\;ds\right)g(\tau) \; d\tau\right)\\
+%  &=\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_{i-1}(s)\;ds\right) y_{i-1}(0) \\
+%  &+ \exp\left( \int_0^t \theta(s)\;ds\right)\underbrace{\int_0^t \exp\left( \int_\tau^t \lambda_{i-1}(s)-\theta(s)\;ds\right)g(\tau)\exp\left( -\int_0^\tau \theta(s)\;ds\right) \; d\tau}_{\triangleq \varphi(t)}
+%  \end{align*}
+% Note that $\varphi(0)=0$ and $|\varphi'(t)| = \left|g(t)\exp\left( \int_0^t -\theta(s)\;ds\right)\right|\le C\big( 1 + t + \cdots + t^{d-i}\big)$ by the assumptions. Thus $|\varphi(t)|\le C\big( 1 + t + \cdots + t^{d-i+1}\big)$ for some another constant $C$. Therefore
+% $$|y_{i-1}(t)| \le C\big( 1 + t + \cdots + t^{d-i+1}\big)\exp\left( \int_0^t \theta(s)\;ds\right).$$
+% \end{proof}
 
-It remains how we can estimate $\|F\|(t)$ that is associated with $U(t)$. For completeness, we next provide an estimate of $\|F\|(t)$ associated to an upper triangular matrix. This is extended to a $U(t)$ that is block diagonal with upper triangular blocks because the solution map $F(t)$ is then decoupled as well block-wisely.
-
- \begin{proposition}[stability of triangular matrix] \label{prop:tri-stab}
- Suppose $y' = U(t) y$ and $U(t)$ be an upper triangular matrix with bounded entries. Suppose that there is a function $\theta(t)$ and a constant $A$ such that for all diagonal entries $\lambda_i(t)$,
- \begin{align} \label{eq:stabcond}
-%   &\lim_{t \rightarrow \infty} t^{-d} \int_0^t \theta(s)- Re\lambda_i(s)\; ds \rightarrow \infty,\\
-  &\int_{t_1}^{t_2} \theta(s)-Re\lambda_i(s)\; ds > -A \quad \text{whenever $0\le t_1 \le t_2$.}
- \end{align}
- Then for $i=1,\cdots,d$
- \begin{equation} \label{eq:triestim}
-|y_{i}(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)% \rightarrow 0 \quad \text{as $t \rightarrow \infty$.}
- \end{equation}
-\end{proposition}
-\begin{proof}
- We prove the assertion by induction in the descending order. For $i=d$, $y_d(t)=y_d(0)\exp\left( \int_0^t \lambda_d(s)\;ds\right)=y_d(0)\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_d(s)\;ds\right)$ and thus $|y_d(t)| \le Ce^A\exp\left( \int_0^t \theta(s)\;ds\right)$ by \eqref{eq:stabcond}. Now, if the statement holds for $i$, we see that
- \begin{align*}
-  y_{i-1}' -\lambda_{i-1}y_{i-1} = \sum_{j\ge i} U_{i-1,j}(t)y_j(t) = g(t)
- \end{align*}
- and $|g(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)$ for some another constant $C$ because $U_{ij}(t)$ are bounded. Therefore
- \begin{align*}
-  y_{i-1}(t) &= \exp\left( \int_0^t \lambda_{i-1}(s)\;ds\right) \left(y_{i-1}(0) + \int_0^t \exp\left( \int_0^\tau -\lambda_{i-1}(s)\;ds\right)g(\tau) \; d\tau\right)\\
-  &=\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_{i-1}(s)\;ds\right) y_{i-1}(0) \\
-  &+ \exp\left( \int_0^t \theta(s)\;ds\right)\underbrace{\int_0^t \exp\left( \int_\tau^t \lambda_{i-1}(s)-\theta(s)\;ds\right)g(\tau)\exp\left( -\int_0^\tau \theta(s)\;ds\right) \; d\tau}_{\triangleq \varphi(t)}
-  \end{align*}
- Note that $\varphi(0)=0$ and $|\varphi'(t)| = \left|g(t)\exp\left( \int_0^t -\theta(s)\;ds\right)\right|\le C\big( 1 + t + \cdots + t^{d-i}\big)$ by the assumptions. Thus $|\varphi(t)|\le C\big( 1 + t + \cdots + t^{d-i+1}\big)$ for some another constant $C$. Therefore
- $$|y_{i-1}(t)| \le C\big( 1 + t + \cdots + t^{d-i+1}\big)\exp\left( \int_0^t \theta(s)\;ds\right).$$
-\end{proof}
-
-
-\begin{remark}
-  This estimate shows that the couplings through off-diagonal terms does spoil the asymptotic stability when the eigenvalues decay to $0$ as $t \rightarrow \infty$ but not so much to be integrable. Suppose that every eigenvalue has negative real parts bounded by $\theta(t) = -\frac{k}{t}$ for some $k$. Then the estimate \eqref{eq:triestim} fails to guarantee the asymptotic stability unless otherwise $k\ge d$ because $\exp\left( \int_1^t \theta(s)\;ds\right) =\exp\left( -\int_1^t \frac{k}{s}\;ds\right) =t^{-k}.$ This is the typical behavior of the Jordan block.
-\end{remark}
-
-Lastly, the case where $U(t)$ is diagonal is considered. In this case, not only the explicit formula of the solution map $F(t) = \textrm{diag}\left[ \exp\left(\int_0^t \lambda_i(s)\; ds\right) \right]$ is available but also it is possible to spot every modes. Indeed, the unperturbed system is totally decoupled so that every mode remains unmixed and survives. This property is in fact shared by the upper triangular matrix; this can be seen by just taking $\hat{\ell}$ the coordinate basis as an initial data. The next Coddington-Levinson theorem shows that for a diagonal matrix, under the suitable spectral gap conditions, the ability to discern all modes persists after adding a weak coupling $\mathcal{E}(t)$. The spectral condition is notably precise where the accumulated contribution by non-integrable real parts of eigenvalues matters.
 
 \begin{theorem}{\cite[Diagonal Version]{CL1955}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{a_0}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$ for some $a_0$.
-Fix an index $\ell$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
+Fix an index $k$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
 
 $i \in I_1$ if
 \begin{align}
- &\int_{a_0}^\infty Re(\lambda_\ell(s) -\lambda_i(s))\; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for some $a_0$},\label{eq:I1cond1}\\
- &\int_{t_1}^{t_2} Re(\lambda_\ell(s) -\lambda_i(s))\; ds > -A, \quad \text{whenever $t_2\ge t_1\ge 0$} \label{eq:I1cond2}
+ &\int_{a_0}^\infty Re(\lambda_k(s) -\lambda_i(s))\; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for some $a_0$},\label{eq:I1cond1}\\
+ &\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_i(s))\; ds > -A, \quad \text{whenever $t_2\ge t_1\ge 0$} \label{eq:I1cond2}
 \end{align}
 and $i \in I_2$ if
 \begin{align}
- &\int_{t_1}^{t_2} Re(\lambda_\ell(s) -\lambda_i(s))\; ds < A, \quad \text{whenever $t_2\ge t_1\ge 0$}. \label{eq:I2cond}
+ &\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_i(s))\; ds < A, \quad \text{whenever $t_2\ge t_1\ge 0$}. \label{eq:I2cond}
 \end{align}
-Then there is an orbit $\varphi_\ell(t)$ $t\ge a$ for some $a$ such that,
+Then there is an orbit $\varphi_k(t)$ $t\ge a$ for some $a$ such that,
 \begin{equation}
- \lim_{t \rightarrow \infty} \varphi_\ell(t) \exp\left(-\int_{a}^t \lambda_\ell(s)\; ds\right) = \hat{\ell}, \quad \text{where $\hat{\ell}$ is the $\ell$-th coordinate basis of $\mathbb{R}^d$.}
+ \lim_{t \rightarrow \infty} \varphi_k(t) \exp\left(-\int_{a}^t \lambda_k(s)\; ds\right) = \hat{k}, \quad \text{where $\hat{k}$ is the $k$-th coordinate basis of $\mathbb{R}^d$.}
 \end{equation}
 \end{theorem}
 \begin{proof}
 Component-wisely, we can write
 \begin{align*}
- \xi_i' & = (\lambda_i-\lambda_\ell)\xi_i + \mathcal{E}_{ij}\xi_j, \quad \text{where $\xi = \exp\left(-\int_a^t \lambda_\ell(s) \; ds\right)x$.}
+ \xi_i' & = (\lambda_i-\lambda_k)\xi_i + \mathcal{E}_{ij}\xi_j, \quad \text{where $\xi = \exp\left(-\int_a^t \lambda_k(s) \; ds\right)x$.}
 \end{align*}
 We look for a solution of the integral representation
 \begin{align*}
- \xi_i(t) &= \hat\ell_i + \int_a^t \exp\left(\int_\tau^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_1$,}\\
+ \xi_i(t) &= \hat{k}_i + \int_a^t \exp\left(\int_\tau^t \lambda_i(s)-\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_1$,}\\
 % \end{align*}
-% if $i\in I_1$, where $\hat{\ell}_i = \delta_{\ell i}$ of Kronecker delta and
+% if $i\in I_1$, where $\hat{k}_i = \delta_{k i}$ of Kronecker delta and
 % \begin{align*}
- \xi_i(t) &= \hat\ell_i -\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_2$,}
+ \xi_i(t) &= \hat{k}_i -\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_2$,}
 \end{align*}
-where $\hat{\ell}_i = \delta_{\ell i}$ of Kronecker delta. Let $t\ge a$ so large that $e^A\int_a^\infty |\mathcal{E}_{ij}(\tau)|\; d\tau < \frac{1}{2}$. Then by \eqref{eq:I1cond2} and \eqref{eq:I2cond}, for given $\bar\xi(t)$ bounded $t\ge a$, the expression right-hand-side defines an operator $S$ that maps $\bar\xi$ to another bounded function that is defined by the expression. In particular, $\xi=S\bar\xi$ has same initial data $\xi_i(a) = \hat{\ell}_i$ if $i\in I_1$.
-% and has same finial data $\displaystyle\lim_{t \rightarrow \infty} \xi_i(t) = \hat{\ell}_i$ if $i\in I_2$.
-By the choice of $a$, $\|S\xi - S\bar\xi\|_\infty \le \frac{1}{2}\|\xi-\bar\xi\|_\infty$, $t\ge a$ and thus $S$ is a contraction mapping. The integral equation has the unique solution and $\|\xi_i(t)\|_\infty \le 2$ because the integral is bounded above by $ \frac{1}{2} \|\xi\|_\infty$ and $|\hat{\ell}|=1$.
+where $\hat{k}_i = \delta_{k i}$ of Kronecker delta. Let $t\ge a$ so large that $e^A\int_a^\infty |\mathcal{E}_{ij}(\tau)|\; d\tau < \frac{1}{2}$. Then by \eqref{eq:I1cond2} and \eqref{eq:I2cond}, for given $\bar\xi(t)$ bounded $t\ge a$, the expression right-hand-side defines an operator $S$ that maps $\bar\xi$ to another bounded function that is defined by the expression. In particular, $\xi=S\bar\xi$ has same initial data $\xi_i(a) = \hat{k}_i$ if $i\in I_1$.
+% and has same finial data $\displaystyle\lim_{t \rightarrow \infty} \xi_i(t) = \hat{k}_i$ if $i\in I_2$.
+By the choice of $a$, $\|S\xi - S\bar\xi\|_\infty \le \frac{1}{2}\|\xi-\bar\xi\|_\infty$, $t\ge a$ and thus $S$ is a contraction mapping. The integral equation has the unique solution and $\|\xi_i(t)\|_\infty \le 2$ because the integral is bounded above by $ \frac{1}{2} \|\xi\|_\infty$ and $|\hat{k}|=1$.
 
-Now we show that $|\xi(t)-\hat\ell| \rightarrow 0$ as $t \rightarrow \infty$. For given $\epsilon>0$, we show we can choose $t_0$ so large that for $t\ge t_0$, $\big|\xi_i(t)-\hat{\ell}_i\big| \le \epsilon$. If $i\in I_1$, we divide the integral into two parts
+Now we show that $|\xi(t)-\hat{k}| \rightarrow 0$ as $t \rightarrow \infty$. For given $\epsilon>0$, we show we can choose $t_0$ so large that for $t\ge t_0$, $\big|\xi_i(t)-\hat{k}_i\big| \le \epsilon$. If $i\in I_1$, we divide the integral into two parts
 \begin{align*}
- &\big|\xi_i(t)-\hat{\ell}_i\big| \le \left|\left\{ \int_a^{t_1} + \int_{t_1}^t \right\} \exp\left(\int_\tau^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|.
+ &\big|\xi_i(t)-\hat{k}_i\big| \le \left|\left\{ \int_a^{t_1} + \int_{t_1}^t \right\} \exp\left(\int_\tau^t \lambda_i(s)-\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|.
 \end{align*}
-By choosing $t_1$ so large the second integral can be made smaller than $ \frac{\epsilon}{2}$ for all $t\ge t_1$. The first integral $$\left|\exp\left(\int_a^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\int_a^{t_1} \exp\left(\int_a^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|$$
-can be made smaller than $ \frac{\epsilon}{2}$ because the latter integral in the compact interval $[a, t_1]$ is finite and $\exp\left(\int_a^t \lambda_i(s)-\lambda_\ell(s) \; ds\right) \rightarrow 0$ as $t \rightarrow \infty$ by \eqref{eq:I1cond1}.
+By choosing $t_1$ so large the second integral can be made smaller than $ \frac{\epsilon}{2}$ for all $t\ge t_1$. The first integral $$\left|\exp\left(\int_a^t \lambda_i(s)-\lambda_k(s) \; ds\right)\int_a^{t_1} \exp\left(\int_a^\tau -\lambda_i(s)+\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|$$
+can be made smaller than $ \frac{\epsilon}{2}$ because the latter integral in the compact interval $[a, t_1]$ is finite and $\exp\left(\int_a^t \lambda_i(s)-\lambda_k(s) \; ds\right) \rightarrow 0$ as $t \rightarrow \infty$ by \eqref{eq:I1cond1}.
 
-If $i\in I_2$, then $\left|\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau\right| \rightarrow 0$ as $t \rightarrow \infty$.
+If $i\in I_2$, then $\left|\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau\right| \rightarrow 0$ as $t \rightarrow \infty$.
 \end{proof}
 
-\subsection{Possibility of having absolutely continuous factorization}
-As indicated, $U(t)$ is presumed to be in the form we can compute its associated semi-group $F(t)$ while $A(t)$ may not. We have so far discussed the persistence properties of system defined by coefficient $U(t)$, the semi-group part, under the presence of weak coupling $\mathcal{E}(t)$.  Now, we turn our attentions to the continuous factorization of $A(t)$ along with the system \eqref{eq:after_fact}.
-
-All earlier discussions assume the integrability of $|\mathcal{E}_{ij}(t)|$ and this was sharp. In order for the factored system \eqref{eq:after_fact} to be analyzed in this context, the term $-P(t)^{-1}P'(t)$ appeared in \eqref{eq:after_fact} has to decay so fast that the entries are integrable. We look for a factorization where $P'(t)$ decays suitably and $P(t)$ and $P(t)^{-1}$ are absolutely continuous up to infinity.
-
-At best possibility is the diagonalization. If so, then we apply the Theorem by Coddington-Levinson under the spectral gap conditions there. However, not every matrix is diagonalizable and more importantly, this factorization is prone to a perturbation, or we do not in general expect the continuity of the eigenvectors.
-
-At worst possibility is the block Schur factorization, $A(t)=U(t)B(t)U^*(t)$, where $U(t)$ is unitary and $B(t)$ is block upper triangular. This factorization is in general abound and not unique while continuous one can be picked. See [Delci] for the smooth factorization: Under the assumption that the spectrum is partitioned into disjoint sets for all time, the method admits a continuous factorization. What can be said to lie in the middle is a Jordan canonical form. It always exists and is unique up to the permutation of blocks but this factorization lacks the continuity as well. Roughly, better the chance we have for the factorization to be continuous, worse the coupling properties we obtain.
-
-
-\cite{L1966}
-% {\red
-% In the below, we provide the result again by Coddington and Levinson on a sufficient condition to have absolutely continuous eigenvectors.
-% \begin{proposition}
-%  Assumption. Then $A(t) = P(t)\Lambda(t)P(t)^{-1}$
+%
+% \section{Stability analysis of a non-autonomous system}
+% We study the stability of a linear non-autonomous system
+% $$ x'=A(t) x.$$%, \quad A(t) \rightarrow A_\infty \quad \text{as $t \rightarrow \infty$}.$$
+% The entries $A_{ij}(t)$, $i,j=1,\cdots,d$ are assumed to be bounded. As the vector field is Lipschitz in $x$, it admits the semi-group $F(t)$ (in fact a group for all $t$) characterized by the property $y(t)=F(t)y(0)$. When it is a system of non-autonomous equations, due to the coupling, the maximum of the real parts of the eigenvalues does not necessarily accounts for the operator norm of $F(t)$; $A(t)$ with negative eigenvalues can results in having an exponentially growing solution, showing $\|F(t)\|$ exponentially grows.
+%
+% On the contrary, like for diagonal matrices, $\|F(t)\|$ can be read off from $A(t)$ when the coupling is in an appropriate sense weaker. $A(t)$ can be by similarity transform turned into the form that has less coupling such as diagonal or Jordan normal form. The price is an additional term due to that the decomposition is also time dependent. More precisely, If $A(t) = P(t)U(t)P(t)^{-1}$, and if $y\triangleq P(t)^{-1}x$ then $y$ satisfies the system
+% \begin{equation} y' = U(t)y - P(t)^{-1}P'(t)y. \label{eq:after_fact} \end{equation}
+%
+% Assuming the operator norm of the solution map $F(t)$ associated to $U(t)$ is computable, we look if the coupling by the remainder term is negligible. Following proposition sheds light on which cases are feasible ones.
+% \begin{proposition} \label{prop:stab}
+%  Suppose
+%  \begin{equation}
+% x' = U(t)x + \mathcal{E}(t)x, \label{eq:x}
+%  \end{equation}
+% where $U_{ij}(t)$ are bounded and the associated solution map $F(t)$ has the norm $\|F\|(t) \le h(t)=\exp\left(\int_0^t \theta(s)\; ds\right)$ for some $\theta(t)$. Assume that $\mathcal{E}_{ij}(t)$ decay as $t \rightarrow \infty$ so that they are integrable, i.e.,
+%  $$ \int_{a_0}^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a_0$.}$$
+%  Then, for some $a$ every solution $\|x\|_{L^\infty[a,t]} \le 2h(t)$. Furthermore, if $y(t)=F(t)y(0)$ is the one attains the operator norm, i.e.,
+%  $$ \lim_{t \rightarrow \infty}\frac{y(t)}{\|F\|(t)} = y_\infty \quad \text{nontrivial,}$$
+%  there is a solution $x(t)$ of \eqref{eq:x} such that $\displaystyle \frac{2}{3}\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)}\le\frac{\|x(t)\|_{L^\infty[a,t]}}{\|F\|(t)} \le 2\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)}.$
 % \end{proposition}
-% }
+% \begin{proof}
+% %  Without loss, we may set $h(t) = \exp\left(\int_0^t \theta(s)\; ds\right)$ by setting $\theta(t) = \log(h(t))'$.
+% We rewrite \eqref{eq:x} in the form
+%  \begin{align*}
+%   x' - \theta(t)x &= \big(U(t)-\theta(t)\big)x + \mathcal{E}x \quad \text{or}\\
+%   \xi' &=\big(U(t)-\theta(t)\big)\xi + \mathcal{E}\xi, \quad \text{where $\xi\triangleq \exp\left(-\int_0^t \theta(s)\; ds\right) x$}.
+%  \end{align*}
+%  Let $G(t)$ be the solution map associated to $U(t)-\theta(t)$. Since $F(t)x(0)=x(t)$ \\$= \exp\left(\int_0^t \theta(s)\; ds\right)\xi(t)= \exp\left(\int_0^t \theta(s)\; ds\right)G(t)\xi(0)=\exp\left(\int_0^t \theta(s)\; ds\right)G(t)x(0)$, for all $x(0)\in \mathbb{R}^d$, $G(t) = F(t)\exp\left(-\int_0^t \theta(s)\; ds\right)$ and $\|G\|(t)\le 1$. Using $G(t)$ we further write
+%  $$ \xi(t) = G(t-a)\xi(a) + \int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau \quad \text{for some $a$ we choose later.}$$
+%  Note that if $\bar\xi$ is a bounded function then the the expression right-hand-side well-defines an operator $S:L^\infty([a,\infty)) \mapsto L^\infty([a,\infty))$ because $t\ge \tau\ge a$, $G$ is bounded and $\mathcal{E}$ is integrable. $S\bar\xi$ has the same initial value $\xi(a)$. If $a$ is chosen so large that $\int_a^\infty \|G\| \; |\mathcal{E}_{ij}|\; d\tau < \frac{1}{2}$ then this is a contraction mapping. Therefore solution exists with the initial value $\xi(a)$. Since $\xi(a)$ was arbitrary, every independent solution is attained.
+%  From the integral representation of $\xi(t)$, we have
+%  \begin{align*}
+%  \|\xi(t)\|_{L^\infty([a,t])} &\le \|G(t-a)\xi(a)\|_{L^\infty([a,t])} + \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \\
+%  &\le \|G(t-a)\xi(a)\|_{L^\infty([a,t])} + \frac{1}{2} \|\xi(t)\|_{L^\infty([a,t])},\\
+%  \|\xi(t)\|_{L^\infty([a,t])} &\le 2 \|G(t-a)\xi(a)\|_{L^\infty([a,t])} \le 2\sup_t \|G\|(t) \le 2.
+%  \end{align*}
+%  This gives the boundedness of the solution. Now, let $\xi(t)$ and $\xi(a)$ be that its semi-group part is the $y(t)$ grows as same as the operator norm does. The second assertion follows from
+%  \begin{align*}
+% &\big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} = \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \le \frac{1}{2} \|\xi(t)\|_{L^\infty([a,t])},\\
+% &\big\|G(t-a)\xi(a)\big\|_{L^\infty([a,t])} \le \big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} + \big\|\xi(t)\big\|_{L^\infty([a,t])} \le \frac{3}{2} \|\xi(t)\|_{L^\infty([a,t])}.
+%  \end{align*}
+% \end{proof}
+% \begin{remark}
+%  \begin{enumerate}
+%   \item Proposition \ref{prop:stab} does not assume a special structure of $U(t)$ but assumes its associated $\|F\|(t)$ has estimated, no matter what couplings take place. Given the estimate, it persists under the perturbation by $\mathcal{E}$, whose entries are integrable. Moreover, the largest growth of the perturbed system is precisely as same as unperturbed one.
+%   \item The condition that the $\mathcal{E}_{ij}(t)$ is integrable cannot be relaxed. $x=t$ of  $x'=\frac{x}{t}$, is an example in which the asymptotic stability fails by the contribution of the non-integrable coefficient.
+%  \end{enumerate}
+% \end{remark}
+%
+% It remains how we can estimate $\|F\|(t)$ that is associated with $U(t)$. For completeness, we next provide an estimate of $\|F\|(t)$ associated to an upper triangular matrix. This is extended to a $U(t)$ that is block diagonal with upper triangular blocks because the solution map $F(t)$ is then decoupled as well block-wisely.
+%
+%  \begin{proposition}[stability of triangular matrix] \label{prop:tri-stab}
+%  Suppose $y' = U(t) y$ and $U(t)$ be an upper triangular matrix with bounded entries. Suppose that there is a function $\theta(t)$ and a constant $A$ such that for all diagonal entries $\lambda_i(t)$,
+%  \begin{align} \label{eq:stabcond}
+% %   &\lim_{t \rightarrow \infty} t^{-d} \int_0^t \theta(s)- Re\lambda_i(s)\; ds \rightarrow \infty,\\
+%   &\int_{t_1}^{t_2} \theta(s)-Re\lambda_i(s)\; ds > -A \quad \text{whenever $0\le t_1 \le t_2$.}
+%  \end{align}
+%  Then for $i=1,\cdots,d$
+%  \begin{equation} \label{eq:triestim}
+% |y_{i}(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)% \rightarrow 0 \quad \text{as $t \rightarrow \infty$.}
+%  \end{equation}
+% \end{proposition}
+% \begin{proof}
+%  We prove the assertion by induction in the descending order. For $i=d$, $y_d(t)=y_d(0)\exp\left( \int_0^t \lambda_d(s)\;ds\right)=y_d(0)\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_d(s)\;ds\right)$ and thus $|y_d(t)| \le Ce^A\exp\left( \int_0^t \theta(s)\;ds\right)$ by \eqref{eq:stabcond}. Now, if the statement holds for $i$, we see that
+%  \begin{align*}
+%   y_{i-1}' -\lambda_{i-1}y_{i-1} = \sum_{j\ge i} U_{i-1,j}(t)y_j(t) = g(t)
+%  \end{align*}
+%  and $|g(t)| \le C\big( 1 + t + \cdots + t^{d-i}\big) \exp\left( \int_0^t \theta(s)\;ds\right)$ for some another constant $C$ because $U_{ij}(t)$ are bounded. Therefore
+%  \begin{align*}
+%   y_{i-1}(t) &= \exp\left( \int_0^t \lambda_{i-1}(s)\;ds\right) \left(y_{i-1}(0) + \int_0^t \exp\left( \int_0^\tau -\lambda_{i-1}(s)\;ds\right)g(\tau) \; d\tau\right)\\
+%   &=\exp\left( \int_0^t \theta(s)-\theta(s)+\lambda_{i-1}(s)\;ds\right) y_{i-1}(0) \\
+%   &+ \exp\left( \int_0^t \theta(s)\;ds\right)\underbrace{\int_0^t \exp\left( \int_\tau^t \lambda_{i-1}(s)-\theta(s)\;ds\right)g(\tau)\exp\left( -\int_0^\tau \theta(s)\;ds\right) \; d\tau}_{\triangleq \varphi(t)}
+%   \end{align*}
+%  Note that $\varphi(0)=0$ and $|\varphi'(t)| = \left|g(t)\exp\left( \int_0^t -\theta(s)\;ds\right)\right|\le C\big( 1 + t + \cdots + t^{d-i}\big)$ by the assumptions. Thus $|\varphi(t)|\le C\big( 1 + t + \cdots + t^{d-i+1}\big)$ for some another constant $C$. Therefore
+%  $$|y_{i-1}(t)| \le C\big( 1 + t + \cdots + t^{d-i+1}\big)\exp\left( \int_0^t \theta(s)\;ds\right).$$
+% \end{proof}
+%
+%
+% \begin{remark}
+%   This estimate shows that the couplings through off-diagonal terms does spoil the asymptotic stability when the eigenvalues decay to $0$ as $t \rightarrow \infty$ but not so much to be integrable. Suppose that every eigenvalue has negative real parts bounded by $\theta(t) = -\frac{k}{t}$ for some $k$. Then the estimate \eqref{eq:triestim} fails to guarantee the asymptotic stability unless otherwise $k\ge d$ because $\exp\left( \int_1^t \theta(s)\;ds\right) =\exp\left( -\int_1^t \frac{k}{s}\;ds\right) =t^{-k}.$ This is the typical behavior of the Jordan block.
+% \end{remark}
+%
+% Lastly, the case where $U(t)$ is diagonal is considered. In this case, not only the explicit formula of the solution map $F(t) = \textrm{diag}\left[ \exp\left(\int_0^t \lambda_i(s)\; ds\right) \right]$ is available but also it is possible to spot every modes. Indeed, the unperturbed system is totally decoupled so that every mode remains unmixed and survives. This property is in fact shared by the upper triangular matrix; this can be seen by just taking $\hat{\ell}$ the coordinate basis as an initial data. The next Coddington-Levinson theorem shows that for a diagonal matrix, under the suitable spectral gap conditions, the ability to discern all modes persists after adding a weak coupling $\mathcal{E}(t)$. The spectral condition is notably precise where the accumulated contribution by non-integrable real parts of eigenvalues matters.
+%
+% \begin{theorem}{\cite[Diagonal Version]{CL1955}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{a_0}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$ for some $a_0$.
+% Fix an index $\ell$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
+%
+% $i \in I_1$ if
+% \begin{align}
+%  &\int_{a_0}^\infty Re(\lambda_\ell(s) -\lambda_i(s))\; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for some $a_0$},\label{eq:I1cond1}\\
+%  &\int_{t_1}^{t_2} Re(\lambda_\ell(s) -\lambda_i(s))\; ds > -A, \quad \text{whenever $t_2\ge t_1\ge 0$} \label{eq:I1cond2}
+% \end{align}
+% and $i \in I_2$ if
+% \begin{align}
+%  &\int_{t_1}^{t_2} Re(\lambda_\ell(s) -\lambda_i(s))\; ds < A, \quad \text{whenever $t_2\ge t_1\ge 0$}. \label{eq:I2cond}
+% \end{align}
+% Then there is an orbit $\varphi_\ell(t)$ $t\ge a$ for some $a$ such that,
+% \begin{equation}
+%  \lim_{t \rightarrow \infty} \varphi_\ell(t) \exp\left(-\int_{a}^t \lambda_\ell(s)\; ds\right) = \hat{\ell}, \quad \text{where $\hat{\ell}$ is the $\ell$-th coordinate basis of $\mathbb{R}^d$.}
+% \end{equation}
+% \end{theorem}
+% \begin{proof}
+% Component-wisely, we can write
+% \begin{align*}
+%  \xi_i' & = (\lambda_i-\lambda_\ell)\xi_i + \mathcal{E}_{ij}\xi_j, \quad \text{where $\xi = \exp\left(-\int_a^t \lambda_\ell(s) \; ds\right)x$.}
+% \end{align*}
+% We look for a solution of the integral representation
+% \begin{align*}
+%  \xi_i(t) &= \hat\ell_i + \int_a^t \exp\left(\int_\tau^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_1$,}\\
+% % \end{align*}
+% % if $i\in I_1$, where $\hat{\ell}_i = \delta_{\ell i}$ of Kronecker delta and
+% % \begin{align*}
+%  \xi_i(t) &= \hat\ell_i -\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_2$,}
+% \end{align*}
+% where $\hat{\ell}_i = \delta_{\ell i}$ of Kronecker delta. Let $t\ge a$ so large that $e^A\int_a^\infty |\mathcal{E}_{ij}(\tau)|\; d\tau < \frac{1}{2}$. Then by \eqref{eq:I1cond2} and \eqref{eq:I2cond}, for given $\bar\xi(t)$ bounded $t\ge a$, the expression right-hand-side defines an operator $S$ that maps $\bar\xi$ to another bounded function that is defined by the expression. In particular, $\xi=S\bar\xi$ has same initial data $\xi_i(a) = \hat{\ell}_i$ if $i\in I_1$.
+% % and has same finial data $\displaystyle\lim_{t \rightarrow \infty} \xi_i(t) = \hat{\ell}_i$ if $i\in I_2$.
+% By the choice of $a$, $\|S\xi - S\bar\xi\|_\infty \le \frac{1}{2}\|\xi-\bar\xi\|_\infty$, $t\ge a$ and thus $S$ is a contraction mapping. The integral equation has the unique solution and $\|\xi_i(t)\|_\infty \le 2$ because the integral is bounded above by $ \frac{1}{2} \|\xi\|_\infty$ and $|\hat{\ell}|=1$.
+%
+% Now we show that $|\xi(t)-\hat\ell| \rightarrow 0$ as $t \rightarrow \infty$. For given $\epsilon>0$, we show we can choose $t_0$ so large that for $t\ge t_0$, $\big|\xi_i(t)-\hat{\ell}_i\big| \le \epsilon$. If $i\in I_1$, we divide the integral into two parts
+% \begin{align*}
+%  &\big|\xi_i(t)-\hat{\ell}_i\big| \le \left|\left\{ \int_a^{t_1} + \int_{t_1}^t \right\} \exp\left(\int_\tau^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|.
+% \end{align*}
+% By choosing $t_1$ so large the second integral can be made smaller than $ \frac{\epsilon}{2}$ for all $t\ge t_1$. The first integral $$\left|\exp\left(\int_a^t \lambda_i(s)-\lambda_\ell(s) \; ds\right)\int_a^{t_1} \exp\left(\int_a^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|$$
+% can be made smaller than $ \frac{\epsilon}{2}$ because the latter integral in the compact interval $[a, t_1]$ is finite and $\exp\left(\int_a^t \lambda_i(s)-\lambda_\ell(s) \; ds\right) \rightarrow 0$ as $t \rightarrow \infty$ by \eqref{eq:I1cond1}.
+%
+% If $i\in I_2$, then $\left|\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_\ell(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau\right| \rightarrow 0$ as $t \rightarrow \infty$.
+% \end{proof}
+%
+% \subsection{Possibility of having absolutely continuous factorization}
+% As indicated, $U(t)$ is presumed to be in the form we can compute its associated semi-group $F(t)$ while $A(t)$ may not. We have so far discussed the persistence properties of system defined by coefficient $U(t)$, the semi-group part, under the presence of weak coupling $\mathcal{E}(t)$.  Now, we turn our attentions to the continuous factorization of $A(t)$ along with the system \eqref{eq:after_fact}.
+%
+% All earlier discussions assume the integrability of $|\mathcal{E}_{ij}(t)|$ and this was sharp. In order for the factored system \eqref{eq:after_fact} to be analyzed in this context, the term $-P(t)^{-1}P'(t)$ appeared in \eqref{eq:after_fact} has to decay so fast that the entries are integrable. We look for a factorization where $P'(t)$ decays suitably and $P(t)$ and $P(t)^{-1}$ are absolutely continuous up to infinity.
+%
+% At best possibility is the diagonalization. If so, then we apply the Theorem by Coddington-Levinson under the spectral gap conditions there. However, not every matrix is diagonalizable and more importantly, this factorization is prone to a perturbation, or we do not in general expect the continuity of the eigenvectors.
+%
+% At worst possibility is the block Schur factorization, $A(t)=U(t)B(t)U^*(t)$, where $U(t)$ is unitary and $B(t)$ is block upper triangular. This factorization is in general abound and not unique while continuous one can be picked. See [Delci] for the smooth factorization: Under the assumption that the spectrum is partitioned into disjoint sets for all time, the method admits a continuous factorization. What can be said to lie in the middle is a Jordan canonical form. It always exists and is unique up to the permutation of blocks but this factorization lacks the continuity as well. Roughly, better the chance we have for the factorization to be continuous, worse the coupling properties we obtain.
+
 
 
 \begin{thebibliography}{10}
