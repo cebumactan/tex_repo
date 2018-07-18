@@ -1,4 +1,18 @@
-
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%     Dynamic shear band formation in high strain-rate plasticity of metals
+%
+%         contents:  Linearized stability, self-similar localizing solutions,  survey for JMPS 
+%
+%          Th. Katsaounis, M-G Lee and A.Tzavaras
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \documentclass[a4paper,11pt]{article}
@@ -99,8 +113,8 @@
 \def\drr{\dot{r}}
 \def\dss{\dot{s}}
 
-\def\BO{{\mathcal{O}}}
-\def\lio{{\mathcal{o}}}
+\def\BO{{{O}}}
+\def\lio{{{o}}}
 
 \newcommand{\tcr}{\textcolor{red}}
 \newcommand{\tcb}{\textcolor{blue}}
@@ -121,145 +135,64 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{Dynamic shear band formation in the rate dependent thermoplastic metals}
-\author{Theodoros Katsaounis\footnotemark[1]\ \footnotemark[2]
+\title{Dynamic shear band formation in high strain-rate plasticity of metals}
+\author{Theodoros Katsaounis\footnotemark[1]\ \footnotemark[2]\ \footnotemark[3]
 \and Min-Gi Lee\footnotemark[1]
-\and Athanasios Tzavaras\footnotemark[1]\  \footnotemark[2]  \footnotemark[3]}
+\and Athanasios E. Tzavaras\footnotemark[1]\  \footnotemark[4]}
 \date{}
 
 \maketitle
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \footnotetext[1]{Computer, Electrical and Mathematical Sciences \& Engineering Division, King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia}
 \footnotetext[2]{Institute of Applied and Computational Mathematics, FORTH, Heraklion, Greece}
-\footnotetext[3]{Corresponding author : \texttt{athanasios.tzavaras@kaust.edu.sa}}
+\footnotetext[3]{Department of Mathematics and Applied Mathematics, University of Crete, Heraklion, Greece}
+\footnotetext[4]{Corresponding author : \texttt{athanasios.tzavaras@kaust.edu.sa}}
 %\footnotetext[4]{Research supported by the King Abdullah University of Science and Technology (KAUST) }
 \renewcommand{\thefootnote}{\arabic{footnote}}
-\begin{abstract}
 
+ \begin{abstract}
+ This article is devoted to the explanation of the onset of localization and the dynamic formation of shear band in high strain-rate plasticity of metals. 
+ We consider a model from thermoviscoplasticity encompassing the basic mechanisms of thermal softening, strain hardening and strain-rate hardening 
+ that contribute to the formation of shear bands. We first investigate the stability of the uniform shearing solutions.
+ Since these are time-dependent, the linearized theory has to account for the behavior of  non-autonomous systems.
+ We present a rigorous theory that illustrates the behavior of  linearized modes around the time dependent base solutions. 
+ The analysis provides a criterion for linearized stability or instability of uniform shear. Next we focus on the parameter range of instability,
+ and investigate the development of shear bands in the nonlinear regime. We establish a class of localizing self-similar solutions 
+ capturing  how shear bands develop beyond the initial stage. They are obtained by transforming the problem to the construction
+ of a heteroclinic orbit and using the geometric singular perturbation theory from dynamical systems. 
+ The heteroclinic orbits are constructed numerically, and provide instances of  localizing solutions.
+ \end{abstract}
 
-This article is devoted to the explanation of the onset of localizing instability and the dynamic formation of shear band in high strain-rate plasticity of metals. Our objective is to scrutinize the power law constitutive model in a validly designated range of exponents. The linearized problem is first treated, to find the role of the viscosity critical; we show Hadamard type instability in the inviscid law and Turing type instability in the viscous law. The typical difficulty of having non-autonomous terms in the linearized problem arises, which stems from having the uniform shearing solution, around which the system is linearized, not steady but evolutionary. Next, we begin nonlinear analysis. For the given nonlinear model we construct self-similar solutions that describe
-the self-organization into a localized solution starting from well-prepared data. In particular, these special solutions are found as associated heteroclinic orbits of the certain parametrized dynamical system. The actual construction is achieved via geometric singular perturbation theory. The recognized heteroclinic orbit is then numerically constructed as well. This is to capture a saddle-saddle heteroclinic connection in a four-dimensional phase space. For its capturing, we employed the method of continuation, using the software package \texttt{AUTO}. The physical variables acquired from the abstractly and numerically captured heteroclinic orbit clearly show the dynamic formation of the shear band in the corresponding power law model.
-\end{abstract}
-
-% \tableofcontents
+ \tableofcontents
 % \pagebreak
 
-{\red
-\section{Introduction to series}
-}
+
+\vfil\eject
 
 
-% The phenomenon of shear localization and the formation of shear bands appear in several different instances of material instability in thermo-mechanics. We aim to explain the dynamic formation of shear band in a shear deformation of a rate dependent thermo-plastic metals. It is often associated with ill-posedness of an initial value problem of the underlying model what has coined the term Hadamard instability in mechanics literature. It should be however noted from a modelling perspective that the Hadamard instability cannot by itself explain the coherent structures in localizing process. The instability indicated by Hadamard instability is the catastrophic growth of oscillations around the mean state while such a wild oscillation are not observed in the experiments. The explanation of this coherent structures in localization is of our central objective and it is a nonlinear effect in the corresponding model.
-%
-%
-% Projecting above paradigm, the mathematical theory of the shear band formation in high strain rate thermo-plasticity poses analytical challenges to the problem of parabolic regularizations of ill-posed problem. In the underlying model, the constitutive law is such that the (net) softening response offers a destabilizing mechanism exhibiting Hadamard instability while the higher order nonlinear effect of viscosity offers an opposing mechanism. We aim to understand how the Hadamard instability interacts with the nonlinear features of the problem to form \emph{a localized coherent state}. To be concrete, here we draw attention to the material that obeys the power law and conduct various of analysis to come to a few conclusions.
-%
-% A caricature of shear bands formation is illustrated in Fig. \ref{ShearFlow} while the more detailed description of the model is followed in the section below. The shear strain localizes in a narrow band in the specimen and concurrently an elevation of the temperature takes place in the interior of the band.
-%
-% \begin{figure}[ht]
-% \centering
-% \vspace{-0.1cm}
-% \includegraphics[scale=0.5]{Shflow-w-sb}
-% \vspace{0.1cm}
-% \caption{Uniform shear versus shear band}.
-% \label{ShearFlow}
-% \end{figure}
-%
-%
-%
-% The shear bands formation of steels during rapid shearing deformations \cite{CCHD,HDH,ZH} is one of the most striking instances of material instability in mechanics that often precedes ruptures. The study of shear bands formation has attracted substantial attentions in the mechanics and mathematics literature including experimental works  \cite{CCHD,HDH}, mechanical modeling
-% and  linearized analysis studies  (\cite{CDHS,FM,MC,WW,Wr} and references therein), asymptotic analysis \cite{DO, WrOc},
-% nonlinear analysis  \cite{DH,Tzavaras87,Tzavaras91,BPV}, and numerical  investigations \cite{Wa,ELW,BKT}.
-%
-% \subsection{Modeling shear bands in high strain-rate deformations of metals}
-% As a simple paradigm towards understanding the posed problem, we consider the one dimensional shear between two parallel plates of a thermoviscoplastic material, Fig. \ref{ShearFlow}. The plate shears in $y$ direction and $\gamma(x,t)$ denotes the strain in the shearing direction of the material that was initially at $x$. $\sigma(x,t)$ denotes similarly the shear stress, $v(x,t)$ the velocity in the shearing direction, and $\theta(x,t)$ the temperature. Having those introduced, the associated model
-% (see \cite{CDHS,WW,KT} for details) reads
+\section{Introduction}
+
+Shear bands are narrow zones of intensely localized shear that are formed during the high speed plastic deformations of metals \cite{ZH44, Clifton90,Wright02}. 
+They often precede rupture and are one of the striking instances of material instability leading to failure.  Considerable attention has been devoted to the
+problem of shear band formation in both the mechanics and the applied mathematics literature, and section \ref{mathmodel} is devoted to outlining
+a basic model from thermoviscoplasticity
 \begin{equation}
   \label{sbeq}
   \begin{aligned}
-    & v_{t} = \frac{1}{r}\ \sigma_{x},\\
-    & \theta_{t} = \kappa \theta_{ x x}  +  \sigma \gamma_{t}, \\
+    & v_{t} =  \kappa \theta_{ x x} +  \sigma_{x},\\
+    & \theta_{t} =  \sigma \gamma_{t}, \\
     & \gamma_{t} = v_{x},
   \end{aligned}
 \end{equation}
-% where $r$, $\kappa$ are non-dimensional constants. There we see the variables interact through the equations of balance of linear momentum, kinematic compatibility, and the balance of energy.
-%
-% It was recognized by Zener and Hollomon \cite{ZH} that the effect of the deformation speed is twofold:
-% First, high speed in the deformation alters the loading conditions from isothermal to that close to adiabatic. Having adiabatic conditions projects the belief that, at high strain rates, heat diffuses at a slower time scale than that of the deformation takes place so that effectively heat merely accumulates during the operating time. Under such conditions, since materials often thermally soften, in such a case where the thermal softening outweighs the strain hardening, the combined effect can lead to a net softening response. %(Indeed, experimental observations of shear bands are  typically associated  with strain softening response -- past a critical strain -- of the measured stress-strain curve \cite{CDHS}.)
-%
-% Second, strain rate has an effect {\it per se}, or it should be included in the constitutive modeling. In other words, it is reasonable to consider the shear stress that is described by a constitutive law $\sigma = f(\theta, \gamma, u)$ where $u=\gamma_t$ the strain rate, with $f_u > 0$. The inequality indicates the effect of parabolic regularization. The law given above falls into the framework of thermoviscoelasticity, while the law may be better interpreted as a {\it plastic flow rule}, what justifies the following terminology: we say the material exhibits thermal softening at state variables $(\theta, \gamma, u)$
-% where $f_\theta(\theta, \gamma, u) < 0$, strain hardening at state variables where $f_\gamma(\theta, \gamma, u) > 0$, and strain softening when $f_\gamma(\theta, \gamma, u) < 0$. The slopes of $f$ measure the strengths of thermal softening, strain hardening (or softening) and strain-rate sensitivity, respectively. Due to the difficulty of performing high strain-rate experiments, uncertainty in determining the specific form of $f( \theta, \gamma, u)$ stands and in practice data obtained in a certain range are fit to curves of varieties of algebraic functions. We focus on the \emph{power law},
 \begin{align}
-&  \sigma =  f(\theta, \gamma, u) = \theta^{-\alpha} \gamma^{m} u^{n} \quad \quad \text{Power Law}. \label{PL0}
+&  \sigma =  f(\theta, \gamma, u) = \theta^{-\alpha} \gamma^{m} u^{n} \, , \quad \quad \qquad \text{$u = \gamma_t$}. \label{PL0}
 \end{align}
-%
-% Now we set up the boundary conditions. In dimensional variables, the upper plate at $x=d$ is subjected to a prescribed constant velocity $V$ in dimensional variables while the lower plate at $x=0$ is held at rest. In non-dimensional variables we simply impose $d=1$, $v(0,t) = 0$,  $v(1,t) = 1$. Further, we assume that the plates are thermally insulated:  $ \theta_{x}(0,t) = 0$,  $\theta_{x}(1,t) = 0$. For the heat flux $Q$ we either uses a Fourier  law $Q = \kappa \theta_{x}$ with thermal diffusivity
-% parameter $\kappa$ or the adiabatic assumption $Q = 0$, equivalently $\kappa = 0$. Imposing adiabatic conditions appears plausible for the initiation of the shear band but not necessarily for the evolution of a pre-existing band, because of the high temperature differences therein.
-%
-% We summarize the equations describing the model. We simply take $r=1$ and the resulting system reads
-\begin{equation}
-  \label{PLS}
-  \begin{aligned}
-    & v_{t} = \sigma_{x},\\
-    & \theta_{t} = \kappa \theta_{ x x}  +  \sigma \gamma_{t}, \\
-    & \gamma_{t} = v_{x},  \\
-    & \sigma  = \theta^{-\alpha}\gamma^{m}\gamma_{t}^n \,
-  \end{aligned}
-\end{equation}
-subjected to the boundary conditions
-\begin{equation} \label{BCOND1}
- v(0,t)=0, \quad v(1,t)=1, \quad \text{and}
-\end{equation}
-\begin{equation} \label{BCOND2}
- \theta_x(0,t)=\theta_x(1,t)=0, \quad \text{in case of $\kappa\ne0$.}
-\end{equation}
-%
-% The models \eqref{PLS}-\eqref{BCOND2} admit a class of special solutions of constant strain rate namely the
-% uniform shearing solutions. For the Power law model \eqref{PL0}, the uniform shearing solutions for constants $\gamma_0$ and $\theta_0$ read
-\begin{equation} \label{eq:uss}
-\begin{aligned}
- \gamma_s(t) &= t+\gamma_0, & \theta_s(t) &= \left(\frac{1+\alpha}{1+m} (t+\gamma_0)^{1+m} - \frac{1+\alpha}{1+m} \gamma_0^{1+m} + \theta_0^{1+\alpha}   \right)^{\frac{1}{1+\alpha}}\\
-  u_s(t) &=1, & \sigma_s(t)&=\left(\frac{1+\alpha}{1+m} (t+\gamma_0)^{1+m} - \frac{1+\alpha}{1+m} \gamma_0^{1+m} + \theta_0^{1+\alpha}   \right)^{\frac{-\alpha}{1+\alpha}}(t+\gamma_0)^m.
-\end{aligned}
-\end{equation}
-% Observe that the $\sigma$ is always decreasing in time (in the regime $\alpha>0$, $1+m>0$). Note that the graph $\sigma - t$  is viewed as describing the stress vs. average strain response. Thus in the uniform shearing motion it is always net softening which makes its stability study relevant.
-%
-%
-%
-% \subsection{Challenges posed by the localization problem}
-% In this series of papers, we seek a rather wide range of understanding regarding the shear bands formation of thermoviscoplastic power law materials. We carry out linear and nonlinear analysis as to the uniform shear and aim to compute numerical solutions as well. We listed the tasks of this work:
-% \begin{itemize}
-% \item To define a notion of stability (or instability) for the uniform shear. This is to draw attention to that the base solution itself is a growing state, as seen in \eqref{eq:uss}. Hence, the stability study around a steady state cannot be applied to our problem.
-% \item To derive quantitative criteria for stability (or instability) for the linearized problem and to give a complete analysis of linear stability by the criteria. This gives a mathematical account pinpointing the onset of localization.
-%
-% \item To demonstrate the dynamic formation of shear bands, taking the full nonlinear effects into account. For those power laws accounting of the unstable regime, a family of self-similar solutions to the nonlinear problem \eqref{PLS}-\eqref{BCOND1} is constructed. This is a far reaching demonstration of the onset of the localizing instability and this serious task is solely treated in the second part of this series.
-% \end{itemize}
-%
-% The point of view this paper takes is to distinguish two stages of the process. In the initial stage, the stability or instability of the uniform shearing solutions is considered in the realm of linearized analysis. As addressed, we encounter the difficulty of having time independent coefficients in the linearized system. In the course of linearized analysis we adapt the formulation of relative perturbations espoused by Molinari and Clfton \cite{MC,FM}. Following that framework we conduct the linear stability analysis for linear non-autonomous systems.
-%
-% In the second stage, the localizing phenomenon lies within the realm of nonlinear analysis. The focal issue is then how the catastrophic growth of high frequency oscillations resulting from Hadamard instability competes with the nonlinearity to form a coherent emergence of shear bands. A quantitative criterion that accounts for the nonlinear aspects of localization was derived in \cite{KT}, using ideas from the theory of relaxation system and the Chapman Enskog expansion. In follow-up work \cite{KOT14, KLT_16, KLT17, KLT_HYP2016}, techniques to construct self-similar solutions has been developed, but for simpler models. The construction for the fully general model \eqref{PLS} is done in the second part of the series. Those self-similar localizing solutions are numerically captured as well. In search of the self-similar solutions, they arise as a family of heteroclinic orbits of associated dynamical systems. It turns out that the heteroclinic orbit is a saddle-saddle connection between two equilibrium points. Numerical continuation software package \texttt{AUTO} is adopted to capture the saddle-saddle connection. Computational results illustrate how a well prepared initial data emerges the shear band. %We refer to \cite{KT} and \cite{KT2} for the numerical results for system \eqref{PLS}.
-% %\vfil\eject
-
-{\blue
-
-\begin{center}
-  \textbf{PART I.}
-\end{center}
-
-% \section{Stability of a dynamically growing coherent state -- study of modes in a non-autonomous linear system}
-% \begin{enumerate}
-%   \item emphasize its dynamical nature and that we obtain a non-autonomous system.
-%   \item mention on the Relative perturbations
-%   \item mention on the Coddington-Levinson Theorem for a system with ditinct eigenvalues.
-%   \item draw a few issues in linear stability problem of a non-autonomous system.
-%   \begin{enumerate}
-%     \item periodic coefficient system example: exponential grow under eigenvalues with negative real parts.
-%     \item convergent coefficient system example: resonance can result in growing mode for eigenvalues with negative real parts merging in the limit.
-%   \end{enumerate}
-% \end{enumerate}
-% }
-
-Throughout this paper, the material parameters $(\alpha,m,n)$ run only through the ranges
+that is extensively studied in the present work. The model describes the adiabatic plastic shearing of an plate for
+a thermoviscoplastic material obeying the constitutive law \eqref{PL0}. The latter can be viewed as a yield surface or a plastic flow rule, and encompasses the basic
+mechanisms entering in theories for the explanation of shear bands \cite{ZH44,Clifton90}.
+The parameters $\alpha>0$, $m>0$ and $n>0$ measure respectively the degrees of thermal softening, strain hardening and  strain-rate hardening and $n \ll 1$
+is typically small, \cite{Clifton90}. 
+Throughout, the material parameters $(\alpha,m,n)$ are restricted to the range
 \begin{equation}
  \begin{aligned}
   \alpha>0\quad&\text{(thermal softening)},\\
@@ -269,22 +202,336 @@ Throughout this paper, the material parameters $(\alpha,m,n)$ run only through t
 %   0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right) \quad&\text{(localizing rate bound)}. %\label{eq:a4}
 \end{aligned}\label{eq:paramrange}
 \end{equation}
+We complement the model by providing boundary conditions of prescribed shearing velocities,
+\begin{equation} \label{BCOND1}
+ v(t,0)=0, \quad v(t,1)=1, 
+\end{equation}
+and thermal insulation of the end plates,
+\begin{equation} \label{BCOND2}
+ \theta_x(t,0)=\theta_x(t,1)=0, \quad \text{in case of $\kappa\ne0$.}
+\end{equation}
 
-\section{Adiabatic model}
-\subsection{Formulation of Relative perturbations}
-Consider the uniform shearing solution \eqref{eq:uss} of the system \eqref{PLS}. In the uniform shearing motion, strain $\gamma_s$ and the temperature $\theta_s$ as well as time $t$ are regarded as interchangeable measures of time elapsed. We find defining the following quantities homogeneous in $\gamma_s(=t+\gamma_0)$ convenient,
-$$ \gamma_s^* = \gamma_s, \quad \theta_s^*=\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} \gamma_s^{\frac{1+m}{1+\alpha}}, \quad \sigma^*_s = \left( \frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}}\gamma_s^{\frac{-\alpha+m}{1+\alpha}} \Big( = (\theta_s^*)^{-\alpha}(\gamma_s^*)^m\Big),$$
-and $u^*_s=1$ as well.
-These are the leading orders of the uniform shearing solutions in $\gamma_s$. The new independent variable $\tau$ will also be probed. Given that, $\Gamma\big(\tau,x\big)$, $\Theta\big(\tau,x\big)$, $U\big(\tau,x\big)$, $\Sigma\big(\tau,x\big)$ are defined by %relations $\tau=\tau(\gamma_s)$ and
-\begin{equation*}
+
+
+In the sequel, we will mostly focus on adiabatic deformations $\kappa = 0$. This hypothesis is quite reasonable for the initial development of shear bands,
+which is the main focus here, and not very realistic once a shear band fully forms, due to the high temperature differences involved.
+The adiabatic hypothesis leads to the system of partial differential equations
+\begin{equation}
+  \label{pls}
+  \begin{aligned}
+    & v_{t} = \del_x \Big ( \theta^{-\alpha}\gamma^{m}  v_{x}^n \Big )  ,\\
+    & \theta_{t} =  \theta^{-\alpha}\gamma^{m} v_{x}^{n+1}   \\
+    & \gamma_{t} = v_{x},  \\
+%    & \sigma  = \theta^{-\alpha}\gamma^{m}\gamma_{t}^n \,
+  \end{aligned}
+\end{equation}
+The variables $v$ is the shear velocity, $\theta$ the temperature and $\sigma$ the stress.
+In the models \eqref{sbeq} or \eqref{pls} the elastic effects are ignored and $\gamma$ stands for the plastic strain. The reader is refered to
+\cite{SC89} for models including the effects of elasticity and unloading.
+
+
+\tcr{To Do -  Introduction should be brief - present the basic mechanism of shear band formation - present the issues that 
+will be studied with a very general outline - no spoilers -defer the presentation for the sections }
+
+
+ 
+\vfil\eject
+
+ 
+ \section{Description of the shear band formation problem}
+\label{mathmodel}
+
+Shear bands occur during
+high strain-rate plastic deformations of certain steels and other metal alloys. Instead of the shear strain distributing evenly across the loading region, 
+it concentrates in a narrow band with a concurrent elevation of the temperature in the interior of the band, ,  \cite{ZH44,HDH87}.
+Shear bands are often precursors to rupture and their study has attracted considerable
+attention including  experimental works  \cite{CCHD79,HDH87}, mechanical modeling 
+and  linearized analysis studies  ({\it e.g.} \cite{CDHS84,FM87,MC87,SC89,Wright02} and references therein) and
+nonlinear analysis investigations  \cite{DH83,Tzavaras87,BPV91}.
+
+\subsection{Modeling shear bands}
+Shear bands appear and propagate as one dimensional structures (up to interaction times), and
+many investigations focus on the study of one-dimensional, simple shear. 
+A specimen located in the $xy$-plain undergoes shear motion in the $y$-direction. The motion is described by the (plastic) shear strain
+$\gamma(t,x)$, the strain rate $u(t,x) = \gamma_t (t,x)$, the velocity $v(t,x)$ in the shear direction, the temperature $\theta(t,x)$ and the shear stress
+$\sigma (t,x)$ all defined in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$. It is described by the equations
+\begin{equation} \label{mechmodel}
+\begin{aligned}
+ \gamma_t &= v_x  \\	
+  v_t &= \sigma_x  
+ \\
+ \theta_t &= \kappa \theta_{xx} + \sigma v_x, 	\\
+\end{aligned}
+\end{equation}
+which stand respectively for the kinematic compatibility equation, the balance of momentum and
+the balance of energy equation. Here, the elastic effects are neglected and all strain is considered to be plastic, and 
+a Fourier heat conduction is considered with $\kappa$ the thermal diffusivity.
+
+
+Under shearing most materials deform in a uniform fashion until they break. By contrast, in high strain-rate deformations of
+certain steels, it is observed that nonuniformities develop in the  plastic strain and  localize in a narrow region, called shear band; see 
+ Fig. \ref{ShearFlow} for a caricature of shear band forming.
+\begin{figure}
+\centering
+\vspace{-0.1cm}
+\includegraphics[scale=0.5]{Shflow-w-sb}
+\vspace{0.1cm}
+\caption{Uniform shear versus shear band}.
+\label{ShearFlow}
+\end{figure}
+It was recognized by Zener and Hollomon \cite{ZH44} that the  high deformation speed has two effects: 
+First, an increase in the deformation speed changes the deformation conditions from isothermal 
+to nearly adiabatic. Under such conditions the combined effect of thermal softening and strain hardening 
+tends to produce net softening response. (Indeed, experimental observations of shear bands 
+are  typically associated  with strain softening response -- past a critical strain -- 
+of the measured stress-strain curve \cite{CDHS84}.)
+Second, strain rate has an effect {\it per se}, and needs to be included in the constitutive modeling.
+
+Both effects are captured by modeling shear band formation via constitutive models
+within the framework  of thermoviscoplasticity: 
+\begin{equation}
+\label{thermovpcl}
+\sigma = f(\theta, \gamma, \gamma_t) \quad \mbox{where} \quad f_p (\theta, \gamma, p)  > 0 \, .
+\end{equation}
+Equation \eqref{thermovpcl} may be viewed as a yield surface or,  upon inverting it, as a plastic flow rule. This suggests the terminology: 
+the material exhibits thermal softening at state variables $(\theta, \gamma, p)$ 
+where $f_\theta(\theta, \gamma, p) < 0$, strain hardening at state variables where $f_\gamma(\theta, \gamma, p) > 0$ , and strain softening when $f_\gamma(\theta, \gamma, p) < 0$. 
+The slopes of $f$ measure the degree of thermal softening, strain hardening (or softening) 
+and strain-rate sensitivity, respectively. 
+The difficulty of performing high strain-rate experiments causes uncertainty as to the specific form of the constitutive form of the stress.  The power law
+\begin{align}
+%&  \sigma =  \theta^{-\alpha} \gamma^{m} \gamma_{t}^{n}, \quad & &  \text{ Power Law }, \label{PL0}\\
+%& \sigma = e^{-\ga\tht} v_x^n, \quad & & \text{ Exponential Law} \label{ARL0}  \, .
+&  \sigma =  \theta^{-\alpha} \gamma^{m} \gamma_{t}^{n}, 
+ \label{PL0}
+\end{align}
+is a widely used relation, obtained by fitting experimental data, where the parameter $\alpha>0$ 
+measures the degree of thermal softening, $m>0$ measures the degree of strain hardening (or $m<0$ in case of softening plastic flow), while $n>0$ measures strain-rate hardening and is typically small, $n \ll 1$, \cite{Clifton90}. 
+
+
+
+ We summarize the equations describing the model. For the power law
+the resulting system reads
+\begin{equation}
+  \label{PLS}
+  \begin{aligned}
+    & v_{t} =  \sigma_{x},\\
+    & \theta_{t} = \kappa \theta_{ x x}  +  \sigma \gamma_{t}, \\
+    & \gamma_{t} = v_{x},  \\
+    & \sigma  = \theta^{-\alpha}\gamma^{m}\gamma_{t}^n \, .
+  \end{aligned}
+\end{equation}
+The system \eqref{PLS} captures the simplest mechanism proposed for shear localization in
+high-speed deformations of metals \cite{ZH44, Clifton90}, and an (isothermal) variant appears in early studies of necking \cite{HN77}. 
+Very often attention is restricted to the adiabatic model $\kappa = 0$ which is appropriate for the initial
+development of shear bands under very fast deformations. 
+
+
+An alternative model is offered by the constitutive law
+\begin{align}
+& \sigma = e^{-\ga\tht} v_x^n, \quad & & \text{ exponential law} \label{ARL0}  \, .
+\end{align}
+which may be interpreted as describing a temperature dependent non-Newtonian fluid. 
+The exponential law does not exhibit any strain hardening and \eqref{mechmodel} decouples and
+leads to the simplified system
+\begin{equation}
+  \label{ARS}
+  \begin{aligned}
+    & v_{t} = \sigma_{x},\\
+    & \theta_{t} = \kappa \theta_{ x x}  +  \sigma v_x \\
+    & \sigma  = e^{-\ga\theta} v_x^n \, .
+  \end{aligned}
+\end{equation}
+
+
+
+\subsection{Uniform shearing solutions} \label{sec:uss}
+
+In the study of shear bands,  a special problem is often considered  where an infinite slab of material
+is  sheared by prescribed constant velocity $V=1$ at the upper plate while the lower plate is held fixed.
+This is described by setting the plates at $x=0, 1$ and imposing prescribed (normalized) velocities $v(t,0) = 0$,  $v(t,1) = 1$, respectively.
+The plates are thermally insulated:  $ \theta_{x}(t,0) = \theta_{x}(t,1) = 0$.
+For the heat flux $Q$ one either uses the adiabatic assumption $Q = 0$ (equivalently $\kappa = 0$)
+or alternatively a Fourier  law $Q = \kappa \theta_{x}$ with thermal diffusivity
+parameter $\kappa$.
+Imposing adiabatic conditions projects the belief that, at high strain rates,
+heat diffusion operates at a slower time scale than the time-scale of the development 
+of a shear band. It appears a plausible assumption for the shear band initiation process, 
+but not necessarily for the evolution of a developed band,
+ due to the high temperature differences involved.
+ 
+
+The model \eqref{PLS} admits  a special class of solutions describing uniform shearing: They emanate
+from spatially uniform initial data $\gamma_0$ and $\theta_0$, and are obtained by the {\it ansatz} $\gamma_s (t) = t + \gamma_0 $ and $v_s (x) = x$ 
+for the strain and velocity respectively. They are obtained 
+upon solving the ordinary differential equation
+\begin{equation}
+\label{uss2}
+\frac{d \theta_s }{dt} = \sigma_s = \theta_s^{-\alpha} (t + \gamma_0)^m \, , \quad \theta_s(0) = \theta_0 \, ,
+\end{equation}
+and read
+\begin{equation} \label{uss}
+\begin{aligned}
+v_s (x)  &=x \, ,   \quad  \gamma_s(t) = t+\gamma_0,  \quad 
+\\
+\theta_s(t) &=  \left( \tfrac{1+\alpha}{1+m }\right )^{\frac{1}{1+\alpha}}  (t+\gamma_0)^{\frac{1 + m}{1+\alpha}} 
+ \left( 1 +  \tfrac{1+m}{1+\alpha} \big (  \theta_0^{1+\alpha}  - \tfrac{1+\alpha}{1+m} \gamma_0^{1+m} \big ) \tfrac{1}{(t+\gamma_0)^{m+1}}  \right)^{\frac{1}{1+\alpha}}
+ \\
+%&=
+%\left(\tfrac{1+\alpha}{1+m} (t+\gamma_0)^{1+m}  +
+% \left (  \theta_0^{1+\alpha} - \tfrac{1+\alpha}{1+m} \gamma_0^{1+m}  \right )   \right)^{\frac{1}{1+\alpha}}\\
+  \sigma_s(t)&=
+   \left( \tfrac{1+\alpha}{1+m}\right )^{-\frac{\alpha}{1+\alpha}}  (t+\gamma_0)^{\frac{-\alpha + m}{1+\alpha}}  
+   \left( 1 +  \tfrac{1+m}{1+\alpha} \big (  \theta_0^{1+\alpha}  - \tfrac{1+\alpha}{1+m} \gamma_0^{1+m} \big ) \tfrac{1}{(t+\gamma_0)^{m+1}}  \right)^{\frac{-\alpha}{1+\alpha}} .
+\end{aligned}
+\end{equation}
+Equation \eqref{uss}$_3$ describes the stress-strain curve $\sigma_s$ versus $\gamma_s$ for uniform shear.
+The stress-strain curve is increasing when $\alpha < m$ but it is decreasing for large times when $\alpha > m$.
+Here, we are interested in the regime $\alpha > m$ where thermal softening dominates strain hardening and produces net softening.
+
+
+
+\subsection{Challenges posed by the localization problem}
+\label{sec:challenges}
+
+The system \eqref{pls} for $n=0$ is a first-order system. When $\alpha > m$, the initial value problem  has two purely imaginary eigenvalues in a regime 
+of strain beyond the maximum of the stress-strain curve (see Appendix \ref{append:hadamard}). 
+Accordingly, the linearized system (for $n=0$) around the uniform shearing solution \eqref{uss} exhibits {\it Hadamard instability}, see Appendix \ref{append:hadamard}.
+\tcr{review and correct}
+
+
+\tcr{To-Do  edit}
+
+\bigskip
+
+In this review work we focus on the initiation stage of shear bands and seek to understand the
+mechanism of formation.
+There are the following tasks to be carried out:
+\begin{itemize}
+\item To define a notion of stability (or instability) for the uniform shear; this task is complicated
+by the time dependent nature of the base solutions.
+\item To derive quantitative criteria for stability (or instability) and a mathematical mechanism pinpointing the onset of localization.
+\item To describe the localization process and the formation of the shear band.
+\end{itemize}
+
+Naturally, one distinguishes two stages in the process: The initial stage of stability or instability 
+of the uniform shearing solutions leads to questions in the realm of linearized analysis, but with
+certain special features. Because the uniform shearing solution
+is time dependent the notion of stability has to be specified. An efficient definition due to
+Molinari and Clifton \cite{MC87,FM87} espouses the idea of relative perturbation. That is, the uniform shear
+is stable if perturbations grow slower than the base solutions, and unstable if perturbations grow
+faster than the base solution. Following that framework leads to questions of linearized stability analysis 
+for non-autonomous linear systems.
+A rigorous analysis for a simplified model illustrating the difficulties can be found in \cite{Tzavaras92}.
+In section \ref{STABAR}  we carry out this program for the Arrhenius model \eqref{ARS}.
+
+
+The second stage of localization lies within the realm of nonlinear analysis, and the focal issue is how the catastrophic growth of high frequency oscillations resulting from Hadamard instability interacts with
+the nonlinearity to form a coherent structure.
+A quantitative criterion accounting for the nonlinear aspects of localization was recently derived in \cite{KT09},
+based on ideas from the theory of relaxation system and the Chapman Enskog expansion. In later work
+work \cite{LKT17}.  this analysis is supplemented with a study of self-similar localizing 
+solutions that capture the nonlinear stage of localization. An account of this result is presented in sectio ??
+using anew way to view the problem that simplifies matters a lot; numerical compuatations
+are also presented that indiicate the form of the obtained solutions.
+ 
+
+\tcr{end edit}
+
+
+\vfil\eject
+
+\section{Relative perturbations and linearized stability analysis}
+\label{sec:relative}
+
+Since the uniform shearing solutions are time dependent their stability analysis immediately leads to issues with non-autonomous problems.
+This is not surprising. Most notions of stability that are used in partial differential equations, but even notions of wel--posedness 
+(for instance hyperbolicity) are induced by stability analysis of steady in time structures like equilibria or periodic orbits.
+The shear-band formation problem by its nature has to deal with stability of time-dependent solutions, and early nonlinear
+analyses \cite{DH83,Tzavaras86a} indicated that the rate of growth (or decay) of perturbations have to be compared with the
+growth-rate of the base solution. This was conceptualized  by Molinari-Clifton \cite{MC87} and Fressengeas-Molinari \cite{FM87} who
+introduced the idea of relative perturbations; an even earlier variant of this idea appears in the context of necking
+problems in Hutchinson-Neale \cite{HN77}.
+
+
+
+
+\subsection{Formulation via relative perturbations}
+
+Consider the  functions
+\begin{equation}
+\label{timescale}
+\begin{aligned}
+\gamma^*_s (t)  = \gamma_s (t)  = t + \gamma_0 , \quad 
+\theta^*_s (t)  =\left( \frac{1+\alpha}{1+m}\right)^{\frac{1}{1+\alpha}} (t + \gamma_0)^{\frac{1+m}{1+\alpha}}
+\\
+\sigma^*_s (t) = \left( \frac{1+\alpha}{1+m}\right)^{\frac{-\alpha}{1+\alpha}} (t + \gamma_0)^{\frac{-\alpha+m}{1+\alpha}} 
+= (\theta^*_s)^{-\alpha} (\gamma^*_s)^m \, ,
+\end{aligned}
+\end{equation}
+describing the leading order in time of the uniform shearing solution \eqref{uss}, and introduce new dependent variables $u(t,x)$,
+ $\Gamma (t, x)$, $\Theta (t,x)$ and $\Sigma(t,x)$ defined by 
+\begin{equation}
+\label{rescale}
  \begin{aligned}
-  \Gamma\big(\tau,x\big)&=\frac{\gamma(\tau,x)}{\gamma^*_s(\tau)}, \quad \Theta\big(\tau,x\big)=\frac{\theta(\tau,x)}{\theta^*_s(\tau)}, \quad U\big(\tau,x\big)=\frac{u(\tau,x)}{u^*}=u(\tau,x),\\
-  \Sigma\big(\tau,x\big)&=\frac{\sigma(\tau,x)}{\sigma^*_s(\tau)} \quad \Longrightarrow \quad \Sigma = \Theta^{-\alpha}\Gamma^m U^n.
- \end{aligned}
-\end{equation*}
+ u(t,x) = v_x (t,x) \, , \quad
+  \hat \Gamma (t,x) &= \frac{\gamma(t,x)}{\gamma^*_s(t)}, \quad \hat\Theta\big(t,x\big)=\frac{\theta(t,x)}{\theta^*_s (t)}, \quad 
+  \hat\Sigma(t,x) &= \frac{\sigma(t,x)}{\sigma^*_s(t)} \, . \
+   \end{aligned}
+\end{equation}
+These new variables are called in \cite{HN77,MC87,FM87}  {\it relative perturbations} and can be used to give a 
+precise the definition for the stability for the uniform shearing solutions:
+\begin{itemize}
+\item
+The uniform shear solution is {\it asymptotically stable} when the solution emanating from small perturbations
+of \eqref{uss} satisfies that $(u, \hat\Gamma, \hat\Theta) \to (1,1,1)$ as time goes to infinity.
+\item
+The uniform shear solution is {\it unstable} if for small perturbations of \eqref{uss} the relative perturbations 
+$(u, \hat\Gamma, \hat\Theta)$ drift away from $(1,1,1)$ as time increases.
+\end{itemize}
 
-New variables of relative perturbations compares the growths homogeneous in $\gamma_s$ of variables to those of uniform shearing. In this formulation, the uniform shearing solutions are mapped to (asymptotically) a constant state $\big(\Gamma, \Theta,\Sigma,U\big)=(1,1,1,1)$. The price is to have non-autonomous terms. We choose $\tau(\gamma_s) = \theta_s^*(\gamma_s)$ to obtain
-\begin{equation} \label{eq:PLS_rel}
+As already mentioned, It is precisely this notion of stabilitythat emerges from the nonlinear stability studies of shear bands \cite{DH83,Tzavaras86a} as well as
+in linearized stability analyses by  Molinari and Clifton \cite{MC87,FM87} 
+who coined the name {\it stability analysis of relative perturbations}. The problem of stability is presently resolved only for the special cases 
+$m=0$ or $\alpha = 0$ for \eqref{pls};  these are cases that the system decouples and reduces to simpler models:
+\begin{itemize}
+\item[(i)] Case $m=0$: The uniform shear is linearly stable for $-\alpha + n > 0$ and linearly unstable for $-\alpha + n < 0$, \cite{MC87,FM87};
+it is nonlinearly stable when $-\alpha + n > 0$, \cite{Tzavaras86a}.
+\item[(ii)] Case $\alpha =0$, $m > -1$: The uniform shear is linearly stable when $m + n > 0$ and linearly unstable when $m+ n < 0$, \cite{FM87,Tzavaras92};
+it is nonlinearly stable in the region $m + n > 0$, \cite{Tzavaras91}.
+\end{itemize}
+The general case for linearized stability will be considered here.
+
+\tcr{To-Do:  Phrase better the literature review, also motivate the problem}
+
+\subsection{Time rescaling and an equivalent system for relative perturbations}
+\label{sec:time}
+
+Next, we introduce a time rescaling. Observe that the functions in \eqref{timescale} satisfy
+\begin{equation}
+\label{prope}
+\frac{d \theta^*_s}{dt} (t) = \sigma^*_s (t)  \, , \quad \frac{\sigma^*_s (t) \gamma^*_s (t)}{\theta^*_s (t)} = \frac{m+1}{1+\alpha} \, .
+\end{equation}
+We set 
+\begin{equation}
+\label{timeresc}
+\tau (t) := \theta^*_s(t) \, , \quad \dot \tau (t) = \frac{d \theta^*_s}{dt} (t) = \sigma^*_s (t)
+\end{equation}
+and introduce a rescaled time $\tau$ with new dependent variables 
+$\Gamma\big(\tau,x\big)$, $\Theta\big(\tau,x\big)$, $U\big(\tau,x\big)$, $\Sigma\big(\tau,x\big)$ defined by 
+\begin{equation}
+\label{defvar}
+ \begin{aligned}
+ u (t, x) &= v_x (t, x) = U(\tau(t), x) \, , \qquad \gamma(t,x) = \gamma^*_s(t) \, \Gamma (\tau (t), x) 
+ \\
+\theta(t,x) &= \theta^*_s (t)  \; \Theta (\tau(t), x) \, , \qquad \qquad \sigma(t,x) = \sigma^*_s (t) \, \Sigma (\tau (t) , x)
+\end{aligned}
+\end{equation}
+
+
+Using \eqref{timescale}, \eqref{prope}, \eqref{timeresc} and \eqref{defvar}, the system \eqref{PLS} for  $\kappa = 0$ is
+expressed in the form
+\begin{equation} \label{plsrel}
  \begin{aligned}
   \partial_\tau U &= \Sigma_{xx},\\
   \partial_\tau \Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m} \Big(U-\Gamma\Big),\\
@@ -292,62 +539,63 @@ New variables of relative perturbations compares the growths homogeneous in $\ga
   \Sigma&=\Theta^{-\alpha}\Gamma^m U^n,
  \end{aligned}
 \end{equation}
-which is a non-autonomous reaction-diffusion system.
-%
-%
-%
-% {\blue
-% The vector field accounting for the reaction parts specifies an equilibrium manifold $U=\Gamma$ and $\Sigma U =\Theta$. The study of an asymptotic aspect as to the relaxation phenomenon to a slow manifold has been conducted, which is analogous to the Chapman-Enskog expansion, in \cite{KT09}. From that the competition between the Hadamard Instability and the nonlinear effect is seen in another angle. The effectively reduced scalar equation, passing $-\alpha+m$ from positive to negative, becomes a backward parabolic equation with a fourth-order correction, which respectively account for the Hadamard Instability and the opposing mechanism. The linear stability, that this paper is subjected to, aims to reveals this nature of instability in yet another perspective.
-% }
+in terms of the rescaled solution $(U, \Gamma, \Theta, \Sigma)(\tau, x)$ defined via \eqref{defvar}. The new time-variable has the
+behavior of the temperature in the uniform shear solution \eqref{uss}.
+We note that \eqref{plsrel} is non-autonomous and may be thought of as a reaction-diffusin system but with non-diagonal diffusion.
+In this formulation, the uniform shearing solutions are mapped  (asymptotically in time) to the constant state 
+$\big(U, \Gamma, \Theta,\Sigma \big)=(1,1,1,1)$. 
 
 
-\subsection{Linearization of \eqref{eq:PLS_rel} around the uniform shear}
+\subsection{Linearization of \eqref{plsrel} around the uniform shear}
 
-
-We consider \eqref{eq:PLS_rel}
+We consider \eqref{plsrel}
 in $(\tau,x)\in \mathbb{R}^+\times [0,\pi]$ with boundary conditions
 \begin{equation} \label{BCOND3}
  \Sigma_x(\tau,0)=\Sigma_x(\tau,\pi)=0.
 \end{equation}
-The domain $[0,\pi]$ of \eqref{eq:PLS_rel}, understood as that for a non-dimensionalized problem, has been chosen at our convenience without loss (by the scaling arguments).
+The domain $[0,\pi]$ of \eqref{plsrel} has been chosen for convenience and may be achieved via space rescaling.
 The boundary condition \eqref{BCOND3} implies that
 \begin{equation*}
- \frac{d}{d\tau}\int_0^\pi U(\tau,x) \: dx = 0, \quad \text{and we normalize } \int_0^\pi U(\tau,x) \: dx = \pi.
+ \frac{d}{d\tau}\int_0^\pi U(\tau,x) \: dx = 0, \quad \text{and we normalize } \quad  \frac{1}{\pi} \int_0^\pi U(\tau,x) \: dx = 1 \, .
 \end{equation*}
 Let
 \begin{align*}
- U &= 1 + \delta \bar{U} + \mathcal{O}(\delta^2), & \Gamma &= 1 + \delta \bar\Gamma + \mathcal{O}(\delta^2), &
- \Sigma &= 1 + \delta \bar\Sigma + \mathcal{O}(\delta^2), & \Theta &= 1 + \delta \bar\Theta + \mathcal{O}(\delta^2).
+ U &= 1 + \delta \bar{u} + \mathcal{O}(\delta^2), & \Gamma &= 1 + \delta \bar\gamma + \mathcal{O}(\delta^2), &
+ \Sigma &= 1 + \delta \bar\sigma + \mathcal{O}(\delta^2), & \Theta &= 1 + \delta \bar\theta + \mathcal{O}(\delta^2).
 \end{align*}
-By collecting the leading order terms and neglecting terms higher than or equal to the second order,
+By collecting the leading order terms we arrive at the linearized system around the base state $(1,1,1,1)$ (which coincides as the
+reader recalls with the uniform shearing solution),
 \begin{equation} \label{eq:linsystem}
  \begin{aligned}
-  \partial_\tau \bar U &= \bar\Sigma_{xx},\\
-  \partial_\tau \bar\Gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(\bar U-\bar\Gamma_1),\\
-  \partial_\tau \bar\Theta &= \frac{1}{\tau}\Big(\bar\Sigma+ \bar U -\bar\Theta\Big),\\ % + \kappa(\tau)\bar\Theta_{xx},\\
-  0&=\bar\Sigma + \alpha\bar\Theta -m\bar\Gamma - n\bar U .
+  \partial_\tau \bar u &= \bar\sigma_{xx},\\
+  \partial_\tau \bar\gamma &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(\bar u-\bar\gamma),\\
+  \partial_\tau \bar\theta &= \frac{1}{\tau}\Big(\bar\sigma+ \bar u -\bar\theta\Big),\\ % + \kappa(\tau)\bar\Theta_{xx},\\
+  0&=\bar\sigma + \alpha\bar\theta -m\bar\gamma - n\bar u .
  \end{aligned}
 \end{equation}
-The boundary condition and the constraint equation read
+The boundary condition and the constraint equation yield
 \begin{equation} \label{eq:linbdry}
- \bar\Sigma_{x}(\tau,0)=\bar\Sigma_{x}(\tau,\pi)=0, \quad \int_0^\pi \bar U(t,x) \: dx = 0.
+ \bar\sigma_{x}(\tau,0)=\bar\sigma_{x}(\tau,\pi)=0, \quad \int_0^\pi \bar u(t,x) \: dx = 0.
 \end{equation}
 In the sequel, we drop the bar over the variables and continue to study the linear system \eqref{eq:linsystem}-\eqref{eq:linbdry}.
 
+\tcr{Edited Up to here}
+
+
 Next, we probe studies on the frequency-wise response of \eqref{eq:linsystem} conducting Fourier series analysis. We consider even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-\pi,\pi]$ which is compatible with the system and the boundary condition in \eqref{eq:linbdry}. The cosine series of the variables are considered:
 \begin{align*}
- U(\tau,x) &= U_0(\tau) + \sum_{\ell=1}^\infty U_\ell(\tau)\cos(\l x), &
- \Gamma(\tau,x) &= \Gamma_0(\tau) + \sum_{\ell=1}^\infty \Gamma_\ell(\tau)\cos(\l x),\\
- \Theta(\tau,x) &= \Theta_0(\tau) + \sum_{\ell=1}^\infty \Theta_\ell(\tau)\cos(\l x), &
- \Sigma(\tau,x) &= \Sigma_0(\tau) + \sum_{\ell=1}^\infty \Sigma_\ell(\tau)\cos(\l x).
+ \bar u(\tau,x) &= u_0(\tau) + \sum_{\ell=1}^\infty  u_\ell(\tau)\cos(\l x), &
+\bar \gamma(\tau,x) &= \gamma_0(\tau) + \sum_{\ell=1}^\infty \gamma_\ell(\tau)\cos(\l x),\\
+\bar \theta(\tau,x) &= \theta_0(\tau) + \sum_{\ell=1}^\infty \theta_\ell(\tau)\cos(\l x), &
+ \bar\sigma(\tau,x) &= \sigma_0(\tau) + \sum_{\ell=1}^\infty \sigma_\ell(\tau)\cos(\l x).
 \end{align*}
 For each $\ell\ge0$ we obtain
 \begin{equation} \label{eq:l-system}
  \begin{aligned}
-  \partial_\tau U_\ell &= -\l^2 \Sigma_\ell,\\
-  \partial_\tau\Gamma_\ell &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_\ell-\Gamma_\ell),\\
-  \partial_\tau\Theta_\ell &= \frac{1}{\tau}\Big(\Sigma_\ell+ U_\ell -\Theta_\ell\Big),\\% - \kappa(\tau)\l^2\Theta_\ell,\\
-  0&=\Sigma_\ell + \alpha\Theta_\ell -m\Gamma_\ell - nU_\ell .
+  \partial_\tau u_\ell &= -\l^2 \sigma_\ell,\\
+  \partial_\tau\gamma_\ell &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(u_\ell-\gamma_\ell),\\
+  \partial_\tau\theta_\ell &= \frac{1}{\tau}\Big(\sigma_\ell+ u_\ell -\theta_\ell\Big),\\% - \kappa(\tau)\l^2\Theta_\ell,\\
+  0&=\sigma_\ell + \alpha\theta_\ell -m\gamma_\ell - n \, u_\ell .
  \end{aligned}
 \end{equation}
 
@@ -355,7 +603,7 @@ For each $\ell\ge0$ we obtain
 With the fourth equation we remove one of the variables. The choice of removing $\Theta_\ell$ gives the linear system
 \begin{equation} \label{eq:l-system2}
 \begin{aligned}
- \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}'
+ \begin{pmatrix} u_\ell\\ \gamma_\ell \\ \sigma_\ell \end{pmatrix}'
  &= \left[\underbrace{\overbrace{\begin{pmatrix}
    0 & 0 & -\l^2\\
    0 & 0 & 0\\
@@ -366,21 +614,38 @@ With the fourth equation we remove one of the variables. The choice of removing 
    0 & 0 & 0\\
    \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
    n+ \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
-  \end{pmatrix} }^{\triangleq A_{\ell,1}}}_{\triangleq A_\ell(\tau)} \right] \begin{pmatrix} U_\ell\\ \Gamma_\ell \\ \Sigma_\ell \end{pmatrix}
+  \end{pmatrix} }^{\triangleq A_{\ell,1}}}_{\triangleq A_\ell(\tau)} \right] \begin{pmatrix} u_\ell\\ \gamma_\ell \\ \sigma_\ell \end{pmatrix}
 \end{aligned}
 \end{equation}
 and and we denote $x_\ell(\tau)$ by the vector $(U_\ell,\Gamma_\ell, \Sigma_\ell)^T$. Note we also defined the coefficient matrix $A_\ell(\tau)$, and the two constant matrices $A_{\ell,\infty}$ and $A_{\ell,1}$ as in the above.
 
 The $0$-th mode is treated separately here to read off the stability at once and is not visited again in the sequel: We have
 \begin{align*}
-   \partial_\tau U_0 &= 0,\\
-  \partial_\tau\Gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(U_0-\Gamma_0),\\
-  \partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n\frac{-\alpha+m}{1+m}\big)U_0 + \big(\frac{m(-\alpha+m))}{1+m}\big)\Gamma_0\Big).
+   \partial_\tau u_0 &= 0,\\
+  \partial_\tau\gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(u_0-\gamma_0),\\
+  \partial_\tau\sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\sigma_0 + \big(n\frac{-\alpha+m}{1+m}\big)u_0 + \big(\frac{m(-\alpha+m))}{1+m}\big)\gamma_0\Big).
   %\partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U_0 + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma_0\Big).
 \end{align*}
-Since $U_0\equiv0$ from \eqref{eq:linbdry}, $\Gamma_0(\tau)$ decays to $0$, and so do $\Sigma_0(\tau)$ and $\Theta_0(\tau)$.
+Since $u_0\equiv0$ from \eqref{eq:linbdry}, $\gamma_0(\tau)$ decays to $0$, and so do $\sigma_0(\tau)$ and $\theta_0(\tau)$.
 
-\subsection{Hadamard Instability in inviscid model ($n=0$)} \label{sec:Hadamard}
+
+
+%%%%
+%
+
+
+\section{Linearized stability for the inviscid model ($n=0$)} \label{sec:Hadamard}
+
+\tcr{To-Do  Split the section in 
+\begin{itemize}
+\item Case $\alpha > m$ eventually decreasing uniform shear solution
+\item Case $\alpha < m$ increasing uniform shear.
+In this case $Re \lambda_i (\tau ) < 0 \; \forall i$ and thus solution is stable by Thm in Appendix
+\end{itemize}
+}
+
+
+\subsection{Case that thermal softening outweighs strain hardening: $\alpha > m$}
 We have seen the loss of hyperbolicity of the system \eqref{PLS} passing the parameter value $-\alpha+m$ from positive to negative, along the uniform shear. The Hadamard Instability is often associated to the loss of hyperbolicity in the system with respect to the {\it constant mean states}. It can be characterized by the exponential growth of the amplitude in the linearized system around the constant state for given an oscillatory mode in the initial data. On the other hand, the instability exhibiting here, is in fact not exactly same, due to the time-dependent nature and has not been clarified. The purpose of this section is to clarify the instability exhibited in the linearized problem around the {\it growing mean state} with respect to the system hyperbolicity is lost.
 
 \begin{theorem} \label{thm:Hadamard} Suppose $n=0$ among material parameters $(\alpha,m,n)$ in ranges \eqref{eq:paramrange}. Then
@@ -399,12 +664,14 @@ We have seen the loss of hyperbolicity of the system \eqref{PLS} passing the par
 
 \subsubsection{Stability of a non-autonomous linear system}
 To quickly summarize our perspective to come to the conclusion, a few points as to the stability problem of a non-autonomous system needs to be illustrated. First, we specialize the fact that the coefficient in \eqref{eq:l-system2} is {\it frozen} in the limit $\tau \rightarrow \infty$. An example of instability in the complementary case where
-$$ A(t) = \left(\begin{array}{cc} -1 + \frac{3}{2}\cos^2 t & 1-\frac{3}{2}\cos t \sin t \\ -1 -\frac{3}{2}\cos t \sin t & -1 + \frac{3}{2}\sin^2 t \end{array}\right), \quad \lambda_\pm = \frac{-1 + i\sqrt{7}}{4}, \quad x(t) = \left(\begin{array}{c} -\cos t\\ \sin t \end{array}\right) e^{\tfrac{t}{2}}$$
+$$ 
+A(t) = \left(\begin{array}{cc} -1 + \frac{3}{2}\cos^2 t & 1-\frac{3}{2}\cos t \sin t \\ -1 -\frac{3}{2}\cos t \sin t & -1 + \frac{3}{2}\sin^2 t \end{array}\right), \;\; \lambda_\pm = \frac{-1 + i\sqrt{7}}{4}, 
+\; \; x(t) = \left(\begin{array}{c} -\cos t\\ \sin t \end{array}\right) e^{\tfrac{t}{2}}$$
 shows that the spectral information  $\textrm{Re}\, \lambda_\pm(t)<0$ does not help much in determining the asymptotic stability.
 
-In such a case where the coefficient is frozen in the limit however, the classical analysis, for example as in \cite{CL1955}, shows that the spectral information of the limit coefficient $\displaystyle A_\infty=\lim_{t \rightarrow\infty} A(t)$ coveys an important piece of information but does not fully account for the asymptotic behavior. The part contributed by an order of $O(\tfrac{1}{\tau})$ in the coefficient accumulates effect in the asymptotic behavior, which can be enough to alter the nature of stability.
+In such a case where the coefficient is frozen in the limit however, the classical analysis, for example as in \cite{CL55}, shows that the spectral information of the limit coefficient $\displaystyle A_\infty=\lim_{t \rightarrow\infty} A(t)$ coveys an important piece of information but does not fully account for the asymptotic behavior. The part contributed by an order of $O(\tfrac{1}{\tau})$ in the coefficient accumulates effect in the asymptotic behavior, which can be enough to alter the nature of stability.
 
-This, in turn, calls for a simultaneous diagonalization of the whole one-parameter family of matrices $A(t)$ to sort out all the contribution. It is well-known that the simultaneous diagonalization in general fails. One sufficient condition for this to be done is to have $A_\infty$ have eigenvalues all distinct. This is the case of the classical Coddington-Levsinson Theorem \cite{CL1955} that states the precise stability by inspecting the time dependent spectrum.
+This, in turn, calls for a simultaneous diagonalization of the whole one-parameter family of matrices $A(t)$ to sort out all the contribution. It is well-known that the simultaneous diagonalization in general fails. One sufficient condition for this to be done is to have $A_\infty$ have eigenvalues all distinct. This is the case of the classical Coddington-Levsinson Theorem \cite{CL55} that states the precise stability by inspecting the time dependent spectrum.
 
 It is this point to which our linear system is contrasted; the limit coefficient $A_{\ell,\infty}$ in \eqref{eq:l-system2} has the repeated eigenvalue $0$. Its consequences are varied in the inviscid ($n=0$) and the viscous ($n>0$) case. For the inviscid case, the simultaneous diagonalization is unachievable and we will have to rely on mere the upper triangularization of the one-parameter family of matrices, whereas for the viscous case the simultaneous diagonalization is achievable despite of the repeated eigenvalues. In the former case, the third effect of resonance also has to be taken account in determining the asymptotic stability. To summarize, our study boils down to studying the stability of a system where the coefficient is upper triangular or diagonal for all $t\ge0$.
 
@@ -446,7 +713,7 @@ Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\fra
 Having above done, we consider following triangularization. We pick $s_1$, renormalized by a factor of $\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)$ at our convenience, then the pre-image $\tilde s_2$ is found such that
 $$ (A-\lambda_2) \tilde s_2 = \Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1, \quad \text{$\tilde s_2 = \begin{pmatrix}  0 \\ \tfrac{1+\alpha}{1+m} \\ \tfrac{-\alpha+m}{1+m} \end{pmatrix}$}.$$
 
-With this new basis $\left\{\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1,\tilde s_2, s_3 \right\}$, we factorize $A(\tau) = P(\tau)B(\tau)P^{-1}(\tau)$ and define the linear system:
+With this new basis $\left\{\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1,\tilde s_2, s_3 \right\}$, we factorize \\$A(\tau) = P(\tau)B(\tau)P^{-1}(\tau)$ and define the linear system:
 \begin{equation}\label{eq:factor}
 \begin{aligned}
  y &= P(\tau)^{-1} x, \quad  y' = \underbrace{\begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix}}_{\triangleq B(\tau)} y - P(\tau)^{-1}P'(\tau) y,\\
@@ -473,8 +740,14 @@ by the error of $o(\frac{1}{\tau})$ (more precisely $O(\frac{1}{\tau^{3/2}})$) t
 
 \begin{proof}[proof of Theorem \ref{thm:Hadamard}]
 Let $\tau_0$ be large enough so that $\lambda_2(\tau) < \lambda_3(\tau) < 0 < \lambda_1(\tau)$ and all eigenvalues are real for $\tau\ge \tau_0$. Explicit formulas for the general solutions of \eqref{eq:trisystem} are available. The maximum growth  takes place when
-$$ \hat{y}(\tau)=\left(\exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds} \right)\hat y_1(\tau_0) +  \left(\exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds}\right) \underbrace{\int_{\tau_0}^\tau \exp{\left(-\int_{\tau_0}^z \lambda_1(s)-\lambda_2(s)\,ds\right)}\hat y_2(\tau_0) \, dz}_{\triangleq \varphi(\tau)}$$
-for some constants $\hat{y}_1(\tau_0)$ and $\hat{y}_2(\tau_0)$. Inspired from the proof of the Coddington-Levinson Theorem \cite{CL1955}, we examine the accumulated spectral gap $\int_{\tau_0}^\tau \lambda_1(s)-\lambda_2(s)\,ds$. In particular, we use the special fact that the accumulated spectral gap is ${O}(\sqrt{\tau})$ as $\tau \rightarrow 0$. This implies that the integrand in $\varphi(\tau)$ is integrable and that $\varphi(\tau)$ is bounded. Hence
+$$
+\begin{aligned}
+ \hat{y}(\tau) &=\left(\exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds} \right)\hat y_1(\tau_0) 
+ \\
+ &\quad +  \left(\exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds}\right) \underbrace{\int_{\tau_0}^\tau \exp{\left(-\int_{\tau_0}^z \lambda_1(s)-\lambda_2(s)\,ds\right)}\hat y_2(\tau_0) \, dz}_{\triangleq \varphi(\tau)}
+\end{aligned}
+$$
+for some constants $\hat{y}_1(\tau_0)$ and $\hat{y}_2(\tau_0)$. Inspired from the proof of the Coddington-Levinson Theorem \cite{CL55}, we examine the accumulated spectral gap $\int_{\tau_0}^\tau \lambda_1(s)-\lambda_2(s)\,ds$. In particular, we use the special fact that the accumulated spectral gap is ${O}(\sqrt{\tau})$ as $\tau \rightarrow 0$. This implies that the integrand in $\varphi(\tau)$ is integrable and that $\varphi(\tau)$ is bounded. Hence
 $$|\hat{y}(\tau)|\le C \left| \exp{\int_{\tau_0}^\tau \lambda_1(s)\, ds}\right| \quad \text{for }\tau\ge\tau_0$$
 and there is a $y^+(\tau)$ that attains the maximum growth. By Proposition \ref{prop:stab}, there is a $x^+(\tau)$ and a constant vector $x^+_\infty$ such that
 \begin{equation*}
@@ -489,10 +762,26 @@ Recalling that $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, $\gamma(\tau)= \l^2\
 \end{equation}
 \end{proof}
 
+\subsection{Case that  strain hardening outweighs   thermal softening : $\alpha < m$}
+
+
+
+\vfil\eject
+
+
+\section{Linearized stability for the thermoviscoplastic model, effect of strain-rate hardening}
+
+\tcr{ To-Do  Develop this section separately. Develop both cases
+\begin{itemize}
+\item Cases $-\alpha + m + n  > 0$ linearized stability
+\item Case $-\alpha + m + n  <  0$ linearized instability
+\end{itemize}
+}
+
 \subsection{Turing Instability of viscous model}
 While the purpose of the previous section was to clarify a type of Hadamard Instability for the inviscid case ($n=0$), the purpose of this section is to reveal a type of Turing Instability for the viscous case ($n>0$). Again, the term Turing Instability is to be understood properly. To brief, the Turing instability in the {morphogenesis} and in many other interesting pattern forming phenomena, it refers to an instability due to the interaction of two or a few different  mechanisms each of that would stabilize by acting itself alone. In the pattern formation, it is important to have a few but finite unstable modes that give rise to interesting patterns and these patterns are quite often steady states.
 
-By contrast, for the localizing instability exhibited in the shear band problem, we view it as a consequence attributed to a different kind of mechanism. The results in Theorem \ref{thm:Turing} in this section can be summarized by the appearance of infinitely many unstable modes for each frequency and the saturation of the growth rates, meaning that the growths of modes are all comparable. These two phenomena was observed in the simpler model that corresponds to $\alpha=0$ and $m=-1$ in \cite{KLT_16}, where the linearized system happened to be an autonomous one.
+By contrast, for the localizing instability exhibited in the shear band problem, we view it as a consequence attributed to a different kind of mechanism. The results in Theorem \ref{thm:Turing} in this section can be summarized by the appearance of infinitely many unstable modes for each frequency and the saturation of the growth rates, meaning that the growths of modes are all comparable. These two phenomena was observed in the simpler model that corresponds to $\alpha=0$ and $m=-1$ in \cite{KLT16}, where the linearized system happened to be an autonomous one.
 
 In our point of view, the appearance of infinitely many unstable modes for each frequency and their growth rates being saturated are important for the formation of initial peak-like coherent profile. In the later dynamics, the nonlinear effect takes over and this is a subject of our second paper of the series.
 
@@ -627,8 +916,10 @@ y'(\tau) &= \Big(\Lambda_0 + \frac{1}{\tau}\Lambda_1\Big) y + R(\tau) y, \quad R
 \end{equation}
 Note the error $R(\tau)$ is $o(\frac{1}{\tau})$. %This size estimate is in particular a result of the Proposition \ref{prop:ctsdiag}.
 
+
+
 \subsubsection{Proof of Turing Instability}
-Now we are ready to prove the Thoerem \ref{thm:Turing}, applying Theorem \ref{thm:CL}.
+Now we are ready to prove the Theorem \ref{thm:Turing}, applying Theorem \ref{thm:CL}.
 \begin{proof}[proof of Theorem \ref{thm:Turing}]
 We fix parameter $(\alpha,m,n)$ and apply the Theorem \ref{thm:CL} on the system \eqref{eq:diagonalsystem}. That for every parameter $(\alpha,m,n)$ and for every row index $k$, the spectral gap condition in Theorem \ref{thm:CL} is fulfilled is to be checked:
 For large $\tau<\infty$,
@@ -726,7 +1017,265 @@ With the fourth equation we remove one of the variables. The choice of removing 
 \end{aligned}
 \end{equation}
 
+
+
+
 \pagebreak
+\section{Localizing self-similar solutions}
+Next, we focus in the region $\alpha - m - n >0$ where linearized analysis predicts instability. As usual, linear
+analysis predicts the very initiation of instability. Beyond the initial stage, nonlinear effects become important, and, in particular,
+they are expected to kill the oscillations of high-frequency modes and lead to localization.
+The behavior in this regime is captured by a class of self-similar solutions for \eqref{pls} recently developed  in \cite{LKT17}. 
+They are constructed using similarity methods and techniques from dynamical systems and
+turn out to exhibit dynamic localization.
+We review here this result, but with a better exposition that reveals the intimate
+connection to the scaling properties of the system of relative perturbations \eqref{plsrel}.
+The result is stated as follows:
+
+
+\begin{theorem}[\cite{LKT17}] \label{mainthm1}
+Suppose the material parameters $(\alpha, m, n)$ take values in the range \eqref{eq:paramrange} and satisfy $-\alpha+m+n<0$. If $n>0$ is sufficiently small, then
+for each $U_0>0$, $\Gamma_0>0$ with ratio in the interval
+\begin{equation} \label{eq:restriction}
+ \frac{2(1+\alpha) -n}{D} < \frac{U _0}{\Gamma _0} < \frac{2(1+\alpha) -n}{D} + \frac{4(1+\alpha)(\alpha-m-n)(1+m)}{D(1+m+n)^2},
+\end{equation}
+there is a focusing self-similar solution to the system \eqref{pls} of the form
+\begin{equation}
+\label{ssol}
+\begin{aligned}
+ \Gamma (\tau,x) &= \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ \alpha}{D}} \bG(\tau ^\lambda x), & U (\tau,x) &=\left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ \alpha}{D}} \bU( \tau ^\lambda x),\\
+ \Theta (\tau,x) &= \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ m +n}{D}} \bTh( \tau ^\lambda x), & \Sigma (\tau,x) &= \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{- \alpha +m+n}{D}} \bS( \tau ^\lambda x),\\
+ V (\tau,x) &= \tau ^{-\lambda} \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ \alpha}{D}} \bV( \tau ^\lambda x),
+\end{aligned}
+\end{equation}
+where the focusing rate $\lambda$ is determined by 
+\begin{equation} \label{eq:lambda}
+ \lambda = \Big(\frac{U _0}{\Gamma _0} - \frac{2(1+\alpha)-n}{D}\Big)\frac{D}{2(1+m)}  > 0 ,
+\end{equation}
+and the profiles $\big(\bG(\xi), \bU(\xi), \bTh(\xi),\bS(\xi),\bV(\xi)\big)$ as  functions of $\xi = \tau^\lambda x$ have the properties
+that $\bV(\xi)$ odd while  $\bU (\xi)$, $\bG(\xi)$, $\bTh(\xi)$, $\bS(\xi)$ are even functions.
+\end{theorem}
+
+
+The reader should recall that  usually parabolic systems (such as \eqref{pls}) admit self simlar solutions that are constant on lines $\xi = \frac{x}{t^\rho}$, $\rho > 0$, and capture
+the effect of diffusion. By contrast, the self similar solutions  \eqref{ssol} propagate information on lines $x t^\lambda = const$ that focus around the origin. 
+We further demand that these profiles are localizing. We will call a self-similar function of the form
+$$
+F(\tau,x) = t^b \bar F(x \tau^\lambda) \, , \quad \mbox{with $\bar F(-\xi) = \bar F(\xi)$ and $\lambda > 0$}
+$$
+{\it localizing} if it has the asymptotic behavior
+$$
+\bar F(\xi) = \BO (\xi^p)    \quad \mbox{ as $\xi \to \infty$ }
+$$
+and satisfies that $p < 0$ when $b > 0$ while $p > 0$ when $b < 0$. Under this definition, if $F(t,0)$ grows then $F(t,x)$ grows at a slower
+rate when $x \ne 0$, while when $F(t,0)$ decays then $F(t,x)$ decays at a slower rate at $x \ne 0$. We will call a self-similar function with an odd-profile 
+$\bar F(-\xi) = - \bar F(\xi)$ localizing when its derivative $F_x( t,x)$  behaves as above.
+
+
+
+
+
+
+
+\begin{proposition}[\cite{LKT17}] \label{mainthm2}
+If $-\frac{1+m+n}{\alpha-m-n}\ne-1$ then 
+$\big(\bG(\xi), \bU(\xi), \bTh(\xi),\bS(\xi),\bV(\xi)\big)$ has the  properties:
+
+ \begin{enumerate}
+  \item[(i)] $\bU (\xi)$, $\bG(\xi)$, $\bTh(\xi)$, $\bS(\xi)$ are even functions satisfying
+    \begin{equation*}
+    \Gamma_\xi(0) = \Theta_\xi(0)=\Sigma_\xi(0) = {U}_\xi(0)=0 \, ,
+  \end{equation*}
+and have the asymptotic behavior as $\xi \rightarrow 0$ 
+  \begin{equation} \label{eq:ss_asymp0}
+  \begin{aligned}
+    \Gamma(\xi) -\Gamma_0 &= \Gamma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Gamma^{''}(0)&<0,\\
+    \red \Theta(\xi) - \Theta_0 &= \Theta^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Theta^{''}(0)&<0,\\
+    \red \Sigma(\xi) - \Sigma_0  &= \Sigma^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & \Sigma^{''}(0)&>0, \\
+    U(\xi) - U_0 &= U^{''}(0)\frac{\xi^2}{2} + o(\xi^2), & U^{''}(0)&<0,
+   \end{aligned}
+  \end{equation}
+where 
+  $$
+  \Theta_0  =  c^{-\frac{1}{1+\alpha}}\Gamma_0^{\frac{m}{1+\alpha}} U_0^{\frac{1+n}{1+\alpha}} \, , \quad 
+  \Sigma_0 = c^{\frac{\alpha}{1+\alpha}}\Gamma_0^{\frac{m}{1+\alpha}} U_0^{-\frac{\alpha-n}{1+\alpha}} \, .
+  $$
+
+
+\item[(ii)] $\bV(\xi)$ is an odd function satisfying ${V}(0) = 0$ and 
+ \begin{equation} \label{eq:ss_asymp1}
+  \begin{aligned}
+  V(\xi) - U_0\xi &= U^{''}(0)\frac{\xi^3}{6} + o(\xi^3)  \, \quad \mbox{as $\xi \to 0$ }\, .
+  \end{aligned}
+  \end{equation}
+
+
+ \item[(iii)] The asymptotic behavior as $\xi \rightarrow \infty$ is given by
+  \begin{equation} \label{eq:ss_asymp1}
+  \begin{aligned}
+    \Gamma(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}}), & V(\xi) &= \BO\big(1), &    \Theta(\xi) &= \BO\big(\xi^{-\frac{1+m+n}{\alpha-m-n}}),\\
+   \Sigma(\xi) &= \BO\big(\xi), &   U(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}})
+  \end{aligned}
+  \end{equation}
+ \end{enumerate}
+\end{proposition}
+% The exposition will be of two parts: One is to investigate the scale invariance property of \eqref{PLS} and the other is, out of those investigations, to construct a family of localizing self-similar solutions.  We address that the numerical computation in Section \ref{sec:num_cont} conducted by the method of numerical continuation is freshly added.
+
+Note that due to the relations \eqref{eq:ss_asymp1} the self-similar profiles $U(\xi)$, $\Gamma (\xi)$, $\Theta (\xi)$, $\Sigma(\xi)$ and $V(\xi)$ are all localizing.
+In addition we can easily compute the asymptotic behavior o fhe resulting solution. For instance , ...
+
+...
+
+Also, numerical computation of the associated heteroclinic orbits is performed in ... using ... and are presented here.
+
+
+\bigskip
+
+\subsection{Outline of the construction of self-similar profiles}
+
+A special feature of the presentation below, which differs than the original approach in \cite{LKT17}, is that the similarity structure of]the system of relative perturbations is exploited.
+(The original approach was based on the similarity of the original system.) This has the advantage of capturing well the growth
+rates of the profiles.
+
+
+First we investigate the scale invariance property of \eqref{PLS}. For prescribed parameters $( \alpha, m,n)$, the system \eqref{PLS} has the two-parameters symmetry group as to the scale invariance. More precisely, if the tuple $W=\big( \Gamma(\tau,x)$, $U(\tau,x)$, $\Theta(\tau,x)$, $\Sigma(\tau,x)$, $V(\tau,x)\big)$ is a solution of the system \eqref{PLS}, then the rescaled tuple $W _R=\big( \Gamma _R(\tau,x)$, $U _R(\tau,x)$, $\Theta _R(\tau,x)$, $\Sigma _R(\tau,x)$, $V _R(\tau,x)\big)$ defined by
+\begin{align*}
+ \Gamma _R(\tau,x) &= \left(\frac{\nu^2}{\rho}\right) ^{ \frac{1+ \alpha}{D}} \Gamma( \rho \tau, \nu x), & U _R(\tau,x) &=\left(\frac{\nu^2}{\rho}\right) ^{ \frac{1+ \alpha}{D}} U( \rho \tau, \nu x),\\
+ \Theta _R(\tau,x) &= \left(\frac{\nu^2}{\rho}\right) ^{ \frac{1+ m +n}{D}} \Theta( \rho \tau, \nu x), & \Sigma _R(\tau,x) &= \left(\frac{\nu^2}{\rho}\right) ^{ \frac{- \alpha +m+n}{D}} \Sigma( \rho \tau, \nu x),\\
+ V _R(\tau,x) &= \nu ^{-1} \left(\frac{\nu^2}{\rho}\right) ^{ \frac{1+ \alpha}{D}} V( \rho \tau, \nu x), & \text{with } D&=1+ 2\alpha -m-n
+\end{align*}
+again is a solution of \eqref{PLS}. Of course, this observation is suggestive in an attempt constructing a special solution that keeps a symmetry subgroup. Of particularly interesting cases are the self-similar ones where we require
+$$ W(\tau,x) = W _R(1,\tau ^\lambda x)= \bar{W}(\tau ^\lambda x) \quad \text{by setting} \quad \rho = \tau ^{-1}, \quad \nu=\tau^ \lambda.$$
+%We will see the self-similar profiles with $\lambda>0$ exhibit the localization.
+This is to consider ansatz
+\begin{align*}
+ \Gamma (\tau,x) &= \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ \alpha}{D}} \bG(\tau ^\lambda x), & \bU (\tau,x) &=\left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ \alpha}{D}} U( \tau ^\lambda x),\\
+ \Theta (\tau,x) &= \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ m +n}{D}} \bTh( \tau ^\lambda x), & \bS (\tau,x) &= \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{- \alpha +m+n}{D}} \Sigma( \tau ^\lambda x),\\
+ V (\tau,x) &= \tau ^{-\lambda} \left(\tau^{1+ 2 \lambda}\right) ^{ \frac{1+ \alpha}{D}} \bV( \tau ^\lambda x), \quad \big(\bV _\xi(\xi) = \bU(\xi)\big),
+\end{align*}
+where we set $\xi\triangleq\tau ^\lambda x$. By plugging into the system, we obtain a system of ordinary differential equations
+\begin{equation}\label{eq:sseq}
+\begin{aligned}
+ (1+2 \lambda) \left(\frac{1 + \alpha}{D}\right) \bU + \lambda \xi \bU_\xi &= \bS_{\xi\xi},\\
+ (1+2 \lambda) \left(\frac{1 + \alpha}{D}\right) \bG + \lambda \xi \bG_\xi&=\frac{1+ \alpha}{1+m}(\bU - \bG),\\
+ (1+2 \lambda) \left(\frac{1 + m+n}{D}\right) \bTh + \lambda \xi \bTh_\xi&=\bS\bU - \bTh,\\
+ \bS &= \bTh^ {- \alpha} \bG ^m \bU ^n,\\
+\end{aligned}
+\end{equation}
+We address that the formulation with $\bV(\xi)$ instead of $\bU(=\bV_\xi)$ is possible and will be with the equation
+% with $\eqref{eq:sseq}_1$ equivalently replaceble (among smooth solutions) by
+$$ (1+2 \lambda) \left(\frac{1 + \alpha}{D}\right) \bV - \lambda \bV + \lambda \xi \bV_\xi=\bS_\xi,$$
+instead of $\eqref{eq:sseq}_1$.
+
+It turns out that the classical o.d.e. theory to solve this system does not apply because of the singularity at $\xi=0$. Note that the coefficient $\xi$ not only makes the system non-autonomous but also singular because it is at terms of highest derivatives. The major ingredient advanced in \cite{KOT14,LKT17} is to turn this singular non-autonomous system into an autonomous dynamical system and formulate the problem to find the suitable heteroclinic orbit of the derived autonomous system.
+
+To this end, we introduce nonlinear transformations and the new independent variable $\eta = \log\xi$. First we notice is the reflexive symmetry that if $\big(\bG(\xi)$, $\bU(\xi)$, $\bTh(\xi)$, $\bS(\xi)$, $\bV(\xi)\big)$ is a solution of \eqref{eq:sseq} then $\big(\bG(-\xi)$, $\bU(-\xi)$, $\bTh(-\xi)$, $\bS(-\xi)$, $-\bV(-\xi)\big)$ again is a solution. We thus look for $\bG(\xi)$, $\bU(\xi)$, $\bTh(\xi)$, $\bS(\xi)$ that are even and $\bV(\xi)$ that is odd function of $\xi$. This symmetry leads to imposing conditions
+\begin{equation} \label{eq:extension_cond}
+ 0=\bG'(0)=\bU'(0)=\bTh'(0)=\bS'(0)=\bV(0).
+\end{equation}
+and formulate the problem to solve \eqref{eq:sseq} on the right half space $[0,\infty)$ with the boundary values \eqref{eq:extension_cond}.
+
+Second we observe is its own scale invariance of the system for self-similar variables. If $\bar{W}(\xi)=\big(\bG(\xi)$, $\bU(\xi)$, $\bTh(\xi)$, $\bS(\xi)$, $\bV(\xi)\big)$ is a solution of \eqref{eq:sseq} then $\bar{W}_R(\xi)=\big(\bG _R(\xi)$, $\bU_R(\xi)$, $\bTh_R(\xi)$, $\bS_R(\xi)$, $\bV_R(\xi)\big)$ again is a solution if
+{\blue
+\begin{align*}
+\bG _R(\xi)&=\rho^ \frac{2(1+ \alpha)}{D}\bG(\rho\xi), & \bU _R(\xi) &= \rho^ \frac{2(1+ m+n)}{D}\bU(\rho\xi), &
+\bTh _R(\xi)&=\rho^ \frac{2(1+ \alpha)}{D}\bTh(\rho\xi), \\
+\bS _R(\xi)&=\rho^ \frac{2(-\alpha+m+n)}{D}\bS(\rho\xi), & \bV _R(\xi) &=\rho^ {\frac{2(1+ \alpha)}{D}-1}\bV(\rho\xi)
+\end{align*}
+}
+One could consider the monomial solutions that are self-similar to \eqref{eq:sseq}. This is not compatible to \eqref{eq:extension_cond} but this symetry allows us to consider a sort of relatively perturbed variables which entail the nice scaling property. We introduce residuals
+\begin{align*}
+\bg(\xi) &= \xi^ \frac{2(1+ \alpha)}{D}\bG(\xi), & \bu(\xi) &= \xi^ \frac{2(1+ m+n)}{D}\bU(\xi), &
+\bth(\xi)&=\xi^ \frac{2(1+ \alpha)}{D}\bTh(\xi), \\
+\bs(\xi)&=\xi^ \frac{2(-\alpha+m+n)}{D}\bS(\xi), & \bv(\xi) &=\xi^ {\frac{2(1+ \alpha)}{D}-1}\bV(\xi).
+\end{align*}
+Along defining new variables, we also introduce the independent variable $\eta = \log\xi$ which runs from $-\infty$ to $\infty$. To denote variables in the new independent variable, we annotate the tilde for example $\tg(\eta)|_{\eta=\log\xi}=\bg(\xi)$ and we denote $\frac{d}{d\eta} \tg = \dot\tg$, then the system new variables satisfy reads
+\begin{equation} \label{eq:tildesys}
+\begin{aligned}
+%\frac{1+ \alpha}{D} \bu + \lambda \dot\bu &= \left(\frac{-2(- \alpha +m+n)}{D}\right)\left(\frac{-2(- \alpha +m+n)}{D}-1\right)\bs + \left(\frac{-2(- \alpha +m+n)}{D} + \frac{-2(- \alpha +m+n)}{D}-1\right)\dot\bs + \ddots\bs,\\
+\frac{1+ \alpha}{D} \tu + \lambda \dot\tu &= d_1(d_1-1)\ts + (d_1+d_1-1)\dot\ts + \ddot\ts,\\
+\frac{1+ \alpha}{D} \tg + \lambda \dot\tg &= \frac{1 + \alpha}{1+m}( \tu - \tg ),\\
+\frac{1+ m+n}{D} \tth + \lambda \dot\tth &= \ts\tu-\tth,\\
+\ts &=\tth^{- \alpha} \tg ^m \tu ^n, \quad \text{where $d_1=\frac{-2(- \alpha +m+n)}{D}$},
+\end{aligned}
+\end{equation}
+Again, $\eqref{eq:tildesys}_1$ is replaceble by
+$$\frac{1+ \alpha}{D} \tv + \lambda \dot\tv = d_1 \ts -\dot\ts, \quad \text{with relation} \quad \tu = -\frac{1+m+n}{D}\tv + \dot\tv.$$
+Note that this is an autonomous system. Before we complete the formulation, one technical point needs to be clarified. The existence theorem in \cite{LKT17} will be quoted in our presentation but the system (18) in \cite{LKT17} has different numerical numbers from \eqref{eq:tildesys} has; it has been derived from \eqref{PLS} of the original formulation while we derived \eqref{eq:tildesys} from \eqref{PLS} of relative perturbations. The constant multiple of $(\tu_1,\tg_1,\tth_1,\tv_1)=\frac{1+m}{1+\alpha}^{\frac{1}{-\alpha+m+n}}(\tu,\tg,\tth,\tv)$ with the $\lambda_1 =\frac{1+m}{1+\alpha}\lambda$ give the system (18), saying there are no essential differences between the two. While we find the current formulation more systematic, not to reproduce the proof over again, we proceed with the system (18) in \cite{LKT17} without annotating any subscripts, which is
+\begin{equation} \label{eq:tildesys2}
+ \begin{aligned}
+  a_0\tg + \lambda\dtg &=\tu, & a_0&=\frac{2+2\alpha-n}{D},\\
+  b_0\tv + \lambda\dtv &=-d_1 \ts + \dts,& b_0&=\frac{1+m}{D},\\
+  c_0\tth+ \lambda\dtth&=\ts\tu, & c_0&=\frac{2(1+m)}{D},\\
+  \ts &=\tth^{-\alpha}\tg^m\tu^n, \\
+  -b_1\tv+\dtv &= \tu, & b_1&=\frac{1+m+n}{D},
+ \end{aligned}
+\end{equation}
+
+\noindent
+\tcr{MGL To-Do:    A better writing is needed here, jplease write the precise transformation that carries you
+ from the system \eqref{eq:tildesys} to the system \eqref{eq:tildesys2}; use different notations for the two systems, 
+ also give some details about which
+ numerical relations are used to simplify then follow \cite{LKT17}. }
+
+Lastly, we come up with a new choice of variables that tend to equilibria as $\eta \rightarrow \pm \infty$ and accommodate
+orbits with power growth or decay at infinities. \eqref{eq:tildesys2} can be rewritten in the form
+\begin{equation}
+ \label{eq:tildesys3}
+\begin{aligned}
+\frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\lambda} \big (- a_0 +  \frac{\tu}{\tg} \big ),
+\\
+\frac{d}{d\eta}{(\ln{\tv})}  &=  - b_1 + \frac{\tu}{\tv} ,
+\\
+\frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\lambda} \big (- c_0 +  \frac{\ts \tu}{\tth} \big ),
+\\
+\frac{d}{d\eta}{(\ln{\ts})} &= d_1 + b \frac{\tv}{\ts} + \lambda + \frac{\tu}{\ts}, \quad b = \frac{1+m}{D} + \frac{1+m+n}{D}\lambda
+\end{aligned}
+\end{equation}
+% \begin{equation}
+%  \label{eq:tildesys2}
+% \begin{aligned}
+% \frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\lambda} \left (- \frac{2+2\alpha-n}{D} +  \frac{\tu}{\tg} \right ),
+% \\
+% \frac{d}{d\eta}{(\ln{\tv})}  &=  - \frac{1+m+n}{D} + \frac{\tu}{\tv} ,
+% \\
+% \frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\lambda} \left (- \frac{2(1+m)}{D} +  \frac{\ts \tu}{\tth} \right ),
+% \\
+% \frac{d}{d\eta}{(\ln{\tth})} &= \frac{2(-\alpha+m+n)}{D} + \left( \frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right) \frac{\tv}{\ts} + \lambda + \frac{\tu}{\ts}
+% \end{aligned}
+% \end{equation}
+and the right-hand-sides are presumed to be bounded. Here we view it as describing the evolution of $(\tg,\tv,\tth,\ts)$ with $\tu$ determined by $\tu = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^m} \right )^\frac{1}{n}$.
+
+This leads us to define
+\begin{equation}\label{eq:pqrdef}
+ \begin{aligned}
+  p :=\frac{\tg}{\ts}, \quad q :=b \frac{\tv}{\ts},  \quad r = \frac{\tu}{\tg} = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^{m+n}} \right )^\frac{1}{n}  , \quad s := \frac{\ts\tg}{\tth} \, .
+ \end{aligned}
+\end{equation}
+The transformation $(p,q,r,s) \leftrightarrow (\tg,\tv, \tth,\ts)$ is a bijection in the first quadrant with the inverse determined by
+$$
+\tg = p^\frac{1+\alpha}{D} s^\frac{\alpha}{D} r^\frac{n}{D} \, \quad \tth = p^\frac{1+m+n}{D} s^\frac{m+n-1}{D} r^\frac{2n}{D}
+$$
+and then
+$$
+\sigma = \frac{1}{\tg} p \, , \quad v = \frac{1}{b} \sigma \, q
+$$
+After a cumbersome but straightforward calculation, we derive the $(p,q,r,s)$-system:
+\begin{equation}\label{eq:slow} \tag{S}
+ \begin{aligned}
+ \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big), \quad a=\frac{2+2\alpha-n}{D} + \frac{2(1 + \alpha)}{D}\lambda,\\
+ \dot{q} &=q\Big(1 -\lambda p r -q\Big) + b p r, \quad \quad \quad \quad b=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda,\\
+ n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \end{aligned}
+\end{equation}
+Having arrived at \eqref{eq:slow}, it remains to clarify what orbit we are aiming to capture and it needs to perform a phase space analysis of it revealing the nonlinear behavior of the dynamical system; regarding the former, the far field conditions at $\pm\infty$ is imposed accordingly to \eqref{eq:extension_cond}. This is to go beyond introducing the existence result of the localizing self-similar solutions and we refer the exposition to \cite{LKT17}. One most important aspect is that \eqref{eq:slow} possesses the {\it fast-slow} structure due to the presence of the small parameter $n$ in the left-hand-side of $\eqref{eq:slow}_3$. We exploit this aspect to prove the existence of the heteroclinic orbit of \eqref{eq:slow},  applying the {\it geometric singular perturbation theory} \cite{Fenichel79}. Further exposition of this discussion is available in \cite{LKT17}. These results lead to the Theorem \ref{mainthm1} and \ref{mainthm2}.
+
+
+
+
+\pagebreak
+
 \appendix
 % \section*{Appendix}
 \renewcommand\thetheorem{\Alph{theorem}}
@@ -736,7 +1285,7 @@ With the fourth equation we remove one of the variables. The choice of removing 
 
 
 
-\begin{theorem}{\cite[p. 24]{L1966}} \label{thm:anal} Let $f_j(w,z)$, $j=1,\cdots,m$, be analytic functions of $(w,z)=(w_1,\cdots,w_m,z_1,\cdots,z_n)$ in a neighborhood of a point $(w^0,z^0)$ in $\mathbb{C}^m\times \mathbb{C}^n$, and assume that $f_j(w^0,z^0)=0$, $j=1,\cdots,m$ and that
+\begin{theorem}{\cite[p. 24]{Hormander66}} \label{thm:anal} Let $f_j(w,z)$, $j=1,\cdots,m$, be analytic functions of $(w,z)=(w_1,\cdots,w_m,z_1,\cdots,z_n)$ in a neighborhood of a point $(w^0,z^0)$ in $\mathbb{C}^m\times \mathbb{C}^n$, and assume that $f_j(w^0,z^0)=0$, $j=1,\cdots,m$ and that
 $$ \det\Big( \frac{\partial f_j}{\partial w_k} \Big)_{j,k=1}^m \ne 0 \quad \text{at $(w^0,z^0)$}.$$
 Then the equations $f_j(w,z)=0$, $j=1,\cdots,m$ have a uniquely determined analytic solution $w(z)$ in a neighborhood of $z_0$, such that $w(z^0)=w^0$.
 \end{theorem}
@@ -773,8 +1322,11 @@ We rewrite \eqref{eq:x} in the form
  \end{align*}
  This gives the boundedness of the solution. Now, let $\xi(t)$ and $\xi(a)$ be that its semi-group part is the $y(t)$ grows as same as the operator norm does. The second assertion follows from
  \begin{align*}
-&\big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} = \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \le \frac{1}{2} \|\xi(t)\|_{L^\infty([a,t])},\\
-&\big\|G(t-a)\xi(a)\big\|_{L^\infty([a,t])} \le \big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} + \big\|\xi(t)\big\|_{L^\infty([a,t])} \le \frac{3}{2} \|\xi(t)\|_{L^\infty([a,t])}.
+\big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} &= \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \le \frac{1}{2} \|\xi(t)\|_{L^\infty([a,t])},
+\\
+\big\|G(t-a)\xi(a)\big\|_{L^\infty([a,t])} &\le \big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} + \big\|\xi(t)\big\|_{L^\infty([a,t])} 
+\\
+&\le \frac{3}{2} \|\xi(t)\|_{L^\infty([a,t])}.
  \end{align*}
 \end{proof}
 %
@@ -805,7 +1357,7 @@ We rewrite \eqref{eq:x} in the form
 % \end{proof}
 
 
-\begin{theorem}{\cite[Diagonal Version]{CL1955}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{a_0}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$ for some $a_0$.
+\begin{theorem}{\cite[Diagonal Version]{CL55}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{a_0}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$ for some $a_0$.
 Fix an index $k$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
 
 $i \in I_1$ if
@@ -934,7 +1486,7 @@ If $i\in I_2$, then $\left|\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\la
 %
 % Lastly, the case where $U(t)$ is diagonal is considered. In this case, not only the explicit formula of the solution map $F(t) = \textrm{diag}\left[ \exp\left(\int_0^t \lambda_i(s)\; ds\right) \right]$ is available but also it is possible to spot every modes. Indeed, the unperturbed system is totally decoupled so that every mode remains unmixed and survives. This property is in fact shared by the upper triangular matrix; this can be seen by just taking $\hat{\ell}$ the coordinate basis as an initial data. The next Coddington-Levinson theorem shows that for a diagonal matrix, under the suitable spectral gap conditions, the ability to discern all modes persists after adding a weak coupling $\mathcal{E}(t)$. The spectral condition is notably precise where the accumulated contribution by non-integrable real parts of eigenvalues matters.
 %
-% \begin{theorem}{\cite[Diagonal Version]{CL1955}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{a_0}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$ for some $a_0$.
+% \begin{theorem}{\cite[Diagonal Version]{CL55}}\label{thm:CL} Let $x(t)\in \mathbb{R}^d$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,d$ bounded and $\mathcal{E}(t)$ is a matrix with entries $\mathcal{E}_{ij}$ integrable, i.e., $\int_{a_0}^\infty |\mathcal{E}_{ij}(s)|\; ds < \infty$ $\forall i,j=1,\cdots,d$ for some $a_0$.
 % Fix an index $\ell$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
 %
 % $i \in I_1$ if
@@ -989,797 +1541,215 @@ If $i\in I_2$, then $\left|\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\la
 
 
 
+\vfil\eject
+
 \begin{thebibliography}{10}
 
-\bibitem{L1966}
-{\sc H\"ormander, Lars},
-{\it An introduction to complex analysis in several variables},
-(D. Van Nostrand Co., Inc., Princeton, N.J.-Toronto, Ont.-London (1966).
-
-\bibitem{CL1955}
-{\sc Coddington, Earl A. and Levinson, Norman},
-{\it Theory of ordinary differential equations},
-(McGraw-Hill Book Company, Inc., New York-Toronto-London 1955).
-
-
-
-\tcr{ References from IMA paper}
-
-
-\bibitem{BKT}
-{\sc Th. Baxevanis, Th. Katsaounis and A.E. Tzavaras},
-{\sl Adaptive finite element computations of shear band formation}
-Math. Models Meth. Appl. Sciences, (2010), in press.
-
-
-\bibitem{BPV}
+\bibitem{BPV91}
 {\sc M.Bertsch, L.A.Peletier and S.M.Verduyn Lunel},
 {\sl The effect of temperature dependent viscosity on shear flow of incompressible fluids}
 \newblock SIAM J. Math. Anal., {\bf 22} (1991), 328-343.
 
+\bibitem{CL55}
+{\sc E.A. Coddington and N. Levinson},
+{\it Theory of ordinary differential equations},
+McGraw-Hill Inc., New York, 1955.
 
-\bibitem{CDHS}
-{\sc R.J.Clifton, J.Duffy, K.A.Hartley and T.G.Shawki},
-{\sl On critical conditions for shear band formation at high strain rates}, Scripta Met., {\bf 18} (1984), pp. 443-448.
+\bibitem{CDHS84}
+{\sc R.J. Clifton, J. Duffy, K.A. Hartley and T.G. Shawki},
+{ On critical conditions for shear band formation at high strain rates}, {\it Scripta Met.,} {\bf 18} (1984), 443-448.
 
-\bibitem{CCHD}
+\bibitem{Clifton90}
+{\sc R.J. Clifton},  High strain rate behaviour of metals,
+{\it Applied Mechanics Reviews}
+{\bf 43} (1990), S9-S22.
+
+\bibitem{CCHD79} 
 {\sc L.S.Costin, E.E.Crisman, R.H.Hawley, and J.Duffy},
 {\sl On the localization of plastic flow in mild steel tubes under dynamic torsional loading}
- In "Proc. 2nd Conf. on the Mechanical Properties of Materials at high rates of strain",
+ In "Proc. 2nd Conf. on the Mechanical Properties of Materials at high rates of strain",  
  Inst. Phys. Conf. Ser. no 47, Oxford, 90, 1979.
 
-\bibitem{DH}
+\bibitem{DH83}
 {\sc C.M.Dafermos and L.Hsiao},
 {\sl Adiabatic shearing of incompressible fluids with temperature dependent viscosity}
 Quart. Appl. Math., {\bf 41} (1983), 45 - 58.
 
-
-\bibitem{DO}
-{\sc J.A. Dilellio and W.E. Olmstead},
-{\sl Shear band formation due to a thermal flux inhomogeneity}
-SIAM J. Appl. Math., {\bf 57} (1997), 959-971.
-
-\bibitem{ELW}
-{\sc D.J.Estep, S.M.V.Lunel, and R.D.Williams},
-{\sl Analysis of shear layers in a fluid with temperature-dependent viscosity}
-\newblock Comp. Physics, {\bf 173} (2001), 17-60.
-
-
-\bibitem{FM}
+\bibitem{FM87}
 {\sc C. Fressengeas and A. Molinari }
-{\sl Instability and localization of plastic flow in shear at high strain rates}, J Mech Phys Solids {\bf 35} (1987), pp. 185-211.
+{ Instability and localization of plastic flow in shear at high strain rates}, {\it J Mech Phys Solids} {\bf 35} (1987), 185-211.
 
-\bibitem{HDH}
+\bibitem{HDH87}
 {\sc K.A.Hartley, J.Duffy, and R.J.Hawley},
 {\sl Measurement of the temperature profile during shear band formation in steels deforming at high-strain rates}
  J. Mech. Physics Solids, {\bf 35} (1987), 283-301.
 
-\bibitem{KT}
-{\sc Th. Katsaounis and A.E. Tzavaras}, {\sl Effective equations for localization and shear band formation},  SIAM J. of Applied Math., {\bf{69}}, no.6, (2009), pp.1618--1643.
+\bibitem{Hormander66}
+{\sc L.~H\"ormander},
+{\it An introduction to complex analysis in several variables},
+D. Van Nostrand Inc., Princeton, (1966).
 
-\bibitem{KT2}
-{\sc Th. Katsaounis and A.E. Tzavaras}, {\sl Self-similar organization of localization in high strain-rate
-plasticity}, in preparation.
-
-\bibitem{MC}
-{\sc A.Molinari and R.J.Clifton},
-{\sl Analytical characterization of shear localization in thermoviscoplastic materials}
- J. Appl. Mech.,  {\bf 54} (1987), 806-812.
-
-\bibitem{Tzavaras87}
-{\sc A.E.Tzavaras},
-{\sl Effect of thermal softening in shearing of strain-rate dependent materials}
-Arch. Rational Mech. Analysis, {\bf 99} (1987), 349 - 374.
-
-\bibitem{Tzavaras91}
-{\sc A.E.Tzavaras},
-{\sl Strain softening in viscoelasticity of the rate type}
-J. Integral Equations Appl., {\bf 3} (1991), 195-238.
-
-\bibitem{Tzavaras92}
-{\sc A.E.Tzavaras},
-{\sl Nonlinear analysis techniques for shear band formation at high strain rates}
-Appl. Mech. Reviews, {\bf 45} (1992), S82-S94.
-
-
-\bibitem{Wa}
-{\sc  J.W. Walter},
-{\sl Numerical experiments on adiabatic shear band in one space dimension}
-Int. J. of Plasticity, {\bf 8} (1992), 657-693.
-
-\bibitem{WW}
-{\sc T.W.Wright and J.W.Walter},
-{\sl On stress collapse in adiabatic shear bands}
-J. Mech. Phys. Solids, {\bf 35} (1988), 701-720.
-
-\bibitem{WrOc}
-{\sc T.W.Wright and H. Ockendon},
-{\sl A model for fully formed shear bands}
-J. Mech. Phys. Solids, {\bf 40} (1992), 1217-1226.
-
-\bibitem{Wr}
-{\sc T.W. Wright},
-{\sl The Physics and Mathematics of Shear Bands},
-Cambridge University Press, 2002.
-
-\bibitem{ZH}
-{\sc  C.Zener and J.H.Hollomon},
-{\sl Effect of strain rate upon plastic flow of steel}
-J. Appl. Physics, {\bf 15} (1944), 22-32.
-
-\tcr{ References from SIAD paper}
-
-\bibitem{bertsch_effect_1991}
-{\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel},
-The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
-{\it SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
-
-\bibitem{clifton_rev_1990}
-{\sc R.J. Clifton},  High strain rate behaviour of metals,
-% {\it Applied Mechanics Review}
-{\it Appl. Mech. Rev.}
-{\bf 43} (1990), S9-S22.
-
-\bibitem{DH_1983}
-{\sc C.M. Dafermos and L.~Hsiao},
-Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
-{\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
-
-% \bibitem{fenichel_persistence_1972}
-% {\sc N.~Fenichel},
-% Persistence and smoothness of invariant manifolds for  flows,
-% {\it Indiana Univ. Math. J.} {\bf 21} (1972) 193--226.
-
-\bibitem{fenichel_asymptotic_1974}
-{\sc N.~Fenichel},
-Asymptotic stability with rate conditions,
-{\it Indiana Univ. Math. J.} {\bf 23} (1974) 1109--1137.
-
-\bibitem{fenichel_asymptotic_1977}
-{\sc N.~Fenichel},
-Asymptotic stability with rate conditions \textrm{II},
-{\it Indiana Univ. Math. J.} {\bf 26} (1977) 81--93.
-
-\bibitem{fenichel_geometric_1979}
-{\sc N.~Fenichel},
-Geometric singular perturbation theory for ordinary differential equations,
-{\it J. Differ. Equations} {\bf 31} (1979), 53--98.
-
-%\bibitem{FM87}
-%{\sc C.~Fressengeas and A.~Molinari},
-%Instability and localization of plastic flow in shear at high strain rates,
-%{\it J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
-
-\bibitem{HPS_1977}
-{\sc M.W. Hirsch, C.C. Pugh, and M. Shub},
-{\it Invariant Manifolds}, LNM {\bf 583}, (Springer-Verlag, New York/Heidelberg/Berlin 1977)
 
 \bibitem{HN77}
 {\sc J.W.~Hutchinson and K.W.~Neale},
 Influence of strain-rate sensitivity on necking under uniaxial tension,
 {\it  Acta Metallurgica} {\bf 25} (1977), 839-846.
 
-\bibitem{KOT14}
-{\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras},
-Emergence of coherent localized structures in shear deformations of temperature dependent fluids,
-{\it Archive for Rational Mechanics and Analysis} {\bf 224} (2017), 173--208.
-
 \bibitem{KT09}
 {\sc Th. Katsaounis and A.E.~Tzavaras},
 Effective equations for localization and shear band formation,
 {\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
 
-\bibitem{KLT_16}
+\bibitem{LKT17}
+{\sc M.-G.~Lee, Th. Katsaounis and A.E.~Tzavaras},
+Localization in adiabatic shear flow via geometric theory of singular perturbations,
+arXiv preprint arXiv:1707.05283 (2017).
+
+
+\bibitem{MC87}
+{\sc A. Molinari and R.J. Clifton},
+{ Analytical characterization of shear localization in thermoviscoplastic materials}
+ {\it J. Appl. Mech.},  {\bf 54} (1987), 806-812.
+ 
+\bibitem{SC89}
+{\sc T.G. Shawki and R.J. Clifton},
+Shear band formation in thermal viscoplastic materials,
+{\it Mechanics of Materials}
+{\bf 8 } (1989), 13--43.
+
+\bibitem{Tzavaras87}
+{\sc A.E. Tzavaras},
+{Effect of thermal softening in shearing of strain-rate dependent materials}
+{\it Arch. Rational Mech. Analysis}, {\bf 99} (1987), 349 - 374.
+
+\bibitem{Tzavaras92}
+{\sc A.E. Tzavaras},
+Nonlinear analysis techniques for shear band formation at high strain-rates,
+ {\it Applied Mechanics Reviews}
+{\bf  45} (1992), S82--S94.
+
+\bibitem{WW88}
+{\sc T.W.Wright and J.W.Walter},
+{\sl On stress collapse in adiabatic shear bands}
+J. Mech. Phys. Solids, {\bf 35} (1988), 701-720.
+
+\bibitem{Wright02}
+{\sc T.W. Wright},
+{\sl The Physics and Mathematics of Shear Bands},
+Cambridge University Press, 2002.
+
+
+\bibitem{ZH44}
+{\sc  C. Zener and J.H. Hollomon},
+{ Effect of strain rate upon plastic flow of steel.}
+{\it J. Appl. Physics}, {\bf 15} (1944), 22-32.
+
+
+
+-----------------------------------------------------------------------
+
+\tcr{ Further References }
+
+
+
+\bibitem{Fenichel74}
+{\sc N.~Fenichel},
+Asymptotic stability with rate conditions,
+{\it Indiana Univ. Math. J.} {\bf 23} (1974) 1109--1137.
+
+\bibitem{Fenichel77}
+{\sc N.~Fenichel},
+Asymptotic stability with rate conditions \textrm{II},
+{\it Indiana Univ. Math. J.} {\bf 26} (1977) 81--93.
+
+\bibitem{Fenichel79}
+{\sc N.~Fenichel},
+Geometric singular perturbation theory for ordinary differential equations,
+{\it J. Differ. Equations} {\bf 31} (1979), 53--98.
+
+ \bibitem{Jones95}
+ {\sc C.~K. R.~T. Jones},
+ Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
+
+\bibitem{KOT14}
+{\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras},
+Emergence of coherent localized structures in shear deformations of temperature dependent fluids,
+{\it Archive for Rational Mechanics and Analysis} {\bf 224} (2017), 173--208.
+
+
+\bibitem{KLT16}
 {\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras},
 Localization in inelastic rate dependent shearing deformations,
 {\it J. Mech. Phys. of Solids} {\bf 98} (2017), 106--125.
 
-\bibitem{KUEHN_2015}
+\bibitem{Kuehn15}
 {\sc C.~ Kuehn},
 {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
 
-\bibitem{LT16}
+\bibitem{LT17}
 {\sc M.-G.~Lee and A.E.~Tzavaras},
 Existence of localizing solutions in plasticity via the geometric singular perturbation theory,
 {\it Siam J. Appl. Dyn. Systems} {\bf 16} (2017), 337--360.
 
-\bibitem{KLT17}
-{\sc M.-G.~Lee and A.E.~Tzavaras},
-Localization in adiabatic shear flow \\via geometric theory of singular perturbations,
-arXiv preprint arXiv:1707.05283 (2017).
 
-\bibitem{KLT_HYP2016}
-{\sc M.-G. Lee, Th. Katsaounis, and A.E. Tzavaras},
-Localization of Adiabatic Deformations in Thermoviscoplastic Materials, In Proceedings of the 16th International Conference on Hyperbolic Problems: Theory, Numerics, Applications (HYP2016), to appear.
 
-%
-% \bibitem{jones_geometric_1995}
-% {\sc C.~K. R.~T. Jones},
-% Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
-%
-%
-
-%
-% % \bibitem{perko_differential_2001}
-% % {\sc L.~Perko},
-% % {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
-%
-
-\bibitem{shawki_shear_1989}
-{\sc T.G. Shawki and R.J. Clifton},
-Shear band formation in thermal viscoplastic materials,
-% {\it Mechanics of Materials}
-{\it Mech. Mater.}
-{\bf 8 } (1989), 13--43.
-
-\bibitem{Sz1991}
+\bibitem{Szmolyan91}
 {\sc P.~Szmolyan},
 Transversal heteroclinic and homoclinic orbits in singular perturbation problems,
 {\it J. Differ. Equations}
 {\bf 92} (1991), 252--281.
 
-\bibitem{Tz_1986}
+\bibitem{Tzavaras86a}
 {\sc A.E. Tzavaras},
 Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
 {\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
 
-\bibitem{Tz_1987}
-{\sc A.E. Tzavaras},
-Effect of thermal softening in shearing of strain-rate dependent materials.
-{\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
 
-\bibitem{tzavaras_plastic_1986}
+\bibitem{Tzavaras86b}
 {\sc A.E. Tzavaras},
 Plastic shearing of materials exhibiting strain hardening or strain softening,
-% {\it Archive for Rational Mechanics and  Analysis}
-{\it Arch. Ration. Mech. Anal.}
+{\it Archive for Rational Mechanics and  Analysis}
 {\bf 94} (1986), 39--58.
 
-%\bibitem{tzavaras_strain_1991}
-%{\sc A.E. Tzavaras},
-%Strain softening in viscoelasticity of the rate type.
-%{\it J. Integral Equations Appl.} {\bf  3}  (1991), 195--238.
 
-\bibitem{tzavaras_nonlinear_1992}
-%\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
-{\sc A.E. Tzavaras},
-Nonlinear analysis techniques for shear band formation at high strain-rates,
-% {\it Applied Mechanics Reviews}
-{\it Appl. Mech. Rev.}
-{\bf  45} (1992), S82--S94.
+\bibitem{Tzavaras91}
+{\sc A.E.Tzavaras},
+{\sl Strain softening in viscoelasticity of the rate type}
+J. Integral Equations Appl., {\bf 3} (1991), 195-238.
 
 
 
-%
-% \bibitem{clifton_critical_1984}
-% {\sc R.~J. Clifton, J.~Duffy, K.~A. Hartley, and T.~G. Shawki},
-% On critical conditions for shear band formation at high strain rates.
-% % {\it Scripta Metallurgica}
-% {\it Scripta. Metall. Mater.}
-% {\bf 18} (1984), 443--448.
-%
 
 
-%
-% \bibitem{freistuhler_spectral_2002}
-% {\sc H.~Freistühler and P.~Szmolyan},
-% {Spectral stability of small shock waves},
-% {\it Arch. Ration. Mech. Anal.}
-% {\bf 164} (2002), 287--309.
-% %   \href{http://dx.doi.org/10.1007/s00205-002-0215-8}{doi:\nolinkurl{10.1007/s00205-002-0215-8}},
-% %   \url{http://dx.doi.org/10.1007/s00205-002-0215-8}.
-% \bibitem{fressengeas_instability_1987}
-% {\sc C.~Fressengeas, A.~Molinari},
-% {Instability and localization of plastic flow in shear at high strain rates},
-% {\it J. Mech. Phys. of Solids}
-% {\bf 35} (1987), 185--211.
-%
-% \bibitem{gasser_geometric_1993}
-% {\sc I.~Gasser and P.~Szmolyan},
-% {A geometric singular perturbation analysis of detonation and deflagration waves},
-% {\it {SIAM} J. Math. Anal.}
-% {\bf 24} (1993), 968--986.
-% %   \href{http://dx.doi.org/10.1137/0524058}{doi:\nolinkurl{10.1137/0524058}},
-% %   \url{http://dx.doi.org/10.1137/0524058}.
-% \bibitem{ghazaryan_traveling_2007}
-% {\sc A.~Ghazaryan, P.~Gordon, and C.~K. R.~T. Jones},
-% {Traveling waves in porous media combustion: uniqueness of waves for small thermal diffusivity},
-% {\it J. Dyn. Differ. Equ.}
-% {\bf 19} (2007), 951--966.
-% %   \href{http://dx.doi.org/10.1007/s10884-007-9079-9}{doi:\nolinkurl{10.1007/s10884-007-9079-9}},
-% %   \url{http://dx.doi.org/10.1007/s10884-007-9079-9}.
-%
-%
-
-% \bibitem{MC_1987}
-% {\sc A.~Molinari and R.~J. Clifton},
-% Analytical characterization of shear localization in thermoviscoplastic materials,
-% {\it Journal of Applied Mechanics}
-% {\it J. Appl. Mech.}
-% {\bf 54} (1987), 806--812.
-%
-%
-% \bibitem{jones_geometric_1995}
-% {\sc C.~K. R.~T. Jones},
-% Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
-%
-%
-%
-%
-%
-%
-
-%
-% \bibitem{KUEHN_2015}
-% {\sc C.~ Kuehn},
-% {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
-%
-
-%
-% \bibitem{perko_differential_2001}
-% {\sc L.~Perko},
-% {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
-%
-%
-
-
-
-%
-% \bibitem{shawki_energy_1994}
-% {\sc T.~G. Shawki},
-% {An Energy Criterion for the Onset of Shear Localization in Thermal Viscoplastic Materials, Part II: Applications and Implications}, {\it ASME. J. Appl. Mech.}
-% {\bf 61} (1994), 538--547.
-%
 %
 % \bibitem{SS_2004}
 % {\sc S. Schecter and P. Szmolyan}
 % Composite waves in the Dafermos regularization.
 % {\it J. Dynamics Diff. Equations} {\bf 16} (2004), 847-867.
 %
-
 %
 % \bibitem{wiggins_normally_1994}
 % {\sc S.~Wiggins},
 % {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
 %
-\bibitem{wiggins_normally_1994}
-{\sc S.~Wiggins},
-{\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
-
-\bibitem{wright_survey_2002}
-{\sc T.W. Wright},
-{\it The Physics and Mathematics of Shear Bands.} (Cambridge Univ. Press 2002).
 %
 % \bibitem{xiao_stability_2003}
 % {\sc L.~Xiao-Biao and S.~ Schecter},
 % {Stability of self-similar solutions of the {D}afermos regularization of a system of conservation laws},
 % {SIAM J. Math. Anal.}
 % {\bf 35} (2003), 884--921.
-
 %\bibitem{WF83}
 %{\sc F.H. Wu and L.B. Freund},
 %Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
 %{\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132.
-
-\bibitem{zener_effect_1944}
-{\sc C.~Zener and J.~H. Hollomon},
-Effect of strain rate upon plastic flow of steel,
-% {\it  Journal of Applied Physics}
-{\it J. Appl. Phys.}
-{\bf 15} (1944), 22--32.
-
-% \bibitem{bertsch_effect_1991}
-% {\sc M.~Bertsch, L.~Peletier, and S.~Verduyn~Lunel},
-% The effect of temperature dependent viscosity on shear flow of  incompressible fluids,
-% {\it SIAM J. Math. Anal.} {\bf 22 } (1991), 328--343.
-%
-% \bibitem{clifton_rev_1990}
-% {\sc R.J. Clifton},  High strain rate behaviour of metals,
-% % {\it Applied Mechanics Review}
-% {\it Appl. Mech. Rev.}
-% {\bf 43} (1990), S9-S22.
-%
-% \bibitem{DH_1983}
-% {\sc C.M. Dafermos and L.~Hsiao},
-% Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
-% {\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
-%
-% % \bibitem{fenichel_persistence_1972}
-% % {\sc N.~Fenichel},
-% % Persistence and smoothness of invariant manifolds for  flows,
-% % {\it Indiana Univ. Math. J.} {\bf 21} (1972) 193--226.
-%
-% \bibitem{fenichel_asymptotic_1974}
-% {\sc N.~Fenichel},
-% Asymptotic stability with rate conditions,
-% {\it Indiana Univ. Math. J.} {\bf 23} (1974) 1109--1137.
-%
-% \bibitem{fenichel_asymptotic_1977}
-% {\sc N.~Fenichel},
-% Asymptotic stability with rate conditions \textrm{II},
-% {\it Indiana Univ. Math. J.} {\bf 26} (1977) 81--93.
-%
-% \bibitem{fenichel_geometric_1979}
-% {\sc N.~Fenichel},
-% Geometric singular perturbation theory for ordinary differential equations,
-% {\it J. Differ. Equations} {\bf 31} (1979), 53--98.
-%
-% %\bibitem{FM87}
-% %{\sc C.~Fressengeas and A.~Molinari},
-% %Instability and localization of plastic flow in shear at high strain rates,
-% %{\it J.  Mech. Physics of Solids} {\bf 35} (1987), 185--211.
 %
 % \bibitem{HPS_1977}
 % {\sc M.W. Hirsch, C.C. Pugh, and M. Shub},
 % {\it Invariant Manifolds}, LNM {\bf 583}, (Springer-Verlag, New York/Heidelberg/Berlin 1977)
 %
-% \bibitem{HN77}
-% {\sc J.W.~Hutchinson and K.W.~Neale},
-% Influence of strain-rate sensitivity on necking under uniaxial tension,
-% {\it  Acta Metallurgica} {\bf 25} (1977), 839-846.
-%
-% \bibitem{KOT14}
-% {\sc Th.~Katsaounis, J.~Olivier, and A.E.~Tzavaras},
-% Emergence of coherent localized structures in shear deformations of temperature dependent fluids,
-% {\it Archive for Rational Mechanics and Analysis} {\bf 224} (2017), 173--208.
-%
-% \bibitem{KT09}
-% {\sc Th. Katsaounis and A.E.~Tzavaras},
-% Effective equations for localization and shear band formation,
-% {\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
-%
-% \bibitem{KLT_2016}
-% {\sc Th. Katsaounis, M.-G. Lee, and A.E. Tzavaras},
-% Localization in inelastic rate dependent shearing deformations,
-% {\it J. Mech. Phys. of Solids} {\bf 98} (2017), 106--125.
-%
-% \bibitem{KUEHN_2015}
-% {\sc C.~ Kuehn},
-% {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
-%
-% \bibitem{LT16}
-% {\sc M.-G.~Lee and A.E.~Tzavaras},
-% Existence of localizing solutions in plasticity via the geometric singular perturbation theory,
-% {\it Siam J. Appl. Dyn. Systems} {\bf 16} (2017), 337--360.
-%
-% \bibitem{KLT_HYP2016}
-% {\sc M.-G. Lee, Th. Katsaounis, and A.E. Tzavaras},
-% Localization of Adiabatic Deformations in Thermoviscoplastic Materials, In Proceedings of the 16th International Conference on Hyperbolic Problems: Theory, Numerics, Applications (HYP2016), to appear.
-%
-% %
-% % \bibitem{jones_geometric_1995}
-% % {\sc C.~K. R.~T. Jones},
-% % Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
-% %
-% %
-%
-% %
-% % % \bibitem{perko_differential_2001}
-% % % {\sc L.~Perko},
-% % % {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
-% %
-%
-% \bibitem{shawki_shear_1989}
-% {\sc T.G. Shawki and R.J. Clifton},
-% Shear band formation in thermal viscoplastic materials,
-% % {\it Mechanics of Materials}
-% {\it Mech. Mater.}
-% {\bf 8 } (1989), 13--43.
-%
-% \bibitem{Sz1991}
-% {\sc P.~Szmolyan},
-% Transversal heteroclinic and homoclinic orbits in singular perturbation problems,
-% {\it J. Differ. Equations}
-% {\bf 92} (1991), 252--281.
-%
-% \bibitem{Tz_1986}
-% {\sc A.E. Tzavaras},
-% Shearing of materials exhibiting thermal softening or temperature dependent viscosity,
-% {\em Quart.  Applied Math.} {\bf 44} (1986), 1--12.
-%
-% \bibitem{Tz_1987}
-% {\sc A.E. Tzavaras},
-% Effect of thermal softening in shearing of strain-rate dependent materials.
-% {\em Archive for Rational Mechanics and Analysis}, {\bf 99} (1987), 349--374.
-%
-% \bibitem{tzavaras_plastic_1986}
-% {\sc A.E. Tzavaras},
-% Plastic shearing of materials exhibiting strain hardening or strain softening,
-% % {\it Archive for Rational Mechanics and  Analysis}
-% {\it Arch. Ration. Mech. Anal.}
-% {\bf 94} (1986), 39--58.
-%
-% %\bibitem{tzavaras_strain_1991}
-% %{\sc A.E. Tzavaras},
-% %Strain softening in viscoelasticity of the rate type.
-% %{\it J. Integral Equations Appl.} {\bf  3}  (1991), 195--238.
-%
-% \bibitem{tzavaras_nonlinear_1992}
-% %\leavevmode\vrule height 2pt depth -1.6pt width 23pt,
-% {\sc A.E. Tzavaras},
-% Nonlinear analysis techniques for shear band formation at high strain-rates,
-% % {\it Applied Mechanics Reviews}
-% {\it Appl. Mech. Rev.}
-% {\bf  45} (1992), S82--S94.
 %
 %
-%
-% %
-% % \bibitem{clifton_critical_1984}
-% % {\sc R.~J. Clifton, J.~Duffy, K.~A. Hartley, and T.~G. Shawki},
-% % On critical conditions for shear band formation at high strain rates.
-% % % {\it Scripta Metallurgica}
-% % {\it Scripta. Metall. Mater.}
-% % {\bf 18} (1984), 443--448.
-% %
-%
-%
-% %
-% % \bibitem{freistuhler_spectral_2002}
-% % {\sc H.~Freistühler and P.~Szmolyan},
-% % {Spectral stability of small shock waves},
-% % {\it Arch. Ration. Mech. Anal.}
-% % {\bf 164} (2002), 287--309.
-% % %   \href{http://dx.doi.org/10.1007/s00205-002-0215-8}{doi:\nolinkurl{10.1007/s00205-002-0215-8}},
-% % %   \url{http://dx.doi.org/10.1007/s00205-002-0215-8}.
-% % \bibitem{fressengeas_instability_1987}
-% % {\sc C.~Fressengeas, A.~Molinari},
-% % {Instability and localization of plastic flow in shear at high strain rates},
-% % {\it J. Mech. Phys. of Solids}
-% % {\bf 35} (1987), 185--211.
-% %
-% % \bibitem{gasser_geometric_1993}
-% % {\sc I.~Gasser and P.~Szmolyan},
-% % {A geometric singular perturbation analysis of detonation and deflagration waves},
-% % {\it {SIAM} J. Math. Anal.}
-% % {\bf 24} (1993), 968--986.
-% % %   \href{http://dx.doi.org/10.1137/0524058}{doi:\nolinkurl{10.1137/0524058}},
-% % %   \url{http://dx.doi.org/10.1137/0524058}.
-% % \bibitem{ghazaryan_traveling_2007}
-% % {\sc A.~Ghazaryan, P.~Gordon, and C.~K. R.~T. Jones},
-% % {Traveling waves in porous media combustion: uniqueness of waves for small thermal diffusivity},
-% % {\it J. Dyn. Differ. Equ.}
-% % {\bf 19} (2007), 951--966.
-% % %   \href{http://dx.doi.org/10.1007/s10884-007-9079-9}{doi:\nolinkurl{10.1007/s10884-007-9079-9}},
-% % %   \url{http://dx.doi.org/10.1007/s10884-007-9079-9}.
-% %
-% %
-%
-% % \bibitem{MC_1987}
-% % {\sc A.~Molinari and R.~J. Clifton},
-% % Analytical characterization of shear localization in thermoviscoplastic materials,
-% % {\it Journal of Applied Mechanics}
-% % {\it J. Appl. Mech.}
-% % {\bf 54} (1987), 806--812.
-% %
-% %
-% % \bibitem{jones_geometric_1995}
-% % {\sc C.~K. R.~T. Jones},
-% % Geometric singular perturbation theory, in {\it Dynamical systems}, LNM {\bf 1609} (Springer Berlin Heidelberg 1995) 44--118.
-% %
-% %
-% %
-% %
-% %
-% %
-%
-% %
-% % \bibitem{KUEHN_2015}
-% % {\sc C.~ Kuehn},
-% % {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
-% %
-%
-% %
-% % \bibitem{perko_differential_2001}
-% % {\sc L.~Perko},
-% % {\it Differential equations and dynamical systems 3rd. ed.}, TAM {\bf 7} (Springer-Verlag New York 2001).
-% %
-% %
-%
-%
-%
-% %
-% % \bibitem{shawki_energy_1994}
-% % {\sc T.~G. Shawki},
-% % {An Energy Criterion for the Onset of Shear Localization in Thermal Viscoplastic Materials, Part II: Applications and Implications}, {\it ASME. J. Appl. Mech.}
-% % {\bf 61} (1994), 538--547.
-% %
-% %
-% % \bibitem{SS_2004}
-% % {\sc S. Schecter and P. Szmolyan}
-% % Composite waves in the Dafermos regularization.
-% % {\it J. Dynamics Diff. Equations} {\bf 16} (2004), 847-867.
-% %
-%
-% %
-% % \bibitem{wiggins_normally_1994}
-% % {\sc S.~Wiggins},
-% % {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
-% %
-% \bibitem{wiggins_normally_1994}
-% {\sc S.~Wiggins},
-% {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
-%
-% \bibitem{wright_survey_2002}
-% {\sc T.W. Wright},
-% {\it The Physics and Mathematics of Shear Bands.} (Cambridge Univ. Press 2002).
-% %
-% % \bibitem{xiao_stability_2003}
-% % {\sc L.~Xiao-Biao and S.~ Schecter},
-% % {Stability of self-similar solutions of the {D}afermos regularization of a system of conservation laws},
-% % {SIAM J. Math. Anal.}
-% % {\bf 35} (2003), 884--921.
-%
-% %\bibitem{WF83}
-% %{\sc F.H. Wu and L.B. Freund},
-% %Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
-% %{\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132.
-%
-% \bibitem{zener_effect_1944}
-% {\sc C.~Zener and J.~H. Hollomon},
-% Effect of strain rate upon plastic flow of steel,
-% % {\it  Journal of Applied Physics}
-% {\it J. Appl. Phys.}
-% {\bf 15} (1944), 22--32.
 
 \end{thebibliography}
 \end{document}
 
-% \hrulefill
-% \bibitem{dafermos_adiabatic_1983}
-% {\sc C.~M. Dafermos and L.~Hsiao},
-% Adiabatic shearing of incompressible fluids with temperature-dependent viscosity.
-% {\it Quart.  Applied Math.} {\bf 41} (1983), 45--58.
-
-% \bibitem{katsaounis_effective_2009}
-% {\sc Th. Katsaounis and A.E.~Tzavaras},
-%  Effective equations for localization and shear band formation,
-%  {\it SIAM J. Appl. Math.}  {\bf 69} (2009), 1618--1643.
-
-% \bibitem{schecter_undercomp_2002}
-% {\sc S.~Schecter},
-% {Undercompressive shock waves and the {D}afermos regularization},
-% {\it Nonlinearity}
-% {\bf 15} (2002), 1361--1377.
-% \bibitem{deng_homoclinic_1990}
-% {\sc B.~Deng},
-% {Homoclinic bifurcations with nonhyperbolic equilibria},
-% {\it {SIAM} J. Math. Anal.}
-% {\bf 21} (1990),  693--720.
-% %   \href{http://dx.doi.org/10.1137/0521037}{doi:\nolinkurl{10.1137/0521037}},
-% %   \url{http://dx.doi.org/10.1137/0521037}.
-
-%
-% \bibitem{ghazaryan_travelling_2015}
-% {\sc A.~Ghazaryan, V.~Manukian, and S.~Schecter},
-% {Travelling waves in the holling-tanner model with weak diffusion},
-% {\it Proc. R. Soc. A}
-% {\bf 471} (2015), 20150045, 16.
-% %   \href{http://dx.doi.org/10.1098/rspa.2015.0045}{doi:\nolinkurl{10.1098/rspa.2015.0045}},
-% %   \url{http://dx.doi.org/10.1098/rspa.2015.0045}.
-%
-% \bibitem{gucwa_geometric_2009}
-% {\sc I.~Gucwa and P.~Szmolyan},
-% {Geometric singular perturbation analysis of an autocatalator model},
-% {\it Discrete Contin. Dyn. Syst. Ser. S}
-% {\bf 2} (2009), 783--806.
-% %   \href{http://dx.doi.org/10.3934/dcdss.2009.2.783}{doi:\nolinkurl{10.3934/dcdss.2009.2.783}},
-% %   \url{http://dx.doi.org/10.3934/dcdss.2009.2.783}.
-%
-% \bibitem{huber_geometric_2005}
-% {\sc A.~Huber and P.~Szmolyan},
-% {Geometric singular perturbation analysis of the yamada model},
-% {\it {SIAM} J. Appl. Dyn. Syst.}
-% {\bf 4} (2005), 607--648.
-% %   \href{http://dx.doi.org/10.1137/040604820}{doi:\nolinkurl{10.1137/040604820}},
-% %   \url{http://dx.doi.org/10.1137/040604820}.
-% \bibitem{jones_construction_1991}
-% {\sc C.~K. R.~T. Jones, N.~Kopell, and R.~Langer},
-% {Construction of the {FitzHugh}-nagumo pulse using differential forms.} In: {\it Patterns and dynamics
-%   in reactive media},
-% IMA Volumes Math Appl 37, Springer, 1989, 101--115.
-%
-% \bibitem{jones_tracking_1994}
-% {\sc C.~K. R.~T. Jones and N.~Kopell},
-% {Tracking invariant manifolds with differential forms in singularly perturbed systems},
-% {\it J. Differ. Equations}
-% {\bf 108} (1994), 64--88.
-% %   \href{http://dx.doi.org/10.1006/jdeq.1994.1025}{doi:\nolinkurl{10.1006/jdeq.1994.1025}},
-% %   \url{http://dx.doi.org/10.1006/jdeq.1994.1025}.
-% \bibitem{kaper_primer_2001}
-% {\sc T.~J. Kaper and C.~K. R.~T. Jones},
-% {A primer on the exchange lemma for fast-slow systems.} In: {\it Multiple-time-scale dynamical systems},
-% IMA Volumes Math Appl 122, Springer, 1997, 65--87.
-% \bibitem{katsaounis_localization_2011}
-% {\sc Th. Katsaounis and A.E.~Tzavaras},
-% Localization and shear bands in high strain-rate plasticity.
-% In: {\it Nonlinear conservation laws and  applications}, A.~Bressan, G.-Q.~Chen, M.~Lewicka, D.~Wang, eds;
-% IMA Volumes Math Appl 153, Springer, 2011, 365--377.
-% \bibitem{popovic_geometric_2004}
-% {\sc N.~Popović and P.~Szmolyan},
-% {A geometric analysis of the lagerstrom model problem},
-% {\it J. Differ. Equations}
-% {\bf 199} (2004), 290--325.
-% %   \href{http://dx.doi.org/10.1016/j.jde.2003.08.004}{doi:\nolinkurl{10.1016/j.jde.2003.08.004}},
-% %   \url{http://dx.doi.org/10.1016/j.jde.2003.08.004}.
-% \bibitem{bates_existence_1997}
-% {\sc P.~W. Bates, P.~C. Fife, R.~A. Gardner, and C.~K. R.~T. Jones},
-% {The existence of travelling wave solutions of a generalized phase-field model},
-% {\it {SIAM} J. Math. Anal.}
-% {\bf 28} (1997), 60--93.
-% %   \href{http://dx.doi.org/10.1137/S0036141095283820}{doi:\nolinkurl{10.1137/S0036141095283820}},
-% %   \url{http://dx.doi.org/10.1137/S0036141095283820}.
-%
-% \bibitem{beck_electrical_2008}
-% {\sc M.~Beck, C.~K. R.~T. Jones, D.~Schaeffer, and M.~Wechselberger},
-% {Electrical waves in a one-dimensional model of cardiac tissue},
-% {\it {SIAM} J. Appl. Dyn. Syst.}
-% {\bf 7} (2008),  1558--1581.
-% %   \href{http://dx.doi.org/10.1137/070709980}{doi:\nolinkurl{10.1137/070709980}},
-% %   \url{http://dx.doi.org/10.1137/070709980}.
-
-% \bibitem{schecter_exchange_2008}
-% {\sc S.~Schecter},
-% {Exchange lemmas. i. deng's lemma},
-% {\it J. Differ. Equations}
-% {\bf 245} (2008), 392--410.
-% %   \href{http://dx.doi.org/10.1016/j.jde.2007.08.011}{doi:\nolinkurl{10.1016/j.jde.2007.08.011}},
-% %   \url{http://dx.doi.org/10.1016/j.jde.2007.08.011}.
-%
-% \bibitem{schecter_exchange_2008-1}
-% {\sc S.~Schecter}, {Exchange lemmas. {ii}. general exchange lemma},
-% {\it J. Differ. Equations}
-% {\bf 245} (2008), 411--441.
-% %   \href{http://dx.doi.org/10.1016/j.jde.2007.10.021}{doi:\nolinkurl{10.1016/j.jde.2007.10.021}},
-% %   \url{http://dx.doi.org/10.1016/j.jde.2007.10.021}.
-
-% \bibitem{wright_stress_1987}
-% {\sc Thomas~W. Wright and John~W. Walter},
-% On stress collapse in adiabatic shear bands,
-% {\it J. Mech. Phys. of Solids} {\bf 35} (1987),
-%  701--720.
-%
-% \bibitem{WF83}
-% {\sc F.H. Wu and L.B. Freund},
-% Deformation trapping due to thermoplastic instability in one-dimensional wave propagation,
-% {\it J. Mech. Phys. of Solids} {\bf  32} (1984), 119-132..
-%
-% \bibitem{AKS87}
-% L.~Anand, K.H.~Kim and T.G.~Shawki,
-% Onset of shear localization in viscoplastic solids,
-% {\it J. Mech. Phys. Solids}
-% {\bf 35} (1987), 407-429.
-%
-% \bibitem{BC04}
-% {\sc Th.~ Baxevanis and N.~Charalambakis},
-% The role of material non-homogeneities on the formation and evolution of strain non-uniformities in thermoviscoplastic shearing,
-% {\it Quart. Appl. Math.} {\bf 62} (2004), . 97-116.
-%
-% \bibitem{baxevanis_adaptive_2010}
-% {\sc Th~H. Baxevanis, Th~Katsaounis, and A.~E. Tzavaras},
-% Adaptive finite element computations of shear band formation,
-%   {\it Math. Models  Methods Appl. Sci.} {\bf 20}  (2010),  423--448.
-%
-% \bibitem{BD02}
-% {\sc T.J.~Burns and M.A.~Davies},
-% On repeated adiabatic shear band formation during high speed machining,
-% {\it International Journal of Plasticity} {\bf 18 } (2002),  507-530.
-%
-% \bibitem{CB99}
-% {\sc L.~ Chen and R.C.~Batra },
-% The asymptotic structure of a shear band in mode-II deformations.
-% {\it International Journal of Engineering Science} {\bf 37} (1999),  895-919.
-%
-% \bibitem{estep_2001}
-% {\sc Donald~J Estep, Sjoerd M~Verduyn Lunel, and Roy~D Williams},
-% {Analysis of Shear Layers in a Fluid with Temperature-Dependent Viscosity},
-%  {\it  J. Comp. Physics}  {\bf 173} (2001), 17--60.
-%
-% \bibitem{KCS85}
-% {\sc R.W. Klopp. R.J. Clifton, and T.G. Shawki},
-% Pressure-shear impact and the dynamic viscoplastic response of metals,
-% {\it Mechanics of Materials} {\bf 4} (1985), 375-385.
-
-% \bibliography{dynamical}
-\end{thebibliography}
-\end{document}
