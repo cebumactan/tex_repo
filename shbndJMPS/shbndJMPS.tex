@@ -101,6 +101,15 @@
 \def\tu{{\tilde{u}}}
 \def\tph{{\tilde{\varphi}}}
 
+\def\hg{{\hat{\gamma}}}
+\def\hv{{\hat{v}}}
+\def\hth{{\hat{\theta}}}
+\def\hs{{\hat{\sigma}}}
+\def\hu{{\hat{u}}}
+\def\hph{{\hat{\varphi}}}
+
+
+
 \def\dtg{{\dot{\tilde{\gamma}}}}
 \def\dtv{{\dot{\tilde{v}}}}
 \def\dtth{{\dot{\tilde{\theta}}}}
@@ -197,7 +206,7 @@ Throughout, the material parameters $(\alpha,m,n)$ are restricted to the range
  \begin{aligned}
   \alpha>0\quad&\text{(thermal softening)},\\
   m>-1 \quad&\text{(strain softening/hardening)}, \\%\label{eq:a1}\\
-  -\alpha+m<0 \quad&\text{(loss of hyperbolicity)},\\% \\%\label{eq:a3}\\
+  \red-\alpha+m<0 \quad&\text{(loss of hyperbolicity)},\\% \\%\label{eq:a3}\\
   n\ge0 \quad&\text{(strain rate sensitivity)}. %\label{eq:a2}\\
 %   0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right) \quad&\text{(localizing rate bound)}. %\label{eq:a4}
 \end{aligned}\label{eq:paramrange}
@@ -243,7 +252,7 @@ will be studied with a very general outline - no spoilers -defer the presentatio
 
 Shear bands occur during
 high strain-rate plastic deformations of certain steels and other metal alloys. Instead of the shear strain distributing evenly across the loading region, 
-it concentrates in a narrow band with a concurrent elevation of the temperature in the interior of the band, ,  \cite{ZH44,HDH87}.
+it concentrates in a narrow band with a concurrent elevation of the temperature in the interior of the band, \cite{ZH44,HDH87}.
 Shear bands are often precursors to rupture and their study has attracted considerable
 attention including  experimental works  \cite{CCHD79,HDH87}, mechanical modeling 
 and  linearized analysis studies  ({\it e.g.} \cite{CDHS84,FM87,MC87,SC89,Wright02} and references therein) and
@@ -362,8 +371,8 @@ but not necessarily for the evolution of a developed band,
  
 
 The model \eqref{PLS} admits  a special class of solutions describing uniform shearing: They emanate
-from spatially uniform initial data $\gamma_0$ and $\theta_0$, and are obtained by the {\it ansatz} $\gamma_s (t) = t + \gamma_0 $ and $v_s (x) = x$ 
-for the strain and velocity respectively. They are obtained 
+from spatially uniform (constant) initial data $\gamma_0$ and $\theta_0$, and are obtained by the {\it ansatz} $\gamma_s (t) = t + \gamma_0 $ and $v_s (x) = x$ 
+for the strain and velocity respectively. If so, the rest of variables are obtained 
 upon solving the ordinary differential equation
 \begin{equation}
 \label{uss2}
@@ -385,6 +394,7 @@ v_s (x)  &=x \, ,   \quad  \gamma_s(t) = t+\gamma_0,  \quad
    \left( 1 +  \tfrac{1+m}{1+\alpha} \big (  \theta_0^{1+\alpha}  - \tfrac{1+\alpha}{1+m} \gamma_0^{1+m} \big ) \tfrac{1}{(t+\gamma_0)^{m+1}}  \right)^{\frac{-\alpha}{1+\alpha}} .
 \end{aligned}
 \end{equation}
+Expression $\left( 1 +  \tfrac{1+m}{1+\alpha} \big (  \theta_0^{1+\alpha}  - \tfrac{1+\alpha}{1+m} \gamma_0^{1+m} \big ) \tfrac{1}{(t+\gamma_0)^{m+1}}  \right) \rightarrow 1$ as $t \rightarrow\infty$.
 Equation \eqref{uss}$_3$ describes the stress-strain curve $\sigma_s$ versus $\gamma_s$ for uniform shear.
 The stress-strain curve is increasing when $\alpha < m$ but it is decreasing for large times when $\alpha > m$.
 Here, we are interested in the regime $\alpha > m$ where thermal softening dominates strain hardening and produces net softening.
@@ -417,7 +427,7 @@ by the time dependent nature of the base solutions.
 Naturally, one distinguishes two stages in the process: The initial stage of stability or instability 
 of the uniform shearing solutions leads to questions in the realm of linearized analysis, but with
 certain special features. Because the uniform shearing solution
-is time dependent the notion of stability has to be specified. An efficient definition due to
+is time dependent -- shear strain grows linearly -- the notion of stability has to be specified. An efficient definition due to
 Molinari and Clifton \cite{MC87,FM87} espouses the idea of relative perturbation. That is, the uniform shear
 is stable if perturbations grow slower than the base solutions, and unstable if perturbations grow
 faster than the base solution. Following that framework leads to questions of linearized stability analysis 
@@ -430,10 +440,9 @@ The second stage of localization lies within the realm of nonlinear analysis, an
 the nonlinearity to form a coherent structure.
 A quantitative criterion accounting for the nonlinear aspects of localization was recently derived in \cite{KT09},
 based on ideas from the theory of relaxation system and the Chapman Enskog expansion. In later work
-work \cite{LKT17}.  this analysis is supplemented with a study of self-similar localizing 
-solutions that capture the nonlinear stage of localization. An account of this result is presented in sectio ??
-using anew way to view the problem that simplifies matters a lot; numerical compuatations
-are also presented that indiicate the form of the obtained solutions.
+\cite{LKT17},  this analysis is supplemented with a study of self-similar localizing 
+solutions that capture the nonlinear stage of localization. An account of this result is presented in Section \ref{sec:selfsimilar} using a new way to view the problem that simplifies matters a lot; the core results are cited from \cite{LKT17}, where the numerical computations and visualizations are available. % as well so that obtained solution is visualizable. to visualize the form of the obtained solutions.
+% are also presented that indiicate the form of the obtained solutions.
  
 
 \tcr{end edit}
@@ -445,11 +454,11 @@ are also presented that indiicate the form of the obtained solutions.
 \label{sec:relative}
 
 Since the uniform shearing solutions are time dependent their stability analysis immediately leads to issues with non-autonomous problems.
-This is not surprising. Most notions of stability that are used in partial differential equations, but even notions of wel--posedness 
+This is not surprising. Most notions of stability that are used in partial differential equations, but even notions of well--posedness 
 (for instance hyperbolicity) are induced by stability analysis of steady in time structures like equilibria or periodic orbits.
 The shear-band formation problem by its nature has to deal with stability of time-dependent solutions, and early nonlinear
 analyses \cite{DH83,Tzavaras86a} indicated that the rate of growth (or decay) of perturbations have to be compared with the
-growth-rate of the base solution. This was conceptualized  by Molinari-Clifton \cite{MC87} and Fressengeas-Molinari \cite{FM87} who
+rate of growth of the base solution. This was conceptualized  by Molinari-Clifton \cite{MC87} and Fressengeas-Molinari \cite{FM87} who
 introduced the idea of relative perturbations; an even earlier variant of this idea appears in the context of necking
 problems in Hutchinson-Neale \cite{HN77}.
 
@@ -489,13 +498,14 @@ of \eqref{uss} satisfies that $(u, \hat\Gamma, \hat\Theta) \to (1,1,1)$ as time 
 The uniform shear solution is {\it unstable} if for small perturbations of \eqref{uss} the relative perturbations 
 $(u, \hat\Gamma, \hat\Theta)$ drift away from $(1,1,1)$ as time increases.
 \end{itemize}
-
-As already mentioned, It is precisely this notion of stabilitythat emerges from the nonlinear stability studies of shear bands \cite{DH83,Tzavaras86a} as well as
+As already mentioned, it is precisely this notion of stability that emerges from the nonlinear stability studies of shear bands \cite{DH83,Tzavaras86a} as well as
 in linearized stability analyses by  Molinari and Clifton \cite{MC87,FM87} 
-who coined the name {\it stability analysis of relative perturbations}. The problem of stability is presently resolved only for the special cases 
-$m=0$ or $\alpha = 0$ for \eqref{pls};  these are cases that the system decouples and reduces to simpler models:
+who coined the name {\it stability analysis of relative perturbations}. 
+
+The problem of stability is presently resolved only for the special cases 
+$m=0$ or $\alpha = 0$ for \eqref{pls};  these are cases that the system decouples and reduces:% to simpler models:
 \begin{itemize}
-\item[(i)] Case $m=0$: The uniform shear is linearly stable for $-\alpha + n > 0$ and linearly unstable for $-\alpha + n < 0$, \cite{MC87,FM87};
+\item[(i)] Case $m=0$: The uniform shear is linearly stable for $-\alpha + n > 0$ and linearly unstable for $-\alpha + n < 0$, \cite{FM87};
 it is nonlinearly stable when $-\alpha + n > 0$, \cite{Tzavaras86a}.
 \item[(ii)] Case $\alpha =0$, $m > -1$: The uniform shear is linearly stable when $m + n > 0$ and linearly unstable when $m+ n < 0$, \cite{FM87,Tzavaras92};
 it is nonlinearly stable in the region $m + n > 0$, \cite{Tzavaras91}.
@@ -522,9 +532,9 @@ $\Gamma\big(\tau,x\big)$, $\Theta\big(\tau,x\big)$, $U\big(\tau,x\big)$, $\Sigma
 \begin{equation}
 \label{defvar}
  \begin{aligned}
- u (t, x) &= v_x (t, x) = U(\tau(t), x) \, , \qquad \gamma(t,x) = \gamma^*_s(t) \, \Gamma (\tau (t), x) 
+ u (t, x) &= v_x (t, x) = U(\tau(t), x) \, , \qquad \gamma(t,x) = \gamma^*_s(t) \, \Gamma (\tau (t), x)\, ,
  \\
-\theta(t,x) &= \theta^*_s (t)  \; \Theta (\tau(t), x) \, , \qquad \qquad \sigma(t,x) = \sigma^*_s (t) \, \Sigma (\tau (t) , x)
+\theta(t,x) &= \theta^*_s (t)  \; \Theta (\tau(t), x) \, , \qquad \qquad \sigma(t,x) = \sigma^*_s (t) \, \Sigma (\tau (t) , x)\,.
 \end{aligned}
 \end{equation}
 
@@ -558,7 +568,7 @@ The boundary condition \eqref{BCOND3} implies that
 \begin{equation*}
  \frac{d}{d\tau}\int_0^\pi U(\tau,x) \: dx = 0, \quad \text{and we normalize } \quad  \frac{1}{\pi} \int_0^\pi U(\tau,x) \: dx = 1 \, .
 \end{equation*}
-Let
+Now we let
 \begin{align*}
  U &= 1 + \delta \bar{u} + \mathcal{O}(\delta^2), & \Gamma &= 1 + \delta \bar\gamma + \mathcal{O}(\delta^2), &
  \Sigma &= 1 + \delta \bar\sigma + \mathcal{O}(\delta^2), & \Theta &= 1 + \delta \bar\theta + \mathcal{O}(\delta^2).
@@ -577,58 +587,129 @@ The boundary condition and the constraint equation yield
 \begin{equation} \label{eq:linbdry}
  \bar\sigma_{x}(\tau,0)=\bar\sigma_{x}(\tau,\pi)=0, \quad \int_0^\pi \bar u(t,x) \: dx = 0.
 \end{equation}
-In the sequel, we drop the bar over the variables and continue to study the linear system \eqref{eq:linsystem}-\eqref{eq:linbdry}.
+% In the sequel, we drop the bar over the variables and continue to study the linear system \eqref{eq:linsystem}-\eqref{eq:linbdry}.
+
 
 \tcr{Edited Up to here}
+% \subsection{subsection title?}
 
-
-Next, we probe studies on the frequency-wise response of \eqref{eq:linsystem} conducting Fourier series analysis. We consider even extensions of $U,\Gamma,\Theta,\Sigma$ to the domain $[-\pi,\pi]$ which is compatible with the system and the boundary condition in \eqref{eq:linbdry}. The cosine series of the variables are considered:
+Next, the perturbations $(\bu, \bg, \bth, \bs)$ are expanded into series of periodic functions. For $k\ge0$ integer, we consider
 \begin{align*}
- \bar u(\tau,x) &= u_0(\tau) + \sum_{\ell=1}^\infty  u_\ell(\tau)\cos(\l x), &
-\bar \gamma(\tau,x) &= \gamma_0(\tau) + \sum_{\ell=1}^\infty \gamma_\ell(\tau)\cos(\l x),\\
-\bar \theta(\tau,x) &= \theta_0(\tau) + \sum_{\ell=1}^\infty \theta_\ell(\tau)\cos(\l x), &
- \bar\sigma(\tau,x) &= \sigma_0(\tau) + \sum_{\ell=1}^\infty \sigma_\ell(\tau)\cos(\l x).
+ \bar u(\tau,x) &= u_0(\tau) + \sum_{k=1}^\infty  u_k(\tau)\cos(k x), &
+\bar \gamma(\tau,x) &= \gamma_0(\tau) + \sum_{k=1}^\infty \gamma_k(\tau)\cos(k x),\\
+\bar \theta(\tau,x) &= \theta_0(\tau) + \sum_{k=1}^\infty \theta_k(\tau)\cos(k x), &
+ \bar\sigma(\tau,x) &= \sigma_0(\tau) + \sum_{k=1}^\infty \sigma_k(\tau)\cos(k x).
 \end{align*}
-For each $\ell\ge0$ we obtain
+Specifically, this is to consider cosine series for even function over $[-\pi,\pi]$. Justification is that any solution of \eqref{eq:linsystem}-\eqref{eq:linbdry} over $[0,\pi]$ is a restriction of the solution over $[-\pi,\pi]$ that is an even extension of itself. This is due to the reflexive symmetry of \eqref{eq:linsystem}-\eqref{eq:linbdry} that $(\bu_1(x)$, $\bg_1(x)$, $\bth_1(x)$, $\bs_1(x)):=(\bu(-x)$, $\bg(-x)$, $\bth(-x)$, $\bs(-x))$ is a solution if the $(\bu, \bg, \bth, \bs)$ is.  Hence, the form in the above gives an expedient but explicit choice without using imaginary numbers. %is expediently taken for even functions over $[-\pi,\pi]$. %as the cosine series with the period $2\pi$. 
+
+Then, for each $k\ge0$ we obtain ordinary differential equations
 \begin{equation} \label{eq:l-system}
  \begin{aligned}
-  \partial_\tau u_\ell &= -\l^2 \sigma_\ell,\\
-  \partial_\tau\gamma_\ell &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(u_\ell-\gamma_\ell),\\
-  \partial_\tau\theta_\ell &= \frac{1}{\tau}\Big(\sigma_\ell+ u_\ell -\theta_\ell\Big),\\% - \kappa(\tau)\l^2\Theta_\ell,\\
-  0&=\sigma_\ell + \alpha\theta_\ell -m\gamma_\ell - n \, u_\ell .
+  \partial_\tau u_k &= -k^2 \sigma_k,\\
+  \partial_\tau\gamma_k &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(u_k-\gamma_k),\\
+  \partial_\tau\theta_k &= \frac{1}{\tau}\Big(\sigma_k+ u_k -\theta_k\Big),\\% - \kappa(\tau)k^2\Theta_k,\\
+  0&=\sigma_k + \alpha\theta_k -m\gamma_k - n \, u_k .
  \end{aligned}
 \end{equation}
-
-
-With the fourth equation we remove one of the variables. The choice of removing $\Theta_\ell$ gives the linear system
-\begin{equation} \label{eq:l-system2}
+We proceed to remove one of the variable by the fourth equation. Removing $\theta_k$ was chosen in our context. We collect the linear systems in the form 
+\begin{equation}\label{eq:l-system2} \tag{$L_k$}
+ \frac{d}{d\tau}\begin{pmatrix} u_k\\ \gamma_k \\ \sigma_k \end{pmatrix}
+ = A_k(\tau) \begin{pmatrix} u_k\\ \gamma_k \\ \sigma_k \end{pmatrix}
+\end{equation}
+for each $k\ge0$, where
+\begin{equation} 
 \begin{aligned}
- \begin{pmatrix} u_\ell\\ \gamma_\ell \\ \sigma_\ell \end{pmatrix}'
- &= \left[\underbrace{\overbrace{\begin{pmatrix}
-   0 & 0 & -\l^2\\
+%  \begin{pmatrix} u_k\\ \gamma_k \\ \sigma_k \end{pmatrix}'
+%  &= A_k(\tau) \begin{pmatrix} u_k\\ \gamma_k \\ \sigma_k \end{pmatrix}, \\
+ A_k(\tau)&:=\begin{pmatrix}
+   0 & 0 & -k^2\\
    0 & 0 & 0\\
-   0 & 0 & -n\l^2
-  \end{pmatrix} }^{\triangleq A_{\ell,\infty}}
+   0 & 0 & -nk^2
+  \end{pmatrix} 
   + \frac{1}{\tau}
-  \overbrace{\begin{pmatrix}
+  \begin{pmatrix}
    0 & 0 & 0\\
-   \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
-   n+ \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
-  \end{pmatrix} }^{\triangleq A_{\ell,1}}}_{\triangleq A_\ell(\tau)} \right] \begin{pmatrix} u_\ell\\ \gamma_\ell \\ \sigma_\ell \end{pmatrix}
+   \tfrac{1+\alpha}{1+m} & -\tfrac{1+\alpha}{1+m} & 0\\
+   n+ \tfrac{-\alpha+m}{1+m} & m\tfrac{-\alpha+m}{1+m}& -(1+\alpha)
+  \end{pmatrix}.  
+%  A_k(\tau)&:=\overbrace{\begin{pmatrix}
+%    0 & 0 & -k^2\\
+%    0 & 0 & 0\\
+%    0 & 0 & -nk^2
+%   \end{pmatrix} }^{\triangleq A_{k,\infty}}
+%   + \frac{1}{\tau}
+%   \overbrace{\begin{pmatrix}
+%    0 & 0 & 0\\
+%    \tfrac{1+\alpha}{1+m} & -\tfrac{1+\alpha}{1+m} & 0\\
+%    n+ \tfrac{-\alpha+m}{1+m} & m\tfrac{-\alpha+m}{1+m}& -(1+\alpha)
+%   \end{pmatrix} }^{\triangleq A_{k,1}} 
 \end{aligned}
 \end{equation}
-and and we denote $x_\ell(\tau)$ by the vector $(U_\ell,\Gamma_\ell, \Sigma_\ell)^T$. Note we also defined the coefficient matrix $A_\ell(\tau)$, and the two constant matrices $A_{\ell,\infty}$ and $A_{\ell,1}$ as in the above.
+% for each $k\ge0$.
+ %The vector $(U_k,\Gamma_k, \Sigma_k)^T$ will be denoted by $x_k(\tau)$. %Note we also defined the coefficient matrix $A_k(\tau)$, and the two constant matrices $A_{k,\infty}$ and $A_{k,1}$ as in the above.
+% For $k=0$, 
+% The $0$-th mode is treated separately. % at once and is not visited again in the sequel: We have
+% \begin{align*}
+%    \partial_\tau u_0 &= 0,\\
+%   \partial_\tau\gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(u_0-\gamma_0),\\
+%   \partial_\tau\sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\sigma_0 + \big(n\frac{-\alpha+m}{1+m}\big)u_0 + \big(\frac{m(-\alpha+m))}{1+m}\big)\gamma_0\Big).
+%   %\partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U_0 + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma_0\Big).
+% \end{align*}
+% Since $u_0\equiv0$ from \eqref{eq:linbdry}, $\gamma_0(\tau)$ decays to $0$, and so do $\sigma_0(\tau)$ and $\theta_0(\tau)$.
 
-The $0$-th mode is treated separately here to read off the stability at once and is not visited again in the sequel: We have
-\begin{align*}
-   \partial_\tau u_0 &= 0,\\
-  \partial_\tau\gamma_0 &= \frac{1}{\tau}\frac{1+\alpha}{1+m}(u_0-\gamma_0),\\
-  \partial_\tau\sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\sigma_0 + \big(n\frac{-\alpha+m}{1+m}\big)u_0 + \big(\frac{m(-\alpha+m))}{1+m}\big)\gamma_0\Big).
-  %\partial_\tau\Sigma_0 &= \frac{1}{\tau}\Big( -(1+\alpha)\Sigma_0 + \big(n-\alpha + \frac{m(1+\alpha)}{1+m}\big)U_0 + \big(m - \frac{m(1+\alpha)}{1+m}\big)\Gamma_0\Big).
-\end{align*}
-Since $u_0\equiv0$ from \eqref{eq:linbdry}, $\gamma_0(\tau)$ decays to $0$, and so do $\sigma_0(\tau)$ and $\theta_0(\tau)$.
+\subsection{Objectives and challenges of the study}
+
+Via following two consecutive sections, we derive the criterion for the linear stability, in the sense of relative perturbations formulated in the above, of the uniform shear. This is to complete the program of linear stability in case of the power law materials that has partly done by Fressengeas-Molinari \cite{FM87} and Tzavaras \cite{Tzavaras91} . For the material parameters in the valid range of \eqref{eq:paramrange}, we will conclude that
+\begin{enumerate}
+ \item uniform shear is linearly stable if $-\alpha+m+n>0$ and that
+ \item uniform shear is linearly unstable if $-\alpha+m+n<0$.
+\end{enumerate}
+This picture is further consolidated by the discussions in Section  \ref{sec:selfsimilar}. When parameters falls into the unstable regime, we construct the localizing (in self-similar manner) solution of the nonlinear problem \eqref{plsrel}. 
+\subsubsection{Effect of nonlinear viscosity}
+Accompanied by the criterion is the precise asymptotic behaviors of the linear system parametrized by the given material parameters. The significance of monitoring the asymptotic behaviors is that they clearly show the contrasting behaviors from when viscosity effects ($n>0$) to when it does not ($n=0$). This is the focal issue of the following sections.
+{\blue 
+We have seen the loss of hyperbolicity of the system \eqref{PLS} passing the parameter value $-\alpha+m$ from positive to negative, along the uniform shear. The Hadamard Instability is often associated to the loss of hyperbolicity in the system with respect to the {\it constant mean states}. It can be characterized by the exponential growth of the amplitude in the linearized system around the constant state for given an oscillatory mode in the initial data. On the other hand, the instability exhibiting here, is in fact not exactly same, due to the time-dependent nature and has not been clarified. The purpose of this section is to clarify the instability exhibited in the linearized problem around the {\it growing mean state} with respect to the system hyperbolicity is lost.
 
 
+As seen, ..., when $n=0$, system as a first order system changes type from hyperbolic to elliptic passing the value of $-\alpha+m$ from positive to negative. The ill-posedness of the elliptic problem as an initial value problem has coined the term Hadamard Instability, where, linearized around the constant mean state, the problem exhibits the catastrophic exponential growth of high oscillations. Since our base solution is not a constant mean state, the notion of stability and the ill-posedness behavior of our problem had to be re-examined. Nevertheless, the first result we will see is again the exponential behavior for the cases $-\alpha+m<0$ and $n=0$.}
+
+This exponential behavior is drastically altered into the power behavior once the viscosity effects $(n>0)$. To contrast the two, let us first list the characterising properties of instability exhibited when $n=0$. %The exhibited is the Hadamard Instability.
+\begin{enumerate}
+ \item There is a growing solution $x_k(\tau)$ for each $k\ge1$, finding infinitely many growing modes.
+ \item Each of those $x_k(\tau)$ grows exponentially.
+ \item The rate of exponential growth diverges as $k \rightarrow \infty.$
+\end{enumerate}
+By contrast, the characterising properties of instability exhibited when $n>0$ is as follows. We say it is of Turing type instability.
+\begin{enumerate}
+ \item There is still a growing solution $x_k(\tau)$ for each $k\ge1$, finding infinitely many growing modes. However,
+ \item Each of those $x_k(\tau)$ grows in polynomial order.
+ \item The rate of polynomial growth is bounded from above. More precisely, the upper bound of the rate is dependent on $(\alpha,m,n)$ which is not surprising but is uniform in $k$.
+\end{enumerate}
+One may find all three properties above interesting as to the localization because one may say that the concentration phenomenon is, frequency-wisely speaking, a superposition of all oscillatory modes with equal strength. But the shear band formation is undoubtedly dynamic and nonlinear phenomenon. % and the picture provided by the linear stability analysis only accounts for the very initial onset of instability.
+
+To draw attentions on what would be challenges in the linear stability of \eqref{eq:l-system2}, we close this section by presenting two counter examples in the below, where the time dependent linear system with negative eigenvalues gives rise to instability as $t \rightarrow \infty$. In the first example, 
+$$ 
+x'=\left(\begin{array}{cc} -1 + \frac{3}{2}\cos^2 t & 1-\frac{3}{2}\cos t \sin t \\ -1 -\frac{3}{2}\cos t \sin t & -1 + \frac{3}{2}\sin^2 t \end{array}\right)x, \quad x(t) = \left(\begin{array}{c} -\cos t\\ \sin t \end{array}\right) e^{\tfrac{t}{2}}.$$
+In this example, $\lambda_\pm = \tfrac{-1 + i\sqrt{7}}{4}$, or $\textrm{Re}\, \lambda_\pm(t)<0$ but $x(t)$ grows exponentially. Next example is where we can specialize the fact that the coefficient matrix $A(t)$ is {\it frozen} in the limit, i.e. $A(t) \rightarrow A_\infty$ as $t\rightarrow \infty$. This is the case of our system \eqref{eq:l-system2} and those in \cite{FM87}. The problematic case is when $A_\infty$ has repeated eigenvalue and further the geometric and algebraic multiplicity discern. For two positive real numbers $r_1, r_2>0$ such that $r_1-r_2+1\ne0$,
+$$ 
+x'=\left(\begin{array}{cc} -\frac{r_1}{t} & 1 \\ 0 & -\frac{r_2}{t}\end{array}\right)x, \quad x(t) = \left(\begin{array}{c} C_1 t^{-r_1} + \frac{C_2}{r_1-r_2+1} t^{-r_2+1}\\ C_2t^{-r_2}\end{array}\right).$$
+If $0<r_2<1$, the resonance leads to the the sub-linearly growing instability. %Later, we will see that this is indeed a case our problem falls into.
+
+% 
+% The study in \cite{FM87} and ours as well specializes the fact that the coefficient matrix $A(t)$ is {\it frozen} in the limit, i.e. $A(t) \rightarrow A_\infty$ as $\tau \rightarrow \infty$. We probe to apply the classical theorem of Coddington-Levinson, namely, when $A_\infty$ has distinct eigenvalues. Under suitable assumptions on the spectrum $\lambda_i(t)$, the asymptotic behaviors can be completely characterized. However, if some of the eigenvalues of $A_\infty$ are repeated, then it becomes subtle and one may suffer from the resonant. Later, we will see that this is the case for our linear system, where the eigenvalue $0$ is repeated. The following example shows this indeed is problematic. For two positive numbers $r_1, r_2>0$,
+% $$ 
+% x'=\left(\begin{array}{cc} -\frac{r_1}{t} & 1 \\ 0 & -\frac{r_2}{t}\end{array}\right)x \quad \text{then} \quad x(t) = \left(\begin{array}{c} C_1 t^{-r_1} + \frac{C_2}{r_1-r_2+1} t^{-r_2+1}\\ C_2t^{-r_2}\end{array}\right)$$
+% 
+% 
+%  our perspective to come to the conclusion, a few points as to the stability problem of a non-autonomous system needs to be illustrated. First, we specialize the fact that the coefficient in \eqref{eq:l-system2} is {\it frozen} in the limit $\tau \rightarrow \infty$. An example of instability in the complementary case where
+% $$ 
+% A(t) = \left(\begin{array}{cc} -1 + \frac{3}{2}\cos^2 t & 1-\frac{3}{2}\cos t \sin t \\ -1 -\frac{3}{2}\cos t \sin t & -1 + \frac{3}{2}\sin^2 t \end{array}\right), \;\; \lambda_\pm = \frac{-1 + i\sqrt{7}}{4}, 
+% \; \; x(t) = \left(\begin{array}{c} -\cos t\\ \sin t \end{array}\right) e^{\tfrac{t}{2}}$$
+% shows that the spectral information  $\textrm{Re}\, \lambda_\pm(t)<0$ does not help much in determining the asymptotic stability.
+% 
+% In such a case where the coefficient is frozen in the limit however, the classical analysis, for example as in \cite{CL55}, shows that the spectral information of the limit coefficient $\displaystyle A_\infty=\lim_{t \rightarrow\infty} A(t)$ coveys an important piece of information but does not fully account for the asymptotic behavior. The part contributed by an order of $O(\tfrac{1}{\tau})$ in the coefficient accumulates effect in the asymptotic behavior, which can be enough to alter the nature of stability.
+% 
+% This, in turn, calls for a simultaneous diagonalization of the whole one-parameter family of matrices $A(t)$ to sort out all the contribution. It is well-known that the simultaneous diagonalization in general fails. One sufficient condition for this to be done is to have $A_\infty$ have eigenvalues all distinct. This is the case of the classical Coddington-Levsinson Theorem \cite{CL55} that states the precise stability by inspecting the time dependent spectrum.
 
 %%%%
 %
@@ -645,21 +726,103 @@ In this case $Re \lambda_i (\tau ) < 0 \; \forall i$ and thus solution is stable
 }
 
 
+
+
 \subsection{Case that thermal softening outweighs strain hardening: $\alpha > m$}
-We have seen the loss of hyperbolicity of the system \eqref{PLS} passing the parameter value $-\alpha+m$ from positive to negative, along the uniform shear. The Hadamard Instability is often associated to the loss of hyperbolicity in the system with respect to the {\it constant mean states}. It can be characterized by the exponential growth of the amplitude in the linearized system around the constant state for given an oscillatory mode in the initial data. On the other hand, the instability exhibiting here, is in fact not exactly same, due to the time-dependent nature and has not been clarified. The purpose of this section is to clarify the instability exhibited in the linearized problem around the {\it growing mean state} with respect to the system hyperbolicity is lost.
+
+
+\subsubsection{Spectrum of $A_k(\tau)$}
+
+We are to study a non-autonomous system with a coefficient
+\begin{equation} \label{eq:n0A}
+  A_k(\tau)=\begin{pmatrix}
+   0 & 0 & -k^2\\
+   0 & 0 & 0\\
+   0 & 0 & 0
+  \end{pmatrix}
+  + \frac{1}{\tau}   \begin{pmatrix}
+   0 & 0 & 0\\
+   \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
+   \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
+  \end{pmatrix} = A_{k,\infty} + \frac{1}{\tau}A_{k,1}.
+\end{equation}
+The characteristic polynomial $\det\big(\lambda \textrm{I} - A_k(\tau)\big)=0$ reads
+$$ \Big(\lambda +\frac{1}{\tau}(1+\alpha)\Big)\Big( \lambda^2 + \frac{1}{\tau}\lambda \frac{1+\alpha}{1+m} + \frac{1}{\tau} k^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
+For convenience of computations later, we define $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}>0$, and $\gamma(\tau)= k^2\frac{-\alpha+m}{\tau(1+m)}<0$ and denote the three eigenvalues by
+\begin{equation} \label{eq:inviscid_roots}
+\begin{aligned}
+ &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
+\end{aligned}
+\end{equation}
+Note that all the eigenvalues vanish in the limit. In particular, 
+$$ \beta(\tau)=\mathcal{O}\Big(\frac{1}{\tau}\Big), \quad \gamma(\tau)=\mathcal{O}\Big(\frac{1}{\tau}\Big), \quad \lambda_1(\tau)=\mathcal{O}\Big(\frac{1}{\sqrt{\tau}}\Big), \quad \lambda_2(\tau)=\mathcal{O}\Big(\frac{1}{\sqrt{\tau}}\Big), \quad\lambda_3(\tau)=\mathcal{O}\Big(\frac{1}{\tau}\Big)$$
+as $\tau \rightarrow \infty$. Since $-\alpha+m<0$, all roots are real and 
+$$\lambda_1(\tau) > 0 > \lambda_3(\tau) \gg \lambda_2(\tau) \quad \text{for $\tau$ large enough.}$$
+
+% 
+% $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$ and thus $\lambda_1(\tau)$ and $\lambda_2(\tau)$  are $\mathcal{O}\big(\frac{1}{\sqrt{\tau}}\big)$ while $\lambda_3(\tau)=\mathcal{O}(\frac{1}{\tau})$. For $\tau$ large (since $-\alpha+m<0$), $(i)$ all roots are real; $(ii)$ $\lambda_1(\tau) > 0 > \lambda_3(\tau) \gg \lambda_2(\tau)$. %  Hence, roots are complex or pure real according to the sign of $-\alpha+m$. The square root in the above formulas are understood as taking the branch of nonnegative imaginary part.
+
+\subsubsection{Smooth in time factorization of $A_k(\tau)$}
+The three eigenvalues all merge into the single value $0$ in the limit $\tau \rightarrow \infty$ and it is readily checked that this eigenvalue $0$ of $A_{k,\infty}$ has a geometric multiplicity $2$. Therefore, despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit.
+The precise asymptotic behaviors of the eigenspaces are further available. %As the order $\frac{1}{\tau}$ perturbation of $A(\tau)$ is explicitly given,
+If we define
+$$ E(\tau) = \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  F(\tau)= \begin{pmatrix}  \sqrt{\tau}\sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix},$$
+the eigenvectors $s_i(\tau)$, $i=1,2,3$ are by straightfoward calculations
+\begin{align*}
+ s_1(\tau)&=E(\tau) + F(\tau), \quad s_2(\tau)=E(\tau)-F(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\l^2} \end{pmatrix}.
+\end{align*}
+Since $E(\tau) \rightarrow \mathbf{0}$ as $\tau \rightarrow \infty$, and $s_3$ is linearly independent from $F(\tau)$, it is clear that the null spaces $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$ merge up in the limit.
+
+% Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$, $E(\tau)=\mathcal{O}(\frac{1}{\sqrt{\tau}})$ and $F(\tau)=\mathcal{O}(1)$. Thus in the limit $s_1(\tau)$ and $s_2(\tau)$ become parallel, or 
+
+Having above done, although at finite $\tau$ the matrix $A_k(\tau)$ is diagonalizable, we rather consider the following smooth triangularization motivated from the Jordan form factorization. Speaking of the smooth factorization of one-parameter family of matrices, neither the diagonalization nor the Jordan form factorization in general is continuous for given smooth family. Thus, we are making use of the special feature of $A_k(\tau)$ that it admits such a factorization.
+
+
+We pick $s_1$, renormalized by a factor of $\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)$ at our convenience. Then a pre-image $\tilde s_2$ is found so that
+$$ (A-\lambda_2) \tilde s_2 = \Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1. \quad \text{We can pick $\tilde s_2 = \begin{pmatrix}  0 \\ \tfrac{1+\alpha}{1+m} \\ \tfrac{-\alpha+m}{1+m} \end{pmatrix}$}.$$
+With this new basis $\left\{\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1,\tilde s_2, s_3 \right\}$, we factorize \\$A_k(\tau) = P_k(\tau)B_k(\tau)P_k^{-1}(\tau)$ and define the linear system:
+\begin{equation}\label{eq:factor}
+\begin{aligned}
+ y &= P_k(\tau)^{-1} x, \quad  y' = \underbrace{\begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix}}_{\triangleq B(\tau)} y - P_k(\tau)^{-1}P_k'(\tau) y,\\
+ P_k(\tau) &= \begin{pmatrix} -\tau\gamma& 0 & -m\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}.
+\end{aligned}
+\end{equation}
+
+\subsubsection{Proof of Hadamard Instability}
+
+We view \eqref{eq:factor} as a system perturbed from
+\begin{equation} \label{eq:trisystem}
+  \hat{y}' = B(\tau)\hat{y} \quad \text{with $B(\tau)$ upper triangular}
+\end{equation}
+by the error of $o(\frac{1}{\tau})$ (more precisely $O(\frac{1}{\tau^{3/2}})$) that is $- P(\tau)^{-1}P'(\tau)$. The latter size estimate is in particular a result of the Proposition \ref{prop:factor}. We merely inspect the asymptotic behavior of \eqref{eq:trisystem} and the Theorem \ref{prop:stab} in the Appendix furnishes the proof by showing that the maximum growths of \eqref{eq:trisystem} and \eqref{eq:factor} are same (by a factor of a constant). %sThe maximum growth of a system with an upper triangular coefficient is computable in an abstract setting, but we rather use an explicit formula for our specific case.
+negligible
+
+\begin{proposition} \label{prop:factor}$\exists \tau_0$ such that for $\tau\ge\tau_0$
+ \begin{enumerate}
+  \item  $\big|P_{ij}(\tau)\big|$ and $\big|P^{-1}_{ij}(\tau)\big|$ are uniformly bounded for all $i,j=1,2,3$.
+  \item $\displaystyle \int_{\tau_0}^\infty \big|P_{ij}'(s)\big|\; ds < \infty$ for all $i,j=1,2,3$.
+ \end{enumerate}
+\end{proposition}
+\begin{proof}
+$$ \lim_{\tau \rightarrow \infty} P(\tau) = \begin{pmatrix} -\l^2\frac{-\alpha+m}{1+m}& 0 & -m\\ 0 & \frac{1+\alpha}{1+m} & 1\\ 0 & \frac{-\alpha+m}{1+m} & 0\end{pmatrix}$$
+whose determinant is $\l^2 \left(\frac{-\alpha+m}{1+m}\right)^2$. Since $P(\tau)$ is a smooth function of $\tau$, $\exists \tau_0$ such that $\big|P_{ij}(\tau)\big|$ for $\tau\ge\tau_0$ is uniformly bounded, and also that $P(\tau)$, $\tau\ge\tau_0$ is invertible with the determinant uniformly bounded from above, and below away from $0$ since the determinant is a continuous function of entries. With the same reason, any minor of $P(\tau)$ is also uniformly bounded. Hence $\big|P^{-1}_{ij}(\tau)\big|$ is also uniformly bounded for $\tau\ge \tau_0$. The second assertion follows from straightforward calculation of $P_{ij}'(\tau)$ whose leading order is $\mathcal{O}\big(\frac{1}{\tau^{3/2}}\big)$.
+\end{proof}
+
+
+
 
 \begin{theorem} \label{thm:Hadamard} Suppose $n=0$ among material parameters $(\alpha,m,n)$ in ranges \eqref{eq:paramrange}. Then
   \begin{enumerate}
-    \item There is a growing mode $x_\ell^+(\tau)$ for each $\ell\ge1$, thus there are infinitely many growing modes.
-    \item $x_\ell^+(\tau)$ grows exponentially as $\tau \rightarrow \infty$, more precisely, there are constants $\chi>0$, $\tau_0>0$ and a constant vector $x_{\ell,\infty}^+$ such that
+    \item There is a growing mode $x_k^+(\tau)$ for each $k\ge1$, thus there are infinitely many growing modes.
+    \item $x_k^+(\tau)$ grows exponentially as $\tau \rightarrow \infty$, more precisely, there are constants $\chi>0$, $\tau_0>0$ and a constant vector $x_{k,\infty}^+$ such that
     \begin{equation}
-      \lim_{\tau \rightarrow \infty} e^{-\chi \big(\sqrt{\tau}-\sqrt{\tau_0}\big)} x_\ell^+(\tau) = x_{\ell,\infty}^+.
+      \lim_{\tau \rightarrow \infty} e^{-\chi \big(\sqrt{\tau}-\sqrt{\tau_0}\big)} x_k^+(\tau) = x_{k,\infty}^+.
     \end{equation}
-    \item The exponent $\chi=\chi(\ell,\alpha,m)=2\l\sqrt{\frac{\alpha-m}{(1+m)}}$ and is unbounded as $\ell \rightarrow \infty$.
+    \item The exponent $\chi=\chi(k,\alpha,m)=2\l\sqrt{\frac{\alpha-m}{(1+m)}}$ and is unbounded as $k \rightarrow \infty$.
   \end{enumerate}
 \end{theorem}
 
-\begin{remark} By Theorem \ref{thm:Hadamard} we come to a conclusion that the nature of instability exhibited in our occasion is qualitatively not a different kind, compared to the Hadamard Instability exhibited around the constant state: $(i)$ the growth is exponential; $(ii)$ the growth rate is unbounded as $\ell \rightarrow \infty$.
+\begin{remark} By Theorem \ref{thm:Hadamard} we come to a conclusion that the nature of instability exhibited in our occasion is qualitatively not a different kind, compared to the Hadamard Instability exhibited around the constant state: $(i)$ the growth is exponential; $(ii)$ the growth rate is unbounded as $k \rightarrow \infty$.
 \end{remark}
 
 \subsubsection{Stability of a non-autonomous linear system}
@@ -673,70 +836,13 @@ In such a case where the coefficient is frozen in the limit however, the classic
 
 This, in turn, calls for a simultaneous diagonalization of the whole one-parameter family of matrices $A(t)$ to sort out all the contribution. It is well-known that the simultaneous diagonalization in general fails. One sufficient condition for this to be done is to have $A_\infty$ have eigenvalues all distinct. This is the case of the classical Coddington-Levsinson Theorem \cite{CL55} that states the precise stability by inspecting the time dependent spectrum.
 
-It is this point to which our linear system is contrasted; the limit coefficient $A_{\ell,\infty}$ in \eqref{eq:l-system2} has the repeated eigenvalue $0$. Its consequences are varied in the inviscid ($n=0$) and the viscous ($n>0$) case. For the inviscid case, the simultaneous diagonalization is unachievable and we will have to rely on mere the upper triangularization of the one-parameter family of matrices, whereas for the viscous case the simultaneous diagonalization is achievable despite of the repeated eigenvalues. In the former case, the third effect of resonance also has to be taken account in determining the asymptotic stability. To summarize, our study boils down to studying the stability of a system where the coefficient is upper triangular or diagonal for all $t\ge0$.
+It is this point to which our linear system is contrasted; the limit coefficient $A_{k,\infty}$ in \eqref{eq:l-system2} has the repeated eigenvalue $0$. Its consequences are varied in the inviscid ($n=0$) and the viscous ($n>0$) case. For the inviscid case, the simultaneous diagonalization is unachievable and we will have to rely on mere the upper triangularization of the one-parameter family of matrices, whereas for the viscous case the simultaneous diagonalization is achievable despite of the repeated eigenvalues. In the former case, the third effect of resonance also has to be taken account in determining the asymptotic stability. To summarize, our study boils down to studying the stability of a system where the coefficient is upper triangular or diagonal for all $t\ge0$.
 
-\subsubsection{Spectrum of $A_\ell(\tau)$}
 
-We are to study a non-autonomous system with a coefficient
-\begin{equation} \label{eq:n0A}
-  A_\ell(\tau)=\begin{pmatrix}
-   0 & 0 & -\l^2\\
-   0 & 0 & 0\\
-   0 & 0 & 0
-  \end{pmatrix}
-  + \frac{1}{\tau}   \begin{pmatrix}
-   0 & 0 & 0\\
-   \frac{1+\alpha}{1+m} & -\frac{1+\alpha}{1+m} & 0\\
-   \frac{-\alpha+m}{1+m} & m\frac{-\alpha+m}{1+m}& -(1+\alpha)
-  \end{pmatrix} = A_{\ell,\infty} + \frac{1}{\tau}A_{\ell,1}.
-\end{equation}
-The characteristic polynomial $\det\big(\lambda \textrm{I} - A_\ell(\tau)\big)=0$ reads
-$$ \Big(\lambda +\frac{1}{\tau}(1+\alpha)\Big)\Big( \lambda^2 + \frac{1}{\tau}\lambda \frac{1+\alpha}{1+m} + \frac{1}{\tau} \l^2 \frac{-\alpha+m}{1+m}\Big)=0.$$
-For convenience of computations later, we define $\beta(\tau) = \frac{1+\alpha}{2\tau(1+m)}$, and $\gamma(\tau)= \l^2\frac{-\alpha+m}{\tau(1+m)}$ and denote the three eigenvalues by
-\begin{equation} \label{eq:inviscid_roots}
-\begin{aligned}
- &\lambda_1(\tau) = -\beta + \sqrt{\beta^2-\gamma}, \quad \lambda_2(\tau) = -\beta - \sqrt{\beta^2-\gamma}, \quad \lambda_3(\tau) = -\frac{1+\alpha}{\tau}.
-\end{aligned}
-\end{equation}
-Note that all the eigenvalues vanish in the limit. In particular, $\beta(\tau)$ and $\gamma(\tau)$ are both $\mathcal{O}\big(\frac{1}{\tau}\big)$ as $\tau \rightarrow \infty$ and thus $\lambda_1(\tau)$ and $\lambda_2(\tau)$  are $\mathcal{O}\big(\frac{1}{\sqrt{\tau}}\big)$ while $\lambda_3(\tau)=\mathcal{O}(\frac{1}{\tau})$. For $\tau$ large (since $-\alpha+m<0$), $(i)$ all roots are real; $(ii)$ $\lambda_1(\tau) > 0 > \lambda_3(\tau) \gg \lambda_2(\tau)$. %  Hence, roots are complex or pure real according to the sign of $-\alpha+m$. The square root in the above formulas are understood as taking the branch of nonnegative imaginary part.
 
-\subsubsection{Factorization of $A_\ell(\tau)$}
-That $A_\ell(\tau)$ does not admit the smooth diagonalization can be seen as in the below. The three eigenvalues all merge into the single value $0$ in the limit $\tau \rightarrow \infty$ and it is readily checked that this eigenvalue $0$ of $A_{\ell,\infty}$ has a geometric multiplicity $2$. Therefore, despite all $\lambda_i(\tau)$, $i=1,2,3$ at finite $\tau$ are generically distinct, the diagonalization will never be continuous in the limit.
-The precise asymptotic behaviors of the eigenspaces are further available. %As the order $\frac{1}{\tau}$ perturbation of $A(\tau)$ is explicitly given,
-Eigenvectors $s_i(\tau)$, $i=1,2,3$ can be chosen by straightfoward calculation as
-\begin{align*}
- s_1(\tau)&=E(\tau) + F(\tau), \quad s_2(\tau)=E(\tau)-F(\tau), \quad s_3(\tau) = \begin{pmatrix} -m\\1\\ -\frac{m(1+\alpha)}{\tau\l^2} \end{pmatrix},\\
- E(\tau) &= \frac{1}{\sqrt{\tau}} \begin{pmatrix} \tau\beta \\ \frac{1+\alpha}{1+m} \\ \frac{-\alpha+m}{1+m} \end{pmatrix}, \quad  F(\tau)= \sqrt{\tau}\begin{pmatrix}  \sqrt{\beta(\tau)^2-\gamma(\tau)}\\0\\0 \end{pmatrix}.
-\end{align*}
-Recalling that both of $\beta(\tau)$ and $\gamma(\tau)$ are of $\mathcal{O}(\frac{1}{\tau})$, $E(\tau)=\mathcal{O}(\frac{1}{\sqrt{\tau}})$ and $F(\tau)=\mathcal{O}(1)$. Thus in the limit $s_1(\tau)$ and $s_2(\tau)$ become parallel, or the null spaces $\mathbf{N}\Big(A(\tau) - \lambda_1(\tau)\Big)$ and $\mathbf{N}\Big(A(\tau) - \lambda_2(\tau)\Big)$ merge up in the limit.
 
-Having above done, we consider following triangularization. We pick $s_1$, renormalized by a factor of $\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)$ at our convenience, then the pre-image $\tilde s_2$ is found such that
-$$ (A-\lambda_2) \tilde s_2 = \Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1, \quad \text{$\tilde s_2 = \begin{pmatrix}  0 \\ \tfrac{1+\alpha}{1+m} \\ \tfrac{-\alpha+m}{1+m} \end{pmatrix}$}.$$
-
-With this new basis $\left\{\Big(\sqrt{\tau}(-\beta+\sqrt{\beta^2-\gamma})\Big)s_1,\tilde s_2, s_3 \right\}$, we factorize \\$A(\tau) = P(\tau)B(\tau)P^{-1}(\tau)$ and define the linear system:
-\begin{equation}\label{eq:factor}
-\begin{aligned}
- y &= P(\tau)^{-1} x, \quad  y' = \underbrace{\begin{pmatrix} \lambda_1(\tau) & 1 & 0\\0 & \lambda_2(\tau) & 0\\0 & 0 & \lambda_3(\tau)\end{pmatrix}}_{\triangleq B(\tau)} y - P(\tau)^{-1}P'(\tau) y,\\
- P(\tau) &= \begin{pmatrix} -\tau\gamma& 0 & -m\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{1+\alpha}{1+m} & \frac{1+\alpha}{1+m} & 1\\ \Big(-\beta+\sqrt{\beta^2-\gamma}\Big)\frac{-\alpha+m}{1+m} & \frac{-\alpha+m}{1+m} & -\frac{m(1+\alpha)}{\tau\l^2}\end{pmatrix}.
-\end{aligned}
-\end{equation}
-\begin{proposition} \label{prop:factor}$\exists \tau_0$ such that for $\tau\ge\tau_0$
- \begin{enumerate}
-  \item  $\big|P_{ij}(\tau)\big|$ and $\big|P^{-1}_{ij}(\tau)\big|$ are uniformly bounded for all $i,j=1,2,3$.
-  \item $\displaystyle \int_{\tau_0}^\infty \big|P_{ij}'(s)\big|\; ds < \infty$ for all $i,j=1,2,3$.
- \end{enumerate}
-\end{proposition}
-\begin{proof}
-$$ \lim_{\tau \rightarrow \infty} P(\tau) = \begin{pmatrix} -\l^2\frac{-\alpha+m}{1+m}& 0 & -m\\ 0 & \frac{1+\alpha}{1+m} & 1\\ 0 & \frac{-\alpha+m}{1+m} & 0\end{pmatrix}$$
-whose determinant is $\l^2 \left(\frac{-\alpha+m}{1+m}\right)^2$. Since $P(\tau)$ is a smooth function of $\tau$, $\exists \tau_0$ such that $\big|P_{ij}(\tau)\big|$ for $\tau\ge\tau_0$ is uniformly bounded, and also that $P(\tau)$, $\tau\ge\tau_0$ is invertible with uniformly bounded determinant. Since the determinant is a continuous function of entries, $\big|P^{-1}_{ij}(\tau)\big|$ is also uniformly bounded for $\tau\ge \tau_0$. The second assertion follows from straightforward calculation of $P_{ij}'(\tau)$ whose leading order is $\mathcal{O}\big(\frac{1}{\tau^{3/2}}\big)$.
-\end{proof}
 \subsubsection{Proof of Hadamard Instability}
 
-We view \eqref{eq:factor} as a system perturbed from
-\begin{equation} \label{eq:trisystem}
-  \hat{y}' = B(\tau)\hat{y} \quad \text{with $B(\tau)$ upper triangular}
-\end{equation}
-by the error of $o(\frac{1}{\tau})$ (more precisely $O(\frac{1}{\tau^{3/2}})$) that is $- P(\tau)^{-1}P'(\tau)$. The latter size estimate is in particular a result of the Proposition \ref{prop:factor}. We merely inspect the asymptotic behavior of \eqref{eq:trisystem} and the Theorem \ref{prop:stab} in the Appendix furnishes the proof by showing that the maximum growths of \eqref{eq:trisystem} and \eqref{eq:factor} are same (by a factor of a constant). %sThe maximum growth of a system with an upper triangular coefficient is computable in an abstract setting, but we rather use an explicit formula for our specific case.
 
 \begin{proof}[proof of Theorem \ref{thm:Hadamard}]
 Let $\tau_0$ be large enough so that $\lambda_2(\tau) < \lambda_3(\tau) < 0 < \lambda_1(\tau)$ and all eigenvalues are real for $\tau\ge \tau_0$. Explicit formulas for the general solutions of \eqref{eq:trisystem} are available. The maximum growth  takes place when
@@ -787,12 +893,12 @@ In our point of view, the appearance of infinitely many unstable modes for each 
 
 \begin{theorem} \label{thm:Turing} Suppose $n>0$ among material parameters $(\alpha,m,n)$ in ranges \eqref{eq:paramrange}. Then
   \begin{enumerate}
-    \item There is a growing mode $x_\ell^+(\tau)$ for each $\ell\ge1$, thus there are  infinitely many growing modes.
-    \item $x_\ell^+(\tau)$ grows in a polynomial order as $\tau \rightarrow \infty$, more specifically, there are constants $\chi>0$ and $\tau_0$ and a constant vector $x_{\ell,\infty}^+$ such that
+    \item There is a growing mode $x_k^+(\tau)$ for each $k\ge1$, thus there are  infinitely many growing modes.
+    \item $x_k^+(\tau)$ grows in a polynomial order as $\tau \rightarrow \infty$, more specifically, there are constants $\chi>0$ and $\tau_0$ and a constant vector $x_{k,\infty}^+$ such that
     \begin{equation}
-      \lim_{\tau \rightarrow \infty} \left(\frac{\tau}{\tau_0}\right)^{\chi} x_\ell^+(\tau) = x_{\ell,\infty}^+.
+      \lim_{\tau \rightarrow \infty} \left(\frac{\tau}{\tau_0}\right)^{\chi} x_k^+(\tau) = x_{k,\infty}^+.
     \end{equation}
-    \item The exponent $\chi=\chi(\alpha,m,n)$, is bounded and independent of $\ell$.
+    \item The exponent $\chi=\chi(\alpha,m,n)$, is bounded and independent of $k$.
   \end{enumerate}
 \end{theorem}
 \begin{remark}
@@ -802,7 +908,7 @@ In our point of view, the appearance of infinitely many unstable modes for each 
  % z_2(0) = -(1+m)  + \mathcal{O}(n).
 \end{align*}
 \end{remark}
-\subsubsection{Spectrum of $A_\ell(\tau)$}
+\subsubsection{Spectrum of $A_k(\tau)$}
 
 Let $\lambda_i(\tau)$, $i=1,2,3$ be the three eigenvalues of $A_\ell(\tau)$. %We have
 The characteristic polynomial $\det\big(\lambda \textrm{I} - A(\tau)\big)$ reads
@@ -1021,7 +1127,7 @@ With the fourth equation we remove one of the variables. The choice of removing 
 
 
 \pagebreak
-\section{Localizing self-similar solutions}
+\section{Localizing self-similar solutions} \label{sec:selfsimilar}
 Next, we focus in the region $\alpha - m - n >0$ where linearized analysis predicts instability. As usual, linear
 analysis predicts the very initiation of instability. Beyond the initial stage, nonlinear effects become important, and, in particular,
 they are expected to kill the oscillations of high-frequency modes and lead to localization.
@@ -1183,34 +1289,56 @@ Second we observe is its own scale invariance of the system for self-similar var
 \bS _R(\xi)&=\rho^ \frac{2(-\alpha+m+n)}{D}\bS(\rho\xi), & \bV _R(\xi) &=\rho^ {\frac{2(1+ \alpha)}{D}-1}\bV(\rho\xi)
 \end{align*}
 }
-One could consider the monomial solutions that are self-similar to \eqref{eq:sseq}. This is not compatible to \eqref{eq:extension_cond} but this symetry allows us to consider a sort of relatively perturbed variables which entail the nice scaling property. We introduce residuals
+One could consider the monomial solutions that are self-similar to \eqref{eq:sseq}, that is
+\begin{align*}
+\bG_M(\xi) &= \xi^ {-\frac{2(1+ \alpha)}{D}}, & \bU_M(\xi) &= \xi^ {-\frac{2(1+ m+n)}{D}}, &
+\bTh_M(\xi)&=\xi^ {-\frac{2(1+ \alpha)}{D}}, \\
+\bS_M(\xi)&=\xi^ {-\frac{2(-\alpha+m+n)}{D}}, & \bV_M(\xi) &=\xi^ {-\frac{2(1+ \alpha)}{D}+1}.
+\end{align*}
+This is not compatible to \eqref{eq:extension_cond} but this symmetry allows us to consider a sort of relatively perturbed variables which entail the nice scaling property. We introduce residuals
 \begin{align*}
 \bg(\xi) &= \xi^ \frac{2(1+ \alpha)}{D}\bG(\xi), & \bu(\xi) &= \xi^ \frac{2(1+ m+n)}{D}\bU(\xi), &
 \bth(\xi)&=\xi^ \frac{2(1+ \alpha)}{D}\bTh(\xi), \\
 \bs(\xi)&=\xi^ \frac{2(-\alpha+m+n)}{D}\bS(\xi), & \bv(\xi) &=\xi^ {\frac{2(1+ \alpha)}{D}-1}\bV(\xi).
 \end{align*}
-Along defining new variables, we also introduce the independent variable $\eta = \log\xi$ which runs from $-\infty$ to $\infty$. To denote variables in the new independent variable, we annotate the tilde for example $\tg(\eta)|_{\eta=\log\xi}=\bg(\xi)$ and we denote $\frac{d}{d\eta} \tg = \dot\tg$, then the system new variables satisfy reads
+Along defining new variables, we also introduce the independent variable $\eta = \log\xi$ which runs from $-\infty$ to $\infty$. To denote variables in the new independent variable, we annotate the hat for example $\hg(\eta)|_{\eta=\log\xi}=\bg(\xi)$ and we denote $\frac{d}{d\eta} \hg = \dot\hg$, then the system new variables satisfy reads
 \begin{equation} \label{eq:tildesys}
 \begin{aligned}
 %\frac{1+ \alpha}{D} \bu + \lambda \dot\bu &= \left(\frac{-2(- \alpha +m+n)}{D}\right)\left(\frac{-2(- \alpha +m+n)}{D}-1\right)\bs + \left(\frac{-2(- \alpha +m+n)}{D} + \frac{-2(- \alpha +m+n)}{D}-1\right)\dot\bs + \ddots\bs,\\
-\frac{1+ \alpha}{D} \tu + \lambda \dot\tu &= d_1(d_1-1)\ts + (d_1+d_1-1)\dot\ts + \ddot\ts,\\
-\frac{1+ \alpha}{D} \tg + \lambda \dot\tg &= \frac{1 + \alpha}{1+m}( \tu - \tg ),\\
-\frac{1+ m+n}{D} \tth + \lambda \dot\tth &= \ts\tu-\tth,\\
-\ts &=\tth^{- \alpha} \tg ^m \tu ^n, \quad \text{where $d_1=\frac{-2(- \alpha +m+n)}{D}$},
+\frac{1+ \alpha}{D} \hu + \lambda \dot\hu &= d_1(d_1-1)\hs + (d_1+d_1-1)\dot\hs + \ddot\hs,\\
+\frac{1+ \alpha}{D} \hg + \lambda \dot\hg &= \frac{1 + \alpha}{1+m}( \hu - \hg ),\\
+\frac{1+ m+n}{D} \hth + \lambda \dot\tth &= \hs\hu-\hth,\\
+\hs &=\hth^{- \alpha} \hg ^m \hu ^n, \quad \text{where $d_1=\frac{-2(- \alpha +m+n)}{D}$},
 \end{aligned}
 \end{equation}
 Again, $\eqref{eq:tildesys}_1$ is replaceble by
-$$\frac{1+ \alpha}{D} \tv + \lambda \dot\tv = d_1 \ts -\dot\ts, \quad \text{with relation} \quad \tu = -\frac{1+m+n}{D}\tv + \dot\tv.$$
-Note that this is an autonomous system. Before we complete the formulation, one technical point needs to be clarified. The existence theorem in \cite{LKT17} will be quoted in our presentation but the system (18) in \cite{LKT17} has different numerical numbers from \eqref{eq:tildesys} has; it has been derived from \eqref{PLS} of the original formulation while we derived \eqref{eq:tildesys} from \eqref{PLS} of relative perturbations. The constant multiple of $(\tu_1,\tg_1,\tth_1,\tv_1)=\frac{1+m}{1+\alpha}^{\frac{1}{-\alpha+m+n}}(\tu,\tg,\tth,\tv)$ with the $\lambda_1 =\frac{1+m}{1+\alpha}\lambda$ give the system (18), saying there are no essential differences between the two. While we find the current formulation more systematic, not to reproduce the proof over again, we proceed with the system (18) in \cite{LKT17} without annotating any subscripts, which is
+$$\frac{1+ \alpha}{D} \hv + \lambda \dot\hv = d_1 \hs -\dot\hs, \quad \text{with relation} \quad \hu = -\frac{1+m+n}{D}\hv + \dot\hv.$$
+Note that this is an autonomous system. Before we complete the formulation, one technical point needs to be clarified. The existence theorem in \cite{LKT17} on the system (18) in the paper will be quoted in our presentation, but \eqref{eq:tildesys} is not identical to this system. To arrive at the system (18) in \cite{LKT17}, the constant factors are to be multiplied: 
+$$(\tu,\tg,\tth,\tv):=\left(\frac{1+m}{1+\alpha}\right)^{\frac{1}{-\alpha+m+n}}(\hu,\hg,\hth,\hv), \quad \ts:=\frac{1+m}{1+\alpha}\hs, \quad \tilde\lambda :=\frac{1+m}{1+\alpha}\lambda.$$
+This difference stems from that while \eqref{eq:tildesys} has been derived from \eqref{plsrel}, the system (18) in \cite{LKT17} has been derived from \eqref{PLS} of original system, and in the course of transformations the different constant factor has been multiplied. While we find the current exposition more systematic, not to reproduce the proof over again, we proceed with the system (18) in \cite{LKT17} that are
 \begin{equation} \label{eq:tildesys2}
  \begin{aligned}
-  a_0\tg + \lambda\dtg &=\tu, & a_0&=\frac{2+2\alpha-n}{D},\\
-  b_0\tv + \lambda\dtv &=-d_1 \ts + \dts,& b_0&=\frac{1+m}{D},\\
-  c_0\tth+ \lambda\dtth&=\ts\tu, & c_0&=\frac{2(1+m)}{D},\\
+  a_0\tg + \tilde\lambda\dtg &=\tu, & a_0&=\frac{2+2\alpha-n}{D},\\
+  b_0\tv + \tilde\lambda\dtv &=-d_1 \ts + \dts,& b_0&=\frac{1+m}{D},\\
+  c_0\tth+ \tilde\lambda\dtth&=\ts\tu, & c_0&=\frac{2(1+m)}{D},\\
   \ts &=\tth^{-\alpha}\tg^m\tu^n, \\
-  -b_1\tv+\dtv &= \tu, & b_1&=\frac{1+m+n}{D},
+  -b_1\tv+\dtv &= \tu, & b_1&=\frac{1+m+n}{D}.
  \end{aligned}
 \end{equation}
+% when we derive \eqref{eqref:tildesys}, 
+% 
+% 
+% 
+% the system (18) in \cite{LKT17} has been derived from \eqref{PLS} of the original formulation while we derived \eqref{eq:tildesys} from \eqref{plsrel} of relative perturbations. The constant multiple of $(\tu_1,\tg_1,\tth_1,\tv_1)=\frac{1+m}{1+\alpha}^{\frac{1}{-\alpha+m+n}}(\tu,\tg,\tth,\tv)$ with the $\lambda_1 =\frac{1+m}{1+\alpha}\lambda$ give the system (18), saying there are no essential differences between the two. While we find the current formulation more systematic, not to reproduce the proof over again, we proceed with the system (18) in \cite{LKT17} without annotating any subscripts, which is
+% \begin{equation} \label{eq:tildesys2}
+%  \begin{aligned}
+%   a_0\tg + \lambda\dtg &=\tu, & a_0&=\frac{2+2\alpha-n}{D},\\
+%   b_0\tv + \lambda\dtv &=-d_1 \ts + \dts,& b_0&=\frac{1+m}{D},\\
+%   c_0\tth+ \lambda\dtth&=\ts\tu, & c_0&=\frac{2(1+m)}{D},\\
+%   \ts &=\tth^{-\alpha}\tg^m\tu^n, \\
+%   -b_1\tv+\dtv &= \tu, & b_1&=\frac{1+m+n}{D},
+%  \end{aligned}
+% \end{equation}
 
 \noindent
 \tcr{MGL To-Do:    A better writing is needed here, jplease write the precise transformation that carries you
@@ -1218,33 +1346,33 @@ Note that this is an autonomous system. Before we complete the formulation, one 
  also give some details about which
  numerical relations are used to simplify then follow \cite{LKT17}. }
 
-Lastly, we come up with a new choice of variables that tend to equilibria as $\eta \rightarrow \pm \infty$ and accommodate
-orbits with power growth or decay at infinities. \eqref{eq:tildesys2} can be rewritten in the form
+Having that intermediate transformation taken, lastly, we come up with a new choice of variables that tend to equilibria as $\eta \rightarrow \pm \infty$ and accommodate
+orbits with power growth or decay at infinities. Reasoning for the choice is following. \eqref{eq:tildesys2} can be rewritten in the form
 \begin{equation}
  \label{eq:tildesys3}
 \begin{aligned}
-\frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\lambda} \big (- a_0 +  \frac{\tu}{\tg} \big ),
+\frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\tilde\lambda} \big (- a_0 +  \frac{\tu}{\tg} \big ),
 \\
 \frac{d}{d\eta}{(\ln{\tv})}  &=  - b_1 + \frac{\tu}{\tv} ,
 \\
-\frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\lambda} \big (- c_0 +  \frac{\ts \tu}{\tth} \big ),
+\frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\tilde\lambda} \big (- c_0 +  \frac{\ts \tu}{\tth} \big ),
 \\
-\frac{d}{d\eta}{(\ln{\ts})} &= d_1 + b \frac{\tv}{\ts} + \lambda + \frac{\tu}{\ts}, \quad b = \frac{1+m}{D} + \frac{1+m+n}{D}\lambda
+\frac{d}{d\eta}{(\ln{\ts})} &= d_1 + b \frac{\tv}{\ts} + \tilde\lambda + \frac{\tu}{\ts}, \quad b = \frac{1+m}{D} + \frac{1+m+n}{D}\tilde\lambda
 \end{aligned}
 \end{equation}
 % \begin{equation}
 %  \label{eq:tildesys2}
 % \begin{aligned}
-% \frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\lambda} \left (- \frac{2+2\alpha-n}{D} +  \frac{\tu}{\tg} \right ),
+% \frac{d}{d\eta}{(\ln{\tg})}  &=  \tfrac{1}{\tilde\lambda} \left (- \frac{2+2\alpha-n}{D} +  \frac{\tu}{\tg} \right ),
 % \\
 % \frac{d}{d\eta}{(\ln{\tv})}  &=  - \frac{1+m+n}{D} + \frac{\tu}{\tv} ,
 % \\
-% \frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\lambda} \left (- \frac{2(1+m)}{D} +  \frac{\ts \tu}{\tth} \right ),
+% \frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\tilde\lambda} \left (- \frac{2(1+m)}{D} +  \frac{\ts \tu}{\tth} \right ),
 % \\
-% \frac{d}{d\eta}{(\ln{\tth})} &= \frac{2(-\alpha+m+n)}{D} + \left( \frac{1+m}{D} + \frac{1+m+n}{D}\lambda\right) \frac{\tv}{\ts} + \lambda + \frac{\tu}{\ts}
+% \frac{d}{d\eta}{(\ln{\tth})} &= \frac{2(-\alpha+m+n)}{D} + \left( \frac{1+m}{D} + \frac{1+m+n}{D}\tilde\lambda\right) \frac{\tv}{\ts} + \tilde\lambda + \frac{\tu}{\ts}
 % \end{aligned}
 % \end{equation}
-and the right-hand-sides are presumed to be bounded. Here we view it as describing the evolution of $(\tg,\tv,\tth,\ts)$ with $\tu$ determined by $\tu = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^m} \right )^\frac{1}{n}$.
+and we project our expectation that the physical solution can at most exponentially grow (power growth in $\xi$). That is to say the right-hand-sides are presumed to be bounded. 
 
 This leads us to define
 \begin{equation}\label{eq:pqrdef}
@@ -1252,7 +1380,7 @@ This leads us to define
   p :=\frac{\tg}{\ts}, \quad q :=b \frac{\tv}{\ts},  \quad r = \frac{\tu}{\tg} = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^{m+n}} \right )^\frac{1}{n}  , \quad s := \frac{\ts\tg}{\tth} \, .
  \end{aligned}
 \end{equation}
-The transformation $(p,q,r,s) \leftrightarrow (\tg,\tv, \tth,\ts)$ is a bijection in the first quadrant with the inverse determined by
+Here we view it as describing the evolution of $(\tg,\tv,\tth,\ts)$ with $\tu$ determined by $\tu = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^m} \right )^\frac{1}{n}$. The transformation $(p,q,r,s) \leftrightarrow (\tg,\tv, \tth,\ts)$ is a bijection in the positive sector with the inverse determined by
 $$
 \tg = p^\frac{1+\alpha}{D} s^\frac{\alpha}{D} r^\frac{n}{D} \, \quad \tth = p^\frac{1+m+n}{D} s^\frac{m+n-1}{D} r^\frac{2n}{D}
 $$
@@ -1263,15 +1391,22 @@ $$
 After a cumbersome but straightforward calculation, we derive the $(p,q,r,s)$-system:
 \begin{equation}\label{eq:slow} \tag{S}
  \begin{aligned}
- \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big), \quad a=\frac{2+2\alpha-n}{D} + \frac{2(1 + \alpha)}{D}\lambda,\\
- \dot{q} &=q\Big(1 -\lambda p r -q\Big) + b p r, \quad \quad \quad \quad b=\frac{1+m}{D} + \frac{1+m+n}{D}\lambda,\\
- n\dot{r} &=r\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\lambda(1+\alpha)}\Big),\\
- \dot{s} &=s\Big(\frac{\alpha-m-n}{\lambda(1+\alpha)}(r-a) + \lambda pr + q - \frac{1}{\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\lambda(1+\alpha)}\Big).
+ \dot{p} &=p\Big(\frac{1}{\tilde\lambda}(r-a) + 2- \tilde\lambda p r -q\Big), \quad a=\frac{2+2\alpha-n}{D} + \frac{2(1 + \alpha)}{D}\tilde\lambda,\\
+ \dot{q} &=q\Big(1 -\tilde\lambda p r -q\Big) + b p r, \quad \quad \quad \quad b=\frac{1+m}{D} + \frac{1+m+n}{D}\tilde\lambda,\\
+ n\dot{r} &=r\Big(\frac{\alpha-m-n}{\tilde\lambda(1+\alpha)}(r-a) + \tilde\lambda pr + q +\frac{\alpha}{\tilde\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) + \frac{n\alpha}{\tilde\lambda(1+\alpha)}\Big),\\
+ \dot{s} &=s\Big(\frac{\alpha-m-n}{\tilde\lambda(1+\alpha)}(r-a) + \tilde\lambda pr + q - \frac{1}{\tilde\lambda}r\big(s- \frac{1+m+n}{1+\alpha}\big) - \frac{n}{\tilde\lambda(1+\alpha)}\Big).
  \end{aligned}
 \end{equation}
-Having arrived at \eqref{eq:slow}, it remains to clarify what orbit we are aiming to capture and it needs to perform a phase space analysis of it revealing the nonlinear behavior of the dynamical system; regarding the former, the far field conditions at $\pm\infty$ is imposed accordingly to \eqref{eq:extension_cond}. This is to go beyond introducing the existence result of the localizing self-similar solutions and we refer the exposition to \cite{LKT17}. One most important aspect is that \eqref{eq:slow} possesses the {\it fast-slow} structure due to the presence of the small parameter $n$ in the left-hand-side of $\eqref{eq:slow}_3$. We exploit this aspect to prove the existence of the heteroclinic orbit of \eqref{eq:slow},  applying the {\it geometric singular perturbation theory} \cite{Fenichel79}. Further exposition of this discussion is available in \cite{LKT17}. These results lead to the Theorem \ref{mainthm1} and \ref{mainthm2}.
+It is this system \eqref{eq:slow} we conduct analysis. While the connections to the physical variables are hidden, the behavior as an autonomous dynamical system is quite nicer than the original one, later we will see that we can take a compact set in which the meaningful orbits are confined.
 
+Quoting the proof of Theorem \ref{mainthm1} from \cite{LKT17}, we provide instead a few logical steps to take. Among all the orbits of \eqref{eq:slow}, the orbits we look for must have the specific asymptotic behavior as $\eta \rightarrow -\infty$, since the boundary condition \eqref{eq:extension_cond} were imposed. This characterises three dimensional invariant surface. Again we project our expectation of the power behavior as $\eta \rightarrow \infty$, which identifies the one dimensional curve on the hypersurface, that is the heteroclinic we look for.
 
+The main ingredient of the actual construction of the heteroclinic is the {\it geometric singular perturbation theory}. Since its developments in '70s, this theory has been applied  for many different problems. The interested readers are referred to \cite{Fenichel79}. As to applying the theory, we make used of the so called {\it fast-slow} structure the system possesses: Recall that $n$ is assumed to be very small positive number, and $\eqref{eq:slow}_3$ indicates the system has this structure.
+% 
+% 
+% Having arrived at \eqref{eq:slow}, it remains to clarify what orbit we are aiming to capture and it needs to perform a phase space analysis of it revealing the nonlinear behavior of the dynamical system; regarding the former, the far field conditions at $\pm\infty$ is imposed accordingly to \eqref{eq:extension_cond}. This is to go beyond introducing the existence result of the localizing self-similar solutions and we refer the exposition to \cite{LKT17}. One most important aspect is that \eqref{eq:slow} possesses the {\it fast-slow} structure due to the presence of the small parameter $n$ in the left-hand-side of $\eqref{eq:slow}_3$. We exploit this aspect to prove the existence of the heteroclinic orbit of \eqref{eq:slow},  applying the {\it geometric singular perturbation theory} \cite{Fenichel79}. Further exposition of this discussion is available in \cite{LKT17}. These results lead to the Theorem \ref{mainthm1} and \ref{mainthm2}.
+% 
+% 
 
 
 \pagebreak
@@ -1285,8 +1420,8 @@ Having arrived at \eqref{eq:slow}, it remains to clarify what orbit we are aimin
 
 
 
-\begin{theorem}{\cite[p. 24]{Hormander66}} \label{thm:anal} Let $f_j(w,z)$, $j=1,\cdots,m$, be analytic functions of $(w,z)=(w_1,\cdots,w_m,z_1,\cdots,z_n)$ in a neighborhood of a point $(w^0,z^0)$ in $\mathbb{C}^m\times \mathbb{C}^n$, and assume that $f_j(w^0,z^0)=0$, $j=1,\cdots,m$ and that
-$$ \det\Big( \frac{\partial f_j}{\partial w_k} \Big)_{j,k=1}^m \ne 0 \quad \text{at $(w^0,z^0)$}.$$
+\begin{theorem}{\cite[p. 24]{Hormander66}} \label{thm:anal} Let $f_j(w,z)$, $j=1,\cdots,m$, be analytic functions of $(w,z)=(w_1,\cdots,w_m,z_1,\cdots,z_n)$ in a neighborhood of a point $(w^0,z^0)$ in $\mathbb{C}^m\times \mathbb{C}^n$, and assume that $f_j(w^0,z^0)=0$, $j=1,\cdots,m$ and that 
+$$ \det\Big( \frac{\partial f}{\partial w} \Big) \ne 0 \quad \text{at $(w^0,z^0)$, where $\frac{\partial f}{\partial w}$ is the $m\times m$ Jacobian matrix.} $$
 Then the equations $f_j(w,z)=0$, $j=1,\cdots,m$ have a uniquely determined analytic solution $w(z)$ in a neighborhood of $z_0$, such that $w(z^0)=w^0$.
 \end{theorem}
 
@@ -1294,40 +1429,65 @@ Then the equations $f_j(w,z)=0$, $j=1,\cdots,m$ have a uniquely determined analy
 
 \section{Stability analysis of a non-autonomous system}
 \begin{theorem} \label{prop:stab}
+ Let $F(t)$ be the solution map of the dynamical system
+ $$ y' = U(t)y, \quad \text{with} \quad |U_{ij}(t)|\le C<\infty \quad \forall i,j=1,\cdots,d$$
+ and assume its operator norm 
+ $$\big\|F(t-\tau)\big\| \le \exp\left(\int_\tau^t \theta(s)\; ds\right) \quad \text{for some $\theta$.}$$
  Suppose
  \begin{equation}
 x' = U(t)x + \mathcal{E}(t)x, \label{eq:x}
  \end{equation}
-where $U_{ij}(t)$ are bounded and the associated solution map $F(t)$ has the norm $\|F\|(t) \le h(t)=\exp\left(\int_0^t \theta(s)\; ds\right)$ for some $\theta(t)$. Assume that $\mathcal{E}_{ij}(t)$ decay as $t \rightarrow \infty$ so that they are integrable, i.e.,
+and $\mathcal{E}_{ij}(t)$ decays as $t \rightarrow \infty$ so that they are integrable, i.e.,
  $$ \int_{a_0}^\infty |\mathcal{E}_{ij}(s)| \; ds < \infty, \quad \forall i,j=1,\cdots,d \quad \text{for some $a_0$.}$$
- Then, for some $a$ every solution $\|x\|_{L^\infty[a,t]} \le 2h(t)$. Furthermore, if $y(t)=F(t)y(0)$ is the one attains the operator norm, i.e.,
- $$ \lim_{t \rightarrow \infty}\frac{y(t)}{\|F\|(t)} = y_\infty \quad \text{nontrivial,}$$
- there is a solution $x(t)$ of \eqref{eq:x} such that $\displaystyle \frac{2}{3}\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)}\le\frac{\|x(t)\|_{L^\infty[a,t]}}{\|F\|(t)} \le 2\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)}.$
+ Then, $\exists a$ such that for any $t\ge a$
+ $$ |x(t)| \le 2\exp\left(\int_a^t \theta(s)\; ds\right) |x(a)|.$$
+ Furthermore, if $y(t)=F(t-a)x(a)$, it holds for any $t\ge a$ that
+ $$\frac{2}{3}\left\|\exp\left(-\int_a^t \theta(s)\; ds\right)y(t)\right\|_{L^\infty[a,t]} \le  \left\|\exp\left(-\int_a^t \theta(s)\; ds\right)x(t)\right\|_{L^\infty[a,t]}.$$
+%  there is an $x(t)$ such that $$\displaystyle \frac{2}{3}\le\frac{\|x\|_{L^\infty[a,t]}}{\big|F(t)\big|} \le 2.$$ 
+%  
+%  
+%  $\displaystyle \frac{2}{3}\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)}\le\frac{\|x(t)\|_{L^\infty[a,t]}}{\|F\|(t)} \le 2\frac{\|y(t)\|_{L^\infty[a,t]}}{\|F\|(t)},$ where $y(t)$ is the solution that attains the operator norm $y(t)=F(t)y(0)$ is the one attains the operator norm, i.e.,
+%  $$ \lim_{t \rightarrow \infty}\frac{y(t)}{\|F\|(t)} = y_\infty \quad \text{nontrivial,}$$
+%  there is a solution $x(t)$ of \eqref{eq:x} such that 
 \end{theorem}
 \begin{proof}
 %  Without loss, we may set $h(t) = \exp\left(\int_0^t \theta(s)\; ds\right)$ by setting $\theta(t) = \log(h(t))'$.
-We rewrite \eqref{eq:x} in the form
+% One can formally consider \eqref{eq:x} in the form
+%  \begin{align*}
+%   x' - \theta(t)x &= \big(U(t)-\theta(t)\big)x + \mathcal{E}x \quad \text{or}\\
+%   \xi' &=\big(U(t)-\theta(t)\big)\xi + \mathcal{E}\xi, \quad \text{where $\xi\triangleq \exp\left(-\int^t \theta(s)\; ds\right) x$}.
+%  \end{align*}
+ Let $F(t-\tau)\exp\left(-\int_\tau^t \theta(s)\; ds\right)=:G(t-\tau)$ noticing that $\|G(t-\tau)\|\le 1$.
+Then the solution $x(t)$ of \eqref{eq:x}, by letting $\xi(t):=x(t)\exp\left(-\int_a^t \theta(s)\; ds\right)$, defines the solution of the following integral equation  $$ \xi(t) = G(t-a)\xi(a) + \int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau \quad \text{for some $a$ we choose later.}$$ 
+
+%  be the solution map associated to $U(t)-\theta(t)$. Since $F(t)x(0)=x(t)$ \\$= \exp\left(\int_0^t \theta(s)\; ds\right)\xi(t)= \exp\left(\int_0^t \theta(s)\; ds\right)G(t)\xi(0)=\exp\left(\int_0^t \theta(s)\; ds\right)G(t)x(0)$ for all $x(0)\in \mathbb{R}^d$, $G(t) = F(t)\exp\left(-\int_0^t \theta(s)\; ds\right)$ and $\|G\|(t)\le 1$. Using $G(t)$ we further write
+
+ Now, if $\bar\xi$ is a bounded function then the the expression right-hand-side well-defines an operator $S:L^\infty([a,\infty)) \mapsto L^\infty([a,\infty))$ because $\|G\|$ is bounded and $\mathcal{E}$ is integrable. If $a$ is chosen so large that $\int_a^\infty \|G\| \; |\mathcal{E}_{ij}|\; d\tau < \frac{1}{2}$ then this is a contraction mapping. Therefore, $\xi(t):=x(t)\exp\left(-\int_a^t \theta(s)\; ds\right)$, $t\ge a$ is the unique fixed point of this mapping.
+%  
+%  
+%  Since $C([a,\infty))$ is a closed subspace of $L^\infty([a,\infty))$, the unique continuous function that has the initial value $\xi(a)$ is attained for each $\xi(a)$. Of course, this is the unique solution that is defined from $x(t)$.%, this defines the unique solution of Since $\xi(a)$ was arbitrary, every independent solution is attained.
+ 
+ From the integral representation of $\xi(t)$, for any $t\ge a$ we have
  \begin{align*}
-  x' - \theta(t)x &= \big(U(t)-\theta(t)\big)x + \mathcal{E}x \quad \text{or}\\
-  \xi' &=\big(U(t)-\theta(t)\big)\xi + \mathcal{E}\xi, \quad \text{where $\xi\triangleq \exp\left(-\int_0^t \theta(s)\; ds\right) x$}.
+ \|\xi\|_{L^\infty([a,t])} &\le \|G(t-a)\xi(a)\|_{L^\infty([a,t])} + \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \\
+ &\le \|G(t-a)\xi(a)\|_{L^\infty([a,t])} + \frac{1}{2} \|\xi\|_{L^\infty([a,t])},\\
+ \text{or} \quad \|\xi\|_{L^\infty([a,t])} &\le 2 \|G(t-a)\xi(a)\|_{L^\infty([a,t])} \le 2|\xi(a)|.
  \end{align*}
- Let $G(t)$ be the solution map associated to $U(t)-\theta(t)$. Since $F(t)x(0)=x(t)$ \\$= \exp\left(\int_0^t \theta(s)\; ds\right)\xi(t)= \exp\left(\int_0^t \theta(s)\; ds\right)G(t)\xi(0)=\exp\left(\int_0^t \theta(s)\; ds\right)G(t)x(0)$, for all $x(0)\in \mathbb{R}^d$, $G(t) = F(t)\exp\left(-\int_0^t \theta(s)\; ds\right)$ and $\|G\|(t)\le 1$. Using $G(t)$ we further write
- $$ \xi(t) = G(t-a)\xi(a) + \int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau \quad \text{for some $a$ we choose later.}$$
- Note that if $\bar\xi$ is a bounded function then the the expression right-hand-side well-defines an operator $S:L^\infty([a,\infty)) \mapsto L^\infty([a,\infty))$ because $t\ge \tau\ge a$, $G$ is bounded and $\mathcal{E}$ is integrable. $S\bar\xi$ has the same initial value $\xi(a)$. If $a$ is chosen so large that $\int_a^\infty \|G\| \; |\mathcal{E}_{ij}|\; d\tau < \frac{1}{2}$ then this is a contraction mapping. Therefore solution exists with the initial value $\xi(a)$. Since $\xi(a)$ was arbitrary, every independent solution is attained.
- From the integral representation of $\xi(t)$, we have
+ This gives the proof of the first assertion. The second assertion again follows from the triangular inequality
  \begin{align*}
- \|\xi(t)\|_{L^\infty([a,t])} &\le \|G(t-a)\xi(a)\|_{L^\infty([a,t])} + \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \\
- &\le \|G(t-a)\xi(a)\|_{L^\infty([a,t])} + \frac{1}{2} \|\xi(t)\|_{L^\infty([a,t])},\\
- \|\xi(t)\|_{L^\infty([a,t])} &\le 2 \|G(t-a)\xi(a)\|_{L^\infty([a,t])} \le 2\sup_t \|G\|(t) \le 2.
+  \big\|G(t-a)\xi(a)\big\|_{L^\infty([a,t])} \le\frac{3}{2} \|\xi(t)\|_{L^\infty([a,t])}.
  \end{align*}
- This gives the boundedness of the solution. Now, let $\xi(t)$ and $\xi(a)$ be that its semi-group part is the $y(t)$ grows as same as the operator norm does. The second assertion follows from
- \begin{align*}
-\big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} &= \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \le \frac{1}{2} \|\xi(t)\|_{L^\infty([a,t])},
-\\
-\big\|G(t-a)\xi(a)\big\|_{L^\infty([a,t])} &\le \big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} + \big\|\xi(t)\big\|_{L^\infty([a,t])} 
-\\
-&\le \frac{3}{2} \|\xi(t)\|_{L^\infty([a,t])}.
- \end{align*}
+% 
+%  
+%  Now, pick $y(t)$ that attains the operator norm  let $\xi(t)$ and $\xi(a)$ be that its semi-group part is the $y(t)$ grows as same as the operator norm does. 
+ 
+%  \begin{align*}
+% \big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} &= \left\|\int_a^t G(t-\tau)\mathcal{E}(\tau)\xi(\tau) \; d\tau\right\|_{L^\infty([a,t])} \le \frac{1}{2} \|\xi(t)\|_{L^\infty([a,t])},
+% \\
+% \big\|G(t-a)\xi(a)\big\|_{L^\infty([a,t])} &\le \big\|\xi(t) - G(t-a)\xi(a)\big\|_{L^\infty([a,t])} + \big\|\xi(t)\big\|_{L^\infty([a,t])} 
+% \\
+% &\le \frac{3}{2} \|\xi(t)\|_{L^\infty([a,t])}.
+%  \end{align*}
 \end{proof}
 %
 % \begin{proposition}[stability of triangular matrix] \label{prop:tri-stab}
