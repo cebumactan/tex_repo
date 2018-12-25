@@ -138,19 +138,19 @@
 We study localization occurring during high speed shear deformations of metals leading to the formation of shear bands.
 The localization instability results from the competition among Hadamard instability (caused by softening response) and the stabilizing effects of strain-rate hardening.  We consider a hyperbolic-parabolic system that expresses the above mechanism and construct
 self-similar solutions of localizing type that arise as the outcome of the above competition.
-The existence of self-similar solutions is turned, via a series of transformations, 
+The existence of self-similar solutions is turned, via a series of transformations,
  into a problem of constructing a heteroclinic orbit for an induced dynamical system.
-The dynamical system is four dimensional but has a fast-slow structure 
-with respect to a small parameter capturing the strength of strain-rate hardening.  
+The dynamical system is four dimensional but has a fast-slow structure
+with respect to a small parameter capturing the strength of strain-rate hardening.
  Geometric singular perturbation theory is applied to construct the heteroclinic orbit as a transversal intersection of two invariant manifolds in the phase space.
 \end{abstract}
 
 %\tableofcontents
 
 \section{Introduction}
-Shear bands are narrow zones of intensely localized shear that are formed during the high speed shear motion of metals \cite{zener_effect_1944, clifton_rev_1990}. 
-They often precede rupture and are one of the striking instances of material instability leading to failure. 
-Our main objective is to capture this phenomenon in the simplest possible meaningful framework of one-dimensional thermo-visoco-plasticity. 
+Shear bands are narrow zones of intensely localized shear that are formed during the high speed shear motion of metals \cite{zener_effect_1944, clifton_rev_1990}.
+They often precede rupture and are one of the striking instances of material instability leading to failure.
+Our main objective is to capture this phenomenon in the simplest possible meaningful framework of one-dimensional thermo-visoco-plasticity.
 
 
 
@@ -161,7 +161,7 @@ Our main objective is to capture this phenomenon in the simplest possible meanin
 
 A specimen located in the $xy$-plain undergoes shear motion in the $y$-direction. The motion is described by the (plastic) shear strain
 $\gamma(x,t)$, the strain rate $u(x,t) = \gamma_t (x,t)$, the velocity $v(x,t)$ in the shear direction, the temperature $\theta(x,t)$ and the shear stress
-$\sigma (x,t)$ all defined in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$. The shear motion of the thermoviscoplastic material is described by the equations 
+$\sigma (x,t)$ all defined in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$. The shear motion of the thermoviscoplastic material is described by the equations
 
 \begin{equation} \label{intro-system0}
 \begin{aligned}
@@ -172,7 +172,7 @@ $\sigma (x,t)$ all defined in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$. The she
 \end{aligned}
 \end{equation}
 They lead to the hyperbolic-parabolic system:
-\begin{equation} 
+\begin{equation}
 \label{intro-system1}
 \begin{aligned}
 u_t &= \big ( \theta^{-\alpha}\gamma^m u^n \big )_{xx} , \\%\quad \text{(momentum conservation)} 	\\%\label{eq:v}\\
@@ -184,11 +184,11 @@ u_t &= \big ( \theta^{-\alpha}\gamma^m u^n \big )_{xx} , \\%\quad \text{(momentu
 We refer to \cite{KT09} for a derivation of the non-dimensional forms \eqref{intro-system0} and \eqref{intro-system1} and to \cite{clifton_rev_1990,shawki_shear_1989,wright_survey_2002} for further information on the mechanical aspects
 of the model.
 
-The constitutive law $\sigma = \theta^{-\alpha}\gamma^m u^n$ characterizes, in the form of an empirical power law, the nature of the material. The parameter $\alpha>0$ 
+The constitutive law $\sigma = \theta^{-\alpha}\gamma^m u^n$ characterizes, in the form of an empirical power law, the nature of the material. The parameter $\alpha>0$
 measures the degree of the thermal softening, $m>0$ measures that of strain hardening (or $m<0$ in case of a softening plastic flow), and $n>0$ measures the degree of
 strain-rate hardening and is assumed to be small, $n \ll 1$. The system \eqref{intro-system0} captures the simplest mechanism proposed for shear localization in
-high-speed deformations of metals \cite{zener_effect_1944, clifton_rev_1990}, and an (isothermal) variant appears in early studies of necking \cite{HN77}. There is an extensive mechanics literature on the problem,  {\it e.g.} \cite{shawki_shear_1989,clifton_rev_1990, wright_survey_2002}, and early mathematical results 
-appear in \cite{tzavaras_plastic_1986, tzavaras_nonlinear_1992} and \cite{Tz_1987} where a proof of shear band formation appears. 
+high-speed deformations of metals \cite{zener_effect_1944, clifton_rev_1990}, and an (isothermal) variant appears in early studies of necking \cite{HN77}. There is an extensive mechanics literature on the problem,  {\it e.g.} \cite{shawki_shear_1989,clifton_rev_1990, wright_survey_2002}, and early mathematical results
+appear in \cite{tzavaras_plastic_1986, tzavaras_nonlinear_1992} and \cite{Tz_1987} where a proof of shear band formation appears.
 The model with $m=0$ corresponds to shear of a viscous temperature-dependent fluid and stability or instability results of the model appear in \cite{bertsch_effect_1991, DH_1983, Tz_1986, Tz_1987, KOT14}. The model with $\alpha=0$ corresponds to isothermal plasticity and localizing self-similar solutions were obtained for this model in \cite{LT16, KLT_2016}. The above studies concern simplified cases of \eqref{intro-system1} with a reduced number of equations; by contrast, here we consider the full model.
 
 
@@ -204,10 +204,10 @@ Our objective is to construct a family of localizing solutions for \eqref{intro-
 \begin{equation} \label{intro-sols}
 \begin{aligned}
  \bg(t,x) &= (t+1)^a\Gamma\big((t+1)^\lambda x\big), & \bv(t,x) &= (t+1)^bV\big((t+1)^\lambda x\big), & \bth(t,x) &= (t+1)^c\Theta\big((t+1)^\lambda x\big),\\
- \bar{\sigma}(t,x) &= (t+1)^d\Sigma\big((t+1)^\lambda x\big), & \bu(t,x) &= (t+1)^{a-1}U\big((t+1)^\lambda x\big), 
+ \bar{\sigma}(t,x) &= (t+1)^d\Sigma\big((t+1)^\lambda x\big), & \bu(t,x) &= (t+1)^{a-1}U\big((t+1)^\lambda x\big),
 \end{aligned}
 \end{equation}
-with exponents $a$, $b$, $c$, $d$ as in \eqref{eq:exponents} exploiting scale invariance properties of \eqref{intro-system1}. The parameter $\lambda>0$ accounts for the rate of localization, and $\xi=(t+1)^\lambda x$ stands for the self-similar variable. 
+with exponents $a$, $b$, $c$, $d$ as in \eqref{eq:exponents} exploiting scale invariance properties of \eqref{intro-system1}. The parameter $\lambda>0$ accounts for the rate of localization, and $\xi=(t+1)^\lambda x$ stands for the self-similar variable.
 The idea of self-similar localizing solutions was first introduced in \cite{KOT14}.   Note that the exponent $\lambda$ is taken of the opposite sign to that typical for parabolic problems, thus leading to localizing solutions.
 
 The model \eqref{intro-system0} admits {\blue a class } of {\it uniform shearing solutions} independently of the exponents $(\alpha,m,n)$, emerging from constant initial
@@ -224,21 +224,21 @@ Uniform shear should be contrasted to the solutions that will be constructed her
 %Widely accepted explanation (\cite{shawki_shear_1989,clifton_rev_1990}) why such a localizing instability can take place is the following positive feedback scenario: the material keeps loading and
 %this mechanical working causes the increases in temperature. Due to the imperfectness of the deformation, the small non-uniformities in strain presences and this results in the non-uniformities in the heat production. When the speed of deformation is so high such that the time needed for the heat to diffuse out is not sufficient, then the process becomes effectively {\it adiabatic}, i.e., the heat produced at a spot accumulates. Metals typically thermally soften and strain hardens. For such a metal where the thermal softening outweighs the hardening response, the net response is softening and the spots that had larger deformation than surrounding becomes even easier to deform. This, in turn, gives rise to the severer non-uniformities in strain, triggering the positive feedback mechanism.
 {\blue
-Note that, for $n=0$, \eqref{intro-system0} is a first order system. The due cause for the instability of \eqref{intro:uss} is the loss of hyperbolicity of the system occurring when $n=0$.}  As illustrated in Appendix \ref{append:hadamard}, along the uniform shearing solution the model is an initial value problem of elliptic equations past a critical threshold for the parameter range $-\alpha+m<0$. This leads {\blue one} to expect {\blue catastrophic (exponential)} growth of oscillations in the initial value problem, what has been termed {\it Hadamard Instability}. However, as pointed out in \cite{KOT14},  Hadamard Instability cannot by itself explain the formation of shear bands, 
+Note that, for $n=0$, \eqref{intro-system0} is a first order system. The due cause for the instability of \eqref{intro:uss} is the loss of hyperbolicity of the system occurring when $n=0$.}  As illustrated in Appendix \ref{append:hadamard}, along the uniform shearing solution the model is an initial value problem of elliptic equations past a critical threshold for the parameter range $-\alpha+m<0$. This leads {\blue one} to expect {\blue catastrophic (exponential)} growth of oscillations in the initial value problem, what has been termed {\it Hadamard Instability}. However, as pointed out in \cite{KOT14},  Hadamard Instability cannot by itself explain the formation of shear bands,
 as what is observed in the process is the orderly development of localization \cite{zener_effect_1944} rather than the arbitrary growth of oscillations. {\blue The regularizing effect of small viscosity ($0 < n \ll 1$) competes with the Hadamard instability.}
 % Opposed to Hadamard Instability, lies the regularizing effect of small viscosity ($0 < n \ll 1$).
-When $n$ is sufficiently large, the diffusive mechanism {\blue dominates} and localization is suppressed, see \cite{DH_1983, Tz_1986, tzavaras_nonlinear_1992}. 
+When $n$ is sufficiently large, the diffusive mechanism {\blue dominates} and localization is suppressed, see \cite{DH_1983, Tz_1986, tzavaras_nonlinear_1992}.
 
 A conjecture as to where the threshold of instability occurs is provided by the asymptotic analysis in  \cite{KT09}, devising
 an effective equation that changes type along a threshold from forward to backward parabolic.
  It leads to expect instability when $-\alpha+m+n$ changes sign from positive to negative value. Indeed,
 this conjecture will be validated here and localising solutions are constructed in the regime $-\alpha+m+n<0$.
 
-This article is organized as follows: 
+This article is organized as follows:
 Sections \ref{sec:scale} and  \ref{sec:formulation} deal with the formulation of the problem. A series of techniques and transformations were devised in
- \cite{KOT14} and successfully adapted to the strain independent model ($\sigma=\varphi(\theta)u^n$) \cite{KLT_HYP2016}, 
- and to the temperature independent model ($\sigma=\varphi(\gamma)u^n$) \cite{LT16,KLT_2016}. 
- They are furher adapted to the larger sytem of equations here. Applying the {\it ansatz} \eqref{intro-sols} leads to the system of 
+ \cite{KOT14} and successfully adapted to the strain independent model ($\sigma=\varphi(\theta)u^n$) \cite{KLT_HYP2016},
+ and to the temperature independent model ($\sigma=\varphi(\gamma)u^n$) \cite{LT16,KLT_2016}.
+ They are furher adapted to the larger sytem of equations here. Applying the {\it ansatz} \eqref{intro-sols} leads to the system of
  singular ordinary differential equations
 \begin{equation} \label{intro:ss-odes}
 \begin{aligned}
@@ -258,7 +258,7 @@ so that the symmetric extensions are regular for the self-similar profiles.
 
 The system \eqref{intro:ss-odes} is singular (at $\xi=0$) and non-autonomous and as such it does not fit under a general existence theory.
 Nevertheless,  the singularity in \eqref{intro:ss-odes} can be resolved and the system desingularized. Furthermore, upon introducing a series of nonlinear transformations,  the construction of profiles for \eqref{intro:ss-odes} is turned to the
-construction of a heteroclinic orbit for the four-dimensional dynamical system for $(p,q,r,s)$ 
+construction of a heteroclinic orbit for the four-dimensional dynamical system for $(p,q,r,s)$
 \begin{equation}\label{intro:slow}\tag{S}
  \begin{aligned}
  \dot{p} &=p\Big(\frac{1}{\lambda}(r-a) + 2- \lambda p r -q\Big), \\
@@ -275,25 +275,25 @@ as ${\blue \eta(=\log\xi)} \to -\infty$ while the behavior as $\eta \to \infty$ 
 the equilibria of  \eqref{intro:slow} together with the linearized flow around them in phase space. {\blue We single out the heteroclinic orbit by imposing the asymptotic conditions based on our expectation and \eqref{intro:bdry0} at two end points of the orbit in Section \ref{sec:char}. }
 
 The heteroclinic is constructed in Section \ref{sec:proof}.
-The smallness of $n$ is exploited throughout the analysis. Its implications are twofold, one is singular and the other is regular. 
+The smallness of $n$ is exploited throughout the analysis. Its implications are twofold, one is singular and the other is regular.
 Note that we expect that in the limit $n=0$ only two variables (out of the original four) will play a role.
 First, $\eqref{intro-system0}_3$ {\blue can be re-written as}
 $$ \partial_t\Big(\frac{\theta^{1+\alpha}}{1+\alpha}\Big) = \big(\gamma_t^n\big)\partial_t\Big(\frac{\gamma^{1+m}}{1+m}\Big) \, , $$
 {\blue from which one can see that the equation at $n=0$ is integrable and we can eliminate one variable modulo initial data, specifically $\frac{\theta^{1+\alpha}}{1+\alpha} = \frac{\gamma^{1+m}}{1+m} + f(x)$ for some $f(x)$. For $n>0$, while we cannot anymore integrate and write one variable in terms of the other, the relationship turns out to be persistent for small $n$.
-Second, the constitutive law 
-$\sigma=\theta^{-\alpha}\gamma^m(v_x)^n$ defines the variable $\sigma$. At $n=0$, this becomes an algebraic equation and if further $\frac{\theta^{1+\alpha}}{1+\alpha} = \frac{\gamma^{1+m}}{1+m}$, we have $\sigma\gamma^{\tfrac{\alpha-m}{1+\alpha}}=\left(\tfrac{1+\alpha}{1+m}\right)^{\tfrac{-\alpha}{1+\alpha}} $. As the manifold appears as a level set of a nonlinear function of $\gamma$ and $\sigma$, it is convenient to have $\sigma$ in the prolonged state space of 4-tuple $(\gamma,v,\theta,\sigma)$ and make uses of the nonlinear function in analyzing the phase space. At $n>0$ the algebraic equation turns into a differential equation and, restricted to the study of self-similar solutions, the propagation of the constitutive law as a constraint equation turns out to be a relaxation process towards a slow manifold. The corresponding slow manifold for $n>0$ will be captured in Section \ref{sec:singpert}. 
+Second, the constitutive law
+$\sigma=\theta^{-\alpha}\gamma^m(v_x)^n$ defines the variable $\sigma$. At $n=0$, this becomes an algebraic equation and if further $\frac{\theta^{1+\alpha}}{1+\alpha} = \frac{\gamma^{1+m}}{1+m}$, we have $\sigma\gamma^{\tfrac{\alpha-m}{1+\alpha}}=\left(\tfrac{1+\alpha}{1+m}\right)^{\tfrac{-\alpha}{1+\alpha}} $. As the manifold appears as a level set of a nonlinear function of $\gamma$ and $\sigma$, it is convenient to have $\sigma$ in the prolonged state space of 4-tuple $(\gamma,v,\theta,\sigma)$ and make uses of the nonlinear function in analyzing the phase space. At $n>0$ the algebraic equation turns into a differential equation and, restricted to the study of self-similar solutions, the propagation of the constitutive law as a constraint equation turns out to be a relaxation process towards a slow manifold. The corresponding slow manifold for $n>0$ will be captured in Section \ref{sec:singpert}.
 
 The above mechanism is made apparent in the $(p,q,r,s)$-system \eqref{intro:slow} since for small $n$ \eqref{intro:slow} can be viewed as a {\it fast-slow} system with a three dimensional manifold that again has a nested two dimensional invariant manifold within it. The fast-slow structure gives the persistence of the three dimensional slow manifold for small $n$. The finer persistence properties that are needed further are provided by {\it Geometric singular perturbation theory}. To achieve the heteroclinic orbit by applying the geometric singular perturbation theory is done with detail in Section \ref{sec:proof}. }More advanced results on Geometric singular perturbation theory can be found in \cite{fenichel_asymptotic_1974, fenichel_asymptotic_1977,fenichel_geometric_1979,HPS_1977,Sz1991,wiggins_normally_1994,Jones_1995,KUEHN_2015}.
-In section \ref{sec:localization}, we describe the emergence of localization in the constructed two-parameter family of solutions via asymptotic analysis. The numerical computations of the solution, which have been described in \cite{KLT_HYP2016}, are provided again here for illustrative purposes. 
+In section \ref{sec:localization}, we describe the emergence of localization in the constructed two-parameter family of solutions via asymptotic analysis. The numerical computations of the solution, which have been described in \cite{KLT_HYP2016}, are provided again here for illustrative purposes.
 
-The emerging self-similar solutions depend on two parameters $(U(0), \Gamma (0))$ describing the initial nonuniformity; the rate of localization $\lambda$ is 
+The emerging self-similar solutions depend on two parameters $(U(0), \Gamma (0))$ describing the initial nonuniformity; the rate of localization $\lambda$ is
 in turn determined by \eqref{eq:lambda} and, due to the construction necessities, has to obey the bound \eqref{eq:lambda}.
 They provide an example of instabilty resulting to localization. To our knowldge, they are the first instance depicting such behavior for
-a sufficiently broad model \eqref{intro-system0} or \eqref{intro-system1} that includes the key contributing factors 
-of thermal softening, strain hardening and strain-rate hardening, that entering in the 
-basic mechanism of shear band formation proposed by Zener and Hollomon \cite{zener_effect_1944} and Clifton \cite{clifton_rev_1990}. 
-They complement the original proof of shear band formation \cite{Tz_1987}, where shear band formation is shown but in a set-up where energy is supplied via the boundary. 
-Some of the key predictions of stress-collapse are common in both results, but the present has the conceptual 
+a sufficiently broad model \eqref{intro-system0} or \eqref{intro-system1} that includes the key contributing factors
+of thermal softening, strain hardening and strain-rate hardening, that entering in the
+basic mechanism of shear band formation proposed by Zener and Hollomon \cite{zener_effect_1944} and Clifton \cite{clifton_rev_1990}.
+They complement the original proof of shear band formation \cite{Tz_1987}, where shear band formation is shown but in a set-up where energy is supplied via the boundary.
+Some of the key predictions of stress-collapse are common in both results, but the present has the conceptual
 advantage to capture the emergence of localization as the combined result
 of Hadamard instability with small viscosity effects.
 
@@ -309,7 +309,7 @@ of Hadamard instability with small viscosity effects.
 \section{Self-similar solutions} \label{sec:scale}
 
 %\subsection{Scale invariance properties}
-The system \eqref{intro-system1} has a scale invariance property: If $(\gamma,u,v,\theta,\sigma)$ is a solution, then the rescaled function 
+The system \eqref{intro-system1} has a scale invariance property: If $(\gamma,u,v,\theta,\sigma)$ is a solution, then the rescaled function
 $(\gamma_\rho,u_\rho,v_\rho,\theta_\rho,\sigma_\rho)$ defined by
 \begin{equation}\label{eq:scale}
 \begin{aligned}
@@ -327,12 +327,12 @@ is again a solution, provided
  c&:=c_0 + c_1\lambda=\frac{2(1+m)}{D} + \frac{2(1+m+n)}{D}\lambda, & d&:=d_0 + d_1\lambda=\frac{-2\alpha + 2m +n}{D} + \frac{2(-\alpha+m+n)}{D}\lambda,
 \end{aligned}
 \end{equation}
-for each $\lambda \in \mathbb{R}$, with the denominator 
+for each $\lambda \in \mathbb{R}$, with the denominator
 \begin{equation}
 \label{defD}
 D = 1+2\alpha-m-n \, .
 \end{equation}
-Throught this paper, the material parameters $(\alpha,m,n)$ run only through the ranges
+Throughout this paper, the material parameters $(\alpha,m,n)$ run only through the ranges
 \begin{equation}
  \begin{aligned}
   \alpha>0\quad&\text{(thermal softening)},\\
@@ -345,7 +345,7 @@ Throught this paper, the material parameters $(\alpha,m,n)$ run only through the
 that are associated to physical properties of the problem at hand (in parentheses).
 In this regime we note $D>1+\alpha>1$. Having $\lambda$ negative is the typical scaling used in parabolic problems and capturing the effect
 of diffusion.
-Here, we are interested in the opposite behavior, of localization, and throughout this work we restrict attention to the opposite range $\lambda>0$. 
+Here, we are interested in the opposite behavior, of localization, and throughout this work we restrict attention to the opposite range $\lambda>0$.
 %To have an upper bound for the localizing rate $\lambda$ will be reasoned in Section \ref{sec:equil}.
 
 %\subsection{Self-Similar solutions}
@@ -353,7 +353,7 @@ Motivated by the scale invariance property, we seek for $\lambda > 0$ solutions 
 \begin{equation}\label{eq:ORItoCAP}
 \begin{aligned}
  \gamma(t,x) &= t^a\Gamma(t^\lambda x), & v(t,x) &= t^b V(t^\lambda x), &\theta(t,x) &= t^c \Theta(t^\lambda x),\\
- \sigma(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x) \, , 
+ \sigma(t,x) &= t^d \Sigma(t^\lambda x), & u(t,x) &= t^{b+\lambda} U(t^\lambda x) \, ,
 \end{aligned}
 \end{equation}
 setting $\xi = t^\lambda x$. Plugging the ansatz into the system \eqref{intro-system0} gives the system of ordinary differential and algebraic equations for $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ :
@@ -387,8 +387,8 @@ analysis and especially the construction of the heteroclinic orbit is quite more
 
 
 \subsection{De-singularization}
-Observe that if $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ solves \eqref{eq:ss-odes}, then 
-$\big(\Gamma(-\xi), -V(-\xi), \Theta(-\xi), \Sigma(-\xi), U(-\xi)\big)$ is also a solution. 
+Observe that if $\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)$ solves \eqref{eq:ss-odes}, then
+$\big(\Gamma(-\xi), -V(-\xi), \Theta(-\xi), \Sigma(-\xi), U(-\xi)\big)$ is also a solution.
 Using this symmetry, we will look for self-similar profiles such that $\Gamma(\xi)$, $\Theta(\xi)$, $\Sigma(\xi)$, $U(\xi)$ are even functions of $\xi$, and $V(\xi)$ is an odd function of $\xi$. Accordingly, we impose the conditions
 \begin{equation}
  V(0)=U'(0)=\Gamma'(0)=\Sigma'(0)=\Theta'(0)=0 \label{eq:bdry0}
@@ -404,9 +404,9 @@ function $\big(\Gamma_\rho(\xi), V_\rho(\xi), \Theta_\rho(\xi), \Sigma_\rho(\xi)
  \Sigma_\rho(\xi)&=\rho^{d_1}\Sigma(\rho\xi), & U_\rho(\xi)&=\rho^{b_1+1}U(\rho\xi)=\rho^{a_1}U(\rho\xi)
 \end{aligned}
 \end{equation}
-is again a solution. 
+is again a solution.
 {\blue A particular self-similar solution of this type would have the form}
- $$\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)=\big(A\xi^{-a_1}, B\xi^{-b_1},C\xi^{-c_1},D\xi^{-d_1},E\xi^{-a_1}\big)$$ 
+ $$\big(\Gamma(\xi), V(\xi), \Theta(\xi), \Sigma(\xi), U(\xi)\big)=\big(A\xi^{-a_1}, B\xi^{-b_1},C\xi^{-c_1},D\xi^{-d_1},E\xi^{-a_1}\big)$$
 with $A, B, C, D, E$ appropriate constants. Such a solution is singular at $\xi =0$ and fails {\blue to fulfill \eqref{eq:bdry0}. This suggests considering} the change of variables
 \begin{equation} \label{eq:CAPtoBAR}
 \begin{aligned}
@@ -451,11 +451,11 @@ Noticing that $\frac{d}{d\eta}\tg(\eta) = \xi \frac{d}{d\xi}\bg(\xi)$, we obtain
 \end{equation}
 where the notation $\dot{f}=\frac{df}{d\eta}$ is used.
 
-The system \eqref{eq:tildesys} is autonomous and one might attempt to consider its equilibria. 
+The system \eqref{eq:tildesys} is autonomous and one might attempt to consider its equilibria.
 However, it is easy to conclude that we cannot expect a heteroclinic that  tends to equilibria of \eqref{eq:tildesys}.
-Indeed, suppose $\tu \rightarrow \tu_\infty\ge 0$ as $\eta \rightarrow \infty$. 
-Then from the last equation in \eqref{eq:tildesys}, 
-we conclude that $\tv \rightarrow \infty$. % and thus also $\ts \rightarrow \infty$ by the second equation. 
+Indeed, suppose $\tu \rightarrow \tu_\infty\ge 0$ as $\eta \rightarrow \infty$.
+Then from the last equation in \eqref{eq:tildesys},
+we conclude that $\tv \rightarrow \infty$. % and thus also $\ts \rightarrow \infty$ by the second equation.
 This suggests to enlarge the scope and consider solutions that grow as polynomials (or faster) at infinities.
 
 
@@ -471,7 +471,7 @@ orbits that have power behavior at infinities. We rewrite \eqref{eq:tildesys} in
 \\
  \frac{d}{d\eta}{(\ln{\tv})}  &=  {\red b_1 + \frac{\tu}{\tv} , }
 \\
-\frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\lambda} \big (- c_0 +  \frac{\ts \tu}{\tth} \big ), 
+\frac{d}{d\eta}{(\ln{\tth})} &=   \tfrac{1}{\lambda} \big (- c_0 +  \frac{\ts \tu}{\tth} \big ),
 \\
 \frac{d}{d\eta}{( {\red \ln{\ts} } )} &= d_1 + b \frac{\tv}{\ts} +  {\red  \lambda \frac{\tu}{\ts}  }
 \end{aligned}
@@ -479,7 +479,7 @@ orbits that have power behavior at infinities. We rewrite \eqref{eq:tildesys} in
 and view it as describing the evolution of $(\tg,\tv,\tth,\ts)$ with $\tu$ determined by $\tu = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^m} \right )^\frac{1}{n}$.
 
 This leads us to define
-\begin{equation}\label{eq:pqrdef} 
+\begin{equation}\label{eq:pqrdef}
  \begin{aligned}
   p :=\frac{\tg}{\ts}, \quad q :=b \frac{\tv}{\ts},  \quad r = \frac{\tu}{\tg} = \left ( \frac{\ts}{ \tth^{-\alpha} \tg^{m+n}} \right )^\frac{1}{n}  , \quad s := \frac{\ts\tg}{\tth} \, .
  \end{aligned}
@@ -494,13 +494,13 @@ $$
 $$
 Using \eqref{eq:tildesys2} and \eqref{eq:pqrdef}, we write
 \begin{align*}
- \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} + 
+ \frac{\dpp}{p}&=\frac{\dtg}{\tg} - \frac{\dts}{\ts}& &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &-\left[d_1 + b\frac{\tv}{\ts} +
  \lambda   {\red  \frac{\tu}{\tg} \frac{\tg}{\ts}   }  \right]
  \\
  \frac{\dqq}{q}&=\frac{\dtv}{\tv} - \frac{\dts}{\ts}& &=\left[b_1 +\frac{\tu}{\tv}\right] & &-\left[d_1 + b\frac{\tv}{\ts} + \lambda  {\red  \frac{\tu}{\tg} \frac{\tg}{\ts}   }   \right]
  \\
  n\frac{\drr}{r}&=-(m+n)\frac{\dtg}{\tg}+\frac{\dts}{\ts} + \alpha\frac{\dtth}{\tth} & &=\left[\frac{-(m+n)}{\lambda}\Big(\frac{\tu}{\tg}-a_0\Big)\right]& &+\left[d_1 + b\frac{\tv}{\ts} + \lambda  {\red  \frac{\tu}{\tg} \frac{\tg}{\ts} }  \right] + \left[\frac{\alpha}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right]\\
- \frac{\dot{s}}{s} &= \frac{\dtg}{\tg} + \frac{\dts}{\ts} - \frac{\dtth}{\tth} & &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+\left[d_1 + b\frac{\tv}{\ts} 
+ \frac{\dot{s}}{s} &= \frac{\dtg}{\tg} + \frac{\dts}{\ts} - \frac{\dtth}{\tth} & &=\left[\frac{1}{\lambda }\Big(\frac{\tu}{\tg}-a_0\Big)\right] & &+\left[d_1 + b\frac{\tv}{\ts}
  + \lambda  {\red  \frac{\tu}{\tg} \frac{\tg}{\ts} }  \right] -\left[\frac{1}{\lambda }\Big(\frac{\ts\tu}{\tth}-c_0\Big)\right].%\\
 %  \dot{s} &=\frac{\partial s}{\partial (z-1)} \dot{z} &&= \frac{1+m}{\lambda}\frac{\partial s}{\partial (z-1)} \bigg\{z\big[-r - \frac{n}{D}\Big]+ ru^n\bigg\}.
 \end{align*}
@@ -544,9 +544,9 @@ and thus $M_1$ resides in the region only under the constraint
 \end{equation}
 Henceforth, we restrict attention to rates {\blue $\lambda$ satisfying} \eqref{eq:lambda-range}.
 
-{\blue We denote the four eigenvalues and four eigenvectors of the vector field linearized at} $M_i$, $i=0,1$,  by $\mu_{ij}$ and $X_{ij}$ with $j=1,2,3,4$. %Appendix \ref{append:lin} contains the complete exposition of what this section discusses. 
+{\blue We denote the four eigenvalues and four eigenvectors of the vector field linearized at} $M_i$, $i=0,1$,  by $\mu_{ij}$ and $X_{ij}$ with $j=1,2,3,4$. %Appendix \ref{append:lin} contains the complete exposition of what this section discusses.
 \begin{itemize}
- \item $M_0$ is a saddle; {\blue the matrix of the linearized vector field at $M_0$} has three positive eigenvalues and one negative eigenvalue. 
+ \item $M_0$ is a saddle; {\blue the matrix of the linearized vector field at $M_0$} has three positive eigenvalues and one negative eigenvalue.
  \begin{equation} \label{eq:eigM0}
   \mu_{01} = 2, \quad \mu_{02}=1, \quad \mu_{03}=\mu_0^+=\BO\Big(\frac{1}{n}\Big)>0, \quad \mu_{04}=\mu_0^{-}<0,
  \end{equation}
@@ -561,7 +561,7 @@ Notice that the one of the positive eigenvalue $\mu_{03}$ is $\mathcal{O}( \frac
 % $$\mu_0^+ = \frac{r_0(1-s_0)}{n\lambda} + \frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n), \quad \mu_0^- = -\frac{1}{\lambda}\frac{{r_0^2s_0}(\alpha-m-n)}{ {r_0(1-s_0)}-n(1+r_0s_0) } + \BO(n).$$
 The precise values of the eigenvector components are presented in the Appendix \ref{append:lin}, the directions of the eigenvectors are
 pointed out in Fig. \ref{fig:equilibria} for $n$ sufficiently small.
- \item $M_1$ is a saddle; {\blue the matrix of the linearized vector field at $M_1$} has one positive eigenvalue and three negative eigenvalues. 
+ \item $M_1$ is a saddle; {\blue the matrix of the linearized vector field at $M_1$} has one positive eigenvalue and three negative eigenvalues.
 \begin{equation} \label{eq:eigM1}
  \mu_{11}=-\frac{1+m+n}{\alpha-m-n}, \quad \mu_{12}=-1, \quad \mu_{13}=\mu_1^+=\BO\Big(\frac{1}{n}\Big)>0, \quad \mu_{14}=\mu_1^{-}<0,
 \end{equation}
@@ -602,14 +602,14 @@ Notice again that the positive eigenvalue $\mu_{13}$ is $\mathcal{O}( \frac{1}{n
 \end{figure}
 
 \section{Characterization of the heteroclinic orbit} \label{sec:char}
-The equilibrium $M_0$ has three dimensions for the unstable manifold and one for the stable manifold while the equilibrium $M_1$ has three dimensions for the 
-stable manifold and one for the unstable manifold. Due to the high dimensionality, it is not immediate to read off the behavior 
-of the flow in phase space. This section aims to develop a rough picture illustrating the flow on the positive sector $p,q,r,s \ge0$. 
-We discuss how the local stable and unstable manifolds extend globally {\blue to intersect each other. 
+The equilibrium $M_0$ has three dimensions for the unstable manifold and one for the stable manifold while the equilibrium $M_1$ has three dimensions for the
+stable manifold and one for the unstable manifold. Due to the high dimensionality, it is not immediate to read off the behavior
+of the flow in phase space. This section aims to develop a rough picture illustrating the flow on the positive sector $p,q,r,s \ge0$.
+We discuss how the local stable and unstable manifolds extend globally {\blue to intersect each other.
 
-Understanding the flow is then linked to our objective to characeterize the heteroclinic orbit we search for. The heteroclinic orbit of our interests will be called $\chi(\eta)$ for the rest of this paper. We will clarify the transmission of the conditions \eqref{eq:bdry0} imposed at $\xi=0$ to the one for system \eqref{eq:slow} and this gives one characterization condition at the one end point as $\eta(=\log\xi) \rightarrow -\infty$. For the other end point as $\eta \rightarrow \infty$, we project our expectation that the variables $p$, $q$, $r$ and $s$ equilibrate to a bounded state as $\eta \rightarrow \infty$. This in particular is sufficient to have the varables $\tg$, $\tv$, $\tth$, and $\ts$ grow at most exponentially as seen from \eqref{eq:tildesys2}. Recalling back, if $\chi(\eta)$ equilibrate as $\eta \rightarrow \infty$ then the properties of strict increase (in time) of  $\theta(t,x)$ and $\gamma(t,x)$ restricts the asymptotic state in sector $r>0$ and $s>0$ and we find $M_1$ the only equilibrium at this range. This characterizes the behavior at the other end point, namely $\chi(\eta) \rightarrow M_1$ as $\eta \rightarrow \infty$. The orbits those do not equilibrate may be studied with physical relevance as well but we do not study further on those orbits in this paper. 
+Understanding the flow is then linked to our objective to characeterize the heteroclinic orbit we search for. The heteroclinic orbit of our interests will be called $\chi(\eta)$ for the rest of this paper. We will clarify the transmission of the conditions \eqref{eq:bdry0} imposed at $\xi=0$ to the one for system \eqref{eq:slow} and this gives one characterization condition at the one end point as $\eta(=\log\xi) \rightarrow -\infty$. For the other end point as $\eta \rightarrow \infty$, we project our expectation that the variables $p$, $q$, $r$ and $s$ equilibrate to a bounded state as $\eta \rightarrow \infty$. This in particular is sufficient to have the varables $\tg$, $\tv$, $\tth$, and $\ts$ grow at most exponentially as seen from \eqref{eq:tildesys2}. Recalling back, if $\chi(\eta)$ equilibrate as $\eta \rightarrow \infty$ then the properties of strict increase (in time) of  $\theta(t,x)$ and $\gamma(t,x)$ restricts the asymptotic state in sector $r>0$ and $s>0$ and we find $M_1$ the only equilibrium at this range. This characterizes the behavior at the other end point, namely $\chi(\eta) \rightarrow M_1$ as $\eta \rightarrow \infty$. The orbits those do not equilibrate may be studied with physical relevance as well but we do not study further on those orbits in this paper.
 
-These two end points behavior are interpreted geometrically as well: The end point behavior as $\eta \rightarrow -\infty$ specifies a nontrivial submanifold of the unstable manifold of $M_0$ on which the heteroclinic orbit emanates out. This submanifold intersects the stable manifold of $M_1$ and the intersection of these two manifold is the heteroclinic orbit we search for. 
+These two end points behavior are interpreted geometrically as well: The end point behavior as $\eta \rightarrow -\infty$ specifies a nontrivial submanifold of the unstable manifold of $M_0$ on which the heteroclinic orbit emanates out. This submanifold intersects the stable manifold of $M_1$ and the intersection of these two manifold is the heteroclinic orbit we search for.
 
 Now, we begin clarifying what has been suggested. The following proposition states how \eqref{eq:bdry0} are transmitted to asymptotic conditions on $(p,q,r,s)$.
 }
@@ -622,7 +622,7 @@ Now, we begin clarifying what has been suggested. The following proposition stat
 \end{proposition}
 
 \begin{remark} \label{rem:alpha}
-  {\blue That the orbit approches $M_0$ tangent to $X_{01}$ as $\eta \rightarrow -\infty$} is nontrivial. $M_0$ has three-dimensional unstable manifold and $\mu_{02}(=1)<\mu_{01}(=2)<\mu_{03}(=\BO(\frac{1}{n}))$. %The unstable manifolds of one, two, and three dimensions are separable from the fastest asymptotic rate. 
+  {\blue That the orbit approches $M_0$ tangent to $X_{01}$ as $\eta \rightarrow -\infty$} is nontrivial. $M_0$ has three-dimensional unstable manifold and $\mu_{02}(=1)<\mu_{01}(=2)<\mu_{03}(=\BO(\frac{1}{n}))$. %The unstable manifolds of one, two, and three dimensions are separable from the fastest asymptotic rate.
   {\blue So orbits emanating from $M_0$ tangent to $X_{01}$ all lie on a two dimensional manifold that at $M_0$ tangent to the plane spanned by $X_{01}$ and $X_{03}$. The two dimensional submanifold will be referred to as the Strongly unstable manifold of $M_0$.}
 \end{remark}
 
@@ -672,12 +672,12 @@ For $n$ small enough, we find signs of second derivatives are definite: $\displa
 
 
 \subsection{A two-parameter family of heteroclinic orbits} \label{sec:twoparam}
-Assuming the existence of the heteroclinic $\chi(\eta)$, this section is devoted to giving an interpretation of it in terms of the given data. By  data we refer to 
-$\big(\Gamma(0),\Theta(0),\Sigma(0),U(0)\big)$. Since the system \eqref{eq:ss-odes} is singular it is not clear how many boundary conditions, 
+Assuming the existence of the heteroclinic $\chi(\eta)$, this section is devoted to giving an interpretation of it in terms of the given data. By  data we refer to
+$\big(\Gamma(0),\Theta(0),\Sigma(0),U(0)\big)$. Since the system \eqref{eq:ss-odes} is singular it is not clear how many boundary conditions,
 for  $\big(\Gamma(0),\Theta(0),\Sigma(0),U(0)\big)$, are independent. Below, we clarify this issue.
 
-The orbit satisfying \eqref{eq:alpha} is hypothesized to be one dimensional and achieved for each set of parameters $(\lambda, \alpha, m,n)$. 
-If $\chi(\eta)$ is a heteroclinic orbit, then so is the reparametrization $\chi(\eta-\eta_0)$ for any $\eta_0\in \mathbb{R}$. In conclusion, in order to fix one heteroclinic orbit,  five parameters $\lambda$, $\eta_0$, $\alpha$, $m$, and $n$ are required. 
+The orbit satisfying \eqref{eq:alpha} is hypothesized to be one dimensional and achieved for each set of parameters $(\lambda, \alpha, m,n)$.
+If $\chi(\eta)$ is a heteroclinic orbit, then so is the reparametrization $\chi(\eta-\eta_0)$ for any $\eta_0\in \mathbb{R}$. In conclusion, in order to fix one heteroclinic orbit,  five parameters $\lambda$, $\eta_0$, $\alpha$, $m$, and $n$ are required.
 The latter three are the material properties that account for thermal softening, strain hardening, and strain-rate hardening.
 
 Other than those three, we associate the localization rate $\lambda$  and the translation factor $\eta_0$  to the physical data. Due to the singular nature of \eqref{eq:ss-odes}, not all of them are independent but two out of six numbers $\lambda$, $\eta_0$, $\Gamma(0)$, $\Theta(0)$, $\Sigma(0)$, and $U(0)$ fixes the rest. In what follows, we choose $\Gamma(0)$ and $U(0)$ as the primary parameters and specify the rest in terms of them. $\Gamma(0)$ and $U(0)$ are the tip sizes of the strain and strain rate at $\xi=0$. To recap, we take a view that for each given triple of material parameters $(\alpha,m,n)$ there is a two-parameters family of heteroclinic orbits by $\Gamma(0)$ and $U(0)$ .
@@ -731,9 +731,9 @@ Let $H$ be a domain for the tuple $(\lambda,\alpha,m,n)\in\mathbb{R}^4$ defined 
     \end{align}
 \end{theorem}
 
-The heteroclinic orbit $\chi^{\lambda,\alpha,m,n}(\eta)$ is achieved via {\it geometric singular perturbation theory}; the presence of the small parameter $n>0$ in the left-hand-side of \eqref{eq:slow}$_3$ elucidates the {\it fast-slow} structure of the system, having $r$ as a fast variable and the rest as slow variables.  
+The heteroclinic orbit $\chi^{\lambda,\alpha,m,n}(\eta)$ is achieved via {\it geometric singular perturbation theory}; the presence of the small parameter $n>0$ in the left-hand-side of \eqref{eq:slow}$_3$ elucidates the {\it fast-slow} structure of the system, having $r$ as a fast variable and the rest as slow variables.
 In the interest of the reader, we present some preliminary steps in detail. Experts with Geometric theory of singular
-perturbations may wish to proceed directly to Sections \ref{sec:singorb}, \ref{sec:thmproof}. 
+perturbations may wish to proceed directly to Sections \ref{sec:singorb}, \ref{sec:thmproof}.
 
 Recall that \eqref{eq:slow} accounts for a family of dynamical systems parametrized by $(\lambda,\alpha,m,n)$; the heteroclinic orbit will be achieved respectively for each admissible $(\lambda,\alpha,m,n)$. To simplify notations we suppress the dependence on $\lambda$, $\alpha$, and $m$ but retain
 the dependence on $n$.
@@ -742,9 +742,9 @@ the dependence on $n$.
 We quickly state some rudiments of the geometric singular perturbation theory that are in use, following definitions from \cite{fenichel_asymptotic_1977,fenichel_geometric_1979}. %Slightly different definitions are found in \cite{HPS_1977}. %
 We will use \cite[Theorem 12.2]{fenichel_geometric_1979}, which is wrapped up in the form of \cite[Theorem 2.2]{Sz1991}, and \cite[Theorem 3.1]{Sz1991}.
 
-{\blue Let $r\ge2$ and} let $X$ be a $C^{r}$ vector field in $\mathbb{R}^d$. $\bar{\Lambda}=\Lambda \cup \partial \Lambda$ is a compact, connected $C^{r+1}$ manifold in $\mathbb{R}^d$. $F^t: \mathbb{R}^d \mapsto \mathbb{R}^d$ denotes the time $t$-map associated with the vector field $X$ and $DF^t$ denotes its differential. 
+{\blue Let $r\ge2$ and} let $X$ be a $C^{r}$ vector field in $\mathbb{R}^d$. $\bar{\Lambda}=\Lambda \cup \partial \Lambda$ is a compact, connected $C^{r+1}$ manifold in $\mathbb{R}^d$. $F^t: \mathbb{R}^d \mapsto \mathbb{R}^d$ denotes the time $t$-map associated with the vector field $X$ and $DF^t$ denotes its differential.
 
-$\bar{\Lambda}$ is said to be overflowing invariant under $X$ if for every $m\in\bar{\Lambda}$ and $t\le0$, $F^t(m)\in \bar{\Lambda}$ and $X$ is pointing strictly outward on $\partial \Lambda$. $T \mathbb{R}^d|\Lambda$ denotes the tangent bundle of $\mathbb{R}^d$ along $\Lambda$ and $T\Lambda$ denotes the tangent bundle of $\Lambda$. A subbundle $E\subset T\mathbb{R}^d|\bar{\Lambda}$ is said to be negatively invariant if $E{\blue \supset} DF^t(E)$ for all $t\le0$. Let $E\subset T\mathbb{R}^d|\bar{\Lambda}$ be a subbundle that is negatively invariant and {\blue contains} $T\Lambda$. With a given such $E$,  $T \mathbb{R}^d|{\blue \bar\Lambda}$ then splits into $T\mathbb{R}^d|\bar{\Lambda} =E\oplus E'= T\Lambda\oplus N\oplus E'$, where $N\subset E$ is any complement of $T\Lambda$ in $E$ and $E'\subset T\mathbb{R}^d|\bar{\Lambda}$ is any complement of $E$ in $T\mathbb{R}^d|\bar{\Lambda}$.  
+$\bar{\Lambda}$ is said to be overflowing invariant under $X$ if for every $m\in\bar{\Lambda}$ and $t\le0$, $F^t(m)\in \bar{\Lambda}$ and $X$ is pointing strictly outward on $\partial \Lambda$. $T \mathbb{R}^d|\Lambda$ denotes the tangent bundle of $\mathbb{R}^d$ along $\Lambda$ and $T\Lambda$ denotes the tangent bundle of $\Lambda$. A subbundle $E\subset T\mathbb{R}^d|\bar{\Lambda}$ is said to be negatively invariant if $E{\blue \supset} DF^t(E)$ for all $t\le0$. Let $E\subset T\mathbb{R}^d|\bar{\Lambda}$ be a subbundle that is negatively invariant and {\blue contains} $T\Lambda$. With a given such $E$,  $T \mathbb{R}^d|{\blue \bar\Lambda}$ then splits into $T\mathbb{R}^d|\bar{\Lambda} =E\oplus E'= T\Lambda\oplus N\oplus E'$, where $N\subset E$ is any complement of $T\Lambda$ in $E$ and $E'\subset T\mathbb{R}^d|\bar{\Lambda}$ is any complement of $E$ in $T\mathbb{R}^d|\bar{\Lambda}$.
 
 With those introduced, we probe the separabilities of the three subbundles by their asymptotic growth rates backward in time: Let $m\in \bar{\Lambda}$, $t\le0$ and $v^0 \in T_m \Lambda$; $w^0\in N_m$; $x^0\in E'_m$; $v^t = DF^t(m)v^0$; $w^t = \pi^N DF^t(m)w^0$; $x^t = \pi^{E'}DF^t(m)x^0$,
 % \begin{align*}
@@ -767,7 +767,7 @@ Now we define {\blue at most five rates} for each $m\in \bar{\Lambda}$:
 Let $\bar{\Lambda}=\Lambda \cup \partial\Lambda$  an overflowing invariant manifold and $E$ a subbundle over it be given as above. We say an overflowing invariant manifold $\bar{\Lambda}$ satisfies assumptions \eqref{eq:A} and \eqref{eq:B}, $r'\le r-1$, with the subbundle $E$ if for all $m\in \bar{\Lambda}$ the {\blue type numbers}
 \begin{align}
 \nu^s(m)&<1, \quad \sigma^s(m)<\frac{1}{r}, \label{eq:A}\tag{$A_r$}   \\
-\alpha^u(m)&<1, \quad \rho^u(m)<1, \quad \tau^u(m)<\frac{1}{r'}. \label{eq:B}\tag{$B_{r'}$}  
+\alpha^u(m)&<1, \quad \rho^u(m)<1, \quad \tau^u(m)<\frac{1}{r'}. \label{eq:B}\tag{$B_{r'}$}
 %\quad \text{for all $m\in \bar{\Lambda}$}.
 \end{align}
 \end{definition}
@@ -775,16 +775,16 @@ Let $\bar{\Lambda}=\Lambda \cup \partial\Lambda$  an overflowing invariant manif
  \cite{fenichel_asymptotic_1977} considered more general {\blue rate} assumptions without \eqref{eq:A} but requiring two additional {\blue rates} $\rho_2<1$ and $\tau_2<\frac{1}{r'}$. \eqref{eq:A} and \eqref{eq:B} are stronger conditions to have them valid. %.implies the conditions for $\rho_2$ and $\tau_2$.
 \end{remark}
 \begin{definition}[Normally Hyperbolic Invariant Manifold] \label{def:nhim}
- Let $\Lambda$ be a compact manifold without boundary, invariant under $X$. Let $E^s$ and $E^u$ be subbundles of $T \mathbb{R}^d|\Lambda$ such that $E^s + E^u = T \mathbb{R}^d|\Lambda$, $E^s\cap E^u=T\Lambda$, $E^u$ is negatively invariant under $X$ and $E^s$ is so under $-X$. We say $\Lambda$ is $r$-normally hyperbolic if $\Lambda$ is an overflowing invariant manifold with a subbundle $E^u$ satisfying the rate assumptions \eqref{eq:A} and $\Lambda$ is so with $E^s$ under $-X$. 
+ Let $\Lambda$ be a compact manifold without boundary, invariant under $X$. Let $E^s$ and $E^u$ be subbundles of $T \mathbb{R}^d|\Lambda$ such that $E^s + E^u = T \mathbb{R}^d|\Lambda$, $E^s\cap E^u=T\Lambda$, $E^u$ is negatively invariant under $X$ and $E^s$ is so under $-X$. We say $\Lambda$ is $r$-normally hyperbolic if $\Lambda$ is an overflowing invariant manifold with a subbundle $E^u$ satisfying the rate assumptions \eqref{eq:A} and $\Lambda$ is so with $E^s$ under $-X$.
 \end{definition}
 The two notions for a certain invariant manifold in Definition \ref{def:over} and \ref{def:nhim} are for a certain type of persistence theorem under the perturbation of the vector field. Before we introduce the persistence theorem by Fenichel, we introduce the notion of the transversal intersection of two submanifolds in a phase space $\mathcal{M}$.
 \begin{definition}[Transversal Intersection]  (\cite[Definition 3.1]{Sz1991})
- Let ${\mathcal{M}}_1$ and ${\mathcal{M}}_2$ be submanifolds of a manifold ${\mathcal{M}}$. The manifolds ${\mathcal{M}}_1$ and ${\mathcal{M}}_2$ intersect transversally at a point $m\in{\mathcal{M}}_1\cap {\mathcal{M}}_2$ iff 
+ Let ${\mathcal{M}}_1$ and ${\mathcal{M}}_2$ be submanifolds of a manifold ${\mathcal{M}}$. The manifolds ${\mathcal{M}}_1$ and ${\mathcal{M}}_2$ intersect transversally at a point $m\in{\mathcal{M}}_1\cap {\mathcal{M}}_2$ iff
  $$T_m{\mathcal{M}} =  T_m{\mathcal{M}}_1+T_m{\mathcal{M}}_2$$
  holds, where $T_m\mathcal{M}$ denotes the tangent space of the manifold $\mathcal{M}$ and similarly for $\mathcal{M}_1$ and $\mathcal{M}_2$.
 \end{definition}
 
-The persistence theorem is specialized for the dynamical system that has the {\it fast-slow} structure, 
+The persistence theorem is specialized for the dynamical system that has the {\it fast-slow} structure,
 \begin{equation} \label{eq:fast-slow}
  \left\{
  \begin{aligned}
@@ -799,40 +799,40 @@ We say $x$ is a slow variable and $y$ is a fast variable. We assume $f$ and $g$ 
  \begin{aligned}
     \dot{x} &= f(x,y,0),\\
     0&= g(x,y,0),
- \end{aligned}\right. 
+ \end{aligned}\right.
  \hspace{2.5em}
- \text{(Layer Problem)} \quad  
+ \text{(Layer Problem)} \quad
  \left\{
  \begin{aligned}
     x'&= 0,\\
     y'&= g(x,y,0), \quad (\cdot)' = \frac{d}{d(t/\epsilon)}.% = \frac{d}{d\tilde{t}}.
- \end{aligned}\right. 
+ \end{aligned}\right.
 \end{equation*}
 % where the former describes the dynamics under the limiting assumption the fast variables $y$ have arrived equilibrium and $x$ evolves slowly, and the latter describes that of the fast variables $y$ relaxing towards equilibrium manifold keeping the slow variables $x$ unchanged. Formally the latter describes the initial layer behavior as its name indicates.
 
-The zeroset $\mathcal{S}$ of $g(x,y,0)$ defines a manifold where the orbits of the Reduced problem are restricted. {\blue This is in general not realized as a graph but can have many branches.} This manifold consists of equilibria of the Layer problem. We consider 
+The zeroset $\mathcal{S}$ of $g(x,y,0)$ defines a manifold where the orbits of the Reduced problem are restricted. {\blue This is in general not realized as a graph but can have many branches.} This manifold consists of equilibria of the Layer problem. We consider
 \begin{align*}
  \mathcal{S}&\subset \Big\{ (x,y)\:\Big|\: g(x,y,0)=0\Big\},\\
  \mathcal{S}_R&\subset \Big\{ (x,y)\in \mathcal{S} \:\Big|\: \text{$D_y g(x,y,0)$ has the full rank $k$}\Big\} \quad \text{open},\\
- \mathcal{S}_H&\subset \Big\{ (x,y)\in \mathcal{S}_R \:\Big|\: \text{all eigenvalues of $D_y g(x,y,0)$ have nontrivial real parts}\Big\}\quad \text{open}. 
+ \mathcal{S}_H&\subset \Big\{ (x,y)\in \mathcal{S}_R \:\Big|\: \text{all eigenvalues of $D_y g(x,y,0)$ have nontrivial real parts}\Big\}\quad \text{open}.
 \end{align*}
 On $\mathcal{S}_R$, the equation $0=g(x,y,0)$ is locally solvable and we speak of the reduced vector field $X_R$ on slow variables. (See equation (7.8) in \cite{fenichel_geometric_1979}.) %A compact  $K \subset \mathcal{S}_H$ is normally hyperbolic to the Layer problem.
 
-Next, we use Fenichel's Theorems in the form of \cite[Theorem 2.2]{Sz1991}. In particular this extended version with overflowing invariant manifold needs \cite[Theorem 3]{fenichel_asymptotic_1977}. % and \cite[Theorem 2.2]{Szmolyan}. 
+Next, we use Fenichel's Theorems in the form of \cite[Theorem 2.2]{Sz1991}. In particular this extended version with overflowing invariant manifold needs \cite[Theorem 3]{fenichel_asymptotic_1977}. % and \cite[Theorem 2.2]{Szmolyan}.
 We omit the statements, but the result states the persistence properties of the {\blue compact set} $K\subset\mathcal{S}_H$ and its stable and unstable manifolds under a small perturbation. The upshot of the theorem is that any $\mathcal{N}\hookrightarrow K$ in the reduced phase space that is normally hyperbolic invariant under the reduced vector field $X_R$ persists under the perturbation in a suitable sense. The stable and unstable manifolds of $\mathcal{N}$ has local {\blue liftings} to the unreduced phase space and persist under the perturbation as well. In particular, as far as the perturbations of $\mathcal{N}$ and its unstable manifold are concerned, it is enough to have $\mathcal{N}$ overflowing invariant as in Definition \ref{def:over} with its center-unstable bundle.
 
-Ingredients acquired from the Fenichel's Theorem enable one to compose a variety of geometric arguments, such as a transversal intersection, to achieve solutions. The one used here belongs to one of the simplest settings \cite[Theorem 3.1]{Sz1991}: We take a simply connected branch of  $\mathcal{S}_H$ and a compact subset {\blue $K\subset \mathcal{S}_H$ will be chosen in the Section \ref{sec:choice}}. We pick $\mathcal{N}_0$ and $\mathcal{N}_1$ in $K$. The heteroclinic orbit is achieved by the transversal intersection of the unstable manifold of $\mathcal{N}_0$ and the stable manifold of $\mathcal{N}_1$ in $K$. This transversal intersection in $K$ then lifts to that in the unreduced phase space. (See \cite{Sz1991}.) %, when $\mathcal{N}_0$ and $\mathcal{N}_1$ are taken from the same branch $K$, the transversality in the reduced phase space constitutes the same in the unreduced phase space. 
+Ingredients acquired from the Fenichel's Theorem enable one to compose a variety of geometric arguments, such as a transversal intersection, to achieve solutions. The one used here belongs to one of the simplest settings \cite[Theorem 3.1]{Sz1991}: We take a simply connected branch of  $\mathcal{S}_H$ and a compact subset {\blue $K\subset \mathcal{S}_H$ will be chosen in the Section \ref{sec:choice}}. We pick $\mathcal{N}_0$ and $\mathcal{N}_1$ in $K$. The heteroclinic orbit is achieved by the transversal intersection of the unstable manifold of $\mathcal{N}_0$ and the stable manifold of $\mathcal{N}_1$ in $K$. This transversal intersection in $K$ then lifts to that in the unreduced phase space. (See \cite{Sz1991}.) %, when $\mathcal{N}_0$ and $\mathcal{N}_1$ are taken from the same branch $K$, the transversality in the reduced phase space constitutes the same in the unreduced phase space.
 
 
 \subsection{Singular orbits for the inviscid system with $n=0$}\label{sec:singorb}
 {\red NOTE: Please note that, in accordance with the first reviewer's comments Sections up to 7.2.3 are freshly edited from the submitted version as a whole, other than specific changes in phrases.}
 
 Let us instantiate the perturbation theory for \eqref{eq:slow}. We take two normally hyperbolic manifolds %of the Reduced problem \eqref{eq:slow02}
-$\mathcal{N}_0$ and $\mathcal{N}_1$, which are simply the equilibrium points $M_0$ and $M_1$. The goal of this section is to establish the transversal intersection of the $\mathcal{N}_0^u$, the unstable manifold of $\mathcal{N}_0$ {\blue in $pqrs$-space}, and $\mathcal{N}^s_1$, the stable manifold of $\mathcal{N}_1$.  
+$\mathcal{N}_0$ and $\mathcal{N}_1$, which are simply the equilibrium points $M_0$ and $M_1$. The goal of this section is to establish the transversal intersection of the $\mathcal{N}_0^u$, the unstable manifold of $\mathcal{N}_0$ {\blue in $pqrs$-space}, and $\mathcal{N}^s_1$, the stable manifold of $\mathcal{N}_1$.
 
-Bunch of symbols, following \cite{Sz1991}, are introduced here. %that applies for the entire of this paper. 
+Bunch of symbols, following \cite{Sz1991}, are introduced here. %that applies for the entire of this paper.
 $K\subset\mathcal{S}_H$ denotes a compact critical manifold we choose later. The reduced problem is defined in $K$ and $X_R$ denotes the reduced vector field. $W_0^u$ denotes the reduced unstable manifold of $\mathcal{N}_0$ and $W_1^s$ denotes the reduced stable manifold of $\mathcal{N}_1$ restricted in $K$. The reduced vector field restricted in $K$ may as well have a finer invariant manifold $\mathcal{N}' \hookrightarrow$ that is normally hyperbolic to it. As usual $\mathcal{N'}$, $W^u(\mathcal{N}')$, and $W^s(\mathcal{N}')$ will be the manifold, its unstable, and stable manifold embedded in $K$. Inside of $W^u(\mathcal{N}')$ are foliations $\mathcal{F}^u_x$ (See \cite[Theorem 12.2]{fenichel_geometric_1979}), meaning that a foliation that passes $x\in W^u(\mathcal{N}')$. $\mathcal{F}^s_x$ is similarly for $W^s(\mathcal{N}')$.
-All objects for $n>0$ that are persistantly continued by the invariant manifold theory are set by the superscript $n$, for examples $K^n$, $N_0^n$, $N_0^{u,n}$, $W_0^{u,n}$, $M_0^n$, $\cdots$. 
+All objects for $n>0$ that are persistantly continued by the invariant manifold theory are set by the superscript $n$, for examples $K^n$, $N_0^n$, $N_0^{u,n}$, $W_0^{u,n}$, $M_0^n$, $\cdots$.
 
 Having notations introduced, we write the Reduced problem and the Layer problem for \eqref{eq:slow} :
 \begin{equation}\label{eq:slow0} \tag{R}
@@ -845,16 +845,16 @@ Having notations introduced, we write the Reduced problem and the Layer problem 
  \end{aligned}
 \end{equation}
 is the Reduced problem while
-\begin{equation} \label{eq:fast0} 
+\begin{equation} \label{eq:fast0}
  \begin{aligned}
  {p}' &=0, \quad {q}' =0, \quad {r}' =r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big), {\red  \quad{s}' =0 },
  \end{aligned}
 \end{equation}
 is the Layer problem, where $(\cdot)'= \frac{d}{d\tilde{\eta}} = \frac{d}{d(\eta/n)}$ denotes differentiation with respect to the fast independent variable $\tilde{\eta}$. The zero-set {\blue of}
 \begin{equation}
-g(p,q,r,s)\triangleq r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big)\label{eq:zeroset} 
+g(p,q,r,s)\triangleq r\Big(\frac{\alpha-m}{\lambda(1+\alpha)}(r-a) + \lambda pr + q +\frac{\alpha}{\lambda}r\big(s- \frac{1+m}{1+\alpha}\big)\Big)\label{eq:zeroset}
 \end{equation}
-consists entirely of the equilibria of \eqref{eq:fast0}. %We simply take one branch $\mathcal{S}_H$ and $K\subset\mathcal{S}_H$ compact, which will be called a {\it critical manifold}. 
+consists entirely of the equilibria of \eqref{eq:fast0}. %We simply take one branch $\mathcal{S}_H$ and $K\subset\mathcal{S}_H$ compact, which will be called a {\it critical manifold}.
 
 \subsubsection{Choice of the critical manifold $K$} \label{sec:choice}
 
@@ -919,9 +919,9 @@ $\epsilon$ will be taken sufficiently small right below.
 %   }
   \caption{The trapezoid $D$, the domain of the graph.} \label{fig:D}
 \end{figure}
-In particular, $K$ is chosen so that $(i)$ $M_0$ and $M_1$ are on $K$; $(ii)$ $s$ and $r=\hat{r}(p,q,s)$ have positive lower bound on $K$. See the trapezoid $D$ in Fig. \ref{fig:D}. 
+In particular, $K$ is chosen so that $(i)$ $M_0$ and $M_1$ are on $K$; $(ii)$ $s$ and $r=\hat{r}(p,q,s)$ have positive lower bound on $K$. See the trapezoid $D$ in Fig. \ref{fig:D}.
 
-Now, we verify $K\subset \mathcal{S}_H$. 
+Now, we verify $K\subset \mathcal{S}_H$.
 \begin{proposition}
 $K\subset \mathcal{S}_H$, i.e., the partial jacobian $\frac{\partial g}{\partial r}(p,q,r,s)|_{r=\hat{r}(p,q,s)} >0 $ for all $(p,q,r,s)\in K$. %$K$ is normally hyperbolic with respect to the Layer problem \eqref{eq:fast0}.
 \end{proposition}
@@ -945,20 +945,20 @@ The flow \eqref{eq:slow0}, strictly restricted on $K$, is further analyzed. The 
  \dot{s} &= -\frac{1+\alpha}{\lambda}\hat{r}s\Big(s- \frac{1+m}{1+\alpha}\Big).
  \end{aligned}
 \end{equation}
-appended by the other dimension with the component $r=\hat{r}(p,q,s)$ is the flow of \eqref{eq:slow0}. 
+appended by the other dimension with the component $r=\hat{r}(p,q,s)$ is the flow of \eqref{eq:slow0}.
 
-It is necessary to reveal a few finer invariant structures of the reduced flow \eqref{eq:slow02}, where the invariant manifold theory is equally applied and thus several of which will be persistent as well. This will be crucial ingredients of our arguments. To summarize, in this three dimensional reduced space $K$, we see embeddings 
+It is necessary to reveal a few finer invariant structures of the reduced flow \eqref{eq:slow02}, where the invariant manifold theory is equally applied and thus several of which will be persistent as well. This will be crucial ingredients of our arguments. To summarize, in this three dimensional reduced space $K$, we see embeddings
 $$ M_0, M_1 \quad \hookrightarrow \quad \text{$p\equiv0$ line on $s\equiv\tfrac{1+m}{1+\alpha}$ plane} \quad \hookrightarrow \quad \text{$s\equiv\tfrac{1+m}{1+\alpha}$ plane} \quad \hookrightarrow \quad K$$
 which consist of manifolds all of those are invariant under the flow \eqref{eq:slow02}. Indeed, on the plane $s\equiv\tfrac{1+m}{1+\alpha}$, \eqref{eq:slow02} decouples,
 \begin{equation}\label{eq:slow03}
  \begin{aligned}
  \dot{p} &= p\Big(\frac{D}{\lambda(1+\alpha)}(\hat{r}-a_0)\Big),\\
- \dot{q} &= q\Big(1 -\lambda p \hat{r} -q\Big) + b p \hat{r}, 
+ \dot{q} &= q\Big(1 -\lambda p \hat{r} -q\Big) + b p \hat{r},
  \end{aligned}
 \end{equation}
 where $\hat{r}=\hat{r}\big(p,q,\frac{1+m}{1+\alpha}\big)$. If further $p\equiv0$, yet another invariant line is seen and importantly this line contains the equilibrium points $M_0$ and $M_1$.
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
  \centering
   \psfrag{p}{$p$}
   \psfrag{q}{$q$}
@@ -968,13 +968,13 @@ where $\hat{r}=\hat{r}\big(p,q,\frac{1+m}{1+\alpha}\big)$. If further $p\equiv0$
   \psfrag{M0}{$M_0$}
   \psfrag{M1}{$M_1$}
   \psfrag{F0}{}%{\tiny \hskip -10em $M_0\xhookrightarrow{} N_2\xhookrightarrow{} \underbrace{N_2\oplus \mathcal{F}(N_2)}_{\triangleq N_1} $}
-  \psfrag{F1}{}%{\tiny $M_1\xhookrightarrow{} W^s(M_1)\xhookrightarrow{} W^s(M_1)\oplus \mathcal{F}(N_0)$} 
- \includegraphics[height=5cm]{Hetero_Foliation} 
-  \caption{Nested invariant manifold structures} \label{fig:HF} 
+  \psfrag{F1}{}%{\tiny $M_1\xhookrightarrow{} W^s(M_1)\xhookrightarrow{} W^s(M_1)\oplus \mathcal{F}(N_0)$}
+ \includegraphics[height=5cm]{Hetero_Foliation}
+  \caption{Nested invariant manifold structures} \label{fig:HF}
 \end{figure}
 Fig. \ref{fig:HF} well-illustrate the rest of the program. The justification of the following descriptions will be the subject of the next section. $M_1$ is a stable node; the three dimensional volume surrounding $M_1$ in Fig. \ref{fig:HF} depicts its stable manifold. $M_0$ is a saddle; $M_0$ has two unstable dimensions in $s\equiv\tfrac{1+m}{1+\alpha}$, and has one stable dimension in its oblique direction. The vector aligned to $q$-axis and the one to the green orbit are two eigenvectors for the unstable dimensions. This explains how our heteroclinic orbit (the green one) appears in $K$. %The one to the $q$-axis always has the smaller eigenvalue $1$ to the other eigenvalue $2$. It is common idea in the invariant manifold theory to conceive the rapid orbit with greater eigenvalue as one of the foliations onto the slow orbit with smaller eigenvalue. This shall be clarified in the below.
 
-Not all of the manifolds appeared are {\it normally hyperbolic} to the reduced vector field \eqref{eq:slow02}: $M_0$ and $M_1$ are hyperbolic equilibrium points; $\mathcal{N}'$, a segment of $q$-axis (the blue portion in Fig. \ref{fig:HF}) will be identified as an overflowing manifold satisfying the rate assumptions \eqref{eq:A} and \eqref{eq:B}; however, $s\equiv \tfrac{1+m}{1+\alpha}$ plane in general turned out not to fulfill the necessary rate assumptions. 
+Not all of the manifolds appeared are {\it normally hyperbolic} to the reduced vector field \eqref{eq:slow02}: $M_0$ and $M_1$ are hyperbolic equilibrium points; $\mathcal{N}'$, a segment of $q$-axis (the blue portion in Fig. \ref{fig:HF}) will be identified as an overflowing manifold satisfying the rate assumptions \eqref{eq:A} and \eqref{eq:B}; however, $s\equiv \tfrac{1+m}{1+\alpha}$ plane in general turned out not to fulfill the necessary rate assumptions.
 
 
 
@@ -984,7 +984,7 @@ In the phase space $K$ particularized by the marked invariant manifolds, the flo
 
 
 
-\begin{figure}[ht] 
+\begin{figure}[ht]
  \centering
 %  \subfigure[Flow on and around $s\equiv\tfrac{1+m}{1+ \alpha}$ seen in $pqr$-space]{
  \psfrag{p}{$p$}
@@ -993,18 +993,18 @@ In the phase space $K$ particularized by the marked invariant manifolds, the flo
  \psfrag{x0}{\hskip -2pt $M_0$}
  \psfrag{x1}{\hskip -4pt $M_1$}
  \psfrag{B}{}
- \includegraphics[width=4cm]{flow0pqs0} 
+ \includegraphics[width=4cm]{flow0pqs0}
 %  }
  \caption{Flow on and around $s\equiv\tfrac{1+m}{1+ \alpha}$} \label{fig:n0pqs}
 \end{figure}
 
 \begin{remark}
-That the invariant plane $s\equiv\tfrac{1+m}{1+ \alpha}$ has the one stable dimension in $K$ somehow falsely suggests that the plane might be normally hyperbolic. The rate assumption demands the strictly larger rate behavior in the normal direction and as a matter of fact, the rates are computed according to the negative eigenvalues at $M_1$ and in general the rate along the normal direction is not faster than those along the tangential directions. As consequences, we do not assert its persistence. 
+That the invariant plane $s\equiv\tfrac{1+m}{1+ \alpha}$ has the one stable dimension in $K$ somehow falsely suggests that the plane might be normally hyperbolic. The rate assumption demands the strictly larger rate behavior in the normal direction and as a matter of fact, the rates are computed according to the negative eigenvalues at $M_1$ and in general the rate along the normal direction is not faster than those along the tangential directions. As consequences, we do not assert its persistence.
 \end{remark}
 
-We turn to the reduced linear stability of $M_0$ and $M_1$ in $pqs$-space. To summarize, the expressions in Section \ref{sec:equil} still make senses for $n=0$, with the exceptions that those for the third eigenvalue $\mu_{03}$ and the third eigenvector $X_{03}$ of $M_0$ ($\mu_{13}$ and $X_{13}$ respectively of $M_1$) are not in use. Indeed when $n=0$, the flow is restricted on the three dimensional set $K$. %In the reduced phase space $K$, 
+We turn to the reduced linear stability of $M_0$ and $M_1$ in $pqs$-space. To summarize, the expressions in Section \ref{sec:equil} still make senses for $n=0$, with the exceptions that those for the third eigenvalue $\mu_{03}$ and the third eigenvector $X_{03}$ of $M_0$ ($\mu_{13}$ and $X_{13}$ respectively of $M_1$) are not in use. Indeed when $n=0$, the flow is restricted on the three dimensional set $K$. %In the reduced phase space $K$,
 
-With those in mind, the following Lemma via the planar dynamical systems theory completely characterizes the flow on a triangle $T$ specified below in the plane. %first quadrant of the $pq$-plane. 
+With those in mind, the following Lemma via the planar dynamical systems theory completely characterizes the flow on a triangle $T$ specified below in the plane. %first quadrant of the $pq$-plane.
 
 \begin{figure}[ht]
  \centering
@@ -1030,14 +1030,14 @@ With those in mind, the following Lemma via the planar dynamical systems theory 
 %   \psfrag{r}{\scriptsize$s-\frac{1+m}{1+\alpha}$}%=\big(\sigma\gamma^{(1-n)}\big)^{\frac{1}{n}}$}
 %   \includegraphics[width=6cm]{flow0pqs.eps}\label{fig:flow0b}
 %   }
-  \caption{The schematic sketch of the flow on the invariant plane $s=\frac{1+m}{1+\alpha}$.   On $s=\frac{1+m}{1+\alpha}$, $M_0$ is an unstable node and $M_1$ is a stable node. Two directions of unstable subspaces of $M_0$ are denoted by $X_{01}$ and $X_{02}$; the straight lines emanating from the 
-  point $\frac{\alpha-m}{\lambda(1+\alpha)}\big(-\frac{1}{\lambda},a\big)$ are the intersections of the level sets of $\hat{r}$ 
-  with the plane $s=\frac{1+m}{1+\alpha}$; the curve in the fourth quadrant is the nullcline of the equation $\eqref{eq:slow02}_2$; the triangle $T$ is a 2-dimensional positively invariant set; the trapezoid $A$ is a 2-dimensional negatively invariant set; the $\omega$-limit set of any point in $T$ is $M_1$; 
-  the $\alpha$-limit set of any point in $A$ is $M_0$; in particular there is a heteroclinic orbit (green one) that {\blue emanates from} $M_0$ through $X_{01}$, {\blue the strongly unstable manifold of $M_0$.}} 
+  \caption{The schematic sketch of the flow on the invariant plane $s=\frac{1+m}{1+\alpha}$.   On $s=\frac{1+m}{1+\alpha}$, $M_0$ is an unstable node and $M_1$ is a stable node. Two directions of unstable subspaces of $M_0$ are denoted by $X_{01}$ and $X_{02}$; the straight lines emanating from the
+  point $\frac{\alpha-m}{\lambda(1+\alpha)}\big(-\frac{1}{\lambda},a\big)$ are the intersections of the level sets of $\hat{r}$
+  with the plane $s=\frac{1+m}{1+\alpha}$; the curve in the fourth quadrant is the nullcline of the equation $\eqref{eq:slow02}_2$; the triangle $T$ is a 2-dimensional positively invariant set; the trapezoid $A$ is a 2-dimensional negatively invariant set; the $\omega$-limit set of any point in $T$ is $M_1$;
+  the $\alpha$-limit set of any point in $A$ is $M_0$; in particular there is a heteroclinic orbit (green one) that {\blue emanates from} $M_0$ through $X_{01}$, {\blue the strongly unstable manifold of $M_0$.}}
 \end{figure}
 
 \begin{lemma} \label{lem:T}
- Let $T$ be the closed triangle on $s\equiv \frac{1+m}{1+\alpha}$ enclosed by $p=0$, $q=0$, and the level set $\hat{r}(p,q,\frac{1+m}{1+\alpha})= \frac{1}{2}\min\{1,r_1\}$ that is intersected by $s\equiv \frac{1+m}{1+\alpha}$. 
+ Let $T$ be the closed triangle on $s\equiv \frac{1+m}{1+\alpha}$ enclosed by $p=0$, $q=0$, and the level set $\hat{r}(p,q,\frac{1+m}{1+\alpha})= \frac{1}{2}\min\{1,r_1\}$ that is intersected by $s\equiv \frac{1+m}{1+\alpha}$.
  Then $T\setminus M_0 \subset W^s(M_1)$.
 \end{lemma}
 \begin{proof}
@@ -1049,7 +1049,7 @@ $T$ is a two dimensional compact positively invariant set: (1) on $p=0$, $\nu = 
   &= \left(\frac{\alpha-m}{\lambda(1+\alpha)}\right)^2(\underbar{r}-r_0)(\underbar{r}-r_1)+\underbar{r}p(1-\underbar{r})\ge \delta>0. \label{eq:affine}
  \end{align}
 
-Having that shown, let $\Omega$ be an $\omega$-limit set of the orbit portrait from $x_0\in T\setminus M_0$. It is non-empty because $T$ is compact. It cannot contain $M_0$, because for the flow restricted in $T$, $M_0$ does not have {\blue a stable manifold}. It cannot contain a periodic orbit because if so, there would be a fixed point in the interior of $T$ and this is not true. 
+Having that shown, let $\Omega$ be an $\omega$-limit set of the orbit portrait from $x_0\in T\setminus M_0$. It is non-empty because $T$ is compact. It cannot contain $M_0$, because for the flow restricted in $T$, $M_0$ does not have {\blue a stable manifold}. It cannot contain a periodic orbit because if so, there would be a fixed point in the interior of $T$ and this is not true.
 It cannot contain a separatrix cycle because $T$ has only two fixed points $M_0$ and $M_1$ and again $M_0$ does not have {\blue a stable manifold}.  By Poincar\'e-Bendixson Theorem, the $\omega$-limit set is $M_1$.
 \end{proof}
 
@@ -1063,7 +1063,7 @@ Now we are able to say the following: We call $\mathcal{F}^u_{M_0}\subset W^u_0$
 \begin{proof}[Proof of Proposition \ref{prop:singular}]
 % Let $\mathcal{F}^u_{M_0}\subset W^u(M_0)$ be the most rapidly escaping orbit from $M_0$ satisfying \eqref{eq:rapid} that is characterizable by the Unstable manifold theorem for the hyperbolic fixed point. By Lemma \ref{lem:T}, $\mathcal{F}^u_{M_0}$ survives to end up arriving at $M_1$. This proves the existence of the heteroclinic orbit for $n=0$.
 %
-% Now let  Let $W^s_{loc}(M_1)$ be the local three dimensional stable manifold of $M_1$ given by the Stable manifold theorem. Let $W^s_1=\Phi_{-t_0}(W^s_{loc}(M_1))$ be the time $-t_0$ image of $W^s_{loc}(M_1)$. 
+% Now let  Let $W^s_{loc}(M_1)$ be the local three dimensional stable manifold of $M_1$ given by the Stable manifold theorem. Let $W^s_1=\Phi_{-t_0}(W^s_{loc}(M_1))$ be the time $-t_0$ image of $W^s_{loc}(M_1)$.
 For large enough $t_0<\infty$, by Lemma \ref{lem:T} the orbit point $x\in \mathcal{F}^u_{M_0}$ must be attained in $W^s_1$ as an interior point. Therefore the tangent space ${T}_x W^s_1$ is the whole of ${T}_x \mathbb{R}^3$. Then the intersection with $\mathcal{F}^u_{M_0}$ is trivially transversal.
 \end{proof}
 
@@ -1071,25 +1071,25 @@ For large enough $t_0<\infty$, by Lemma \ref{lem:T} the orbit point $x\in \mathc
 Having set forth the critical manifold $K$ in $\mathcal{S}_H$ and the reduced vector field $X_R$ on $K$, the theorem of Fenichel holds in $K$; the family $K^n$ of {\it slow manifolds} persistently exist provided $n$ is sufficiently small. Now we show the finer hyperbolic structure of $\mathcal{F}^u_{M_0} \hookrightarrow K$. %It is common idea in invariant manifold theory to characterize the strongly unstable manifold as the unstable manifold of the complementary part in $W^u(M_0)$.
 
 \begin{lemma} \label{lem:rapid}
- Let $\mathcal{N}_0=M_0$, $\mathcal{F}^u_{M_0}\subset W_0^u$ {\blue the strongly unstable manifold of $M_0$} satisfying \eqref{eq:rapid}. Then, for sufficiently small $n$, $\mathcal{F}^u_{M_0}$ perturbs in a $C^{r-1}$ manner to $\mathcal{F}^{u,n}_{M_0^n}$ {\blue the strongly unstable manifold of $M_0^n$} satisfying \eqref{eq:rapid}. 
+ Let $\mathcal{N}_0=M_0$, $\mathcal{F}^u_{M_0}\subset W_0^u$ {\blue the strongly unstable manifold of $M_0$} satisfying \eqref{eq:rapid}. Then, for sufficiently small $n$, $\mathcal{F}^u_{M_0}$ perturbs in a $C^{r-1}$ manner to $\mathcal{F}^{u,n}_{M_0^n}$ {\blue the strongly unstable manifold of $M_0^n$} satisfying \eqref{eq:rapid}.
 \end{lemma}
 \begin{proof}
- {\blue We pick the line segment $q\in [- \frac{1}{2}, \frac{1}{2}]$, $p\equiv0$ on $T$, which we will denote ${\mathcal{N}}'$. This is an one dimensional orbit portraits in $W_0^u$ that is not strongly unstable. We claim that ${\mathcal{N}}'$ is an overflowing invariant manifold as in Definition \ref{def:over} of the reduced problem. More precisely, it satisfies \eqref{eq:A} and \eqref{eq:B} with $r'=r-1$ and $E$ the tangent $pq$-plane. 
+ {\blue We pick the line segment $q\in [- \frac{1}{2}, \frac{1}{2}]$, $p\equiv0$ on $T$, which we will denote ${\mathcal{N}}'$. This is an one dimensional orbit portraits in $W_0^u$ that is not strongly unstable. We claim that ${\mathcal{N}}'$ is an overflowing invariant manifold as in Definition \ref{def:over} of the reduced problem. More precisely, it satisfies \eqref{eq:A} and \eqref{eq:B} with $r'=r-1$ and $E$ the tangent $pq$-plane.
  }
 
  {\blue NOTE: The order of sentences are reversed here.}
 
- From \eqref{eq:slow03}, $\dot{q}=q(1-q)$ on $q$-axis, it is clear that ${\mathcal{N}}'$ is overflowing invariant. Let $E$ be $pq$-plane along ${\mathcal{N}}'$ and $E'$ be the lines parallel to the $s$-axis. Then, $T \mathbb{R}^3|{\mathcal{N}}'$ splits into three one dimensional bundles $T{\mathcal{N}}'\oplus N \oplus E'$ with $N$ complementary to $T{\mathcal{N}}'$ in $E$ such that $N_{M_0}$ is parallel to $X_{01}$.  %defined by the three coordinate basis in $pqs$-space, i.e., $\mathbf{e}_q\in T\Lambda$, $\mathbf{e}_p\in N$, and $\mathbf{e}_s\in E'$. 
- Asymptotic rates are determined at $M_0$ by the eigenvalues of $M_0$. At $M_0$, $E'_{M_0}$ is the stable subspace with eigenvalue $-\mu_{04}$ and $N_{M_0}$ and $T_{M_0}{\mathcal{N}}'$ are the unstable ones with $\mu_{01}=2$ and $\mu_{02}=1$ respectively. From these, we compute 
+ From \eqref{eq:slow03}, $\dot{q}=q(1-q)$ on $q$-axis, it is clear that ${\mathcal{N}}'$ is overflowing invariant. Let $E$ be $pq$-plane along ${\mathcal{N}}'$ and $E'$ be the lines parallel to the $s$-axis. Then, $T \mathbb{R}^3|{\mathcal{N}}'$ splits into three one dimensional bundles $T{\mathcal{N}}'\oplus N \oplus E'$ with $N$ complementary to $T{\mathcal{N}}'$ in $E$ such that $N_{M_0}$ is parallel to $X_{01}$.  %defined by the three coordinate basis in $pqs$-space, i.e., $\mathbf{e}_q\in T\Lambda$, $\mathbf{e}_p\in N$, and $\mathbf{e}_s\in E'$.
+ Asymptotic rates are determined at $M_0$ by the eigenvalues of $M_0$. At $M_0$, $E'_{M_0}$ is the stable subspace with eigenvalue $-\mu_{04}$ and $N_{M_0}$ and $T_{M_0}{\mathcal{N}}'$ are the unstable ones with $\mu_{01}=2$ and $\mu_{02}=1$ respectively. From these, we compute
  $$ \nu^s = e^{-\mu_{04}}, \quad\sigma^s = 0, \quad\alpha^u = e^{-2}, \quad\rho^u=e^{-1}, \quad\tau^u=0.$$
 
- Therefore, {\blue the strongly unstable manifold} exists as an unstable $C^{r-1}$ family of manifolds $\mathcal{F}^u_x$ with $x=M_0$ of the reduced problem by \cite[Theorem 3]{fenichel_asymptotic_1977} and it is persistent in a basepoint-wise manner under the perturbation. 
+ Therefore, {\blue the strongly unstable manifold} exists as an unstable $C^{r-1}$ family of manifolds $\mathcal{F}^u_x$ with $x=M_0$ of the reduced problem by \cite[Theorem 3]{fenichel_asymptotic_1977} and it is persistent in a basepoint-wise manner under the perturbation.
 \end{proof}
 Persistence of the stable manifold $W_1^s (= W^s(M_1))$ is the classical stable manifold theorem. Now Theorem \ref{thm1} follows in the same way as in \cite[Theorem 3.1]{Sz1991} by the transversal intersection.
 
-\begin{proof}[Proof of Theorem \ref{thm1}] 
+\begin{proof}[Proof of Theorem \ref{thm1}]
 %  By \cite[Theorem 3.1]{Sz1991}, In particular, $\mathcal{F}^u_{M_0}$ perturbs to $\mathcal{F}^u_{M_0^n}$, the most rapidly escaping orbit from $M_0^n$ by Lemma \ref{lem:rapid}
- By the theorem of Fenichel, $n_0$ can be taken sufficiently small so that for given $(\lambda,\alpha,m,0)\in H$ if $n \in [0, n_0)$ then $(\lambda,\alpha,m,n) \in H$ and  the system  \eqref{eq:slow} admits a transversal heteroclinic orbit joining equilibrium $M_0^{n}$ to equilibrium $M_1^{n}$: $\mathcal{F}^u_{M_0}$ perturbs to $\mathcal{F}^{u,n}_{M_0^n}$ by Lemma \ref{lem:rapid} and $W_1^s$ perturbs to $W_1^{s,n}$ and the transversal intersection is stable under the perturbation. 
+ By the theorem of Fenichel, $n_0$ can be taken sufficiently small so that for given $(\lambda,\alpha,m,0)\in H$ if $n \in [0, n_0)$ then $(\lambda,\alpha,m,n) \in H$ and  the system  \eqref{eq:slow} admits a transversal heteroclinic orbit joining equilibrium $M_0^{n}$ to equilibrium $M_1^{n}$: $\mathcal{F}^u_{M_0}$ perturbs to $\mathcal{F}^{u,n}_{M_0^n}$ by Lemma \ref{lem:rapid} and $W_1^s$ perturbs to $W_1^{s,n}$ and the transversal intersection is stable under the perturbation.
 \end{proof}
 
 
@@ -1186,7 +1186,7 @@ Let $\big(\Gamma(\xi),V(\xi),\Theta(\xi),\Sigma(\xi),U(\xi)\big)$ be the self-si
     \begin{equation} \label{eq:ss_asymp2}
   \begin{aligned}
     \Gamma(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}}\big(\log\xi\big)^{\frac{1+\alpha}{D}}\big), & V(\xi) &= \BO\big(\big(\log\xi\big)^{-\frac{\alpha-m-n}{D}}\big),
-    \\ 
+    \\
         \Theta(\xi) &= \BO\big(\xi^{-\frac{1+m+n}{\alpha-m-n}}\big(\log\xi\big)^{\frac{1+m+n}{D}}\big),\\
    \Sigma(\xi) &= \BO\big(\xi\big(\log\xi\big)^{-\frac{\alpha-m-n}{D}}\big), &   U(\xi) &= \BO\big(\xi^{-\frac{1+\alpha}{\alpha-m-n}}\big(\log\xi\big)^{\frac{1+\alpha}{D}}\big)
   \end{aligned}
@@ -1228,7 +1228,7 @@ Asymptotics \eqref{eq:ss_asymp1} and \eqref{eq:ss_asymp2} are the straightforwar
 \end{proof}
 
 \subsection{Emergence of localization}
-Emergence of localization 
+Emergence of localization
 
 As time proceeds, the initial states evolve out emerging the localization and this section is devoted to describing this localization: the deviation in the growth or decay rate at the origin from those at the rest of the places are contrasted, which is the emergence of the localization.
 
@@ -1284,13 +1284,13 @@ This dictates that the particle of our solutions gets faster as it moves forward
 All graphs except $v$ are in logarithmic scale.} \label{fig:computation}
 \end{figure}
 
-In Fig. \ref{fig:computation} are the computational results of the original field variables $\big(\gamma(t,x)$, $u(t,x)$, $\theta(t,x)$, $\sigma(t,x)$, $v(t,x)\big)$ that are computed from the heteroclinic orbit of \eqref{eq:slow} succeeded by transformations \eqref{eq:pqrdef}, \eqref{eq:BARtoTIL}, \eqref{eq:CAPtoBAR}, and \eqref{eq:ORItoCAP}. Parameters $\big(\alpha,m,n,\lambda)=(1.2,0,0.3,0.5325)$ was chosen for the computation. Before we examine them, we address one technical issue on the nontrivial choice of $m=0$ for its capturing. $M_0$ and $M_1$ are hyperbolic equilibrium points and their spectrum split into those with positive and negative real parts. While the Stable Manifold Theorem gives the separation of the corresponding stable and unstable manifolds, to achieve the same computationally is challenging task because the dynamical system is highly stiff in such a way that the presence of unstable subspace makes the computation destabilized. Since $M_0$ and $M_1$ both are saddle, computation in neither of time direction resolves this difficulty. 
+In Fig. \ref{fig:computation} are the computational results of the original field variables $\big(\gamma(t,x)$, $u(t,x)$, $\theta(t,x)$, $\sigma(t,x)$, $v(t,x)\big)$ that are computed from the heteroclinic orbit of \eqref{eq:slow} succeeded by transformations \eqref{eq:pqrdef}, \eqref{eq:BARtoTIL}, \eqref{eq:CAPtoBAR}, and \eqref{eq:ORItoCAP}. Parameters $\big(\alpha,m,n,\lambda)=(1.2,0,0.3,0.5325)$ was chosen for the computation. Before we examine them, we address one technical issue on the nontrivial choice of $m=0$ for its capturing. $M_0$ and $M_1$ are hyperbolic equilibrium points and their spectrum split into those with positive and negative real parts. While the Stable Manifold Theorem gives the separation of the corresponding stable and unstable manifolds, to achieve the same computationally is challenging task because the dynamical system is highly stiff in such a way that the presence of unstable subspace makes the computation destabilized. Since $M_0$ and $M_1$ both are saddle, computation in neither of time direction resolves this difficulty.
 
 While \eqref{intro-system0} bears this difficulty, with $m=0$, $\eqref{intro-system0}_2$-$\eqref{intro-system0}_4$ comprises a closed system, decoupling the first equation. The dimension is reduced by one in the corresponding dynamical system either (See \cite{KLT_HYP2016} for the precise formulation) and there, $M_0$ is an unstable node. By contrast to the saddle-saddle connection, in cases one of the equilibrium points is a stable or unstable {\it node}, solving the system in the stabilizing time direction produces numerically stable computations. We were able to compute the heteroclinic orbit backward in time, and to find Fig. \ref{fig:computation}. Capturing the saddle-saddle connection will need more substantial considerations in numerical approach than that has been approached here.
 
 
 Fig.s \ref{fig:computation} illustrates the emergence of localization by depicting the profiles at a few instances of time. The vertical axes, except for the in Fig. \ref{fig:v} for the velocity, are in logarithmic scale. In Fig. \ref{fig:u}, one sees the localization in strain rate; the initial profile is a small perturbation of
-a constant, at later time localization occurs at the origin. The same is seen in Fig. \ref{fig:theta} 
+a constant, at later time localization occurs at the origin. The same is seen in Fig. \ref{fig:theta}
 for the temperature and in  Fig. \ref{fig:v}, which eventually looks like a step function. On the other hand, stress collapses down to zero as seen from Fig. \ref{fig:sigma}, with different rates at the origin and at the rest of the points respectively.
 
 
@@ -1321,14 +1321,14 @@ Consider the system \eqref{intro-system0} for $n=0$ when the viscoplastic effect
  &=-\mu\big(\mu^2+\theta^{-\alpha}\gamma^{m-1}\Big(\frac{\alpha-m}{1+\alpha}+\alpha \frac{\gamma_0(x)^{1+m} - \frac{1+m}{1+\alpha}\theta_0(x)^{1+\alpha}}{\theta^{1+\alpha}}\Big),
 \end{align*}
 where $\gamma_0(x)$ and $\theta_0(x)$ are initial values of $\gamma$ and $\theta$ respectively. If $\alpha-m>0$ and $\theta$ increases
-along the evolution then \eqref{eq:transport} loses hyperbolicity in a finite time. In particular, this 
+along the evolution then \eqref{eq:transport} loses hyperbolicity in a finite time. In particular, this
 happens along the uniform shearing solutions \eqref{intro:uss}  as $t \rightarrow \infty$.
 
-{\blue 
+{\blue
 \section{Complete list of equilibria other than $M_0$ and $M_1$}\label{append:equi_reject}
-Complete list of equilibria of system \eqref{eq:slow} other than $M_0$ and $M_1$ are presented below. They are functions of only $(\alpha,m,n,\lambda)$. Underlined the reader will find the components that show the point lies outside the region of interest and leads to rejection of them. $t$ ($t_1$ and $t_2$ as well) in the below denotes an arbitrary real number. 
+Complete list of equilibria of system \eqref{eq:slow} other than $M_0$ and $M_1$ are presented below. They are functions of only $(\alpha,m,n,\lambda)$. Underlined the reader will find the components that show the point lies outside the region of interest and leads to rejection of them. $t$ ($t_1$ and $t_2$ as well) in the below denotes an arbitrary real number.
 
-To recall, $a=\frac{2+2\alpha-n}{1+2\alpha-m-n} + \frac{2(1 + \alpha)}{1+2\alpha-m-n}\lambda$, $b=\frac{1+m}{1+2\alpha-m-n} + \frac{1+m+n}{1+2\alpha-m-n}\lambda$, and $D=1+2\alpha-m-n$. 
+To recall, $a=\frac{2+2\alpha-n}{1+2\alpha-m-n} + \frac{2(1 + \alpha)}{1+2\alpha-m-n}\lambda$, $b=\frac{1+m}{1+2\alpha-m-n} + \frac{1+m+n}{1+2\alpha-m-n}\lambda$, and $D=1+2\alpha-m-n$.
 \allowdisplaybreaks
 \begin{align*}
  \begin{array}{lllllll}
@@ -1432,11 +1432,11 @@ Next, the coefficient matrix for the linearized equations around $M_1$ is
 
 %It turned out that the coefficient matrix for $M_1$ possibly possesses the Jordan block when $\mu_{11}$ and $\mu_{12}$ coincide. We first demonstrate the four eigenvectors for the generic case where $\mu_{11}\ne\mu_{12}$ and then specify the generalized eigenvectors for this special case.
 
-The following exposition specifies all possible {\blue combinations. Except for the case $\mu_{11}=\mu_{12}=-1$,} four linearly independent eigenvectors are attained. 
+The following exposition specifies all possible {\blue combinations. Except for the case $\mu_{11}=\mu_{12}=-1$,} four linearly independent eigenvectors are attained.
 When the exceptional case occurs the repeated eigenvalue $-1$ has one less geometric multiplicity than the algebraic multiplicity.% so we supplement one generalized eigenvector for the repeated eigenvalue $-1$.
 
 As to the eigenvectors, notice first that the eigenvalues for $M_1$, differently from those for $M_0$, have chances to be repeated. While the exposition in
-Appendix \ref{append:lin} specifies quite a few possible combinations, 
+Appendix \ref{append:lin} specifies quite a few possible combinations,
 what is explained below is that unless $\mu_{11}=\mu_{12}=-1$, the four linearly independent eigenvectors are attained, and when the exceptional case takes place we will supplement precisely one generalized eigenvector for the repeated eigenvalue $-1$.
 
 {\bf Case 1. $-\frac{1+m+n}{\alpha-m-n}\ne -1$; or $-\frac{1+m+n}{\alpha-m-n}= -1$ but $b=\lambda$. } This case yields the four linearly independent eigenvectors. The eigenvector $X_{1j}$ is collected in the matrix $S_1$ as $j$-th column vector, $j=1,2,3,4$, and in cases eigenvalues are repeated the corresponding eigenvectors are understood as a basis for the corresponding subspaces:
@@ -1629,13 +1629,13 @@ Localization in inelastic rate dependent shearing deformations,
 
 {\blue
 \bibitem{Jones_1995}
-{\sc Christopher K. R. T.  Jones}, 
-Geometric singular perturbation theory. 
+{\sc Christopher K. R. T.  Jones},
+Geometric singular perturbation theory.
 Dynamical systems (Montecatini Terme, 1994), pp 44Ð118, {\it Lecture Notes in Math.}, 1609, Springer, Berlin, 1995.
 }
 
 \bibitem{KUEHN_2015}
-{\sc C.~ Kuehn}, 
+{\sc C.~ Kuehn},
 {\it Multiple time scale dynamics}, Applied Mathematical Sciences, Vol. {\bf 191} (Springer Basel 2015).
 
 \bibitem{LT16}
@@ -1798,7 +1798,7 @@ Nonlinear analysis techniques for shear band formation at high strain-rates,
 % {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
 %
 \bibitem{wiggins_normally_1994}
-{\sc S.~Wiggins}, 
+{\sc S.~Wiggins},
 {\it Normally hyperbolic invariant manifolds in dynamical  systems}, AMS {\bf 105} (Springer-Verlag New York 1994).
 
 \bibitem{wright_survey_2002}
@@ -1988,6 +1988,6 @@ Effect of strain rate upon plastic flow of steel,
 
 \end{thebibliography}
 
-\end{document}	
+\end{document}
 
 \pagebreak

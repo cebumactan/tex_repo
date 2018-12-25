@@ -94,54 +94,134 @@
 
 
 \begin{document}
-\title[Localization ]{Localization in dynamic plasticity: \\ A study of parabolic regularizations  \\
-of elliptic initial value problems}
-% \title{{\LARGE Two-parameters family of focusing self-similar solutions in 1-d thermo-visco-plasticity}\\ {\small(Introduction to Geometric Singular Perturbation Theory)}}
-\author{\vskip 5pt \small {Min-Gi Lee}\\ \vskip 5pt \scriptsize Applied Maths. \& Computational Science, KAUST, SA\\}
+\title[Localization ]{\LARGE Dynamic shear band formation in the rate dependent thermoplastic metals}
+\author{\vskip 5pt \small {Min-Gi Lee}\\ \vskip 5pt \scriptsize Department of Mathmatics\\Kyungpook National University\\}
 %\author{\vskip 5pt\Large {\underline{Thesis Defense}}}
-
-\vskip 15pt
-\institute{\scriptsize
-Joint works with  \\ \textbf{\color{red}J. Olivier}, Universite de Marseilles, FR\\
-\textbf{\color{cyan} Th. Katsaounis}, KAUST, SA \\
-\textbf{\color{blue} A. Tzavaras}, KAUST, SA}
-
-% \institute{\vskip 5pt joint with Athanasios Tzavaras \quad and \quad Thodoros Katsaounis\\}
+\institute{\vskip 5pt joint with Thodoros Katsaounis\quad and \quad Athanasios Tzavaras\\KAUST, SA}
 \date{~}
 \begin{frame}
   \titlepage
   \vskip -60pt
   \center
   {\small
-  %{\scriptsize Summer School in Nonlinear Partial Differential Equations}\\
-  {\scriptsize September 28th, 2017, Group Meeting}\\}
+  {\scriptsize Ulsan National Institute of Science and Technology, Korea}\\
+  %   {\scriptsize University of Vienna, Vienna, Austria}\\
   %{\scriptsize Universit\"at Wien, Austria}\\
   %{\scriptsize Universit\"at Stuttgart, Stuttgart, Germany}\\
   %{\scriptsize  Texas A\&M University, U.S.}\\
-%   {\scriptsize June 20th, 2017}\\}
+  {\scriptsize December 21st, 2018}\\}
 %   {\scriptsize Group Meeting, KAUST}\\
 %   {\scriptsize  Thuwal, Saudi Arabia}\\
 %   {\scriptsize Octobor 13th, 2015}\\}
 \end{frame}
+% 
+% 
+% \title[Localization ]{Localization in dynamic plasticity: \\ A study of parabolic regularizations  \\
+% of elliptic initial value problems}
+% % \title{{\LARGE Two-parameters family of focusing self-similar solutions in 1-d thermo-visco-plasticity}\\ {\small(Introduction to Geometric Singular Perturbation Theory)}}
+% \author{\vskip 5pt \small {Min-Gi Lee}\\ \vskip 5pt \scriptsize Applied Maths. \& Computational Science, KAUST, SA\\}
+% %\author{\vskip 5pt\Large {\underline{Thesis Defense}}}
+% 
+% \vskip 15pt
+% \institute{\scriptsize
+% Joint works with  \\ \textbf{\color{red}J. Olivier}, Universite de Marseilles, FR\\
+% \textbf{\color{cyan} Th. Katsaounis}, KAUST, SA \\
+% \textbf{\color{blue} A. Tzavaras}, KAUST, SA}
+% 
+% % \institute{\vskip 5pt joint with Athanasios Tzavaras \quad and \quad Thodoros Katsaounis\\}
+% \date{~}
+% \begin{frame}
+%   \titlepage
+%   \vskip -60pt
+%   \center
+%   {\small
+%   %{\scriptsize Summer School in Nonlinear Partial Differential Equations}\\
+%   {\scriptsize September 28th, 2017, Group Meeting}\\}
+%   %{\scriptsize Universit\"at Wien, Austria}\\
+%   %{\scriptsize Universit\"at Stuttgart, Stuttgart, Germany}\\
+%   %{\scriptsize  Texas A\&M University, U.S.}\\
+% %   {\scriptsize June 20th, 2017}\\}
+% %   {\scriptsize Group Meeting, KAUST}\\
+% %   {\scriptsize  Thuwal, Saudi Arabia}\\
+% %   {\scriptsize Octobor 13th, 2015}\\}
+% \end{frame}
 
 \section{Introduction}
 
-\begin{frame}\setstretch{1.4}\frametitle{Material instability}
+\begin{frame}
+\setstretch{1.3}
+\frametitle{1D Thermo-Visco-Plasticity of Shear Deformation}
+%   \vskip 5pt
+    \begin{minipage}{0.31\linewidth}
+    \begin{figure}
+    \centering
+    \psfrag{Y}{\scriptsize $Y(t,x)$}
+    \psfrag{y}{\scriptsize $y$}
+%     \psfrag(x){\scriptsize $x$}
+    \includegraphics[width=3cm]{shear1.eps}
+    \end{figure}
+%     \caption{The Specimen is under deformation in $y$-direction in $xy$-plane. } \label{fig:1}
+      {\scriptsize
+    \begin{equation*} %\label{eq:vars}
+    \begin{aligned}
+    \gamma(t,x) &: \text{strain}\\
+    \gamma_t(t,x) &: \text{strain rate}\\
+    v(t,x) &: \text{vertical velocity}\\
+    \theta(t,x) &: \text{temperature}\\
+    \sigma(t,x) &: \text{stress}
+    \end{aligned}
+    \end{equation*}
+    in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$}
+    \end{minipage}
+    \begin{minipage}{0.61\linewidth}
+      \begin{equation*} %\label{system0}
+        \begin{aligned}
+          \partial_t v &= \partial_x\Big(\sigma(\gamma,\gamma_t,\theta)\Big) & &\text{({\blue Momentum balance})}, \\
+          \partial_t \theta &= \sigma\partial_x v + \cancel{\red k\theta_{xx}} & &\text{({\blue Adiabatic Energy balance})},\\
+          \partial_t \gamma &= \partial_x v & &\text{({\blue Kinematic compatibility})},\\
+          \sigma  &= \sigma(\gamma,\gamma_t,\theta) & &\text{({\blue Constitutive Law})}\\
+        \end{aligned}
+      \end{equation*}
+       subject to %\\
+%       $v=\partial_t Y(t,x)$ is a {\blue velocity} in $y$-direction, \\
+%       $\gamma=\partial_x Y(t,x)$ is a {\blue shear strain}.% and $\sigma(\gamma,\gamma_t,\theta)$ is a constitutive law for the {\blue shear stress}. 
+      \vskip 5pt
+      
+      Initial conditions
+      
+      {\scriptsize $\gamma(0,x) = \gamma_0(x)$, $v(0,x) = v_0(x)$, $\theta(0,x) = \theta_0(x)$,} 
+      
+      Boundary velocity conditions.
+      
+      {\scriptsize $v(t,x) \rightarrow f^-(t)$ as $x \rightarrow -\infty$, $v(t,x) \rightarrow f^+(t)$ as $x \rightarrow \infty$.}
+    \end{minipage}
+\end{frame}
 
-Material instability in  solid mechanics :  A state loses its stability, typically a non-uniform deformation emerges
+\begin{frame}
+ \frametitle{Theme: Viscous regularization of ill-posed problem.}
+ \setstretch{1.5}
+ We focus on the constitutive law of the form
+$$\sigma=\sigma(\theta,\gamma){\red (\gamma_t)^n}, \quad 0<n\ll1$$
+where $\sigma(\theta,\gamma)$ exhibits {\blue softening response} but competes with the {\blue small rate-dependent} regularization.
+ \vfill
+The catastrophically ill-posed problem is regularized to result in the instablity that is yet tame without high frequency oscillations.
+ \vfill
+\end{frame}
 
-\bigskip
-
-Examples
-\begin{itemize}
-\item nucleation in phase transitions
-\item localization and shear bands, in various contexts
-\begin{itemize}
-\item[] compression of concrete blocks, granular materials
-\item[] high strain-rate deformations of metals
-\end{itemize}
-\end{itemize}
-
+\begin{frame}
+ \frametitle{Constitutive Law}
+ \setstretch{1.5}
+ \begin{figure}
+    \centering
+    \center
+    \psfrag{s}{\scriptsize stress $\sigma(\gamma)$}
+    \psfrag{g}{\scriptsize strain $\gamma$}
+%     \psfrag{phi}{\scriptsize  $\varphi^{'}( \gamma ) < 0$}% = \frac{1}{\gamma}$}
+    \includegraphics[width=5.5cm]{phi2.eps} 
+    \caption{Typical stress-strain curve for metals.}
+ \end{figure} 
+ Blue dotted box corresponds to the elastic regime; red dotted box corresponds to the instability regime.
+ \vfill
 \end{frame}
 
 \begin{frame}
@@ -164,48 +244,8 @@ Examples
  \vfill
 \end{frame}
 
-
-
 \begin{frame}
-\frametitle{A Shear Band}
-\setstretch{1.2}
-
-  \begin{figure}
-    \centering\includegraphics[height=3cm,width=4cm]{sb.eps}
-  \end{figure}
-%   \vspace{-5cm}
-%  \begin{center}
-%   \hspace{10pt} Shear Band in a Aluminum alloy
- % \end{center}
-
-% \bigskip
-
-
-A \underline{narrow layer of intense shearing} that develops when materials (metals, polymers, powders) are deforming at high strain rates.
-
-{\scriptsize
-\begin{itemize}
-\item Typical shear band widths : $10-100 \mu m$
-%\item High local values of shear strain : $5-100$
-\item Ultra high local shear strain rates : $10^4/s - 10^6/s$
-\item Local temperature rises several hundred degrees
-%\item High propagation speeds : $\sim 1000m/s$
-\item Not a crack : material preserves its integrability
-%\item Shear Bands are  precursors to rupture
-\end{itemize}
-}
-
-\vspace{0.2cm}
-{\footnotesize
-Experiments performed in experimental device Kolsky bar \\
-\hfill {\footnotesize \color{red} groups of Duffy, Clifton - Brown 80's }
-}
-\end{frame}
-
-
-
-\begin{frame}
- \frametitle{A Shear Band}
+ \frametitle{Shear bands}
  \setstretch{1.5}
  \begin{minipage}{0.3\linewidth}
  \begin{figure}
@@ -230,54 +270,16 @@ Experiments performed in experimental device Kolsky bar \\
  \end{figure}
  \end{minipage}
  
- %Zener and Hollomon(1944) observed the formation of shear bands in the high speed deformation of metals, which are narrow zones shear localizes intensely.
- %\vfill
-\end{frame}
-
-\begin{frame}
-\frametitle{Modeling adiabatic shear bands}
-
-{\small 
-1-d  {\blue shear motion} with {\red thermal effects}
-\\
-$y(x,t)$ displacement in shearing direction, $v = y_t$, $\gamma = y_x$
-\\
- \begin{figure}
-    \centering\includegraphics[height=1.5cm,width=10cm]{sbflow.eps}
-    \caption{{Uniform shearing }  \hspace{0.2cm}  {\blue vs.}  \hspace{0.2cm} {\red shear band}}
-  \end{figure}
-  
-\vspace{-0.2cm}
-\begin{equation*}
-  \begin{aligned}
-    & v_{t} = \frac{1}{r}\ \sigma_{x}
-    \\
-    & \theta_{t} = \kappa \theta_{ x x}  +  \sigma \gamma_{t}
-     \\
-    & \gamma_{t} = v_{x}
-  \end{aligned}
-  \qquad \qquad
-  \sigma = \varphi(\theta,\gamma)\gamma_t^n=\theta^{-\alpha} \gamma^m {\gamma_t}^n
-\end{equation*}
-non-dimensional numbers 
-$\begin{cases}
- r &  \text{ratio of inertial versus viscous stresses}
-\\
-\kappa & \text{thermal diffusivity -- \color{red}{  $\kappa = 0$ adiabatic }}
-\end{cases}$
-\\
-$\sigma$ is given by a {\color{cyan} power law } and expresses a flow rule on a yield surface
-
- }
-
+ Zener and Hollomon(1944) observed the formation of shear bands in the high speed deformation of metals, which are narrow zones shear localizes intensely.
+ \vfill
 \end{frame}
 
 \begin{frame}
  \setstretch{1.5}
- \frametitle{Uniform Shearing Solutions}
- Regardless of the precise form of $\varphi(\theta,\gamma)$, the model admits {\red uniform shearing solutions},
+ \frametitle{Uniform Shearing Solution is unstable.}
+ Regardless of $\sigma(\gamma)$, the model admits {\red uniform shearing solutions},
  \begin{align*}
-  v_s(x) = x, \quad \gamma_s(t) = t + \gamma_0, \quad \sigma_s = \sigma_s(t), \quad \theta_s=\theta_s(t),\quad \text{$\gamma_0$ a constant}.
+  v_s(x) = x, \quad \gamma_s(t) = t + \gamma_0, \quad \sigma_s = \sigma(t + \gamma_0), \quad \text{$\gamma_0$ a constant}.
  \end{align*}
  
   \begin{figure}
@@ -290,105 +292,6 @@ $\sigma$ is given by a {\color{cyan} power law } and expresses a flow rule on a 
   \end{figure}
   
  %At the core of understanding of the model is the question whether this uniform motions go astray developing the material instability.   
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Uniform shearing solutions}
-
-%\vskip-1cm
-{\small 
-  \begin{align*}
-     v_s  &= x \\
-    \gamma_s (t)  &= t + \gamma_0 \\
-     \dot \theta_s (t)  &= \sigma_s (t) =  {\theta_s (t) }^{-\alpha}(t+\gamma_0)^m
-     \\
-%     \left\{\theta_0^{\alpha+1}+\frac{\alpha+1}{m+1}\left[(\gamma_0+t)^{m+1}
-%     -\gamma_0^{m+1}\right]\right\}^{\frac{1}{\alpha+1}} \\
-%    \sigma_s (t)  &= {\theta_s (t) }^{-\alpha}(t+\gamma_0)^m
-  \end{align*}
-
-
-
-\vskip-1.2cm 
-
-\begin{figure}
-    \centering\includegraphics[height=4cm,width=5cm]{HardSoft.eps}
-    \caption{ $\sigma_s (t)$ \; vs \; $t$}
-  \end{figure}
-  \vskip-15pt
-  $ \sigma_s (t)$ initially increases (hardening) but eventually decreases (softening) 
-
-}
-
-\end{frame}
-
-\begin{frame}
- \frametitle{Theme: parabolic regularization of ill-posed problem.}
- \setstretch{1.2}
- {\blue \sc Summary of models}:  
- 
- {\color{cyan} power law }
- \vskip -0.1em
- {\scriptsize
-\begin{equation*}
-  \begin{aligned}
-    & v_{t} =  \sigma_{x}
-    \\
-    & \theta_{t} = \kappa \theta_{ x x}  +  \sigma \gamma_{t}
-     \\
-    & \gamma_{t} = v_{x}
-  \end{aligned}
-  \qquad \qquad
-  \sigma = \theta^{-\alpha} \gamma^m {\gamma_t}^n
-\end{equation*}
-}
- {\color{cyan} exponential law }
- \vskip -0.1em
- {\scriptsize
-\begin{equation*}
-  \begin{aligned}
-    & v_{t} =  \sigma_x 
-    \\
-    & \theta_{t} = \kappa \theta_{ x x}  +  \sigma v_x
-  \end{aligned}
-  \qquad \qquad
-  \sigma =e^{-\alpha \theta }  {v_x}^n \, , \quad {\textstyle \alpha > 0, \; n> 0}
-\end{equation*}
- }
-{\small Underlying issues:
-
-\begin{itemize}
-\item  dependence of viscosity on the temperature
-
-\item parabolic regularization of an elliptic IVP
-\end{itemize}
-
-We focus on the constitutive law of the form
-  \vskip -10pt
-  
-$$\sigma=\varphi(\theta,\gamma){\red (\gamma_t)^n}, \quad 0<n\ll1$$
-% where $\varphi(\theta,\gamma)$ is such that {\blue net softening response} is exhibited. This effect competes with the regularization due to the {\blue small rate-dependency}.
-%  \vfill
-% The ill-posed problem is regularized by small viscosity to result in the yet orderly instability that is without growth of high frequency oscillations.
-%  \vfill
-}
-\end{frame}
-
-\begin{frame}
- \frametitle{$n=0$: Hadamard Instability}%Stress-strain curve}
- \setstretch{1.5}
- \begin{figure}
-    \centering
-    \center
-    \psfrag{s}{\scriptsize stress $\sigma(\gamma)$}
-    \psfrag{g}{\scriptsize strain $\gamma$}
-%     \psfrag{phi}{\scriptsize  $\varphi^{'}( \gamma ) < 0$}% = \frac{1}{\gamma}$}
-    \includegraphics[width=5.5cm]{phi2.eps} 
-    \caption{Typical stress-strain curve for metals in uniaxial tensile test.}
- \end{figure} 
- Blue dotted box corresponds to the elastic regime; red dotted box is the regime of instability.
- \vfill
 \end{frame}
 
 
@@ -412,6 +315,29 @@ $$\sigma=\varphi(\theta,\gamma){\red (\gamma_t)^n}, \quad 0<n\ll1$$
   \item $\sigma'(\gamma)<0$ results in the loss of hyperbolicity.
   \item Model predicts the exponential growth of oscillations in the initial-value-problem: {\blue Hadamard Instability}.
  \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+ \frametitle{Loss of Hyperbolicity and High oscillations}
+ \setstretch{1.5}
+ \begin{itemize}
+  \item It is certain that the loss of hyperbolicity leads to the material instability.
+%   \item Mismatch in model and material instability.
+  \item High oscillations are not observed. Rather, the instability is of localization.
+ \end{itemize}
+ \vfill
+\end{frame}
+
+\begin{frame}
+ \frametitle{Rate sensitivity $0<n\ll1$}
+ \setstretch{1.5}
+ Consider
+ $$\sigma=\sigma(\theta,\gamma){\red (\gamma_t)^n}$$
+ 
+ This provides a problem that is singularly perturbed from the inviscid problem.
+ \vfill
 \end{frame}
 
 \begin{frame}
@@ -444,11 +370,6 @@ $$\sigma=\varphi(\theta,\gamma){\red (\gamma_t)^n}, \quad 0<n\ll1$$
   m\theta^{-\alpha}\gamma^{m-1} & -\alpha\theta^{-\alpha-1}\gamma^m & 0\end{pmatrix}}_\text{$\triangleq B$}
   \begin{pmatrix} \gamma_x \\ \theta_x \\ v_x \end{pmatrix}. 
 \end{equation}
-% {\scriptsize
-% \begin{align*}
-%  \det\big(B-\mu\textrm{I}\big) &= -\mu\big(\mu^2+\theta^{-\alpha}\gamma^{m-1}\Big(\frac{\alpha-m}{1+\alpha}+\alpha \frac{\gamma_0(x)^{1+m} - \frac{1+m}{1+\alpha}\theta_0(x)^{1+\alpha}}{\theta^{1+\alpha}}\Big),
-% \end{align*}
-% }
 \vfill
 $-\alpha+m<0$ implies the loss of hyperbolicity.
 %   \item $\sigma'(\gamma)<0$ results in the loss of hyperbolicity.
@@ -457,34 +378,55 @@ $-\alpha+m<0$ implies the loss of hyperbolicity.
 \end{frame}
 
 \begin{frame}
- \frametitle{Loss of Hyperbolicity and High oscillations}
- \setstretch{1.5}
- \begin{itemize}
-  \item High oscillations are amplified exponentially in Hadamard instability,
-%   \item Mismatch in model and material instability.
-  \item while such a high oscillations are not observed in the experiments. %Rather, the coherent localization is observed.
-  \item The parabolic regularization can accounts for that.
- \end{itemize}
- \vfill
+ \frametitle{Constitutive Law}
+ \setstretch{1.3}
+ \begin{figure}
+    \centering
+    \center
+    \psfrag{s}{\scriptsize stress }
+    \psfrag{g}{\scriptsize strain }
+%     \psfrag{phi}{\scriptsize  $\varphi^{'}( \gamma ) < 0$}% = \frac{1}{\gamma}$}
+    \includegraphics[width=2.5cm]{phi3.eps} 
+     \caption{Instability Regime}
+    \end{figure} 
+ We want to have a theory for the instability regime in the framework of Thermo-Visco-Plasticity,
+ \begin{align}
+  \sigma &= \sigma(\gamma,\theta)(\gamma_t)^n=\theta^{-\alpha}\gamma^m(\gamma_t)^n, 
+ \end{align}%\footnote[frame]{J.W. Hutchinson and K.W. Neale (1977), Tzavaras (1991,1992)}.
+ where $\alpha>0$, $m>-1$, $n>0$, and {\red $-\alpha +m+n<0$}.\footnote[frame]{J.W. Hutchinson and K.W. Neale (1977), Tzavaras (1991,1992)}
 \end{frame}
 
 
+% 
+% 
+% 
+% 
+% 
+% \begin{frame}
+%  \frametitle{Adiabatic shear bands}
+%  \setstretch{1.5}
+%  Important features observed during the development of localizing singularity are :
+%  \vfill
+%  \begin{enumerate}
+% %   \item  is triggered.
+%   \item The role of strain rate $\gamma_t$ falls into two folds:
+%   \begin{enumerate}
+%    \item It enters in the constitutive law: dynamics depends on the rate.
+%    \item High speed of deformation makes the process almost {\it Adiabatic}; not enough time for heat to diffuse out.
+%   \end{enumerate}
+%   \item Albeit extremely fast development of singularity, the process is orderly: individual modes of oscillation are not observed and the localization occurs in {\red coherent} fashion.
+%  \end{enumerate}
+%  \vfill
+% \end{frame}
 
 \begin{frame}
- \frametitle{Cf. Stability results in large viscous regime}
- \setstretch{1.4}
-{\color{cyan} power law }
-\begin{equation*}
-  \begin{aligned}
-    & v_{t} =  \sigma_{x}
-    \\
-    & \theta_{t} =   \sigma \gamma_{t}
-     \\
-    & \gamma_{t} = v_{x}
-  \end{aligned}
-  \qquad \qquad
-  \sigma = \theta^{-\alpha} \gamma^m {\gamma_t}^n
-\end{equation*}
+ \frametitle{Cf. Large viscous regime}
+ \setstretch{1.5}
+ \begin{align*}
+  v_t &= \big(\theta^{-\alpha}\gamma^m {\red (v_x)^n}\big)_x,\\
+  \left(\frac{\theta^{1+\alpha}}{1+\alpha}\right)_t &= \left(\frac{\gamma^{1+m}}{1+m}\right)_t{\red (\gamma_t)^n},\\
+  \gamma_t&=v_x
+ \end{align*}
  \begin{itemize}
   \item $m=0$, $-\alpha+n>0$ :  USS is globally asymptotically stable {\footnotesize (Daefermos and Hsiao 1983, Tzavaras 1992)}.
   \item {\blue We expect similar for $-\alpha+m+n>0$ but we have not proved yet.}
@@ -494,135 +436,246 @@ $-\alpha+m<0$ implies the loss of hyperbolicity.
   \vfill
 \end{frame}
 
-\begin{frame}\frametitle{An asymptotic mechanism for localization}
-\setstretch{1.4}
-{\color{cyan} power law }
-\begin{equation*}
-  \begin{aligned}
-    & v_{t} =  \sigma_{x}
-    \\
-    & \theta_{t} =   \sigma \gamma_{t}
-     \\
-    & \gamma_{t} = v_{x}
-  \end{aligned}
-  \qquad \qquad
-  \sigma = \theta^{-\alpha} \gamma^m {\gamma_t}^n
-\end{equation*}
-
-% \vspace{1.5 cm}
-
-{\color{blue} uniform shear solution }
-
-\begin{equation*}
-  \begin{aligned}
-  v_s = x \quad \theta_s = \theta_s (t) \quad \gamma_s = t + \gamma_0 \quad \sigma_s = \sigma_s (t)
-  \end{aligned}
-   \end{equation*}
-   
-% \vspace{0.5 cm}
-
-{\color{red} a recurring theme in this problem} \\
-stability analysis of a time-dependent solution leads to non-autonomous systems
-
-
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%
-\begin{frame}\setstretch{1.2}\frametitle{}
-
-{\small
-Consider the power law, with adiabatic conditions ($\kappa = 0$) and  introduce
-the {\color{red} relative perturbation variables} and the {\color{blue} change of time scale}
-$$
-\dot \tau = \sigma_s (t)  \Longleftrightarrow t = \hat t (\tau)
-$$
-\begin{alignat*}{2}
-v_x = u(x,t) &= U \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big ) \qquad \qquad
-\theta (x,t) &&= \theta_s(t) \Theta \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big )
-\\
-\gamma (x,t) &= \gamma_s(t) \Gamma \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big )
-\qquad
-\sigma (x,t) &&= \sigma_s(t) \Sigma \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big )
-\end{alignat*}
-to obtain the {\color{blue} relaxation system}. The uniform shear solution is mapped
-to the equilibrium point  $(1,1,1,1)$
-
-\smallskip
-$$
-\begin{aligned}
-U_\tau &= \Sigma_{xx}
-\\
-{\textstyle \frac{\bar \theta_s}{R}} \; \Theta_\tau &= \Sigma U - \Theta
-\\
-{\textstyle \frac{\bar \sigma_s \bar   \gamma_s}{R}} \; \Gamma_\tau &= U - \Gamma
-\\
-\Sigma &= \Theta^{-\alpha} \Gamma^m U^n
-\end{aligned}
-$$
-
-}
-
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%
-\begin{frame}\setstretch{1.4}\frametitle{}
-
-{\small
-
-An asymptotic procedure analogous to the {\color{blue} Chapman-Enskog expansion } gives
-for $R >> 1$
-\begin{alignat*}{2}
-&{\color{blue} O\Big ( \frac{1}{R} \Big )  } \qquad 
- &&\partial_\tau U = \partial_{xx} \Big (    U^p \Big )
-  \\
- &  &&
-\\
-&{\color{blue} O\Big ( \frac{1}{R^2} \Big ) } \qquad 
- &&\partial_\tau U = \partial_{xx} \Big (   U^p  +  \frac{\lambda }{R} ( \tau+1) 
-                                                                                         \, U^{p-1} \partial_{xx} U^p  \Big )
-\end{alignat*}
-where $\lambda$ positive constant and 
-\vspace{0.5cm}
-
-\centerline{ {\color{blue} $p = \frac{-\alpha + m +n}{1+\alpha}$  } }
-\begin{itemize}
-\item[] {\color{blue} $p > 0$  } \quad 2$^{nd}$ order equation is stable
-\item[] {\color{blue} $p < 0$  } \quad 2$^{nd}$ order eq. unstable (linearly ill-posed), \\
-       \qquad \qquad                  4$^{th}$ order eq. stable regularization ($\lambda>0$) \\
-      \qquad \qquad \qquad           of  a backward parabolic equation
-\end{itemize}
-
-\vskip -10pt
-\hfill {\footnotesize \color{red} Katsaounis-T. 09 }
-}
-
-\end{frame}
-
-% %
-% %
-% %
-% \begin{frame}\setstretch{1.4}\frametitle{ Towards a mathematical theory for shear bands - the exp model}
+% \begin{frame}
+%  \frametitle{Perturbative features in viscous problem}
+%  Viscous problem with {\scriptsize {\red $-\alpha +m+n<0$}, $0<n\ll1$.}
+%  \setstretch{1.5}
+%  \begin{align*}
+%   v_t &= \big(\theta^{-\alpha}\gamma^m {\red (v_x)^n}\big)_x,\\
+%   \left(\frac{\theta^{1+\alpha}}{1+\alpha}\right)_t &= \left(\frac{\gamma^{1+m}}{1+m}\right)_t{\red (\gamma_t)^n},\\
+%   \gamma_t&=v_x,
+%  \end{align*}
+%  Inviscid Adiabatic Shear flow is essentially of $2$-variables. We view above system as the singularly perturbed one from the inviscid system.
+%   \vfill
+%  \begin{enumerate}
+%   \item Singularly perturbed:
+%   $v_t = \big(\theta^{-\alpha}\gamma^m {\red (v_x)^n}\big)_x.$
+%   \item Regularly perturbed:
+%   $ \left(\frac{\theta^{1+\alpha}}{1+\alpha}\right)_t = \left(\frac{\gamma^{1+m}}{1+m}\right)_t{\red (\gamma_t)^n}.$
+%  \end{enumerate}
+% \end{frame}
 % 
+
+% \begin{frame}\setstretch{1.4}\frametitle{Material instability}
 % 
+% Material instability in  solid mechanics :  A state loses its stability, typically a non-uniform deformation emerges
+% 
+% \bigskip
+% 
+% Examples
 % \begin{itemize}
-% \item{}  To outline the "complete" picture for a paradigm :  the {\blue exp}  model
-% 
+% \item nucleation in phase transitions
+% \item localization and shear bands, in various contexts
 % \begin{itemize}
-% 
-% \item{} Linearized stability
-% \item{} Nonlinear model - A scenario for localization
-% \item{} A class of  solutions exhibiting localization 
-% \item[]  Hadamard instability vs Localization
-% 
+% \item[] compression of concrete blocks, granular materials
+% \item[] high strain-rate deformations of metals
+% \end{itemize}
 % \end{itemize}
 % 
+% \end{frame}
 % 
+% \begin{frame}
+%  \frametitle{Material Instability}
+%  \setstretch{1.5}
+%  \begin{itemize}
+%   \item Necking (Tensile Load)
+%    \begin{figure}
+%     \centering
+%       \includegraphics[height=2.5cm]{necking.eps} 
+% %      \caption{Typical stress-strain curve for metals}
+%     \end{figure} 
+%   \item Shear Band (Shear Load)
+%      \begin{figure}
+%     \centering
+%       \includegraphics[height=2.5cm,width=5cm]{sb2.eps} 
+% %      \caption{Typical stress-strain curve for metals}
+%     \end{figure} 
+%  \end{itemize}
+%  \vfill
+% \end{frame}
+% 
+% 
+% 
+% \begin{frame}
+% \frametitle{A Shear Band}
+% \setstretch{1.2}
+% 
+%   \begin{figure}
+%     \centering\includegraphics[height=3cm,width=4cm]{sb.eps}
+%   \end{figure}
+% %   \vspace{-5cm}
+% %  \begin{center}
+% %   \hspace{10pt} Shear Band in a Aluminum alloy
+%  % \end{center}
+% 
+% % \bigskip
+% 
+% 
+% A \underline{narrow layer of intense shearing} that develops when materials (metals, polymers, powders) are deforming at high strain rates.
+% 
+% {\scriptsize
+% \begin{itemize}
+% \item Typical shear band widths : $10-100 \mu m$
+% %\item High local values of shear strain : $5-100$
+% \item Ultra high local shear strain rates : $10^4/s - 10^6/s$
+% \item Local temperature rises several hundred degrees
+% %\item High propagation speeds : $\sim 1000m/s$
+% \item Not a crack : material preserves its integrability
+% %\item Shear Bands are  precursors to rupture
 % \end{itemize}
+% }
+% 
+% \vspace{0.2cm}
+% {\footnotesize
+% Experiments performed in experimental device Kolsky bar \\
+% \hfill {\footnotesize \color{red} groups of Duffy, Clifton - Brown 80's }
+% }
+% \end{frame}
 % 
 % 
-% Paradigm:  {\color{blue} exponential law }
+% 
+% \begin{frame}
+%  \frametitle{A Shear Band}
+%  \setstretch{1.5}
+%  \begin{minipage}{0.3\linewidth}
+%  \begin{figure}
+%     \centering
+%     {
+%       %\vspace{-5em}
+%       \includegraphics[height=2cm]{sb.eps} 
+%     } 
+%     \caption{Shear Band}
+%  \end{figure}
+%  \end{minipage}
+%   \hfill
+%  \begin{minipage}{0.6\linewidth}
+%  \begin{figure}
+% %     \subfigure[{\scriptsize UniformShear}]{
+%       \includegraphics[width=1.5cm,height=4cm]{uniformshear2.eps}
+%      \quad \quad \quad
+% %     \subfigure[Shear Localization]{
+%       \includegraphics[width=1.5cm,height=4cm]{shearband2.eps}
+% %     }
+%     \caption{Schematic sketch: uniform shear VS shear localization}
+%  \end{figure}
+%  \end{minipage}
+%  
+%  %Zener and Hollomon(1944) observed the formation of shear bands in the high speed deformation of metals, which are narrow zones shear localizes intensely.
+%  %\vfill
+% \end{frame}
+% 
+% \begin{frame}
+% \frametitle{Modeling adiabatic shear bands}
+% 
+% {\small 
+% 1-d  {\blue shear motion} with {\red thermal effects}
+% \\
+% $y(x,t)$ displacement in shearing direction, $v = y_t$, $\gamma = y_x$
+% \\
+%  \begin{figure}
+%     \centering\includegraphics[height=1.5cm,width=10cm]{sbflow.eps}
+%     \caption{{Uniform shearing }  \hspace{0.2cm}  {\blue vs.}  \hspace{0.2cm} {\red shear band}}
+%   \end{figure}
+%   
+% \vspace{-0.2cm}
+% \begin{equation*}
+%   \begin{aligned}
+%     & v_{t} = \frac{1}{r}\ \sigma_{x}
+%     \\
+%     & \theta_{t} = \kappa \theta_{ x x}  +  \sigma \gamma_{t}
+%      \\
+%     & \gamma_{t} = v_{x}
+%   \end{aligned}
+%   \qquad \qquad
+%   \sigma = \varphi(\theta,\gamma)\gamma_t^n=\theta^{-\alpha} \gamma^m {\gamma_t}^n
+% \end{equation*}
+% non-dimensional numbers 
+% $\begin{cases}
+%  r &  \text{ratio of inertial versus viscous stresses}
+% \\
+% \kappa & \text{thermal diffusivity -- \color{red}{  $\kappa = 0$ adiabatic }}
+% \end{cases}$
+% \\
+% $\sigma$ is given by a {\color{cyan} power law } and expresses a flow rule on a yield surface
+% 
+%  }
+% 
+% \end{frame}
+% 
+% \begin{frame}
+%  \setstretch{1.5}
+%  \frametitle{Uniform Shearing Solutions}
+%  Regardless of the precise form of $\varphi(\theta,\gamma)$, the model admits {\red uniform shearing solutions},
+%  \begin{align*}
+%   v_s(x) = x, \quad \gamma_s(t) = t + \gamma_0, \quad \sigma_s = \sigma_s(t), \quad \theta_s=\theta_s(t),\quad \text{$\gamma_0$ a constant}.
+%  \end{align*}
+%  
+%   \begin{figure}
+%     \center
+%     \psfrag{stress}{\hskip -3em stress $\sigma$}
+%     \psfrag{strain}{strain $\gamma$}
+%     \psfrag{phi}{$\sigma^{'}( \gamma ) < 0$}% = \frac{1}{\gamma}$}
+%     \includegraphics[height=2.8cm]{uniformshear.eps}
+%     \caption{{\footnotesize Uniform shearing.}}
+%   \end{figure}
+%   
+%  %At the core of understanding of the model is the question whether this uniform motions go astray developing the material instability.   
+% \end{frame}
+% 
+% %%%%%%%%%%%%%%%%%%
+% \begin{frame}
+% \frametitle{Uniform shearing solutions}
+% 
+% %\vskip-1cm
+% {\small 
+%   \begin{align*}
+%      v_s  &= x \\
+%     \gamma_s (t)  &= t + \gamma_0 \\
+%      \dot \theta_s (t)  &= \sigma_s (t) =  {\theta_s (t) }^{-\alpha}(t+\gamma_0)^m
+%      \\
+% %     \left\{\theta_0^{\alpha+1}+\frac{\alpha+1}{m+1}\left[(\gamma_0+t)^{m+1}
+% %     -\gamma_0^{m+1}\right]\right\}^{\frac{1}{\alpha+1}} \\
+% %    \sigma_s (t)  &= {\theta_s (t) }^{-\alpha}(t+\gamma_0)^m
+%   \end{align*}
+% 
+% 
+% 
+% \vskip-1.2cm 
+% 
+% \begin{figure}
+%     \centering\includegraphics[height=4cm,width=5cm]{HardSoft.eps}
+%     \caption{ $\sigma_s (t)$ \; vs \; $t$}
+%   \end{figure}
+%   \vskip-15pt
+%   $ \sigma_s (t)$ initially increases (hardening) but eventually decreases (softening) 
+% 
+% }
+% 
+% \end{frame}
+% 
+% \begin{frame}
+%  \frametitle{Theme: parabolic regularization of ill-posed problem.}
+%  \setstretch{1.2}
+%  {\blue \sc Summary of models}:  
+%  
+%  {\color{cyan} power law }
+%  \vskip -0.1em
+%  {\scriptsize
+% \begin{equation*}
+%   \begin{aligned}
+%     & v_{t} =  \sigma_{x}
+%     \\
+%     & \theta_{t} = \kappa \theta_{ x x}  +  \sigma \gamma_{t}
+%      \\
+%     & \gamma_{t} = v_{x}
+%   \end{aligned}
+%   \qquad \qquad
+%   \sigma = \theta^{-\alpha} \gamma^m {\gamma_t}^n
+% \end{equation*}
+% }
+%  {\color{cyan} exponential law }
+%  \vskip -0.1em
+%  {\scriptsize
 % \begin{equation*}
 %   \begin{aligned}
 %     & v_{t} =  \sigma_x 
@@ -632,177 +685,454 @@ where $\lambda$ positive constant and
 %   \qquad \qquad
 %   \sigma =e^{-\alpha \theta }  {v_x}^n \, , \quad {\textstyle \alpha > 0, \; n> 0}
 % \end{equation*}
-% 
-% 
-% \end{frame}
-% 
-%%%%%%%%%%%%%%%%%%
-
-
-
-%%
-%%%%   Numerical simulations -  Slides 
-%
-%
-%%%%%%%%%%%%%%%%%%
-
-
-%
-%
-%
-% Suggestions of numerical runs
-%
-%
-%%%%%%%%%%%%%%%%%%
-% \section{linearized theory}
-% \begin{frame}\setstretch{1.4}\frametitle{\small what is special in the exp model ?}
-% 
-% 
-% \begin{equation*}
-% \begin{aligned}
-%   & v_{t} = \sigma_{x},\\
-%   & \sigma = e^{-\alpha \theta } v_x^{n}   \\
-%   & \theta_{t} = \kappa \theta_{x x} + \sigma v_x 
-%   \end{aligned}
-% \qquad \qquad  \mbox{ {\blue uniform solution} }
-% \left \{
-% \begin{aligned}
-%   & v_s  = x \\
-%   & \theta_s = \frac{1}{\alpha} \ln \left ( \alpha t + c_0 \right )  
-%   \\
-%   & \sigma_s = e^{- \alpha \theta_s} = \frac{1}{\alpha t + c_0 }
-%  \end{aligned}
-%  \right .
-% \end{equation*}
-% 
-% \vspace{1cm}
+%  }
+% {\small Underlying issues:
 % 
 % \begin{itemize}
-% \item in general non-autonomous issues appear
+% \item  dependence of viscosity on the temperature
 % 
-% \item here, the adiabatic case $\kappa = 0$ leads to an autonomous problem
-% 
+% \item parabolic regularization of an elliptic IVP
 % \end{itemize}
+% 
+% We focus on the constitutive law of the form
+%   \vskip -10pt
+%   
+% $$\sigma=\varphi(\theta,\gamma){\red (\gamma_t)^n}, \quad 0<n\ll1$$
+% % where $\varphi(\theta,\gamma)$ is such that {\blue net softening response} is exhibited. This effect competes with the regularization due to the {\blue small rate-dependency}.
+% %  \vfill
+% % The ill-posed problem is regularized by small viscosity to result in the yet orderly instability that is without growth of high frequency oscillations.
+% %  \vfill
+% }
+% \end{frame}
+% 
+% \begin{frame}
+%  \frametitle{$n=0$: Hadamard Instability}%Stress-strain curve}
+%  \setstretch{1.5}
+%  \begin{figure}
+%     \centering
+%     \center
+%     \psfrag{s}{\scriptsize stress $\sigma(\gamma)$}
+%     \psfrag{g}{\scriptsize strain $\gamma$}
+% %     \psfrag{phi}{\scriptsize  $\varphi^{'}( \gamma ) < 0$}% = \frac{1}{\gamma}$}
+%     \includegraphics[width=5.5cm]{phi2.eps} 
+%     \caption{Typical stress-strain curve for metals in uniaxial tensile test.}
+%  \end{figure} 
+%  Blue dotted box corresponds to the elastic regime; red dotted box is the regime of instability.
+%  \vfill
+% \end{frame}
+% 
+% 
+% \begin{frame}
+%  \frametitle{Softening and the Loss of Hyperbolicity}
+%  \setstretch{1.5}
+%  1D Elastodynamics system.
+%  \begin{align*}
+%   \begin{pmatrix}
+%    v_t\\ \gamma_t
+%   \end{pmatrix}
+%   = \begin{pmatrix}
+%    0 &\sigma'(\gamma)\\ 1 & 0
+%   \end{pmatrix} 
+%   \begin{pmatrix}
+%    v_x\\ \gamma_x
+%   \end{pmatrix}.
+%  \end{align*}
+%  \vfill
+%  \begin{itemize}
+%   \item $\sigma'(\gamma)<0$ results in the loss of hyperbolicity.
+%   \item Model predicts the exponential growth of oscillations in the initial-value-problem: {\blue Hadamard Instability}.
+%  \end{itemize}
+% \end{frame}
+% 
+% \begin{frame}
+%  \frametitle{Adiabaticity and Thermal Softening}
+%  \setstretch{1.5}
+%   In Adiabatic process, heat accumulates.  
+%   
+%   Suppose the inviscid problem with phenomenological law
+%  $$\sigma=\varphi(\theta,\gamma)=\theta^{-\alpha}\gamma^m, \quad \alpha>0.$$
+%  Then, the Energy equation reads
+%  \begin{align*}
+%   \theta_t = \theta^{-\alpha}\gamma^m\gamma_t \quad \Longleftrightarrow \quad 
+%   \left(\frac{\theta^{1+\alpha}}{1+\alpha}\right)_t = \left(\frac{\gamma^{1+m}}{1+m}\right)_t
+%  \end{align*}
+%  Modulo Initial data, only one of the temperature and strain plays the role.
+%  
+%  Roughly, $\theta\sim \gamma^{\frac{1+m}{1+\alpha}}$ or
+%  $$\sigma \sim \gamma^{\frac{\red-\alpha+m}{1+\alpha}}.$$
+%  \vfill
+% \end{frame}
+% 
+% \begin{frame}
+%  \frametitle{Net Softening and the Loss of Hyperbolicity}
+%  \setstretch{1.5}
+% \begin{equation} \label{eq:transport}
+%  \begin{pmatrix} \gamma_t \\ \theta_t \\ v_t \end{pmatrix} = \underbrace{
+%  \begin{pmatrix}
+%   0 & 0 & 1\\
+%   0 & 0 & \theta^{-\alpha}\gamma^m \\
+%   m\theta^{-\alpha}\gamma^{m-1} & -\alpha\theta^{-\alpha-1}\gamma^m & 0\end{pmatrix}}_\text{$\triangleq B$}
+%   \begin{pmatrix} \gamma_x \\ \theta_x \\ v_x \end{pmatrix}. 
+% \end{equation}
+% % {\scriptsize
+% % \begin{align*}
+% %  \det\big(B-\mu\textrm{I}\big) &= -\mu\big(\mu^2+\theta^{-\alpha}\gamma^{m-1}\Big(\frac{\alpha-m}{1+\alpha}+\alpha \frac{\gamma_0(x)^{1+m} - \frac{1+m}{1+\alpha}\theta_0(x)^{1+\alpha}}{\theta^{1+\alpha}}\Big),
+% % \end{align*}
+% % }
+% \vfill
+% $-\alpha+m<0$ implies the loss of hyperbolicity.
+% %   \item $\sigma'(\gamma)<0$ results in the loss of hyperbolicity.
+% %   \item Model predicts the exponential growth of oscillations in the initial-value-problem: {\blue Hadamard Instability}.
+% %  \end{itemize}
+% \end{frame}
+% 
+% \begin{frame}
+%  \frametitle{Loss of Hyperbolicity and High oscillations}
+%  \setstretch{1.5}
+%  \begin{itemize}
+%   \item High oscillations are amplified exponentially in Hadamard instability,
+% %   \item Mismatch in model and material instability.
+%   \item while such a high oscillations are not observed in the experiments. %Rather, the coherent localization is observed.
+%   \item The parabolic regularization can accounts for that.
+%  \end{itemize}
+%  \vfill
+% \end{frame}
+% 
+% 
+% 
+% \begin{frame}
+%  \frametitle{Cf. Stability results in large viscous regime}
+%  \setstretch{1.4}
+% {\color{cyan} power law }
+% \begin{equation*}
+%   \begin{aligned}
+%     & v_{t} =  \sigma_{x}
+%     \\
+%     & \theta_{t} =   \sigma \gamma_{t}
+%      \\
+%     & \gamma_{t} = v_{x}
+%   \end{aligned}
+%   \qquad \qquad
+%   \sigma = \theta^{-\alpha} \gamma^m {\gamma_t}^n
+% \end{equation*}
+%  \begin{itemize}
+%   \item $m=0$, $-\alpha+n>0$ :  USS is globally asymptotically stable {\footnotesize (Daefermos and Hsiao 1983, Tzavaras 1992)}.
+%   \item {\blue We expect similar for $-\alpha+m+n>0$ but we have not proved yet.}
+%  \end{itemize}
+% 
+%   
+%   \vfill
+% \end{frame}
+
+% \begin{frame}\frametitle{An asymptotic mechanism for localization}
+% \setstretch{1.4}
+% {\color{cyan} power law }
+% \begin{equation*}
+%   \begin{aligned}
+%     & v_{t} =  \sigma_{x}
+%     \\
+%     & \theta_{t} =   \sigma \gamma_{t}
+%      \\
+%     & \gamma_{t} = v_{x}
+%   \end{aligned}
+%   \qquad \qquad
+%   \sigma = \theta^{-\alpha} \gamma^m {\gamma_t}^n
+% \end{equation*}
+% 
+% % \vspace{1.5 cm}
+% 
+% {\color{blue} uniform shear solution }
+% 
+% \begin{equation*}
+%   \begin{aligned}
+%   v_s = x \quad \theta_s = \theta_s (t) \quad \gamma_s = t + \gamma_0 \quad \sigma_s = \sigma_s (t)
+%   \end{aligned}
+%    \end{equation*}
+%    
+% % \vspace{0.5 cm}
+% 
+% {\color{red} a recurring theme in this problem} \\
+% stability analysis of a time-dependent solution leads to non-autonomous systems
+% 
+% 
 % 
 % \end{frame}
 % 
 % %%%%%%%%%%%%%%%%%%
-% \begin{frame}\setstretch{1.4}\frametitle{\small relative perturbation and rescaling}
+% \begin{frame}\setstretch{1.2}\frametitle{}
 % 
+% {\small
+% Consider the power law, with adiabatic conditions ($\kappa = 0$) and  introduce
+% the {\color{red} relative perturbation variables} and the {\color{blue} change of time scale}
+% $$
+% \dot \tau = \sigma_s (t)  \Longleftrightarrow t = \hat t (\tau)
+% $$
+% \begin{alignat*}{2}
+% v_x = u(x,t) &= U \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big ) \qquad \qquad
+% \theta (x,t) &&= \theta_s(t) \Theta \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big )
+% \\
+% \gamma (x,t) &= \gamma_s(t) \Gamma \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big )
+% \qquad
+% \sigma (x,t) &&= \sigma_s(t) \Sigma \big ( \frac{x}{\sqrt{R}} , \frac{\tau(t)}{R} \big )
+% \end{alignat*}
+% to obtain the {\color{blue} relaxation system}. The uniform shear solution is mapped
+% to the equilibrium point  $(1,1,1,1)$
 % 
-% {\small 
-% \begin{equation*}
-% \begin{aligned}
-%   & V =  V(x,\tau(t) ) \\
-%   & \theta = \theta_s (t) + \Theta (x,\tau(t) )   \\
-%   & \sigma = \sigma_s (t)  \, \Sigma (x,\tau(t) ) 
-%   \end{aligned}
-%   \qquad
-%   \text{with} 
-%   \quad 
-%   \dot \tau (t) = \sigma_s (t) = \frac{1}{\alpha t + c_0}
-% \end{equation*}
-% for {\color{red} $U = V_x$ } we  obtain the system 
-% 
-% \begin{equation*}
-% \begin{aligned}
-%   & U_{\tau} =  \, \Sigma_{x x},\\
-%   & \Theta_{\tau} =  {\red \kappa  \, e^{\alpha \tau}  \, \Theta_{x x}  }+  ( \Sigma U - 1) \\
-%   & \Sigma = e^{-\alpha \Theta } U^{n}   
-%     \end{aligned}
-% \end{equation*}
-% 
-% 
-% \vskip0.5cm
-% uniform shear is mapped to equilibrium :  $U_0 =1, \Theta_0 = 0, \Sigma_0=1$ \\
 % \smallskip
-% {\red For $\kappa = 0$ - adiabatic - the system is autonomous }
+% $$
+% \begin{aligned}
+% U_\tau &= \Sigma_{xx}
+% \\
+% {\textstyle \frac{\bar \theta_s}{R}} \; \Theta_\tau &= \Sigma U - \Theta
+% \\
+% {\textstyle \frac{\bar \sigma_s \bar   \gamma_s}{R}} \; \Gamma_\tau &= U - \Gamma
+% \\
+% \Sigma &= \Theta^{-\alpha} \Gamma^m U^n
+% \end{aligned}
+% $$
+% 
 % }
 % 
 % \end{frame}
 % 
+% 
 % %%%%%%%%%%%%%%%%%%
-\begin{frame}\setstretch{1.2}\frametitle{Linearized analysis of exp model}
-{\small
-
-
-\begin{equation*}
-\begin{aligned}
-  & U =  1 + \delta u + O(\delta^2) ,\\
-  & \Sigma = 1 + \delta s + O(\delta^2),     \\
-  & \Theta =  1 + \delta \theta  + O(\delta^2)
-    \end{aligned}
-\end{equation*}
-
-\vspace{1cm} 
-
-{\color{blue}Linearized stability analysis} for perturbation $(u, \theta, s)$
-
-
-\begin{equation*}
-\begin{aligned}
-  \frac{\del u }{\del \tau}  &=  \Big ( n \ u_{ x x}  - \alpha \theta_{x x} \Big ) ,\\
-  \frac{\del \theta }{\del \tau} &=\kappa e^{\alpha \tau} \theta_{xx}  +
-   \Big ( -\alpha \theta + (n+1) u \Big )   \\
-    s  & = -\alpha \theta + n u     \\
- \end{aligned}
-\end{equation*}
-with boundary conditions
-$$
-u_{x} (0,\tau) = u_{x} (\pi, \tau) = 0 \quad 
-\theta_{x} (0,\tau) = \theta_{x} (\pi,\tau) = 0 
-$$
-%admits solutions in form of  {\color{cyan} Fourier modes}
-%\begin{equation*}
-%\begin{aligned}
-%  u (x,\tau) = \hat v_j (\tau) \cos ( j x)  ,\\
-%  \theta (x,\tau) = \hat \xi_j (\tau)   \cos ( j x)   \\
-% \end{aligned}
-%\end{equation*}
-%which satisfy {\color{cyan} a non-autonomous system} when $\kappa \ne 0$.
-
-}
-\end{frame}
-
-
-%%%%%%%%%%%%%%%%%%
-\begin{frame}\setstretch{1.4}\frametitle{Linearized analysis of exp model $\kappa = 0$}
-
-
-{\small 
-
-\begin{itemize}
-\item
-$\kappa = 0$, $n = 0$  -  {\color{red} Hadamard Instability} \\
-$$
-\lambda_{j +}  > 0 >  \lambda_{j -}  \quad \forall j
-$$
-with unstable modes
-$$
-\theta_j (x,t) \sim \cos (j  x) e^{\lambda_{j +} \tau (t)} \, , \qquad \lambda_{j +} \sim j 
-$$
-
-
-\item
-$\kappa = 0$, $n > 0$  -  {\color{red} Turing Instability} \\
-$$
-\lambda_{j +}  > 0 >  \lambda_{j -}  \quad \forall j
-$$
-with unstable modes
-$$
-\theta_j (x,t) \sim \cos (j  x) e^{\lambda_{j +} \tau (t)} \, , \qquad \lambda_{j +} \nearrow \tfrac{\alpha}{n}
-$$
-
-
-%The behaviour  is an example of {\color{blue} Turing instability}:
-%$$
-%\dot x = (A + B) x \quad \mbox{ with $Re(A) < 0$, $Re (B) < 0$ but  $Re(A+B) > 0$}.
-%$$
-
-\end{itemize}
-}
-
-\end{frame}
+% \begin{frame}\setstretch{1.4}\frametitle{}
+% 
+% {\small
+% 
+% An asymptotic procedure analogous to the {\color{blue} Chapman-Enskog expansion } gives
+% for $R >> 1$
+% \begin{alignat*}{2}
+% &{\color{blue} O\Big ( \frac{1}{R} \Big )  } \qquad 
+%  &&\partial_\tau U = \partial_{xx} \Big (    U^p \Big )
+%   \\
+%  &  &&
+% \\
+% &{\color{blue} O\Big ( \frac{1}{R^2} \Big ) } \qquad 
+%  &&\partial_\tau U = \partial_{xx} \Big (   U^p  +  \frac{\lambda }{R} ( \tau+1) 
+%                                                                                          \, U^{p-1} \partial_{xx} U^p  \Big )
+% \end{alignat*}
+% where $\lambda$ positive constant and 
+% \vspace{0.5cm}
+% 
+% \centerline{ {\color{blue} $p = \frac{-\alpha + m +n}{1+\alpha}$  } }
+% \begin{itemize}
+% \item[] {\color{blue} $p > 0$  } \quad 2$^{nd}$ order equation is stable
+% \item[] {\color{blue} $p < 0$  } \quad 2$^{nd}$ order eq. unstable (linearly ill-posed), \\
+%        \qquad \qquad                  4$^{th}$ order eq. stable regularization ($\lambda>0$) \\
+%       \qquad \qquad \qquad           of  a backward parabolic equation
+% \end{itemize}
+% 
+% \vskip -10pt
+% \hfill {\footnotesize \color{red} Katsaounis-T. 09 }
+% }
+% 
+% \end{frame}
+% 
+% % %
+% % %
+% % %
+% % \begin{frame}\setstretch{1.4}\frametitle{ Towards a mathematical theory for shear bands - the exp model}
+% % 
+% % 
+% % \begin{itemize}
+% % \item{}  To outline the "complete" picture for a paradigm :  the {\blue exp}  model
+% % 
+% % \begin{itemize}
+% % 
+% % \item{} Linearized stability
+% % \item{} Nonlinear model - A scenario for localization
+% % \item{} A class of  solutions exhibiting localization 
+% % \item[]  Hadamard instability vs Localization
+% % 
+% % \end{itemize}
+% % 
+% % 
+% % \end{itemize}
+% % 
+% % 
+% % Paradigm:  {\color{blue} exponential law }
+% % \begin{equation*}
+% %   \begin{aligned}
+% %     & v_{t} =  \sigma_x 
+% %     \\
+% %     & \theta_{t} = \kappa \theta_{ x x}  +  \sigma v_x
+% %   \end{aligned}
+% %   \qquad \qquad
+% %   \sigma =e^{-\alpha \theta }  {v_x}^n \, , \quad {\textstyle \alpha > 0, \; n> 0}
+% % \end{equation*}
+% % 
+% % 
+% % \end{frame}
+% % 
+% %%%%%%%%%%%%%%%%%%
+% 
+% 
+% 
+% %%
+% %%%%   Numerical simulations -  Slides 
+% %
+% %
+% %%%%%%%%%%%%%%%%%%
+% 
+% 
+% %
+% %
+% %
+% % Suggestions of numerical runs
+% %
+% %
+% %%%%%%%%%%%%%%%%%%
+% % \section{linearized theory}
+% % \begin{frame}\setstretch{1.4}\frametitle{\small what is special in the exp model ?}
+% % 
+% % 
+% % \begin{equation*}
+% % \begin{aligned}
+% %   & v_{t} = \sigma_{x},\\
+% %   & \sigma = e^{-\alpha \theta } v_x^{n}   \\
+% %   & \theta_{t} = \kappa \theta_{x x} + \sigma v_x 
+% %   \end{aligned}
+% % \qquad \qquad  \mbox{ {\blue uniform solution} }
+% % \left \{
+% % \begin{aligned}
+% %   & v_s  = x \\
+% %   & \theta_s = \frac{1}{\alpha} \ln \left ( \alpha t + c_0 \right )  
+% %   \\
+% %   & \sigma_s = e^{- \alpha \theta_s} = \frac{1}{\alpha t + c_0 }
+% %  \end{aligned}
+% %  \right .
+% % \end{equation*}
+% % 
+% % \vspace{1cm}
+% % 
+% % \begin{itemize}
+% % \item in general non-autonomous issues appear
+% % 
+% % \item here, the adiabatic case $\kappa = 0$ leads to an autonomous problem
+% % 
+% % \end{itemize}
+% % 
+% % \end{frame}
+% % 
+% % %%%%%%%%%%%%%%%%%%
+% % \begin{frame}\setstretch{1.4}\frametitle{\small relative perturbation and rescaling}
+% % 
+% % 
+% % {\small 
+% % \begin{equation*}
+% % \begin{aligned}
+% %   & V =  V(x,\tau(t) ) \\
+% %   & \theta = \theta_s (t) + \Theta (x,\tau(t) )   \\
+% %   & \sigma = \sigma_s (t)  \, \Sigma (x,\tau(t) ) 
+% %   \end{aligned}
+% %   \qquad
+% %   \text{with} 
+% %   \quad 
+% %   \dot \tau (t) = \sigma_s (t) = \frac{1}{\alpha t + c_0}
+% % \end{equation*}
+% % for {\color{red} $U = V_x$ } we  obtain the system 
+% % 
+% % \begin{equation*}
+% % \begin{aligned}
+% %   & U_{\tau} =  \, \Sigma_{x x},\\
+% %   & \Theta_{\tau} =  {\red \kappa  \, e^{\alpha \tau}  \, \Theta_{x x}  }+  ( \Sigma U - 1) \\
+% %   & \Sigma = e^{-\alpha \Theta } U^{n}   
+% %     \end{aligned}
+% % \end{equation*}
+% % 
+% % 
+% % \vskip0.5cm
+% % uniform shear is mapped to equilibrium :  $U_0 =1, \Theta_0 = 0, \Sigma_0=1$ \\
+% % \smallskip
+% % {\red For $\kappa = 0$ - adiabatic - the system is autonomous }
+% % }
+% % 
+% % \end{frame}
+% % 
+% % %%%%%%%%%%%%%%%%%%
+% \begin{frame}\setstretch{1.2}\frametitle{Linearized analysis of exp model}
+% {\small
+% 
+% 
+% \begin{equation*}
+% \begin{aligned}
+%   & U =  1 + \delta u + O(\delta^2) ,\\
+%   & \Sigma = 1 + \delta s + O(\delta^2),     \\
+%   & \Theta =  1 + \delta \theta  + O(\delta^2)
+%     \end{aligned}
+% \end{equation*}
+% 
+% \vspace{1cm} 
+% 
+% {\color{blue}Linearized stability analysis} for perturbation $(u, \theta, s)$
+% 
+% 
+% \begin{equation*}
+% \begin{aligned}
+%   \frac{\del u }{\del \tau}  &=  \Big ( n \ u_{ x x}  - \alpha \theta_{x x} \Big ) ,\\
+%   \frac{\del \theta }{\del \tau} &=\kappa e^{\alpha \tau} \theta_{xx}  +
+%    \Big ( -\alpha \theta + (n+1) u \Big )   \\
+%     s  & = -\alpha \theta + n u     \\
+%  \end{aligned}
+% \end{equation*}
+% with boundary conditions
+% $$
+% u_{x} (0,\tau) = u_{x} (\pi, \tau) = 0 \quad 
+% \theta_{x} (0,\tau) = \theta_{x} (\pi,\tau) = 0 
+% $$
+% %admits solutions in form of  {\color{cyan} Fourier modes}
+% %\begin{equation*}
+% %\begin{aligned}
+% %  u (x,\tau) = \hat v_j (\tau) \cos ( j x)  ,\\
+% %  \theta (x,\tau) = \hat \xi_j (\tau)   \cos ( j x)   \\
+% % \end{aligned}
+% %\end{equation*}
+% %which satisfy {\color{cyan} a non-autonomous system} when $\kappa \ne 0$.
+% 
+% }
+% \end{frame}
+% 
+% 
+% %%%%%%%%%%%%%%%%%%
+% \begin{frame}\setstretch{1.4}\frametitle{Linearized analysis of exp model $\kappa = 0$}
+% 
+% 
+% {\small 
+% 
+% \begin{itemize}
+% \item
+% $\kappa = 0$, $n = 0$  -  {\color{red} Hadamard Instability} \\
+% $$
+% \lambda_{j +}  > 0 >  \lambda_{j -}  \quad \forall j
+% $$
+% with unstable modes
+% $$
+% \theta_j (x,t) \sim \cos (j  x) e^{\lambda_{j +} \tau (t)} \, , \qquad \lambda_{j +} \sim j 
+% $$
+% 
+% 
+% \item
+% $\kappa = 0$, $n > 0$  -  {\color{red} Turing Instability} \\
+% $$
+% \lambda_{j +}  > 0 >  \lambda_{j -}  \quad \forall j
+% $$
+% with unstable modes
+% $$
+% \theta_j (x,t) \sim \cos (j  x) e^{\lambda_{j +} \tau (t)} \, , \qquad \lambda_{j +} \nearrow \tfrac{\alpha}{n}
+% $$
+% 
+% 
+% %The behaviour  is an example of {\color{blue} Turing instability}:
+% %$$
+% %\dot x = (A + B) x \quad \mbox{ with $Re(A) < 0$, $Re (B) < 0$ but  $Re(A+B) > 0$}.
+% %$$
+% 
+% \end{itemize}
+% }
+% 
+% \end{frame}
 
 \begin{frame}\setstretch{1.2}\frametitle{Linearized analysis of power law model $\kappa = 0$}
 {\small
@@ -837,6 +1167,26 @@ with boundary and constraint conditions
 
 }
 
+\end{frame}
+
+\begin{frame}
+$\ell$: frequency.
+\begin{equation}
+\begin{aligned}
+ &\lim_{\tau \rightarrow \infty} C_1 x_1(\tau) \tau^{\chi_1} = p_1, \quad \lim_{\tau \rightarrow \infty} C_2x_2(\tau)  \tau^{\chi_2} = p_2, \\
+%  &\lim_{\tau \rightarrow \infty} C_3 x_3(\tau) \exp\left(C_4n\l^2 \tau^{\frac{1+\alpha}{1+m}}\right)\tau^{-\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3$}.
+&\lim_{\tau \rightarrow \infty} C_3 x_3(\tau) \exp\left(C_4n\ell^2 \tau^{\chi_4}\right)\tau^{\chi_3} = p_3, \quad \text{for some $\chi_i$, $i=1,2,3,4$}.
+ \end{aligned}
+\end{equation}
+
+
+ \begin{theorem}[L, Tzavaras] \label{thm:1} $\chi_1$ and $\chi_2$ are independent of $\ell$ and their signs bifurcate by $q=-\alpha+m+n$:
+ \begin{enumerate}
+  \item If $q=-\alpha+m+n=0$, then the uniform shear is marginally stable: $\chi_1=0$, $\chi_2>0$.
+  \item If $q=-\alpha+m+n>0$, then the uniform shear is stable: $\chi_1>0$ and $\chi_2>0$.
+  \item If $q=-\alpha+m+n<0$, then the uniform shear is saddle: $\chi_1<0$ and $\chi_2>0$.
+ \end{enumerate}
+\end{theorem}
 \end{frame}
 
 
@@ -1006,75 +1356,75 @@ with boundary and constraint conditions
 %  \end{enumerate}
 %  \vfill
 % \end{frame}
-\begin{frame}\setstretch{1.4}\frametitle{\small Numerical simulations  for the exponential model - $\kappa = 0$}
-
-\begin{figure}
-\centering
-\includegraphics[height=3cm,width=8cm]{Arr_Vx.eps}
-\caption{$v_x(\gamma_{t})$ in log-scale: evolution (left), final time (right)}
-\label{arvx}
-\end{figure}
-%
-\vspace{-0.5cm}
-%
-\begin{figure}
-\centering
-\includegraphics[height=2.8cm,width=8cm]{Arr_Stress.eps}
-\caption{$\sigma$ : evolution (left), final time (right)}
-\label{arstress}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\setstretch{1.3}
-% \frametitle{1D Thermo-Visco-Plasticity of Shear Deformation}
-\frametitle{1D rate-dependent thermo-plastic shear deformation}
-%   \vskip 5pt
-    \begin{minipage}{0.31\linewidth}
-    \begin{figure}
-    \centering
-    \psfrag{Y}{\scriptsize $Y(t,x)$}
-    \psfrag{y}{\scriptsize $y$}
-%     \psfrag(x){\scriptsize $x$}
-    \includegraphics[width=3cm]{shear1.eps}
-    \end{figure}
-%     \caption{The Specimen is under deformation in $y$-direction in $xy$-plane. } \label{fig:1}
-      {\scriptsize
-    \begin{equation*} %\label{eq:vars}
-    \begin{aligned}
-    \gamma(t,x) &: \text{plastic strain}\\
-    \gamma_t(t,x) &: \text{strain rate}\\
-    v(t,x) &: \text{vertical velocity}\\
-    \theta(t,x) &: \text{temperature}\\
-    \sigma(t,x) &: \text{stress}
-    \end{aligned}
-    \end{equation*}
-    in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$}
-    \end{minipage}
-    \begin{minipage}{0.61\linewidth}
-      \begin{equation*} %\label{system0}
-        \begin{aligned}
-          \partial_t v &= \partial_x\Big(\sigma(\gamma,\gamma_t,\theta)\Big) & &\text{({\blue Momentum balance})}, \\
-          \partial_t \theta &= \sigma\partial_x v + \cancel{\red k\theta_{xx}} & &\text{({\blue Adiabatic Energy balance})},\\
-          \partial_t \gamma &= \partial_x v & &\text{({\blue Kinematic compatibility})},\\
-          \sigma  &= \sigma(\gamma,\gamma_t,\theta) & &\text{({\blue Constitutive Law})}\\
-        \end{aligned}
-      \end{equation*}
-       subject to %\\
-%       $v=\partial_t Y(t,x)$ is a {\blue velocity} in $y$-direction, \\
-%       $\gamma=\partial_x Y(t,x)$ is a {\blue shear strain}.% and $\sigma(\gamma,\gamma_t,\theta)$ is a constitutive law for the {\blue shear stress}. 
-      \vskip 5pt
-      
-      Initial conditions
-      
-      {\scriptsize $\gamma(0,x) = \gamma_0(x)$, $v(0,x) = v_0(x)$, $\theta(0,x) = \theta_0(x)$,} 
-      
-      Boundary velocity conditions.
-      
-%       {\scriptsize $v(t,x) \rightarrow f^-(t)$ as $x \rightarrow -\infty$, $v(t,x) \rightarrow f^+(t)$ as $x \rightarrow \infty$.}
-      {\scriptsize $v(t,x) \rightarrow f^\pm(t)$ as $x \rightarrow \pm\infty$.}
-    \end{minipage}
-\end{frame}
+% \begin{frame}\setstretch{1.4}\frametitle{\small Numerical simulations  for the exponential model - $\kappa = 0$}
+% 
+% \begin{figure}
+% \centering
+% \includegraphics[height=3cm,width=8cm]{Arr_Vx.eps}
+% \caption{$v_x(\gamma_{t})$ in log-scale: evolution (left), final time (right)}
+% \label{arvx}
+% \end{figure}
+% %
+% \vspace{-0.5cm}
+% %
+% \begin{figure}
+% \centering
+% \includegraphics[height=2.8cm,width=8cm]{Arr_Stress.eps}
+% \caption{$\sigma$ : evolution (left), final time (right)}
+% \label{arstress}
+% \end{figure}
+% \end{frame}
+% 
+% \begin{frame}
+% \setstretch{1.3}
+% % \frametitle{1D Thermo-Visco-Plasticity of Shear Deformation}
+% \frametitle{1D rate-dependent thermo-plastic shear deformation}
+% %   \vskip 5pt
+%     \begin{minipage}{0.31\linewidth}
+%     \begin{figure}
+%     \centering
+%     \psfrag{Y}{\scriptsize $Y(t,x)$}
+%     \psfrag{y}{\scriptsize $y$}
+% %     \psfrag(x){\scriptsize $x$}
+%     \includegraphics[width=3cm]{shear1.eps}
+%     \end{figure}
+% %     \caption{The Specimen is under deformation in $y$-direction in $xy$-plane. } \label{fig:1}
+%       {\scriptsize
+%     \begin{equation*} %\label{eq:vars}
+%     \begin{aligned}
+%     \gamma(t,x) &: \text{plastic strain}\\
+%     \gamma_t(t,x) &: \text{strain rate}\\
+%     v(t,x) &: \text{vertical velocity}\\
+%     \theta(t,x) &: \text{temperature}\\
+%     \sigma(t,x) &: \text{stress}
+%     \end{aligned}
+%     \end{equation*}
+%     in $(t,x)\in \mathbb{R}^+ \times \mathbb{R}$}
+%     \end{minipage}
+%     \begin{minipage}{0.61\linewidth}
+%       \begin{equation*} %\label{system0}
+%         \begin{aligned}
+%           \partial_t v &= \partial_x\Big(\sigma(\gamma,\gamma_t,\theta)\Big) & &\text{({\blue Momentum balance})}, \\
+%           \partial_t \theta &= \sigma\partial_x v + \cancel{\red k\theta_{xx}} & &\text{({\blue Adiabatic Energy balance})},\\
+%           \partial_t \gamma &= \partial_x v & &\text{({\blue Kinematic compatibility})},\\
+%           \sigma  &= \sigma(\gamma,\gamma_t,\theta) & &\text{({\blue Constitutive Law})}\\
+%         \end{aligned}
+%       \end{equation*}
+%        subject to %\\
+% %       $v=\partial_t Y(t,x)$ is a {\blue velocity} in $y$-direction, \\
+% %       $\gamma=\partial_x Y(t,x)$ is a {\blue shear strain}.% and $\sigma(\gamma,\gamma_t,\theta)$ is a constitutive law for the {\blue shear stress}. 
+%       \vskip 5pt
+%       
+%       Initial conditions
+%       
+%       {\scriptsize $\gamma(0,x) = \gamma_0(x)$, $v(0,x) = v_0(x)$, $\theta(0,x) = \theta_0(x)$,} 
+%       
+%       Boundary velocity conditions.
+%       
+% %       {\scriptsize $v(t,x) \rightarrow f^-(t)$ as $x \rightarrow -\infty$, $v(t,x) \rightarrow f^+(t)$ as $x \rightarrow \infty$.}
+%       {\scriptsize $v(t,x) \rightarrow f^\pm(t)$ as $x \rightarrow \pm\infty$.}
+%     \end{minipage}
+% \end{frame}
 
 \begin{frame}
  \frametitle{Perturbative features in viscous problem}
@@ -1592,216 +1942,6 @@ The manifold $K\subset graph\left({\red r=\hat{r}(p,q,s)}\right)$ is a normally 
 % \end{frame}
 
 \begin{frame}
- \setstretch{1.5}
- \frametitle{Heteroclinic for the inviscid problem: $n=0$}
- {\bf Lemma 1.} There is the most rapidly escaping orbit $\phi^\star(\eta)$ that escapes the region $A$ in the first quadrant satisfying the estimate
- $e^{-2\eta}\Big(\phi^\star(\eta)- M_0\Big) \rightarrow \kappa\vec{X}_{01}$, as $\eta \rightarrow -\infty$.
- \begin{figure}
-  \centering
-%   \psfrag{X01}{\scriptsize$X_{02}$}
-%   \psfrag{X02}{\scriptsize$X_{01}$}
-% %   \psfrag{A}{$A$}
-%   \psfrag{T}{\scriptsize $B$}
-% %   \psfrag{x0}{\scriptsize $M_0$}
-% %   \psfrag{x1}{\scriptsize $M_1$}
-% %   \psfrag{r0}{\scriptsize $\hat{r}(p,q,s,0)=r_0$}
-% %   \psfrag{r1}{\scriptsize $\hat{r}(p,q,s,0)=r_1$}
-%   \psfrag{p}{\scriptsize $p$}%=\frac{\gamma}{\sigma}$}
-%   \psfrag{q}{\scriptsize~~~$q$}%=n\frac{v}{\sigma}$}
-%   \psfrag{s}{\scriptsize $s-\frac{1+m}{1+\alpha}$}%=n\frac{v}{\sigma}$}
-% %   \subfigure[Affine level sets $\hat{r}(p,q,s)=R$ in $pqs$-space]{
-% %   \psfrag{r}{\scriptsize$r$}%=\big(\sigma\gamma^{(1-n)}\big)^{\frac{1}{n}}$}
-%   \psfrag{CC}{\scriptsize\hskip 5pt$\frac{\alpha-m}{\lambda(1+\alpha)}\big(-\frac{1}{\lambda},a\big)$}
-  \includegraphics[width=5cm]{geom0.eps} \label{fig:flow0}  
-%   
-%   
-%     \psfrag{p}{\scriptsize$p$}
-%     \psfrag{q}{\scriptsize$q$}
-%     \psfrag{X01}{\scriptsize$\vec{X}_{01}$}
-%     \psfrag{X02}{\scriptsize$\vec{X}_{02}$}
-%     \psfrag{T}{\scriptsize $~~B$}
-%     \psfrag{3}{}
-%     \subfigure{\includegraphics[width=4cm]{geom1.eps} } \quad \quad \quad
-%     \subfigure{\includegraphics[width=3cm]{pqplane.eps}}
-% %     \includegraphics[width=5cm]{.eps}
- \end{figure}
- {\scriptsize
- {\bf \it Proof.}
-  $A$ is a 2-dimensional compact negatively invariant set. There is no limit cycle in $A$. By Poincar\'e-Bendixson Theorem, $\alpha$-limit point of every orbit in $A$ is $M_0$. Similar arguments for $T$.
- }
-\end{frame}
-
-\begin{frame}
- \setstretch{1.5}
- \frametitle{Heteroclinic for the inviscid problem: $n=0$}
- {\bf Lemma 2.} $W^s(M_1) = \Phi_{-t_0}\big(W^s_{loc}(M_1)\big)$, the time $-t_0$ image of $W^s_{loc}(M_1)$ for large enough $t_0$, is the three dimensional set and contains an orbit point of $\phi^\star(\eta)$ as an interior point.
-   \begin{figure}
-  \centering
-    \psfrag{p}{\scriptsize$p$}
-    \psfrag{q}{\scriptsize$q$}
-    \psfrag{s}{\scriptsize$s-\frac{1+m}{1+\alpha}$}
-    \psfrag{X01}{\hskip -7pt\scriptsize$\vec{X}_{01}$}
-    \includegraphics[width=3.3cm]{transversal3.eps}
-    \caption{3-dim stable manifold}
- \end{figure}
- \vskip -15pt
- {\scriptsize
- {\bf \it Proof.}
-  %$B$ is a 2-dimensional compact positively invariant set. Similarly as before, $\omega$-limit point of every orbit in $B\setminus M_0$ is $M_1$. 
-  $W^s(M_1) = \Phi_{-t_0}\big(W^s_{loc}(M_1)\big)$, the image of the diffeomorphism $\Phi{-t_0}$, is a three dimensional set and contains an orbit point of $\phi^\star(\eta)$ in its interior because of Lemma 1.
- }
-\end{frame}
-
-
-% \begin{frame}
-%  \setstretch{1.5}
-%  \frametitle{Heteroclinic for the inviscid problem: $n=0$}
-%  {\bf Lemma 2.} The trapezoid except $s$-axis, $K\setminus \{s-axis\}\subset W^s(M_1)$.
-%   \begin{figure}
-%   \centering
-%     \psfrag{p}{\scriptsize$p$}
-%     \psfrag{q}{\scriptsize$q$}
-%     \psfrag{B}{\scriptsize$B$}
-%     \psfrag{K}{\scriptsize$K$}
-%     \psfrag{s}{\scriptsize$s-\frac{1+m}{1+\alpha}$}
-%     \psfrag{x0}{\scriptsize $M_0$}
-%     \psfrag{x1}{\hskip -3pt\scriptsize $M_1$}
-%     \psfrag{X01}{\scriptsize$\vec{X}_{01}$}
-%     \psfrag{X02}{\scriptsize$\vec{X}_{02}$}
-%     \includegraphics[width=3.5cm]{flow0pqs.eps}
-%     %\quad \quad {\scriptsize Note that $ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(p,q,s)s\Big(s-\frac{1+m}{1+\alpha}\Big)$, and $\hat{r}(p,q,s)\ge\delta>0.$}
-%  \end{figure}
-%  {\scriptsize
-%  {\bf \it Proof.}
-%   $B$ is a 2-dimensional compact positively invariant set. Similarly as before, $\omega$-limit point of every orbit in $B\setminus M_0$ is $M_1$. In particular, the set $B$ is an {\blue positively invariant set with hyperbolic splitting} of tangent bundle. By Fenichel's Expanding Fiber Theorem, there is a 3-dimensinal manifold that approaches to $B$. Every orbit in $K\setminus \{$s$-axis\}$ touches this $3$-dimensional manifold in a finite time.
-%  }
-% \end{frame}
-
-\begin{frame}
- \setstretch{1.3}
- \frametitle{Heteroclinic for the inviscid problem: $n=0$}
- {\bf Corollay 3.} The most rapidly escaping orbit $\phi^\star(\eta)\subset W^u(M_0)$ intersects $W^s(M_1)$ transversally.
-   \begin{figure}
-  \centering
-    \psfrag{p}{\scriptsize$p$}
-    \psfrag{q}{\scriptsize$q$}
-    \psfrag{B}{\scriptsize$B$}
-    \psfrag{K}{\scriptsize$K$}
-    \psfrag{s}{\scriptsize$s-\frac{1+m}{1+\alpha}$}
-    \psfrag{x0}{\scriptsize $M_0$}
-    \psfrag{x1}{\hskip -3pt\scriptsize $M_1$}
-    \psfrag{X01}{\scriptsize$\vec{X}_{01}$}
-    \psfrag{X02}{\scriptsize$\vec{X}_{02}$}
-    \subfigure[$\Phi_{-t_0}\big(W^s_{loc}(M_1)\big)$] {\includegraphics[width=3cm]{transversal.eps} } \quad \quad \quad
-    \subfigure[schematic sketch]{\includegraphics[width=3cm]{flow0pqs.eps}}
-    %\quad \quad {\scriptsize Note that $ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(p,q,s)s\Big(s-\frac{1+m}{1+\alpha}\Big)$, and $\hat{r}(p,q,s)\ge\delta>0.$}
- \end{figure}
- 
- \vskip -8pt
-%\vfill
-{\bf Remark.} The invariant manifolds of {\blue $r=\hat{r}(p,q,s)$, $M_0$, $M_1$, the most rapidly escaping orbit from $M_0$, $W^s(M_1)$} are all stable under $C^1$-perturbation of the vector fields; transversal intersection is stable under $C^1$-perturbation. 
-\end{frame}
-
-\begin{frame}
-\setstretch{1.5}
-  {\bf Theorem.} Let $\Lambda$ be a domain of the tuple $(\lambda,\alpha,m,n)\in\mathbb{R}^4$ defined by %.Suppose the three parameters $(\lambda,m,n)$ are such that
-  {\scriptsize
- \begin{align*}
-  \alpha>0\quad&\text{(thermal softening)},\\
-  m>-1 \quad&\text{(strain softening/hardening)}, \\%\label{eq:a1}\\
-  n>0 \quad&\text{(rate sensitivity)},\\ %\label{eq:a2}\\
-  -\alpha+m+n<0 \quad&\text{(net softening)}, \\%\label{eq:a3}\\
-  0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right) \quad&\text{(rate bound)}. %\label{eq:a4}
-\end{align*}}
- For each $(\lambda,\alpha,m,0) \in \Lambda$, there is $n_0( \lambda,\alpha,m)$ such that for $n \in [0, n_0)$, $(\lambda,\alpha,m,n) \in \Lambda$ and the system $(*)^{\lambda,\alpha,m,n}$ admits a heteroclinic orbit joining equilibrium $M_0^{\lambda,\alpha,m,n}$ to equilibrium $M_1^{\lambda,\alpha,m,n}$ with property that
-    \begin{align*}% \label{eq:estimate}
-        &\chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \\
-        &e^{2\eta}\big(\chi(\eta) - M_0\big) \rightarrow \kappa X_{01} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa\ne0$}.
-    \end{align*}
-% \end{theorem}
-\end{frame}
-
-
-
-
-
-
-
-
-% 
-% \begin{frame}
-%  \begin{theorem} \label{thm1}
-% Let $\alpha>0$, $m>-1$, $-\alpha+m>0$ and $0<\lambda< \frac{2(\alpha-m)}{1+m}$. For the pair $(\lambda,\alpha,m)$, there exists $n_0$ such that for all $n \in [0,n_0)$
-% \begin{enumerate}
-%     \item[(i)] the tuple $(\lambda,\alpha,m,n)$ satisfies  $0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right)$.
-%     \item[(ii)] $(p,q,r,s)$-system with parameters $(\lambda,\alpha,m,n)$ admits a heteroclinic orbit $\chi(\eta)$ such that
-%     \begin{align*}% \label{eq:estimate}
-%         &\chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \\
-%         &e^{2\eta}\big(\chi(\eta) - M_0\big) \rightarrow \kappa X_{01} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa\ne0$}.
-%     \end{align*}
-% \end{enumerate}
-% \end{theorem}
-% \end{frame}
-
-% \begin{frame}
-% \setstretch{1.5}
-% Let $(\alpha,m,n)$ be the given material property.
-% 
-% In summary, %for each $\big(\Gamma(0),U(0)\big)$ such that ({\scriptsize two of $\Gamma(0),U(0),\lambda$ fix the rest})
-% % \begin{equation*}
-% %  \frac{2(1+\alpha) -n}{D} < \frac{U(0)}{\Gamma(0)} < \frac{2(1+\alpha)}{1+m+n} -\frac{n}{D}\left( \frac{4(1+\alpha)(\alpha-m-n)}{(1+m+n)^2} +1\right),
-% % \end{equation*}
-% if $n$ is sufficiently small, then we have the solution of following form.
-% \begin{equation*} %\label{intro-sols}
-% \begin{aligned}
-%  \bg(t,x) &= (t+1)^a\Gamma\big((t+1)^\lambda x\big), \\
-%  \bv(t,x) &= (t+1)^b V\big((t+1)^\lambda x\big), \\
-%  \bth(t,x) &= (t+1)^c\Theta\big((t+1)^\lambda x\big),\\
-%  \bs(t,x) &= (t+1)^d\Sigma\big((t+1)^\lambda x\big), \\
-%  \bu(t,x) &= (t+1)^{a-1}U\big((t+1)^\lambda x\big),
-% \end{aligned}
-% \end{equation*}
-% $$ \bv(t,x) \rightarrow (t+1)^b V_\infty, \: \text{as $x \rightarrow \infty$}; \quad \bv(t,x) \rightarrow -(t+1)^b V_\infty, \: \text{as $x \rightarrow -\infty$}.$$
-% \vfill
-% %Note that the $\big(\bG,\bV,\bS,\bU\big)$ coincide with the initial nonuniformities of $\big(\gamma,v,\sigma,u\big)$ at $t=0$. 
-% %\vfill
-% \end{frame}      
-
-
-
-\begin{frame}
- \setstretch{1.3}
- \frametitle{Original field variables at various instances of time.}%  $\lambda=10$, $n=0.05$, $m=-1$, $\alpha=0$.}
- \begin{figure}
-  \centering
-  \subfigure[strain] {
-    \includegraphics[width=3.5cm]{strain_log.eps}
-  }
-  \quad
-  \subfigure[strain rate] {
-    \includegraphics[width=3.5cm]{strain_rate_log.eps}
-  }
-  \\
-  \subfigure[velocity] {
-    \includegraphics[width=3.5cm]{velocity.eps}
-  }
-  \quad
-  \subfigure[stress] {
-    \includegraphics[width=3.5cm]{stress_log.eps}
-  } %\caption{Original field variables at various instances of time.  $\lambda=10$, $n=0.05$, $m=1$.}
- \end{figure}
-\end{frame}
-
-\begin{frame}
- \center
- \vfill
- 
- {\bf \huge \blue  Thank you very much.}
- 
- \vfill
-\end{frame}
-
-\begin{frame}
  \setstretch{1.3}
  At $n=0$, rich structures are explicitly available; planar dynamical system theory is enough to furnish the existence of the heteroclinic.
  \begin{figure}
@@ -1865,6 +2005,98 @@ The manifold $K\subset graph\left({\red r=\hat{r}(p,q,s)}\right)$ is a normally 
  
 \end{frame}
 
+\begin{frame}
+ \setstretch{1.5}
+ \frametitle{Heteroclinic for the inviscid problem: $n=0$}
+ {\bf Lemma 1.} There is the most rapidly escaping orbit $\phi^\star(\eta)$ that escapes the region $A$ in the first quadrant satisfying the estimate
+ $e^{-2\eta}\Big(\phi^\star(\eta)- M_0\Big) \rightarrow \kappa\vec{X}_{01}$, as $\eta \rightarrow -\infty$.
+ \begin{figure}
+  \centering
+%   \psfrag{X01}{\scriptsize$X_{02}$}
+%   \psfrag{X02}{\scriptsize$X_{01}$}
+% %   \psfrag{A}{$A$}
+%   \psfrag{T}{\scriptsize $B$}
+% %   \psfrag{x0}{\scriptsize $M_0$}
+% %   \psfrag{x1}{\scriptsize $M_1$}
+% %   \psfrag{r0}{\scriptsize $\hat{r}(p,q,s,0)=r_0$}
+% %   \psfrag{r1}{\scriptsize $\hat{r}(p,q,s,0)=r_1$}
+%   \psfrag{p}{\scriptsize $p$}%=\frac{\gamma}{\sigma}$}
+%   \psfrag{q}{\scriptsize~~~$q$}%=n\frac{v}{\sigma}$}
+%   \psfrag{s}{\scriptsize $s-\frac{1+m}{1+\alpha}$}%=n\frac{v}{\sigma}$}
+% %   \subfigure[Affine level sets $\hat{r}(p,q,s)=R$ in $pqs$-space]{
+% %   \psfrag{r}{\scriptsize$r$}%=\big(\sigma\gamma^{(1-n)}\big)^{\frac{1}{n}}$}
+%   \psfrag{CC}{\scriptsize\hskip 5pt$\frac{\alpha-m}{\lambda(1+\alpha)}\big(-\frac{1}{\lambda},a\big)$}
+  \includegraphics[width=5cm]{geom0.eps} \label{fig:flow0}  
+%   
+%   
+%     \psfrag{p}{\scriptsize$p$}
+%     \psfrag{q}{\scriptsize$q$}
+%     \psfrag{X01}{\scriptsize$\vec{X}_{01}$}
+%     \psfrag{X02}{\scriptsize$\vec{X}_{02}$}
+%     \psfrag{T}{\scriptsize $~~B$}
+%     \psfrag{3}{}
+%     \subfigure{\includegraphics[width=4cm]{geom1.eps} } \quad \quad \quad
+%     \subfigure{\includegraphics[width=3cm]{pqplane.eps}}
+% %     \includegraphics[width=5cm]{.eps}
+ \end{figure}
+ {\scriptsize
+ {\bf \it Proof.}
+  $A$ is a 2-dimensional compact negatively invariant set. There is no limit cycle in $A$. By Poincar\'e-Bendixson Theorem, $\alpha$-limit point of every orbit in $A$ is $M_0$. Similar arguments for $T$.
+ }
+\end{frame}
+
+\begin{frame}
+ \setstretch{1.5}
+ \frametitle{Heteroclinic for the inviscid problem: $n=0$}
+ {\bf Lemma 2.} $W^s(M_1) = \Phi_{-t_0}\big(W^s_{loc}(M_1)\big)$, the time $-t_0$ image of $W^s_{loc}(M_1)$ for large enough $t_0$, is the three dimensional set and contains an orbit point of $\phi^\star(\eta)$ as an interior point.
+   \begin{figure}
+  \centering
+    \psfrag{p}{\scriptsize$p$}
+    \psfrag{q}{\scriptsize$q$}
+    \psfrag{s}{\scriptsize$s-\frac{1+m}{1+\alpha}$}
+    \psfrag{X01}{\hskip -7pt\scriptsize$\vec{X}_{01}$}
+    \includegraphics[width=3.3cm]{transversal3.eps}
+    \caption{3-dim stable manifold}
+ \end{figure}
+ \vskip -15pt
+ {\scriptsize
+ {\bf \it Proof.}
+  %$B$ is a 2-dimensional compact positively invariant set. Similarly as before, $\omega$-limit point of every orbit in $B\setminus M_0$ is $M_1$. 
+  $W^s(M_1) = \Phi_{-t_0}\big(W^s_{loc}(M_1)\big)$, the image of the diffeomorphism $\Phi{-t_0}$, is a three dimensional set and contains an orbit point of $\phi^\star(\eta)$ in its interior because of Lemma 1.
+ }
+\end{frame}
+
+
+% \begin{frame}
+%  \setstretch{1.3}
+%  \frametitle{Heteroclinic for the inviscid problem: $n=0$}
+% {\scriptsize 
+%  Fenichel Theorem: Provided $M_0, N_0, \cdots , N_2$ {\blue normally hyperbolic}, $M_{0n}$, $N_{0n}, \cdots$ and all their local foliations $\mathcal{F}(M_{0n})$, $\mathcal{F}(N_{0n}), \cdots$ {\blue exists} as a $C^r$- families in $n$, sufficiently small.
+% } 
+% 
+%  
+%  {\bf Corollay 3.}  For $n>0$ sufficiently small, $\mathcal{F}(N_2;M_0(n))$ and $W^{s}(M_1(n))$ again intersect transversally, forming the heteroclinic orbit.
+% %The most rapidly escaping orbit $\phi^\star(\eta)\subset W^u(M_0)$ intersects $W^s(M_1)$ transversally.
+%    \begin{figure}
+%   \centering
+%     \psfrag{p}{\scriptsize$p$}
+%     \psfrag{q}{\scriptsize$q$}
+%     \psfrag{B}{\scriptsize$B$}
+%     \psfrag{K}{\scriptsize$K$}
+%     \psfrag{s}{\scriptsize$s-\frac{1+m}{1+\alpha}$}
+%     \psfrag{x0}{\scriptsize $M_0$}
+%     \psfrag{x1}{\hskip -3pt\scriptsize $M_1$}
+%     \psfrag{X01}{\scriptsize$\vec{X}_{01}$}
+%     \psfrag{X02}{\scriptsize$\vec{X}_{02}$}
+%     \subfigure[$\Phi_{-t_0}\big(W^s_{loc}(M_1)\big)$] {\includegraphics[width=3cm]{transversal.eps} } \quad \quad \quad
+%     \subfigure[schematic sketch]{\includegraphics[width=3cm]{flow0pqs.eps}}
+%     %\quad \quad {\scriptsize Note that $ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(p,q,s)s\Big(s-\frac{1+m}{1+\alpha}\Big)$, and $\hat{r}(p,q,s)\ge\delta>0.$}
+%  \end{figure}
+%  
+% %  \vskip -8pt
+% % %\vfill
+% % {\bf Remark.} The invariant manifolds of {\blue $r=\hat{r}(p,q,s)$, $M_0$, $M_1$, the most rapidly escaping orbit from $M_0$, $W^s(M_1)$} are all stable under $C^1$-perturbation of the vector fields; transversal intersection is stable under $C^1$-perturbation. 
+% \end{frame}
 
 \begin{frame}
  \setstretch{1.3}
@@ -1878,6 +2110,26 @@ The manifold $K\subset graph\left({\red r=\hat{r}(p,q,s)}\right)$ is a normally 
 \end{corollary}
 
 \end{frame}
+
+\begin{frame}
+\setstretch{1.5}
+  {\bf Theorem.} Let $\Lambda$ be a domain of the tuple $(\lambda,\alpha,m,n)\in\mathbb{R}^4$ defined by %.Suppose the three parameters $(\lambda,m,n)$ are such that
+  {\scriptsize
+ \begin{align*}
+  \alpha>0\quad&\text{(thermal softening)},\\
+  m>-1 \quad&\text{(strain softening/hardening)}, \\%\label{eq:a1}\\
+  n>0 \quad&\text{(rate sensitivity)},\\ %\label{eq:a2}\\
+  -\alpha+m+n<0 \quad&\text{(net softening)}, \\%\label{eq:a3}\\
+  0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right) \quad&\text{(rate bound)}. %\label{eq:a4}
+\end{align*}}
+ For each $(\lambda,\alpha,m,0) \in \Lambda$, there is $n_0( \lambda,\alpha,m)$ such that for $n \in [0, n_0)$, $(\lambda,\alpha,m,n) \in \Lambda$ and the system $(*)^{\lambda,\alpha,m,n}$ admits a heteroclinic orbit joining equilibrium $M_0^{\lambda,\alpha,m,n}$ to equilibrium $M_1^{\lambda,\alpha,m,n}$ with property that
+    \begin{align*}% \label{eq:estimate}
+        &\chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \\
+        &e^{2\eta}\big(\chi(\eta) - M_0\big) \rightarrow \kappa X_{01} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa\ne0$}.
+    \end{align*}
+% \end{theorem}
+\end{frame}
+
 
 \begin{frame}
  \setstretch{1.2}
@@ -1969,6 +2221,111 @@ The manifold $K\subset graph\left({\red r=\hat{r}(p,q,s)}\right)$ is a normally 
 
 \end{frame}
 
+
+
+
+
+% \begin{frame}
+%  \setstretch{1.5}
+%  \frametitle{Heteroclinic for the inviscid problem: $n=0$}
+%  {\bf Lemma 2.} The trapezoid except $s$-axis, $K\setminus \{s-axis\}\subset W^s(M_1)$.
+%   \begin{figure}
+%   \centering
+%     \psfrag{p}{\scriptsize$p$}
+%     \psfrag{q}{\scriptsize$q$}
+%     \psfrag{B}{\scriptsize$B$}
+%     \psfrag{K}{\scriptsize$K$}
+%     \psfrag{s}{\scriptsize$s-\frac{1+m}{1+\alpha}$}
+%     \psfrag{x0}{\scriptsize $M_0$}
+%     \psfrag{x1}{\hskip -3pt\scriptsize $M_1$}
+%     \psfrag{X01}{\scriptsize$\vec{X}_{01}$}
+%     \psfrag{X02}{\scriptsize$\vec{X}_{02}$}
+%     \includegraphics[width=3.5cm]{flow0pqs.eps}
+%     %\quad \quad {\scriptsize Note that $ \dot{s} = -\frac{1+\alpha}{\lambda}\hat{r}(p,q,s)s\Big(s-\frac{1+m}{1+\alpha}\Big)$, and $\hat{r}(p,q,s)\ge\delta>0.$}
+%  \end{figure}
+%  {\scriptsize
+%  {\bf \it Proof.}
+%   $B$ is a 2-dimensional compact positively invariant set. Similarly as before, $\omega$-limit point of every orbit in $B\setminus M_0$ is $M_1$. In particular, the set $B$ is an {\blue positively invariant set with hyperbolic splitting} of tangent bundle. By Fenichel's Expanding Fiber Theorem, there is a 3-dimensinal manifold that approaches to $B$. Every orbit in $K\setminus \{$s$-axis\}$ touches this $3$-dimensional manifold in a finite time.
+%  }
+% \end{frame}
+
+
+
+
+
+
+% 
+% \begin{frame}
+%  \begin{theorem} \label{thm1}
+% Let $\alpha>0$, $m>-1$, $-\alpha+m>0$ and $0<\lambda< \frac{2(\alpha-m)}{1+m}$. For the pair $(\lambda,\alpha,m)$, there exists $n_0$ such that for all $n \in [0,n_0)$
+% \begin{enumerate}
+%     \item[(i)] the tuple $(\lambda,\alpha,m,n)$ satisfies  $0< \lambda < \frac{2(\alpha-m-n)}{1+m+n}\left(\frac{1+m}{1+m+n}\right)$.
+%     \item[(ii)] $(p,q,r,s)$-system with parameters $(\lambda,\alpha,m,n)$ admits a heteroclinic orbit $\chi(\eta)$ such that
+%     \begin{align*}% \label{eq:estimate}
+%         &\chi(\eta) \rightarrow M_1 \quad \text{as $\eta \rightarrow \infty$ and} \\
+%         &e^{2\eta}\big(\chi(\eta) - M_0\big) \rightarrow \kappa X_{01} \quad \text{as $\eta \rightarrow -\infty$ for some $\kappa\ne0$}.
+%     \end{align*}
+% \end{enumerate}
+% \end{theorem}
+% \end{frame}
+
+% \begin{frame}
+% \setstretch{1.5}
+% Let $(\alpha,m,n)$ be the given material property.
+% 
+% In summary, %for each $\big(\Gamma(0),U(0)\big)$ such that ({\scriptsize two of $\Gamma(0),U(0),\lambda$ fix the rest})
+% % \begin{equation*}
+% %  \frac{2(1+\alpha) -n}{D} < \frac{U(0)}{\Gamma(0)} < \frac{2(1+\alpha)}{1+m+n} -\frac{n}{D}\left( \frac{4(1+\alpha)(\alpha-m-n)}{(1+m+n)^2} +1\right),
+% % \end{equation*}
+% if $n$ is sufficiently small, then we have the solution of following form.
+% \begin{equation*} %\label{intro-sols}
+% \begin{aligned}
+%  \bg(t,x) &= (t+1)^a\Gamma\big((t+1)^\lambda x\big), \\
+%  \bv(t,x) &= (t+1)^b V\big((t+1)^\lambda x\big), \\
+%  \bth(t,x) &= (t+1)^c\Theta\big((t+1)^\lambda x\big),\\
+%  \bs(t,x) &= (t+1)^d\Sigma\big((t+1)^\lambda x\big), \\
+%  \bu(t,x) &= (t+1)^{a-1}U\big((t+1)^\lambda x\big),
+% \end{aligned}
+% \end{equation*}
+% $$ \bv(t,x) \rightarrow (t+1)^b V_\infty, \: \text{as $x \rightarrow \infty$}; \quad \bv(t,x) \rightarrow -(t+1)^b V_\infty, \: \text{as $x \rightarrow -\infty$}.$$
+% \vfill
+% %Note that the $\big(\bG,\bV,\bS,\bU\big)$ coincide with the initial nonuniformities of $\big(\gamma,v,\sigma,u\big)$ at $t=0$. 
+% %\vfill
+% \end{frame}      
+
+
+
+\begin{frame}
+ \setstretch{1.3}
+ \frametitle{Original field variables at various instances of time.}%  $\lambda=10$, $n=0.05$, $m=-1$, $\alpha=0$.}
+ \begin{figure}
+  \centering
+  \subfigure[strain] {
+    \includegraphics[width=3.5cm]{strain_log.eps}
+  }
+  \quad
+  \subfigure[strain rate] {
+    \includegraphics[width=3.5cm]{strain_rate_log.eps}
+  }
+  \\
+  \subfigure[velocity] {
+    \includegraphics[width=3.5cm]{velocity.eps}
+  }
+  \quad
+  \subfigure[stress] {
+    \includegraphics[width=3.5cm]{stress_log.eps}
+  } %\caption{Original field variables at various instances of time.  $\lambda=10$, $n=0.05$, $m=1$.}
+ \end{figure}
+\end{frame}
+
+\begin{frame}
+ \center
+ \vfill
+ 
+ {\bf \huge \blue  Thank you very much.}
+ 
+ \vfill
+\end{frame}
 
 
 \end{document}
