@@ -19,6 +19,8 @@
 %\onehalfspacing
 %\doublespacing
 %\usepackage{authblk}
+\usepackage[pagewise]{lineno}
+\linenumbers
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -1131,7 +1133,7 @@ $n_0( \lambda,\alpha,m)$ such that for $n \in [0, n_0)$ and $(\lambda,\alpha,m,n
     \end{align}
 \end{theorem}
 
-The heteroclinic orbit $\chi^{\lambda,\alpha,m,n}(\eta)$ is achieved via {\it geometric singular perturbation theory}; the presence of the small parameter $n>0$ in the left-hand-side of \eqref{eq:slow}$_3$ elucidates the {\it fast-slow} structure of the system, having $r$ as a fast variable and the rest as slow variables.  
+The heteroclinic orbit $\chi^{\lambda,\alpha,m,n}(\eta)$ is achieved via {\it geometric singular perturbation theory}; the presence of the small parameter $n>0$ in the left-hand-side of \eqref{eq:slow}$_3$ {\blue provides} the {\it fast-slow} structure of the system, having $r$ as a fast variable and the rest as slow variables.  
 In the interest of the reader, we present some preliminary steps in detail. Experts with geometric singular
 perturbation theory may wish to proceed directly to Sections \ref{sec:singorb}, \ref{sec:thmproof}. 
 
@@ -1146,7 +1148,7 @@ Let $r\ge2$ and let $X$ be a $C^{r}$ vector field in $\mathbb{R}^d$. $\bar{\Lamb
 
 $\bar{\Lambda}$ is said to be overflowing invariant under $X$ if for every $m\in\bar{\Lambda}$ and $t\le0$, $F^t(m)\in \bar{\Lambda}$ and $X$ is pointing strictly outward on $\partial \Lambda$. $T \mathbb{R}^d|\bar\Lambda$ denotes the tangent bundle of $\mathbb{R}^d$ along $\bar\Lambda$ and $T\bar\Lambda$ denotes the tangent bundle of $\bar\Lambda$. A subbundle $E\subset T\mathbb{R}^d|\bar{\Lambda}$ is said to be negatively invariant if $E \supset DF^t(E)$ for all $t\le0$. Let $E\subset T\mathbb{R}^d|\bar{\Lambda}$ be a subbundle that is negatively invariant and contains $T\bar\Lambda$. With a given such $E$,  $T \mathbb{R}^d| \bar\Lambda$ then splits into $T\mathbb{R}^d|\bar{\Lambda} =E\oplus E'= T\bar\Lambda\oplus N\oplus E'$, where $N\subset E$ is any complement of $T\bar\Lambda$ in $E$ and $E'\subset T\mathbb{R}^d|\bar{\Lambda}$ is any complement of $E$ in $T\mathbb{R}^d|\bar{\Lambda}$.  
 
-With those introduced, we give a sufficient condition for the separation of three subbundles, which is on the asymptotic behaviors of the three subbundles as time goes $-\infty$. We check whether as $t \rightarrow -\infty$ $(i)$ the norm of a vector picked from $E_m'$ at a point $m$ diverges; $(ii)$ the norm of a vector picked from $N_m$ vanishes; $(iii)$ the growth or decay rate of a vector picked from $T_m\bar\Lambda$ is dominated above and below by the rate respectively of the two former asymptotics. In what follows we give precise conditions to achieve that. We probe at most five rate numbers: 
+With those introduced, we give a sufficient condition for the separation of three subbundles {\blue distinguished by rates of growth or decay as $t \rightarrow -\infty$.} We check whether as $t \rightarrow -\infty$ $(i)$ the norm of a vector picked from $E_m'$ at a point $m$ diverges; $(ii)$ the norm of a vector picked from $N_m$ vanishes; $(iii)$ the growth or decay rate of a vector picked from $T_m\bar\Lambda$ is dominated above and below by the rate respectively of the two former asymptotics. In what follows we give precise conditions to achieve that. We probe at most five rate numbers: 
 
 Let $m\in \bar{\Lambda}$ and $v^0 \in T_m \Lambda$; $w^0\in N_m$; $x^0\in E'_m$; $v^t = DF^t(m)v^0$; $w^t = \pi^N DF^t(m)w^0$; $x^t = \pi^{E'}DF^t(m)x^0$,
 % \begin{align*}
@@ -1166,7 +1168,7 @@ where $\pi^N$ and $\pi^{E'}$ are bundle projections onto $N$ and $E'$ respective
 \end{align*}
 
 \begin{definition} \label{def:over}
-Let $\bar{\Lambda}=\Lambda \cup \partial\Lambda$  be an overflowing invariant manifold that admits a splitting by $E$ as desribed in the above. We say an overflowing invariant manifold $\bar{\Lambda}$ satisfies assumptions \eqref{eq:A} and \eqref{eq:B}, $r'\le r-1$ if for all $m\in \bar{\Lambda}$ the  rate numbers
+Let $\bar{\Lambda}=\Lambda \cup \partial\Lambda$  be an overflowing invariant manifold {\blue where $T \mathbb{R}^d|\bar\Lambda$} admits a splitting by $E$ as desribed in the above. We say an overflowing invariant manifold $\bar{\Lambda}$ satisfies assumptions \eqref{eq:A} and \eqref{eq:B}, $r'\le r-1$ if for all $m\in \bar{\Lambda}$ the  rate numbers
 \begin{align}
 \nu^s(m)&<1, \quad \sigma^s(m)<\frac{1}{r}, \label{eq:A}\tag{$A_r$}   \\
 \alpha^u(m)&<1, \quad \rho^u(m)<1, \quad \tau^u(m)<\frac{1}{r'}. \label{eq:B}\tag{$B_{r'}$}  
@@ -1174,21 +1176,30 @@ Let $\bar{\Lambda}=\Lambda \cup \partial\Lambda$  be an overflowing invariant ma
 \end{align}
 \end{definition}
 \begin{remark}
-For a given $C^r$ family of vector fields $X_\epsilon$ for $\epsilon\in[-\epsilon_0,\epsilon_0]$, Fenichel  in \cite{fenichel_persistence_1972} has proved the persistence of the overflowing manifold $\bar\Lambda$ of $X_0$ under the rate assumption \eqref{eq:A}. Assuming \eqref{eq:B} further guarantees the theory in \cite[pp. 84--85]{fenichel_asymptotic_1977} and \cite[Theorem 9.1]{fenichel_geometric_1979},  the existence and the structual persistence of the spliting under perturbations.
+For a given $C^r$ family of vector fields $X_\epsilon$ for $\epsilon\in[-\epsilon_0,\epsilon_0]$, Fenichel  in \cite{fenichel_persistence_1972} has proved the persistence of the overflowing manifold $\bar\Lambda$ of $X_0$ {\red for the special case $E=T\bar\Lambda$ where \eqref{eq:A} solely were assumed.}
+
+{\blue When $E$ properly contains $T\bar\Lambda$, having the complement $N$ nontrivial, the satisfaction of \eqref{eq:B} further guarantees the existence of $C^{r'}$ family of foliation over $\bar\Lambda$. (See \cite[Theorem 4]{fenichel_asymptotic_1974} and \cite[Theorem 3]{fenichel_asymptotic_1977}. Yet another rate numbers $\rho_2$ and $\tau_2$ appear in \cite[pp. 84--85]{fenichel_asymptotic_1977}; rate assumptions on them are automatic when \eqref{eq:A} holds.)}
+
+{\red In particular, if $\bar\Lambda_\epsilon$ is a given $C^r$ family of overflowing invariant manifolds for each $\epsilon$, 
+% a continuity argument shows the satisfactions of \eqref{eq:A} and \eqref{eq:B} for $\epsilon$ sufficiently small and 
+then the foliation structure is persistent. See \cite[Theorem 9.1]{fenichel_geometric_1979} and discussions in \cite[p. 90]{fenichel_geometric_1979}. }
+
 \end{remark}
+
+
+% Next, we give a version of definition of Normally Hyperbolic Invariant Manifold for the compact manifold without boundary. We speak of the special splitting on which one set of asymptotic rate assumptions as $t \rightarrow \infty$ and the other set as $t \rightarrow -\infty$ hold. 
 \begin{definition}[Normally Hyperbolic Invariant Manifold] \label{def:nhim}
  Let $\Lambda$ be a compact manifold without boundary, invariant under $X$. Let $E^s$ and $E^u$ be subbundles of $T \mathbb{R}^d|\Lambda$ such that $E^s + E^u = T \mathbb{R}^d|\Lambda$, $E^s\cap E^u=T\Lambda$, $E^u$ is negatively invariant under $X$ and $E^s$ is negatively invariant under $-X$. 
  We say $\Lambda$ is $r$-normally hyperbolic if $\Lambda$ is an overflowing invariant manifold with a subbundle $E^u$ satisfying the rate assumptions \eqref{eq:A} and $\Lambda$ is so with $E^s$ under $-X$. 
 \end{definition}
-
+{\blue While in literature the term Normal hyperbolicity are being used over the locally invariant manifold with boundary as well, in this paper we restrict the term on the boundaryless case. The use of local invariance  will be only via the geometric singular perturbation theory for the system that has the {\it fast-slow} structure we introduce in the right below. }%The difference is detailed in \cite{KUEHN_2015}.} 
 
 % \noindent
 % \tcb{To MGL: Please check red statement below for accuracy. Maybe provide a reference?}
 % 
 % \tcr{ The two notions of invariant manifolds in Definitions \ref{def:over} and \ref{def:nhim} are each related to a type of persistence theorem under perturbations of the vector field. }
 % Before we introduce the persistence theorem by Fenichel in the form \cite[Theorem 2.2]{Sz1991}, 
-
-The persistence theorem is specialized for the dynamical system that has the {\it fast-slow} structure, 
+The invariant manifold theory is specialized for the dynamical system that has the {\it fast-slow} structure, 
 \begin{equation} \label{eq:fast-slow}
  \left\{
  \begin{aligned}
@@ -1221,7 +1232,11 @@ The zeroset $\mathcal{S}$ of $g(x,y,0)$ defines a manifold where the orbits of t
  \mathcal{S}_R&\subset \Big\{ (x,y)\in \mathcal{S} \:\Big|\: \text{$D_y g(x,y,0)$ has the full rank $k$}\Big\} \quad \text{open},\\
  \mathcal{S}_H&\subset \Big\{ (x,y)\in \mathcal{S}_R \:\Big|\: \text{all eigenvalues of $D_y g(x,y,0)$ have nontrivial real parts}\Big\}\quad \text{open}. 
 \end{align*}
-On $\mathcal{S}_R$, the equation $0=g(x,y,0)$ is locally solvable and we speak of the reduced vector field $X_R$ on slow variables. (See equation (7.8) in \cite{fenichel_geometric_1979}.) On a compact subset $K \subset \mathcal{S}_H$, the Fenichel's persistence Theorem \cite[Theorem 9.1]{fenichel_geometric_1979} applies. 
+On $\mathcal{S}_R$, the equation $0=g(x,y,0)$ is {\blue locally solvable for $y$ in terms of $x$} and we speak of the reduced vector field $X_R$ on slow variables. (See equation (7.8) in \cite{fenichel_geometric_1979}.) On a compact subset $K \subset \mathcal{S}_H$, the Fenichel's persistence Theorem \cite[Theorem 9.1]{fenichel_geometric_1979} applies. 
+
+
+
+
 
 
 %A compact  $K \subset \mathcal{S}_H$ is normally hyperbolic to the Layer problem.
@@ -1510,10 +1525,17 @@ Having set forth the critical manifold $K$ in $\mathcal{S}_H$ and the reduced ve
  Let $\mathcal{N}_0=M_0$, $\mathcal{F}^u_{M_0}\subset W_0^u$  the strongly unstable manifold of $M_0$ satisfying \eqref{eq:rapid}. Then, for sufficiently small $n$, $\mathcal{F}^u_{M_0}$ perturbs in a $C^{r-1}$ manner to $\mathcal{F}^{u,n}_{M_0^n}$ the strongly unstable manifold of $M_0^n$ satisfying \eqref{eq:rapid}. 
 \end{lemma}
 \begin{proof}
-We pick the line segment $q\in [- \frac{1}{2}, \frac{1}{2}]$, $p\equiv0$ on $T$, which we will denote ${\mathcal{N}}'$. This is the one dimensional orbit in $W_0^u$ that is not strongly unstable. We claim that ${\mathcal{N}}'$ is an overflowing invariant manifold as in Definition \ref{def:over} of the reduced problem. More precisely, it satisfies \eqref{eq:A} and \eqref{eq:B} with $r'=r-1$ and $E$ the tangent $pq$-plane. 
+ {\red
+Consider $pqs$-space and pick the line segment $\hat{\mathcal{N}}^{0}=\Big\{(p,q,s)~|~ p=0, ~ q\in [- \frac{1}{2}, \frac{1}{2}] \text{ and } s= \frac{1+m}{1+\alpha}\Big\}$ that is the transversal intersection of the invariant plane $\Big\{(p,q,s)~|~ p=0 \text{ and }q\in [- \frac{1}{2}, \frac{1}{2}] \Big\}$ and the unstable manifold $W_0^u$. $\hat{\mathcal{N}}^{n}$ is defined as the intersection with $W_0^{u,n}$.
 
- From \eqref{eq:slow03}, $\dot{q}=q(1-q)$ on $q$-axis, it is clear that ${\mathcal{N}}'$ is overflowing invariant. Let $E$ be $pq$-plane along ${\mathcal{N}}'$ and $E'$ be the lines parallel to the $s$-axis. Then, $T \mathbb{R}^3|{\mathcal{N}}'$ splits into three one dimensional bundles $T{\mathcal{N}}'\oplus N \oplus E'$ with $N$ complementary to $T{\mathcal{N}}'$ in $E$ such that $N_{M_0}$ is parallel to $X_{01}$.  %defined by the three coordinate basis in $pqs$-space, i.e., $\mathbf{e}_q\in T\Lambda$, $\mathbf{e}_p\in N$, and $\mathbf{e}_s\in E'$. 
- The asymptotic rates are determined at $M_0$ by the eigenvalues of $M_0$. At $M_0$, $E'_{M_0}$ is the stable subspace with eigenvalue $-\mu_{04}$ and $N_{M_0}$ and $T_{M_0}{\mathcal{N}}'$ are the unstable ones with $\mu_{01}=2$ and $\mu_{02}=1$ respectively. From these, we compute 
+% $q\in [- \frac{1}{2}, \frac{1}{2}]$, $p=0$ on the plane , which we will denote  
+%  Consider a family of invariant manifolds  $\hat{\mathcal{N}}^{n}$ that is the transversal intersection of  $W^{u,n}_0$ for each $0\le n\le n_0$ with $n_0$ sufficiently small. When $n=0$, that $W^{u,0}_0$ contains the set $q\in [- \frac{2}{3}, \frac{2}{3}]$, $p=0$ and $s= \frac{1+m}{1+\alpha}$ is straightforward. Since the Unstable manifold is persistent, taking $q\in [- \frac{1}{2}, \frac{1}{2}]$ is the restriction from the properly larger set.
+ }
+
+  $\hat{\mathcal{N}}^{0}$ is the one dimensional orbit in $W_0^u$ that is not strongly unstable. We claim that $\hat{\mathcal{N}}^{0}$ is an overflowing invariant manifold as in Definition \ref{def:over} of the reduced problem. More precisely, it satisfies \eqref{eq:A} and \eqref{eq:B} with $r'=r-1$ and $E$ the tangent $pq$-plane. 
+
+ From \eqref{eq:slow03}, $\dot{q}=q(1-q)$ on $q$-axis, it is clear that $\hat{\mathcal{N}}^{0}$ is overflowing invariant. Let $E$ be $pq$-plane along $\hat{\mathcal{N}}^{0}$ and $E'$ be the lines parallel to the $s$-axis. Then, $T \mathbb{R}^3|\hat{\mathcal{N}}^{0}$ splits into three one dimensional bundles $T\hat{\mathcal{N}}^{0}\oplus N \oplus E'$ with $N$ complementary to $T\hat{\mathcal{N}}^{0}$ in $E$ such that $N_{M_0}$ is parallel to $X_{01}$.  %defined by the three coordinate basis in $pqs$-space, i.e., $\mathbf{e}_q\in T\Lambda$, $\mathbf{e}_p\in N$, and $\mathbf{e}_s\in E'$. 
+ The asymptotic rates are determined at $M_0$ by the eigenvalues of $M_0$. At $M_0$, $E'_{M_0}$ is the stable subspace with eigenvalue $-\mu_{04}$ and $N_{M_0}$ and $T_{M_0}\hat{\mathcal{N}}^{0}$ are the unstable ones with $\mu_{01}=2$ and $\mu_{02}=1$ respectively. From these, we compute 
  $$ \nu^s = e^{-\mu_{04}}, \quad\sigma^s = 0, \quad\alpha^u = e^{-2}, \quad\rho^u=e^{-1}, \quad\tau^u=0.$$
 
  Therefore, the strongly unstable manifold and its foliations $\mathcal{F}^{u}(x,n):=\mathcal{F}^{u,n}_x$ exist as a $C^{r-1}$ family in both arguments $x$ and $n$. In turn, the foliation 
