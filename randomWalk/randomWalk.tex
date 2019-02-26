@@ -1,5 +1,6 @@
 \documentclass[a4paper,11pt]{article}
-
+%\hoffset=-20mm
+%\voffset=-20mm
 \usepackage[margin=3cm]{geometry}
 \usepackage{setspace}
 \onehalfspacing
@@ -20,6 +21,14 @@
 % \usepackage{alltt}
 %\usepackage{kotex}
 
+ \special{papersize=150mm,230mm}
+ \setlength{\oddsidemargin}{-22mm}
+ \setlength{\evensidemargin}{-22mm}
+ \setlength{\topmargin}{ -33mm}
+ \setlength{\textheight}{210mm}
+ \setlength{\textwidth}{130mm}
+
+
 
 
 \usepackage{enumerate}
@@ -32,7 +41,8 @@
 % \def\l{{\|\pi\|}}
 \def\l{{h}}
 \def\Lip{{\mathrm{Lip}}}
-
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
 
 \newcommand{\tcr}{\textcolor{red}}
 \newcommand{\tcb}{\textcolor{blue}}
@@ -51,92 +61,47 @@
 \newtheorem{remark}{Remark}[section]
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{A note on a heterogeneous random walk model}
-\date{}
+\title{Random walk with spatially heterogenous jumping time}
+\date{\today}
 
 \maketitle
 
-
-
-
-\subsection{Notations}
-\begin{align*}
- t &: \text{macroscopic time coordinate}\\
- y &: \text{macroscopic spatial coordinate}\\
- \Delta t(y) &: \text{a function for the heterogeneous random walk time interval}\\
- \Delta y &: \text{random walk length and {\blue put to be constant}}\\
- \tau &: \text{typical time scale of random walk system}\\
- h &: \text{typical length scale of random walk system}\\
- d \triangleq \frac{\l^2}{2\tau} &: \text{typical diffusion scale of random walk system}\\
- \alpha(y) \triangleq \frac{\Delta t(y)}{\tau} &: \text{non-dimensional microscopic random walk time interval}\\
- & \text{({\red note $\alpha(y)$ was reversly defined in the paper!})}\\
- \beta(y) \triangleq \frac{\Delta y}{\l} = 1 &: \text{non-dimensional microscipic random walk length which is put to be $1$.}\\
- p^k_n &: \text{probability at space grid point $k$ and time grid point $n$}\\
- v(t,y) &: \text{a density function for a continuum model}\\
- w(t,y) &: \text{a conjugate variable to $v(t,y)$}\\
-\end{align*}
-
-\subsection{Fully general continuum model}
-This shall be
+\section{Introduction}
 \begin{align*}
  u_t &= \frac{1}{2} \left( \Delta x(x) \left( \frac{\Delta x(x)}{\Delta t(x)} u \right)_x\right)_x= \frac{1}{2} \left( \tfrac{\Delta x(x)}{\l} \left( \frac{\tfrac{\Delta x(x)}{\l}}{\tfrac{\Delta t(x)}{\tau}} u \right)_x\right)_x \frac{\l^2}{\t} =  \frac{\l^2}{2\t} \left( \beta(x) \left( \frac{\beta(x)}{\alpha(x)} u \right)_x\right)_x
 \end{align*}
 
-\subsection{temporally heterogeneous continuum model}
-We consider the temporally heterogeneous case, i.e.,
-\begin{align*}
-     \alpha(y) = \left\{\begin{array}{ll}
-        1, & \text{if } y<0,\\
-        2, & \text{if } y>0
-        \end{array}\right. 
-        \quad \Longleftrightarrow \quad
-     \Delta t(y) = \left\{\begin{array}{ll}
-        \tau, & \text{if } y<0,\\
-        2\tau, & \text{if } y>0
-        \end{array}\right.         
-\end{align*}
-and $\beta(y)\equiv 1$. (Using the coordinate $y$, instead of $x$, is to indicate the spatial homogeneity.)
+\begin{definition}[Weak solution] We call $L^1_{loc}\big(\R^+;W^{1,1}(\R)\big)$ a weak solution of
+\eqref{eqnw} for an initial data $w_0 \in L^1(\R)$ if, for any test function $\phi \in
+C_c^1(\R^+\times \R)$,
+ \begin{equation}\label{DefWeak}
+  \int_0^T\int_\R \alpha w\phi_t\,dxdt
+  +\int_\R\alpha w_0\phi(0,x)\,dx = d\int_0^T\int_\R w_x\phi_x\, dxdt.
+ \end{equation}
+\end{definition}
 
-A few equivalent expressions:
-\begin{equation} \label{eq:continuum}
-\begin{aligned}
- v_t &= d (\frac{v}{\alpha(y)})_{yy},\\
- v_t &= d w_{yy},\\
- (\alpha(y) w)_t &= d w_{yy},\\
- w_t &= \frac{d}{\alpha(y)} w_{yy}.
-\end{aligned}
+
+\section{Convergence of a discrete scheme}
+
+\subsection{Time-space mesh and random walk algorithm}
+
+We denote by $p_n^k$ the probability of a particle to be placed at $x=x^k$ at time $t=t^n$. The time-space mesh used in this paper is denoted by
+$$
+(t^n,x^k):=(n\tau,kh),\qquad (n,k)\in \Z^+_0\times\Z,
+$$
+where the time step size $\tau$ and space mesh size $h$ are small and $n$ and $k$ are integers. We consider a random walk system that a particle jumps to one of two adjacent grid points with the same probability ${1\over2}$. The special feature of the random walk system in this paper is that the jumping time interval $\Delta t$ is different for two regions $x<0$ and $x>0$. To make the situation physically clear, we consider $\Delta t$ as a traveling time to move to the next grid point. We let $\Delta t=\tau$ in the region $x<0$ and $\Delta t=2\tau$ in the other region $x\ge0$, i.e.,
+\begin{equation}\label{alpha}
+\Delta t=\alpha(x)\tau,\qquad
+\alpha(x) =
+\left\{\begin{array}{ll}
+        1, & \text{if } x<0,\\
+        2, & \text{if } x\ge0.
+        \end{array}\right.
 \end{equation}
-\begin{definition}[Energy dissipative weak solution]
- $w \in L^2\Big([0,T];H^1( \mathbb{R})\Big) \cap L^\infty\Big([0,T];L^2( \mathbb{R})\Big)$ is an energy energy dissipative weak solution for a given initial data $w_0\in L^2(\mathbb{R})$ if
- \begin{align*}
-  \int_0^T \int_\mathbb{R} -\alpha(y)w(t,y)\phi_t(t,y) + d w_y(t,y)\phi_y(t,y)\; dydt - \int_\mathbb{R} \alpha(y)w_0(y)\phi(0,y) \;dy = 0
- \end{align*}
- for all $\phi \in C_c^1([0,T)\times \mathbb{R})$ and satisfies the energy inequality
-\begin{align} \label{energy_inequality}
- \int_\mathbb{R} \alpha(y) \frac{1}{2} |w|^2(T,y)\; dy + d \int_0^T\int_\mathbb{R} |w_y|^2 \; dydt \le \int_\mathbb{R} \alpha(y) \frac{1}{2} |w_0|^2(y)\; dy. 
-\end{align}
-\end{definition}
-% \begin{definition}[Energy weak solution]
-%  $w \in L^2\Big([0,T];H^1( \mathbb{R})\Big) \cap L^\infty\Big([0,T];L^2( \mathbb{R})\Big)$ is an energy weak solution for given the initial data $w_0(y)\in L^2(\mathbb{R})$ if
-%  \begin{align*}
-%   \int_0^T \int_\mathbb{R} -\alpha(y)w(t,y)\phi_t(t,y) + d w_y(t,y)\phi_y(t,y)\; dydt - \int_\mathbb{R} \alpha(y)w_0(y)\phi(0,y) \;dy = 0
-%  \end{align*}
-%  for all $\phi \in C_c^1([0,T)\times \mathbb{R})$ and satisfies the energy identity
-% \begin{align} \label{energyID}
-%  \int_\mathbb{R} \alpha(y) \frac{1}{2} |w|^2(T,y)\; dy + d \int_0^T\int_\mathbb{R} |w_y|^2 \; dydt = \int_\mathbb{R} \alpha(y) \frac{1}{2} |w_0|^2(y)\; dy. 
-% \end{align}
-% \end{definition}
-Note the energy dissipative weak solution is unique for this linear equation. We also consider a solution with a better regularity in the parabolic H\"older space $C^{\frac{1}{2},1}\big([0,T)\times \mathbb{R}\big)$ where the norm is defined by
-$$\|u\|_{C^{\frac{1}{2},1}\big([0,T)\times \mathbb{R}\big)} = \sup_{(t,y)\in [0,T)\times \mathbb{R}}|u(t,y)| + \sup_{(t,y)\ne(s,z) \in [0,T)\times \mathbb{R}} \frac{|u(t,y)-u(s,z)|}{|t-s|^{1/2} + |y-z|}.$$
-\begin{definition}
-$w$ is a $C^{\frac{1}{2},1}$-solution if $w$ is an energy dissipative weak solution and $w \in C^{\tfrac{1}{2},1}([0,T]\times\mathbb{R})$. 
-\end{definition}
-
-\subsection{temporally heterogeneous random walk model}
-We consider a random walk with grid points $(n,k)$
-\begin{equation} \label{RW0}\tag{RW0}
+Note that the step function $\alpha$ is to denote the spatial heterogeneity in $\Delta t$ and $\tau$ is the microscopic scale of it. In this case the probability $p_n^k$ satisfies
+\begin{equation} \label{RW1}\tag{RW1}
 \begin{aligned}
     2p^k_n = \left\{\begin{array}{lr}
         p^{k-1} _{n-1} + p ^{k+1} _{n-1}, & \text{if } k<0,\\
@@ -145,526 +110,482 @@ We consider a random walk with grid points $(n,k)$
         \end{array}\right.
 \end{aligned}
 \end{equation}
-{\blue
-\begin{equation*} %\label{RW1_}\tag{RW1}
-\begin{aligned}
-    \vdots &\\
-    2p^{-4}_n &= \frac{1}{2}p^{-6} _{n-2} + p ^{-4} _{n-2} + \frac{1}{2} p^{-2}_{n-2},\\
-    2p^{-2}_n &= \frac{1}{2}p^{-4} _{n-2} + p ^{-2} _{n-2} + \frac{1}{2} p^0_{n-2},\\
-    2p^0_n &= \frac{1}{2}p^{-2} _{n-2} + \frac{1}{2}p^{0} _{n-2} + p ^{1} _{n-2},\\
-    2p^1_n &= p^{0} _{n-2} + p ^{2} _{n-2},\\
-    2p^2_n &= p^{1} _{n-2} + p ^{3} _{n-2},\\
-    \vdots &
-\end{aligned}
-\end{equation*}
-}
-From \eqref{RW0} we can derive a decoupled discrete system, i.e., for $n=2,4,\cdots$,
-\begin{equation} \label{RW1}\tag{RW1}
+Note that the probability $p^k_n$ is the average of probabilities at two adjacent grid points at two moments, $t^{n-1}$ or $t^{n-2}$, depending on $k$. By removing from the equations the probabilities at  $t=t^{n-1}$ using the ones at $t=t_{n-2}$, we can rewrite \eqref{RW1} 
+\begin{equation} \label{RW2}\tag{RW2}
 \begin{aligned}
     &p^{k}_n = \left\{\begin{array}{ll}
-        \frac{1}{4}p^{k-2} _{n-2} + \frac{1}{2}p ^{k} _{n-2} + \frac{1}{4} p^{k+2}_{n-2}, & \text{if $k<0$ and even},\\
+        \frac{1}{4}p^{k-2} _{n-2} + \frac{1}{2}p ^{k} _{n-2} + \frac{1}{4} p^{k+2}_{n-2}, & \text{if $k<0$ is even},\\
         \frac{1}{4}p^{-2} _{n-2} + \frac{1}{4}p^{0} _{n-2} + \frac{1}{2}p ^{1} _{n-2}, & \text{if $k=0$},\\
         \frac{1}{2}p^{k-1} _{n-2} + \frac{1}{2}p ^{k+1} _{n-2}, & \text{if } k>0.
         \end{array}\right. 
 \end{aligned}
 \end{equation}
+% 
+% using even numbered time steps $n=2\ell$ only and obtain
+% \begin{equation} \label{RW3}\tag{RW3}
+% \begin{aligned}
+%     &p^{k}_{2\ell} = \left\{\begin{array}{ll}
+%         \frac{1}{4}p^{k-2} _{2(\ell-1)} + \frac{1}{2}p ^{k} _{2(\ell-1)} +
+%         \frac{1}{4} p^{k+2}_{2(\ell-1)}, & \text{if $k<0$ is even},\\
+%         \frac{1}{4}p^{-2} _{2(\ell-1)} + \frac{1}{4}p^{0} _{2(\ell-1)} +
+%         \frac{1}{2}p ^{1} _{2(\ell-1)}, & \text{if $k=0$},\\
+%         \frac{1}{2}p^{k-1} _{2(\ell-1)} + \frac{1}{2}p ^{k+1} _{2(\ell-1)},
+%         & \text{if } k>0.
+%         \end{array}\right.
+% \end{aligned}
+% \end{equation}
 
-\subsubsection{referential label system $(\ell,j)$}
-To define the derived random walk model \eqref{RW1} in a systematic way, those sites appeared in \eqref{RW1} are given another labelling, namely $(\ell,j)\in \mathbb{Z}_0^+ \times \mathbb{Z}$.
 
-The inverse map $(\ell,j)\mapsto (n,k): \mathbb{Z}_0^+ \times \mathbb{Z} \rightarrow \mathbb{Z}_0^+ \times \mathbb{Z}$ defines the labelling,
+\subsection{Discretization}
+
+Suppose that an initial probability density function be given by $v_0(x)$ for $x\in\R$. We assume that
+\begin{equation} \label{initial}
+ v_0 \in L^1( \R)\cap L^\infty(\R), \quad \int_ \R v_0(x)\, dx = 1, \quad
+ w_0:=\frac{v_0(x)}{\alpha(x)} \in C^\infty_c(\R).
+\end{equation}
+The purpose of this paper is to support the hypothesis that what enjoys the propagation or the gain of regularities is the variable $w$, not $v$, whose actual distinction is only relevant when the medium is heterogeneous. This is why the regularity assumption of the problem is on the initial value of $w_0={v_0\over\alpha}$.
+
+For a given mesh size $h>0$, we discretize the initial probability density function $v_0$ by
+\begin{equation}\label{p0k}
+\bar{p}_{0}^{k} = \left\{\begin{array}{ll}
+               0 & \text{if } k<0\ \text{is odd},\\
+               \int_{x^k}^{x^{k}+2h} v_0(x)dx & \text{if } k<0\ \text{is
+               even},\\
+                \int_{x^k}^{x^{k}+h} v_0(x)dx  & \text{if } k\ge0.
+               \end{array}\right.
+\end{equation}
+This discretization is motivated from that a random walk process defined by \eqref{RW2} stands independently of \eqref{RW1} and is identical to that by \eqref{RW1} with the initial data such that $\bar{p}^k_0=0$ if $k<0$ is odd. Indeed \eqref{RW2} is self-contained; $\sum_{k=-1}^{-\infty}\bar{p}_{0}^{2k}+\sum_{k=0}^{\infty}\bar{p}_{0}^{k}= 1$ and $\sum_{k=-1}^{-\infty}\bar{p}_{2\ell}^{2k}+\sum_{k=0}^{\infty}\bar{p}_{2\ell}^{k}=1$ for all $\ell>0$. Note that missing probabilities are all zero, $\bar{p}_{2\ell}^{2k+1}=0$ if $k<0$. The justification that this discretization solely  accounts for the general case of \eqref{RW1} is not treated in this paper. 
+
+Besides, we keep labeling a quantity defined over the interval by its leftmost grid point index, as was how $\bar{p}^k_0$ is labeled, at our convenience.
+
+
+To denote the space grids with non-zero probability, we introduce another labelling, namely $(\ell,j)\in \mathbb{Z}_0^+ \times \mathbb{Z}$. The inverse map $(\ell,j)\mapsto (n,k): \mathbb{Z}_0^+ \times \mathbb{Z} \rightarrow \mathbb{Z}_0^+ \times \mathbb{Z}$ defines the labelling,
 \begin{align*}
  n(\ell) &= 2\ell, \quad 
  k(j)  =\left\{\begin{array}{lr}
-        2j, & \text{if } j\le0,\\
-        j, & \text{if }  j>0.
+        2j, & \text{if } j<0,\\
+        j, & \text{if }  j\ge0.
         \end{array}\right.
 \end{align*}
-The grid point $(n,k)$ will be coordinated at $(t^n,y^k)=(n\tau,k\l)$ in the later sections. Thus we regard $k$ as a spatial label while $j$ as a referential label. We will use both  labelling system $(n,k)$ and $(\ell,j)$ at our convenience. 
-% {\red
-% \begin{remark}
-%  As a discrete model, \eqref{RW0} is a Markov chain {\blue of order 2}. Regarded as a difference scheme, this suggests the appearance of the second order time derivative in the continuum equation while \eqref{eq:continuum} does not contain it. By contrast, \eqref{RW0} is a Markov chain of order 1 (with the label $\ell$). In this work, we will look up the continuum limit of this linear Markov chain defined by \eqref{RW1}. That the two random walk systems are essentially 
-% %  
-% %  To clarify this aspects  {\it that the discrete model being a Markov chain of order 2 essentially is hidden and ignored in the continuum limit} will be the critical piece in understanding the underlying structures of models.
-% \end{remark}
-% }
+Having that, we consider the grid points of $x^{k(j)}_{n(\ell)}$ and the probability $\bar{p}_{n(\ell)}^{k(j)}$. In particular, we define $y^j:=x^{k(j)}$.
+% and $p^j_\ell$, without assigning different symbol, is understood as $p^{k(j)}_{n(\ell)}$. 
 
-%The random walk \eqref{RW1} in the new label is simply written as
-% \begin{equation} \label{RW1w}\tag{$\textrm{RW1}^\prime$}
-% \begin{aligned}
-%     &p^{k}_n = \left\{\begin{array}{ll}
-%         \frac{1}{4}p^{k-2} _{n-2} + \frac{1}{2}p ^{k} _{n-2} + \frac{1}{4} p^{k+2}_{n-2}, & \text{if $k<0$ and even},\\
-%         \frac{1}{4}p^{-2} _{n-2} + \frac{1}{4}p^{0} _{n-2} + \frac{1}{2}p ^{1} _{n-2}, & \text{if $k=0$},\\
-%         \frac{1}{2}p^{k-1} _{n-2} + \frac{1}{2}p ^{k+1} _{n-2}, & \text{if } k>0.
-%         \end{array}\right. 
-% \end{aligned}
+% \begin{equation}\label{yj}
+% y^j=x^{2j}\quad\text{if}\quad j<0,\quad\text{and}\quad
+% y^j=x^{j}\quad\text{if}\quad j\ge0.
 % \end{equation}
-% \begin{equation}
-%  p^j_\ell - p^j_{\ell-1} = \frac{h}{2} \left( \Big(\tfrac{p^{j+1}_{\ell-1} - p^{j}_{\ell-1}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{p^{j}_{\ell-1} - p^{j-1}_{\ell-1}}{y^{j}-y^{j-1}} \Big)\right) \quad \text{for all $j$.}
-% \end{equation}
-
-
-%The set of appeared grid points in \eqref{RW1}, temporally $\{(n(\ell)\}$, spatially $\{k(j)\}$, and pairs of $\{(n(\ell),k(j)\}$ will be denoted by $\mathcal{N}$, $\mathcal{K}$, and $\mathcal{N}\times\mathcal{K}$ respectively.
-% 
-% 
-% 
-% : $(i)$ For time, we simply let $n=2\ell$, where $\ell$ runs over the nonnegative integer; $(ii)$ for space,
-% $$ k(j)  =\left\{\begin{array}{lr}
-%         2j, & \text{if } j\le0,\\
-%         j, & \text{if }  j>0,
-%         \end{array}\right. \quad \text{where $j$ runs over the integer.}$$
-%  We may regard $j$ as {\it referential} label while $k$ as {\it spatial} label that we can go back and forth. 
-% 
-% \begin{remark}
-%  As a discrete model, \eqref{RW1} is %, by re-labelling the time index $n=2\ell$, $\ell=0,1,2,3\cdots$, 
-%  associated to a Markov chain ({\blue of order 1}) with the label $(\ell,j)$, while \eqref{RW0} is associated to a Markov chain {\blue of order 2}. %while  by re-labelling the time index $n=2\ell$, $\ell=0,1,2,3\cdots$.
-% \end{remark}
-
-\subsection{Dimensional consideration}
-\subsubsection{Initial data preparation}
-The assumptions on the initial probability density function $v_0$ is that
-\begin{equation} \label{initial}
- v_0 \in L^1( \mathbb{R}), \quad \int_ \mathbb{R} v_0(y)\, dy = 1, \quad \frac{v_0(y)}{\alpha(y)} \in W^{1,1}(\mathbb{R})\cap W^{1,\infty}(\mathbb{R}).
+To approximate the probability density function, not the total probability mass for the particle to be placed between two grid points, we divide $\bar{p}_{n(\ell)}^{k(j)}$ by the domain size of the integrals in \eqref{p0k}. 
+\begin{equation}\label{vj}
+\bar{v}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)} \over2h}\quad\text{for}\quad
+j<0\quad\text{and}
+\quad \bar{v}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)}\over h}\quad\text{for}\quad j\ge0.
 \end{equation}
-Let $\big(v_0\big)_{[a,b]}$ for $a\le b$ denote the volume average on an interval $\tfrac{1}{b-a}\int_a^b v_0(y)\, dy$. For a fixed $h$ and $v_0$, the probability mass $p_{0}^{j;h}$  at each of the grid point $y^j$ is defined by
+The activity function $w$ are respectively approximated by
+% The probability density distribution $v(t,x)$ will be the limit of $v^j_\ell$ as $h\to0$. However, we cannot use the relation \eqref{RW2} for $v^{j}_\ell$'s due to the non-symmetry in \eqref{vj}. Instead, we will take
+\begin{equation}\label{pandw}
+\bar{w}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)}\over2h}\quad\text{if}\quad j<0,\quad\text
+{and} \quad \bar{w}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)} \over2h}\quad\text{if}\quad j\ge0.
+\end{equation}
+Then, $\bar{v}^{j}_\ell=\bar{w}^{j}_\ell$ for $j<0$ and $\bar{v}^{j}_\ell=2\bar{w}^{j}_\ell$ for
+$j\ge0$, i.e.,
+$$
+\bar{v}^j_\ell=\bar{w}_\ell^j\alpha(y^j).
+$$
+Realize further that $\bar{w}^{j}_\ell$ is a finite volume discretization of $w_0(x)$ given in \eqref{initial}, i.e.,
 \begin{equation} \label{vol_aver+pmf}
- \begin{aligned}
- p_{0}^{j;h} = \left\{\begin{array}{ll}
-                2h~\big(v_0\big)_{[y^j,y^{j}+2h]} & \text{if } j<0,\\
-                h~\big(v_0\big)_{[y^j,y^j +h]} & \text{if } j\ge0,
-               \end{array}\right.
- \quad \frac{p_{0}^{j;h}}{h}\triangleq w_{0}^{j;h} \left(= \left\{\begin{array}{ll}
-                \big(w_0\big)_{[y^j,y^{j}+2h]} & \text{if } j<0,\\
-                \big(w_0\big)_{[y^j,y^j +h]} & \text{if } j\ge0,
-               \end{array}\right.\right)
- \end{aligned}
+\bar{w}_{0}^{j} ={1\over y^{j+1}-y^{j}}\int_{y^j}^{y^{j+1}} w_0(x)dx.
 \end{equation}
-% \begin{equation} \label{vol_aver+pmf}
-%  \begin{aligned}
-%  p_{0}^{j;h} = \left\{\begin{array}{ll}
-%                 2h~\big(v_0\big)_{[y_j-h,y_j+h]} & \text{if } j<0,\\
-%                 \frac{3}{2}h~\big(v_0\big)_{[-h,\frac{h}{2}]} & \text{if } j=0,\\                
-%                 h~\big(v_0\big)_{[y_j-\frac{h}{2},y_j+\frac{h}{2}]} & \text{if } j>0,
-%                \end{array}\right.
-%  \quad \frac{p_{0}^{j;h}}{h}\triangleq w_{0}^{j;h} \left(= \left\{\begin{array}{ll}
-%                 \big(w_0\big)_{[y_j-h,y_j+h]} & \text{if } j<0,\\
-%                 \frac{\big(w_0\big)_{[-h,0]}+ \big(w_0\big)_{[0,\frac{h}{2}]}}{2} & \text{if } j=0,\\                
-%                 \big(w_0\big)_{[y_j-\frac{h}{2},y_j+\frac{h}{2}]} & \text{if } j>0,
-%                \end{array}\right.\right)
-%  \end{aligned}
-% \end{equation}
-where $w_0(y)\triangleq \frac{2v_0(y)}{\alpha(y)}$ is the normalized Lipschiz function. 
+\eqref{RW2}, after simply dividing it by $2h$, defines a dimensional version of random walk system for $\bar{w}^{j}_\ell$. 
 
-
-\subsubsection{\eqref{RW1} as a finite difference scheme}
-With $p_{0}^{j;h}$ as the initial probability mass, \eqref{RW1} defines $\left\{p^{j;h}_{\ell}\right\}$ and $\left\{w^{j;h}_{\ell}\right\}$ in $\mathbb{Z}_0^+\times\mathbb{Z}$ all of them bounded uniformly. (See the Lemma \ref{uniform_est}). In the point of view where the coordinate system $(t,y)$ is held while $\tau$ or $h$ is varing, $p^j_\ell$ is of $O(h)$, whereas $\left\{w^{j;h}_{\ell}\right\}$ does not scale. Thus $\left\{w^{j;h}_{\ell}\right\}$ is the one we monitor in the below with respect to the limit process.
-
-Now, we define
-$$L^j_\ell \triangleq \frac{w^{j+1}-w^j}{y^{j+1}-y^j}, \quad Q^j_\ell = \frac{L^j_\ell-L^{j-1}_\ell}{2h}.$$
-Note that the denominator in the latter is not $y^{j+1/2}-y^{j-1/2}$. Seen from the spatial label $k=k(j)$,
+Despite the inexact total probability, it is expedient to consider also the finite difference discretization of $w_0(x)$,
+\begin{equation}\label{w_fdm}
+w^{j}_0:=w_0(y^j),
+\end{equation}
+and to reversely define  
 \begin{align*}
- L^{k(j)}_\ell &\triangleq \left\{\begin{array}{ll}
-        \frac{w^{k+2} _{\ell} - w ^{k} _{\ell}}{2\l}, & \text{if $j<0$},\\
-        \frac{w^{k+1} _{\ell} - w ^{k} _{\ell}}{\l}, & \text{if }  j\ge0,
-        \end{array}\right. \quad Q^{k(j)}_\ell \triangleq \left\{\begin{array}{ll}
-        \frac{1}{2\l^2}\Big( \frac{1}{2} w^{k-2} _{\ell} - w ^{k} _{\ell} + \frac{1}{2} w^{k+2} _{\ell}\Big), & \text{if $j<0$},\\
-        \frac{1}{2\l^2}\Big( \frac{1}{2} w^{-2} _{\ell} - \frac{3}{2}w ^{0} _{\ell} +w^{1} _{\ell}\Big), & \text{if $j=0$},\\
-        \frac{1}{2\l^2}\Big(w^{k-1} _{\ell} - 2w^k_n + w ^{k+1} _{\ell}\Big), & \text{if $j>0$},
-        \end{array}\right.
-% \Lip(n)&\triangleq\sup_{k \in \mathcal{K}} |L(n,k)|, \quad \bar Q(n)\triangleq\sup_{k \in \mathcal{K}} |Q(n,k)|.        
+ v^j_0:=w^j_0 \quad \text{for $j<0$}, \quad &v^j_0:=2w^j_0 \quad \text{for $j\ge0$},\\
+ p^j_0:=2hv^j_0\quad \text{for $j<0$}, \quad &p^j_0:=hv^j_0 \quad \text{for $j\ge0$}.
 \end{align*}
-and $Q^j_\ell$ is an approximation of $\frac{w_{yy}}{\alpha}$. More precisely, the right-hand-side expressions for $Q^{k(j)}_\ell$ are seen as taylor expansions expanded at $\big(2\ell\tau,k(j)\l\big)$, or it approximates $w_{yy}$ multiplied respectively by $1$; $\frac{3}{4}\left(=\tfrac{1+1/2}{2}\right)$; and $\frac{1}{2}$, respectively for $j<0$; $j=0$; and $j>0$.
-% \begin{align*}
-%  Q^{k(j)}_\ell \sim \left\{\begin{array}{ll}
-%         w_{yy}(2\ell\tau,k(j)\l), & \text{if $j<0$},\\
-%         \frac{1}{2}\left(1+\frac{1}{2}\right)w_{yy}(2\ell\tau,k(j)\l), & \text{if $j=0$},\\
-%         \frac{1}{2} w_{yy}(2\ell\tau,k\l), & \text{if $j>0$}.
-%         \end{array}\right.
-% \end{align*}
-Now, \eqref{RW1} where $p$ replaced by $w$ is written as
+On ahead, the random walk system with the discrete initial data \eqref{w_fdm} described by 
+\begin{equation} \label{RW3}\tag{RW3}
+\begin{aligned}
+    &w^{j}_\ell = \left\{\begin{array}{ll}
+        \frac{1}{4}w^{j-1} _{\ell-1} + \frac{1}{2}w ^{j} _{\ell-1} +
+        \frac{1}{4} w^{j+1}_{\ell-1}, & \text{if $j<0$},\\
+        \frac{1}{4}w^{-1} _{\ell-1} + \frac{1}{4}w^{0} _{\ell-1} +
+        \frac{1}{2}w ^{1} _{\ell-1}, & \text{if $j=0$},\\
+        \frac{1}{2}w^{j-1} _{\ell-1} + \frac{1}{2}w ^{j+1} _{\ell-1}, &
+        \text{if } j>0.
+        \end{array}\right.
+\end{aligned}
+\end{equation}
+is analyzed. We will find the limit function $w(t,x)$ of $w_\ell^j$'s as $h\to0$. Then, the probability density distribution $v(t,x)$ is recovered by $\alpha(x)w(t,x)$ with the total probability $1$ and the initial value becomes $v(0,x)=v_0(x)$ as given in \eqref{initial}.
+
+\subsection{Difference quotients}
+
+Difference quotients are useful to the regularity study and finding the relation satisfied by the limit of finite difference schemes. Let
+\begin{equation}\label{Ljl}
+L^j_\ell := \frac{w_\ell^{j+1}-w_\ell^j}{y^{j+1}-y^j}
+        =\left\{\begin{array}{ll}
+        \frac{w^{j+1}_{\ell} - w^{j}_{\ell}}{2\l}, & \text{if $j<0$},\\
+        \frac{w^{j+1}_{\ell} - w^{j}_{\ell}}{\l}, & \text{if }  j\ge0,
+        \end{array}\right.
+\end{equation}
+which is an approximation of the gradient $w_x$. Let
+\begin{equation}\label{Qjl}
+Q^j_\ell := \frac{L^j_\ell-L^{j-1}_\ell}{2h}= \left\{\begin{array}{ll}
+        \frac{1}{2\l^2}\Big( \frac{1}{2} w^{j-1} _{\ell} - w ^{j} _{\ell} +
+        \frac{1}{2} w^{j+1} _{\ell}\Big), & \text{if $j<0$},\\
+        \frac{1}{2\l^2}\Big( \frac{1}{2} w^{-1} _{\ell} - \frac{3}{2}w
+        ^{0} _{\ell} +w^{1} _{\ell}\Big), & \text{if $j=0$},\\
+        \frac{1}{2\l^2}\Big(w^{j-1} _{\ell} - 2w^j_\ell + w ^{j+1}
+        _{\ell}\Big), & \text{if $j>0$}.
+        \end{array}\right.
+\end{equation}
+Notice that $y^{j+1}-y^{j}=2h$ for $j<0$ and $y^{j+1}-y^{j}=h$ for $j\ge0$. Therefore, $Q^j_\ell$ is an approximation of $w_{xx}$ for $j<0$ and of ${1\over2}w_{xx}$ for $j>0$, i.e., of ${w_{xx}\over\alpha}$.\footnote{Remember that it is NOT an approximation of $({w_x\over\alpha})_x$. There is no delta measure like phenomenon in the relation. This observation will be useful when we consider a general case in the next paper.} From \eqref{RW3}, we obtain
+$$
+\begin{aligned}
+    &w^{j}_\ell-w^{j}_{\ell-1} = \left\{\begin{array}{ll}
+        \frac{1}{4}w^{j-1} _{\ell-1} - \frac{1}{2}w ^{j} _{\ell-1} +
+        \frac{1}{4} w^{j+1}_{\ell-1}, & \text{if $j<0$},\\
+        \frac{1}{4}w^{-1} _{\ell-1} - \frac{3}{4}w^{0} _{\ell-1} +
+        \frac{1}{2}w ^{1} _{\ell-1}, & \text{if $j=0$},\\
+        \frac{1}{2}w^{j-1} _{\ell-1}-w^{j}_{\ell-1} + \frac{1}{2}w ^{j+1}
+        _{\ell-1}, & \text{if } j>0.
+        \end{array}\right.
+\end{aligned}
+$$
+The three cases of the above are written in the same form using $Q_\ell^j$,
+which is
 \begin{equation} \label{RW1w}
 \begin{aligned}
-%  w^j_\ell - w^j_{\ell-1} &= \frac{h}{2} \left( \Big(\tfrac{w^{j+1}_{\ell-1} - w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell-1} - w^{j-1}_{\ell-1}}{y^{j}-y^{j-1}} \Big)\right) \quad \text{or }
- \frac{w^j_\ell - w^j_{\ell-1}}{2\tau} &= \left(\frac{h^2}{2\tau}\right) \frac{1}{2h}\left( \Big(\tfrac{w^{j+1}_{\ell-1} - w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell-1} - w^{j-1}_{\ell-1}}{y^{j}-y^{j-1}} \Big)\right)= \left(\frac{h^2}{2\tau}\right)Q^j_{\ell-1}
+ \frac{w^j_\ell - w^j_{\ell-1}}{2\tau} &= \left(\frac{h^2}{2\tau}\right)
+ \frac{1}{2h}\left( \Big(\tfrac{w^{j+1}_{\ell-1} -
+ w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell-1} -
+ w^{j-1}_{\ell-1}}{y^{j}-y^{j-1}} \Big)\right)=
+ \left(\frac{h^2}{2\tau}\right)Q^j_{\ell-1}.
   \end{aligned}
 \end{equation}
-% $$\frac{w^j_\ell - w^j_{\ell-1}}{2\tau} = \left(\frac{h^2}{2\tau}\right) Q^j_{\ell-1}, \quad \text{where } Q^j_{\ell-1} = \frac{1}{2h} \left( \Big(\frac{w^{j+1}_{\ell-1} - w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big) -\Big(\frac{w^{j}_{\ell-1} - w^{j-1}_{\ell-1}}{y^{j}-y^{j-1}} \Big)\right).$$% \Longleftrightarrow \frac{w^j_\ell - w^j_{\ell-1}}{2\tau} =  \quad \text{with $d=\frac{h^2}{2\tau}$}.$$
-% 
-% we define the volume average $v_{0j}^h$ and the probability mass function 
-% \begin{equation} \label{vol_aver+pmf}
-%  \begin{aligned}
-%  v_{0j}^h = \left\{\begin{array}{ll}
-%                 \big(v_0\big)_{[y_j-h,y_j+h]} & \text{if } j<0,\\
-%                 \big(v_0\big)_{[-h,\frac{h}{2}]} & \text{if } j=0,\\                
-%                 \big(v_0\big)_{[y_j-\frac{h}{2},y_j+\frac{h}{2}]} & \text{if } j>0.
-%                \end{array}\right.
-%  \quad
-%  p_{0j}^h = \left\{\begin{array}{ll}
-%                 v_{0j}^h(2h) & \text{if } j<0,\\
-%                 v_{0j}^h(\frac{3}{2}h) & \text{if } j=0,\\                
-%                 v_{0j}^h(h) & \text{if } j>0.
-%                \end{array}\right.
-%  \end{aligned}
-% \end{equation}
-%We also define the normalized quantity $\frac{p_{0j}^h}{h}\triangleq w_{0j}^h$. 
-% If the Lipschitz function $\frac{v_0(y)}{\alpha(y)}$ is normalized so that $w_0(y)\triangleq \frac{2v_0(y)}{\alpha(y)}$, then \eqref{vol_aver+pmf}, in turn, gives the relations that
-% \begin{equation} \label{wj}
-%  \begin{aligned}
-%  w_{0j}^h = \left\{\begin{array}{ll}
-%                 \big(w_0\big)_{[y_j-h,y_j+h]} & \text{if } j<0,\\
-%                 \frac{\big(w_0\big)_{[-h,0]}+ \big(w_0\big)_{[0,\frac{h}{2}]}}{2} & \text{if } j=0,\\                
-%                 \big(w_0\big)_{[y_j-\frac{h}{2},y_j+\frac{h}{2}]} & \text{if } j>0.
-%                \end{array}\right.
-%  \end{aligned}
-% \end{equation}
-\subsection{Propagation of regularities up to $W^{2,\infty}$}
-\eqref{RW1} induces formulas that 
+This is the main relation which will give the diffusion equation satisfied by the probability density function.
+
+
+\subsection{Uniform estimates}
+The relations in \eqref{RW3} can be used to find relations for $L^j_\ell$ and $Q^j_\ell$ which are
 \begin{equation} \label{eq:L}
 L^j_\ell = \left\{\begin{array}{ll}
-        \frac{1}{4}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^j + \frac{1}{4}L_{\ell-1}^{j+1}, & \text{if $j<0$},\\
-        \frac{1}{2}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^{j+1}, & \text{if $j\ge0$},
+        \frac{1}{4}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^j +
+        \frac{1}{4}L_{\ell-1}^{j+1}, & \text{if $j<0$},\\
+        \frac{1}{2}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^{j+1}, &
+        \text{if $j\ge0$},
         \end{array}\right.
 \end{equation}
+and
 \begin{equation}\label{eq:Q}
 \begin{aligned}
 Q^j_\ell %&= \frac{L^{j+1}_\ell - L^j_\ell}{\l}\\
 &=\left\{\begin{array}{ll}
-        \frac{1}{4}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j} + \frac{1}{4}Q_{\ell-1}^{j+1}, & \text{if $j<0$},\\
-        \frac{1}{4}Q_{\ell-1}^{-1} + \frac{1}{4}Q_{\ell-1}^{0} + \frac{1}{2}Q_{\ell-1}^{1}, & \text{if $j=0$},\\
-        \frac{1}{2}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j+1}, & \text{if $j>0$}.
+        \frac{1}{4}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j} +
+        \frac{1}{4}Q_{\ell-1}^{j+1}, & \text{if $j<0$},\\
+        \frac{1}{4}Q_{\ell-1}^{-1} + \frac{1}{4}Q_{\ell-1}^{0} +
+        \frac{1}{2}Q_{\ell-1}^{1}, & \text{if $j=0$},\\
+        \frac{1}{2}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j+1}, &
+        \text{if $j>0$}.
         \end{array}\right.
  \end{aligned}
 \end{equation}
-\begin{lemma} \label{uniform_est}
-%  Let $|L|_\ell \triangleq \displaystyle\sup _{j} |L^j_\ell|$ and $|Q|_\ell \triangleq \displaystyle\sup _{j} |Q^j_\ell|$. $|L|_\ell \le |L|_0$ and $|Q|_\ell \le |Q|_0$.
- For all $\ell\ge0$,
- 
- $ \displaystyle\sup _{j} |w^j_\ell| \le \sup _{j} |w^j_0|$, $ \displaystyle\sup _{j} |L^j_\ell| \le \sup _{j} |L^j_0|$, and $\displaystyle \sup _{j} |Q^j_\ell| \le \sup _{j} |Q^j_0|$.
- 
- $ \displaystyle\sum _{j} w^j_\ell = \sum _{j} w^j_0$, $ \displaystyle\sum _{j} |L^j_\ell| \le \sum _{j} |L^j_0|$, and $\displaystyle \sum _{j} |Q^j_\ell| \le \sum _{j} |Q^j_0|$.
+Note that $L^j_\ell$ and $Q^j_\ell$ are again averaging relations of previous time steps, and this points to our theme monitoring the $w$ variable, not $v$ variable. This allows key estimates needed.
+
+\begin{lemma}[Uniform estimates by the initial value] \label{uniform_est} ~
+
+\begin{enumerate}\item Total sums of $w_\ell^j$, $L_\ell^j$, and
+$Q_\ell^j$ are constant, i.e.,
+$$
+\sum_{j} w^j_\ell = \sum_{j} w^j_0,\quad \sum_{j} L^j_\ell = \sum_{j}
+L^j_0,\quad \sum_{j} Q^j_\ell = \sum_{j} Q^j_0.
+$$
+\item Sequences $w_\ell^j$, $L_\ell^j$, and $Q_\ell^j$ are bounded by the
+    initial maximums, i.e.,
+  $$
+  |w^j_\ell| \le \sup _{j} |w^j_0|,\quad  |L^j_\ell| \le \sup _{j}
+  |L^j_0|,\quad |Q^j_\ell| \le \sup _{j} |Q^j_0|.
+  $$
+\item We also have, for $p\ge1$,
+$$
+\sum _{j} |w^j_\ell|^p \le \sum _{j} |w^j_0|^p,\quad\sum _{j} |L^j_\ell|^p \le \sum _{j} |L^j_0|^p,\quad \sum _{j} |Q^j_\ell|^p \le
+\sum _{j} |Q^j_0|^p.
+$$
+\end{enumerate}
 \end{lemma}
 \begin{proof}
- This is clear from \eqref{RW1} ($p$ replaced by $w$), \eqref{eq:L}, and \eqref{eq:Q}.
-\end{proof}
-% 
-% 
-% \begin{lemma} \label{lem:Lip}
-% % Let $\displaystyle \Lip(n) \triangleq \sup _{k\in \mathcal{K}} \left\{\begin{array}{lr}
-% %         \frac{p^{k} _{n} - p ^{k-2} _{n}}{2\l}, & \text{if } k\le0,\\
-% %          \frac{p^{k} _{n} - p ^{k-1} _{n}}{\l}, & \text{if }  k>0.
-% %        \end{array}\right.$
-%  $\Lip(n) \le \Lip(0)$ for all $n=2\ell$, $\ell=0,1,2,\cdots$.
-% \end{lemma}
-% \begin{proof}
-%  We observe that
-% %  \begin{align*}
-% %   2(p^k_n - p^{k-1}_n) &= \big(p^{k+1}_{n-2} - p^k_{n-2}\big) + \big(p^{k-1}_{n-2} - p^{k-2}_{n-2}\big),& &\text{if $k\ge2$},\\
-% %   2(p^1_n - p^0_n) &= \big(p^{2}_{n-2} - p^{1}_{n-2}\big) + \frac{1}{2}\big(p^0_{n-2}-p^{-2}_{n-2}\big), & &\text{if $k=1$},\\
-% %   2(p^0_n - p^{-2}_n) &= \big(p^{1}_{n-2} - p^{0}_{n-2}\big) + \big(p^{0}_{n-2} - p^{-2}_{n-2}\big)+\frac{1}{2}\big(p^{-2}_{n-2}-p^{-4}_{n-2}\big), & &\text{if $k=0$},\\
-% %   2(p^k_n - p^{k-2}_n) &= \frac{1}{2}\big(p^{k+2}_{n-2}-p^{k}_{n-2}\big) + \big(p^{k}_{n-2} - p^{k-2}_{n-2}\big) + \frac{1}{2}\big(p^{k-2}_{n-2} - p^{k-4}_{n-2}\big),& &\text{if $k\le -2$},\  
-% %  \end{align*}
-% %  or
-%   \begin{align*}
-%   \left(\frac{2}{2}\right)\left|\frac{2(p^k_n - p^{k-2}_n)}{\l}\right| &= \left|\frac{p^{k+2}_{n-2}-p^{k}_{n-2}}{2\l} + \left(\frac{2}{2}\right)\frac{p^{k}_{n-2} - p^{k-2}_{n-2}}{\l} + \frac{p^{k-2}_{n-2} - p^{k-4}_{n-2}}{2\l}\right|\\
-%   &\le 4\Lip(n-2), \quad\text{if $k\le -2$ even},\\
-%   \left(\frac{2}{2}\right)\left|\frac{2(p^0_n - p^{-2}_n)}{\l}\right| &= \left|\frac{p^{1}_{n-2} - p^{0}_{n-2}}{\l} + \left(\frac{2}{2}\right)\frac{p^{0}_{n-2} - p^{-2}_{n-2}}{\l}+\frac{p^{-2}_{n-2}-p^{-4}_{n-2}}{2\l}\right| \\
-%   &\le 4\Lip(n-2), \quad\text{if $k=0$},\\
-%   \left|\frac{2(p^1_n - p^0_n)}{\l}\right| &= \left|\frac{p^{2}_{n-2} - p^{1}_{n-2}}{\l} + \frac{p^0_{n-2}-p^{-2}_{n-2}}{2\l}\right| \le 2\Lip(n-2), \quad\text{if $k=1$},\\
-%   \left|\frac{2(p^k_n - p^{k-1}_n)}{\l}\right| &= \left|\frac{p^{k+1}_{n-2} - p^k_{n-2}}{\l} + \frac{p^{k-1}_{n-2} - p^{k-2}_{n-2}}{\l}\right| \le 2\Lip(n-2), \quad\text{if $k\ge2$}.
-%  \end{align*}
-% \end{proof}
-\begin{lemma}[time regularity] \label{uniform_est_time}
- For all $j$, 
- \begin{enumerate}
-  \item $\left|w^j_\ell - w^j_{\ell-1}\right| \le 2\displaystyle \sup _{j} |w^j_\ell| \le 2\displaystyle \sup _{j} |w^j_0|$, 
-  \item $\left|w^j_\ell - w^j_{\ell-1}\right| \le \sqrt{2\tau d}\displaystyle \frac{|L^{j+1}_{\ell-1}| + |L^{j}_{\ell-1}|}{2}\le \sqrt{2\tau d}\displaystyle\sup _{j} |L^j_{0}|,$
-  \item $\left|w^j_\ell - w^j_{\ell-1}\right| = 2\tau d |Q^j_{\ell-1}| \le 2\tau d\displaystyle\sup _{j} |Q^j_{0}|.$
- \end{enumerate}
-\end{lemma}
-\begin{proof}
-This follows from \eqref{RW1} and \eqref{RW1w}. %the observation
-% $$w^j_\ell - w^j_{\ell-1} = h\left( \frac{1}{2} L^{j}_{\ell-1}- \frac{1}{2}L^{j-1}_{\ell-1}\right) = \frac{h^2}{2} Q^j_{\ell-1} \quad \text{with $d=\frac{h^2}{2\tau}$}.$$
-%  \begin{align*}
-% \left|\frac{2(p^k_n - p^k_{n-2})}{\l}\right| &= \left\{\begin{array}{ll}
-%         \left|\frac{p^{k+1} _{n-2} - p ^{k} _{n-2}}{\l} - \frac{p^{k} _{n-2} - p ^{k-1} _{n-2}}{\l}\right|\le 2\Lip(n-2), & \text{if } k\ge1,\\
-%         \left|\frac{p^{1}_{n-2} - p^{0}_{n-2}}{\l} - \frac{\big(p^{0}_{n-2} - p^{-2}_{n-2}\big)}{2\l}\right|\le 2\Lip(n-2), & \text{if }  k=0,\\
-%         \left|\frac{\big(p^{k+2}_{n-2} - p^{k}_{n-2}\big)}{2\l}-\frac{\big(p^{k}_{n-2} - p^{k-2}_{n-2}\big)}{2\l}\right|\le 2\Lip(n-2), & \text{if $k\le -2$ even},
-%         \end{array}\right.
-%  \end{align*}
-%  or $\frac{|p^k_n - p^k_{n-2}|}{\l}\le \Lip(n-2)$. Multiplying $\sqrt{d}=\frac{\l}{\sqrt{2\tau}}$ and Lemma \ref{lem:Lip} prove the claim.
+The first two are obvious since the relations in \eqref{RW3},\eqref{eq:L}, and \eqref{eq:Q} are averaging processes. The third one is also obvious since $f(x)=|x|^p$ is a convex function for all $p\ge1$. One may apply Jensen's inequality to the averaging processes, \eqref{RW3},\eqref{eq:L}, and \eqref{eq:Q}. For example, \eqref{eq:L} turns into
+$$
+|L^j_\ell|^p \le \left\{\begin{array}{ll}
+        \frac{1}{4}|L_{\ell-1}^{j-1}|^p + \frac{1}{2}|L_{\ell-1}^j|^p +
+        \frac{1}{4}|L_{\ell-1}^{j+1}|^p, & \text{if $j<0$},\\
+        \frac{1}{2}|L_{\ell-1}^{j-1}|^p + \frac{1}{2}|L_{\ell-1}^{j+1}|^p, &
+        \text{if $j\ge0$}.
+        \end{array}\right.
+$$
+Therefore, $\sum _{j} |L^j_\ell|^p \le\sum _{j} |L^j_{\ell-1}|^p\le\cdots\le\sum _{j} |L^j_0|^p$.
 \end{proof}
 
+Note that this lemma implies that we have enough regularity in $x$ variables. For example, the second assertion implies that the approximation of the second order derivative, $Q^j_\ell$, is uniformly bounded by the initial condition. 
 
-
-\subsection{Linear interpolation}
-In this section, we proceed with a sort of a standard finite difference analysis.
-Out of $\left\{w^j_{\ell;h}\right\}$, we define a few interpolations up to the linear order by the followings. For $(t,y)$ in the half open rectangle $[t_\ell, t _{\ell+1}) \times [y_j, y _{j+1})$,
+\subsection{Linear interpolation and subsequential convergence}
+In this section, we construct functions defined on the continuum space $\R^+\times\R$ which approximates the discrete values $w^j_\ell$ defined at grid points. The reconstruction is simply piecewise linear one, or we merely work in the framework of Lipschitz functions. This will turn out to be enough for the uniqueness and the existence of the limit. We show the convergence of the continuum approximations as $h\to0$. As typical, we construct four different interpolations,
 \begin{equation} \label{linear0}
 \begin{aligned}
- \bar w^h(t,y)&\triangleq w^j_\ell,\\
- \tilde w^h(t,y)&\triangleq \left(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \right) w_{\ell+1}^{j} + \left(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \right) w_{\ell}^{j},\\
- \hat w^h(t,y)&\triangleq \left(\tfrac{y-y_j}{y_{j+1}-y_j} \right) w_{\ell}^{j+1} + \left(\tfrac{y_{j+1}-y}{y_{j+1}-y_j} \right) w_{\ell}^{j},\\
-  w^h(t,y)&\triangleq \left(\tfrac{y-y_j}{y_{j+1}-y_j} \right)\left(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \right) w_{\ell+1}^{j+1} + \left(\tfrac{y_{j+1}-y}{y_{j+1}-y_j} \right)\left(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \right) w_{\ell+1}^{j}\\
- &+ \left(\tfrac{y-y_j}{y_{j+1}-y_j} \right)\left(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \right) w_{\ell}^{j+1} + \left(\tfrac{y_{j+1}-y}{y_{j+1}-y_j} \right)\left(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \right) w_{\ell}^{j}. 
+ w_1^h(t,x)&:= w^j_\ell,\\
+ w_2^h(t,x)&:= \left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell+1}^{j} + \left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell}^{j},\\
+ w_3^h(t,x)&:= \left(\tfrac{x-y^j}{y^{j+1}-y^j} \right) w_{\ell}^{j+1}
+ + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j} \right) w_{\ell}^{j},\\
+  w^h(t,x)&:= \left(\tfrac{x-y^j}{y^{j+1}-y^j}
+  \right)\left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
+  w_{\ell+1}^{j+1} + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j}
+  \right)\left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
+  w_{\ell+1}^{j}\\
+ &+ \left(\tfrac{x-y^j}{y^{j+1}-y^j}
+ \right)\left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell}^{j+1} + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j}
+ \right)\left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell}^{j}
   \end{aligned}
 \end{equation}
-% a function $w^h(t,x)$ by linear interpolation.
-% % Consider a point $(t,y)$ in a (half open) rectangle . %With notations of $\lambda^j(y)=\frac{y-y_j}{y_{j+1}-y_j}$ and $\mu^\ell(t)=\frac{t-t_\ell}{t_{\ell+1}-t_\ell}$, 
-% 
-% \begin{equation} \label{linear}
-% \begin{aligned}
-%  w^h(t,y)&\triangleq \left(\tfrac{y-y_j}{y_{j+1}-y_j} \right)\left(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \right) w_{\ell+1}^{j+1} + \left(\tfrac{y_{j+1}-y}{y_{j+1}-y_j} \right)\left(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \right) w_{\ell+1}^{j}\\
-%  &+ \left(\tfrac{y-y_j}{y_{j+1}-y_j} \right)\left(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \right) w_{\ell}^{j+1} + \left(\tfrac{y_{j+1}-y}{y_{j+1}-y_j} \right)\left(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \right) w_{\ell}^{j}. 
-%  \end{aligned}
-% \end{equation}
-% It is convenient to have the space or time only interpolations such that in the half open rectangle $(t,y)\in[y_j, y _{j+1}) \times [t_\ell, t _{\ell+1})$
-% 
-% From \eqref{RW1w}, we can write for $(t,y) \in [y_j, y _{j+1}) \times [t_\ell, t _{\ell+1})$,
-% \begin{equation}
-%  \partial_t \tilde{w}(t,y) = \left\{\begin{array}{ll}
-%                             \frac{d}{2h}\big(\partial_y\hat{w}(t,y)-\partial_y\hat{w}(t,y-2h)\big) & \text{if } j<0,\\
-% %                             \frac{d}{2h}\big(\partial_y\hat{w}(t,y)-\partial_y\hat{w}(t,y-h)\big)=\frac{d}{2h}\big(\partial_y\hat{w}(t,y)-\partial_y\hat{w}(t,y-2h)\big) & \text{if } j=0, \\
-%                             \frac{d}{2h}\big(\partial_y\hat{w}(t,y)-\partial_y\hat{w}(t,y-h)\big) & \text{if } j>0.
-%                            \end{array}\right.
-% \end{equation}
-To proceed, we show some necessary properties of the interpolated functions.
+when $(t,x)\in D_\ell^j:=[t_{2\ell}, t _{2\ell+2}) \times [y^j, y^{j+1})$. Note that $w_1^h$ is constant on $D_\ell^j$, and $w_2^h$ and $w_3^h$ are linear on $D_\ell^j$. The last one, $w^h(t,x)$, is continuous on $\R^+\times\R$. All of them has the value $w^j_\ell$ at $t=t_{2\ell}$ and $x=y^j$. We now see in the following lemma that the functions $w^h(t,x)$ are uniformly bounded in the Lipschitz space $C^{0,1}\big(\R^+\times \mathbb{R}\big)$ where the norm is defined by
+$$\|u\|_{C^{0,1}\big(\R^+\times \mathbb{R}\big)} = \sup_{(t,y)\in \R^+\times \mathbb{R}}|u(t,y)| + \sup_{(t,y)\ne(s,z) \in \R^+\times \mathbb{R}} \frac{|u(t,y)-u(s,z)|}{|(t,y)-(s,z)|}.$$
 \begin{lemma} \label{misc}
-Let $w_0$ be given as in \eqref{initial}, $\left\{w^j_{\ell;h}\right\}$ be the sequence generated via \eqref{vol_aver+pmf} and \eqref{RW1}, and ($\bar{w}^h$, $\tilde{w}^h$, $\hat{w}^h$, $w^h$) be defined by \eqref{linear0}.
-\begin{enumerate}
-%  \item $\bar{w}^h(0,\cdot) \rightarrow w_0(\cdot)$ in $L^1(\mathbb{R})$.
- \item $\|\partial_y w^h(0,\cdot)\|_{L^\infty(\mathbb{R})} \le 4\|\partial_y w_0\|_{L^\infty(\mathbb{R})}$, $\|\partial_y w^h(0,\cdot)\|_{L^1(\mathbb{R})} \le 4\|\partial_y w_0\|_{L^1(\mathbb{R})}$.
- \item $\displaystyle \|w^h\|_{L^\infty([0,T);W^{1,\infty}(\mathbb{R}))} \le \displaystyle\|w^h\|_{C^{\frac{1}{2},1}([0,T)\times\mathbb{R})} \le C$. %C\Big(\sup_j |w_0^{j;h}| + \sup_j |L_0^{j;h}|$\Big).%\le C\|w_0^h\|_{C^{0,1}(\mathbb{R})}$.
- \item $\displaystyle \|w^h\|_{L^\infty([0,T);W^{1,1}(\mathbb{R}))} \le C$.
- \end{enumerate}
+Let $w_0\in C^{\infty}_c(\R)$ and $w^h$ be defined by \eqref{linear0}. We assume that $\tau$ and $h$ are related by
+$$
+{h^2\over 2\tau}=d,
+$$
+where $d>0$ is fixed. Then, for any $h>0$ small and any $t>0$, 
+$$\|\partial_x w^h(t,\cdot)\|_{L^\infty(\R)} + \|\partial_t w^h(t,\cdot)\|_{L^\infty(\R)} \le C,$$
+where $C$ depends only on $d$ and $\|w_0\|_{W^{2,\infty}(\R)}.$
 \end{lemma}
 \begin{proof}
-%  1. The first assertion follows from the definitions of $w_0^{j;h}$ of \eqref{vol_aver+pmf} and its piecewise constant interpolation $\bar{w}^h(0,\cdot)$. 
- 
- 
-1. By the definition \eqref{vol_aver+pmf}, for $y\in (y^j,y^{j+1})$
-\begin{align*}
- \partial_y w^h(0,y) &= \frac{w_0^{j+1}-w_0^j}{y^{j+1}-y^j} =\frac{w_0(y^{j+1})-w_0(y^j)}{y^{j+1}-y^j} \\
- &+ \tfrac{1}{y^{j+1}-y^j}\left\{\frac{\int_{y^{j+1}}^{y^{j+2}} w_0(y)-w_0(y^{j+1}) \;dy}{y^{j+2}-y^{j+1}} - \frac{\int_{y^{j}}^{y^{j+1}} w_0(y)-w_0(y^{j}) \;dy}{y^{j+1}-y^{j}}\right\}\\
- &\le \tfrac{1}{{y^{j+1}-y^j}}\int_{y^j}^{y^{j+1}} \partial_y w_0(y) \; dy+\tfrac{1}{y^{j+1}-y^j}\left\{\int_{y^{j+1}}^{y^{j+2}} |\partial_y w_0(y)| \; dy + \int_{y^{j}}^{y^{j+1}} |\partial_y w_0(y)| \; dy\right\}\\
- &\le \tfrac{2}{{y^{j+1}-y^j}}\int_{y^j}^{y^{j+1}} |\partial_y w_0(y)| \; dy+\tfrac{2}{{y^{j+2}-y^{j+1}}}\int_{y^{j+1}}^{y^{j+2}} |\partial_y w_0(y)| \; dy.
-%  &\le 3\|\partial_y w_0\|_{L^\infty(\mathbb{R})}.
-\end{align*}
- The first assertion follows from the above formula.
- 
- 
- {\red
- 2. Let us abbreviate $\sup_j |L_0^{j;h}|$ by $L_0$. The Lipschitz function $w^h$ has weak derivatives such that for a.e. $(t,y)$
+It is obvious that
+$$|L_0^{j;h}| + |Q_0^{j;h}| \le C\|w_0\|_{W^{2,\infty}(\R)}.$$
+from the Taylor Theorem. The linear interpolation $w^h$ has weak first 
+derivatives for a.e. $(t,y)$. By Lemma \ref{uniform_est},
  \begin{align*}
- |\partial_t w^h(t,y)| \le \sqrt\frac{{d}}{{2\tau}}\sup_j |L_0^{j;h}|,\quad \quad
- |\partial_y w^h(t,y)| \le \sup_j |L_0^{j;h}|
+ |\partial_t w^h(t,y)| \le d\sup_j |Q^{j;h}_{\ell}|\le d\sup_j |Q^{j;h}_{0}|,\quad \quad
+ |\partial_y w^h(t,y)| \le \sup_j |L_0^{j;h}|.
  \end{align*}
- and thus we have 
- $$|w^h(t,y) - w^h(t,z)| \le L_0|y-z|, \quad \text{and} \quad |w^h(t,y) - w^h(s,y)| \le \sqrt\frac{{d}}{{2\tau}}L_0|t-s|. $$
- 
- We assume $2\tau<1$. If $|t-s| \le 2\tau < 1$, then 
- $$\frac{|w^h(t,y) - w^h(s,y)|}{\sqrt{|t-s|}} = \frac{|w^h(t,y) - w^h(s,y)|}{|t-s|}\sqrt{|t-s|}\le \sqrt{d}L_0.$$
- If $|t-s| > 1$, $$\frac{|w^h(t,y) - w^h(s,y)|}{\sqrt{|t-s|}} = |w^h(t,y) - w^h(s,y)|\le \|w^h\|_\infty.$$
- Then !!!!
- }
-%  \begin{align} \label{semi-norm}
-%    \sup_{(t,y)\ne(s,z) \in [t_\ell, t_\ell)\times[y^j,y^{j+1})} \frac{|w^h(t,y)-w^h(s,z)|}{\sqrt{d}|t-s|^{1/2} + |y-z|}\le \sup_j L_\ell^{j;h} \le \sup_j L_0^{j;h}.
-%  \end{align}
-% For given $y<z$ that do not reside in the same half open rectangle, let the two integer $a$ and $b$ such that $y\le y^a < y^{a+1} < \cdots < y^{b-1} < y^b \le z$. Then 
-% \begin{align*}
-%  |w^j(t,z) &- w^j(t,y)| = |w^j(t,z)-w^j(t,y^b)| + |w^j(t,y^{b})-w^j(t,y^{b-1})| + \cdots \\
-%  &+ |w^j(t,y^{a+1})-w^j(t,y^{a})| + |w^j(t,y^{a})-w^j(t,y)| \le  \sup_j L_0^{j;h} |z-y|.
-% \end{align*}
-% For given $s<t$ that do not reside in the same half open rectangle, let the two integer $a$ and $b$ such that $s\le t_a < t_{a+1} < \cdots < t_{b-1} < t_b \le t$. Then 
-% \begin{align*}
-%  |w^j(t,y) &- w^j(s,y)| = |w^j(t,y)-w^j(t_b,y)| + |w^j(t_b,y)-w^j(t_{b-1},y)| + \cdots \\
-%  &+ |w^j(t_{a+1},y)-w^j(t_{a},y)| + |w^j(t_a,y)-w^j(s,y)| \le  \sup_j L_0^{j;h} \sqrt{d|t-s|}.
-% \end{align*}
-% Similarly for $y<z$, $|w^j(t,y) - w^j(t,z)| \le \sup_j L_0^{j;h} |z-y|$. By triangle inequality the inequalities in \eqref{semi-norm} holds for any $(t,y)\ne(s,z)$ in $[0,T)\times\mathbb{R}$. The uniform bound is from Lemma \ref{uniform_est} and the second assertion follows.
-% }
-
-3. For 3, we show that $\|\partial_y w^h(t,\cdot)\|_{L^1(\mathbb{R})} \le 2\|\partial_y w^h(0,\cdot)\|_{L^1(\mathbb{R})}$ for $t\ge0$ a.e. Because of Lemma \ref{uniform_est}, for $t\in[t_\ell, t_{\ell+1})$,
-\begin{align*}
- \int_\mathbb{R} |\partial_y w^h(t,y)| \; dy &\le 2h\sum_j\left\{\left(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \right)|L^j_{\ell+1}| + \left(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \right) |L^j_{\ell}|\right\}\\
- &\le 2h\sum_j |L^j_0|\le 2\int_\mathbb{R} |\partial_y w^h(0,y)| \; dy < \infty.
-\end{align*}
-% \begin{align*}
-%  \int_\mathbb{R} |\partial_y w^h(t,y)| \; dy &\le \sum_j(y^{j+1}-y^j)\left\{\left(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \right)|L^j_{\ell+1}| + \left(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \right) |L^j_{\ell}|\right\}\\
-%  &\le \sum_j (y^{j+1}-y^j)|L^j_0|=\int_\mathbb{R} |\partial_y w^h(0,y)| \; dy < \infty.
-% \end{align*}
- 
-
 \end{proof}
+% \begin{lemma} \label{misc}
+% Let $w_0\in C^{\infty}(\R)$ and $w^h$ be defined by \eqref{linear0}. We assume that $\tau$ and $h$ are related by
+% $$
+% {h^2\over 2\tau}=d,
+% $$
+% where $d>0$ is fixed. Then,
+% \begin{enumerate}
+%  \item For any $t>0$ and $h>0$, $\|\partial_x w^h(t,\cdot)\|_{L^\infty(\R)} \le \|\partial_x w_0\|_{L^\infty(\R)}$. Hence, $w^h(t,\cdot)$ is uniformly Lipschitz continuous in the $x$-variable.
+%  \item {\red need the correction} The approximations $w^h(\cdot,x)$ are uniformly Holder continuous in the $t$-variable with exponent ${1\over2}$ with respect to $h>0$ and $x\in\R$. In other words, there exists a constant $C>0$ such that, for any $x\in\R$ and $h>0$,
+%      \begin{equation}\label{Holder}
+%      |w^h(t,x)-w^h(s,x)|\le C\sqrt{|t-s|} \quad\text{for all } |t-s|\text{
+%      small}.
+%      \end{equation}
+%  \end{enumerate}
+% \end{lemma}
+% \begin{proof}
+% 1. Since $w_0^j$ is the mean of $w_0(x)$ in the interval $(y^j,y^{j+1})$
+% (see \eqref{vol_aver+pmf}) and $w^h(0,\cdot)$ is the linear interpolation of
+% $(y^j,y^{j+1})$, the first assertion is clear by Lemma \ref{uniform_est}.
+% 
+% 2. Let $L_0:=\sup |w_0'(x)|$. Then, $|L_0^{j}|\le L_0$ for any mesh size
+% $h>0$. It is enough to consider an estimate along mesh grids and let
+% $x=y^j$. By \eqref{Qjl} and \eqref{RW1w}, we have
+% $$
+%  \frac{|w^j_\ell - w^j_{\ell-1}|}{2\tau} \le d\sup|Q^j_{\ell}|\le {d\over
+%  h}L_0.
+% $$
+% Multiply $\sqrt{2\tau}$ both sides and obtain
+% $$
+%  {|w^h(t_{2\ell},y^j)-w^h(t_{2\ell-2},y^j)|\over\sqrt{2\tau}}=\frac{|w^j_\ell
+%  - w^j_{\ell-1}|}{\sqrt{2\tau}} \le d\sqrt{2\tau\over
+%  h^2}L_0=\sqrt{d}\,L_0.
+% $$
+% This inequality \eqref{Holder} holds for any $|s-t|<\tau$ and hence $w^h$ is Holder continuous with exponent ${1\over2}$. Since the upper bound $C:=\sqrt{d}\,L_0$ is independent of $h$ and $x$, $w^h$'s are uniformly Holder continuous.
+% \end{proof}
 
-Given Lemma \ref{misc}, we have the uniform estimate $\| w^h\|_{C^{\frac{1}{2},1}\big([0,T)\times \mathbb{R}\big)} \le C$. The compactness theorem for our problem is stated in the below.
+By the Arzela-Ascoli theorem, there exists a subsequence $w^{h_i}(t,x)$ such that $w^{h_i}(t,x)\to w$ uniformly on any compact set for a limit function $w$ in the Lipschitz space. Furthermore, due to the way of construction, $w_1^{h_i},w_2^{h_i}$ and $w_3^{h_i}$ also converge to the same limit in the uniform norm.
 
-\begin{lemma}\label{compactness}
- $\exists$ subsequence $\left\{w^{h(m)}\right\}$ and a function $w\in C^{\frac{1}{2},1}\big([0,T)\times \mathbb{R}\big)$ such that 
- \begin{enumerate}
-  \item $\bar{w}^{h(m)},\tilde{w}^{h(m)}, w^{h(m)}\rightarrow w$ uniformly in each compact set $K \subset [0,T)\times \mathbb{R}$,
-  \item $\partial_y \hat{w}^{h(m)}, \partial_y w^{h(m)} \rightharpoonup \partial_y w$ weakly-* in $L^\infty([0,T)\times \mathbb{R})$.
- \end{enumerate}
+\begin{lemma}\label{compactness} There exists a subsequence $\{w^{h_i}\}$ and a function $w\in C^{0,1}\big(\R^+\times \R\big)$ such that $w_1^{h_i},w_2^{h_i},w_3^{h_i},w^{h_i}\rightarrow w$ uniformly on any compact set $K \subset \R^+\times \R$ and $\partial_x w_3^{h_i}, \partial_x w^{h_i} \rightharpoonup \partial_y w$ weakly-* in $L^\infty(\R^+\times \mathbb{R})$.
 \end{lemma}
 \begin{proof}
-The statements corresponding to $w^h$ and $\partial_y w^y$ is the compacness theorem in the H\"older space and the $L^\infty$ space.
-%  The existence of such a subsequence that $w^{h(m)}\rightarrow w$ uniformly in each compact $K$ and $\partial_y w^{h(m)} \rightharpoonup \partial_y w$ weakly-* in $L^\infty([0,T)\times \mathbb{R})$ is the compacness theorem in the H\"older space and in the $L^\infty$ space.
- Here we show the other interpolations share the specified convergent properties. The first assertion follows from the observation that $\bar{w}^{h(m)}(t,y) = w^{h(m)}(t_\ell, y^j)$ in each rectangle and thus by H\"older continuity
- $$|w^{h(m)} - \bar{w}^{h(m)}| \le \|w^{h(m)}\|_{C^{\frac{1}{2},1}\big([0,T)\times \mathbb{R}\big)}\Big(\sqrt{2\tau d} + |2h|\Big) \rightarrow 0 \quad \text{uniformly in $\mathbb{R}$}.$$
- Similar holds for $\hat{w}^h$ and $\tilde{w}^h$ as well.
- 
- To show 2, first we zero extend the $\partial_y {w}^h(t,y)$, $\partial_y \hat{w}^h(t,y)$ and the test function $g\in L^1([0,T)\times \mathbb{R})$ for all $t\in \mathbb{R}$. Then
+ We prove only the assertion that $\partial_x w_3^{h_i}$ weakly-* converges to the same limit $\partial_x w^{h_i}$ converges.  %First we zero extend the $\partial_x {w}^h(t,x)$, $\partial_x w_3^h(t,x)$ and the test function $g\in L^1(\R^+\times \mathbb{R})$ for all $t\in \mathbb{R}$. Then
+ For a test function $g\in L^1(\R^+\times \mathbb{R})$,
  \begin{align*}
-  &\int_0^T\int_\mathbb{R} \Big|\partial_y {w}^{h(m)} - \partial_y \hat{w}^{h(m)}\Big| \Big|g(t,y)\Big| \; dydt \le \int_\mathbb{R}\int_\mathbb{R} \Big|\partial_y {w}^{h(m)} - \partial_y \hat{w}^{h(m)}\Big| \Big|g(t,y)\Big| \; dydt\\
-  &= \sum_{\ell\ge0}\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} \Big|\partial_y \hat{w}^{h(m)}(t+2\tau,y)-\partial_y \hat{w}^{h(m)}(t,y) \Big| \left|\frac{t-t_\ell}{t_{\ell+1}-t_{\ell}}g(t,y) \right|\;dydt\\
+  &\int_0^\infty\int_\mathbb{R} \Big|\partial_x {w}^{h_i} - \partial_x w_3^{h_i}\Big| \Big|g(t,x)\Big| \; dxdt  \\%=\int_\mathbb{R}\int_\mathbb{R} \Big|\partial_x {w}^{h_i} - \partial_x w_3^{h_i}\Big| \Big|g(t,x)\Big| \; dydt\\
+  &= \sum_{\ell\ge0}\int_{t_{2\ell}}^{t_{2(\ell+1)}}\int_\mathbb{R} \Big|\partial_x w_3^{h_i}(t+2\tau,x)-\partial_x w_3^{h_i}(t,x) \Big| \left|\frac{t-t_{2\ell}}{t_{2(\ell+1)}-t_{2\ell}}\right|~\Big|g(t,x)\Big| \;dxdt\\
 %   &= \sum_{\ell\ge0}\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} \Big|\partial_y \hat{w}^{h(m)}(t+2\tau,y)-\partial_y \hat{w}^{h(m)}(t,y) \Big| \left|\frac{t-t_\ell}{t_{\ell+1}-t_{\ell}}g(t,y) \right|\;dydt\\
-  &\le \int_\mathbb{R} \int_\mathbb{R} \Big|\partial_y \hat{w}^{h(m)}(t+2\tau,y)-\partial_y \hat{w}^{h(m)}(t,y) \Big| \Big|g(t,y)\Big| \; dydt.
+  &\le \int_0^\infty \int_\mathbb{R} \Big|\partial_x w_3^{h_i}(t+2\tau,x)-\partial_x w_3^{h_i}(t,x) \Big| \Big|g(t,x)\Big| \; dxdt.
  \end{align*}
- Because the integrand pointwise converges to $0$, by Lebesgue dominated convergence theorm the error converges to $0$.
+ Because the integrand pointwise converges to $0$, by Lebesgue dominated convergence theorem the error converges to $0$.
 \end{proof}
 
-% $$ \| w^h\|_{C^{\frac{1}{2},1}\big([0,T)\times \mathbb{R}\big)} \le C\sup _{j}\left(|w^j_0|+|L^j_0|\right)$$
+\subsection{Convergence to a weak solution}
 
-\subsection{Convergence to an energy weak solution of \eqref{eq:continuum}}
-\begin{align*}
- &\overbrace{\int_0^T\int_\mathbb{R} -\tilde w^h(t,y) \alpha(y)\partial_t\phi(t,y)\; dy dt}^{\triangleq I} -\overbrace{\int_\mathbb{R} \tilde{w}^h(0,y)\alpha(y)\phi(t,y) \; dy}^{\triangleq II} \\
- %&=\sum_{\ell\ge0}\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} -\tilde w^h(t,y) \alpha(y)\partial_t\phi(t,y)\; dy dt - \int_\mathbb{R} \tilde{w}^h(0,y)\alpha(y)\phi(t,y) \; dydt \\
- &=\sum_{\ell\ge0}\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} \partial_t\tilde w^h(t,y) \alpha(y)\phi(t,y)\; dy dt \\
- &=\sum_{\ell\ge0}\sum_{j}\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} \frac{w^j_{\ell+1}-w^j_{\ell}}{2\tau} \alpha(y)\phi(t,y)\chi_j(y)\; dy dt \quad (\text{with } \chi_j=\chi_{[y_j,y_{j+1})})\\
- &=\sum_{\ell\ge0}\sum_{j}d\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} \tfrac{1}{2h} \left( \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}} \Big)\right) \alpha(y)\phi(t,y)\chi_j(y)\; dy dt\\
- &=\sum_{\ell\ge0}\sum_{j}d\int_{t_\ell}^{t_{\ell+1}}\overbrace{\int_\mathbb{R} \tfrac{1}{2h} \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)\alpha(y)\big(\chi_{j-1}(y)-\chi_{j}(y)\big) \phi(t,y)\; dy}^{\triangleq A_j} \;dt.
-\end{align*}
-\begin{align*}
- A_j &= \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-        \left\{\frac{1}{2h}\int_{y^{j-1}}^{y^{j}} \alpha(y)\phi(t,y) \; dy -  \frac{1}{2h}\int_{y^{j}}^{y^{j+1}} \alpha(y)\phi(t,y) \; dy\right\}\\
-     &= \left\{\begin{array}{ll} 
-        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi(t,y) \; dy- \frac{1}{y^{j+1}-y^{j}}\int_{y^{j}}^{y^{j+1}} \phi(t,y) \; dy \bigg) & \text{if } j<0,\\
-        \Big(\tfrac{w^{0}_{\ell} - w^{-1}_{\ell}}{y^{0}-y^{-1}}\Big)
-        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi(t,y) \; dy- \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi(t,y) \; dy \bigg) & \text{if } j=0,\\
-        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-        \bigg( \frac{1}{2(y^j-y^{j-1})}\int_{y^{j-1}}^{y^{j}} 2\phi(t,y) \; dy- \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi(t,y) \; dy \bigg) & \text{if } j>0,        
-       \end{array}\right.\\
-     &=-\int_{y^{j-1}}^{y^{j}}\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\partial_y\phi(t,y)\;dy \\
-     & + \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\left\{
-        \frac{\int_{y^{j-1}}^{y^{j}} \phi(t,y)-\phi(t,y^{j-1}) \; dy}{y^j-y^{j-1}} - \frac{\int_{y^{j}}^{y^{j+1}} \phi(t,y)-\phi(t,y^{j}) \; dy}{y^{j+1}-y^j} \right\}.
-\end{align*}
-Using $\phi$ is $C^1$, the latter error term is $o(h)$ if $j\ne0$ and $O(h)$ if $j=0$. Hence in total,
-$$\sum_j  A_j = -\int_\mathbb{R} \partial_y \hat{w}(t,y) \partial_y \phi(t,y) \; dy + o(1) \rightarrow -\int_\mathbb{R} \partial_y w(t,y) \partial_y \phi(t,y) \; dy.$$
-Since $\tilde{w}^h \rightarrow w$ uniformly for each compact set and $\tilde{w}(0,\cdot) \rightarrow w_0(\cdot)$ in $L^1$
-\begin{align*}
-I &\rightarrow \int_0^T\int_\mathbb{R} -w(t,y) \alpha(y)\partial_t\phi(t,y)\; dy dt, \quad 
-II \rightarrow \int_\mathbb{R} w_0(y)\alpha(y)\phi(t,y) \; dy. 
-\end{align*}
+In this section we show that the subsequential limit is a weak solution to a
+Cauchy problem of a non-autonomous parabolic equation,
+\begin{equation}\label{eqnw}
+  \alpha(x) w_t = d w_{xx},\qquad w(0,x)=w_0(x).
+\end{equation}
+We also show that there is an energy functional such that the energy level of the weak solution decreases as $t\to\infty$. This implies the uniqueness of the solution in the class of admissible ones and the convergence of $w^h$ as $h\to0$.
 
-\begin{proposition}
+Let $w$ be a smooth solution of \eqref{eqnw} and define an energy
+functional by
+$$
+e(t;w)={1\over 2}\int \alpha(x) w^2(t,x)\,dx.
+$$
+Then formally,
+$$
+e'(t;w)=\int \alpha ww_t\,dx=d\int ww_{xx}\,dx=-d\int w_x^2\,dx\le 0.
+$$
+We show that the energy of a subsequential limit decreases in time.
+\begin{theorem}
+Let $w$ be a subsequential limit, i.e., $w^{h_i}\to w$.
 \begin{enumerate}
- \item $\forall t\in[0,T)$, $\int_\mathbb{R} \frac{w(t,y)\alpha(y)}{2}\;dy = 1$.
- \item The energy inequality in \eqref{energy_inequality} holds for $w$.
+ \item  $\int_\R\alpha(x) w(t,x)\;dx = 1$.
+ \item For all $t>0$, $e(t;w)\le e(0;w)$.
 \end{enumerate}
-\end{proposition}
+\end{theorem}
 \begin{proof}
-1. If $t\in [t_\ell, t_{\ell+1})$,
-\begin{align*}
-\int_\mathbb{R} \frac{\bar{w}^h(t,y)\alpha(y)}{2} \; dy &= \sum_{j\ge0} h w^j_\ell \frac{2}{2} + \sum_{j<0} 2h w^j_\ell \frac{1}{2} = \sum_j h w^j_\ell = \sum_j h w^j_0=\sum_j p^j_0 = 1. 
-\end{align*}
-Then $\bar{w}^h(t,\cdot) \rightarrow w(t,\cdot)$ in $L^1(\mathbb{R})$ and $\displaystyle\int_\mathbb{R} \frac{w(t,y)\alpha(y)}{2} \; dy = 1.$
+It is straightforward to see that the $L^p$ norm of $w_0(x)$ and that of $w_0^h(x)$ are bounded for any $p\in [1,\infty]$. Further, by the Lemma \ref{uniform_est} and that $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ uniformly in any compact set of $\R$ for all $t\in\R^+$, $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ strongly in $L^p(\R)$ for any $p \in [1,\infty)$.
 
-2. To show 2,
+Now, for $t\in [t_{2\ell}, t_{2\ell+2})$, we have
 \begin{align*}
-    &\int_\mathbb{R} \alpha(y) \left\{\frac{1}{2} \big(\bar{w}^h\big)^2(T,y) - \frac{1}{2}\big(\bar{w}^h\big)^2(0,y)\right\} \; dy\\
-    &=\sum_{\ell\ge0}\sum_j\frac{1}{2\tau}\int_{t\ell}^{t_{\ell+1}}\int_\mathbb{R} \alpha(y) \left\{\frac{1}{2} \big(w_{\ell+1}^j\big)^2 - \frac{1}{2}\big(w_{\ell}^j\big)^2\right\} \chi_j(y)\; dydt\\
-    &=\sum_{\ell\ge0}\sum_j\int_{t\ell}^{t_{\ell+1}}\int_\mathbb{R} \alpha(y) \left(\tfrac{w_{\ell+1}^j-w_{\ell}^j}{2\tau}\right)\left(\tfrac{w_{\ell+1}^j+w_{\ell}^j}{2}\right) \chi_j(y)\; dydt\\
-    &=\sum_{\ell\ge0}\sum_j\int_{t\ell}^{t_{\ell+1}}\int_\mathbb{R} \alpha(y) \left\{\left(\tfrac{w_{\ell+1}^j-w_{\ell}^j}{2\tau}\right)w_\ell^j + \tau\left(\tfrac{w_{\ell+1}^j-w_{\ell}^j}{2\tau}\right)^2\right\} \chi_j(y)\; dy=I + II.\\    
-    I&= \sum_{\ell\ge0}\sum_{j}d\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} \tfrac{1}{2h} \left( \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}} \Big)\right) \alpha(y)w^j_\ell\chi_j(y)\; dy dt.
+\int_\R \alpha(x)w_1^h(t,x) \; dx &= \sum_{j<0}w^j_\ell2h + 
+\sum_{j\ge0}2w^j_\ell h = \sum_{j<0}p^{2j}_{2\ell} +
+\sum_{j\ge0}p^j_{2\ell} = \sum_{j<0}p^{2j}_{0} + \sum_{j\ge0}p^j_{0} \rightarrow 1
 \end{align*}
-Noticing that $\frac{1}{2h}\int_\mathbb{R} \alpha(y)\chi_j(y)\; dy=1$ for all $j$,
+since $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ in $L^1(\R)$ for all $t\ge0$ and $\int_\R\alpha(x) w_0(x) \; dx=1$.
+
+Next consider the energy of the approximation $w^h_1$. If $t\in [t_{2\ell}, t_{2\ell+2})$,
 \begin{align*}
-    I&= \sum_{\ell\ge0}\sum_{j}d\int_{t_\ell}^{t_{\ell+1}}\left( \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}} \Big)\right) w^j_\ell\; dt\\
-    &= \sum_{\ell\ge0}\sum_{j}d\int_{t_\ell}^{t_{\ell+1}}-\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}} \Big)^2 (y^j-y^{j-1})\; dt = -d \int_0^T\int_\mathbb{R} \partial_y\hat{w}^h(t,y)^2\;dydt \\
-    &= -d\int_0^T\int_\mathbb{R} \partial_y w(t,y)^2\;dydt -d \int_0^T\int_\mathbb{R} |\partial_y w(t,y)-\partial_y\hat{w}^h(t,y)|^2\;dydt%\\    
-%     &=\sum_{\ell\ge0}\sum_j d\int_{t\ell}^{t_{\ell+1}}\overbrace{\int_\mathbb{R} \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)\alpha(y)\frac{1}{2h}\Big(w^{j-1}_\ell\chi_{j-1}(y)-w^j_\ell\chi_{j}(y)\Big) \; dy}^{A_j}dt\\
-%     A_j&=\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-%         \left\{\frac{w^{j-1}_\ell}{2h}\int_{y^{j-1}}^{y^{j}} \alpha(y)\; dy -  \frac{w^{j}_\ell}{2h}\int_{y^{j}}^{y^{j+1}} \alpha(y) \; dy\right\}\\
-%      &= \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-%         (w^{j-1}_\ell - w^j_\ell) = -\int_{y^{j-1}}^{y^{j}}\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)^2\;dy =-\int_{y^{j-1}}^{y^{j}}\partial_y\hat{w}^h(t,y)^2\;dy.\\
-%    I&=\sum_{\ell\ge0}\sum_j A_j = -d \int_0^T\int_\mathbb{R} \partial_y\hat{w}^h(t,y)^2\;dydt \\
-%    &= -d\int_0^T\int_\mathbb{R} \partial_y w(t,y)^2\;dydt -d \int_0^T\int_\mathbb{R} |\partial_y w(t,y)-\partial_y\hat{w}^h(t,y)^2|\;dydt
-   \end{align*}
-   by the Parallelogram Law $|\langle \partial_y w-\partial_y w^h, \partial_y w-\partial_y w^h\rangle|^2 = \|\partial_y w\|^2_{L^2} + \|\partial_y w^h\|^2_{L^2} - 2\langle \partial_y w,\partial_y w^h\rangle$ and the $L^2$-weak convergence of $\partial_y w^h$ to $\partial_y w$.
-   \begin{align*}
-    II &=\sum_{\ell\ge0}\sum_j\int_{t\ell}^{t_{\ell+1}}\int_\mathbb{R} \tfrac{d^2\tau}{4h^2}  \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j} - \tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)^2\alpha(y) \chi_j(y)\; dy\\
-    &=\sum_{\ell\ge0}\sum_j\int_{t\ell}^{t_{\ell+1}}\int_\mathbb{R} \tfrac{d}{2}  \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j} - \tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)^2\alpha(y) \chi_j(y)\; dy.
-   \end{align*}
-   Because the integrand pointwise converges to $0$, by the dominated convergence theorem $II \rightarrow 0$. Therefore, in the limit we have
-   \begin{align*} \label{energyID}
- &\int_\mathbb{R} \alpha(y) \frac{1}{2} |w|^2(T,y)\; dy + d \int_0^T\int_\mathbb{R} |w_y|^2 \; dydt\\
- &= \int_\mathbb{R} \alpha(y) \frac{1}{2} |w_0|^2(y)\; dy -  d \lim_{h \rightarrow 0} \int_0^T\int_\mathbb{R} |\partial_y w(t,y)-\partial_y\hat{w}^h(t,y)|^2\;dydt\\
- &\le \int_\mathbb{R} \alpha(y) \frac{1}{2} |w_0|^2(y)\; dy.
+e(0;w^h_1) &= \frac{1}{2} \int_\R \alpha(x) \big(w^h_1(0,x)\big)^2dx = \frac{1}{2} \Big( \sum_{j<0}(w_0^{j})^2(2h) +\sum_{j\ge0}2(w_0^{j})^2h \Big)=\sum_{j<0}(w_0^{j})^2\,h\\
+&\ge \sum_{j<0}(w_\ell^{j})^2\,h =\frac{1}{2} \Big( \sum_{j<0}(w_\ell^{j})^2(2h) +\sum_{j\ge0}2(w_\ell^{j})^2h \Big) = e(t;w^h_1).
 \end{align*}
-\end{proof}
-
-% 
-% 
-% 
-% Now noticing that $\chi_{j-1}(y) = \chi_{j}(y+h)$ if $j>0$ and $\chi_{j-1}(y) = \chi_{j}(y+2h)$ if $j<0$,
 % \begin{align*}
-%  A_j &=\left\{\begin{array}{ll} 
-%         \int_\mathbb{R} \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j}\Big) \chi_{j}(y) \tfrac{2\big(\phi(t,y)-\phi(t,y-h)\big)}{2h} \; dy & \text{if } j>0,\\
-%         \int_\mathbb{R} \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j}\Big) \chi_{j}(y) \tfrac{\big(\phi(t,y)-\phi(t,y-2h)\big)}{2h} \; dy & \text{if } j<0.
-%        \end{array}\right.
+% e(t;w^h_1) &= \frac{1}{2} \int_\R \alpha(x) \big(w^h_1(t,x)\big)^2dx= \frac{1}{2} \Big( \sum_{j<0}(w_\ell^{j})^2(2h) +\sum_{j\ge0}2(w_\ell^{j})^2h \Big)\\
+% &= \sum_{j<0}(w_\ell^{j})^2\,h\le \sum_{j<0}(w_0^{j})^2\,h = \frac{1}{2} \Big( \sum_{j<0}(w_0^{j})^2(2h) +\sum_{j\ge0}2(w_0^{j})^2h \Big)=e(0;w^h_1).
 % \end{align*}
-% For $j=0$, 
-% \begin{align*}
-% A_0 &= \Big(\tfrac{w^{j+1}_{\ell} - w^{j}_{\ell}}{y^{j+1}-y^j}\Big)\left\{ \tfrac{1}{2h}\int_0^h 2\phi(t,y)\; dy-\tfrac{1}{2h} \int_{-2h}^0\phi(t,y)\;dy\right\}\\
-% &= \Big(\tfrac{w^{j+1}_{\ell-1} - w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big)\int_0^h \partial_y \phi(t,y)\; dy+o(h) \quad \text{as $h \rightarrow 0$}
-% \end{align*}
-% since $\phi$ is $C^1$. %With the same reason, expressions $\frac{\phi(t,y)-\phi(t,y-h)}{h}$ and $\frac{\phi(t,y)-\phi(t,y-2h)}{2h}$ converges uniformly to $\partial_y\phi(t,y)$ in the compact support of $\phi$.
-% Now $\Big(\tfrac{w^{j+1}_{\ell-1} - w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big)= \partial_y \hat{w}^h(t,y)$ and using $\partial_y \hat{w}^h(t,y)\rightharpoonup \partial_y w$ weakly-* in $L^\infty$ and that $\phi\in C^1$ again
-% \begin{align*}
-%  \sum_{\ell\ge0} \sum_j A_j = \int_0^T\int_ \mathbb{R} \partial_y \hat{w}(t,y)\partial_y\phi(t,y)\; dydt + o(1)\rightarrow \int_{0}^{T}\int_\mathbb{R} \partial_y{w}(t,y)\partial_y\phi(t,y) \;dy dt.
-% \end{align*}
-
-% or $w(t,x)$ is a weak solution.
-% 
-% In each of the rectangle, $w$ has a well-defined right gradient that are simply
-% \begin{equation}
+Therefore, since $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ in $L^2(\R)$ for all $t\ge0$, $e(t;w)\le e(0;w)$ for all $t\ge0$.
+% Since $f(x)=x^2$ is a convex function, \eqref{RW2} gives that
+% $$
 % \begin{aligned}
-%  \partial_t w(t,y) &= \Big(\tfrac{y-y_j}{y_{j+1}-y_j} \Big) \Big(\tfrac{w^{j+1}_{\ell+1} -w^{j+1}_{\ell}}{t_{\ell+1}-t_\ell}\Big) + \Big(\tfrac{y_{j+1}-y}{y_{j+1}-y_j} \Big) \Big(\tfrac{w^{j}_{\ell+1} -w^{j}_{\ell}}{t_{\ell+1}-t_\ell}\Big),\\
-% \partial_y w(t,y) &= \Big(\tfrac{t-t_\ell}{t_{\ell+1}-t_\ell} \Big) \Big(\tfrac{w^{j+1}_{\ell+1} -w^{j}_{\ell+1}}{y_{j+1}-y_j}\Big) + \Big(\tfrac{t_{\ell+1}-t}{t_{\ell+1}-t_\ell} \Big) \Big(\tfrac{w^{j+1}_{\ell} -w^{j}_{\ell}}{y_{j+1}-y_j}\Big).
-% \end{aligned}
-% \end{equation}
-
-
-% 
-% \begin{proposition}
-%  Let the function $w(t,y;\tau)$ on $[0,T]\times \mathbb{R}$ such that 
-% \begin{equation} \label{eq:w_def}
-% \begin{aligned}
-%     w(t,y;\tau) \triangleq \left\{\begin{array}{ll}
-%         p^{k}_{n} , & \text{if $(t,y)=(n\tau,k\l)$ and $(n,k)\in \mathcal{N}\times\mathcal{K}$},\\
-%         \text{linear interpolation}, & \text{otherwise }.
+%     &(p^{k}_{2\ell})^2 \le \left\{\begin{array}{ll}
+%         \frac{1}{4}(p^{k-2} _{2(\ell-1)})^2 + \frac{1}{2}(p^{k}_{2(\ell-1)})^2 +\frac{1}{4} (p^{k+2}_{2(\ell-1)})^2, & \text{if $k<0$ is even},\\
+%         \frac{1}{4}(p^{-2} _{2(\ell-1)})^2 + \frac{1}{4}(p^{0} _{2(\ell-1)})^2 +\frac{1}{2}(p ^{1} _{2(\ell-1)})^2, & \text{if $k=0$},\\
+%         \frac{1}{2}(p^{k-1} _{2(\ell-1)})^2 + \frac{1}{2}(p ^{k+1} _{2(\ell-1)})^2,
+%         & \text{if } k>0.
 %         \end{array}\right.
 % \end{aligned}
-% \end{equation} 
-% %Let $\Lip(t)$ be the Lipschitz constant of the function $w(t,x)$ at time $t$. 
-%  Then for all $t_1,t_2\in[0,T]$ and all $y_1,y_2\in \mathbb{R}$,
-%  \begin{enumerate}
-%   \item $|w(t,y_1)-w(t,y_2)| \le \Lip(0)|y_1-y_2|$,
-%   \item $|w(t_1,y)-w(t_2,y)| \le \sqrt{d}\Lip(0)\sqrt{|t_1-t_2|}$.
-%  \end{enumerate}
-% \end{proposition}
-% \begin{proof}
-%  {\red proof!}
-% \end{proof}
-% 
-% \begin{proposition}
-%  Let $\tau_m \searrow 0$. Then $\exists \tau_{m(i)}$ such that $w^{\tau_{m(i)}}$ converges to a weak solution $w$. Furthermore $w\in C^{\frac{1}{2},1}$ or $w$ is a strong solution.
-% \end{proposition}
-% 
-% \begin{theorem}
-%  $||w_0^{\tau_m}(x)-w_0(x)||_{C^{0,1}( \mathbb{R})} \rightarrow 0$ as $m \rightarrow \infty$.
-% \end{theorem}
-% 
-% \subsection{perspectives}
-% Note that \eqref{eq:Q} of $Q^k_n$ coincides with \eqref{RW1} of $p^k_n$. Therefore, all the higher order difference quotients can be estimated inductively.
+% $$
+% Therefore, $e(t^{2\ell};w^h_1)\le e(0;w^h_1)$ for all $\ell>0$. Since $w^{h_i}\to w$ as $h_i\to0$, we have $e(t;w)\le e(0;w)$ for all $t>0$.
+\end{proof}
+
+Finally, we show that the sequence converges to a weak solution of \eqref{eqnw}.
+\begin{theorem}
+  The interpolation $w^{h}(t,x)$ converges to $w\in C^{0,1}(\R^+\times\R)$ and the limit is a weak solution of \eqref{eqnw}.
+\end{theorem}
+\begin{proof}
+It is enough to show that the subsequential limit $w^{h_i}\to w$ is a weak solution of \eqref{eqnw}. Then, the uniqueness of energy decreasing solution gives the rest. The regularity of the limit $w$ is a consequence of the Arzela-Ascoli Theorem. Consider the two terms in the left side of \eqref{DefWeak} with $w_2^{h_i}$ in the place of $w$,
+\begin{align*}
+ \int_0^\infty\int_\R& w_2^{h_i}(t,x) \alpha(x)\partial_t\phi(t,x)\; dx dt
+ +\int_\R w_2^{h_i}(0,x)\alpha(x)\phi(t,x) \; dx\hskip 5mm \Big(=:A_i\Big).
+\end{align*}
+Since $w_2^{h_i} \rightarrow w$ uniformly on each compact set of $\R^+\times \R$, the left side converges as
+\begin{align*}
+\lim_{h_i\to0}A_i=\int_0^\infty\int_\R w(t,x) \alpha(x)\partial_t\phi(t,x)\; dx
+dt+\int_\R w_0(x)\alpha(x)\phi(t,x) \; dx.
+\end{align*}
+Now,
+\begin{align*}
+%  \int_0\infty\int_\R& w_2^{h_i}(t,x) \alpha(x)\partial_t\phi(t,x)\; dx dt
+%  +\int_\R w_2^{h_i}(0,x)\alpha(x)\phi(t,x) \; dx\hskip 5mm \Big(=:A_i\Big)\\
+ A_i&=-\sum_{\ell}\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R \partial_t
+ w_2^{h_i}(t,x) \alpha(x)\phi(t,x)\; dx dt \\
+ &=-\sum_{\ell}\sum_{j}\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
+ \frac{w^j_{2\ell+2}-w^j_{\ell}}{2\tau} \alpha(x) \phi(t,x) \chi_j(x)\; dx dt \hskip
+ 1.5cm (\text{with } \chi_j=\chi_{[y^j,y^{j+1})})\\
+ &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
+ \tfrac{1}{2h} \left( \Big(\tfrac{w^{j+1}_{\ell} -
+ w^{j}_{\ell}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell} -
+ w^{j-1}_{\ell}}{y^{j}-y^{j-1}} \Big)\right) \alpha(x) \phi(t,x) \chi_j(x)\; dx
+ dt\quad\ (\text{by } \eqref{RW1w}\,)\\
+ &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
+ \tfrac{1}{2h} \Big(\tfrac{w^{j}_{\ell} -
+ w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)
+ \big(\chi_{j-1}(x)-\chi_{j}(x)\big)\alpha(x) \phi(t,x) \; dx \;dt\\
+ &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}B_\ell^j\,dt\hskip 5mm\Big(B_\ell^j:=\int_\R \tfrac{1}{2h} \Big(\tfrac{w^{j}_{\ell} -
+w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)
+\big(\chi_{j-1}(x)-\chi_{j}(x)\big)\alpha(x) \phi(t,x) \; dx\Big).
+\end{align*}
+
+The $B^j_\ell$ in the right side becomes
+\begin{align*}
+ B_\ell^j &= \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \left\{\frac{1}{2h}\int_{y^{j-1}}^{y^{j}} \alpha\phi  \; dx -
+        \frac{1}{2h}\int_{y^{j}}^{y^{j+1}} \alpha\phi  \; dx\right\}\\
+     &= \left\{\begin{array}{ll}
+        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
+        \frac{1}{y^{j+1}-y^{j}}\int_{y^{j}}^{y^{j+1}} \phi  \; dx \bigg)
+        & \text{if } j<0,\\
+        \Big(\tfrac{w^{0}_{\ell} - w^{-1}_{\ell}}{y^{0}-y^{-1}}\Big)
+        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
+        \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi  \; dx
+        \bigg) & \text{if } j=0,\\
+        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \bigg( \frac{1}{2(y^j-y^{j-1})}\int_{y^{j-1}}^{y^{j}} 2\phi  \; dx-
+        \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi  \; dx
+        \bigg) & \text{if } j>0,
+       \end{array}\right.\\
+     &=\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \bigg( \frac{1}{(y^j-y^{j-1})}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
+        \frac{1}{(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} \phi  \; dx
+        \bigg).
+\end{align*}
+Therefore,
+\begin{align*}
+ B_\ell^j =&-\int_{y^{j-1}}^{y^{j}}\Big(\tfrac{w^{j}_{\ell} -
+ w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\partial_x\phi \;dx \\
+     & + \Big(\tfrac{w^{j}_{\ell} -
+     w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\left\{
+        \frac{\int_{y^{j-1}}^{y^{j}} \phi -\phi(t,y^{j-1}) \;
+        dx}{y^j-y^{j-1}} - \frac{\int_{y^{j}}^{y^{j+1}} \phi -\phi(t,y^{j})
+        \; dx}{y^{j+1}-y^j} \right\}.
+\end{align*}
+Since the test function $\phi$ is $C^1$, the second term goes to zero faster than $h_i\to0$; the only exception is for $j=0$ where the error is $O(h_i)$ as $h_i\to0$.
+Since the support of $\phi$ is compact, after summing $B_\ell^j$ up and taking $h_i\to0$, we obtain
+\begin{align*}
+-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}B_\ell^j\,dt &= d\int_0^\infty\int_\R \partial_x w_3^{h_i}(t,x) \partial_x \phi(t,x) \;
+dxdt + o(1) \\
+&\rightarrow d\int_0^\infty\int_\R \partial_x w(t,x) \partial_x \phi(t,x) \; dxdt,
+\end{align*}
+where the weak-* convergence of $\partial_x w_3^{h_i}$ to $\partial_x w$ has been used.
+Therefore, combining the limits shows that $w$ is a weak solution.
+\end{proof}
+
+\subsection{Conclusion}
+
+The probability density function is $v=\alpha\, w$. Then, $v$ satisfies
+$$
+v_t=d\Big({v\over\alpha(x)}\Big)_{xx},\qquad
+v(0,x)={\alpha(x)w_0(x)}=v_0(x),
+$$
+where the initial value $v_0(x)$ is the original initial value given in
+\eqref{initial}.
+
+If we include the spatial heterogeneity in the walk length
+$\Delta x=\beta(x)\epsilon$, then the probability density function $v$
+satisfies
+$$
+v_t=d\Big(\beta(x)\Big({\beta(x)\over\alpha(x)}v\Big)_x\Big)_x,\qquad
+v(0,x)=v_0(x).
+$$
 
 \end{document}
