@@ -1,0 +1,615 @@
+\documentclass[11pt]{amsart}
+%\usepackage{amsmath,amsfonts,amssymb,mathrsfs}
+%\usepackage{amssymb,mathrsfs}
+
+\usepackage{amsfonts,amssymb,amsmath,mathrsfs,graphicx,psfrag,color}
+\usepackage{float}
+%\usepackage{srcltx}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{refcheck}
+%\usepackage[left=20mm,right=20mm,top=35mm,bottom=25mm,a4paper]{geometry}
+%\hoffset=-1.5cm \voffset=-2.3cm
+\usepackage[left=30mm,right=30mm,top=35mm,bottom=30mm,a4paper]{geometry}
+
+
+%%%%%%%%%%%%%% MY  DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newcommand*{\HEI}{\CJKfamily{hei}}
+\newtheorem{Thm}{Theorem}
+\newtheorem{Assertion}[Thm]{Assertion}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+\newtheorem{Main}{Main Theorem}
+\newtheorem{Def}[Thm]{Definition}
+\newtheorem{Prob}[Thm]{\textcolor{red}{Problem}}
+\newtheorem{Claim}[Thm]{Claim}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Ques}[Thm]{\textcolor{red}{Qestion}}
+\newtheorem{Ex}[Thm]{Example}
+
+
+\numberwithin{equation}{section}
+\numberwithin{Thm}{section}
+\setcounter{tocdepth}{3}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\R{\mbox{\boldmath$R$}}
+\def\J{{\bf J}}
+\def\N{{\mathbf N}}
+\def\F{{\bf F}}
+\def\E{{\bf E}}
+\def\B{{\bf B}}
+\def\H{{\bf H}}
+\def\r{{\bf r}}
+\def\div{{\nabla\cdot}}
+\def\x{{\bf x}}
+\def\y{{\bf y}}
+\def\n{{\bf n}}
+\def\eps{\varepsilon}
+\def\ds{\displaystyle}
+\def\Sigma{\mbox{\boldmath$\sigma$}}
+\def\r{\mbox{\boldmath$r$}}
+\def\Arg{{\,\textrm{Arg}\,}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title[well-posedness of anisotropic conductivity reconstruction]{Existence and uniqueness in anisotropic conductivity reconstruction with Faraday's law}
+
+\author{Yong-Jung Kim}
+\address{\newline National Institute of Mathematical Sciences, 70 Yuseong-daero, Yuseong-gu, Daejeon 305-811,  Korea, \and Department of Mathematical Sciences, KAIST, 291 Daehak-ro, Yuseong-gu, Daejeon 305-701, Korea }
+\email{yongkim@kaist.edu}
+
+\author[Min-Gi Lee]{Min-Gi Lee}
+\address[Min-Gi Lee]{\newline Computer, Electrical and Mathematical Sciences \& Engineering, 4700 King Abdullah University of Science \& Technology,
+Thuwal 23955-6900, Kingdom of Saudi Arabia}
+\email{mingi.lee@kaust.edu.sa}
+
+
+
+%
+%\thanks{ }
+%
+\keywords{}
+%\subjclass[2010]{}
+
+
+%
+\date{\today}
+
+\begin{abstract}
+  We show that three sets of internal current densities are the right amount of data that give the existence and the uniqueness at the same time in reconstructing an anisotropic conductivity in two space dimensions. The curl free equation of Faraday's law is taken instead of the usual divergence free equation of the electrical impedance tomography. Boundary conditions related to given current densities are introduced which complete a well determined problem for conductivity reconstruction together with Faraday's law.
+\end{abstract}
+
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+The conductivity of an animal body obviously has an anisotropic structure because of muscles and nerve fibers in the body (see \cite{Nicholson1965386,Roth2000}). Considering the sensitivity nature of conductivity reconstruction problems isotropic models may give onely a limited information for the conductivity of a human body and all the meaningful data related to the anisotropic structure will be forgotten and treated as noise. Therefore, it is not surprising that anisotropic conductivity reconstruction algorithms draw more attention recently. The main purpose of this paper is to develop an anisotropic conductivity reconstruction model in two space dimensions that gives the uniqueness and the existence together. In general, obtaining the uniqueness for an overdetermined problem or the existence for an underdetermined one is easier than obtaining them at the same time. In fact, there are uniqueness results of anisotropic conductivity reconstruction for overdetermined problems. However, the main challenge is to obtain the existence and the uniqueness at the same time, which requires a correctly determined problem to obtain the both. The key is to impose the right number of equations and the right amount of boundary conditions.
+
+Suppose that $\Omega\subset\R^2$ is a bounded \emph{simply connected} domain of an electrical conductivity body with a smooth boundary, and $\F_k=\begin{pmatrix} f^1_k & f^2_k \end{pmatrix}:\Omega\to\R^2$, $k=1,2,3$, are three given \emph{row}\footnote{Using a row vector field helps notational clarity and simplicity. In this way expressions are simplified and one may avoid taking a transpose of a matrix. Since the tensors in this paper are symmetric, such a convention does not make extra confusion.} vector fields in the domain $\Omega$. The purpose of this paper is to show the existence and the uniqueness of the anisotropic resistivity distribution,
+\begin{equation}\label{ortho}
+\r:=\begin{pmatrix}r^{11}&r^{12} \\ r^{21}& r^{22}\end{pmatrix},\quad r^{12}=r^{21},\quad \x:=(x,y)\in\Omega\subset\R^2,
+\end{equation}
+that satisfies curl free equations
+\begin{equation}\label{Faraday}
+\nabla\times(\F_k\r )=0\ \ \mbox{in}\ \ \Omega,\ k=1,2,3,
+\end{equation}
+and boundary conditions
+\begin{equation}\label{FaradayBC}
+\begin{array}{l}
+\left<\N_2, \N_2\r \right> = \sum_{i,j=1}^n r^{ij}N_2^i N_2^j=b_1\ \ \mbox{on}\ \ {\Gamma^-_1}\subset\partial\Omega,\ \, i,j=1,2,\\
+\left<\N_1, \N_1\r \right> = \sum_{i,j=1}^n r^{ij}N_1^i N_1^j=b_2\ \ \mbox{on}\ \ {\Gamma^-_2}\subset\partial\Omega,\ \, i,j=1,2,\\
+\end{array}
+\end{equation}
+where the given boundary value $b_1$ and $b_2$ are positive and bounded away from zero. The vector fields, $\N_1$ and $\N_2$, and the boundaries, $\Gamma_{1}^-$ and $\Gamma_{2}^-$, are decided by the three vector fields $\F_1,\F_2$ and $\F_3$. The main part of this paper is in constructing them appropriately. The given boundary values $b_1$ and $b_2$ are the diagonal elements of the resistivity tensor $\r$ when it is written with respect to basis vector fields $\N_1$ and $\N_2$. The curl free equation is from Maxwell's equations, Faraday's law, for the static electromagnetism. The electrical current density is usually denoted by the letter $\J$ and we will save it for the exact current density. Instead, we use the letter $\F$ for a given vector field which is not necessary a current density field, but a one that satisfies the admissibility conditions in Definition \ref{def:adm3}. Eventually, we show that admissible vector fields are actually current densities.
+
+The existence of a resistivity tensor $\r$ that satisfies the curl free equation is guaranteed if $\F_k$'s are the current densities produced by a single conductivity body. One may ask how to find out for a given set of three vector fields to be of such a case, and we show sufficient such conditions in this paper\footnote{The uniqueness of the conductivity distribution that may produce a given Dirichlet to Neumann map has been well studied in the theory of electrical impedance tomography (see \cite{nachman_global_1996,sylvester_global_1987}). However, any criterion of a map to actually have such a conductivity is not known. Finding a criterion of a Dirichlet to Neumann map that gives the existence and the uniqueness together is a real challenge. The main contribution of this paper is to introduce such a criterion for a problem with internal current data.}. These admissibility conditions are in Definition \ref{def:adm3}. Note that the stability analysis of such a reconstruction process should require that the perturbed data must be placed in such a class of data. Hence, the existence theory is a prerequisite to study the stability analysis.
+
+Conductivity reconstruction method using the internal data has been studied by many authors. The magnetic resonance current density imaging (MRCDI) technique is used for the internal measurement of current densities $\F_k$'s (see \cite{Gamba,Joy,Scott}). The boundary value in \eqref{FaradayBC} is obtained from these vector fields and the resistivity on the boundary. The uniqueness of anisotropic conductivity distribution has been obtained in many cases, \cite{bal_inverse_2011, doi:10.1137/140961754, bal_inverse_2014,MR3206987, monard_inverse_2012-1,monard_inverse_2012,doi:10.1080/03605302.2013.787089}. Most of such uniqueness results are based on overdetermined problems and hence the existence part is not expected\footnote{We may say this since we now know that three sets of internal current data are just enough to give the existence and uniqueness together at least in two space dimensions.}. In particular, Monard and Ball \cite{monard_inverse_2012-1} showed the uniqueness of anisotropic conductivity that satisfies $4$ sets of internal power densities and, however, they also mentioned that they were able to compute anisotropic conductivity numerically only with \emph{three} sets of data. This observation is related to the fact that there are three unknowns $r^{11},r^{12}$ and $r^{22}$ to be recovered and one vector field may decide one of them in the two dimensions. On the other hand, Hoell \emph{et al.} \cite{MR3206987} obtained anisotropic conductivity $\sigma(\x)=c(\x)\sigma_0(\x)$ using a single set of current data when $\sigma_0(\x)$ is a given tensor and the scalar factor $c(\x)$ is unknown. However, the whole conductivity tensor $\sigma(\x)$ is unknown in this paper and two more sets of internal current data are needed to find $\sigma_0(\x)$ in their context.
+
+This paper is composed as follows. An anisotropic resistivity reconstruction algorithm is given in Section \ref{sect.algo}. One may use this algorithm for numerical reconstruction. We use it as an outline of the following theoretical sections. Theories are developed in Section \ref{sect.EU}. It is clear that the existence and the uniqueness of the anisotropic resistivity are not obtained from arbitrary vector fields $\F_k$'s. In Definition \ref{def:adm3}, the admissibility criteria to be current density fields are given. The theory ends in vain if there is no such an admissible set of vector fields or constructing such a one is technically impossible. In Section \ref{sect.cons} we show that there is a relatively simple way to produce such admissible current density fields. Remember that an anisotropic conductivity body can be viewed as a global structure and an isotropic one as a local one. If we may view the anisotropic conductivity body as an orthotropic one, we may apply the technique for the orthotropic case as in \cite{lee_orthotropic_2015}. In Section \ref{sect.char} we develop a new coordinate system based on characteristic vector fields which allows this to be possible. Finally, the existence and the uniqueness are obtained in Theorem \ref{thm:main}. The proof is based on Picard type iteration method that gives the anisotropic resistivity as a fixed point. Hence the uniqueness and the existence are obtained simultaneously. Conclusions and discussions on related works are given in Section \ref{sect.con} with a conjecture on three dimensional anisotropic resistivity reconstruction. Basic relations among the current density, potential, and stream function are briefly reviewed in Appendix A, which are frequently used in the paper.
+
+\section{Reconstruction algorithm}\label{sect.algo}
+In this section we develop an algorithm to reconstruct an anisotropic resistivity distribution from three sets of internal current density fields $\F_k$, $k=1,2,3$. The governing equation is Faraday's law \eqref{Faraday}. We are looking for an anisotropic resistivity tensor $\r$ that satisfies Faraday's law. If then, there exist two potential functions $u_1$ and $u_2$ that satisfy
+$$
+\F_k\r =\begin{pmatrix} f^1_k & f^2_k \end{pmatrix}\r = -\nabla u_k, \quad (x,y)\in\Omega,\ k=1,2.
+$$
+We may write these two relations together as
+$$
+\begin{pmatrix} f^1_1 & f^2_1 \\ f^1_2 &f^2_2  \end{pmatrix}\r = -\begin{pmatrix} \partial_x u_1 & \partial_y u_1\\ \partial_x u_2 & \partial_y u_2\end{pmatrix},
+$$
+where $\partial_x$ and $\partial_y$ denote partial derivatives with respect to $x$ and $y$ variables, respectively. (In this paper there are two main sources of indices. The first one is the number of current density fields, which will be denoted using a subscript for $k=1,2,3$ as in $\F_k$. The second one is the space dimension, which will be denoted using a superscript as in $r^{ij}$ or $f^i_k$ for $i,j=1,2$.) The assumption on the current density fields is that the first two vector fields (or any two of them) are never parallel to each other, i.e., $\F_1 \times \F_2 \ne 0$ on $\Omega$. Then, the matrix $\begin{pmatrix} f^1_1 & f^2_1 \\ f^1_2 &f^2_2  \end{pmatrix}$ is invertible and the resistivity tensor $\r$ is obtained by applying its inverse matrix, i.e.,
+\begin{equation}\label{R}
+\r= -\begin{pmatrix} f^1_1 & f^2_1 \\ f^1_2 &f^2_2  \end{pmatrix}^{-1}
+\begin{pmatrix} \partial_x u_1 & \partial_y u_1\\ \partial_x u_2 & \partial_y u_2\end{pmatrix}.\end{equation}
+Therefore, as soon as we obtain the two unknown potential functions $u_1$ and $u_2$, we may reconstruct the anisotropic tensor $\r$. The first equation is from the symmetry of the anisotropic resistivity tensor $\r$, i.e., from the relation $r^{12}=r^{21}$, which gives a first order linear equation,
+\begin{equation}\label{eqn1}
+ f_2^2\partial_yu_1 -f_1^2\partial_yu_2+ f_2^1\partial_xu_1-f_1^1\partial_xu_2 =0,\qquad (x,y)\in\Omega.
+\end{equation}
+The second equation is from Faraday's law applied to the third current density field, i.e., $\nabla\times(\F_3\r)=0$, or
+\begin{equation}\label{eqn2}
+\nabla\times\left(
+\begin{pmatrix} f^1_3 & f^2_3 \end{pmatrix}\begin{pmatrix} f^1_1 & f^2_1 \\ f^1_2 &f^2_2  \end{pmatrix}^{-1}
+\begin{pmatrix} \partial_x u_1 & \partial_y u_1\\ \partial_x u_2 & \partial_y u_2\end{pmatrix}
+\right)=0,\qquad (x,y)\in\Omega.
+\end{equation}
+Hence we may close the system of two equations for the two unknowns, $u_1$ and $u_2$. Let
+$$
+\begin{pmatrix} \alpha & \beta \end{pmatrix}:=\begin{pmatrix} f^1_3 & f^2_3 \end{pmatrix}\begin{pmatrix} f^1_1 & f^2_1 \\ f^1_2 &f^2_2  \end{pmatrix}^{-1}.
+$$
+Then, \eqref{eqn2} is written as
+\begin{equation}\label{eqn3}
+\begin{array}{l}
+\partial_x(\alpha\partial_yu_1+\beta\partial_yu_2) -\partial_y(\alpha\partial_xu_1+\beta\partial_xu_2) \\
+=\partial_x\alpha\partial_yu_1+\partial_x\beta\partial_yu_2 -\partial_y\alpha\partial_xu_1-\partial_y\beta\partial_xu_2=0,\qquad (x,y)\in\Omega,
+\end{array}
+\end{equation}
+where second order terms are canceled out. Finally we have obtained a system of two first order linear equations, \eqref{eqn1} and \eqref{eqn3}, which are written together as
+\begin{equation}\label{system}
+\begin{array}{r}\ds
+\ \ f_2^1\partial_xu_1+\ \ f_2^2\partial_yu_1-\ f_1^1\partial_xu_2 -\ \ f_1^2\partial_yu_2 =0,\\
+\ds
+\partial_y\alpha\partial_xu_1 -\partial_x\alpha\partial_yu_1 +\partial_y\beta\partial_xu_2-\partial_x\beta\partial_yu_2 =0.
+\end{array}
+\end{equation}
+
+Providing the correct amount of boundary condition is the other key ingredient. We take
+\begin{equation} \label{eqn:bdrycondU}
+\begin{array}{l}
+\left<\N_2 , -\N_2\begin{pmatrix} f^1_1 & f^2_1 \\ f^1_2 &f^2_2  \end{pmatrix}^{-1} \begin{pmatrix} \partial_x u_1 & \partial_y u_1\\ \partial_x u_2 & \partial_y u_2\end{pmatrix}\right> = b_1, \quad \text{on $\Gamma^-_1\subset\partial\Omega$,} \\
+\left<\N_1 , -\N_1\begin{pmatrix} f^1_1 & f^2_1 \\ f^1_2 &f^2_2  \end{pmatrix}^{-1} \begin{pmatrix} \partial_x u_1 & \partial_y u_1\\ \partial_x u_2 & \partial_y u_2\end{pmatrix}\right> = b_2, \quad \text{on $\Gamma^-_2\subset\partial\Omega$.}
+\end{array}
+\end{equation}
+It is needed to decided the boundaries $\Gamma_1^-,\Gamma_2^-$ and the vector fields $\N_1,\N_2$ to complete the boundary condition, which will be done in the following sections. These boundary conditions are for the voltage functions $u_1$ and $u_2$. However, using the identity \eqref{R} for the resistivity $\r$, these boundary values can be rewritten in terms of the resistivity tensor $\r$ as in \eqref{FaradayBC}. Notice that these boundary conditions are identical to the ones for the orthotropic conductivity case \cite{lee_orthotropic_2015} if the vector fields $\N_1$ and $\N_2$ are replaced with the cartesian unit vectors. In fact, the existence of such vector fields $\N_1$ and $\N_2$ allows us to handle an anisotropic conductivity in the way we did for an orthotropic one.
+
+In this paper we show the existence and uniqueness together. The stability has been obtained for an isotropic case \cite{lee_well-posedness_2015}, but remains open in the anisotropic one. The reconstruction method along characteristics, which is used in the proof of existence, actually gives noised images with stripes (see numerical comparisons in \cite{lee_virtual_2014}). Obtaining efficient algorithms is another crucial issue for a sensitive problem with a large condition number. Bal \emph{et al.} (see \cite{doi:10.1137/140961754} and references therein) developed anisotropic conductivity using four sets of current data, which is an over-determined case. It is required to develop a numerical scheme that uses three sets of current data, which is the correctly determined case.
+
+
+\section{Existence and uniqueness}\label{sect.EU}
+
+The purpose of this section is to show the existence and uniqueness of anisotropic resistivity distribution $\r$ that satisfies \eqref{Faraday}--\eqref{FaradayBC}.
+
+
+\subsection{Admissibility of current density vector fields}\label{sect.admi}
+
+The existence and the uniqueness of the resistivity tensor $\r$ that satisfies \eqref{Faraday}--\eqref{FaradayBC} are not expected for arbitrarily given current densities $\F_k$, $k=1,2,3$. For example, if noise is added to the current density field, the existence part is not guaranteed. Hence the first step is to classify admissible vector fields which can be used in a conductivity reconstruction process. It is also needed to show that one may construct such admissible current density fields.
+
+\begin{Def}[Admissibility] \label{def:adm3} A set of three smooth vector fields $\F_k$, $k=1,2,3$, are called admissible if
+\begin{enumerate}
+  \item $\nabla\cdot\F_k=0$ for $k=1,2,3$. (Therefore, there exist stream functions $\psi_k$ and $\F_k=(\partial_y\psi_k,-\partial_x\psi_k)$.)
+  \item The map $\Psi(x,y) = \big(\xi(x,y),\eta(x,y)\big):=\big(-\psi_2(x,y), \psi_1(x,y)\big)$ is a diffeomorphism between $\overline\Omega$ and its image.
+  \item \label{strict} The scalar curvature of the stream function $\psi_3$ with respect to the new $(\xi,\eta)$ coordinate system is strictly negative, i.e., for all $(\xi,\eta) \in \Psi(\overline\Omega)$,
+\begin{equation}\label{strictInquality}
+\det D^2_{(\xi,\eta)}\psi_3 =\partial^2_{\xi} \psi_3\partial^2_{\eta}\psi_3 - (\partial_\xi\partial_\eta\psi_3)^2 < 0.
+\end{equation}
+  \item Let $T(\x)$ be a smooth unit tangent vector field on the boundary $\partial\Omega$. The inner product $\big<T(\x)\,D^2\psi_3(\x),T(\x)\big>$ has $4$ simple zeroes on $\partial\Omega$.
+\end{enumerate}
+\end{Def}
+
+If $\nabla\cdot\F_k\ne0$, we may take the divergence free part after the Helmholtz decomposition. Hence the first condition is not a restriction. The second one is related to the assumption $\F_1 \times \F_2\ne0$ in $\overline\Omega$, which is the Jacobian of the diffeomorphism $\Psi(x,y)$. We are taking a slightly stronger assumption than the simple invertibility of the mapping $\Psi(x,y)$. The third condition is related to Lemma 3.3 from
+which a non-strict inequality comes as a natural consistency condition on data. Hence, our assumption is that this inequality is strict.
+
+If $\F_1 \times \F_2\ne0$ on $\Omega$, the two stream functions $\psi_1$ and $\psi_2$ define a coordinate system at least locally. Then, \eqref{system} can be simplified using a coordinate system, $(\xi,\eta) = (-\psi_2,\psi_1)$ (see \eqref{tilder} and \eqref{eqn:Ohmsv2}). Since
+\begin{align*}
+  \begin{pmatrix} \partial_\eta \psi_1 & -\partial_\xi \psi_1 \end{pmatrix} = \begin{pmatrix} \partial_\eta \eta & -\partial_\xi \eta \end{pmatrix} = \begin{pmatrix} 1 & 0 \end{pmatrix}, \\
+  \begin{pmatrix} \partial_\eta \psi_2 & -\partial_\xi \psi_2 \end{pmatrix} = \begin{pmatrix} -\partial_\eta \xi & \partial_\xi \xi \end{pmatrix} = \begin{pmatrix} 0 & 1 \end{pmatrix},
+\end{align*}
+the relation \eqref{eqn:Ohmsv2} is written as
+$$
+\tilde \r
+=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\tilde \r
+=-\begin{pmatrix} \partial_\xi u_1 & \partial_\eta u_1 \\ \partial_\xi u_2 & \partial_\eta u_2\end{pmatrix},
+$$
+where $\tilde\r$ is defined by \eqref{tilder}. Finally, the symmetry of the tensor $\tilde \r$ gives $\partial_\eta u_1= \partial_\xi u_2$ and hence there exists a scalar function $\phi$ such that $u_1 = \partial_\xi\phi$ and $u_2=\partial_\eta\phi$. Therefore, the resistivity tensor $\r$ is the Hessian of $\phi$ with respect to the $\xi,\eta$ variables, i.e.,
+$$
+\tilde\r=-D^2_{\xi,\eta}\phi.
+$$
+
+Ohm's law for the third current density $\F_3$ is written as
+$$
+-\begin{pmatrix} \partial_\eta\psi_3 & -\partial_\xi\psi_3 \end{pmatrix}
+\begin{pmatrix} \partial_\xi u_1 & \partial_\eta u_1 \\ \partial_\xi u_2 & \partial_\eta u_2\end{pmatrix}
+= -\begin{pmatrix} \partial_\xi u_3 & \partial_\eta u_3 \end{pmatrix}.
+$$
+The application of the curl operator $\nabla_{(\xi,\eta)} \times$ to both sides gives
+$$
+\partial_\eta^2\psi_3\partial_\xi u_1 -\partial_\eta\partial_\xi\psi_3(\partial_\eta u_1 + \partial_\xi u_2) + \partial_\xi^2\psi_3 \partial_\eta u_2=0.
+$$
+Substitute $\phi$ in the equation and obtain,
+\begin{equation}
+  \partial_\eta^2\psi_3\partial^2_{\xi}\phi -2\partial_\eta\partial_\xi\psi_3\partial_\eta\partial_\xi\phi + \partial_\xi^2\psi_3 \partial^2_{\eta} \phi=0. \label{eqn:anisotropic}
+\end{equation}
+Note that derivatives of $\psi_3$ are coefficients given by the current density $\F_3$ and $\phi$ is the unknown function in this second order linear differential equation. The type of the equation is decided by the sign of $(\partial_\eta\partial_\xi\psi_3)^2 - \partial_\xi^2\psi_3\partial_\eta^2\psi_3$, which is the curvature of $\psi_3$ with respect to $\xi,\eta$ variables. We will show in Lemma \ref{lemma:scalarcurvature} that
+$$\partial_\xi^2\psi_3\partial_\eta^2\psi_3 - (\partial_\eta\partial_\xi\psi_3)^2 \le 0.$$
+Thus the type of the equation \eqref{eqn:anisotropic} is hyperbolic with a possible degeneracy. In Proposition \ref{thm:anisoadm}, we show that there are suitable boundary conditions that give three sets of current density $\F_k$'s which satisfy the inequality strictly in the whole domain. The strict inequality in Definition \ref{def:adm3}(\ref{strict}) implies that one of the two eigenvalues of the Hessian $D^2_{\xi,\eta}\psi_3$ is positive and the other is negative. Hence there is no degenerate point and \eqref{eqn:anisotropic} is strictly hyperbolic. For a general hyperbolic linear first order system, one may integrate it locally. The condition in Definition \ref{def:adm3}(4) will help us to integrate the hyperbolic system globally.
+
+\begin{Rem} \label{remark:aniso} Eq. \eqref{eqn:anisotropic} is the curl free equation \eqref{curlfreeA} with $\tilde \r = -D^2\phi$. We may rewrite it as a divergence free equation. Then, the tensor corresponding to the $S$ in \eqref{eqn:div2}  is
+$$
+\tilde S:= \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \tilde \r \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} =- \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} D^2\phi \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}.
+$$
+Notice that the possible lower order terms of \eqref{eqn:div2} are cancelled out and do not appear in \eqref{eqn:anisotropic} since $\tilde r$ is given as a Hessian matrix of a scalar function $\phi$.
+\end{Rem}
+
+\begin{Lem}[Gilbarg and Trudinger {\cite[p. 256]{gilbarg_elliptic_2001}}] \label{lemma:scalarcurvature}
+Let $\begin{pmatrix} a & b \\ b & c \end{pmatrix}$ be uniformly positive on $\Omega$ and $\psi$ satisfies
+$$
+a\partial_x^2\psi + 2b\partial_x\partial_y\psi + c\partial_y^2\psi = 0.
+$$
+Then, $\partial_x^2\psi\partial_y^2\psi - (\partial_x\partial_y\psi)^2 \le 0$ and the equality holds only when $\partial_x^2\psi = \partial_y^2\psi = \partial_x\partial_y\psi = 0$.
+\end{Lem}
+\begin{proof}
+The uniform ellipticity gives a constant $\mu_0>0$ that satisfies
+  \begin{align*}
+    \mu_0((\partial_x^2\psi)^2 + (\partial_x\partial_y\psi)^2) & \le a(\partial_x^2\psi)^2 + 2b\partial_x^2\psi\partial_x\partial_y\psi + c(\partial_x\partial_y\psi)^2 \\
+    &= (-2b\partial_x\partial_y\psi-c\partial_y^2\psi)\partial_x^2\psi + 2b\partial_x^2\psi\partial_x\partial_y\psi + c(\partial_x\partial_y\psi)^2 \\
+    &= -c(\partial_x^2\psi\partial_y^2\psi-(\partial_x\partial_y\psi)^2).
+  \end{align*}
+Similarly, we obtain
+\begin{align*}
+\mu_0((\partial_y^2\psi)^2 + (\partial_x\partial_y\psi)^2) & \le -a(\partial_x^2\psi\partial_y^2\psi-(\partial_x\partial_y\psi)^2).
+\end{align*}
+Therefore, since the trace of the matrix is $a+b>0$, we have
+\begin{align*}
+\partial_x^2\psi\partial_y^2\psi-(\partial_x\partial_y\psi)^2 \le -\frac{\mu_0}{a+c}((\partial_x^2\psi)^2 + 2(\partial_x\partial_y\psi)^2 + (\partial_y^2\psi)^2)\le0.
+\end{align*}
+\end{proof}
+
+\subsection{Construction of admissible vector fields}\label{sect.cons}
+
+If there is no admissible current densities, the theory of this paper ends in vain. In the proof of the following proposition we introduce appropriate boundary conditions that may produce admissible set of current densities that satisfy the assumptions (1), (2) and (3) in Definition \ref{def:adm3}. The divergence free equation in \eqref{Eqn3.2} has been studied intensively for a long time, where $\Sigma$ is the \emph{conductivity} tensor corresponding to the resistivity one $\r$, i.e., $\Sigma=\r^{-1}$. There are rich theories related to the solution of this divergence free equation, and, in fact, the first part of the proposition can be found from Bauman \emph{et al.} \cite{MR1871388}. We will fully prove the proposition for completeness using the following lemma.
+
+
+\begin{Lem}[Meisters and Olech, 1963 \cite{meisters_locally_1963}] \label{lemma:bijection} Let $\y:\overline\Omega\mapsto\R^n$ be differentiable and one-to-one on $\partial\Omega$. If $\det D\y \ne0$ in $\Omega$, $\y$ is one-to-one on $\overline\Omega$.
+\end{Lem}
+
+
+\begin{Prop} \label{thm:anisoadm}
+Suppose that $\Omega\subset\R^2$ is a bounded simply connected domain and $\Sigma=(\sigma^{ij})\in C^1(\Omega)$ is a positive conductivity tensor on it. There exist boundary values $g_k:\partial\Omega\mapsto\R$, $k=1,2,3$, such that the current density fields $\F_k = -(\nabla u_k)\Sigma$ satisfy (1),(2) and (3) of Definition \ref{def:adm3}, where $u_k$ satisfy
+\begin{equation}\label{Eqn3.2}
+\begin{array}{cc}\ds
+\nabla\cdot(\,(\nabla u_k)\Sigma)  =0, &\quad \text{in $\Omega$},\\
+-\n\cdot(\nabla u_k)\Sigma=g_k, &\quad \text{on $\partial\Omega$}.
+\end{array}
+\end{equation}
+\end{Prop}
+\begin{proof}  We will construct three Dirichlet boundary condition $G_k$'s satisfied by stream functions $\psi_k$, which is equivalent to constructing the Nuemann data. (See Appendix.) Let $\gamma:[0, L] \mapsto \partial\Omega$ be an embedding curve on $\partial\Omega$. For a notational convenience, we assume $L=2\pi$ and let $G_1(\gamma(t))=\sin t$ and $G_2(\gamma(t))=-\cos t$. Both $G_1$ and $G_2$ have a single local maximum along the boundary. Let $\r=\Sigma^{-1}$ be the corresponding resistivity tensor and $S$ be given by the relation in \eqref{G}. Consider $\psi_k$, $k=1,2$, which are the solutions of
+\begin{equation}\label{Eqn3.3}
+\begin{array}{cc}\ds
+ \nabla\cdot(\,(\nabla \psi_k)S)  =0, &\quad \text{in $\Omega$},\\
+ \psi_k=G_k, &\quad \text{on $\partial\Omega$}.
+\end{array}
+\end{equation}
+Then, $\psi_k$ is a stream function of the current density field $\F_k = -(\nabla u_k)\Sigma$ with the corresponding Neumann boundary value $g_k$.  Let $\Psi(x,y) = \big(\xi(x,y),\eta(x,y)\big):=\big(-\psi_2(x,y), \psi_1(x,y)\big)$.
+
+Since the boundary value is continuous on the smooth boundary $\partial\Omega$, the solution is continuous on $\overline\Omega$. Since $\psi_k|_{\partial\Omega}$ has one local maximum on the boundary, by Lemma \ref{lem:aless}, $\psi_1$ and $\psi_2$ have no critical point in $\Omega$. By the Hopf lemma, $\nabla\psi_k \ne 0$ along the boundary, neither. Suppose that there is a point $\x_0 \in \Omega$ such that $\nabla\psi_1(\x_0) \times \nabla\psi_2(\x_0) =0$. Then, $\nabla\psi_1(\x_0) = c \nabla\psi_2(\x_0)$ for a constant $c\ne0$. Then, $\tilde\psi = \psi_1 - c\psi_2$  is also a solution with a boundary condition $\tilde\psi\big(\gamma(t)\big) = \sin t + c\cos t =\sqrt{1+c^2} \sin(t+t^*)$ for some $t^*$, and $\x_0$ is an interior critical point of $\tilde\psi$. However, this boundary condition also has one local maximum point on the boundary and hence $\tilde\psi$ does not have an interior critical point, which is a contradiction. Therefore $\nabla\psi_1 \times \nabla\psi_2$  has no interior zero point, i.e., $\det D\Psi\ne0$ in $\Omega$. Furthermore, since $(-G_2(\gamma(t)),G_1(\gamma(t))) = (\cos t, \sin t)$, the mapping $(-\psi_2,\psi_1)|_{\partial \Omega}$ is one-to-one from $\partial\Omega$ to the unit circle. Therefore, by Lemma \ref{lemma:bijection}, the mapping $\Psi:=(-\psi_2,\psi_1)$ is bijective in $\overline\Omega$. The differentiability of the mapping and its inverse one comes from the inverse function theorem. Therefore, we conclude that $\F_1$ and $\F_2$ satisfy the first two admissibility conditions.
+
+Next, we prove the third admissibility condition. The diffeomorphism $\Psi$ gives a new coordinate system $(\xi,\eta):=(-\psi_2,\psi_1)$ where the domain $\Omega$ is  transformed to the unit disk. The third stream function $\psi_3$ is taken as the solution of the uniformly elliptic equation in \eqref{eqn:anisotropic} with a boundary condition $\psi_3(\gamma(t))=\cos 2t$. If we show the Hessian $D^2\psi_3(\xi,\eta)\ne0$ for all $(\xi,\eta)$ in the unit disk, the strict inequality in \eqref{strictInquality} holds by Lemma \ref{lemma:scalarcurvature}.
+
+Suppose that $D^2\psi_3(\xi_0,\eta_0)=0$ at a point $(\xi_0,\eta_0)$ and let $\nabla \psi_3 (\xi_0,\eta_0) = (c_1,c_2)$. Then, the Hessian of $\tilde\psi:=\psi_3 - c_1\xi - c_2\eta$ is still zero at $(\xi_0,\eta_0)$ and it has a critical point at $(\xi_0,\eta_0)$ with multiplicity $2$. By the linearity of the problem, $\tilde\psi$ is a solution with a boundary condition $\tilde\psi(\gamma(t)) = \cos 2t - c_1\cos t - c_2\sin t$. In order to investigate the local maxima along the boundary, differentiate $\tilde\psi(\gamma(t))$ with respect to $t$ and obtain
+$$
+{d\over dt}\tilde\psi(\gamma(t))= -2\sin 2t + c_1\sin t - c_2\cos t =-4\cos t  \sin  t  + c_1\sin t  - c_2\cos t .
+$$
+One may easily see that this derivative has four zero points. For example, if $c_1=c_2=0$, it has zeros at $t=0,{\pi/2},\pi$ and $3\pi/2$. If not, let $\alpha(\xi,\eta):=-4\xi\eta + c_1\eta-c_2\xi$ which is identical to ${d\over dt}\tilde\psi(\gamma(t))$ in $\xi,\eta$ variables on the boundary. The zeros of $\alpha$ are hyperbolas and hence there are 4 critical points on the unit circle. In other words, there are at most two local maxima of $\tilde\psi$ on the boundary. This contradict Lemma \ref{lem:aless} in Appendix since $\tilde\psi$ has an interior critical point of multiplicity $2$. Therefore, there is no such interior point $(\xi_0,\eta_0)$ that makes the Hessian of $\psi_3$ be zero matrix, and the strict inequality in \eqref{strictInquality} is obtained by Lemma \ref{lemma:scalarcurvature}.
+\end{proof}
+
+
+\subsection{Characteristic vector fields and boundary conditions}\label{sect.char}
+
+In this section we build up a curvilinear coordinate system whose coordinate lines are everywhere characteristic in the whole domain $\overline\Omega$. This system allows us to integrate the equation \eqref{eqn:anisotropic} on the whole domain $\overline\Omega$. We may impose consistent boundary conditions using this coordinate system. First, we introduce a geometrical property of a Lorentzian manifold (see \cite[Proposition 3.37]{MR1384756}).
+\begin{Lem}\label{lemma:GHL}
+Let $(M,g)$ be a simply connected Lorentzian manifold of dimension two. Then, there exist two linearly independent smooth null vector fields $\N_1$ and $\N_2$ defined on $M$.
+\end{Lem}
+
+Let $U=\Psi(\Omega)$ and consider the symmetric matrix $D^2 \psi_3$ on it. We equip $\bar U$ with the metric $g:=D^2 \psi_3$. The third condition in Definition \ref{def:adm3} implies that one of the two eigenvalues is positive and the other is negative. Therefore, the manifold is a simply connected Lorentzian and we have two linearly independent smooth null vector fields denoted by $\N_1$ and $\N_2$. The two \emph{null vectors} are the ones between the two eigenvectors and the distance along the integral curve is zero with respect to the metric $g$, i.e. the two null vectors will be given by the formula,
+\begin{equation} \label{eqn:charformula}
+    \left<\N_k, D^2\psi_3\N_k\right> = 0.\qquad k=1,2.
+\end{equation}
+Therefore, the next Proposition immediately follows the lemma.
+\begin{Prop}\label{prop:separability} Let $\Omega\subset\R^2$  be a simply connected bounded open set with a smooth boundary, and $\F_k$, $k=1,2,3$, be admissible vector fields. Then, there exist two smooth linearly independent vector fields $\N_1$ and $\N_2$ on $\overline\Omega$ which are characteristic everywhere for the equation \eqref{eqn:anisotropic}.
+\end{Prop}
+
+The two vector fields $\N_k$, $k=1,2$, are called null vector fields from the view point of Lorentzian metric $D^2\psi_3$. From the hyperbolic wave equation view point of \eqref{eqn:anisotropic}, they are called \emph{characteristic} vector fields. The fourth condition in Definition \ref{def:adm3} plays its role in the next proposition in restricting the behavior of two characteristic fields on the boundary.
+
+
+\begin{Prop} \label{lemma:anisogeom}
+Let $\Omega\subset\R^2$  be a simply connected bounded open set with smooth boundary. Let $\F_k$, $k=1,2,3$, be admissible vector fields and $\N_1$ and $\N_2$ be the two characteristic ones in Proposition \ref{prop:separability}. For $k=1,2$, define
+\begin{eqnarray}
+\nonumber\Gamma_k^+:=\{\x\in\partial\Omega\,|\, \N_k\cdot\n(\x)>0\},\\ \label{Gamma1}\Gamma_k^-:=\{\x\in\partial\Omega\,|\, \N_k\cdot\n(\x)<0\},\\ \nonumber\Gamma_k^0\ :=\{\x\in\partial\Omega\,|\, \N_k\cdot\n(\x)=0\}.
+\end{eqnarray}
+Then, $\Gamma_k^+$ and $\Gamma_k^-$ are connected and $\Gamma_k^0$ consist of two points that connects $\Gamma_k^+$ and $\Gamma_k^-$ for each $k$. The four points are the zeroes in Definition \ref{def:adm3} (4). (see Figure \ref{fig1}).
+\end{Prop}
+\begin{proof}
+Since $\N_1$ and $\N_2$ do not vanish in $\overline\Omega$, their winding numbers along the boundary $\partial\Omega$ should be zero. Therefore, the argument $\Arg(\N_k)$ is a periodic function over the boundary within a single branch of $\Arg$ function. On the other hand, $\Arg(T)$ of a tangent vector along the boundary takes all angles in a one branch. Thus, there exists at least one boundary point, $x_1\in\partial\Omega$, such that $\Arg(\N_1(x_1))=\Arg(T(x_1))$ from the smoothness in the vector fields and in the boundary. Similarly, there exists $x_2\in\partial\Omega$ such that $\Arg(\N_1(x_2))=\Arg(-T(x_2))$. Since $\Arg(\N_1)\ne\Arg(-\N_1)$, these two points are different to each other. We may apply the same argument to $\N_2$ and obtain two more points $x_3$ and $x_4$. Since $\N_1 \times \N_2 \ne 0$ one $\overline\Omega$, these four points are all distinct. The fourth admissibility condition in Definition \ref{def:adm3} implies that there are only four such boundary points at which tangent vectors and null vectors are parallel to each other respectively. Therefore, $\Gamma_1^0=\{x_1,x_2\}$ and $\Gamma_2^0=\{x_3,x_4\}$, and $\Gamma_k^\pm$ are connected subsets of the boundary $\partial\Omega$ bounded by $\Gamma_k^0$'s.
+\end{proof}
+\begin{figure}
+  \center
+  \psfrag{G1}{\hskip -5pt$\Gamma_1^-$}
+  \psfrag{G2}{$\Gamma_2^-$}
+  \psfrag{G3}{$\Gamma_1^- \cap \Gamma_2^-$}
+  \includegraphics[width=6cm]{fig1}
+  \caption{Domain $\Omega$ and its boundary. The boundary $\partial\Omega$ is divided into four parts $\Gamma_1^\pm$ and $\Gamma_2^\pm$ in Proposition \ref{lemma:charcoord}. The transformed domain by the diffeomorphism $\Phi$ is in Figure \ref{fig2}. } \label{fig1}
+\end{figure}
+
+The boundary $\Gamma_k^-$ and the vector fields $\N_k$ in the boundary condition \eqref{FaradayBC} are now defined. Next, we further define the coordinate system whose coordinate lines are everywhere parallel to characteristic vector fields in $\overline\Omega$ by constructing two real-valued functions $\nu_1$ and $\nu_2$. In this way the two characteristic vector fields of our anisotropic problem become two coordinate basis vector fields with respect to the new coordinate system, which was exactly the same situation we had in the orthotropic case \cite{lee_orthotropic_2015}. Therefore, we may apply the technique developed previously for the orthotropic conductivity to the anisotropic one.
+
+\begin{Prop} \label{lemma:charcoord}
+Let $\Omega\subset\R^2$  be a simply connected bounded domain with a smooth boundary, $\F_k$, $k=1,2,3$, be admissible vector fields, and $\N_1$ and $\N_2$ be the two characteristic vector fields. Then, there exist $C^1$ functions $\nu_k:\overline\Omega\to\R$, $k=1,2$, such that $\nabla \nu_k\ne0$, $\nabla\nu_k\parallel\N_k^\perp$, and $\Phi =(\nu_1,\nu_2)$ is one-to-one from $\overline\Omega$ to its image.
+\end{Prop}
+\begin{proof}
+We construct $\nu_k$, $k=1,2$, as the potential function of an isotropic problem when the given vector field is $\N_k^\perp$, respectively. Observe that $\N_1^\perp$ and $\Gamma^-_1$ satisfy the admissibility condition for an isotropic conductivity case \cite[Definition 2.1]{lee_well-posedness_2015}. Therefore, the existence theorem, \cite[Theorem 1]{lee_well-posedness_2015}, shows that
+there exists an isotropic conductivity $\rho$ such that
+$$
+\nabla \times (\rho\N_1^\perp) = 0\quad\mbox{in}\quad\Omega, \quad \rho=\rho_0\quad\mbox{on}\quad\partial\Omega,
+$$
+where $\rho_0$ is a smooth positive boundary value we may give. Then, we may take $\nu_1$ as the corresponding potential, i.e., $-\rho\N_1^\perp = \nabla \nu_1$. Then $\nabla\nu_1$ does not vanish and is parallel to $\N_1^\perp$, i.e. the level curves of $\nu_1$ are parallel to $\N_1$. Similarly, we may define $\nu_2$ using $\N_2^\perp$ and $\Gamma^-_2$.
+
+The Jacobian of the mapping $\Phi =(\nu_1,\nu_2)$ does not vanish since $\N_1\times\N_2\ne 0$. Therefore, by Lemma \ref{lemma:bijection}, it is enough to show that the map $\Phi$ is an injection on the boundary. Since the resistivity $\rho$ is positive, $\nu_1$ is strictly monotone when the point moves along the boundaries $\Gamma_1^\pm$ and changes its direction at the points in $\Gamma_1^0$. Similarly, $\nu_2$ is strictly monotone on $\Gamma_2^\pm$ and changes its direction at the points in $\Gamma_2^0$. is strictly monotone. In other words, the boundary $\partial\Omega$ is divided into four part on which the monotonicity of $(\nu_1,\nu_2)$ are all different. Therefore $\Phi$ is one-to-one on $\partial\Omega$.
+\end{proof}
+
+We can now express the characteristic vector fields in terms of the potential functions, i..e,
+\begin{equation} \label{eqn:N1N2}
+  \N_1:=\big(\partial_y \nu_1, -\partial_x \nu_1\big), \qquad \N_2 := \big(\partial_y \nu_2, -\partial_x\nu_2\big).
+\end{equation}  %$\N_1 = \big(\partial_{\nu_1}x, \partial_{\nu_1}y\big)$ along the level curve of $\nu_2$, and $\N_2 = \big(\partial_{\nu_2}x, \partial_{\nu_2}y\big)$ along the level curve of $\nu_1$.
+Using the relation $\tilde \r = -D^2_{\xi,\eta} \phi$ in Remark \ref{remark:aniso}, we may write down the boundary conditions in \eqref{FaradayBC} in terms of derivatives of $\phi$ with respect to $\nu_1$ and $\nu_2$:
+\begin{align*}
+  \left<\N_1, -\N_1 \r \right> &= -\big(\partial_y \nu_1, -\partial_x \nu_1\big) ~\r~ \begin{pmatrix} ~~~~\partial_y \nu_1 \\ -\partial_x \nu_1 \end{pmatrix} \\
+  &= -\big(\partial_\eta \nu_1, -\partial_\xi \nu_2\big)
+  \begin{pmatrix} ~~\eta_y & -\eta_x \\ -\xi_y  & ~~~\xi_x \end{pmatrix}
+  \r\begin{pmatrix} ~~\eta_y & -\xi_y \\ -\eta_x & ~~\xi_x \end{pmatrix}
+  \begin{pmatrix} ~~~~\partial_\eta \nu_1 \\ -\partial_\xi \nu_1 \end{pmatrix} \\
+  &= \big(\partial_\eta \nu_1, -\partial_\xi \nu_1\big)
+  \begin{pmatrix} \partial^2_{\xi}\phi & \partial_\xi\partial_\eta\phi \\ \partial_\eta\partial_\xi\phi & \partial^2_{\eta}\phi \end{pmatrix}
+  \begin{pmatrix} ~~~~\partial_\eta \nu_1 \\ -\partial_\xi \nu_1 \end{pmatrix} d_1 \\
+  &= \big(\partial_{\nu_2} \xi, \partial_{\nu_2} \eta \big)
+  \begin{pmatrix} \partial^2_{\xi}\phi & \partial_\xi\partial_\eta\phi \\ \partial_\eta\partial_\xi\phi & \partial^2_{\eta}\phi \end{pmatrix}
+  \begin{pmatrix} \partial_{\nu_2} \xi \\ \partial_{\nu_2} \eta \end{pmatrix} d_1d_2\\
+  &=\big(\partial^2_{\nu_2} \phi - \partial_\xi \phi \partial^2_{\nu_2}\xi - \partial_\eta \phi \partial^2_{\nu_2}\eta\big)d_1d_2 \\
+  &=:\big(\partial^2_{\nu_2} \phi - b^{21} \partial_{\nu_1}\phi  - b^{22} \partial_{\nu_2}\phi \big)d_1d_2,
+\end{align*}
+where $d_1 = \F_1 \times \F_2$, and $d_2=(\partial_\xi \nu_1\partial_\eta\nu_2 - \partial_\eta \nu_1 \partial_\xi \nu_2)$, and
+\begin{align*}
+  b^{21} &= \big(\partial^2_{\nu_2}\xi\big) \big(\partial_\xi \nu_1\big)  + \big(\partial^2_{\nu_2} \eta\big) \big(\partial_\eta \nu_1\big), \\
+  b^{22} &= \big(\partial^2_{\nu_2}\xi\big) \big(\partial_\xi \nu_2\big)  + \big(\partial^2_{\nu_2} \eta\big) \big(\partial_\eta \nu_2\big).
+\end{align*}
+In the third equality, we used $\tilde\r = -D^2_{\xi,\eta} \phi$, and in the fourth equality, we used the inverse function theorem,
+$$ \begin{pmatrix} \partial_{\nu_1}\xi & \partial_{\nu_2} \xi \\ \partial_{\nu_1}\eta & \partial_{\nu_2} \eta \end{pmatrix} = \begin{pmatrix} \partial_{\xi}\nu_1 & \partial_{\eta} \nu_1 \\ \partial_{\xi}\nu_2 & \partial_{\eta} \nu_2 \end{pmatrix}^{-1}.$$
+Similarly,
+$$  \left<\N_2,-\N_2 \r \right> = \big(\partial_{\nu_1\nu_1} \phi - b^{11} \partial_{\nu_1}\phi  - b^{12} \partial_{\nu_2}\phi \big)d_1d_2, $$
+\begin{align*}
+  b^{11} &= \big(\partial^2_{\nu_1}\xi\big) \big(\partial_\xi \nu_1\big)  + \big(\partial^2_{\nu_1} \eta\big) \big(\partial_\eta \nu_1\big), \\
+  b^{12} &= \big(\partial^2_{\nu_1}\xi\big) \big(\partial_\xi \nu_2\big)  + \big(\partial^2_{\nu_1} \eta\big) \big(\partial_\eta \nu_2\big).
+\end{align*}
+Let $f_1:={b_1\over d_1d_2},f_2:={b_2\over d_1d_2},v_1:=\partial_{\nu_1} \phi$, and $v_2:=\partial_{\nu_2} \phi$. Then,
+\begin{equation} \label{eqn:bdrycondV}
+    \begin{array}{l}
+    \partial_{\nu_1}v_1 - b^{11}v_1 - b^{12} v_2 = f^1\quad \text{on}\quad \Gamma^-_1. \\
+    \partial_{\nu_2}v_2 - b^{21}v_1 - b^{22} v_2 = f^2\quad \text{on}\quad \Gamma^-_2,
+    \end{array}
+  \end{equation}
+\begin{Rem}
+$b^{ij}$ are functions of $\F_k$, $\nabla \F_k$.
+\end{Rem}
+
+
+\subsection{Main theorem}
+
+Finally, we are going to prove the existence and the uniqueness of an anisotropic conductivity that satisfies \eqref{Faraday}--\eqref{FaradayBC} in the next theorem. The basic idea is to apply the technique used for the orthotropic conductivity case. The new coordinate system based on the characteristic lines allows us to do that. Notice that a fixed point type argument gives the uniqueness and the existence together.
+
+\begin{Thm}[Existence and Uniqueness] \label{thm:main}
+Let $\Omega\subset\R^2$  be a simply connected bounded domain with a smooth boundary, $\F_k$, $k=1,2,3$, be admissible vector fields, $\N_1$ and $\N_2$ be the two characteristic vector fields given in Proposition \ref{prop:separability}, and $\Gamma^-_1$ and $\Gamma^-_2$ be the boundaries given \eqref{Gamma1}. Then, there exists a unique anisotropic conductivity $\r\in C(\overline\Omega)$ that satisfies \eqref{Faraday}--\eqref{FaradayBC}.
+\end{Thm}
+\begin{proof}
+Let $\Phi =(\nu_1,\nu_2)$ be the $C^1$ diffeomorphism and $W:=\Phi(\Omega)$. Eq. \eqref{eqn:anisotropic} is rewritten after changing variables as
+  \begin{equation}
+  \phi_{\nu_1\nu_2} - c\phi_{\nu_1} - d\phi_{\nu_2} = 0,
+  \end{equation}
+where the second order terms $\phi_{\nu_1\nu_1}$ and $\phi_{\nu_2\nu_2}$ are cancelled out since the level curves of $\nu_1$ and $\nu_2$ are characteristic lines. The coefficients $c$ and $d$ depend on derivatives of the stream function $\psi_3$ of the given current density $\F_3$. Let $v_1 = \partial_{\nu_1}\phi$ and $v_2 = \partial_{\nu_2}\phi$. Then,
+\begin{equation} \label{eqn:v}
+\partial_{\nu_2}v_1 = \partial_{\nu_1} v_2 =cv_1 + dv_2 .
+  \end{equation}
+The boundary conditions for the system are \eqref{eqn:bdrycondV}.
+
+The global integrability of the equations is obtained Picard type iteration. Let $\gamma(t) : [-L,L] \mapsto \partial \Omega$ be a parametrization of the boundary such that $\Gamma_2^-=\{\gamma(t) ~|~ A\le t\le C\}$ and $\Gamma_1^-=\{\gamma(t) ~|~ B\le t\le D\}$ with $A=-L$ (see Figure \ref{fig2}).  For a given $(\nu_1, \nu_2)\in W$, there exist boundary points $\big(\nu_1, \nu_2^b\big)\in \Gamma_1^-$ and $\big(\nu_1^b,\nu_2\big)\in \Gamma_2^-$. Proposition \ref{lemma:anisogeom} and the relation \eqref{eqn:N1N2} give the uniqueness of such points and we set $\big(\nu_1,\nu_2^b\big)=\gamma(t_1)$ and $\big(\nu_1^b,\nu_2\big)=\gamma(t_2)$. (Here, we are abusing notation by using $\gamma$ as a parametrization of the boundaries $\partial\Omega$ and $\partial W$ at the same time, which is possible since $\Phi$ is one-to-one.)
+
+Let $B<t_0<C$ so that $\gamma(t_0) \in \Gamma^-_1 \cap \Gamma^-_2$. Then,
+$v_1$ and $v_2$ satisfy following integral equations,
+  \begin{align}
+    v_1(\nu_1,\nu_2) = v_1\big(\gamma(t_0)\big) &+ \int_{t_0}^{t_1} \gamma'(t) \cdot \big(f^1 + b^{11}v_1 + b^{12} v_1, cv_1 +dv_2 \big)|_{(\gamma(t))} ~dt \label{eqn:int1} \\
+    &+\int_{\nu_2^b}^{\nu_2} \big(cv_1 +dv_2 \big)|(\nu_1,\tau) ~d\tau, \nonumber \\
+    v_2(\nu_1,\nu_2) = v_2\big(\gamma(t_0)\big) &- \int_{t_2}^{t_0} \gamma'(t) \cdot \big(cv_1 +dv_2, f^2 + b^{21}v_1 + b^{22} v_1 \big)|_{(\gamma(t))} ~dt \label{eqn:int2} \\
+    &+\int_{\nu_1^b}^{\nu_1} \big(cv_1 +dv_2 \big)|(\tau,\nu_2) ~d\tau. \nonumber
+  \end{align}
+The right hand sides of the above equations define an integral operator $K$ on $(v_1,v_2)$ and its fixed point is a solution.  Since $c,d$ and $b^{ij}$ are uniformly bounded and $|\gamma^\prime|=1$, this integral operator becomes a contraction in a small region nearby the boundary point $\gamma(t_0)$. For example, if it is satisfied that
+$$
+\max \big(|t_1-t_0|, |t_2-t_0|, |\nu_1-\nu_1^b|, |\nu_2-\nu_2^b|\big) \max_{i,j=1,2}\big(|c|,|d|, |b^{ij}|, |f^i|\big) <\frac{1}{7},
+$$
+then it is a contraction in the region. Now let $W_0\subset \overline W$ be the maximal domain that the operator $K$ has a fixed point $(v_1,v_2)$. If $W_0\ne\overline W$, then one may easily derive a contradiction by finding a larger domain with a fixed point since the coefficients are uniformly bounded (see the proof of \cite[Theorem 2.5]{lee_orthotropic_2015}).
+
+Differentiating $\partial_{\nu_2}v_1$ in \eqref{eqn:v} with respect to $\nu_1$ gives
+\begin{align*}
+  \partial_{\nu_2}\big(\partial_{\nu_1}v_1\big) &= c\big(\partial_{\nu_1}v_1\big) +d\big(\partial_{\nu_1}v_2\big) + \big(\partial_{\nu_1}c\big)v_1 +\big(\partial_{\nu_1}d\big)v_2  \nonumber\\
+  &=c\big(\partial_{\nu_1}v_1\big) +d\big(cv_1 + d v_2) + \big(\partial_{\nu_1}c\big)v_1+\big(\partial_{\nu_1}d\big)v_2 \\
+  &=c\big(\partial_{\nu_1}v_1\big) + k_1,
+\end{align*}
+where $k_1:=d\big(cv_1+dv_2)+\big(\partial_{\nu_1}c\big)v_1+\big(\partial_{\nu_1}d\big)v_2$ is continuous. Similarly, differentiating  $\partial_{\nu_1}v_2$ in \eqref{eqn:v} with respect to $\nu_2$ gives
+\begin{align*}
+ \partial_{\nu_1} \big(\partial_{\nu_2}v_2\big) &=c\big(\partial_{\nu_2}v_1\big) +d\big(\partial_{\nu_2}v_2\big) + \big(\partial_{\nu_2}c\big)v_1 +\big(\partial_{\nu_2}d\big)v_2 \nonumber\\
+  &=c\big(cv_1 + d v_2) +d\big(\partial_{\nu_2}v_2\big) + \big(\partial_{\nu_2}c\big)v_1 +\big(\partial_{\nu_2}d\big)v_2\\
+  &=d\big(\partial_{\nu_2}v_2\big) + k_2,
+\end{align*}
+where $k_2:=c\big(cv_1 + d v_2) +\big(\partial_{\nu_2}c\big)v_1 +\big(\partial_{\nu_2}d\big)v_2$ is continuous. Therefore $v_1$ and $v_2$ are $C^1(\bar W)$. Remember that $u_1=\partial_\xi\phi$ and $u_2=\partial_\eta\phi$, and $\Phi$ and $\Psi$ were diffeomorphisms. Hence, $v_1$ and $v_2$ are $C^1(\overline\Omega)$ and so are $u_1$ and $u_2$. From the formula \eqref{R}, there exists a unique symmetric matrix field $\r\in C(\Omega)$.
+\end{proof}
+\begin{figure}
+  \center
+  \psfrag{nu}{\hskip -10pt $(\nu_1,\nu_2)$}
+  \psfrag{nu1}{$\nu_1$}
+  \psfrag{nu2}{$\nu_2$}
+  \psfrag{g0}{$\gamma(t_0)$}
+  \psfrag{g2}{\hskip -100pt$\gamma(t_2)=(\nu_1^b,\nu_2)$}
+  \psfrag{g1}{$\gamma(t_1)=(\nu_1,\nu_2^b)$}
+  \psfrag{gk1}{\hskip -15pt$\gamma(B)$}
+  \psfrag{gk2}{$\gamma(C)$}
+  \psfrag{gk3}{$\gamma(D)$}
+  \psfrag{gk4}{$\gamma(A)$}
+  \includegraphics[width=8cm]{fig2-2}
+  \caption{Transformed domain $W=\Phi(\Omega)$. There are unique points $\gamma(t_1) \in \Gamma_1^-$ and $\gamma(t_2) \in \Gamma_2^-$ for each $(\nu_1,\nu_2)\in\Phi(\Omega)$ which share the same first or second coordinate, respectively. Four tangential boundary points $\partial W$ to horizontal and vertical lines of the domain are $\Gamma_1^0=\{\gamma(B), \gamma(D)\}$ and $\Gamma_2^0=\{\gamma(A), \gamma(C)\}$, respectively.} \label{fig2}
+\end{figure}
+\begin{Rem}
+For $r\in C(\overline\Omega)$, it is necessary that $\F_k \in C^2(\overline\Omega)$ for $k=1,2,3$.
+\end{Rem}
+\begin{Rem}
+For smooth data, one can repeatedly differentiate the equation \eqref{eqn:v} to obtain, $v_1$, $v_2$, and $r$ are all $C^\infty$.
+\end{Rem}
+
+
+\section{Conclusions}\label{sect.con}
+
+The human body is composed with muscle fibers and anisotropic conductivity model is required when conductivity distribution is studied as a part of medical imaging technology. This note is the last one in a series of papers on two dimensional anisotropic conductivity reconstruction. In this section we compare the method suggested in the series papers to other methods. Conjectures for three dimensional anisotropic conductivity reconstruction are given.
+
+The electrical impedance tomography (EIT for brevity) is one of the most actively studied inverse problems (see \cite{ammari_mathematical_2009, ammari_reconstruction_2004,0266-5611-25-12-123011}). The conductivity $\Sigma=\r^{-1}$ is the inverse tensor of the resistivity one and the electrical potential $u$ satisfies
+\begin{equation}\label{eqn:div}
+\begin{array}{ll}
+\nabla\cdot(\Sigma\nabla u)=0  &\quad \mbox{in~~} \Omega,\\
+-\Sigma\nabla u\cdot\n=g&\quad \mbox{on~} \partial\Omega,\\
+\end{array}
+\end{equation}
+where $\n$ is the outward unit normal vector to the boundary $\partial\Omega$ and the normal component $g$ of the boundary current density satisfies $\int_{\partial\Omega}gds=0$. It is well known that the mapping that connects the Neumann boundary value $g$ to the Dirichlet boundary potential $u|_{\partial\Omega}$ decides the isotropic conductivity uniquely (see \cite{nachman_global_1996,sylvester_global_1987}). However, the uniqueness holds only in equivalence classes by diffeomorphisms if anisotropic conductivity is allowed (see \cite{MR1955896}). This observation shows the limitation of boundary measurement methods in the construction of anisotropic conductivity distribution.
+
+It is clear that using internal data is unavoidable to obtain anisotropic conductivity tensor and such a method is actually considered on isotropic cases first (see \cite{alessandrini_identification_1986, richter_inverse_1981, richter_numerical_1981}). More recently, MRI technology enabled us to find the current density inside the body by measuring internal magnetic field and several reconstruction algorithms using internal current density have been developed to obtain isotropic conductivity. The uniqueness of the reconstructed isotropic conductivity has been shown in various cases (see \cite{ider_uniqueness_2003,kim_uniqueness_2003, kwon_equipotential_2002,nachman_conductivity_2007,nachman_recovering_2009, seo_magnetic_2011}). The study of anisotropic conductivity has been recently started and, in particular, Bal and his collaborators showed uniqueness of their anisotropic conductivities reconstruction method \cite{bal_inverse_2011, doi:10.1137/140961754, bal_inverse_2014, monard_inverse_2012-1,monard_inverse_2012,doi:10.1080/03605302.2013.787089}. Basically, they constructed an overdetermined system which allows the uniqueness, but not the existence. Most of the conductivity reconstruction algorithms that use the internal current density still based on the zero divergence equation \eqref{eqn:div}. However, the data is the current density $\F$ and hence the given data is connected to the system by Ohm's law
+\begin{equation}\label{Ohm2}
+\F=-\Sigma\nabla u.
+\end{equation}
+Many of the conductivity reconstruction methods using internal current density are developed based on \eqref{eqn:div} with \eqref{Ohm2}.
+
+The biggest difference of the method we developed is that our method is based on Faraday's law
+\begin{equation}\label{FaradayLaw2}
+\nabla\times(\r\F)=0,
+\end{equation}
+which gives a direct connection between the resistivity $\r$ and the current density $\F$. One may consider this choice of the equation as a simplification process of the system \eqref{eqn:div}--\eqref{Ohm2} that cancels out the unknown variable $u$. It is this simplification that allows us to construct a correctly determined system and obtain the existence, the uniqueness and the stability together.
+
+The curl free equation also allows us to construct numerical algorithms based on loop integrals. In fact, we have developed a numerical scheme using such loop integrals in a mimetic way which turns out virtual resistive network (VRN for brevity) method for resistivity reconstruction. There are many ways to construct numerical schemes using VRN (see \cite{lee_virtual_2014,lee_orthotropic_2015,lee_reconstruction_2010}). In particular, a few explicit methods with local computations are developed in this series of papers. However, these inexpensive local computation methods work only for isotropic and orthotropic cases and a different approach is needed for anisotropic case.
+
+This series of papers on Faraday's law based two dimensional conductivity reconstruction consists of three parts. First, the isotropic conductivity reconstruction has been studied theoretically in \cite{lee_well-posedness_2015} and numerically in \cite{lee_virtual_2014}. The uniqueness, existence and stability were obtained using single set of internal current density and a part of boundary resistivity. The resistivity reconstruction for orthotropic conductivity has been studied theoretically and numerically in \cite{lee_orthotropic_2015}. The well-posedness of the problem has been obtained using two sets of internal current densities. Finally, the anisotropic conductivity has been reconstructed in this paper employing the technique used for the orthotropic case. The newly added part is a construction of new coordinate system that makes the anisotropic structure into an orthotropic one in terms of the new coordinate system. To do that three sets of internal current densities are used. However, the numerical algorithm based on local computations does not work for the anisotropic case and a different approach seems to be needed.
+
+Extending the two dimensional theories to three dimensions is a big challenge. The main reason is that the elliptic theories we have taken hold for two space dimensions. Numerical computation in three dimensions is also a challenge. However, we have a few conjectures on three dimensional theories. One might already observe that the number of unknown components of the resistivity tensor and the number of current densities needed are same in two space dimensions. However, we guess that three sets of internal current densities will give the existence and the uniqueness of an anisotropic resistivity tensor which has six components to be decided in three dimension. Similarly, single and two sets of internal current densities will respectively give the uniqueness and the existence for the isotropic and orthotropic resistivity tensor. It could be so even for higher dimensions.
+
+\appendix
+
+\section{Relations in static electromagnetism}
+We first review basic relations related to static electromagnetism in $\R^2$. Let $\Omega\subset \R^2 $ be a bounded domain with a smooth boundary and $\F$ be a smooth electrical current density field given in $\overline\Omega$. If $\nabla\cdot\F=0$ throughout the domain, we may find a stream function $\psi$ such that
+$$
+\F=\nabla^\perp\psi:= \begin{pmatrix}\ \partial_y \psi~,~ -\partial_x \psi \end{pmatrix}.
+$$
+This stream function is unique up to a constant addition. Correspondingly, let $\mathbf{E}$ be a smooth electric field in $\overline\Omega$. If Faraday's law, $\nabla\times \mathbf{E} = 0$, is satisfied in $\overline\Omega$, there exists a potential function $u$ such that
+$$ \mathbf{E} = -\nabla u.$$
+Ohm's law gives a relation between these two vector fields by
+\begin{equation}
+\F= \E\Sigma \quad \text{or} \quad\F\r=\E, \label{eqn:OhmsLaw0}
+\end{equation}
+where the conductivity tensor $\Sigma$ and the resistivity tensor $\r$ satisfy $\r\Sigma =I$, the identity matrix.
+
+The divergence free equation $\nabla\cdot\F=0$ gives an elliptic equation for the potential,
+\begin{align}
+\nabla\cdot(\,(\nabla u)\Sigma)  &=0, \quad \text{in $\Omega$},\\
+-\n\cdot(\nabla u)\Sigma&=g, \quad \text{on $\partial\Omega$},\label{Nuemann}
+\end{align}
+where the above Nuemann boundary condition satisfies $\int_{\partial\Omega}gdx=0$. Notice that this second order elliptic equation for the potential function exploits both $\nabla\cdot\F=0$ and $\nabla\times\E=0$, which are connected by Ohm's law.
+
+One may obtain a similar equation for the stream function $\psi$ using the dual structure, which is written as
+\begin{equation}\label{curlfreeA}
+\nabla\times\big((\nabla^\perp\psi)\r\big)=0.
+\end{equation}
+One may rewrite this dual equation in a divergence free equation using a similarity transformation, which is
+\begin{align}
+ \nabla\cdot(\,(\nabla \psi)S)  &=0,\ \quad \text{in $\Omega$}, \label{eqn:div2}\\
+ \psi&=G, \quad \text{on $\partial\Omega$},                \label{eqn:div2Nbdry}
+\end{align}
+where, for a counter-clock wise smooth curve $\gamma:[0, L] \mapsto \partial\Omega$ with unit speed,
+\begin{equation}\label{G}
+G(\gamma(t)) := \int_0^t g\big(\gamma(\tau)\big) d\tau\quad\text{and}\quad S:=\begin{pmatrix} 0 & -1 \\ 1 & \ 0 \end{pmatrix} \r\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}.
+\end{equation}
+
+\begin{Rem}[Derivation of the dual equation] Ohm's law is written as
+\begin{equation}\label{Ohm}
+-\begin{pmatrix} \partial_x u & \partial_y u \end{pmatrix}
+=\begin{pmatrix}\ \partial_y \psi & -\partial_x \psi \end{pmatrix}\r
+=\begin{pmatrix} \partial_x \psi &  \partial_y \psi \end{pmatrix}\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\r.
+\end{equation}
+Multiply $\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ to both sides from the right and obtain
+\begin{align*}
+  \begin{pmatrix}\partial_y u &  -\partial_x u \end{pmatrix} =
+\begin{pmatrix} \partial_x \psi &  \partial_y \psi \end{pmatrix}\begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\r \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+= (\nabla\psi)S.
+\end{align*}
+By taking divergence on both sides, we obtain \eqref{eqn:div2}. The Nuemann boundary condition \eqref{Nuemann} becomes
+$$
+g = -\n\cdot(\nabla u)\Sigma = (n^1,n^2)\cdot (\partial_y \psi, -\partial_x \psi) =(-n^2,n^1)\cdot(\partial_x \psi,\partial_y \psi) = T\cdot\nabla \psi,
+$$
+where $T:=(-n^2,n^1)$ is the unit tangent vector along the boundary $\partial\Omega$ in the counter-clockwise direction. Let $\gamma: [0, L] \to \partial\Omega$ be a curve rotating the boundary counter-clockwise with unit speed. Then, ${d\over d\tau} \psi(\gamma(\tau))=T\cdot\nabla\psi$ and the Dirichlet boundary condition \eqref{eqn:div2Nbdry} comes from a simple computation of
+$$
+\psi(\gamma(t))=\int_0^t {d\over d\tau} \psi(\gamma(\tau)) d\tau = \int_0^t g\big(\gamma(\tau)\big) d\tau
+=:G(\gamma(t)).
+$$
+\end{Rem}
+
+One of the main technique in this paper is the use of stream functions as independent variables. We next discuss identities related to this new coordinate system. Let $\xi,\eta$ be a new variables. Then, the two sides of \eqref{Ohm} are written as
+\begin{eqnarray*}
+  -\begin{pmatrix} \partial_x u & \partial_y u \end{pmatrix} &=&-\begin{pmatrix} \partial_\xi u & \partial_\eta u \end{pmatrix} \begin{pmatrix} \partial_x\xi & \partial_y\xi \\ \partial_x\eta & \partial_y\eta\end{pmatrix},\\
+  \begin{pmatrix} \partial_x \psi &  \partial_y \psi \end{pmatrix}
+  \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\r
+  &=&\begin{pmatrix} \partial_\xi \psi &  \partial_\eta \psi \end{pmatrix}
+  \begin{pmatrix} \partial_x\xi & \partial_y\xi \\ \partial_x\eta & \partial_y\eta\end{pmatrix}
+  \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\r.
+\end{eqnarray*}
+Therefore, Ohm's law \eqref{Ohm} is written as
+$$
+  -\begin{pmatrix} \partial_\xi u & \partial_\eta u \end{pmatrix}=\begin{pmatrix} \partial_\xi \psi &  \partial_\eta \psi \end{pmatrix}
+  \begin{pmatrix} \partial_x\xi & \partial_y\xi \\ \partial_x\eta & \partial_y\eta\end{pmatrix}
+  \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\r
+  \begin{pmatrix} \partial_x\xi & \partial_y\xi \\ \partial_x\eta & \partial_y\eta\end{pmatrix}^{-1}.
+$$
+Let
+\begin{equation}\label{tilder}
+\tilde \r:=\begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}\begin{pmatrix} \partial_x\xi & \partial_y\xi \\ \partial_x\eta & \partial_y\eta\end{pmatrix}
+  \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}\r
+  \begin{pmatrix} \partial_x\xi & \partial_y\xi \\ \partial_x\eta & \partial_y\eta\end{pmatrix}^{-1}.
+\end{equation}
+Then $\tilde \r$ is also a symmetric positive definite matrix and
+\begin{equation}
+\begin{pmatrix} \partial_\eta\psi & -\partial_\xi\psi \end{pmatrix}\tilde \r=-\begin{pmatrix} \partial_\xi u &\partial_\eta u \end{pmatrix} \label{eqn:Ohmsv2}.
+\end{equation}
+(Note that any one of $\Sigma$, $\r$, $S$, $\tilde \r$, and $\tilde S$ decides all the others.) Finally, we introduce a theorem related to the interior critical points of an elliptic problem, which is used in Proposition \ref{thm:anisoadm}.
+
+\begin{Lem}[Alessandrini \cite{alessandrini_critical_1987}] \label{lem:aless}
+Let $\Omega \subset \R^2$ be a bounded simply connected domain with a smooth boundary, $g \in C(\partial\Omega)$, $a_{ij} \in C^1(\Omega)$, and $a_i \in C(\Omega)$ for $i,j=1,2$. Let $u \in W^2_{loc}(\Omega) \cap C(\overline\Omega)$ satisfy
+\begin{align*}
+  \sum_{i,j=1}^2 a_{ij} \partial_{x_i}\partial_{x_j}u + \sum_{i=1}^2 a_i \partial_{x_i}u &= 0, \quad \text{in $\Omega$,} \\
+  u&=g, \quad \text{on $\partial \Omega$}.
+\end{align*}
+If $g|_{\partial\Omega}$ has $N$ maxima (and hence it has $N$ minima), then the interior critical points of $u$ are of a finite number and
+$$
+\sum_{i=1}^K m_i \le N-1,
+$$
+where $m_1,\cdots,m_K$ are the multiplicities of the corresponding maxima.
+\end{Lem}
+
+\begin{Rem}
+We will use this lemma to claim that there is no interior critical point if the boundary value $g$ has only one local maximum point on the boundary.
+\end{Rem}
+
+
+%\bibliographystyle{unsrt}
+\bibliographystyle{amsplain}
+\bibliography{conductivity}
+
+\end{document}
+
