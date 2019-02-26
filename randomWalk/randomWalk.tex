@@ -11,10 +11,10 @@
 \usepackage{subcaption}
 %\usepackage{refcheck}
 
-\hoffset=-30mm \voffset=-32mm
-%\usepackage[left=35mm,right=35mm,top=35mm,bottom=40mm,a4paper]{geometry}
+\hoffset=-25mm \voffset=-25mm
+\usepackage[left=35mm,right=35mm,top=35mm,bottom=40mm,a4paper]{geometry}
 
-\title[Random walk with location dependent travelling time]{Diffusion equation for spatially heterogeneous random walk}% with location dependent travelling time}
+\title[Random walk with location dependent travelling time]{Spatially heterogeneous random walk in one space dimension}% with location dependent travelling time}
 
 \author[Jaywan Chung]{Jaywan Chung}
 \address[Jaywan Chung]{\newline Department of Mathematics, Dankook University \newline 119 Dandae-ro, Dongnam-gu, Cheonan-si, Chungnam 330-714, Korea}
@@ -46,7 +46,6 @@
 \def\q{{\bf q}}
 \def\R{{\bf R}}
 \def\Z{{\bf Z}}
-\def\N{{\bf N}}
 \def\bfR{{\bf R}}
 \def\bfZ{{\bf Z}}
 \def\f{{\bf f}}
@@ -68,7 +67,7 @@
 \maketitle
 %
 \begin{abstract}
-  Random walk is a mathematical counterpart of Brownian motion and has been used as a theoretical tool to understand random dispersal phenomena. If temperature is not spatially constant, the mean free path and the speed of a Brownian particle are heterogeneous in space. To include such a spatial heterogeneity in a random walk system, we consider a case that the walk length and jumping time are spatially nonconstant. We derive corresponding diffusion equation and construct a fundamental solution of a special case that the jumping time has discontinuity. One of interesting findings is that we cannot sense the change of the walk length of the other side, but can sense the change of the jumping time.
+  The random walk is a mathematical counterpart of a Brownian particle system and has been used as a powerful theoretical tool to understand random dispersal phenomena. If temperature is not spatially constant, the mean free path and the traveling time for the path has variation in space. In this paper we investigate behavior of a simple random walk having spatially dependent walk length and jumping time. One of the main conclusions is that one does not sense the change of the walk length on the other side, but does sense the change of the jumping time. This also indicates that a random walk system with a non-constant time step cannot be reduced to a constant time step one even if the walk length is rescaled.
 \end{abstract}
 
 %\tableofcontents
@@ -77,588 +76,76 @@
 
 \section{Introduction}
 
-The purpose of this paper is to derive the partial differential equation satisfied by the diffusion limit of the probability density distribution of a random walk system. We are interested in a random dispersal phenomenon which is spatially heterogeneous. For example, it is known well that the homogeneous diffusion theory fails if temperature is spatially heterogeneous. The phenomenon is called thermal diffusion and steady states are not constant in the case. If temperature is spatially heterogeneous, the mean free path and the speed of a Brownian particle are not constant. To include such a spatial heterogeneity in our random walk system, we assume that the walk length $\Delta x$ and the jumping time $\Delta t$ are spatially nonconstant.
-
-If $\Delta x=h$ and $\Delta t=\tau$ are constant, the diffusion limit $u$ of the probability density functions in one space dimension satisfies a diffusion equation,
+In this paper we study the diffusion limit of a random walk system and find the corresponding diffusion equation. Let $\Delta x$ be the walk length and $\Delta t$ be the jumping time interval of a random walk system. ${1\over\Delta t}$ is also called a turning frequency. It is well understood that, if $\Delta x$ and $\Delta t$ are constant, the probability density $u$ in one space dimension satisfies a diffusion equation,
 \begin{equation}\label{HomoDiffusion}
-u_t=d_0u_{xx},\qquad d_1:={h^2\over 2\tau},
+u_t=ku_{xx},\qquad k={|\Delta x|^2\over 2\Delta t},
 \end{equation}
-where the sub-indexes indicate partial derivatives. The diffusivity constant $d_1$ is given by the Einstein-Smoluchowski relation in one space dimension. The multi-dimensional case is similarly obtained, where the diffusivity becomes $d_n:={h^2\over 2n\tau}$ in $\R^n$.
+where the sub-indexes indicate partial derivatives. The diffusivity constant $k$ is given by the Einstein-Smoluchowski relation. The multi-dimensional case is similarly obtained, where the diffusivity becomes $k={|\Delta x|^2\over 2n\Delta t}$ in $\R^n$. The purpose of this paper is to develop a diffusion model when $\Delta x$ and $\Delta t$ are spatially non-constant.
 
-The diffusion equation \eqref{HomoDiffusion} is valid only when the diffusivity is constant. There have been many efforts to find a correct diffusion equation when the diffusivity is non-constant, i.e., when $d=d(\x)$. For example, three diffusion models are often considered:
+The diffusion model \eqref{HomoDiffusion} is valid only when the diffusivity $k$ is constant. There have been many efforts and discussions to find a correct diffusion equation when the diffusivity is non-constant, i.e., $k=k(\x)$. For example, three diffusion models are often considered:
 \begin{eqnarray}
 % \nonumber % Remove numbering (before each equation)
-\label{Fick} u_t &=& (d(\x)u_x)_x, \\
-\label{Wereide} u_t &=& ( \sqrt{d(\x)}(\sqrt{d(\x)}u_x))_x, \\
-\label{Chapman} u_t &=& (d(\x)u)_{xx}.
+\label{Fick} u_t &=& (k(\x)u_x)_x, \\
+\label{Wereide} u_t &=& ( \sqrt{k(\x)}(\sqrt{k(\x)}u_x))_x, \\
+\label{Chapman} u_t &=& (k(\x)u)_{xx}.
 \end{eqnarray}
-Eq. \eqref{Fick} is called Fick's law. Eq. \eqref{Wereide} and \eqref{Chapman} have been by Wereide \cite{Wereide1914} and Chapman \cite{Chapman1928}, respectively. These three equation are identical to each other if the diffusivity $d$ is constant. However, any two of them does not agree to each other. In particular, the Fickian type diffusion \eqref{Fick} and the Fokker-Planck type one \eqref{Chapman} are often taken and compared as physical or biological dispersal models in heterogeneous environment (see \cite{Bengfort2016,Milligen}).
+Eq. \eqref{Fick} is called Fick's law. Eq. \eqref{Wereide} and \eqref{Chapman} have been by Wereide \cite{Wereide1914} and Chapman \cite{Chapman1928}, respectively. However, none of them are agreed to be the correct diffusion model. For example, the Fickian type diffusion \eqref{Fick} and the Fokker-Planck type one \eqref{Chapman} are often compared as mathematical dispersal models for physical particles and biological species in heterogeneous environment (see \cite{Bengfort2016,Milligen}).
 
-These three classical diffusion equations also appear as model equations satisfied by the probability density functions of stochastic processes when the variation of the random variable (i.e., $|\Delta x|^2$ for the random walk case) depends on the terminal, middle, or starting point of each jump, respectively. In other words, \eqref{Wereide} and \eqref{Chapman} are obtained by the Stratonovich and Ito type integrals of a stochastic process, respectively. Note that in the three cases of stochastic processes, the spatial heterogeneity is in variation of the random variable (i.e., in $|\Delta x|^2$) only and the frequency of events (i.e., ${1\over\Delta t}$) is assumed to be spatially homogeneous. Including a spatial heterogeneity in the frequency of events is one of key contributions of this paper.
-
-Let
-\begin{equation}\label{ab}
-\Delta x=ha(x)>0\ \ \text{and}\ \ \Delta t=\tau b(x)>0,
-\end{equation}
-where $h>0$ and $\tau>0$ denote the microscopic scale of walk length and jumping time, and $a(x)$ and $b(x)$ denote their macroscopic scale spatial heterogeneity. To denote the spatial heterogeneity in the frequency of events (or turning frequency) we take
-\begin{equation}\label{mu}
-\mu(x):=b(x)^{-1}.
-\end{equation}
-The claim of this paper is that the corresponding diffusion equation is
+The three equations are satisfied by the probability density function of a stochastic process when the variation of jumping distance, i.e., $|\Delta x|^2$, depends on the terminal, middle, or starting point of each jump, respectively. In other words, \eqref{Wereide} and \eqref{Chapman} are obtained by the Stratonovich and Ito integrals of a stochastic process, respectively. Note that in the three cases of stochastic processes, the spatial heterogeneity is in $\Delta x$ only and $\Delta t$ is assumed to be spatially homogeneous. However, to understand a general spatially heterogeneous diffusion, it is essential to consider a case both $\Delta x$ and $\Delta t$ are spatially heterogeneous. For example, consider
+\begin{equation*}
+{1\over \Delta t}={\eps^2\over2}\mu(x)>0,\quad \Delta x=\eps b(x)>0,
+\end{equation*}
+where $\mu(x)$ and $b(x)$ contain the information of spatial heterogeneity in the turning frequency and walk length, respectively, and ${\eps^2\over2}$ and $\eps$ their microscopic scales. The claim of this paper is that the corresponding diffusion equation is
 \begin{equation}\label{Kim}
-u_t=d_1\Big(a(x)\Big({a(x)\over b(x)}u\Big)_x\Big)_x.
+u_t=(b(x)(b(x)\mu(x)u)_x)_x.
 \end{equation}
-If $a(x)=1$ and $b(x)=1$, the diffusivity becomes constant $d=d_1$ and hence the four cases, \eqref{Fick}-\eqref{Chapman} and \eqref{Kim}, are identical to each other. If $b(x)=1$ and $a(x)$ is not constant, \eqref{Kim} is identical to \eqref{Wereide}, the case of Wereide's diffusion or of Stratonovich integral. If $a(x)=1$ and $b(x)$ is not constant, \eqref{Kim} is identical to \eqref{Chapman}, the case of Chapman's diffusion or of Ito integral. We show that the diffusion limit of a probability density of a discrete random walk system satisfies \eqref{Kim} for a general spatial heterogeneity in $a(x)$. However, for $b(x)$, we show for a spacial case given by \eqref{b(x)}.
+In this paper we show that the diffusion limit of a random walk system satisfies the equation. If $\mu(x)$ and $b(x)$ are constant, then the diffusivity is $k={b^2\mu}$ and the four cases, \eqref{Fick}-\eqref{Kim}, are identical. If $\mu(x)=1$ and $b=b(x)$, \eqref{Kim} is identical to \eqref{Wereide}, the case of Stratonovich integral. We consider general spatial heterogeneity in $b(x)$. However, for $\mu(x)$, we consider a spacial case given by \eqref{mu(x)}.
 
-Random walk is mathematical counterpart of Brownian motion of particles suspended in a fluid. The parameters $\Delta x$ and $\Delta t$ respectively represent the mean free path and the mean collision time. Spatial heterogeneity in such a motion appears often, where an obvious source is the temperature gradient. The suspended particles move more actively in warm regions. The effect of temperature gradient has been studied for a long time under the name of thermal diffusion or Ludwig-Soret effect \cite{Ludwig1856,Soret1879}. There are enormous amount of researches related such phenomena (see \cite{Braun2004, Duhr2006, Eslamian2009, Harstad2009, Huang2010,14,Putnam2007,Srinivasan2011}). However, there is no comprehensive or generic thermal diffusion model such as Einstein's molecular level explanation for the homogeneous case. The study of spatially heterogeneous random walk can provide a theoretical background for the thermal diffusion theory.
+A random walk system is a mathematical counterpart of Brownian motion of particles suspended in a fluid and the parameters $\Delta x$ and $\Delta t$ respectively represent the mean free path and the mean collision time of Brownian particles. Spatial heterogeneity in such a motion appears in naturally and an obvious source of it is the spatial difference in temperature. The Brownian particles move more actively in warm regions. The effect of temperature gradient such as thermal diffusion or Ludwig-Soret effect  \cite{Ludwig1856,Soret1879} has been well known for a long time. There are enormous amount of researches related such phenomena (see \cite{Braun2004, Duhr2006, Eslamian2009, Harstad2009, Huang2010,14,Putnam2007,Srinivasan2011}). However, the literatures agree that there is no comprehensive or generic thermal diffusion model such as Einstein's molecular level explanation for the homogeneous case.
 
-The spatial variation in the jumping time interval $\Delta t$ makes a more profound difference than the one in $\Delta x$. In Section 2, we consider such a case when the jumping time is discontinuous at the origin and consists of two values:
-\begin{equation}\label{b(x)}
-\Delta x=h,\qquad
-\Delta t=\tau b(x),\quad b(x)=
+In Section 2, we first consider a random walk model that the walk length is given as a spatial function $\Delta x={\|\pi\|\over2}b(x)$ for a constant $\|\pi\|$ in \eqref{pi} and the jumping time interval $\Delta t=\tau$ as a constant. It is shown in Theorem \ref{thm1} that the probability density function of the discrete random walk model converges to the solution of
+$$
+u_t=d(b(x)(b(x)u)_x)_x,\qquad d={\|\pi\|^2\over 8\tau}.
+$$
+Note that, even if this equation is not autonomous, we may solve it with a general initial value since, after changing the variable with
+$$
+y(x):=\int_0^x \frac{1}{b(s)}\,ds,
+$$
+the equation returns to the heat equation $u_t=du_{yy}$.
+
+The spatial variation in the jumping time interval $\Delta t$ makes a more profound theoretical difference in comparison with the one in $\Delta x$. In particular the corresponding random walk model is not even a Markov process. In Section 3, we consider a simplest case when the jumping time consists of two values:
+$$
+\Delta t=
 \begin{cases}
+\tau & \text{if $x<0$,}\\
+2\tau & \text{if $x>0$},
+\end{cases}
+$$
+where $\tau>0$ is a constant. However, due to the discontinuity at the origin, it is challenging to develop and analyze a correspoding PDE model; it will be shown that the probability density function of the discrete random walk model converges to the solution of
+\begin{equation}\label{ux1}
+u_t=d(b(x)(b(x)\mu(x)u)_x)_x,\qquad d={\|\pi\|^2\over 8\tau},
+\end{equation}
+where
+\begin{equation}\label{mu(x)}
+\mu(x)=\begin{cases}
 1 & \text{if $x<0$,}\\
-2 & \text{if $x>0$}.
+0.5& \text{if $x>0$}.
 \end{cases}
 \end{equation}
-This is one of simplest cases for the heterogeneity in jumping time $\Delta t$ and may serve as the basic component of a general case. However, this simplicity allows us to see the effect of spatial heterogeneity in $\Delta t$. We show that the diffusion limit of discrete probability density distribution satisfies
-\begin{equation}\label{ux1}
-u_t=d_1\Big({u\over b(x)}\Big)_{xx}.
-\end{equation}
-
-
-In Section 3, we introduce a discrete random walk model when
+Then, after the same variable change as above, we obtain $u_t=d(\mu(x)u)_{yy}$. If we set $w=\mu u$ and $d=1$, then $w$ satisfies
 $$
- \Delta x=ha(x),\qquad\Delta t=\tau.
+w_t=\mu w_{yy},\qquad y\in\R.
 $$
-The spatial heterogeneity in the walk length $\Delta x$ can be easily handled by employing a new space variable,
-$$
-y(x):=\int_0^x \frac{1}{a(s)}\,ds.
-$$
-Then, the spatially heterogeneous random walk system is reduced to a classical homogenous one. It is classical that the diffusion limit of the homogenous random walk system gives the homogeneous diffusion equation \eqref{HomoDiffusion}. If we return back to the original space variable, we obtain a diffusion equation of the Wereide type,
-$$
-u_t=d_1(a(x)(a(x)u)_x)_x.
-$$
-Note that, even if this equation is not autonomous, we may solve it with a general initial value by using the new space variable.
-
-For general case of \eqref{ab}, the corresponding diffusion equation is
-\begin{equation}\label{FullDiffusion}
-u_t=d_1\Big(a(x)\Big({a(x)\over b(x)}u\Big)_{x}\Big)_{x},
-\end{equation}
-where the proof of this paper is valid only for the $b(x)$ in \eqref{b(x)}.
-
-\newpage
-
-\section{Random walk with a spatially non-constant jumping time}
-
-We consider a random walk system that a particle jumps to one of two adjacent grid points with the equal probability ${1\over2}$. The special feature of the random walk system in this paper is that the jumping time interval $\Delta t$ is different for two regions $x<0$ and $x>0$. To provide the meaning of situation more clearly, we consider $\Delta t$ as a traveling time to move to the next grid point. We let $\Delta t=\tau$ in the region $x<0$ and $\Delta t=2\tau$ in the other region $x<0$, i.e.,
-\begin{equation}\label{alpha}
-\Delta x=h,\quad
-\Delta t= b(x)\tau,\qquad
- b(x) =
-\left\{\begin{array}{ll}
-        1, & \text{if } x<0,\\
-        2, & \text{if } x\ge0.
-        \end{array}\right.
-\end{equation}
-Note that the step function $b(x)$ is to denote the spatial heterogeneity in $\Delta t$ and $\tau$ is the microscopic scale of it.
-
-The convergence proof depends on the fact that the traveling time in one region is exactly two times larger than the other. For a general case this method seems not to work. However, this case shows interesting diffusion phenomena when the jumping time is spatially heterogeneous.
-
-\subsection{Time-space mesh and random walk algorithm}
-
-We denote by $p_n^k$ the probability of a particle to be placed at $x=x^k$ at time $t=t_n$. The time-space mesh used in this paper is denoted by
-$$
-(t_n,x^k):=(n\tau,kh),\qquad n\in\Z_+,\ k\in\Z,
-$$
-where the time step size $\tau$ and the space mesh size $h$ are small and $n$ and $k$ are integers. Then, the probability $p_n^k$ satisfies
-\begin{equation} \label{RW1}%\tag{RW1}
-\begin{aligned}
-    2p^k_n = \left\{\begin{array}{lr}
-        p^{k-1} _{n-1} + p ^{k+1} _{n-1}, & \text{if } k<0,\\
-        p^{-1} _{n-1} + p ^{1} _{n-2}, & \text{if } k=0,\\
-        p^{k-1} _{n-2} + p ^{k+1} _{n-2}, & \text{if } k>0.
-        \end{array}\right.
-\end{aligned}
-\end{equation}
-Find that the probability $p^k_n$ is the average of two probabilities at two adjacent grid points at two moments, $t_{n-1}$ or $t_{n-2}$, depending on $k$. By computing the probabilities at  $t=t_{n-1}$ using the ones at $t=t_{n-2}$, we can rewrite \eqref{RW1} using even numbered time steps $n=2\ell$ only, i.e.,
-\begin{equation} \label{RW2}%\tag{RW2}
-\begin{aligned}
-    &p^{k}_{2\ell} = \left\{\begin{array}{ll}
-        \frac{1}{4}p^{k-2} _{2(\ell-1)} + \frac{1}{2}p ^{k} _{2(\ell-1)} +
-        \frac{1}{4} p^{k+2}_{2(\ell-1)}, & \text{if $k<0$ is even},\\
-        \frac{1}{4}p^{-2} _{2(\ell-1)} + \frac{1}{4}p^{0} _{2(\ell-1)} +
-        \frac{1}{2}p ^{1} _{2(\ell-1)}, & \text{if $k=0$},\\
-        \frac{1}{2}p^{k-1} _{2(\ell-1)} + \frac{1}{2}p ^{k+1} _{2(\ell-1)},
-        & \text{if } k>0.
-        \end{array}\right.
-\end{aligned}
-\end{equation}
-Notice that the odd numbered indexes for $k<0$ never appears in this formula. Hence, the even numbered time steps, even numbered space grids for $k<0$, and all grids for $k>0$ are self-contained. This is the special property when $b(x)$ in one region is two times greater than the one in the other region. The proof of diffusion limit of this section depends on this structure.
-
-Suppose that an initial probability density function be given by $v_0(x)$ for $x\in\R$. We assume that
-\begin{equation} \label{initial}
- v_0 \in L^1( \R)\cap L^\infty(\R), \quad \int_ \R v_0(x)\, dx = 1, \quad
- w_0:=\frac{v_0(x)}{ b(x)} \in C^2(\R).
-\end{equation}
-Note that the regularity of the problem is on ${v(x)\over b(x)}$ and the smoothness assumption of the initial value is given on $\frac{v_0(x)}{ b(x)}$, not on $v_0(x)$. For a given mesh size $h>0$, we discretize the initial probability density function $v_0$ by
-\begin{equation}\label{p0k}
-p_{0}^{k} = \left\{\begin{array}{ll}
-               0 & \text{if } k<0\ \text{is odd},\\
-               \int_{x^k}^{x^{k}+2h} v_0(x)dx & \text{if } k<0\ \text{is
-               even},\\
-                \int_{x^k}^{x^{k}+h} v_0(x)dx  & \text{if } k\ge0.
-               \end{array}\right.
-\end{equation}
-Then, $\sum_{j=-1}^{-\infty}p_{0}^{2j}+\sum_{j=0}^{\infty}p_{0}^{j}=1$ and, since \eqref{RW2} is self-contained, $\sum_{j=-1}^{-\infty}p_{2\ell}^{2j}+\sum_{j=0}^{\infty}p_{2\ell}^{j}=1$ for all $\ell>0$. Note that missing probabilities are all zero, $p_{2\ell}^{2j+1}=0$ if $j<0$, and \eqref{RW2} show the relations of the others. To denote the space grids with non-zero probability, we introduce
-\begin{equation}\label{yj}
-y^j=x^{2j}\quad\text{if}\quad j<0,\quad\text{and}\quad
-y^j=x^{j}\quad\text{if}\quad j\ge0.
-\end{equation}
-Note that $p_{n}^{k}$ does not approximate the probability density function but the probability for the particle to be placed between two grid points. After dividing them with the domain size of the integrals in \eqref{p0k}, the probability density function is approximated by
-\begin{equation}\label{vj}
-v^{j}_\ell:={p^{2j}_{2\ell} \over2h}\quad\text{for}\quad
-j<0\quad\text{and}
-\quad v^{j}_\ell:={p_{2\ell}^{j}\over h}\quad\text{for}\quad j\ge0.
-\end{equation}
-The probability density distribution $v(t,x)$ will be the limit of $v^j_\ell$ as $h\to0$. However, we cannot use the relation \eqref{RW2} for $v^{j}_\ell$'s due to the non-symmetry in \eqref{vj}. Instead, we will take
-\begin{equation}\label{pandw}
-w^{j}_\ell:={p_{2\ell}^{2j}\over2h}\quad\text{if}\quad j<0,\quad\text
-{and} \quad w^{j}_\ell=:{p_{2\ell}^{j}\over2h}\quad\text{if}\quad j\ge0.
-\end{equation}
-Then, $v^{j}_\ell=w^{j}_\ell$ for $j<0$ and $v^{j}_\ell=2w^{j}_\ell$ for
-$j\ge0$, i.e.,
-$$
-v^j_\ell=w_\ell^j b(y^j).
-$$
-Divide the relation \eqref{RW2} by $2h$ and obtain a relation for $w^{j}_\ell$'s:
-\begin{equation} \label{RW3}%\tag{RW3}
-\begin{aligned}
-    &w^{j}_\ell = \left\{\begin{array}{ll}
-        \frac{1}{4}w^{j-1} _{\ell-1} + \frac{1}{2}w ^{j} _{\ell-1} +
-        \frac{1}{4} w^{j+1}_{\ell-1}, & \text{if $j<0$},\\
-        \frac{1}{4}w^{-1} _{\ell-1} + \frac{1}{4}w^{0} _{\ell-1} +
-        \frac{1}{2}w ^{1} _{\ell-1}, & \text{if $j=0$},\\
-        \frac{1}{2}w^{j-1} _{\ell-1} + \frac{1}{2}w ^{j+1} _{\ell-1}, &
-        \text{if } j>0.
-        \end{array}\right.
-\end{aligned}
-\end{equation}
-Realize that $w^{j}_0$ discretizes $w_0(x)$ given in \eqref{initial}, i.e.,
-\begin{equation} \label{vol_aver+pmf}
-w_{0}^{j} ={1\over y^{j+1}-y^{j}}\int_{y^j}^{y^{j+1}} w_0(x)dx.
-\end{equation}
-In the rest of the section we will find the diffusion limit $w(t,x)$ of $w_\ell^j$'s as $h\to0$. Then, the probability density distribution $v(t,x)$ is given by the relation,
-$$
-v(x,t)=b(x)w(t,x),
-$$
-and the initial value becomes $v(0,x)=v_0(x)$ as given in \eqref{initial}.
-
-\subsection{Difference quotients and continuum interpolation}
-
-Difference quotients are useful in finding the regularity of a weak solution and the relation satisfied by the limit of finite difference schemes. Let
-\begin{equation}\label{Ljl}
-L^j_\ell := \frac{w_\ell^{j+1}-w_\ell^j}{y^{j+1}-y^j}
-        =\left\{\begin{array}{ll}
-        \frac{w^{j+1}_{\ell} - w^{j}_{\ell}}{2\l}, & \text{if $j<0$},\\
-        \frac{w^{j+1}_{\ell} - w^{j}_{\ell}}{\l}, & \text{if }  j\ge0,
-        \end{array}\right.
-\end{equation}
-which is an approximation of the gradient $w_x$. Let
-\begin{equation}\label{Qjl}
-Q^j_\ell := \frac{L^j_\ell-L^{j-1}_\ell}{2h}= \left\{\begin{array}{ll}
-        \frac{1}{2\l^2}\big( \frac{1}{2} w^{j-1} _{\ell} - w ^{j} _{\ell} +
-        \frac{1}{2} w^{j+1} _{\ell}\big), & \text{if $j<0$},\\
-        \frac{1}{2\l^2}\big( \frac{1}{2} w^{-1} _{\ell} - \frac{3}{2}w
-        ^{0} _{\ell} +w^{1} _{\ell}\big), & \text{if $j=0$},\\
-        \frac{1}{2\l^2}\big(w^{j-1} _{\ell} - 2w^j_\ell + w ^{j+1}
-        _{\ell}\big), & \text{if $j>0$}.
-        \end{array}\right.
-\end{equation}
-Notice that $y^{j+1}-y^{j}=2h$ for $j<0$ and $y^{j+1}-y^{j}=h$ for $j\ge0$. Therefore, $Q^j_\ell$ is an approximation of $w_{xx}$ for $j<0$ and of ${1\over2}w_{xx}$ for $j\ge0$, i.e., of ${w_{xx}\over b}$.\footnote{Remember that it is NOT an approximation of $({w_x\over b})_x$. There is no delta measure like phenomenon in the relation. This observation will be useful when we consider a general case in the next paper.} From \eqref{RW3}, we obtain
-$$
-\begin{aligned}
-    &w^{j}_\ell-w^{j}_{\ell-1} = \left\{\begin{array}{ll}
-        \frac{1}{4}w^{j-1} _{\ell-1} - \frac{1}{2}w ^{j} _{\ell-1} +
-        \frac{1}{4} w^{j+1}_{\ell-1}, & \text{if $j<0$},\\
-        \frac{1}{4}w^{-1} _{\ell-1} - \frac{3}{4}w^{0} _{\ell-1} +
-        \frac{1}{2}w ^{1} _{\ell-1}, & \text{if $j=0$},\\
-        \frac{1}{2}w^{j-1} _{\ell-1}-w^{j}_{\ell-1} + \frac{1}{2}w ^{j+1}
-        _{\ell-1}, & \text{if } j>0.
-        \end{array}\right.
-\end{aligned}
-$$
-The above three cases are written in the same form using $Q_\ell^j$, which is
-\begin{equation} \label{RW1w}
-\begin{aligned}
- \frac{w^j_\ell - w^j_{\ell-1}}{2\tau} &= \left(\frac{h^2}{2\tau}\right)
- \frac{1}{2h}\left( \Big(\tfrac{w^{j+1}_{\ell-1} -
- w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell-1} -
- w^{j-1}_{\ell-1}}{y^{j}-y^{j-1}} \Big)\right)= d_1Q^j_{\ell-1}.
-  \end{aligned}
-\end{equation}
-This is the main relation which will give the diffusion equation satisfied by the probability density function.
-
-The relations in \eqref{RW3} can be used to find relations for $L^j_\ell$ and $Q^j_\ell$ which are
-\begin{equation} \label{eq:L}
-L^j_\ell = \left\{\begin{array}{ll}
-        \frac{1}{4}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^j +
-        \frac{1}{4}L_{\ell-1}^{j+1}, & \text{if $j<0$},\\
-        \frac{1}{2}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^{j+1}, &
-        \text{if $j\ge0$},
-        \end{array}\right.
-\end{equation}
-and
-\begin{equation}\label{eq:Q}
-\begin{aligned}
-Q^j_\ell %&= \frac{L^{j+1}_\ell - L^j_\ell}{\l}\\
-&=\left\{\begin{array}{ll}
-        \frac{1}{4}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j} +
-        \frac{1}{4}Q_{\ell-1}^{j+1}, & \text{if $j<0$},\\
-        \frac{1}{4}Q_{\ell-1}^{-1} + \frac{1}{4}Q_{\ell-1}^{0} +
-        \frac{1}{2}Q_{\ell-1}^{1}, & \text{if $j=0$},\\
-        \frac{1}{2}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j+1}, &
-        \text{if $j>0$}.
-        \end{array}\right.
- \end{aligned}
-\end{equation}
-Note that $L^j_\ell$ and $Q^j_\ell$ are obtained by averaging relations of previous time steps. This allows key estimates needed.
-
-\begin{lemma}[Uniform estimates] \label{uniform_est} ~
-
-\begin{enumerate}\item Total sums of $w_\ell^j$, $L_\ell^j$, and
-$Q_\ell^j$ are constant, i.e.,
-$$
-\sum_{j} w^j_\ell = \sum_{j} w^j_0,\quad \sum_{j} L^j_\ell = \sum_{j}
-L^j_0,\quad \sum_{j} Q^j_\ell = \sum_{j} Q^j_0.
-$$
-\item Sequences $w_\ell^j$, $L_\ell^j$, and $Q_\ell^j$ are bounded by the
-    initial maximums, i.e.,
-  $$
-  |w^j_\ell| \le \sup _{j} |w^j_0|,\quad  |L^j_\ell| \le \sup _{j}
-  |L^j_0|,\quad |Q^j_\ell| \le \sup _{j} |Q^j_0|.
-  $$
-\item We also have, for $p\ge1$,
-$$
-\sum _{j} |w^j_\ell|^p \le \sum _{j} |w^j_0|^p,\quad\sum _{j} |L^j_\ell|^p \le \sum _{j} |L^j_0|^p,\quad \sum _{j} |Q^j_\ell|^p \le
-\sum _{j} |Q^j_0|^p.
-$$
-\end{enumerate}
-\end{lemma}
-\begin{proof}
-The first two are obvious since the relations in \eqref{RW3},\eqref{eq:L}, and \eqref{eq:Q} are averaging processes. The third one is also obvious since $f(x)=|x|^p$ is a convex function for all $p\ge1$. One may apply Jensen's inequality to the averaging processes, \eqref{RW3},\eqref{eq:L}, and \eqref{eq:Q}. For example, \eqref{eq:L} turns into
-$$
-|L^j_\ell|^p \le \left\{\begin{array}{ll}
-        \frac{1}{4}|L_{\ell-1}^{j-1}|^p + \frac{1}{2}|L_{\ell-1}^j|^p +
-        \frac{1}{4}|L_{\ell-1}^{j+1}|^p, & \text{if $j<0$},\\
-        \frac{1}{2}|L_{\ell-1}^{j-1}|^p + \frac{1}{2}|L_{\ell-1}^{j+1}|^p, &
-        \text{if $j\ge0$}.
-        \end{array}\right.
-$$
-Therefore, $\sum _{j} |L^j_\ell|^p \le\sum _{j} |L^j_{\ell-1}|^p\le\cdots\le\sum _{j} |L^j_0|^p$.
-\end{proof}
-
-Note that this lemma implies that we have enough regularity in $x$ variables. For example, the second assertion implies that the approximation of the second order derivative, $Q^j_\ell$, is uniformly bounded by the initial condition. Even higher order derivatives can be controlled in a similar way and these are possible since the system is an averaging process. Technical difficulty is in controlling the smoothness in $t$ variables. The third assertion implies that $W^{k,p}(\R)$ regularity is passed to the limit.
-
-Now we construct functions defined on the continuum space $\R^+\times\R$ which approximates the discrete values $w^j_\ell$ defined at grid points.
-We show the convergence of the continuum approximations as $h\to0$. We construct four different interpolations,
-\begin{equation} \label{linear0}
-\begin{aligned}
- w_1^h(t,x)&:= w^j_\ell,\\
- w_2^h(t,x)&:= \left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
- w_{\ell+1}^{j} + \left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
- w_{\ell}^{j},\\
- w_3^h(t,x)&:= \left(\tfrac{x-y^j}{y^{j+1}-y^j} \right) w_{\ell}^{j+1}
- + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j} \right) w_{\ell}^{j},\\
-  w^h(t,x)&:= \left(\tfrac{x-y^j}{y^{j+1}-y^j}
-  \right)\left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
-  w_{\ell+1}^{j+1} + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j}
-  \right)\left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
-  w_{\ell+1}^{j}\\
- &+ \left(\tfrac{x-y^j}{y^{j+1}-y^j}
- \right)\left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
- w_{\ell}^{j+1} + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j}
- \right)\left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
- w_{\ell}^{j}
-  \end{aligned}
-\end{equation}
-when $(t,x)\in D_\ell^j:=[t_{2\ell}, t _{2\ell+2}) \times [y^j, y^{j+1})$. Note that $w_1^h$ is constant on $D_\ell^j$, and $w_2^h$ and $w_3^h$ are linear on $D_\ell^j$. The last one, $w^h(t,x)$, is continuous on $\R^+\times\R$. All of them has the value $w^j_\ell$ at $t=t_{2\ell}$ and $x=y^j$. We now see in the following lemma that $w^h(t,x)$ is Holder continuous with exponent $\gamma={1\over2}$.
-
-\begin{lemma} \label{misc}
-Let $w_0\in W^{1,1}(\R)\cap W^{1,\infty}(\R)$ and $w^h$ be defined by \eqref{linear0}. We assume that $\tau$ and $h$ are related by
-$$
-{h^2\over 2\tau}=d,
-$$
-where $d>0$ is fixed. Then,
-\begin{enumerate}
- \item For any $t>0$ and $h>0$, $\|\partial_x w^h(t,\cdot)\|_{L^\infty(\R)} \le \|\partial_x w_0\|_{L^\infty(\R)}$ in a weak sense. Hence, $w^h(t,\cdot)$ is uniformly Lipschitz continuous in the $x$-variable.
- \item The approximations $w^h(\cdot,x)$ are uniformly Holder continuous in the $t$-variable with exponent ${1\over2}$ with respect to $h>0$ and $x\in\R$. In other words, there exists a constant $C>0$ such that, for any $x\in\R$ and $h>0$,
-     \begin{equation}\label{Holder}
-     |w^h(t,x)-w^h(s,x)|\le C\sqrt{|t-s|} \quad\text{for all } |t-s|\text{
-     small}.
-     \end{equation}
- \end{enumerate}
-\end{lemma}
-\begin{proof}
-1. Since $w_0^j$ is the mean of $w_0(x)$ in the interval $(y^j,y^{j+1})$
-(see \eqref{vol_aver+pmf}) and $w^h(0,\cdot)$ is the linear interpolation of
-$(y^j,y^{j+1})$, the first assertion is clear by Lemma \ref{uniform_est}.
-
-2. Let $L_0:=\sup |w_0'(x)|$. Then, $|L_0^{j}|\le L_0$ for any mesh size
-$h>0$. It is enough to consider an estimate along mesh grids and let
-$x=y^j$. By \eqref{Qjl} and \eqref{RW1w}, we have
-$$
- \frac{|w^j_\ell - w^j_{\ell-1}|}{2\tau} \le d\sup|Q^j_{\ell}|\le {d\over
- h}L_0.
-$$
-Multiply $\sqrt{2\tau}$ both sides and obtain
-$$
- {|w^h(t_{2\ell},y^j)-w^h(t_{2\ell-2},y^j)|\over\sqrt{2\tau}}=\frac{|w^j_\ell
- - w^j_{\ell-1}|}{\sqrt{2\tau}} \le d\sqrt{2\tau\over
- h^2}L_0=\sqrt{d}\,L_0.
-$$
-This inequality \eqref{Holder} holds for any $|s-t|<\tau$ and hence $w^h$ is Holder continuous with exponent ${1\over2}$. Since the upper bound $C:=\sqrt{d}\,L_0$ is independent of $h$ and $x$, $w^h$'s are uniformly Holder continuous.
-\end{proof}
-
-The functions $w^h(t,x)$ are uniformly Lipschitz continuous in the $x$-variable and uniformly Holder continuous with the exponent ${1\over2}$ in the $t$-variable. Therefore, $w^h$'s are equicontinuous and uniformly bounded. Therefore, by the Arzela-Ascoli theorem, there exists a subsequence $w^{h_i}(t,x)$ such that $w^{h_i}(t,x)\to w$ uniformly on any compact set for a limit function $w\in C^1_{1/2}(\R^+\times \R)$. Therefore, due to the way of construction, $w_1^{h_i},w_2^{h_i}$ and $w_3^{h_i}$ also converge to the same limit.
-
-\begin{lemma}\label{compactness} There exists a subsequence $\{w^{h_i}\}$ and a function $w\in C^1_{1/2}\big([0,T)\times \R\big)$ such that $w_1^{h_i},w_2^{h_i},w_3^{h_i},w^{h_i}\rightarrow w$ uniformly on any compact set $K \subset [0,T)\times \R$.
-\end{lemma}
-
-
-\subsection{Convergence to the weak solution}
-
-Now we show that the subsequential limit is a weak solution to a
-Cauchy problem of a non-autonomous parabolic equation,
-\begin{equation}\label{eqnw}
-   b(x) w_t = d w_{xx},\qquad w(0,x)=w_0(x).
-\end{equation}
-We also show that there is an energy functional such that the energy level of the weak solution decreases as $t\to\infty$. This implies the uniqueness of the solution in the class of admissible ones and the convergence of $w^h$ as $h\to0$.
-
-Let $w$ be a smooth solution of \eqref{eqnw} and define an energy
-functional by
-$$
-e(t;w)={1\over 2}\int  b(x) w^2(t,x)\,dx.
-$$
-Then,
-$$
-e'(t;w)=\int  b ww_t\,dx=d\int ww_{xx}\,dx=-d\int w_x^2\,dx\le 0.
-$$
-We show that the energy of a subsequential limit decreases in time.
-\begin{theorem}
-Let $w$ be a subsequential limit, i.e., $w^{h_i}\to w$.
-\begin{enumerate}
- \item For all $t\in[0,T)$, $\int_\R b(x) w(t,x)\;dx = 1$.
- \item For all $t>0$, $e(t;w)\le e(0;w)$.
-\end{enumerate}
-\end{theorem}
-\begin{proof}
-For $t\in [t_{2\ell}, t_{2\ell+2})$, we have
-\begin{align*}
-\int_\R  b(x)w_1^h(t,x) \; dx &= \sum_{j\ge0}2w^j_\ell h +
-\sum_{j<0}w^j_\ell2h \\
-&=\sum_{j\ge0}p^j_{2\ell} +
-\sum_{j<0}p^{2j}_{2\ell}=\sum_{j\ge0}p^j_{0} +
-\sum_{j<0}p^{2j}_{0} = 1.
-\end{align*}
-Therefore, since $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ in $L^1(\R)$,
-$\int_\R b(x) w(t,x) \; dx = 1$.
-
-Next consider the energy of the approximation $w^h_1$,
-\begin{align*}
-e(t_{2\ell};w^h_1)&=\int_\R  b(x) (w^h_1(t_{2\ell},x))^2dx\\
-&=\sum_{j<0}(w_\ell^{j})^2(2h) +\sum_{j\ge0}2(w_\ell^{j})^2h =\sum_{j<0}(p_{2\ell}^{2j})^2 +\sum_{j\ge0}(p_{2\ell}^{j})^2 .
-\end{align*}
-Since $f(x)=x^2$ is a convex function, \eqref{RW2} gives that
-$$
-\begin{aligned}
-    &(p^{k}_{2\ell})^2 \le \left\{\begin{array}{ll}
-        \frac{1}{4}(p^{k-2} _{2(\ell-1)})^2 + \frac{1}{2}(p^{k}_{2(\ell-1)})^2 +\frac{1}{4} (p^{k+2}_{2(\ell-1)})^2, & \text{if $k<0$ is even},\\
-        \frac{1}{4}(p^{-2} _{2(\ell-1)})^2 + \frac{1}{4}(p^{0} _{2(\ell-1)})^2 +\frac{1}{2}(p ^{1} _{2(\ell-1)})^2, & \text{if $k=0$},\\
-        \frac{1}{2}(p^{k-1} _{2(\ell-1)})^2 + \frac{1}{2}(p ^{k+1} _{2(\ell-1)})^2,
-        & \text{if } k>0.
-        \end{array}\right.
-\end{aligned}
-$$
-Therefore, $e(t_{2\ell};w^h_1)\le e(0;w^h_1)$ for all $\ell>0$. Since $w^{h_i}\to w$ as $h_i\to0$, we have $e(t;w)\le e(0;w)$ for all $t>0$.
-\end{proof}
-
-
-Finally, we define the weak solution of the limiting equation \eqref{eqnw} and show that the subsequential limit is a weak solution.
-
-\begin{definition}[Weak solution] We call $w \in L^2\Big([0,T];H^1(
-\R)\Big) \cap L^\infty\Big([0,T];L^2(\R)\Big)$ a weak solution of
-\eqref{eqnw} if, for any test function $\phi \in
-C_c^1([0,T)\times \R)$,
- \begin{equation}\label{DefWeak}
-  \int_0^T\int_\R  b w\phi_t\,dxdt
-  +\int_\R b w_0\phi(0,x)\,dx = d\int_0^T\int_\R w_x\phi_x\, dxdt.
- \end{equation}
-\end{definition}
-
-\begin{theorem}
-  The interpolation $w^{h}(t,x)$ converges in $C^1_{1/2}([0,T]\times\R)$ as $h\to0$ and the limit is a weak solution of \eqref{eqnw}.
-\end{theorem}
-\begin{proof}
-It is enough to show that the subsequential limit $w^{h_i}\to w$ is a weak solution of \eqref{eqnw}. Then, the uniqueness of energy decreasing solution gives the rest. The regularity of the limit $w$ is given in Lemma \ref{uniform_est}. Consider the two terms in the left side of \eqref{DefWeak} with $w_2^{h_i}$ in the place of $w$. Then,
-\begin{align*}
- \int_0^T\int_\R& w_2^{h_i}(t,x)  b(x)\partial_t\phi(t,x)\; dx dt
- +\int_\R w_2^{h_i}(0,x) b(x)\phi(t,x) \; dx\hskip 5mm \Big(=:A_i\Big)\\
- &=-\sum_{\ell}\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R \partial_t
- w_2^{h_i}(t,x)  b(x)\phi(t,x)\; dx dt \\
- &=-\sum_{\ell}\sum_{j}\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
- \frac{w^j_{2\ell+2}-w^j_{\ell}}{2\tau}  b \phi \chi_j(x)\; dx dt \hskip
- 1.5cm (\text{with } \chi_j=\chi_{[y^j,y^{j+1})})\\
- &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
- \tfrac{1}{2h} \left( \Big(\tfrac{w^{j+1}_{\ell} -
- w^{j}_{\ell}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell} -
- w^{j-1}_{\ell}}{y^{j}-y^{j-1}} \Big)\right)  b \phi \chi_j(x)\; dx
- dt\quad\ (\text{by } \eqref{RW1w}\,)\\
- &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
- \tfrac{1}{2h} \Big(\tfrac{w^{j}_{\ell} -
- w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)
- \big(\chi_{j-1}(x)-\chi_{j}(x)\big) b \phi \; dx \;dt\\
- &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}B_\ell^j\,dt\hskip 5mm\Big(B_\ell^j:=\int_\R \tfrac{1}{2h} \Big(\tfrac{w^{j}_{\ell} -
-w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)
-\big(\chi_{j-1}(x)-\chi_{j}(x)\big) b \phi \; dx\Big).
-\end{align*}
-Since $w_2^{h_i} \rightarrow w$ uniformly on each compact set and
-$w_2^{h_i}(0,\cdot) \rightarrow w_0(\cdot)$ in $L^1$, the left side converges as
-\begin{align*}
-\lim_{h_i\to0}A_i=\int_0^T\int_\R w(t,x)  b(x)\partial_t\phi(t,x)\; dx
-dt+\int_\R w_0(x) b(x)\phi(t,x) \; dx.
-\end{align*}
-The $B^j_\ell$ in the right side becomes
-\begin{align*}
- B_\ell^j &= \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-        \left\{\frac{1}{2h}\int_{y^{j-1}}^{y^{j}}  b\phi  \; dx -
-        \frac{1}{2h}\int_{y^{j}}^{y^{j+1}}  b\phi  \; dx\right\}\\
-     &= \left\{\begin{array}{ll}
-        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
-        \frac{1}{y^{j+1}-y^{j}}\int_{y^{j}}^{y^{j+1}} \phi  \; dx \bigg)
-        & \text{if } j<0,\\
-        \Big(\tfrac{w^{0}_{\ell} - w^{-1}_{\ell}}{y^{0}-y^{-1}}\Big)
-        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
-        \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi  \; dx
-        \bigg) & \text{if } j=0,\\
-        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-        \bigg( \frac{1}{2(y^j-y^{j-1})}\int_{y^{j-1}}^{y^{j}} 2\phi  \; dx-
-        \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi  \; dx
-        \bigg) & \text{if } j>0,
-       \end{array}\right.\\
-     &=\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
-        \bigg( \frac{1}{(y^j-y^{j-1})}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
-        \frac{1}{(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} \phi  \; dx
-        \bigg).
-\end{align*}
-Therefore,
-\begin{align*}
- B_\ell^j =&-\int_{y^{j-1}}^{y^{j}}\Big(\tfrac{w^{j}_{\ell} -
- w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\partial_x\phi \;dx \\
-     & + \Big(\tfrac{w^{j}_{\ell} -
-     w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\left\{
-        \frac{\int_{y^{j-1}}^{y^{j}} \phi -\phi(t,y^{j-1}) \;
-        dx}{y^j-y^{j-1}} - \frac{\int_{y^{j}}^{y^{j+1}} \phi -\phi(t,y^{j})
-        \; dx}{y^{j+1}-y^j} \right\}.
-\end{align*}
-Since the test function $\phi$ is continuous, the second term goes to zero as $h_i\to0$.
-Therefore, after summing $B_\ell^j$, and taking $h_i\to0$, we obtain
-$$
--\sum_j  B_\ell^j = \int_\R \partial_x w_3^{h_i}(t,x) \partial_x \phi(t,x) \;
-dx + o(1) \rightarrow \int_\R \partial_x w(t,x) \partial_x \phi(t,x) \; dx.
-$$
-Therefore, combining the limits shows that $w$ is the weak solution.
-\end{proof}
-
-
-The probability density function is $v= b\, w$. Then, $v$ satisfies
-$$
-v_t=d_1\Big({v\over b(x)}\Big)_{xx},\qquad
-v(0,x)={ b(x)w_0(x)}=v_0(x),
-$$
-where the initial value $v_0(x)$ is the original initial value given in
-\eqref{initial}.
+Notice that this equation is meaningless at $y=0$ due to the discontinuity of $\mu$. However, it is shown in Proposition \ref{proposition} that the limit of the probability density function of the corresponding random walk system has a continuous first order derivative at the origin. Hence we are looking for a solution which is $C^1(\R)$. Green's function of this PDE with a discontinuous coefficient has been constructed in Section \ref{sect.explicit} explicitly. Green's function corresponding to the diffusion equation (\ref{ux1}) is obtained by going back to the original variable $x$.
 
 
 \newpage
 \section{Random walk with a spatially non-constant walk length}
 
-We consider a random walk system of the case,
-\begin{equation}\label{case1}
-\Delta x=ha(x),\quad \Delta t=\tau,
-\end{equation}
-where the spatial heterogeneity $a(x)$ is a given function and bounded by
-$0<m\le a(x)<M$ for some constants $m$ and $M$. It is classical that the diffusion limit satisfies linear diffusion equation $u_t=d_1u_{xx}$ if $a(X)=1$. The spatial heterogeneity in $\Delta x$ is easily reduced to a homogeneous case after a change of variable. Therefore, the diffusion equation in the original variable is obtained by changing back the variable. We introduce the process in this section.
-
-Introduce a new space variable $y$ given by
-\begin{equation}\label{y}
-y(x):=\int_0^x \frac{1}{a(s)}\,ds,\quad\text{and}\quad y^k=hk\quad k\in\Z.
-\end{equation}
-Then, since $a$ is positive and bounded away from zero, this relation is invertible and we may write the inverse function by $x=x(y)$. This inverse relation is given by
-$$
-x(y)=\int_0^y a(x(s))ds.
-$$
-Now we denote by $(t_n,x^k)$ the space-time mesh,
+In this section we develop a random walk system with a spatial heterogeneity in the walk length $\Delta x$. The time step $\Delta t$ is assumed to be constant in this section. We first introduce the notation. Let spatial grid points $x^k$ be ordered by $x^0=0$ and\footnote{We use the super-indices for the spatial discretization and sub-indices for the temporal one.}
 \begin{equation}\label{x^k}
-t_n=n\tau,\quad x^k=x(y^k)=\int_0^{y^k}a(x(s))ds,\quad n\in\Z_+,\ k\in\Z.
+\cdots<x^{k-1}<x^k<x^{k+1}<\cdots \quad\text{with}\quad k\in\Z.
 \end{equation}
-Then, $x^0=0$ and, if $a(x)$ is continuous,
-$$
-x^{k+1}-x^{k}=\int_{y^k}^{y^k+h}a(x(s))ds=ha(\bar x), \quad\bar x\in(x^{k},x^{k+1}).
-$$
-Therefore, the space mesh grids $\{x^k\}$ are of the type \eqref{case1}. Let $p_n^k$ be the probability for the random walk particle is placed at $x=x^k$ at time step $t=t_n$. Then, for all $n\in\Z_+$ and $k\in\Z$,
-\begin{equation}\label{pnk}
-2p_{n+1}^k = p_{n}^{k-1} + p_{n}^{k+1}.
-\end{equation}
-Suppose that the probability distribution for the initial position of the particle is given by a function in $\R$, $u_0(x)$. The probability $p^k_0$ is given by
-\begin{equation}\label{p0k}
-p_0^k:=\int_{x_{k}}^{x_{k+1}}u_0(x)dx.
-\end{equation}
-
-
-
-
-
-
-Note that the probability for a particle placed at $x^k$ is same as the one at $y^k$ since the random walk is independent of the distance between two grid points and only the order of the grid points matters. Furthermore, they are actually the same points after the change of the space variable. Hence we may consider the same probability $p^k_n$ as the one for the random walk on $y^k$'s. However, the probability density are different for the two cases. Let $u^k_n$ and $v^k_n$ be probability densities of the random walk system taking $x^k$ and $y^k$ as the grid points, respectively. Then, they are given by
-$$
-v^k_n:={p^k_n\over y^{k+1}-y^k}={p^k_n\over h},\quad
-u^k_n:={p^k_n\over x^{k+1}-x^k}={p^k_n\over a(\bar x)h}.
-$$
-Therefore, the probability density with the two space variables satisfy the relation,
-\begin{equation}\label{u-v}
-  a(\bar x)u^k_n=v^k_n,\qquad \bar x\in (x^k,x^{k+1}).
-\end{equation}
-
-Next we introduce continuum interpolations,
-$$
-u^h(t,x):= u^k_n,\quad v^h(t,x)=v^k_n,\quad (t,x)\in D^k_n:=[t_n,t_{n+1})\times [x^k,x^{k+1}).
-$$
-
-
-
-\begin{theorem}\label{thm1} Consider the random walk system $p_n^k$ given in (\ref{x^k})--(\ref{p0k}) with ${h^2\over2\tau}=d_1$. Let $u_{n}^{k}$ be the probability density of the random particle defined by
-$$
-u_{n}^{k}={p_{n}^{k}\over x^{k+1}-x^{k}}
-$$
-and $\bar u$ be the solution of
-\begin{equation}\label{DiffusionEqn2}
-\bar u_t=\d\big(a(x) (a(x)\,\bar u)_x \big)_x,\quad\bar u(x,0)=\bar f(x).
-\end{equation}
-If the initial value $\bar f(x)$ is bounded,
-\begin{equation}\label{Assumptions}
-\sup_k | b(x^{k})-\bar b(x^{k}) | \to 0, \quad\text{and}\quad
-\sup_k \Big| u^{k}_0 -\bar f(x^{k}) \Big| \to 0 \quad \text{as $\Delta t,\|\pi\|\to 0$,}
-\end{equation}
-then, for any $T>0$,
-\[
-\sup_{2n\Delta t\leq T,\,k\in\Z} \big| u^{2k}_{2n} - \bar u(x^{2k},t_{2n}) \big| \to 0 \quad \text{as $\Delta t, \|\pi\| \to 0.$}
-\]
-\end{theorem}
-
---
-
 For a homogeneous random walk system, the distance between two neighboring grid points is constant. In this paper we consider a non-uniform case when $x^{k+1}-x^{k}$ is not necessarily constant. We introduce a partition consisting of odd numbered grid points and its norm:
 \begin{equation}\label{pi}
 \pi:=\{x^{2k+1}:k\in\Z\},\qquad\|\pi\|:=\sup_{k\in\Z}(x^{2k+1}-x^{2k-1}).
@@ -678,19 +165,29 @@ which measures heterogeneity in the walk length. We assume this ratio is bounded
 We will keep this lower bound $c>0$ uniformly when we take the limit as $\|\pi\|\to0$. We may extend these functions over the real line by defining
 \begin{equation}\label{continuation}
 \beta(x):=\beta(x^{2k})\ \
- \text{and}\ \ a(x):=b(x^{2k})\quad\text{for}\ \ x^{2k-1}\leq x<x^{2k+1}.
+ \text{and}\ \ b(x):=b(x^{2k})\quad\text{for}\ \ x^{2k-1}\leq x<x^{2k+1}.
 \end{equation}
-Notice that $\beta(x)$ is not the walk length, but the sum of two adjacent walk lengths. The reason for this is to use it in computing the probability density as in (\ref{ProbabilityDensity}). If we return to a uniform random walk case with equally distanced grid points, we have $c=1$, $a(x)\equiv 1$, and $\Delta x =\frac{1}{2}\|\pi\|$.
+Notice that $\beta(x)$ is not the walk length, but the sum of two adjacent walk lengths. The reason for this is to use it in computing the probability density as in (\ref{ProbabilityDensity}). If we return to a uniform random walk case with equally distanced grid points, we have $c=1$, $b(x)\equiv 1$, and $\Delta x =\frac{1}{2}\|\pi\|$.
 
 \subsection{Derivation of a PDE model}
 
-
-
-
-
-
-
-
+Consider a particle randomly walking along the grid points. Let $p_0^k$ be the probability that the particle is to be placed at a grid point $x^k$ and at initial time $t=0$. Similarly, let $p_n^k$ be such probability at time $t_n=n\Delta t$. In a one dimensional random walk system, a particle walks to one of the two adjacent grid points with the same probability. So, for all $n\geq 1$ and $k\in\Z$,
+\begin{equation*}\label{pnk}
+2p_n^k = p_{n-1}^{k-1} + p_{n-1}^{k+1}.
+\end{equation*}
+Applying this relation twice, we obtain
+\begin{equation}\label{p2n2k}
+4p_{2n}^{2k}=2(p_{2n-1}^{2k-1} + p_{2n-1}^{2k+1}) =p_{2n-2}^{2k-2}+2p_{2n-2}^{2k}+p_{2n-2}^{2k+2}.
+\end{equation}
+This relation shows that the probability at even numbered grid points and odd numbered ones evolve independently. Hence it suffices to consider the case when the particle is initially placed at one of the even numbered grid points by assuming
+\begin{equation}\label{p0Odd}
+\sum_{k=-\infty}^\infty p_0^k=1\quad\text{and}\quad p^{2k+1}_0=0 \text{~for all $k\in\Z$}.
+\end{equation}
+Then it holds that for all $n\geq 1$,
+\begin{equation*}\label{p0Even}
+\sum_{k=-\infty}^\infty p_n^k=1\quad\text{and}\quad p^{2k}_{2n-1}=p^{2k+1}_{2n}=0 \text{~for all $k\in\Z$.}
+\end{equation*}
+Therefore, if only the even numbered time steps $t_{2n}=2n\Delta t$ are counted, then it is enough to consider the probability at the even numbered grid points only.
 
 Now we derive a diffusion equation that approximates the probability distribution function. First we introduce uniform grid points $y^k := \frac{k}{2}\|\pi\|$, and let $p(y,t)$ be a smooth function that satisfies $p(y^k,t_n)=p^k_n$. Then, by (\ref{p2n2k}),
 $$
@@ -708,24 +205,24 @@ The left-hand side of (\ref{FDR}) is a first order forward approximation of $p_t
 p_t(y,t)+O(\Delta t)=\d\,p_{yy}(y,t)+O(\d\|\pi\|^2),\quad \d:={\|\pi\|^2\over 8\Delta t}.
 \end{equation}
 To return to the original variable $x$ we change the space variable by using $y(x^{2k+1})=y^{2k+1}$. Then,
-\begin{equation}\label{a(x)}
+\begin{equation}\label{b(x)}
 \frac{dx}{dy} \cong \frac{x^{2k+1}-x^{2k-1}}{y^{2k+1}-y^{2k-1}} =\frac{\beta(x^{2k})}{\|\pi\|}=b(x^{2k})
 \end{equation}
 and the equation (\ref{EqnForPinY}) turns into
 \begin{equation*}\label{EqnForPinX}
-p_t(x,t)=\d\,a(x) \big( a(x)p_x(x,t) \big)_x+O(\Delta t)+O(\d\|\pi\|^2).
+p_t(x,t)=\d\,b(x) \big( b(x)p_x(x,t) \big)_x+O(\Delta t)+O(\d\|\pi\|^2).
 \end{equation*}
 Here we abuse some notations for simplicity by writing $p(x,t)$ instead of $p(y(x),t)$. We will use this convention throughout the paper. Let $u(x,t)$ be a smooth function given by
 \begin{equation}\label{ProbabilityDensity}
-u(x,t):={p(x,t)\over\beta(x)} ={p(x,t)\over \|\pi\|a(x)},
+u(x,t):={p(x,t)\over\beta(x)} ={p(x,t)\over \|\pi\|b(x)},
 \end{equation}
 which is called the \emph{probability density} function. Then, it satisfies
 \[
-u_t(x,t)=\d \big(a(x)(a(x)u)_x)_x+O(\Delta t/\|\pi\|)+O(\d\|\pi\|).
+u_t(x,t)=\d \big(b(x)(b(x)u)_x)_x+O(\Delta t/\|\pi\|)+O(\d\|\pi\|).
 \]
 Since $\d={\|\pi\|^2\over 8\Delta t}$, the remainder terms can be written as
 \[
-u_t(x,t)=\d\big(a(x)(a(x)u)_x)_x+O(\|\pi\|(\d+{1/\d})\,).
+u_t(x,t)=\d\big(b(x)(b(x)u)_x)_x+O(\|\pi\|(\d+{1/\d})\,).
 \]
 Therefore, it is important to take
 \begin{equation}\label{diffusivity}
@@ -733,11 +230,11 @@ Therefore, it is important to take
 \end{equation}
 so that, for $\|\pi\|$ small, the probability density function $u(x,t)$ approximately satisfies a \emph{non-uniform} diffusion equation,
 \begin{equation}\label{DiffusionEqn1}
-u_t(x,t)=\d\big(a(x)(a(x)u)_x)_x.
+u_t(x,t)=\d\big(b(x)(b(x)u)_x)_x.
 \end{equation}
 
 \begin{remark}
-The diffusivity of the diffusion equation (\ref{DiffusionEqn1}) at $x\in\R$ is $d(x):=a(x)^2\d$. Since $c\le a(x)\le1$, the diffusivity is in the range between $c^2\d$ and $\d$. Hence we may call $\d$ the maximum diffusivity for a heterogeneous case and the diffusivity for a homogeneous case.
+The diffusivity of the diffusion equation (\ref{DiffusionEqn1}) at $x\in\R$ is $k(x):=b(x)^2\d$. Since $c\le b(x)\le1$, the diffusivity is in the range between $c^2\d$ and $\d$. Hence we may call $\d$ the maximum diffusivity for a heterogeneous case and the diffusivity for a homogeneous case.
 \end{remark}
 
 
@@ -753,7 +250,7 @@ u_{2n}^{2k}={p_{2n}^{2k}\over x^{2k+1}-x^{2k-1}}={p_{2n}^{2k}\over\beta(x^{2k})}
 $$
 and $\bar u$ be the solution of
 \begin{equation}\label{DiffusionEqn2}
-\bar u_t=\d\big(a(x) (a(x)\,\bar u)_x \big)_x,\quad\bar u(x,0)=\bar f(x).
+\bar u_t=\d\big(\bar b(x) (\bar b(x)\,\bar u)_x \big)_x,\quad\bar u(x,0)=\bar f(x).
 \end{equation}
 If the initial value $\bar f(x)$ is bounded,
 \begin{equation}\label{Assumptions}
@@ -767,7 +264,7 @@ then, for any $T>0$,
 \end{theorem}
 
 \begin{proof}
-Introduce new grid points $y^{2k+1}:=\int_0^{x^{2k+1}} \frac{1}{a(s)}\,ds$ and $y^{2k}=\frac{1}{2}(y^{2k+1}+y^{2k-1})$. Then,
+Introduce new grid points $y^{2k+1}:=\int_0^{x^{2k+1}} \frac{1}{b(s)}\,ds$ and $y^{2k}=\frac{1}{2}(y^{2k+1}+y^{2k-1})$. Then,
 \[
 y^{2k+1}-y^{2k-1} =\int_{x^{2k-1}}^{x^{2k+1}}\frac{\|\pi\|}{\beta(s)}\,ds =\int_{x^{2k-1}}^{x^{2k+1}}\frac{\|\pi\|}{x^{2k+1}-x^{2k-1}}\,ds  =\|\pi\|
 \]
@@ -785,11 +282,11 @@ w^{2k}_{2n} ={1\over 4}\, \big( w^{2(k-1)}_{2(n-1)} +2w^{2k}_{2(n-1)} +w^{2(k+1)
 \]
 Now let $\bar w$ be the solution of
 \begin{equation} \label{barw}
-\bar w_t =\d\,\bar w_{yy},\qquad\bar w(y,0) =a(x)\bar f(x).
+\bar w_t =\d\,\bar w_{yy},\qquad\bar w(y,0) =\bar b(x)\bar f(x).
 \end{equation}
 Here the coordinate $x$ in the initial value is determined by
 \begin{equation} \label{relation-y(x)}
-y(x):=\int_0^x \frac{1}{a(s)}\,ds.
+y(x):=\int_0^x \frac{1}{\bar b(s)}\,ds.
 \end{equation}
 Then, by Taylor's theorem and the relation $2\Delta y=\|\pi\|$, we have
 \[\begin{split}
@@ -805,9 +302,9 @@ Repeatedly using this relation, we obtain
 \big| w^{2k}_{2n}-\bar{w}^{2k}_{2n} \big| \leq \sup_k \big| w^{2k}_0-\bar{w}^{2k}_0 \big| + nO(|\Delta t|^2).
 \end{equation}
 
-Define $\bar u$ as the one satisfying $\bar{w}(y,t) =a(x) \,\bar u(x,t)$, where the coordinates $x$ and $y$ are related by \eqref{relation-y(x)}. Then,
+Define $\bar u$ as the one satisfying $\bar{w}(y,t) =\bar b(x) \,\bar u(x,t)$, where the coordinates $x$ and $y$ are related by \eqref{relation-y(x)}. Then,
 $$
-\bar w_t=a(x)\bar u_t,\quad \d\,\bar w_{yy}= \d\,a(x)(a(x)(a(x) \,\bar u)_x)_x,\quad\text{and}\quad \bar u(x,0)=\bar f(x) .
+\bar w_t=\bar b(x)\bar u_t,\quad \d\,\bar w_{yy}= \d\,\bar b(x)(\bar b(x)(\bar b(x) \,\bar u)_x)_x,\quad\text{and}\quad \bar u(x,0)=\bar f(x) .
 $$
 Therefore, this $\bar u$ is the solution of (\ref{DiffusionEqn2}). On the other hand, the probability density $u$ for the non-uniform random walk is
 \[
@@ -823,13 +320,13 @@ we have
 &\le \frac{1}{c} \,\big| w^{2k}_{2n} -\bar{w}^{2k}_{2n} \big| + \frac{\bar{w}^{2k}_{2n}}{c^2} \,\Big| b(x^{2k})-\bar b(x^{2k})  \Big|.
 \end{split}
 \]
-The last term vanishes uniformly in $d$ because of the assumption (\ref{Assumptions}). Let $2n\Delta t<T$. Then, due to \eqref{error-between-w's}, the other term in the last line is bounded by
+The last term vanishes uniformly in $k$ because of the assumption (\ref{Assumptions}). Let $2n\Delta t<T$. Then, due to \eqref{error-between-w's}, the other term in the last line is bounded by
 \[\begin{split}
 \frac{1}{c} \,\big| w^{2k}_{2n} -\bar{w}^{2k}_{2n} \big| &\le
 \frac{1}{c} \, \sup_k \big| w^{2k}_0 -\bar{w}^{2k}_0 \big| +nO(|\Delta t|^2)= \frac{1}{c} \, \sup_k \big| b(x^{2k})u^{2k}_0 -\bar b(x^{2k})\bar{u}_0(x^{2k}) \big| +O(\Delta t)\\
 &\le\frac{1}{c}\sup_k\Big(\big|b(x^{2k})\big|\big|u^{2k}_0-\bar{u}_0(x^{2k})\big| +\big|\bar{u}_0(x^{2k})\big|\,\big|b(x^{2k}) -\bar b(x^{2k})\big|\Big)+O(\Delta t).
 \end{split}\]
-This bound vanishes uniformly in $d$ as $\Delta t \to 0$ because of the assumption in (\ref{Assumptions}) and the initial condition $\bar u(x,0)=\bar f(x)$. Therefore the proof is complete.
+This bound vanishes uniformly in $k$ as $\Delta t \to 0$ because of the assumption in (\ref{Assumptions}) and the initial condition $\bar u(x,0)=\bar f(x)$. Therefore the proof is complete.
 \end{proof}
 
 
@@ -875,7 +372,7 @@ x^0=0\quad\text{and}\quad x^k-x^{k-1}=
 \end{cases}\]
 The corresponding diffusion equation is
 \begin{equation*}\label{EqnForU2}
-u_t=\d \big(a(x)(a(x)u)_x \big)_x,\quad u(x,0)=u_0(x),\quad -\infty<x<\infty,
+u_t=\d \big(b(x)(b(x)u)_x \big)_x,\quad u(x,0)=u_0(x),\quad -\infty<x<\infty,
 \end{equation*}
 where
 $$
@@ -887,10 +384,10 @@ $$
 \end{cases}
 $$
 This equation is not autonomous so that there is no explicit formula such as (\ref{ExplicitP}). However, if we introduce a new variable,
-\[y(x) := \int_0^{x}\frac{1}{a(s)}\,ds,\]
-then $\{y^k=y(x^k):k\in\Z\}$ becomes a uniform grid and the probability density $w(y,t)$ in the new variable satisfies (\ref{EqnForWy}), where the corresponding initial value is $w_0(y(x))=a(x)u_0(x)$. Hence
+\[y(x) := \int_0^{x}\frac{1}{b(s)}\,ds,\]
+then $\{y^k=y(x^k):k\in\Z\}$ becomes a uniform grid and the probability density $w(y,t)$ in the new variable satisfies (\ref{EqnForWy}), where the corresponding initial value is $w_0(y(x))=b(x)u_0(x)$. Hence
 \begin{equation*}\label{000}
-u(x,t)={1\over a(x)} \frac{1}{\sqrt{4\pi t\d\,}} \int e^{-(y(x)-z)^2/4t\d} w_0(z)\,dz.
+u(x,t)={1\over b(x)} \frac{1}{\sqrt{4\pi t\d\,}} \int e^{-(y(x)-z)^2/4t\d} w_0(z)\,dz.
 \end{equation*}
 
 \begin{figure}[ht]
@@ -911,7 +408,7 @@ u(x,t)={1\over a(x)} \frac{1}{\sqrt{4\pi t\d\,}} \int e^{-(y(x)-z)^2/4t\d} w_0(z
 \end{figure}
 The heat kernel for this non-autonomous problem is given by a rescaled Gaussian,
 \begin{equation*}
-\phi_b(x;t\d) := {1\over a(x)}\frac{1}{\sqrt{4\pi t\d\,}}e^{-y(x)^2/4t\d},\quad y(x) := \int_0^{x}\frac{1}{a(s)}\,ds.
+\phi_b(x;t\d) := {1\over b(x)}\frac{1}{\sqrt{4\pi t\d\,}}e^{-y(x)^2/4t\d},\quad y(x) := \int_0^{x}\frac{1}{b(s)}\,ds.
 \end{equation*}
 In Figure \ref{fig2} this rescaled Gaussian and the probability distribution of some discrete random walk systems are compared. These two agree well even with relatively small number of grid points. Also one may observe a discontinuity at the origin which was generated by the discontinuity in the walk length $\Delta x$.
 
@@ -919,7 +416,7 @@ In Figure \ref{fig2} this rescaled Gaussian and the probability distribution of 
 The probability density function of a random walk system may have different shapes depending on heterogeneity in the walk length. However, the median of the distribution cannot be changed. For example, consider a random walk system that the particle started at the origin. Then, the probability density is given by a rescaled Gaussian and satisfies
 \begin{equation}\label{100}
 \begin{split}
-\int_0^\infty u(x,t)\,dx&=\frac{1}{\sqrt{4\pi t\d\,}}\int_0^\infty {1\over a(x)}e^{-y(x)^2/4t\d}\,dx
+\int_0^\infty u(x,t)\,dx&=\frac{1}{\sqrt{4\pi t\d\,}}\int_0^\infty {1\over b(x)}e^{-y(x)^2/4t\d}\,dx
 =\frac{1}{\sqrt{4\pi t\d\,}}\int_0^\infty e^{-s^2/4t\d}\,ds=0.5.
 \end{split}
 \end{equation}
@@ -928,7 +425,7 @@ Hence the probability for a particle to be placed on the region where $x<0$ is i
 
 
 
-\newpage
+
 \section{Random walk with a spatially non-constant travelling time}
 
 In this section we develop a random walk theory with a spatial heterogeneity in the time step $\Delta t$. Since heterogeneity in the walk length could be handled by rescaling the space variable as shown in the previous section, we will focus on a constant walk length case:
@@ -1055,7 +552,7 @@ This relation can be justified only when the probability at grid points and the 
 \begin{equation*}\label{EqnForUinY2}
 v_t=\d (\mu v)_{yy},\qquad y\in\bfR,\ \d:={|\Delta y|^2\over 2\tau}.
 \end{equation*}
-Now we change the variable using (\ref{relation-y(x)}) as in the previous section. Then the density becomes $u(x,t)=v(y(x),t)/a(x)$ and satisfies
+Now we change the variable using (\ref{relation-y(x)}) as in the previous section. Then the density becomes $u(x,t)=v(y(x),t)/b(x)$ and satisfies
 \begin{equation}\label{EqnForUinX2}
 u_t=\d (b(b\mu u)_{x})_{x},\qquad x\in\bfR,\ \d:={\|\Delta x\|^2\over 2\tau}.
 \end{equation}
@@ -1063,7 +560,7 @@ Remember that $w(y,t)=b(x(y))\mu(y)u(x(y),t)$ is the relation between $w$ and $u
 
 \subsection{Green's function for the two-time step PDE model} \label{sect.explicit}
 
-The purpose of this section is to find Green's function for the diffusion model (\ref{EqnForUinX2}) in an explicit form. For simplicity we consider the case when there is no heterogeneity in $\Delta x$, i.e., $a(x)\equiv 1$, and the diffusivity is $\d=1$. Going back to (\ref{EqnForPinY2}), we will actually find  $G=G(y,a,t)$ that solves
+The purpose of this section is to find Green's function for the diffusion model (\ref{EqnForUinX2}) in an explicit form. For simplicity we consider the case when there is no heterogeneity in $\Delta x$, i.e., $b(x)\equiv 1$, and the diffusivity is $\d=1$. Going back to (\ref{EqnForPinY2}), we will actually find  $G=G(y,a,t)$ that solves
 \[\left\{
 \begin{aligned}
 &G_t= \mu(y) \,G_{yy},\\
@@ -1229,9 +726,9 @@ Under presence of spatial heterogeneity in the walk length $\Delta x$ and in the
 
 \subsection{Numerical comparison with Fick's law}
 
-The diffusivity is given by the relation $k=\frac{|\Delta x|^2}{2|\Delta t|}$ in one space dimension. For the case with a constant jumping time interval $\Delta t$, the diffusivity can be written as $k=\d\,a(x)^2$ using the notation in the diffusion model (\ref{DiffusionEqn1}). The original Fick's law \cite{Fick1855} is for the constant diffusivity case. For a non-constant diffusivity $k=d(x)$, Fick's diffusion law usually refers to
+The diffusivity is given by the relation $k=\frac{|\Delta x|^2}{2|\Delta t|}$ in one space dimension. For the case with a constant jumping time interval $\Delta t$, the diffusivity can be written as $k=\d\,b(x)^2$ using the notation in the diffusion model (\ref{DiffusionEqn1}). The original Fick's law \cite{Fick1855} is for the constant diffusivity case. For a non-constant diffusivity $k=k(x)$, Fick's diffusion law usually refers to
 \begin{equation}\label{FicksLaw}
-u_t=(d(x) u_x)_x
+u_t=(k(x) u_x)_x
 \end{equation}
 which is different from the diffusion model (\ref{DiffusionEqn1}) we have derived in this paper. We will numerically compare the solutions of these diffusion equations to the probability density distribution of the discrete random walk system. For numerical simulations we take an initial value
 \[
@@ -1260,7 +757,7 @@ x^{k+1}-0.08\times(1.5+\sin(x^{k+1})) & \text{if $k<0$.}
 \end{equation}
 There is a discontinuity in the variation of the walk length in the case of (\ref{betaEx1}). The other case of (\ref{betaEx2}) has gradually changing walking length.
 
-For the above random walk systems one may easily compute the diffusivity $d(x)$ and the coefficient $a(x)$ in (\ref{a(x)}). In Figure \ref{fig4} solutions of these two diffusion models are given with the probability density distribution of the discrete random walk system. From these examples one may find that the solutions of the new diffusion law (\ref{DiffusionEqn1}) gives the probability density distribution of the discrete random walk system correctly. However, Fick's law gives something else. In conclusion the new diffusion law (\ref{DiffusionEqn1}) is the one that explains the non-uniform random walk system.
+For the above random walk systems one may easily compute the diffusivity $k(x)$ and the coefficient $b(x)$ in (\ref{b(x)}). In Figure \ref{fig4} solutions of these two diffusion models are given with the probability density distribution of the discrete random walk system. From these examples one may find that the solutions of the new diffusion law (\ref{DiffusionEqn1}) gives the probability density distribution of the discrete random walk system correctly. However, Fick's law gives something else. In conclusion the new diffusion law (\ref{DiffusionEqn1}) is the one that explains the non-uniform random walk system.
 
 \begin{figure}[ht]
 \begin{minipage}[t]{0.49\textwidth}
