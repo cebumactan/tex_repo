@@ -1,0 +1,622 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%     Asymptotic stability of non-autonomous linear system 
+%
+%     contents:  
+%
+%     M-G Lee
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[margin=3cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+%\doublespacing
+%\usepackage{authblk}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+% \usepackage{calrsfs}
+\usepackage[notcite,notref]{showkeys}
+
+\usepackage{psfrag}
+\usepackage{graphicx,subfigure}
+\usepackage{color}
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+%\usepackage{verbatim}
+% \usepackage{alltt}
+%\usepackage{kotex}
+
+
+
+\usepackage{enumerate}
+
+
+
+
+
+%%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\upl}{\overline{\lambda}}
+\newcommand{\udl}{\underline{\lambda}}
+\newcommand{\tl}{{\underline{\theta}}}
+\newcommand{\tu}{{\overline{\theta}}}
+\newcommand{\bt}{{\bar{t}}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\C}{\mathcal{C}}
+
+
+\newcommand{\tcr}{\textcolor{red}}
+\newcommand{\tcb}{\textcolor{blue}}
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+
+\newcounter{Theorem}
+\newtheorem{theorem}[Theorem]{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}[Theorem]{Proposition}
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{claim}{Claim}
+
+\newcounter{mycounter}
+\newtheorem{step}{Step}[mycounter]
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Asymptotic stability of non-autonomous systems and a generalization of Levinson's Theorem}
+\author{Min-Gi Lee\footnotemark[1]}
+\date{}
+
+\maketitle
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\footnotetext[1]{Department of Mathematics, Kyungpook National University,
+80 Daehak-ro, Buk-gu, Daegu, 41566, Republic of Korea; leem@knu.ac.kr}
+% \footnotetext[2]{Institute of Applied and Computational Mathematics, FORTH, Heraklion, Greece}
+% \footnotetext[3]{Department of Mathematics and Applied Mathematics, University of Crete, Heraklion, Greece}
+% \footnotetext[4]{Corresponding author : \texttt{athanasios.tzavaras@kaust.edu.sa}}
+%\footnotetext[4]{Research supported by the King Abdullah University of Science and Technology (KAUST) }
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+ \begin{abstract}
+We study the asymptotic stability of a non-autonomous linear system with the time dependent coefficient matrices $\{A(t)\}_{t\in \mathbb{R}}$. The classical theorem of Levinson has been an  indispensable tool in studying the asymptotic stability of a non-autonomous linear system. Contrary to the constant coefficient system, having all eigenvalues in the left half complex plane does not imply the asymptotic stability. Levinson's Theorem assumes the coefficient matrix is a  a suitable perturbation of the diagonal matrix. Our objective is to have a theorem similar to the Levinson's Theorem when the family of matrices merely admits the upper triangular factorization. If any eigenvalue is defective, this spoils the prerequisite of the Levinson's Theorem, the diagonalization. In turn, nothing is concluded, which is not sharp. In our study, we first reveals the asymptotic behaviors of upper triangular system and use the fixed point theory to come to the conclusion. Unless otherwise we want the asymptotic behavior dimension by dimension, working with upper triangular with internal blocks adds flexibility in the analysis.
+ \end{abstract}
+
+%  \tableofcontents
+% \pagebreak
+
+
+\vfil\eject
+
+
+\section{Introduction}
+
+We study the asymptotic stability of a non-autonomous linear system of ordinary differential equations
+\begin{equation}
+ x'(t) = A(t)x(t), \label{eq:0}
+\end{equation}
+% where $A(t)$ is block diagonal with blocks that are upper triangle  for each $t \in \mathbb{R}$.  
+where $x(t) \in \mathbb{R}^N$ and $A(t)\in \mathbb{R}^{N\times N}$ for each $t\in \mathbb{R}$.
+Non-autonomous linear system typically arises in linearizing a non-linear dynamical system along an interested particular solution that is not necessarily a fixed point. Then the asymptotic stability of a linearized non-autonomous system is a linear stability of the interested solution. In case of a fixed point one ends up with a constant coefficient linear system.
+
+Our objective is to generalize the theorem of Levinson \cite{L48}. The theorem can be found in many other places such as \cite{CL55} in slightly different forms. For a convenience of the reader, we included the theorem in the Appendix. % as well as its proof.
+This classical theorem has been an indispencible tool in lots of science and engeeniring problems giving the right asymptotic stability of a given system. It also has been generalized in considerably many different ways by \cite{HW55}, \cite{HL77}, \cite{HX94}, and even recently by \cite{BL07}. We first deliver some rudiments around the problem and we try to properly introduce the Levinson's theorem and state what aspect of the theorem we still want to generalize.
+
+
+
+
+
+Surprisingly, the asymptotic stability of a non-autonomous system is quite different from that of a constant coefficient system. For a constant coefficient system, Jordan factorization of the coefficient matrix (which any matrix admits) tells the complete story of the asymptotic behavior. Each of eigenvalues and the corresponding invariant subspaces are revealed by the factorization. Any solution, in its modulus, exhibits an asymptotic behavior either of the three: Orbits can asymptotically grow at exponential rate; orbits can decay to $0$ at exponential rate; orbits can be at polynomial rate. It is the sign of the real part of the eigenvalue that decide the fates. Expectation could be that for non-autonomous system the eigenvalues $\lambda_i(t)$ for $i=1,\cdots N$ of $A(t)$ could tell the story as well, or at least the part of the story, but it is well-known that this is not the case. 
+
+\cite{MY60} presented an example of a non-autonomous system, where the coefficient matrix has eigenvalues with negative real parts all the time while solution exponentially grows:
+%the possible asymptotic growth/decay are not limited to those of exponential rates, yielding many different possible fates. More substantial instance was presented by \cite{MY60}, where the coefficient matrix has eigenvalues with negative real parts all the time but can exhibit exponential grow:
+
+% there is an example where solution exhibits exponential growth while the eigenvalues have negative real parts all the time. This example was presented by Yamabe-Markus (1960):
+
+
+% The example where the coefficient matrix has eigenvalues with negative real parts all the time but can exhibit exponential grow, were presented by Yamabe-Markus (1960):
+\begin{align*}
+ \begin{pmatrix}  x\\y \end{pmatrix}' = \left\{\begin{pmatrix}  -\frac{1}{4} & 1\\-1 & -\frac{1}{4} \end{pmatrix}+ \frac{3}{4}\begin{pmatrix} \cos 2t & \sin 2t\\ \sin 2t & -\cos 2t \end{pmatrix}\right\} \begin{pmatrix}  x\\y \end{pmatrix}.
+\end{align*}
+Its eigenvalues are $-\frac{1}{4} \pm \frac{\sqrt{7}}{4}i$ regardless of $t$, but $\begin{pmatrix}  -\cos t\\ \sin t \end{pmatrix}\exp(t/2)$ solves the equation.
+
+Having seen the above example, one then poses a question that what sort of family $\{A(t)\}_{t \in \mathbb{R}}$ can we draw any conclusion. Of course, there are certain cases where the eigenvalues reveal the asymptotic stability. Consider the simplest case of a family of diagonal coefficient matrices, $A(t) = diag(\lambda_1(t), \cdots, \lambda_2(t)\big)$. In this case, the system is given decoupled  and the behavior is just read off from the eigenvalues: $$x_j(t) = x_j(t_0) \exp\left( \int_{t_0}^t \lambda_j(\eta) \;d\eta\right) \quad j=1,\cdots,N.$$
+
+Now, we introduce the classical theorem of Levinson. With the assumption that $A(t)$ does admit a differentiable factorization, say $A(t) = S(t)U(t)S(t)^{-1}$, the change of variable $$ y(t) = S(t)^{-1}x(t)$$
+leads to the system
+\begin{equation*} 
+ \begin{aligned}
+  y'(t) = U(t)y(t) - S(t)^{-1}S'(t)y(t).
+ \end{aligned}
+\end{equation*}
+The point of view is that $- S(t)^{-1}S'(t) \Big(=: \E(t)\Big)$ is a perturbation of $\Lambda(t)$. The asymptotic behavior with this perturbation is still in question for we have the counter example of Markus-Yamabe. %% when $\E(t)$ is not small at all.
+% One is tempted to diagonalize simultaneously a given one-parameter family of matrices $A(t)$ so that $A(t) = S(t) \Lambda(t) S(t)^{-1}$. Of course it is well-known fact that neither the diagonalization nor the Jordan factorization is continuously done even if $A(t)$ is smooth. 
+% The simultaneous factorization of a smooth one-parameter family of matrices is a substantial subject in the matrix theory. Continuity of Schur factorization under suitable conditions is possible. See Deici, @@
+% With the assumption that $A(t)$ does admit a differentiable factorization, say $A(t) = S(t)U(t)S(t)^{-1}$, the change of variable $$ y(t) = S(t)^{-1}x(t)$$
+% leads to the system
+% \begin{equation} \label{eq:1}
+%  \begin{aligned}
+%   y'(t) = U(t)y(t) - S(t)^{-1}S'(t)y(t).
+%  \end{aligned}
+% \end{equation}
+% We see that the term $- S(t)^{-1}S'(t)y(t)$ would not appear if $A(t)\equiv A_0$. 
+
+First consider the case $U(t)=diag(\lambda_1(t), \cdots, \lambda_2(t)\big)$. From the statement of Levinson's Theorem \ref{thm:CL}, we note that the theorem assumes two main conditions: One is the smallness of $\E(t)$, which is presented in a way that the integral $\int_{t_0}^\infty \|\E(t)\| \;dt$ is bounded; the other is the spectral gap conditions. Under these assumptions, Levinson's theorem states that the asymptotic behavior of a diagonal system persists under the small perturbations. %is not different from that of the diagonal system, the unperturbed one. 
+% 
+% The theorem can be found in many places, in slightly different forms. For a convenience of the reader, we included the theorem in the Appendix as well as its proof. The point of view is that $- S(t)^{-1}S'(t) = \E(t)$ is a perturbation of $\Lambda(t)$. The asymptotic behavior with this perturbation is  in question since we have the counter example of Markus-Yamabe. 
+% 
+% The theorem specifies the sufficient conditions by which the asymptotic behavior is verifiably not different from that of unperturbed one. The theorem relies on two main conditions, one is that $\|\E(t)\|$ for large $t$ contributes so little in $\int_{t_0}^\infty \|\E(s)\| \;ds$ that the integral is bounded. The other is a sort of the spectral gap conditions on eigenvalues. See the Appendix @@.
+
+
+
+The objective of this paper is to generalize the Levinson's Theorem allowing $U(t)$ upper trianglular in the above considerations. The reason is obvious: Neither the diagonalization nor the Jordan factorization is continuous even if $A(t)$ is smooth in general. We think this generalization theoretically interesting as well as practically useful. 
+
+It is practically useful because in many engineering problems the dimensions are not just $1$ or $2$. When there are several dimensions, having only one defective eigenvalue spoils the assumptions of the Levinson's theorem, as diagonalization fails. We conclude nothing, which we think not sharp. Our results can be useful if one is only interested in the partial asymptotic behaviors corresponding a certain block. It is this aspect of the theorem that yet has not been treated in literature of \cite{HL77}, \cite{HX94}, \cite{DE99}, \cite{BL07} in which the generalizations were more on weakening the assumptions rather than considering other types of factorization.
+
+% if the stability of certain subspace block partially can be obtained. %That one needs full set of independent eigenvectors all the time might not be sharp. 
+It is theoretically interesting because the critical applications of Levinson's Theorem is when the two eigenvalues become identical in the limit $t \rightarrow \infty$. (Of course it must not be defective for the theorem applicable.) To say this precisely, let us take an example of the $2\times 2$ diagonal matrix $\Lambda(t) = diag\big(\lambda_1(t),\lambda_2(t)\big)$ with $\lambda_1(t) = 0$ and $\lambda_2(t) = \frac{1}{t}$. We see the spectral gap vanishes in the limit $t \rightarrow \infty$. The gap conditions of the Levinson's theorem demands so little that this example fulfills the condition. As the theorem holds, even with perturbations, the two respective asymptotic rates are to be discerned. By integrating the equations we see that the two rates are respectively $1$ and $t$, and the Levinson's Theorem states that this much fine discerning rates are persistent. Readers who are familiar with invariant manifold theory of dynamical systems might find this not typical. % , as rates usually are discerned when they differ by an exponential factor. 
+We find this powerful and suggestive at the same time because this feature manifests exactly when the eigenvalues become identical in the limit or when there are chances to have a defective eigenvalue. In turn, possibly the thereom is not applicable.
+
+
+We lastly comment on the subject of simultaneous factorization. If $\{A(t)\}_{t\in \mathbb{R}}$ is a smooth one-parameter family of matrices, the possibility of simultaneous factorization is a substantial subject in the matrix theory. As stated eariler, neither the diagonalization nor the Jordan form factorization is continuous.  Continuity of Schur factorization under suitable conditions is shown in \cite{DE99}. In advancing our results, that $\{A(t)\}_{t\in \mathbb{R}}$ admits factorization $A(t) =  S(t)U(t)S(t)^{-1}$ smoothly in $t$ for $U(t)$ upper triangluar is the working hypothesis. 
+
+
+% if one is allowed to consider the case where spectral gap vanishes in the limit, then  eigenvalues can in general be defective in the limit. Therefore, it is natural to ask what can be concluded in case $U(t)$ is not diagonal, but is less revealing the asymptotic behavior, such as $U(t)$ that is merely upper triangular.
+
+
+% their asymptotic growth rates are respectively $\exp\left(\mu_0(t-t_0)\right)$ and %$\exp\left(\int_{t_0}^t \mu_0 + \tfrac{1}{\eta}\; d\eta\right)=
+% $\frac{t}{t_0}\exp\left(\mu_0(t-t_0)\right)$, which differ by a polynomical factor. What is remarkable is that each component grows at rates respectively $1$ and $t$.  
+
+%$\exp\left(\int_{t_0}^t \mu_0 + \tfrac{1}{\eta}\; d\eta\right)=
+% $\frac{t}{t_0}\exp\left(\mu_0(t-t_0)\right)$, which differ by a polynomical factor. One who is familiar with other types of persistence theorem in dynamical systems theory would find this unusual; typical rates differ by the exponential factor. The Levinson's theorem states that even with the perturbation, it is possible to discern this amounts of rate difference of the polynomial factor. %(Of course $\mu_0$ can be $0$ where the growth is genuinly polynomial. This should be contrasted to the constant coefficient case where the exponential or bounded behavior is only possible.) %In other words, Levinson's Theorem is able to discern this polynomial rate difference in non-autonomous system provided the coefficient matrix is a small perturbation of diagonal one. 
+
+
+The paper is organized in the following way. In chapter 2 are preliminaries necessary in stating the problem. In chater 3 we present the main results: First, we present the stability of the system with upper triangular coefficient matrix,  that is the unperturbed system. Second, we give a persistence theorem.
+
+
+% 
+% 
+% 
+% Suppose $U(t)$ is so nice that in the absent of $- S(t)^{-1}S'(t)y(t) = \E(t)y(t)$ the asymptotic stability is computable, as the diagonal one seen earlier. The point of view is that $- S(t)^{-1}S'(t) = \E(t)$ is a perturbation of $U(t)$. The asymptotic behavior with this perturbation is  in question since we have the counter example of Markus-Yamabe.
+% 
+% % the point of view on system \eqref{eq:1} is that the asymptotic stability of a system in the absent of $- S(t)^{-1}S'(t)y(t) = \E(t)y(t)$ is certain from the spectral information. Thus this term is refered to as the perturbation or error term. Indeed, if $U(t)$ was diagonal we know the asymptotic behavior in the absent of the perterbation term as seen earlier. 
+% 
+% The classical theorem of Levinson comes at this point affirmitively. For the case $U(t)$ is diagonal, the theorem specifies the conditions by which the the asymptotic behavior is verifiably not different from that of unperturbed one. The theorem relies on two main assumptions, one is that $\|\E(t)\|$ for large $t$ contributes so little in $\int_{t_0}^\infty \|\E(s)\| \;ds$ that the integral is bounded. The other is a sort of the spectral gap conditions on eigenvalues that we will intoduce in the @@.
+% 
+% The objective of this paper is to generalize the Levinson's Theorem in case $U(t)$ is upper trianglular. The reason is obviously to cover the case when $A(t)$ does not admit the simultaneous diagonalization. We think this generalization theoretically meaningful as well as practically useful. 
+% 
+% It is practically useful because in many engineering problems the dimensions are not just $1$ or $2$. When there are several dimensions, having only one defective eigenvalue spoils the assumptions of the theorem and we cannot conclude anything by Levinson's theorem, which we think not sharp. It would be nice if the stability of certain subspace block can be stated instead.%That one needs full set of independent eigenvectors all the time might not be sharp. 
+% 
+% What is more interesting is that the Levinson's Theorem is so powerful exactly when two eigenvalues become identical in the limit $t \rightarrow \infty$ (not in defective way.) To say this precisely, consider the diagonal matrix $U(t) = diag\big(\lambda_1(t),\lambda_2(t)\big)$ with $\lambda_1(t) = \mu_0$ and $\lambda_2(t) = \mu_0 + \frac{1}{t}$ where the spectral gap vanishes in the limit $t \rightarrow \infty$. The spectral gap conditions of the Levinson's theorem is so weak that this $U(t)$ fulfills the condition. Then with a small perturbation $\E(t)$, the asymptotic behavior persists. In this case, their asymptotic growth rates are respectively $\exp\left(\mu_0(t-t_0)\right)$ and %$\exp\left(\int_{t_0}^t \mu_0 + \tfrac{1}{\eta}\; d\eta\right)=
+% $\frac{t}{t_0}\exp\left(\mu_0(t-t_0)\right)$, which differ by a polynomical factor. The Levinson's theorem states that it is possible to track this amounts of rate difference discerning the polynomial factor. %(Of course $\mu_0$ can be $0$ where the growth is genuinly polynomial. This should be contrasted to the constant coefficient case where the exponential or bounded behavior is only possible.) %In other words, Levinson's Theorem is able to discern this polynomial rate difference in non-autonomous system provided the coefficient matrix is a small perturbation of diagonal one. 
+% We find this powerful and suggestive at the same time, for if the spectral gap vanishes in the limit then eigenvalue can become defective in the limit and the family is not simultaneously diagonalizable. 
+% 
+% Motivated from those observations, we present a version of generalization of the Levinson's theorem for the case $U(t)$ is merely upper triangular. The paper is organized in the following way. In chapter 2, we collected some rudiments necessary in stating the problem. Main results are presented in the chapter 3: First, we specify the stability of the system with $U(t)$ only, that is the unperturbed problem. Second, we give a persistence theoremwpo1.
+% 
+% 
+% 
+% Some survey here.
+
+
+
+\section{Preliminaries} \label{section2}
+
+The purpose of this section is to fix our notations and introduce a few notions in ordinary differential equation theories that are necessary in stating our problem. Readers who are familiar with those basic notions may want to see the next section directly.
+
+For a vector $x \in \mathbb{R}^N$, $|x|:=\displaystyle\max_{i=1,\cdots,N} |x_i|$. If $A$ is a $N\times N$ matrix, $\|A\|$ denotes the operator norm with respect to the vector norm, $\|A\|:= \displaystyle\max_{|x|\ne 1} \frac{ |Ax|}{|x|}$. If $x(t)$ is an orbit, our primary norm is the sup norm $\|x\|_{L^\infty}$. To compensate the growth appropriately, it is convenient to use the weighted norm. For $\theta$ a given real-valued function, we use the notation $\displaystyle\|x\|_{L^\infty_\theta([a,\infty))} = \sup_{t\ge a} \left|x(t) \exp\left( -\int_a^t \theta(\eta) d\eta\right)\right|$ or $\|x\|_\theta$ for shortly if there is no confusion about $a$. In that case, we also use the notation $|x(t)|_\theta = \left|x(t) \exp\left( -\int_a^t \theta(\eta) d\eta\right)\right|$ the weighted length at time $t$. 
+
+
+\subsection{Fundamental Matrices}
+
+By the Picard-Lindel\"{o}f Theorem, the linear system has a unique solution for $|t-t_0| \le \ell$ with $\ell=\min(a,b/M)$, where $a$, $b$, and $M$ are such that in the domain $|t-t_0|\le a$ and $|x-x_0| \le b$, $f(t,x)$ is continuous in $t$ and is uniformly Lipschitz in $y$ and $|f(t,x)|$ is bounded by $M$. 
+
+For our equations \eqref{eq:0}, we require that the entries $\{A_{ij}(t)\}_{t\in \mathbb{R}}$, $i,j=1,\cdots,N$ are continuous at all $t\in \mathbb{R}$ and is uniformly bounded by a constant $K>0$. We will call this the assumption $(A0)$. This in particular gives that by the Picard-Lindel\"{o}f theorem the solution extends to whole of $ \mathbb{R}$ uniquely (One might have considered a smooth cut-off if necessary). 
+
+Hence, for any two numbers $t$ and $\tau$ it makes senses to consider the solution matrix $\Phi(t,\tau)$  that maps $x(\tau)$ to $x(t)$ and the whole family $\{\Phi(t,\tau)\}_{t,\tau \in \mathbb{R}}$ of them. In particular, $i$-th column of $\Phi(t,\tau)$ is the solution with the initial condition at time $\tau$ of the $i$-th coordinate basis. Those matrices whose columns are independent solutions are called the Fundamanetal matrices, and thus $\Phi(t,\tau)$ is a particular type of a fundamental matrix.   We comment that for an autonomous system, the solution matrices may be written in the form $\Phi(t-\tau)$ but for a non-autonomous system, they explicitly depend on $t$ and $\tau$.
+
+We have that $\Phi(t,t)=\mathbf{1}$ for all $t$ and we have following relations among solution matrices,
+$$\Phi(a,b)\Phi(b,c) = \Phi(a,c), \quad \forall a,b,c.$$
+In particular, $\Phi(a,b)$ is always invertible and its inverse is $\Phi(b,a)$. %They are direct consequeces of unique existence.
+
+\subsection{Operations on Block Diagonal Matrices}
+
+Let $N_1,N_2, \cdots, N_k$ be fixed positive integers such that $\sum_1^k N_\alpha = N$. Consider a collection $\C$ of all block diagonal $N\times N$ matrices of the form $U = diag(B_1,B_2, \cdots,B_k)$, with blocks respectively of dimensions $N_\alpha\times N_\alpha$. $\C$ is closed under the matrix multiplication. We find that for $U = diag(B_1,B_2, \cdots,B_k)$ and $W = diag(C_1,C_2, \cdots,C_k)$, $UW = diag(B_1C_1, B_2C_2,\cdots,B_kC_k)$. %,  i.e., the multiplication carries out block-wisely.
+
+
+Let $P_\alpha=diag(\mathbf{0},\cdots,\mathbf{0},\mathbf{1}_{N_\alpha},\mathbf{0},\cdots,\mathbf{0})$ whose only nontrivial block is at the $\alpha$-th site that is the $N_\alpha$-dimensional identity matrix. This gives the following projections. If $x\in \mathbb{R}^N$, $x_\alpha$ refers to the $N$-dimensional vector $P_\alpha x$. If $U\in \C$, $U_\alpha$ refers to the $N\times N$ matrix $P_\alpha U$. It is directly verified that 
+$$P_\alpha (UW) = (P_\alpha U) (P_\alpha W), \quad P_\alpha (U x) = (P_\alpha U) (P_\alpha x)$$
+and it follows that $P_\alpha(U_1U_2\cdots U_j x) = U_{1\alpha}U_{2\alpha}\cdots U_{j\alpha} x_\alpha.$
+
+
+\section{main results}
+
+We first consider the asymptotic stability when the coefficient is upper triangular. This result will be used as building blocks of the asymptotic stability of a larger system with blocks that are upper triangular. 
+
+For $\{U(t)\}_{t\in \mathbb{R}}$  a family of $N\times N$ upper triangular matrices, we denote $\lambda_i(t)$, $i=1,\cdots,N$, the diagonal entries of $U(t)$, that are the eigenvalues of $U(t)$. We also define $\displaystyle\upl(t)\triangleq \max_{i=1,\cdots,N} Re \lambda_i(t)$ and $\displaystyle \udl(t)\triangleq \min_{i=1,\cdots,N} Re \lambda_i(t)$. The maximum and minimum growth forward in time (backward in time then follows too) are written in terms of the $\upl(t)$ and $\udl(t)$. 
+
+\begin{proposition}[stability forward in time \cite{L19}] \label{stability} Assume $(A0)$ for $U(t)$ and let $\{\Phi(t,\tau)\}_{t,\tau \in \mathbb{R}}$ be the solution matrices with respect to the system \eqref{eq:0} with $A(t)=U(t)$. Then there is a constant $C_{N,K}>0$ such that for any $a \le b$ and any vector $V \in \mathbb{R}^N$, we have
+% \begin{equation} \label{stabestim}
+%  \begin{aligned}
+%  \tfrac{1}{C\,p(b-a)}\exp\left(\int_a^b \udl(\eta) d\eta\right)|V| \le |\Phi(b,a)V|
+%  \le C\, p(b-a)\exp\left(\int_a^b \upl(\eta) d\eta\right)|V|,  
+%  \end{aligned}
+% \end{equation}
+% where $p(s) = \Big(1 + s + \cdots + s^{N-1}\Big)$. The constant $C$ depends only on $N$ and $K$. 
+\begin{equation} \label{stabestim}
+ \begin{aligned}
+ \frac{e^{\int_a^b \udl(\eta) d\eta}}{C_{N,K}(1+b-a)^{N-1}}|V| \le |\Phi(b,a)V|
+ \le C_{N,K}(1+b-a)^{N-1}e^{\int_a^b \upl(\eta) d\eta}|V|,  
+ \end{aligned}
+\end{equation}
+The constant $C_{N,K}$ depends only on $N$ and $K$. 
+\end{proposition}
+
+% \begin{proof}
+%  
+% We first show the upper bound. Let $y(a) = V$ and $y(b)= \Phi(b,a)V$.
+% % We claim that for any real numbers $a$ and $b$ with $a \le b$,
+% % \begin{align}\label{stabestim}
+% % |\Phi(b,a)V| &\le C \Big(1 + (b-a) + \cdots + (b-a)^{N-1}\Big)\exp\left(\int_a^b \upl(\eta) d\eta\right)|V|,
+% % \end{align}
+% % where $C$ depends only on the dimensions $N$ and $K$. 
+% We show by induction that componentwisely
+%  $$|y_j(b)| \le C_j \Big(1 + (b-a) + \cdots + (b-a)^{N-j} \Big) \exp\left(\int_a^b \upl(\eta) d\eta\right)\max_{k\ge j}|y_k(a)|, \quad j=1,\cdots,N$$
+% for some constant $C_j>0$ that depends only on the dimensions $N$ and $K$.
+% For $j=N$, the last equation is $y_N'(t) = \lambda_N(t)y_N(t)$ and so $y_N(b) = \exp\left(\int_a^b \lambda_N(\eta) d\eta\right)y_N(a)$. Thus the statement is true for $j=N$ with $C_N=1$.
+%  
+%  Now, suppose the statement is true for $j+1, j+2, \cdots, N$. Since
+%  $$ y_j'(t) = \lambda_j(t) y_j(t) + \sum_{k>j} U_{j,k}(t)y_k(t),$$
+%  its explicit solution is that
+%  \begin{align*}
+%   y_j(b) &= \exp\left(\int_a^b \lambda_j(\eta) d\eta\right)y_j(a) + \sum_{k>j} \int_a^b \exp\left(\int_\tau^b \lambda_j(\eta) d\eta\right)U_{j,k}(\tau)y_k(\tau)\; d\tau\\
+%   &=\exp\left(\int_a^b \upl(\eta) d\eta\right)\left\{\exp\left(\int_a^b \lambda_j(\eta)-\upl(\eta) d\eta\right)y_j(a) \right.\\
+%   &+ \sum_{k>j}\int_a^b \exp\left(\int_\tau^b \lambda_j(\eta)-\upl(\eta) d\eta\right)\exp\left(\int_a^\tau -\upl(\eta) d\eta\right)\; U_{j,k}(\tau)y_k(\tau)\;d\tau \bigg\}.
+%  \end{align*}
+%  By the induction hypothesis,
+%  \begin{align*}
+%   |y_j(b)| &\le \exp\left(\int_a^b \upl(\eta) d\eta\right)\bigg\{ |y_j(a)|  \\
+%   &+  \sum_{k>j} C_k K  \max_{k>j}|y_k(a)|\int_a^b 1+(\tau-a)+ \cdots + (\tau-a)^{N-k} \bigg\}\\
+%   &\le C_j\Big(1 + (b-a) + \cdots + (b-a)^{N-j} \Big) \exp\left(\int_a^b \upl(\eta) d\eta\right)\max_{k\ge j}|y_k(a)|,
+%  \end{align*}
+%  where $C_j$ only dependent on $N$ and the bound $K$. By expanding $(1+(b-a))^{N-1} = \displaystyle \sum_{j=0}^N \begin{pmatrix} N\\j \end{pmatrix} (b-a)^j$, we see that $\Big(1 + (b-a) + \cdots + (b-a)^{N-1} \Big) \le (1+b-a)^{N-1}$.
+%  
+%  Now, we show the lower bound. To this ends, we consider the inverse $\Phi(a,b)$. We claim that for any real numbers $a$ and $b$ with $a \le b$ and for any $W\in \mathbb{R}$
+% \begin{align*}
+% |\Phi(a,b)W| &\le C (1 + b-a)^{N-1}\exp\left(\int_a^b -\udl(\eta) d\eta\right)|W|\end{align*}
+% with the same $C$. This holds because of the previous assertion. $y(b)= W$ and $y(a) = \Phi(a,b)W$. We are to solve the equation 
+%   \begin{align*}
+%   \frac{d}{dt}{y}(t) &= {U}(t){y}(t)\\
+%   {y}(b) &= W.
+%  \end{align*}
+%  backwardly in time from $b$ to $a$. In new independent variable $\tau = a+b-t$, since $\frac{d}{dt}y(t)=U(t)y(t)$,
+%  \begin{align*}
+%   \frac{d}{dt}y(t)=-\frac{d}{d\tau}y(a+b-\tau) = U(a+b-\tau)y(a+b-\tau).
+%  \end{align*}
+%  If we let $\hat{y}(\tau)=y(a+b-\tau)$, $\hat{U}(\tau)=U(a+b-\tau)$, then $\hat{y}$ solves
+%  \begin{align*}
+%   \frac{d}{d\tau}\hat{y}(\tau) &= -\hat{U}(\tau)\hat{y}(\tau)\\
+%   \hat{y}(a) &= W.
+%  \end{align*}
+% Then by the previous assertion,
+%  $$|\hat{y}(b)| \le C(1+b-a)^{N-1}|\hat{y}(a)| \exp\left(\int_a^b -\hat{\udl}(\eta) d\eta\right).$$
+%  with the same $N$ and $K$. But $\hat{y}(b)=y(a)$, $\hat{y}(a)=y(b)$. The change of variable formula then gives that $$\int_a^b -\hat{\udl}(\eta)d\eta = \int_a^b -{\udl}(b+a-\eta)d\eta
+% =\int_a^b -\udl(\eta) d\eta.$$ We have shown that
+% $$|{y}(a)| \le C(1+b-a)^{N-1}|{y}(b)| \exp\left(\int_a^b -{\udl}(\eta) d\eta\right).$$
+% The estimate \eqref{stabestim} follows from the two assertions.
+% \end{proof}
+
+The Proposition is saying that, knowing the eigenvalues is not as much revealing as in case of the diagonal coefficient, but is sufficient to reveal the upper and lower bound. 
+
+
+Now, we state the persistence theorem. We need to clarity what we aim to do in parallel to what is stated in the theorem of Levinson. Suppose we have a block diagonal matrix with a few   blocks, where the asymptotic stability of each is known, for instances, the behavior is decided by the maximum and minimum eigenvalues of each block in case the block is upper triangular. In general, the range of growth rates of each block would overlap. If not, the  characterization of a set of orbits by rates in such a non-overlapping range will identify the block. Our result is the first half of what would be the parallel statement of Levinson's theorem. Assumption is that the blocks are divided into two groups, one group having rates slower than that in the other group. In essense, we consider a problem with two blocks with saparated growth rates. We show the persistence under suitable perturbations.
+
+In the below, for $\{U(t)\}_{t \in \mathbb{R}}$ a given family of upper triangular matrices, $y$ solves the system that we call the unperturbed system
+\begin{equation}\label{eq:1}
+ y'(t)=U(t)y(t)
+\end{equation}
+and $x$ solves the system
+\begin{equation}\label{eq:2}
+ x'(t) = U(t)x(t) + \E(t)x(t)
+\end{equation}
+the perturbed system. All the families of matrices above assume $(A0)$. The family of solution matrices for the unperturbed problem will be denoted by $\{\Phi(t,\tau)\}_{t,\tau \in \mathbb{R}}$.
+
+% 
+% 
+% 
+% To capture the growth rate, we use following notations. If $\theta$ is a given real-valued function, 
+% 
+% we consider the weighted sup norm for an orbit. For an orbit $x(t)$,  $t\ge a$, our primary norm is the sup norm $\|x\|_{L^\infty([a,\infty))}$. If $\theta$ is a given real-valued function, we define $|x(t)|_\theta := $
+% 
+% 
+% If $\eta(t)$ is any positive function, $\|x\|_{L^\infty_\eta([a,\infty))} = \displaystyle\sup_{t\ge a} |x(t)\eta(t)|$.
+
+
+\begin{theorem}[\cite{L19}] Suppose that $U(t)=diag(U_0(t),U_1(t))$ with $U_0(t)$ and $U_1(t)$ upper triangular and of dimensions $N_0\times N_0$ and $N_1 \times N_1$ respectively. We assume the followings.% Suppose we can find constants $a$, $\delta>0$, and a real-valued function $\theta$ by which the followings are true.%Let $\displaystyle \udl_1(t)\triangleq \min_{i=1,\cdots,N_1} Re \lambda_{1,i}(t)$ for $U_1(t)$ and $\displaystyle \upl_0(t)\triangleq \max_{i=1,\cdots,N_2} Re \lambda_{0,i}(t)$ for $U_2(t)$ as before.
+\begin{enumerate}
+ \item $\int_{a_0}^\infty \|\E(t)\| \; < \infty$ for some $a_0$.
+ \item There is a real-valued function $\theta$ and constants $\delta >0$ and $A\in \mathbb{R}$ such that
+ \begin{enumerate}
+  \item for any $t_2\ge t_1$ and for any $\lambda_{0,i}(t)$ $i=1,\cdots,N_0$ of eigenvalues of $U_0(t)$ 
+  $$ \int_{t_1}^{t_2} Re\: \lambda_{0,i}(t) - \theta(t) \; dt \le A -(N_0 -1 +\delta)\log(1+t_2-t_1),$$
+ \item for any $t_2\ge t_1$ and for any $\lambda_{1,i}(t)$ $i=1,\cdots,N_1$ of eigenvalues of $U_1(t)$
+  $$ \int_{t_1}^{t_2} \theta(t)- Re\: \lambda_{1,i}(t) \; dt \le A -(N_1 -1 +\delta)\log(1+t_2-t_1).$$
+ \end{enumerate}
+\end{enumerate}
+Then there is a constant $a$ and an $N_0$-dimensional subspace $E_0$ of  $ \mathbb{R}^N$  such that $x(a)\in E_0$ implies that $\displaystyle \lim_{t \rightarrow \infty}|x(t)|_\theta =0$. %One such an $E_0 = P_0\mathbb{R}^N$.
+\end{theorem}
+
+% \begin{proof}
+% We use the notations developed in Section \ref{section2}, $\Phi_0(t,\tau) = P_0\Phi(t,\tau)$, $\Phi_1(t,\tau) = P_1\Phi(t,\tau)$ and $\Phi(t,\tau) = \Phi_1(t,\tau) + \Phi_2(t,\tau)$. Let $y(a) = P_0 V$ for a vector $V$ and $y(t) = \Phi(t,a)y(a)$.
+% 
+% %  Let $\{\Phi(t,\tau)\}_{t,\tau \in \mathbb{R}}$ be the solution matrices with respect to the system \eqref{eq:0} with $A(t)=U(t)$. Let also $\Phi_0(t,\tau) = P_0\Phi(t,\tau)$ and $\Phi_1(t,\tau) = P_1\Phi(t,\tau)$ as in Section \ref{section2}.
+%  
+% We look for a solution of the following integral equation.
+%  \begin{equation*} \label{eq:integral}
+%  x(t) = y(t) + \int_a^t P_0\Phi(t,\tau)\E(\tau)x(\tau) \;d\tau  - \int_t^\infty P_1\Phi(t,\tau)\E(\tau)x(\tau) \; d\tau.
+%  \end{equation*}
+%  If exists, that $x(t)$ solves \eqref{eq:2} follows from that each column of $\Phi(t,\tau)$ solves \eqref{eq:1}. In particular, we have $P_0x(a) = y(a)$.
+%  
+%  Suppose such an $x(t)$ exists. Multiplying $e^{-\int_a^t \theta(\eta) \;d\eta}$ both sides and using the block matrices calculus, we have
+%  \begin{equation} \label{eq:integral2}
+%  \begin{aligned}
+%   x(t)e^{-\int_a^t \theta(\eta) \;d\eta} &= y(t)e^{-\int_a^t \theta(\eta) \;d\eta} + \int_a^t \big(\Phi_0(t,\tau)e^{-\int_\tau^t \theta(\eta) \;d\eta}\big)\big(\E(\tau) x(\tau)e^{-\int_a^\tau \theta(\eta) \;d\eta}\big)_0 \;d\tau \\
+%   &- \int_t^\infty \big(\Phi_1(t,\tau)e^{\int_t^\tau \theta(\eta) \;d\eta}\big) \big(\E x(\tau)e^{-\int_a^\tau \theta(\eta) \;d\eta}\big)_1 \; d\tau.
+%  \end{aligned}
+%  \end{equation}
+% By Proposition \ref{stability} and our assumptions, we note that   the matrix $\Phi_0(t,\tau)e^{-\int_\tau^t \theta(\eta)}\;d\eta$  is bounded for $t\ge \tau$. More precisely,
+% \begin{align}
+%  \left|\Phi_0(t,\tau)e^{-\int_\tau^t \theta(\eta) \;d\eta}y(\tau)\right| &\le C(1 + t-\tau)^{N_0-1})\exp\left(\int_\tau^t \upl_0(\eta)-\theta(\eta) \;d\eta\right)|y(\tau)| \nonumber\\
+%  &\le Ce^A(1 + t-\tau)^{-\delta}|y(\tau)|. \label{eq:decay0}
+% %  &\le Ce^A(1 + t-\tau)^{N_0-1}(1+ t-\tau)^{-(N_0-1) -\delta}|y(\tau)|\le C e^A |y(\tau)|.
+% \end{align}
+% Similarly the matrix $\Phi_1(t,\tau)e^{\int_t^\tau \theta(\eta)\;d\eta}y(\tau)$ is bounded for $t\le \tau$. More precisely,
+% \begin{align*}
+%  \left|\Phi_1(t,\tau)e^{\int_t^\tau \theta(\eta)\;d\eta}y(\tau)\right| &\le C(1 + \tau- t)^{N_1-1})\exp\left(\int_\tau^t -\udl_1(\eta)+\theta(\eta) \; d\eta\right)|y(\tau)| \nonumber\\
+%  &\le Ce^A(1 + \tau-t)^{-\delta}|y(\tau)|. %\label{eq:decay0}
+% %  &\le Ce^A(1 + t-\tau)^{N_1-1}(1+ t-\tau)^{-(N_1-1) -\delta}|y(\tau)|\le C e^A |y(\tau)|.
+% \end{align*}
+% Since $\|\E(t)\|$ is integrable, we can choose $a$ so that $Ce^A\int_a^\infty \|\E(\tau)\| \;d\tau < \frac{1}{2}$. Then, we have
+% \begin{align*}
+% |x(t)-y(t)|_{\theta} &\le \int_a^t \|\Phi_0(t,\tau)e^{-\int_\tau^t \theta(\eta)}\;d\eta\| \:\|\E(\tau)\| \: |x(\tau)|_\theta \; d\tau \\
+% &+ \int_t^\infty \|\Phi_1(t,\tau)e^{\int_\tau^t \theta(\eta)}\;d\eta\| \: \|\E(\tau)\| \:|x(\tau)|_\theta \; d\tau\\
+% &\le \frac{1}{2}\|x\|_{\theta}.
+% \end{align*}
+% 
+% Let $S$ be the operator on $L^\infty_{\theta}([a,\infty))$ that maps $x$ to the function the right-hand-side of \eqref{eq:integral} defines. The estimate right before shows that $\|Sx\|_\theta \le \|y\|_\theta + \frac{1}{2} \|x\|_\theta < \infty$ and that moreover it is a contraction, $\|Sx - S\bar{x}\|_\theta \le \frac{1}{2} \|x-\bar{x}\|_\theta$. By contraction mapping principle, there is the unique fixed point. It is clear that for the fixed point $\|x\|_\theta \le 2\|y\|_\theta$. This conclusion applies to each $y(a)$ chosen.
+% 
+% In addition, we know that $|y(t)|_\theta \rightarrow 0$ as $t \rightarrow \infty$. It remained to show that $|x(t)|_\theta \rightarrow 0$ as $t \rightarrow \infty$ as well. We show that $|x(t)-y(t)|_\theta \rightarrow 0$. Let the first integral in \eqref{eq:integral2} be $I_1$ and the second integral be $I_2$. $I_2$ converges to $0$ since
+% % \begin{align*}
+% %  I_1&= \int_a^t \Phi_0(t,\tau)e^{-\int_\tau^t \theta(\eta) \;d\eta}P_0\E(\tau) x(\tau)e^{-\int_a^\tau \theta(\eta) \;d\eta} \;d\tau \\
+% %  I_2& = \int_t^\infty \Phi_1(t,\tau)e^{\int_t^\tau \theta(\eta) \;d\eta}P_1\E x(\tau)e^{-\int_a^\tau \theta(\eta) \;d\eta} \; d\tau
+% % \end{align*}
+% % Then
+% $$\lim_{t \rightarrow\infty}\int_t^\infty \|\Phi_1(t,\tau)e^{\int_\tau^t \theta(\eta)}\;d\eta\| \: \|\E(\tau)\| \:|x(\tau)|_\theta \; d\tau\le 2C e^A \|y\|_\theta \lim_{t \rightarrow \infty}\int_t^\infty \|\E(\tau)\| \;d\tau = 0.$$
+% For $I_1$, we divide the integral into 
+% $$\left(\int_a^{t_1} + \int_{t_1}^t \right) \left\{\big(\Phi_0(t,\tau)e^{-\int_\tau^t \theta(\eta) \;d\eta}\big)\big(\E(\tau) x(\tau)e^{-\int_a^\tau \theta(\eta) \;d\eta}\big)_0 \;d\tau\right\}.$$
+% for some $t_1 \le t$. For any given $\epsilon>0$, we show that we can choose $t$ and $t_1$ so large that $I_1 \le \epsilon$. With the same reasoning used for $I_2$, we can choose $t_1$ so large that the integral in the second interval is smaller than $ \frac{\epsilon}{2}$. In the first interval we write the integral in the form
+% \begin{align*}
+% %  &\int_a^{t_1} \big(\Phi_0(t,\tau)e^{-\int_\tau^t \theta(\eta) \;d\eta}\big)\big(\E(\tau) x(\tau)e^{-\int_a^\tau \theta(\eta) \;d\eta}\big)_0 \;d\tau \\
+%  \big(\Phi_0(t,t_1)e^{-\int_{t_1}^t \theta(\eta)\;d\eta}\big) \int_a^{t_1} \big(\Phi_0(t_1,\tau)e^{-\int_\tau^{t_1} \theta(\eta) \;d\eta}\big)\big(\E(\tau) x(\tau)e^{-\int_a^\tau \theta(\eta) \;d\eta}\big)_0 \;d\tau.
+% \end{align*}
+% From \eqref{eq:decay0}, $\|\Phi_0(t,t_1)e^{-\int_{t_1}^t \theta(\eta)\;d\eta}\| \rightarrow 0$ as $t \rightarrow \infty$, and the integral in $[a,t_1]$ must be finite. Therefore we can choose $t$ so large that the above is smaller than $ \frac{\epsilon}{2}$.
+% \end{proof}
+% 
+\begin{theorem} Suppose that $U(t)=diag(U_0(t),U_1(t),\cdots,U_k(t))$ with $U_\alpha(t)$ upper triangular and of dimensions $N_\alpha\times N_\alpha$ respectively. We assume the followings.% Suppose we can find constants $a$, $\delta>0$, and a real-valued function $\theta$ by which the followings are true.%Let $\displaystyle \udl_1(t)\triangleq \min_{i=1,\cdots,N_1} Re \lambda_{1,i}(t)$ for $U_1(t)$ and $\displaystyle \upl_0(t)\triangleq \max_{i=1,\cdots,N_2} Re \lambda_{0,i}(t)$ for $U_2(t)$ as before.
+\begin{enumerate}
+ \item $\int_a^\infty \|\E(t)\| \; < \infty$ for some $a$.
+ \item There are real-valued functions $\tu$ and $\tl$ and constants $\delta >0$ and $A\in \mathbb{R}$ by which the followings hold.
+ \begin{enumerate}
+  \item $\{1,\cdots,k\}=J_0 \cup J_1 \cup J_2$ of disjoint union. %, where $J_1$ is the singleton  $\{\beta\}$.
+  \item $\alpha \in J_0$ implies that for any $t_2\ge t_1$ and for any $\lambda_{\alpha,i}(t)$ $i=1,\cdots,N_\alpha$ of eigenvalues of $U_\alpha(t)$ 
+  $$ \int_{t_1}^{t_2} Re\: \lambda_{\alpha,i}(t) - \tl(t) \; dt \le A -(N_\alpha -1 +\delta)\log(1+t_2-t_1).$$
+  \item $\alpha \in J_1$ implies that for any $t_2\ge t_1$ and for any $\lambda_{\alpha,i}(t)$ $i=1,\cdots,N_\alpha$ of eigenvalues of $U_\alpha(t)$ 
+  \begin{align*}
+     \int_{t_1}^{t_2} Re\: \lambda_{\alpha,i}(t) - \tu(t) \; dt \le A -(N_\alpha -1 +\delta)\log(1+t_2-t_1),\\
+     \int_{t_1}^{t_2} \tl(t)- Re\: \lambda_{\alpha,i}(t) \; dt \le A -(N_\alpha -1 +\delta)\log(1+t_2-t_1).
+  \end{align*}
+  \item $\alpha \in J_2$ implies that for any $t_2\ge t_1$ and for any $\lambda_{\alpha,i}(t)$ $i=1,\cdots,N_\alpha$ of eigenvalues of $U_\alpha(t)$
+  $$ \int_{t_1}^{t_2} \tu(t)- Re\: \lambda_{\alpha,i}(t) \; dt \le A -(N_\alpha -1 +\delta)\log(1+t_2-t_1).$$
+ \end{enumerate}
+\end{enumerate}
+ Let $\displaystyle N_1 = \sum_{J_1} N_\alpha$. Then there is an $N_1$-dimensional subspace $E$ of $\mathbb{R}^N$ such that $x(a) \in E$ implies that $\displaystyle \lim_{t \rightarrow \infty} |x(t)|_\tu =0$ and $\displaystyle \limsup_{t \rightarrow \infty}|x(t)|_\tl = \infty$.
+\end{theorem}
+
+\begin{proof}
+ We first claim that $|x|_\tl$ has lower bound awary from $0$ for all time $t\ge a$.  Let $x$ solves the following integral equations.
+\begin{equation} \label{integral30}
+  \left\{ \begin{aligned}
+           x_0(t) &= \int_a^t \Phi_0(t,\tau) (\E(\tau)x(\tau))_0 \; d\tau,\\
+           x_1(t) &= y_1(t) + \int_a^t \Phi_1(t,\tau) (\E(\tau)x(\tau))_1 \; d\tau,\\
+           x_2(t) &= -\int_{t}^\infty \Phi_2(t,\tau) (\E(\tau)x(\tau))_2 \; d\tau.
+          \end{aligned}\right.
+\end{equation}
+By letting $U_0(t) = P_0U(t) + P_1U(t)$ and $U_1(t)=P_2U(t)$ and applying the Theorem 2, it has the unique solution for each $y(a)$ given.
+
+Pick any $\bar{t} \ge a$ then for any $s \le \bar{t}$, $x$ also solves the following integral equations in the interval $[a,\bt]$.
+\begin{equation} \label{integral3}
+  \left\{ \begin{aligned}
+           x_0(s) &= \int_a^s \Phi_0(s,\tau) (\E(\tau)x(\tau))_0 \; d\tau,\\
+           x_1(s) &= \Phi_1(s,\bar{t})x_1(\bar{t}) - \int_s^{\bar{t}} \Phi_1(s,\tau) (\E(\tau)x(\tau))_1 \; d\tau,\\
+           x_2(s) &= \Phi_2(s,\bar{t})x_2(\bar{t}) - \int_s^{\bar{t}} \Phi_2(s,\tau) (\E(\tau)x(\tau))_2 \; d\tau.
+          \end{aligned}\right.
+\end{equation}
+The equation $\eqref{integral3}_2$ is obtained by multiplying $\Phi_1(s,t)$ to $\eqref{integral30}_2$ and by using that $\Phi_1(s,t)y_1(t) = y_1(s) = x_1(s) - \int_a^t \Phi_1(s,\tau)\E(\tau) x(\tau) \; d\tau$. The equation $\eqref{integral3}_3$ is obtained similarly. Fix $w(s):=\Phi_1(s,\bar{t})x_1(\bar{t}) + \Phi_2(s,\bar{t})x_2(\bar{t}) = w_1(s)+w_2(s)$. 
+
+Multiplying $e^{\int_a^s -\tl(\eta) \; d\eta}$ both sides,
+\begin{equation} \label{integral4}
+  \left\{ \begin{aligned}
+           x_0(s)e^{\int_a^s -\tl(\eta) \; d\eta} &= \int_a^s \big(\Phi_0(s,\tau)e^{\int_\tau^s -\tl(\eta) \; d\eta}\big) (\E(\tau)x(\tau)e^{\int_a^\tau -\tl(\eta) \; d\eta})_0 \; d\tau,\\
+           x_1(s)e^{\int_a^s -\tl(\eta) \; d\eta} &= w_1(s)e^{\int_a^s -\tl(\eta) \; d\eta} \\
+           &- \int_s^{\bar{t}} \big(\Phi_1(s,\tau)e^{\int_s^\tau \tl(\eta) \; d\eta}\big) (\E(\tau)x(\tau)e^{\int_a^\tau -\tl(\eta) \; d\eta})_1 \; d\tau,\\
+           x_2(s)e^{\int_a^s -\tl(\eta) \; d\eta} &= w_2(s)e^{\int_a^s -\tl(\eta) \; d\eta}\\
+           &- \int_s^{\bar{t}} \big(\Phi_2(s,\tau)e^{\int_s^\tau \tl(\eta) \; d\eta}\big) (\E(\tau)x(\tau)e^{\int_a^\tau -\tl(\eta) \; d\eta})_2 \; d\tau.
+          \end{aligned}\right.
+\end{equation}
+By Proposition \ref{stability} and our assumptions, we note that   the matrix $\Phi_0(s,\tau)e^{-\int_\tau^s \tl(\eta)}\;d\eta$  is bounded for $s\ge \tau$. More precisely,
+$\Phi_0 = \displaystyle \sum_{\alpha \in J_0} \Phi_\alpha$ and for each $\alpha \in J_0$
+\begin{align*}
+ \left|\Phi_\alpha(s,\tau)e^{-\int_\tau^t \tl(\eta) \;d\eta}y(\tau)\right| &\le C(1 + s-\tau)^{N_\alpha-1})\exp\left(\int_\tau^t \upl_\alpha(\eta)-\tl(\eta) \;d\eta\right)|y(\tau)| \nonumber\\
+ &\le Ce^A(1 + s-\tau)^{-\delta}|y(\tau)|. %\label{eq:decay0}
+%  &\le Ce^A(1 + t-\tau)^{N_0-1}(1+ t-\tau)^{-(N_0-1) -\delta}|y(\tau)|\le C e^A |y(\tau)|.
+\end{align*}
+Hence, $$\left|\Phi_0(s,\tau)e^{-\int_\tau^t \tl(\eta) \;d\eta}y(\tau)\right| \le Ce^A|y(\tau)|.$$
+The matrix $\Phi_1(s,\tau)e^{\int_s^\tau \theta(\eta)\;d\eta}y(\tau)$ is bounded for $s\le \tau$. More precisely, $\Phi_1 = \displaystyle \sum_{\alpha \in J_1} \Phi_\alpha$ and for each $\alpha \in J_1$
+\begin{align}
+ \left|\Phi_\alpha(s,\tau)e^{\int_s^\tau \tl(\eta)\;d\eta}y(\tau)\right| &\le C(1 + \tau -s)^{N_\alpha-1})\exp\left(\int_\tau^s -\udl_\alpha(\eta)+\tl(\eta) \; d\eta\right)|y(\tau)| \nonumber\\
+ &\le Ce^A(1 + \tau-s)^{-\delta}|y(\tau)|. \label{eq:decay1}
+%  &\le Ce^A(1 + t-\tau)^{N_1-1}(1+ t-\tau)^{-(N_1-1) -\delta}|y(\tau)|\le C e^A |y(\tau)|.
+\end{align}
+The matrix $\Phi_2(s,\tau)e^{\int_s^\tau \theta(\eta)\;d\eta}y(\tau)$ is bounded for $s\le \tau$. More precisely, $\Phi_2 = \displaystyle \sum_{\alpha \in J_2} \Phi_\alpha$ and for each $\alpha \in J_2$
+\begin{align}
+ \left|\Phi_\alpha(s,\tau)e^{\int_s^\tau \tl(\eta)\;d\eta}y(\tau)\right| &\le C(1 + \tau-s)^{N_\alpha-1})\exp\left(\int_\tau^s -\udl_\alpha(\eta)+\tl(\eta) \; d\eta\right)|y(\tau)| \nonumber\\
+ &\le Ce^A(1 + \tau-s)^{-\delta}\exp\left(\int_\tau^s -\tu(\eta)+\tl(\eta) \; d\eta\right)|y(\tau)| \nonumber\\
+ &\le Ce^{3A}(1 + \tau-s)^{-\delta}|y(\tau)|. \label{eq:decay2}
+%  &\le Ce^A(1 + t-\tau)^{N_1-1}(1+ t-\tau)^{-(N_1-1) -\delta}|y(\tau)|\le C e^A |y(\tau)|.
+\end{align}
+$a$ could been chosen so that $Ce^{3A} \int_a^\infty \|E(\tau)\| \;d\tau < \frac{1}{2}$, we conclude that
+
+% Let $z(s) = \big(\Phi_1(s,\bar{t})e^{\int_s^\bt \tl(\eta) \; d\eta}\big)\big(x_1(\bar{t})e^{\int_a^\bt -\tl(\eta) \; d\eta}\big) + \big(\Phi_2(s,\bar{t})e^{\int_s^\bt \tl(\eta) \; d\eta}\big)\big(x_2(\bar{t})e^{\int_a^s -\tl(\eta) \; d\eta}\big)$.
+% Hence we have that
+$$|x(s)-w(s)|_\tl \le \frac{1}{2} \|x\|_\tl \quad \text{and} \quad \|x\|_\tl \le 2\|w\|_\tl, \quad \text{where $\|\cdot\|_\tl = \|\cdot\|_{L^\infty_\tl ([a,\bt])}$}.$$
+% {\blue}
+% Now, define the operator $S$ on $W:=\left\{ z \in L^\infty_\tl([a,\bt]) \:|\: z_0(a) = 0, z_1(\bt) = x_1(\bt), z_2(\bt)=x_2(\bt) \right\}$ that maps $z$ to the function that the right-hand-side of \eqref{integral3} defines. 
+% Then clearly $\|Sz\|_\tl \le \|w\|_\tl + \|z\|_\tl < \infty$ and $(Sz)_0(a) = 0$; $(Sz)_1(\bt) = x_1(\bt)$; $(Sz)_2(\bt)=x_2(\bt)$ so $Sz \in X$ too. It is a contraction,
+% $\|Sz-S\bar{z}\|_\tl \le \frac{1}{2} \|z-\bar{z}\|_\tl.$ 
+% }
+% 
+% So there must be the unique fixed point of the integral equation but we know $x$ solves the integral equation and $x\in W$ so $x$ is the fixed point. We have then $\|x\|_\tl \le 2 \|w\|_\tl$.
+On the other hand, from \eqref{eq:decay1} and \eqref{eq:decay2}
+\begin{align*}
+ \|w\|_\tl = \sup_{a\le s\le \bt} \left| \Phi_1(s,\bt)w_1(\bt) + \Phi_2(s,\bt)w_2(\bt)\right|\le  Ce^A |w(\bt)|_\tl =Ce^A|x_1(\bt) + x_2(\bt)|_\tl.%\sup_{s\le \bt} Ce^A (1+\bt-s)^{-\delta} |w(\bt)|_\tl \le Ce^A |w(\bt)|_\tl =|x_1(\bt) + x_2(\bt)|_\tl.
+\end{align*}
+Since $|x_1(s)+x_2(s)|_\tl \le |x(s)|_\tl \le \|x\|_\tl$, for any $a \le s\le \bt$ we have
+\begin{align} \label{lowerbdd}
+ m |x_1(s)+x_2(s)|_\tl \le |x_1(\bt) + x_2(\bt)|_\tl ,
+\end{align}
+where $m=(2Ce^A)^{-1}$. 
+For any $\bt$ finite, \eqref{lowerbdd} is derived with the same constant $m$. Thus \eqref{lowerbdd} holds for any $\bt,s \in \mathbb{R}$ with $\bt\ge s\ge a$. In particular, since $|x_1(a)|_\tl=|y_1(a)| >0$, the above estimate shows that $|x_1(t)+x_2(t)|_\tl\ge m|y_1(a)|=:m'>0 $ for all $t$.
+
+Secondly, we claim that $ \displaystyle\limsup_{t \rightarrow \infty} |x_1(t) +x_2(t)|_\tl = \infty$. Suppse not. Then $ |x_1(t) +x_2(t)|_\tl$ is bounded from above. In the second and the third equations of \eqref{integral4}, the integrals are then finite for any $\bt\ge a$. If $s$ is taken so large then the integrals there in absolute value can be made smaller than $ \frac{m'}{2}$. Then by triangular inequality,
+% If $s$ is so large, then from the integral equation \eqref{eq:integral4} using the triangular inequality
+\begin{align*}
+ |\Phi_1(s,t)x_1(t) + \Phi_2(s,t)x_2(t)|_\tl \ge |x_1(t) +x_2(t)|_\tl - \frac{m'}{2} \ge \frac{m'}{2}. 
+\end{align*}
+By \eqref{eq:decay1} and \eqref{eq:decay2}, $|\Phi_1(s,t)x_1(t) + \Phi_2(s,t)x_2(t)|_\tl \le Ce^A (1+t-s)^{-\delta} |x_1(t)+x_2(t)|_\tl$. Combining the two, 
+\begin{align*}
+ \frac{m'}{2}(Ce^A)^{-1}(1+t-s)^\delta \le |x_1(t)+x_2(t)|_\tl
+\end{align*}
+which contradicts to that $|x_1(t)+x_2(t)|_\tl$ is bounded.
+\end{proof}
+\begin{align*}
+|x(s)-z(s)|_\tl \le C e^A \|x\|_\tl \int_a^\infty \|E(\tau)\| \;d\tau \le \frac{1}{2} \|x\|_\tl
+\end{align*}
+
+\section{Discussion}
+For the illustration of the usefullness of the generalization, we consider a following simple example
+$$ \begin{pmatrix} y_1(t) \\ y_2(t) \\ y_3(t) \end{pmatrix}' = \begin{pmatrix} -1 + \frac{1}{t} & 1 & 0 \\0 & -1- \frac{1}{t} & 0 \\ 0 & 0 & 0\end{pmatrix} \begin{pmatrix} y_1(t) \\ y_2(t) \\ y_3(t) \end{pmatrix} = U(t)y(t)$$
+and 
+$$x'(t) = U(t)x(t)+ \E(t)x(t).$$
+$\E(t)$ is assumed to satisfy the smallness condition.
+In above example, at any finite $t$, the three eigenvalues of $U(t)$ are all distinct and thus diagonalizable. But in the limit two eigenvalues $-1 + \frac{1}{t}$ and $-1-\frac{1}{t}$ becomes identical and defective. For the unperturbed problem, it is clear that for any initial data $y(t_0) = \begin{pmatrix} c_1 \\ c_2 \\ 0 \end{pmatrix}$, $y(t)$ decays exponentially to $0$. We can conclude the same for the perturbed problem using our generalized theorem: We let $U_0 = \begin{pmatrix} -1 + \frac{1}{t} & 1 \\0 & -1- \frac{1}{t} \end{pmatrix}$ and $U_1 = 0$ and choose $\theta\equiv -\frac{1}{2}$. Then the assumptions of the theorem are satisfied and we conclude that for some $a$ and initial data $x(a) = \begin{pmatrix} c_1 \\ c_2 \\ 0 \end{pmatrix}$ $|x(t)e^{\frac{t-a}{2}}| \rightarrow 0$ as $t \rightarrow \infty$.
+\section{Appendices*}
+
+\begin{theorem}{\cite[Levinson's Theorem]{CL55}}\label{thm:CL} Let $x(t)\in \mathbb{R}^N$ and $x'(t) = \big(\Lambda(t) + \mathcal{E}(t)\big)x$, where $\Lambda(t)$ is a diagonal matrix with diagonal entries $\lambda_j(t)$, $j=1,\cdots,N$ bounded and $\mathcal{E}(t)$ is a matrix such that $\|\mathcal{E}\|$ integrable, i.e., $\int_{a_0}^\infty \|\mathcal{E}(t)\| dt < \infty$ for some $a_0$.
+Fix an index $k$. Suppose we can find the constant $A$ so that either of the following two membership conditions holds for every $i$.
+
+$i \in I_1$ if
+\begin{align}
+ &\int_{a_0}^\infty Re(\lambda_k(s) -\lambda_i(s))\; ds \rightarrow \infty \quad \text{as $t \rightarrow \infty$ for some $a_0$},\label{eq:I1cond1}\\
+ &\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_i(s))\; ds > -A, \quad \text{whenever $t_2\ge t_1\ge 0$} \label{eq:I1cond2}
+\end{align}
+and $i \in I_2$ if
+\begin{align}
+ &\int_{t_1}^{t_2} Re(\lambda_k(s) -\lambda_i(s))\; ds < A, \quad \text{whenever $t_2\ge t_1\ge 0$}. \label{eq:I2cond}
+\end{align}
+Then there is an orbit $\varphi_k(t)$ $t\ge a$ for some $a$ such that,
+\begin{equation}
+ \lim_{t \rightarrow \infty} \varphi_k(t) \exp\left(-\int_{a}^t \lambda_k(s)\; ds\right) = \hat{k}, \quad \text{where $\hat{k}$ is the $k$-th coordinate basis of $\mathbb{R}^d$.}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Component-wisely, we can write
+\begin{align*}
+ \xi_i' & = (\lambda_i-\lambda_k)\xi_i + \mathcal{E}_{ij}\xi_j, \quad \text{where $\xi = \exp\left(-\int_a^t \lambda_k(s) \; ds\right)x$.}
+\end{align*}
+We look for a solution of the integral representation
+\begin{align*}
+ \xi_i(t) &= \hat{k}_i + \int_a^t \exp\left(\int_\tau^t \lambda_i(s)-\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_1$,}\\
+% \end{align*}
+% if $i\in I_1$, where $\hat{k}_i = \delta_{k i}$ of Kronecker delta and
+% \begin{align*}
+ \xi_i(t) &= \hat{k}_i -\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau && \text{if $i\in I_2$,}
+\end{align*}
+where $\hat{k}_i = \delta_{k i}$ of Kronecker delta. Let $t\ge a$ so large that $e^A\int_a^\infty |\mathcal{E}_{ij}(\tau)|\; d\tau < \frac{1}{2}$. Then by \eqref{eq:I1cond2} and \eqref{eq:I2cond}, for given $\bar\xi(t)$ bounded $t\ge a$, the expression right-hand-side defines an operator $S$ that maps $\bar\xi$ to another bounded function that is defined by the expression. In particular, $\xi=S\bar\xi$ has same initial data $\xi_i(a) = \hat{k}_i$ if $i\in I_1$.
+% and has same finial data $\displaystyle\lim_{t \rightarrow \infty} \xi_i(t) = \hat{k}_i$ if $i\in I_2$.
+By the choice of $a$, $\|S\xi - S\bar\xi\|_\infty \le \frac{1}{2}\|\xi-\bar\xi\|_\infty$, $t\ge a$ and thus $S$ is a contraction mapping. The integral equation has the unique solution and $\|\xi_i(t)\|_\infty \le 2$ because the integral is bounded above by $ \frac{1}{2} \|\xi\|_\infty$ and $|\hat{k}|=1$.
+
+Now we show that $|\xi(t)-\hat{k}| \rightarrow 0$ as $t \rightarrow \infty$. For given $\epsilon>0$, we show we can choose $t_0$ so large that for $t\ge t_0$, $\big|\xi_i(t)-\hat{k}_i\big| \le \epsilon$. If $i\in I_1$, we divide the integral into two parts
+\begin{align*}
+ &\big|\xi_i(t)-\hat{k}_i\big| \le \left|\left\{ \int_a^{t_1} + \int_{t_1}^t \right\} \exp\left(\int_\tau^t \lambda_i(s)-\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|.
+\end{align*}
+By choosing $t_1$ so large the second integral can be made smaller than $ \frac{\epsilon}{2}$ for all $t\ge t_1$. The first integral $$\left|\exp\left(\int_a^t \lambda_i(s)-\lambda_k(s) \; ds\right)\int_a^{t_1} \exp\left(\int_a^\tau -\lambda_i(s)+\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau \right|$$
+can be made smaller than $ \frac{\epsilon}{2}$ because the latter integral in the compact interval $[a, t_1]$ is finite and $\exp\left(\int_a^t \lambda_i(s)-\lambda_k(s) \; ds\right) \rightarrow 0$ as $t \rightarrow \infty$ by \eqref{eq:I1cond1}.
+
+If $i\in I_2$, then $\left|\int_t^\infty \exp\left(\int_t^\tau -\lambda_i(s)+\lambda_k(s) \; ds\right)\mathcal{E}_{ij}(\tau)\xi(\tau) \; d\tau\right| \rightarrow 0$ as $t \rightarrow \infty$.
+\end{proof}
+\begin{thebibliography}{999}
+% Reference 1
+
+\bibitem[Bodine and Lutz(2007)]{BL07}
+Bodine, S and Lutz, D. A. On asymptotic equivalence of perturbed linear systems of differential and difference equations. {\em J. Math. Anal. Appl.} {\bf 2007}, {\em 326}, 1174--1189.
+
+
+\bibitem[Coddington and Levinson(1955)]{CL55}
+Coddington, E.A., Levinson, N. Asymptotic Behavior of the Solutions of Certain Linear Systems. In {\em Theory of ordinary differential equations}; McGraw-Hill Inc., New York, 1955; pp. 32--58.
+
+\bibitem[Dieci and Eirola(1999)]{DE99}
+Dieci, L. and Eirola, T. On Smooth Decompositions of Matrices. {\em Siam J. Matrix Anal. A.} {\bf 1999}, {\em 20}, 800--819.
+
+
+\bibitem[Harris and Lutz(1977)]{HL77}
+Harris, W. A. Jr. and Lutz, D. A. A unified theory of asymptotic integration. {\em J. Math. Anal. Appl.} {\bf 1977}, {\em 57}, 571--586.
+
+
+\bibitem[Hartman and Wintner(1955)]{HW55}
+Hartman, P. and Wintner, A. Asymptotic integrations of linear differential equations. {\em Amer. J. Math.} {\bf 1955} {\em 77}, 45--86
+
+
+\bibitem[Hsie and Xie(1994)]{HX94}
+Hsieh, P.F.  and Xie, F. Asymptotic diagonalization of a linear ordinary differential system. {\em Kumamoto J. Math.} {\bf 1994}, {\em 7}, 27--50.
+
+
+\bibitem[Levinson(1948)]{L48}
+Levinson, N. The asymptotic nature of solutions of linear systems of differential equations. {\em Duke Math. J.} {\bf 1948}, {\em 15}, 111--126.
+
+\bibitem[Markus and Yamabe(1960)]{MY60}
+Markus, L. and Yamabe, H. Global stability criteria for differential systems. {\em Osaka Math. J.} {\bf 1960}, {\em 12}, 305--317.
+
+\bibitem[Lee(2019)]{L19}
+Lee, M. Asymptotic stability of non-autonomous systems and a generalization of Levinson's Theorem. {\em Some J.} {\bf 2019}, {\em @@}, @@@--@@@.
+
+
+
+% M.S.P. Eastham, The Asymptotic Solution of Linear Differential Systems, Oxford Sci. Publ., 1989. MR1006434
+% Reference 2
+
+\end{thebibliography}
+\end{document}
+
+
+
