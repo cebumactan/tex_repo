@@ -1,0 +1,459 @@
+\documentclass{beamer}
+
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb,amsthm,psfrag,subfigure}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{cancel}
+
+%%%% macros from beamer.cls %%%%%%%%%%%%%%%%
+  \usetheme{Boadilla}
+  \usecolortheme{whale}
+  \setbeamertemplate{footline}[frame number]
+  \setbeamercovered{transparent}
+
+
+%%%% my macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \def\red{\color{red}}
+  \def\blue{\color{blue}}
+  \def\green{\color{green}}
+\def\Lip{{\mathrm{Lip}}}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+\def\div{\,\textrm{div}\,}
+
+\newtheorem{proposition}{Proposition}
+
+\addtobeamertemplate{navigation symbols}{}{ \hspace{1em}    \usebeamerfont{footline}%
+    \insertframenumber /\inserttotalframenumber }
+
+\begin{document}
+\title[Random walk in spatially heterogeneous media ]{\LARGE A model of aggregation via \\ random walk in spatially heterogeneous media }
+\author{\vskip 5pt \small {Min-Gi Lee}\\ \vskip 5pt \scriptsize Department of Mathmatics\\Kyungpook National University, Korea\\}
+%\author{\vskip 5pt\Large {\underline{Thesis Defense}}}
+\institute{\vskip 5pt Yong-Jung Kim, KAIST \\ Jaywan Chung, Korea Electrotechnology Research Institute}
+\date{~}
+\begin{frame}
+  \titlepage
+  \vskip -60pt
+  \center
+  {\small
+  {\scriptsize KMJ Conference, Daegu, Korea}\\
+  %   {\scriptsize University of Vienna, Vienna, Austria}\\
+  %{\scriptsize Universit\"at Wien, Austria}\\
+  %{\scriptsize Universit\"at Stuttgart, Stuttgart, Germany}\\
+  %{\scriptsize  Texas A\&M University, U.S.}\\
+  {\scriptsize February 14th, 2019}\\}
+%   {\scriptsize Group Meeting, KAUST}\\
+%   {\scriptsize  Thuwal, Saudi Arabia}\\
+%   {\scriptsize Octobor 13th, 2015}\\}
+\end{frame}
+% 
+% 
+% \title[Localization ]{Localization in dynamic plasticity: \\ A study of parabolic regularizations  \\
+% of elliptic initial value problems}
+% % \title{{\LARGE Two-parameters family of focusing self-similar solutions in 1-d thermo-visco-plasticity}\\ {\small(Introduction to Geometric Singular Perturbation Theory)}}
+% \author{\vskip 5pt \small {Min-Gi Lee}\\ \vskip 5pt \scriptsize Applied Maths. \& Computational Science, KAUST, SA\\}
+% %\author{\vskip 5pt\Large {\underline{Thesis Defense}}}
+% 
+% \vskip 15pt
+% \institute{\scriptsize
+% Joint works with  \\ \textbf{\color{red}J. Olivier}, Universite de Marseilles, FR\\
+% \textbf{\color{cyan} Th. Katsaounis}, KAUST, SA \\
+% \textbf{\color{blue} A. Tzavaras}, KAUST, SA}
+% 
+% % \institute{\vskip 5pt joint with Athanasios Tzavaras \quad and \quad Thodoros Katsaounis\\}
+% \date{~}
+% \begin{frame}
+%   \titlepage
+%   \vskip -60pt
+%   \center
+%   {\small
+%   %{\scriptsize Summer School in Nonlinear Partial Differential Equations}\\
+%   {\scriptsize September 28th, 2017, Group Meeting}\\}
+%   %{\scriptsize Universit\"at Wien, Austria}\\
+%   %{\scriptsize Universit\"at Stuttgart, Stuttgart, Germany}\\
+%   %{\scriptsize  Texas A\&M University, U.S.}\\
+% %   {\scriptsize June 20th, 2017}\\}
+% %   {\scriptsize Group Meeting, KAUST}\\
+% %   {\scriptsize  Thuwal, Saudi Arabia}\\
+% %   {\scriptsize Octobor 13th, 2015}\\}
+% \end{frame}
+
+\section{Introduction}
+\begin{frame}
+ \frametitle{Mass migration system}
+ \setstretch{2}
+ 
+%  \begin{align*}
+%   \rho : \text{a density function of a certain mass (chemicals, population, ...)}\\
+%   \int_\Omega \rho \; dx = M_0 : \text{Total mass}\\
+%   \int_E \rho \; dx : \text{Mass residing in a set $E\subset \Omega$}
+%  \end{align*}
+
+ $\rho$ : a {\green density} function of a certain mass (chemicals, populations, ...), \pause
+ 
+ i.e., $\displaystyle \int_\Omega \rho \; dx = M_0$ is the {\blue total mass},
+ 
+ $\displaystyle \int_E \rho \; dx $ is the {\blue mass residing in a set $E\subset \Omega$}. \pause
+ \vfill
+ We consider a model where mass moves around\\
+ by the law given by the {\blue flux $\mathbf{f}$}
+ $$ \partial_t \rho = -\div( \mathbf{f} ).$$%, \quad \text{where $\mathbf{f}$ is a flux}.$$
+\end{frame}
+
+\begin{frame}
+ \frametitle{Mass migration system: convection}
+ \setstretch{1.5}
+ Suppose that $ \mathbf{f} = \rho V$, so that
+ $$ \partial_t \rho = -\div( \rho V(t,x) ), \quad \text{where $V(t,\cdot)$ is a velocity vector field}. $$
+%  \begin{align*}
+%   \rho : \text{a density function of a certain mass (chemicals, population, ...)}\\
+%   \int_\Omega \rho \; dx = M_0 : \text{Total mass}\\
+%   \int_E \rho \; dx : \text{Mass residing in a set $E\subset \Omega$}
+%  \end{align*}
+    \begin{minipage}{0.6\linewidth}
+    \begin{figure}
+    \centering
+    \psfrag{xt}{\scriptsize $x$ at $t=t_1$}
+    \psfrag{x0}{\scriptsize $x$ at $t=0$}
+%     \psfrag(x){\scriptsize $x$}
+    \includegraphics[width=5cm]{mediaflow.eps}
+    \end{figure}
+    \end{minipage}    
+    \hfill
+    \begin{minipage}{0.3\linewidth}
+    Solve o.d.e., 
+    \begin{equation*}
+        \left\{\begin{array}{l}
+        \frac{d \mathbf{x}}{dt} = V(t,x),\\
+        \mathbf{x}(0)= \mathbf{x}_0.
+        \end{array}\right.
+    \end{equation*}
+    \end{minipage}
+
+    \vspace{1em}
+    In this case, $ \displaystyle\rho(t, \mathbf{x}(t)) = \frac{\rho(t, \mathbf{x}(0))}{ \det \frac{\partial \mathbf{x}}{\partial \mathbf{x}_0}}$ solves the equation.
+    
+    This describes a mass flow passively conveyed by the background media deformation from $ \mathbf{x}(0)$ to $ \mathbf{x}(t) $.
+    
+\end{frame}
+
+\begin{frame}
+ \frametitle{Mass migration system: convection}
+ \setstretch{1.5}
+ Its self-governing nonlinear version can be considered:
+ $$ \partial_t \rho = -\div( \rho V(\rho) )$$
+
+ In this case, the velocity field is a non-linear function of the density itself. 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Mass migration system: convection}
+ \setstretch{1.5}
+ Interaction with another component also can be considered. For instance, %if $c$ is a certain chemical that attract or repell the mass,
+ $$ \partial_t \rho = -\div( \rho V(c,\nabla c) )$$
+
+ $V = \nabla c$ : $c$ is a chemo-attractant \: / \:  
+ $V = -\nabla c$ : $c$ is a chemo-repellent.
+ 
+equipped with the equation for $c$ as well:
+
+$$\partial_t c = f(\rho) - g(c).$$
+
+(chemical secretion and degradation)
+\end{frame}
+
+\begin{frame}
+ \frametitle{Mass migration system: diffusion}
+ \setstretch{1.5}
+    \begin{minipage}{0.6\linewidth}
+        $$\partial_t \rho = - \div( \mathbf{f}), \quad \mathbf{f} = -\mu \nabla \rho$$
+        describes the diffusion. This flux law is called the Fick's law.
+    \end{minipage}
+    \begin{minipage}{0.3\linewidth}
+    \hfill
+    \begin{figure}
+    \centering
+%     \psfrag(x){\scriptsize $x$}
+    \includegraphics[width=1.5cm]{diffusionink.eps}
+    \end{figure}
+    \end{minipage}    
+    Diffusion is a {\blue macroscopic} phenomenon, which we can observe.
+    
+    It is well-known that the {\blue microscopic model of} {\red Random Walk} gives rise to the Fick'w law and thus explains the diffusion phenomenon.
+
+\end{frame}
+
+\begin{frame}
+ \frametitle{Microscopic model: Random Walk}
+ \setstretch{1.5}
+
+    \begin{figure}
+    \centering
+     \psfrag{dx}{\scriptsize $\Delta x$}
+     \psfrag{dt}{\scriptsize $\Delta t$}
+     \psfrag{pl}{\scriptsize $p_\ell = \frac{1}{2}$,}
+     \psfrag{pr}{\scriptsize $p_r = \frac{1}{2}$}
+    \includegraphics[width=5cm]{randomwalkp.eps}
+    \end{figure}
+  
+    Random walk is parameterized by $\Delta x$, the walk lenth, and $\Delta t$, the time interval between two walks, which are of particle size scale.
+    
+    Let $p^k_n$ be a probabibility mass function at $k$-th site and at time $t=t_n$. Then, easy to see 
+    $$ p^k_{n+1} = \frac{1}{2}p^{k-1}_{n} + \frac{1}{2}p^{k+1}_n.$$
+    
+    Once the initial p.m.f. $p^k_0$ is known, $p^k_n$ for all $n\ge0$ is computable.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Microscopic model: Random Walk}
+ \setstretch{1.5}
+
+%     \begin{figure}
+%     \centering
+%      \psfrag{dx}{\scriptsize $\Delta x$}
+%      \psfrag{dt}{\scriptsize $\Delta t$}
+%      \psfrag{pl}{\scriptsize $p_\ell = \frac{1}{2}$,}
+%      \psfrag{pr}{\scriptsize $p_r = \frac{1}{2}$}
+%     \includegraphics[width=5cm]{randomwalkp.eps}
+%     \end{figure}
+
+
+    One consider the {\blue probability density} $\rho^k_n:= \frac{p^k_n}{\Delta x}$ at each interval midpoint. This may be interpolated smoothly to form a density function $\rho(x)$. This is parametrized by $\Delta x$. \pause
+    
+    Since $\Delta x$ and $\Delta t$ are {\red very small}, we may want the limit $\Delta x \rightarrow 0$, $\Delta t \rightarrow 0$.
+    
+    For the phenomenon to be visible even in {\blue macroscopic scale}, 
+    
+    the ratio $d = \frac{(\Delta x)^2}{\Delta t}$ is kept constant in the limit. (i.e., $\Delta t$ follows from $d$ and $\Delta x$.)
+    
+    \vfill
+    
+    It is verifiable that {\red $\rho_{\Delta x}$ converges to a function $\rho^*$} that solves
+    $$\partial_t \rho = d \partial^2_{xx}\rho$$
+    in an appropriate sense.
+\end{frame}
+
+
+\begin{frame}
+ \frametitle{Convection revisited}
+ \setstretch{1.5}
+
+ Having those all said, despite it is unnecessary, one can ask what happens microscopically for the convection case
+ \vspace{-1em}
+ $$ \partial_t \rho = - \div (\rho V(t,x)).$$
+ 
+  \vspace{-1em}
+ It is, of course, necessary to have a well-defined velocity $V(t,x)$ at every location $x$ at time $t$. \pause
+ 
+ Let us consider a chemotaxis model with chemo-attractant $c$ for a population of micro-organism (bacteria, for instance).
+  \vspace{-1em}
+ $$ \partial_t \rho = d\Delta \rho - \div (\rho \nabla c).$$
+ 
+ \vspace{-1em}
+ This assumes bacteria who are capable to measure the {\blue gradient of concentration of $c$} at a location.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Convection revisited}
+ \setstretch{1.3}
+ 
+ If oscillations in $c$ are not sufficiently small, compared to the size of the micro-organism, the micro-organism never be able to measure the {\blue gradient of $c$}.
+
+    \begin{figure}
+    \centering
+     \psfrag{x}{\scriptsize $x$}
+     \psfrag{c}{\scriptsize $c$}
+    \includegraphics[width=3.5cm]{measuregradient.eps}
+    \end{figure}
+    
+ While it can measure or approximate the density quite accurately by averaging 
+ $$\frac{1}{2\epsilon} \int_{x-\epsilon}^{x+\epsilon} c \; dx.$$
+\end{frame}
+
+\begin{frame}
+ \frametitle{Task}
+ \setstretch{1.5}
+
+ It'd nice to have a model where
+ 
+ {\blue the only mechanism} for a micro-organism to move is the {\red random walk}, not measureing any gradient.
+ 
+ Instead, we let the micro-organism can changes the random walk behavior ($\Delta x$ and $\Delta t$) based on the measurements of $\rho$ and $c$. 
+ 
+ ({\blue \scriptsize More specifically, we let it be slow when it feels satisfactory and be fast when it does not.})
+ 
+ \vfill
+ This indicates, as the first stage to its study, that we need to understand the {\red random walk in spatially heterogeneous media where $\Delta x$ and $\Delta t$ vary}.
+ 
+ \end{frame}
+
+ 
+\begin{frame}
+ \frametitle{Heterogeneous environment}
+ \setstretch{1.5}
+ The simplest heterogeneous environment is considered:
+ 
+ \begin{figure}
+  \centering
+  \psfrag{x}{\scriptsize $x$}
+  \psfrag{O}{\scriptsize $O$}
+  \psfrag{dtl}{\scriptsize $\Delta t_L$}
+  \psfrag{dxl}{\scriptsize $\Delta x_L$}
+  \psfrag{dtr}{\scriptsize $\Delta t_R$}
+  \psfrag{dxr}{\scriptsize $\Delta x_R$}
+  \includegraphics[width=5cm]{Twosubstrates.eps}
+ \end{figure}
+ Physical instance: semiconductor exposed in water vapor.
+
+ \vfill
+ We'd let $d_L = \frac{(\Delta x_L)^2}{\Delta t_L}$ and $d_R = \frac{(\Delta x_R)^2}{\Delta t_R}$.
+ 
+ 
+ Would the macroscopic diffusion model that the random walk gives rise to be the 
+ $$ \partial_t \rho = \div (d(x) \nabla \rho) \quad \quad?$$
+ 
+ \end{frame} 
+ 
+ \begin{frame}
+ \frametitle{Macroscopic diffusion model}
+ \setstretch{1.2}
+The model in the below will raise the jump discontinuity,
+$$ \partial_t \rho = \div (\nabla (d(x) \rho) ).$$\pause
+
+Then, why not 
+$$ \partial_t \rho = \div (\sqrt{d(x)}\nabla (\sqrt{d(x)} \rho) ) \quad \quad ?$$
+or
+$$ \partial_t \rho = \div (d(x)^q\nabla (d(x)^{1-q} \rho) ) \quad \quad ?$$
+More complicated:
+$$ \partial_t \rho = \div (\Delta x^q\nabla (\frac{\Delta x^{2-q}}{\Delta t} \rho) ) \quad \quad ?$$
+
+ 
+ \end{frame} 
+ 
+  \begin{frame}
+ \frametitle{Partial answer}
+ \setstretch{1.5}
+The partial anwser to the question which macroscopic model is right is that 
+
+{\red ``different microscopic model can give rise to different macroscopic diffusion''.} \pause
+
+Indeed, the types of diffusion are diverse, nonlinear, nonlocal, .... Mostly are from stochastic process study. \pause
+
+In the rest of the talk, we will pick a very simple microscopic model and we assert that this microscopic random walk gives rise to macroscopically
+$$\partial_t \rho = \div (\Delta x \nabla \big( \frac{\Delta x}{\Delta t} \rho\big) )$$
+which suffices to raise the jump discontinuity.
+ 
+ \end{frame} 
+ 
+  \begin{frame}
+ \setstretch{1.5}
+
+  First, we examine the effect of having heterogeneous $\Delta t$; we let $\Delta x = h$ to be constant, while we let
+ \begin{equation*}\label{alpha}
+\Delta t=\alpha(x)\tau,\qquad
+\alpha(x) =
+\left\{\begin{array}{ll}
+        1, & \text{if } x<0,\\
+        2, & \text{if } x\ge0.
+        \end{array}\right.
+\end{equation*}
+
+\vspace{-1em}
+We also let ${h^2\over 2\tau}=d.$
+
+In our setup, $\Delta t$ is interpreted as the {\blue traveling time} for the particle that is defined on the middle of each space {\blue interval}.
+ \begin{figure}
+  \centering
+  \psfrag{x}{\scriptsize $x$}
+  \psfrag{O}{\scriptsize $O$}
+  \psfrag{dtl}{\scriptsize $\Delta t_L=\tau$}
+  \psfrag{dtr}{\scriptsize \hskip-2em $\Delta t_R=2\tau$}
+  \psfrag{time}{\scriptsize it takes twice as much time here}
+  \includegraphics[width=5cm]{Twosubstrates2.eps}
+ \end{figure}
+\end{frame} 
+ \begin{frame}
+ \frametitle{Random walk in heterogeneous media}
+ \setstretch{1.5}
+ Insomuch as we did before, this random walk is described by
+ \begin{equation} \label{RW1}\tag{RW1}
+\begin{aligned}
+    2p^k_n = \left\{\begin{array}{lr}
+        p^{k-1} _{n-1} + p ^{k+1} _{n-1}, & \text{if } k<0,\\
+        p^{-1} _{n-1} + p ^{1} _{n-2}, & \text{if } k=0,\\
+        p^{k-1} _{n-2} + p ^{k+1} _{n-2}, & \text{if } k>0.
+        \end{array}\right.
+\end{aligned}
+\end{equation} 
+Note that the state at $n$-th step depends two previous steps. \pause Alternatively, we expand $(n-1)$-th step to write
+
+\begin{equation} \label{RW2}\tag{RW2}
+\begin{aligned}
+    &p^{k}_n = \left\{\begin{array}{ll}
+        \frac{1}{4}p^{k-2} _{n-2} + \frac{1}{2}p ^{k} _{n-2} + \frac{1}{4} p^{k+2}_{n-2}, & \text{if $k<0$ is even},\\
+        \frac{1}{4}p^{-2} _{n-2} + \frac{1}{4}p^{0} _{n-2} + \frac{1}{2}p ^{1} _{n-2}, & \text{if $k=0$},\\
+        \frac{1}{2}p^{k-1} _{n-2} + \frac{1}{2}p ^{k+1} _{n-2}, & \text{if } k>0.
+        \end{array}\right. 
+\end{aligned}
+\end{equation}
+ \end{frame}  
+
+  \begin{frame}
+  \frametitle{Connection to macroscopic equation}
+   \setstretch{1.5}
+   We assert that $\partial_t \rho = d \partial^2_{xx} \big(\frac{\rho}{\alpha(x)}\big)$. By defining $w=\frac{\rho}{\alpha(x)}$, we prove instead $w$ solves
+   \begin{equation} \label{eqnw}\alpha(x)\partial_t w = d \partial^2_{xx} w. \end{equation}\pause
+ \begin{definition}[Weak solution] We call $L^1_{loc}\big(\R^+;W^{1,1}(\R)\big)$ a weak solution of
+\eqref{eqnw} for an initial data $w_0 \in L^1(\R)$ if, for any test function $\phi \in
+C_c^1(\R^+\times \R)$,
+ \begin{equation}\label{DefWeak}
+  \int_0^T\int_\R \alpha w\phi_t\,dxdt
+  +\int_\R\alpha w_0\phi(0,x)\,dx = d\int_0^T\int_\R w_x\phi_x\, dxdt.
+ \end{equation}
+\end{definition}
+\end{frame}
+
+\begin{frame}
+\begin{lemma} \label{misc}
+Let $w_0\in C^{\infty}_c(\R)$ and $w^h$ be defined by {\red (* linear interpolation)}. We assume that $\tau$ and $h$ are related by
+$$
+{h^2\over 2\tau}=d,
+$$
+where $d>0$ is fixed. Then, for any $h>0$ small and any $t>0$, 
+$$\|\partial_x w^h(t,\cdot)\|_{L^\infty(\R)} + \|\partial_t w^h(t,\cdot)\|_{L^\infty(\R)} \le C,$$
+where $C$ depends only on $d$ and $\|w_0\|_{W^{2,\infty}(\R)}.$
+\end{lemma}
+
+\begin{theorem}[Kim, L]
+  The interpolation $w^{h}(t,x)$ converges to $w\in C^{0,1}(\R^+\times\R)$ and the limit is a weak solution of \eqref{eqnw}.
+\end{theorem}
+\end{frame}
+\begin{frame}
+   \setstretch{1.5}
+   To turn back to the aggregation model, it is not strange to consider a model
+   \begin{align*}
+    \partial_t \rho &= d \div \nabla ({\red \gamma(c,\rho)} \rho),\\
+    \partial_t c &= f(\rho) - g(c) + \epsilon \Delta c.
+   \end{align*}
+   
+   Global existence \& Numerical evidence of aggregation : Desvillettes, Kim, Trescases, Yoon. \pause
+
+   {\it Interpretation of the induced mass flow: a determined person among purposelessly wandering people?}
+
+\end{frame}
+
+
+\begin{frame}
+ \center
+ \vfill
+ 
+ {\bf \huge \blue  Thank you very much.}
+ 
+ \vfill
+\end{frame}
+
+
+\end{document}
+
