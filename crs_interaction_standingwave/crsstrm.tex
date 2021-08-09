@@ -119,7 +119,7 @@ We consider the following system of Schr\"odinger equations
  \text{$\big|(u(y),v(y))\big| \rightarrow 0$ as $|y| \rightarrow \infty$},&
  \end{aligned}
 \end{align}
-where constants $\lambda$, $\alpha_1$, $\alpha_2>0$, the coupling constant $\beta \in \mathbb{R}$, and $\mu: \mathbb{R}^N \rightarrow \mathbb{R}$ is a potential function. We show the existence of a non-radial {\blue positive} solution of \eqref{system} when the coupling constant $\beta$ is sufficiently small.
+where constants $\lambda$, $\alpha_1$, $\alpha_2>0$, the coupling constant $\beta \in \mathbb{R}$, and $\mu: \mathbb{R}^N \rightarrow \mathbb{R}$ is a potential function. We show the existence of a non-radial {\blue positive} solution of \eqref{system} under the suitable condition on the coupling constant $\beta$. 
 
 The potential function $\mu$ is assumed to satisfy the following that will be denoted by \eqref{A}:
 \begin{equation}\tag{$A$}\label{A}
@@ -128,15 +128,46 @@ The potential function $\mu$ is assumed to satisfy the following that will be de
   &2. \quad \text{$\mu$ is bounded and $\mu(y)\ge \tilde{\mu}_0 > 0$ for all $y$.}
  \end{aligned}
 \end{equation}
+
+{\blue $\gamma_0(M)$, $U_0$, $U_i$.}
+
+
+\begin{theorem} Suppose $m \ge \frac{1}{2}$ and $\frac{\beta}{\mu_0} \le \gamma_0(M)$. Then $\exists k_0$ such that for $k\ge k_0$ and $\frac{\beta}{\mu_0} \le \gamma_0$ there exists a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where 
+$ \|u\|_{H^1},  \|v\|_{H^1} \le k^{-m + \frac{1}{2}}$.
+ 
+\end{theorem}
+
+
+
+Using dilation arguments, it is sufficient to consider the system under assumptions
+\begin{equation}\tag{$A_1$}\label{A1}
+ \begin{aligned}
+  &1. \quad \mu(y) = 1 + \frac{a}{|y|^m} + o\left(\frac{1}{|y|^m}\right) \quad \text{for some $m>0$ as $|y| \rightarrow \infty$ and}\\
+  &2. \quad \text{$\mu$ is bounded and $\mu(y)\ge \tilde{\mu}_0 > 0$ for all $y$}
+ \end{aligned}
+\end{equation}
+when the coupling constant $|\beta| \le \gamma_0(M)$.
+
 \section{Results}
+
+
+
+
 \subsection{Notations}
-We first let $\bar{U}$ and $\bar{W}$ be respectively the unique radial solutions of
+We first let $\bar{U}$ and $\bar{W}$ be respectively the unique radial solutions  of (see Kwong)
 \begin{equation*}
- -\Delta \bar{U} + \lambda \bar{U} - \alpha_1 \bar{U}^3 = 0, \quad \text{and} \quad -\Delta \bar{W} + \mu_0 \bar{W} - \alpha_2 \bar{W}^3 = 0
+ -\Delta \bar{U} + \lambda \bar{U} - \alpha_1 \bar{U}^3 = 0, \quad \text{and} \quad -\Delta \bar{W} + \bar{W} - \alpha_2 \bar{W}^3 = 0
 \end{equation*}
-whose maxima occur at the origin. Abusing notations, $\bar{U}$ and $\bar{W}$ are functions of radial variable $r$. We fix an integer $k>0$, the number of bumps away from the origin, and let $U_0(y):=\bar{U}(|y|)$, and $U_i(y):=\bar{W}(|y-x_i|)$ for $i=1,\cdots,k$. For the points 
+whose maxima occur at the origin. Abusing notations, $\bar{U}$ and $\bar{W}$ are functions of radial variable $r$. The constant $M$ in this paper denote the bound such that
+$$\bar{U}(y) \le Me^{-\sqrt{\lambda}|y|}, \quad \text{and} \quad \bar{W}(y) \le Me^{-|y|}.$$
+
+
+We fix an integer $k>0$, the number of bumps away from the origin, and let $U_0(y):=\bar{U}(|y|)$, and $U_i(y):=\bar{W}(|y-x_i|)$ for $i=1,\cdots,k$. For the points 
 $$z_i= \left( R \cos\left(\frac{2(i-1)\pi}{k}\right), ~R \sin\left(\frac{2(i-1)\pi}{k}\right)\right) \quad \text{for $i=1,\cdots,k$,}$$
-$x_i = z_i$ in case $N=2$, and $x_i = (z_i,0)$ in case $N=3$. $R$ will be chosen sufficiently large later, dependently on $k$.\footnote{{\blue it seems okay even if points are on the 3d sphere.}}
+$x_i = z_i$ in case $N=2$, and $x_i = (z_i,0)$ in case $N=3$. $R$ will be chosen sufficiently large later, dependently on $k$. It is also convenient to subdivide the plane $\mathbb{R}^2$ into $k$ sectors
+$$\Omega^\prime_i := \left\{z \in \mathbb{R}^2~\Big|~ z\cdot z_i \ge |z|\cos\left(\frac{\pi}{k}\right)\right\} \quad i=1,\cdots,k$$
+and set $\Omega_i = \Omega^\prime_i$ if $N=2$ and $\Omega_i = \Omega^\prime_i \times \mathbb{R}$ if $N=3$.
+
 
 On $H^1( \mathbb{R}^N)$, we introduce inner products
 $$ \left<u,v\right>_0:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \lambda uv \quad \text{and} \quad \left<u,v\right>_1:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \mu(y) uv.$$ and two norms $\|\cdot\|_0:=\sqrt{\left<\cdot,\cdot\right>_0}$, and $\|\cdot\|_1:=\sqrt{\left<\cdot,\cdot\right>_1}$. We fix a closed subspace $H$ of $H^1( \mathbb{R}^N)$ possesing the following symmetry. Let $Q$ be a rotating matrix of an angle $\frac{2\pi}{k}$ for the first two coordinates. We define 
@@ -150,11 +181,12 @@ Nextly, we define two closed subspaces
  E_1&:= \left\{ v \in H ~\Big|~ \int_{\mathbb{R}^N}   \bar{W}^2 \bar{W}^\prime \,v(y+x_i)~dy = 0, \quad \text{for $i=1\cdots,k$} \right\}.
  \end{aligned}
 \end{equation}
+
+
 Now for a fixed $u \in E_0$, we consider a linear functional on $E_0$
 $$\ell_u[\varphi] := \int_{ \mathbb{R}^N} \nabla u\cdot\nabla\varphi + \lambda u \varphi - 3\alpha_1 U_0^2 u\varphi$$
 that is obviously bounded. This in turn, via Riesz representation theorem, define the linear operator $L_0: E_0 \rightarrow E_0$ by the defining relation
 $$\left<L_0(u),\varphi\right>_0 = \ell_u[\varphi].$$
-\footnote{see footnote 3}In the similar fashion, for a fixed $v \in E_1$,
 $$\tilde\ell_v[\varphi]:=\int_{ \mathbb{R}^N} \nabla v\cdot\nabla\varphi + \mu(y) v \varphi - 3\alpha_2 \left(\sum U_i\right)^2 v\varphi$$
 and the linear operator $L_1: E_1 \rightarrow E_1$ is defined by the relation
 $$\left<L_1(v),\varphi\right>_1 = \tilde\ell_v[\varphi].$$
@@ -178,25 +210,48 @@ $$ \|L_1 \varphi\|_1 \ge \rho_1 \|\phi\|_1 \quad \text{for all $\phi \in E_1$}.$
 \end{proof}
 Now, define $E:= E_0 \times E_1$ equipped with the norm $\|(u,v)\|:= \rm{max} \left\{ \|u\|_0, \|v\|_1\right\}$. We look for a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where the perturbations $(u,v)\in E$ with small norm. 
 
-Next lemma estimates the strengh of interaction between base solutions $U_0$ and $U_i$ $i=1,\cdots,k$.
-\begin{lemma} \label{inter}There exists a constant $C>0$ such that $\forall y\in \mathbb{R}^N$
- \begin{enumerate} 
-  \item $U_0U_i \le Ce^{-R}$,
-  \item $U_iU_j \le Ce^{-2R\sin\left(\frac{\pi}{k}\right)}$ for $i,j=1,\cdots, k$ and $i\ne j$. 
- \end{enumerate}
-\end{lemma}
+We first establish the uniform bound of the sum $\displaystyle \sum_{i=1}^k U_i$ independently of the number of bumps $k$ when $\frac{R}{k}$ is sufficiently large. 
+\begin{lemma}[{\blue wei-yan}] Let $\eta \in (0,1]$ and suppose $\frac{R}{k}$ is such that $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$. Then for $y \in{\Omega}_1$
+$$\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|} \quad\text{and} \quad \displaystyle \sum_{i=1}^k U_i(y) \le 4Me^{-(1-\eta)|y-x_1|}.$$
+%  \begin{enumerate}
+%   \item $\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|}$ and 
+%   \item $\displaystyle \sum_{i=1}^k U_i(y) \le 4Me^{-(1-\eta)|y-x_1|}$
+%  \end{enumerate}
+ \end{lemma}
 \begin{proof}
- First assertion follows from
- $$U_0(y)U_i(y) \le Ce^{-|y|-|y-x_i|} \le Ce^{-R}$$
- and the second assertion follows from that for $i\ne j$,
- $$U_i(y)U_j(y) \le Ce^{-|y-x_i| - |y-x_j|}\le Ce^{-|x_i-x_j|} \le Ce^{-2R\sin\left(\frac{\pi}{k}\right)}.$$
-\end{proof}
-\begin{lemma} \label{p_inter} For sufficiently large $R$, there exists a constant $C>0$ such that for $i=1,\cdots,k$
-$$|(\mu-\mu_0)U_i| \le C\left(|y|^{-m}\chi_{B_{\frac{R}{2}(x_i)}} + e^{-|y-x_i|}\chi_{B^c_{\frac{R}{2}(x_i)}}\right).$$
-\end{lemma}
-\begin{proof}
- We can take $R$ sufficiently large so that $|\mu-\mu_0| \le \frac{2a}{|y|^m}$ for $|y|\ge \frac{R}{2}$. For $y\in B_{R/2}(x_i)$, we have $|y|\ge \frac{R}{2}$ and thus $|\mu(y)-\mu_0|U_i \le C\frac{2a}{|y|^m}$. For $y\notin B_{R/2}(x_i)$, assertion follows from the boundedness of $\mu-\mu_0$.
-\end{proof}
+
+For $y\in \Omega_1$, it holds that $|y-x_i|\ge |y-x_1|$ and that $|y-x_1| \ge |x_i-x_1|-|y-x_i|$, resulting in $|y-x_i|\ge \frac{1}{2}|x_i-x_1|$. Therefore we have that
+$$\sum_{i\ge 2} U_i(y) \le \sum_{i\ge 2} Me^{-(1-\eta)|y-x_i|} e^{-\eta|y-x_i|}
+\le Me^{-(1-\eta)|y-x_1|}\sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} .$$
+We let $\theta_i = \frac{2\pi(i-1)}{k}$. Then $ \frac{|x_i-x_1|}{2} = R\left|\sin\left(\frac{\theta_i}{2}\right)\right|$ and using that $ \sin\left(\frac{\theta_i}{2}\right) \ge \frac{\theta_i}{\pi}$ for $\theta_i \le \pi$
+
+\begin{align*}
+ \sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} &\le 2\sum_{0<\theta_i \le \pi} e^{-\frac{\eta R}{\pi}\theta_i} \le 4 e^{-\frac{2\eta R}{k}} \quad \text{if the common ratio $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$}.
+\end{align*}
+Assertions then straightforwardly follow.
+ \end{proof}
+
+
+
+% Next lemma estimates the strengh of interaction between base solutions $U_0$ and $U_i$ $i=1,\cdots,k$.
+% \begin{lemma} \label{inter}There exists a constant $C>0$ such that $\forall y\in \mathbb{R}^N$
+%  \begin{enumerate} 
+%   \item $U_0U_i \le Ce^{-R}$,
+%   \item $U_iU_j \le Ce^{-2R\sin\left(\frac{\pi}{k}\right)}$ for $i,j=1,\cdots, k$ and $i\ne j$. 
+%  \end{enumerate}
+% \end{lemma}
+% \begin{proof}
+%  First assertion follows from
+%  $$U_0(y)U_i(y) \le Ce^{-|y|-|y-x_i|} \le Ce^{-R}$$
+%  and the second assertion follows from that for $i\ne j$,
+%  $$U_i(y)U_j(y) \le Ce^{-|y-x_i| - |y-x_j|}\le Ce^{-|x_i-x_j|} \le Ce^{-2R\sin\left(\frac{\pi}{k}\right)}.$$
+% \end{proof}
+% \begin{lemma} \label{p_inter} For sufficiently large $R$, there exists a constant $C>0$ such that for $i=1,\cdots,k$
+% $$|(\mu-\mu_0)U_i| \le C\left(|y|^{-m}\chi_{B_{\frac{R}{2}(x_i)}} + e^{-|y-x_i|}\chi_{B^c_{\frac{R}{2}(x_i)}}\right).$$
+% \end{lemma}
+% \begin{proof}
+%  We can take $R$ sufficiently large so that $|\mu-\mu_0| \le \frac{2a}{|y|^m}$ for $|y|\ge \frac{R}{2}$. For $y\in B_{R/2}(x_i)$, we have $|y|\ge \frac{R}{2}$ and thus $|\mu(y)-\mu_0|U_i \le C\frac{2a}{|y|^m}$. For $y\notin B_{R/2}(x_i)$, assertion follows from the boundedness of $\mu-\mu_0$.
+% \end{proof}
 
 
 
@@ -211,7 +266,7 @@ Our solution scheme is based on the observations below. Suppose $\big(U_0 +u, \s
  \end{aligned}
  \right.
 \end{equation*}
-For $N=2$ or $3$, by the Sovolev embedding, $|g_0(u,v)|$ and $|g_1(u,v)|$ defines the bounded linear functionals respectively on $E_0$ and $E_1$ \footnote{\red I need estimates of $\displaystyle\left\|\sum_{i=1}^k U_i\right\|_\infty$ independently of $k$ and $\left\| \left(\sum U_i\right)^3 - \sum U_i^3 \right\|_{L^2}$ w.r.t $R$ and $k$ and others, which has not been done in the draft...}
+For $N=2$ or $3$, by the Sovolev embedding and calculations that will follow in the proof of Proposition \ref{Fixed} , $|g_0(u,v)|$ and $|g_1(u,v)|$ {defines the bounded linear functionals respectively on $E_0$ and $E_1$} 
 \begin{align*}
  G_0(u,v)[\varphi]:=\int_{ \mathbb{R}^N} g_0(u,v)\varphi \quad \text{for $\varphi \in E_0$}, \quad
  G_1(u,v)[\phi]:=\int_{ \mathbb{R}^N} g_1(u,v)\phi \quad \text{for $\phi \in E_1$}.
@@ -232,57 +287,81 @@ defines an operator $F: E \rightarrow E$. If $(u,v)$ is any fixed point of $F$ t
  \right.
 \end{align*}
 
-\begin{proposition} $\exists k_0>0$ such that for $k\ge k_0$ and $R \in \left[\frac{m-\epsilon}{2\pi}k\log k, \frac{m+\epsilon}{2\pi}k\log k\right]$ the map $F$ has a fixed point.
+\begin{proposition} \label{Fixed} $\exists k_0>0$ such that for $k\ge k_0$ and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, the map $F$ has a fixed point $(u_*,v_*) \in E$. Furthermore, $\|(u_*,v_*)\| \le k^{-m + \frac{1}{2}}.$
  \end{proposition}
 \begin{proof}
-1. Let $B \subset E$ be the ball with {\blue $\|(u,v)\| \le k^{-\frac{m-1}{2}}$}. We first show that for $k$ sufficiently large and $R \in \left[\frac{m-\epsilon}{2\pi}k\log k, \frac{m+\epsilon}{2\pi}k\log k\right]$, $F(B) \subset B$. Let $(\bar u, \bar v) := F(u,v)$. Then,
+1. Let $B \subset E$ be the ball with $\|(u,v)\| \le k^{-m + \frac{1}{2}}$. We first show that for $k$ sufficiently large and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, $F(B) \subset B$. 
+
+Let $(\bar u, \bar v) := F(u,v)$. Then,
  \begin{align*}
   \|\bar u\|_0 &= \left\|L_0^{-1}\Big(\Gamma_0(u,v)\Big)\right\|_0 \le \frac{1}{\rho_0}\left\|\Gamma_0(u,v)\right\|_0 = \frac{1}{\rho_0} \sup_{\|\varphi\|_0=1} \left| \int_{ \mathbb{R}^N} g_0(u,v) \varphi \right|\\
-  &\le C\|\varphi\|_{L^2} \Big(\|u^2\|_{L^2} + \|u^3\|_{L^2} + \|uv\|_{L^2} +\|uv^2\|_{L^2} + |\beta| \left\|U_0\left(\sum U_i\right)\right\|_{\infty}\|v\|_{L^2}\\
-  & + |\beta|\left\|U_0\left(\sum U_i\right)\right\|_{\infty}\left\|\sum U_i\right\|_{L^2} + |\beta| \left\|\left(\sum U_i\right)^2\right\|_\infty \|u\|_{L^2}\Big).
+  &\le \sup_{\|\varphi\|_0=1} \Bigg[ \int \varphi \left( |u|^2 + |u^3| + |uv| + |uv^2|\right) + \left|\beta v U_0\left(\sum U_i\right)\varphi\right|\\
+  & + \int  \left|\beta U_0\left(\sum U_i\right)^2\varphi\right| +  \left|\beta u\left(\sum U_i\right)^2\varphi\right|\Bigg].
  \end{align*}
-% By Lemma \ref{inter}, $U_0U_i \le Ce^{-R} = Ck^{-\frac{m}{2\pi}k} \le Ck^{-\frac{m}{2} - \sigma}$ for some $\sigma>0$ if $k$ is large. Also, 
-% $$\|u^2\|_{L^2} + \|u^3\|_{L^2} + \|uv\|_{L^2} +\|uv^2\|_{L^2} \le Ck^{-\frac{m}{2} - \sigma'} \quad \text{for some $\sigma'>0$}.$$
-% Therefore for sufficiently small $|\beta|$ and sufficiently large $k$, $\| \bar u\|_0 \le k^{-\frac{m}{2}}$. Nextly,
+ 
+ For $y\in \Omega_1$ we have that
+ \begin{align*}
+  U_0\left(\sum U_i\right) &\le C(M)e^{-\sqrt{\lambda}(|y|)}e^{-(1-\eta)|y-x_1|} \le C(M) e^{-\gamma R} \quad \text{for some small $\gamma>0$}
+ \intertext{
+and thus we have $\left\|U_0\left(\sum U_i\right)\right\|_\infty \le C(M) e^{-\gamma R}$. Also }
+% \begin{align*}
+ \int U_0\left(\sum U_i\right)^2\varphi &\le C\sqrt{k}\left\|U_0\left(\sum U_i\right)\right\|_{L^2(\Omega_1)}\|\varphi\|_{L^2}  \\
+ &\le C\sqrt{k} \left\|e^{-\sqrt{\lambda}|y| - (1-\eta)|y-x_1|}\right|_{L^2(\Omega_1)}\\
+ &\le C \sqrt{k} e^{-\gamma R}\|\varphi\|_{L^2} \quad \text{for some small $\gamma>0$ and}\\
+\int u\left(\sum U_i\right)^2\varphi &\le C(M) \|u\|_{L^2}\|\varphi\|_{L^2}.
+ \end{align*}
+Therefore, we have that
+\begin{equation} \label{p1}
+ \|\bar u\|_0 \le C \left (k^{-2m+1} + (\sqrt{k} + 1)e^{-\gamma R}\right) + |\beta|C(M)k^{-m + \frac{1}{2}}.
+\end{equation}
+Now,
  \begin{align*}
   \|\bar v\|_0 &= \left\|L_1^{-1}\Big(\Gamma_1(u,v)\Big)\right\|_1 \le \frac{1}{\rho_1}\left\|\Gamma_1(u,v)\right\|_1 = \frac{1}{\rho_1} \sup_{\|\phi\|_1=1} \left| \int_{ \mathbb{R}^N} g_1(u,v) \phi \right|\\
-  &\le C\|\phi\|_{L^2} \Big(\|u^2\|_{L^2} + \|v^2\|_{L^2}+ \|v^3\|_{L^2} + \|uv\|_{L^2} +\|u^2v\|_{L^2} \\
-  &+ |\beta| \left\|U_0\left(\sum U_i\right)\right\|_{\infty}\|u\|_{L^2} + |\beta|\left\|U_0\left(\sum U_i\right)\right\|_{\infty}\left\|U_0\right\|_{L^2} \\
-  & + \left\|(\mu-\mu_0)\left(\sum U_i\right)\right\|_{L^2} + \left\| \left(\sum U_i\right)^3 - \sum U_i^3 \right\|_{L^2} + |\beta| \left\|U_0^2\right\|_\infty \|v\|_{L^2}\Big).
+  &\le \sup_{\|\phi\|_1=1} \Bigg[\int \phi\left( |u^2| + |v^2|+ |v^3| + |uv| +|u^2v|\right)  \\
+  &+ \int \left|\beta u U_0\left(\sum U_i\right)\phi\right| + \left|\beta U_0^2\left(\sum U_i\right)\phi\right| + \left|(\mu(y)-1)\left(\sum U_i\right)\phi\right|\\
+  &  + \int \left|\left(\sum U_i\right)^3 - \sum U_i^3 \right| |\phi| + \left|\beta v U_0^2  \phi\right| \Bigg].
  \end{align*}
-% We have that
-% \begin{align*}
-%  \left\|\left(\sum U_i\right)^3 - \sum U_i^3\right\|_{L^2} &= \bigg\|\sum_{\substack{(i,j,\ell) \in \{1,\cdots,n\}^3 \\ \text{\scriptsize not $i=j=\ell$}}} U_iU_jU_\ell\bigg\|_{L^2} \le C\|U_1\|_{L^2} \|U_1U_2\|_\infty \le Ck^{-\frac{m}{2}-\sigma''},
-% \end{align*} 
-%%  \begin{align*}
-%%   \left|\left(\sum U_i\right)^3 - \sum U_i^3\right| &= \sum_{\substack{(i,j,\ell) \in \{1,\cdots,n\}^3 \\ \text{\scriptsize not $i=j=\ell$}}} U_iU_jU_\ell \le CU_1^2U_2 \\
-%%   &\le CU_1e^{-2R\sin\left(\frac{\pi}{k}\right)} \le CU_1k^{-\frac{m}{2}-\sigma''}
-%%  \end{align*}
-% where we have used the Lemma \ref{inter} and that 
-% $$2R\sin\left(\frac{\pi}{k}\right) \ge \frac{mk}{\pi}\sin\left(\frac{\pi}{k}\right)\log k \ge(\frac{m}{2}+ \sigma'') \log k \quad \text{for some small $\sigma''>0$ if $k$ is large.}$$
-
- {\blue last three term estimates}
- {\blue
-\begin{align*} 
-&g_0(u_1,v_1) - g_0(u_2,v_2)\\
-&=(u_2 - u_1)\left\{ 3\alpha_1U_0(u_1+u_2) + \alpha_1\big(u_1^2+u_1u_2 + u_2^2\big) + \beta \left(\sum U_i\right)^2 + 2\beta \left(\sum U_i\right) v_1 + \beta v_1^2\right\}\\
-&+ (v_2-v_1)\beta\left\{ 2U_0 \left(\sum U_i\right) + U_0(v_1+v_2) + 2\left( \sum U_i\right)u_2 + u_2(v_1+v_2)\right\} \\ 
-&g_1(u_1,v_1) - g_2(u_2,v_2)\\
-&=(u_2 - u_1)\beta\left\{ 2U_0\left(\sum U_i\right) + 2U_0v_1 + \left(\sum U_i\right)(u_1+u_2) +v_1(u_1+u_2)\right\}\\
-&+ (v_2-v_1)\left\{ 3\alpha_2\left(\sum U_i\right)(v_1+v_2) + \alpha_2\big(v_1^2 + v_1v_2 + v_2^2\big) + \beta U_0^2 + 2\beta U_0u_2 + \beta u_2^2\right\}
+It is possbile by \eqref{A1} to choose large $k_0$ and thus for $R \in S_k$ it holds that
+$$ |\mu - 1| \le \frac{2a}{|y|^m} \quad \text{for $|y|\ge \frac{R}{2}$}.$$
+\begin{align*}
+ &\int \left|(\mu(y)-1)\left(\sum U_i\right)\phi\right| \le \|\phi\|_{L^2} \sqrt{k}\left\| (\mu -1)\left(\sum U_i\right)\right\|_{L^2(\Omega_1)}\\
+ &\le \|\phi\|_{L^2} \sqrt{k}\left(\left\| (\mu -1)\left(\sum U_i\right)\right\|_{L^2(\Omega_1 \cap B_{\frac{R}{2}(x_i)})} +  \left\| (\mu -1)\left(\sum U_i\right)\right\|_{L^2(\Omega_1 \setminus  B_{\frac{R}{2}(x_i)})}\right)\\
+ &\le C\|\phi\|_{L^2} \sqrt{k} \left\| (\mu -1)\right\|_{L^\infty( B_{\frac{R}{2}(x_i)} )} \left\|e^{-(1-\eta)|y-x_1|}\right\|_{L^2(\Omega_1)} + C\|\phi\|_{L^2} \sqrt{k} e^{-\gamma R}\\
+ &\le C\|\phi\|_{L^2} \left( \frac{\sqrt{k}}{R^m} + \sqrt{k}e^{-\gamma R}\right). 
 \end{align*}
+Also,
+\begin{align*}
+ \left(\sum U_i\right)^3 - \sum U_i^3 &= \left[ U_1 \sum_{i\in \hat{1}} U_i + U_2 \sum_{i\in \hat{2}} U_i + \cdots + U_k \sum_{i\in \hat{k}} U_i \right] \left(\sum U_i\right) \\
+ & \le (U_1 + C) \left(\sum_{i\ge 2} U_i\right)\left(\sum U_i\right) \le C \left(\sum_{i\ge 2} U_i\right) 
+ \intertext{where $\hat{\ell} = \{1,2,\cdots,\ell-1,\ell+1,\cdots,k\}$. Hence}
+  \int \left(\left(\sum U_i\right)^3 - \sum U_i^3 \right)\phi &\le \|\phi\|_{L^2} \sqrt{k}\left\|\left(\sum U_i\right)^3 - \sum U_i^3 \right\|_{L^2(\Omega_1)} \\
+ &\le C\sqrt{k}e^{-\frac{2\eta R}{k}} \left\|e^{-(1-\eta)|y - x_1|}\right\|_{L^2(\Omega_1)} \le C\sqrt{k}e^{-\frac{2\eta R}{k}}.
+ \end{align*}
+Therefore, we have that
+\begin{equation} \label{p2}
+ \|\bar v\|_1 \le C\left( k^{-2m+1} + (\sqrt{k}+1)e^{-\gamma R} + \frac{\sqrt{k}}{R^m} + \sqrt{k}e^{-\frac{2\eta R}{k}} \right).
+\end{equation}
+Combining \eqref{p1} and \eqref{p2} with a suitable choice of $\eta \in (0,1)$, we have
+that $$\|(u,v)\| \le k^{-m + \frac{1}{2}}.$$
+ 
 
+2. Assertions then follows if we show that $F$ is a contraction in the ball $B$.
+% 
+% 
+%  {\blue last three term estimates}
+%  {\blue
+% \begin{align*} 
+% &g_0(u_1,v_1) - g_0(u_2,v_2)\\
+% &=(u_2 - u_1)\left\{ 3\alpha_1U_0(u_1+u_2) + \alpha_1\big(u_1^2+u_1u_2 + u_2^2\big) + \beta \left(\sum U_i\right)^2 + 2\beta \left(\sum U_i\right) v_1 + \beta v_1^2\right\}\\
+% &+ (v_2-v_1)\beta\left\{ 2U_0 \left(\sum U_i\right) + U_0(v_1+v_2) + 2\left( \sum U_i\right)u_2 + u_2(v_1+v_2)\right\} \\ 
+% &g_1(u_1,v_1) - g_2(u_2,v_2)\\
+% &=(u_2 - u_1)\beta\left\{ 2U_0\left(\sum U_i\right) + 2U_0v_1 + \left(\sum U_i\right)(u_1+u_2) +v_1(u_1+u_2)\right\}\\
+% &+ (v_2-v_1)\left\{ 3\alpha_2\left(\sum U_i\right)(v_1+v_2) + \alpha_2\big(v_1^2 + v_1v_2 + v_2^2\big) + \beta U_0^2 + 2\beta U_0u_2 + \beta u_2^2\right\}
+% \end{align*}
+% 
+% 
+%  }
 
- }
-\newpage
-Comments:
-
-\begin{enumerate}
-\item Estimates of $\displaystyle\left\|\sum_{i=1}^k U_i\right\|_\infty$, $\left\| \left(\sum U_i\right)^3 - \sum U_i^3 \right\|_{L^2}$ and others w.r.t to $k$ are in Wei-Yan paper, so I can follow (with $m>1$ possibly). some calculations omitted seems non-trivial. I'll add them in the draft next week.
-
-\item Contraction part seems easier than that $F(B) \subset B$.  Maybe we do not need $F(B)\subset B$ ? .
-
-\end{enumerate}
 \end{proof}
 
 
