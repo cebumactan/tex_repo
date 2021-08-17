@@ -51,6 +51,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
 \newtheorem{hypothesis}{Hypothesis}[section]
@@ -131,8 +132,19 @@ The potential function $\mu$ is assumed to satisfy the following that will be de
 
 {\blue $\gamma_0(M)$, $U_0$, $U_i$.}
 
+Our solution scheme is based on the observations below. Suppose $\big(U_0 +u, \sum U_i + v\big)$ is a solution of \eqref{system}, or $(u,v)$ formally solves
+\begin{equation*}
+ \left\{
+ \begin{aligned}
+ &-\Delta u + \lambda u - 3\alpha_1U_0^2 u = 3\alpha_1U_1 u^2 + \alpha_1u^3 + \beta(U_0+u)\left(\sum U_i +v\right)^2=:g_0(u,v)\\
+ &-\Delta v + \mu(y) v - 3\alpha_2\left(\sum U_i\right)^2 v = 3\alpha_2\left(\sum U_i\right)v^2 + \alpha_2v^3 + \beta\left(U_0 +u\right)^2\left(\sum U_i +v\right)  \\
+ & \quad \quad \quad \quad \quad \quad \quad - (\mu-\mu_0)\left(\sum U_i\right)+ \alpha_2\left\{ \left(\sum U_i\right)^3 - \sum U_i^3 \right\} =:g_1(u,v).
+ \end{aligned}
+ \right.
+\end{equation*}
 
-\begin{theorem} Suppose $m \ge \frac{1}{2}$ and $\frac{\beta}{\mu_0} \le \gamma_0(M)$. Then $\exists k_0$ such that for $k\ge k_0$ and $\frac{\beta}{\mu_0} \le \gamma_0$ there exists a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where 
+
+\begin{theorem} Suppose $m \ge \frac{1}{2}$ and $\frac{\beta}{\mu_0} <\gamma_0(M)$. Then $\exists k_0$ such that for $k\ge k_0$ and $\frac{\beta}{\mu_0} \le \gamma_0(M)$ there exists a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where 
 $ \|u\|_{H^1},  \|v\|_{H^1} \le k^{-m + \frac{1}{2}}$.
  
 \end{theorem}
@@ -154,42 +166,47 @@ when the coupling constant $|\beta| \le \gamma_0(M)$.
 
 
 \subsection{Notations}
-We first let $\bar{U}$ and $\bar{W}$ be respectively the unique radial solutions  of (see Kwong)
+We first let $\bar{U}$ and $\bar{W}$ be respectively the unique radial solutions (see Kwong) of 
 \begin{equation*}
  -\Delta \bar{U} + \lambda \bar{U} - \alpha_1 \bar{U}^3 = 0, \quad \text{and} \quad -\Delta \bar{W} + \bar{W} - \alpha_2 \bar{W}^3 = 0
 \end{equation*}
-whose maxima occur at the origin. Abusing notations, $\bar{U}$ and $\bar{W}$ are functions of radial variable $r$. The constant $M$ in this paper denote the bound such that
-$$\bar{U}(y) \le Me^{-\sqrt{\lambda}|y|}, \quad \text{and} \quad \bar{W}(y) \le Me^{-|y|}.$$
+whose maxima occur at the origin. Abusing notations, $\bar{U}$ and $\bar{W}$ are functions of radial variable $r$. Throughout this paper, $M$ will denote the constant so that 
+$$\bar{U}(|y|) \le Me^{-\sqrt{\lambda}|y|}, \quad \text{and} \quad \bar{W}(|y|) \le Me^{-|y|}.$$
 
 
 We fix an integer $k>0$, the number of bumps away from the origin, and let $U_0(y):=\bar{U}(|y|)$, and $U_i(y):=\bar{W}(|y-x_i|)$ for $i=1,\cdots,k$. For the points 
 $$z_i= \left( R \cos\left(\frac{2(i-1)\pi}{k}\right), ~R \sin\left(\frac{2(i-1)\pi}{k}\right)\right) \quad \text{for $i=1,\cdots,k$,}$$
 $x_i = z_i$ in case $N=2$, and $x_i = (z_i,0)$ in case $N=3$. $R$ will be chosen sufficiently large later, dependently on $k$. It is also convenient to subdivide the plane $\mathbb{R}^2$ into $k$ sectors
 $$\Omega^\prime_i := \left\{z \in \mathbb{R}^2~\Big|~ z\cdot z_i \ge |z|\cos\left(\frac{\pi}{k}\right)\right\} \quad i=1,\cdots,k$$
-and set $\Omega_i = \Omega^\prime_i$ if $N=2$ and $\Omega_i = \Omega^\prime_i \times \mathbb{R}$ if $N=3$.
+and we set $\Omega_i = \Omega^\prime_i$ if $N=2$ and $\Omega_i = \Omega^\prime_i \times \mathbb{R}$ if $N=3$.
+
+
 
 
 On $H^1( \mathbb{R}^N)$, we introduce inner products
-$$ \left<u,v\right>_0:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \lambda uv \quad \text{and} \quad \left<u,v\right>_1:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \mu(y) uv.$$ and two norms $\|\cdot\|_0:=\sqrt{\left<\cdot,\cdot\right>_0}$, and $\|\cdot\|_1:=\sqrt{\left<\cdot,\cdot\right>_1}$. We fix a closed subspace $H$ of $H^1( \mathbb{R}^N)$ possesing the following symmetry. Let $Q$ be a rotating matrix of an angle $\frac{2\pi}{k}$ for the first two coordinates. We define 
+$$ \left<u,v\right>_0:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \lambda uv \quad \text{and} \quad \left<u,v\right>_1:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \mu(y) uv.$$ and two norms $\|\cdot\|_0:=\sqrt{\left<\cdot,\cdot\right>_0}$, and $\|\cdot\|_1:=\sqrt{\left<\cdot,\cdot\right>_1}$. We fix a closed subspace $H$ of $H^1( \mathbb{R}^N)$ possesing the following symmetry. Let $Q$ be a rotating matrix of an angle $\frac{2\pi}{k}$ couterclockwisely for the first two coordinates. We define 
 \begin{equation*}
  H:= \left\{ u \in H^1 (\mathbb{R}^N) ~\Big|~ \text{$u(Q^iy) = u(y)$ for $i=1,\cdots,k$ and $u$ is even in $y_n$, $n=2,\cdots,N$.}\right\}
 \end{equation*}
 Nextly, we define two closed subspaces 
 \begin{equation}
  \begin{aligned}
- E_0&:= \left\{ u \in {\blue H^1( \mathbb{R}^N)} ~\Big|~ \int_{\mathbb{R}^N}   \bar{U}^2 \bar{U}^\prime \,u(y)~dy = 0 \right\}, \\
+ E_0&:= \left\{ u \in H ~\Big|~ \int_{\mathbb{R}^N}   \bar{U}^2 \bar{U}^\prime \,u(y)~dy = 0 \right\}, \\
  E_1&:= \left\{ v \in H ~\Big|~ \int_{\mathbb{R}^N}   \bar{W}^2 \bar{W}^\prime \,v(y+x_i)~dy = 0, \quad \text{for $i=1\cdots,k$} \right\}.
  \end{aligned}
 \end{equation}
+$E:= E_0 \times E_1$ and we equip $E$ with the norm $\|(u,v)\|:= \rm{max} \left\{ \|u\|_0, \|v\|_1\right\}$. We look for a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where the perturbations $(u,v)\in E$ with small norm. 
 
 
-Now for a fixed $u \in E_0$, we consider a linear functional on $E_0$
+
+For a fixed $u \in E_0$, we consider a linear functional on $E_0$
 $$\ell_u[\varphi] := \int_{ \mathbb{R}^N} \nabla u\cdot\nabla\varphi + \lambda u \varphi - 3\alpha_1 U_0^2 u\varphi$$
 that is obviously bounded. This in turn, via Riesz representation theorem, define the linear operator $L_0: E_0 \rightarrow E_0$ by the defining relation
 $$\left<L_0(u),\varphi\right>_0 = \ell_u[\varphi].$$
-$$\tilde\ell_v[\varphi]:=\int_{ \mathbb{R}^N} \nabla v\cdot\nabla\varphi + \mu(y) v \varphi - 3\alpha_2 \left(\sum U_i\right)^2 v\varphi$$
+For a fixed $v \in E_1$,
+$$\tilde\ell_v[\phi]:=\int_{ \mathbb{R}^N} \nabla v\cdot\nabla\phi + \mu(y) v \phi - 3\alpha_2 \left(\sum U_i\right)^2 v\phi$$
 and the linear operator $L_1: E_1 \rightarrow E_1$ is defined by the relation
-$$\left<L_1(v),\varphi\right>_1 = \tilde\ell_v[\varphi].$$
+$$\left<L_1(v),\phi\right>_1 = \tilde\ell_v[\phi].$$
 
 
 
@@ -208,10 +225,33 @@ $$ \|L_1 \varphi\|_1 \ge \rho_1 \|\phi\|_1 \quad \text{for all $\phi \in E_1$}.$
 \blue
  $-\Delta w + \mu(y) w - 3\alpha_2\left(\sum U_i\right)^2 w = 0$ and $w \in E_1$ implies $w\equiv0$. 
 \end{proof}
-Now, define $E:= E_0 \times E_1$ equipped with the norm $\|(u,v)\|:= \rm{max} \left\{ \|u\|_0, \|v\|_1\right\}$. We look for a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where the perturbations $(u,v)\in E$ with small norm. 
 
-We first establish the uniform bound of the sum $\displaystyle \sum_{i=1}^k U_i$ independently of the number of bumps $k$ when $\frac{R}{k}$ is sufficiently large. 
-\begin{lemma}[{\blue wei-yan}] Let $\eta \in (0,1]$ and suppose $\frac{R}{k}$ is such that $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$. Then for $y \in{\Omega}_1$
+
+For $N=2$ or $3$, by the Sovolev embedding and calculations that will follow in the proof of Proposition \ref{Fixed}, $g_0(u,v)$ and $g_1(u,v)$ {defines the bounded linear functionals respectively on $E_0$ and $E_1$} 
+\begin{align*}
+ G_0(u,v)[\varphi]:=\int_{ \mathbb{R}^N} g_0(u,v)\varphi \quad \text{for $\varphi \in E_0$}, \quad
+ G_1(u,v)[\phi]:=\int_{ \mathbb{R}^N} g_1(u,v)\phi \quad \text{for $\phi \in E_1$}.
+\end{align*}
+Applying Riesz representation theorem, there exist $\Gamma_0(u,v) \in E_0$, $\Gamma_1(u,v) \in E_1$ with
+$$\left<\Gamma_0(u,v),\varphi\right>_0 = G_0(u,v)[\varphi] \quad \text{for $\varphi \in E_0$}, \quad \left<\Gamma_1(u,v),\phi\right>_1 = G_1(u,v)[\phi] \quad \text{for $\phi \in E_1$}.$$
+Combined with the inverses $L_0^{-1}$ and $L_1^{-1}$, the map
+$$(u,v) \mapsto (\bar{u},\bar{v})=\left(L_0^{-1}\Big(\Gamma_0(u,v)\Big), ~L_1^{-1}\Big(\Gamma_1(u,v)\Big)\right)$$
+defines an operator $F: E \rightarrow E$. If $(u,v)$ is any fixed point of $F$ then it holds that
+\begin{align*}
+ &\left(L_0(u),L_1(v)\right) = \left(\Gamma_0(u,v),\Gamma_1(u,v)\right)\\
+ \Longleftrightarrow &
+ \quad\left\{ \quad
+ \begin{aligned}
+  \int_{\mathbb{R}^N} \nabla u \cdot \nabla \varphi + \lambda u\varphi - 3\alpha_1U_0^2 u\varphi &= \int_{\mathbb{R}^N} g_0(u,v)\varphi \quad \forall \varphi\in E_0,\\
+  \int_{\mathbb{R}^N} \nabla v \cdot \nabla \phi + \mu(y) v\phi - 3\alpha_2\left(\sum U_i\right)^2v\phi &= \int_{\mathbb{R}^N} g_1(u,v)\phi \quad \forall \phi \in E_1.
+ \end{aligned}
+ \right.
+\end{align*}
+
+
+
+We first establish the uniform bound of the sum $\displaystyle \sum_{i=1}^k U_i$ independently of the number of bumps $k$, provided that $\frac{R}{k}$ is sufficiently large. 
+\begin{lemma}\label{ksum}[{\blue wei-yan}] Let $\eta \in (0,1]$ and suppose $\frac{R}{k}$ is such that $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$. Then for $y \in{\Omega}_1$
 $$\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|} \quad\text{and} \quad \displaystyle \sum_{i=1}^k U_i(y) \le 4Me^{-(1-\eta)|y-x_1|}.$$
 %  \begin{enumerate}
 %   \item $\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|}$ and 
@@ -223,7 +263,7 @@ $$\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-
 For $y\in \Omega_1$, it holds that $|y-x_i|\ge |y-x_1|$ and that $|y-x_1| \ge |x_i-x_1|-|y-x_i|$, resulting in $|y-x_i|\ge \frac{1}{2}|x_i-x_1|$. Therefore we have that
 $$\sum_{i\ge 2} U_i(y) \le \sum_{i\ge 2} Me^{-(1-\eta)|y-x_i|} e^{-\eta|y-x_i|}
 \le Me^{-(1-\eta)|y-x_1|}\sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} .$$
-We let $\theta_i = \frac{2\pi(i-1)}{k}$. Then $ \frac{|x_i-x_1|}{2} = R\left|\sin\left(\frac{\theta_i}{2}\right)\right|$ and using that $ \sin\left(\frac{\theta_i}{2}\right) \ge \frac{\theta_i}{\pi}$ for $\theta_i \le \pi$
+We let $\theta_i = \frac{2\pi(i-1)}{k}$. Then $ \frac{|x_i-x_1|}{2} = R\left|\sin\left(\frac{\theta_i}{2}\right)\right|$ and using that $ \sin\left(\frac{\theta_i}{2}\right) \ge \frac{\theta_i}{\pi}$ for $0\le\theta_i \le \pi$
 
 \begin{align*}
  \sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} &\le 2\sum_{0<\theta_i \le \pi} e^{-\frac{\eta R}{\pi}\theta_i} \le 4 e^{-\frac{2\eta R}{k}} \quad \text{if the common ratio $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$}.
@@ -231,7 +271,10 @@ We let $\theta_i = \frac{2\pi(i-1)}{k}$. Then $ \frac{|x_i-x_1|}{2} = R\left|\si
 Assertions then straightforwardly follow.
  \end{proof}
 
+\begin{corollary}
+ $\exists \gamma_0 = \gamma_0(M)$ with $\displaystyle \max\left\{U_0^2 , \left(\sum U_i\right)^2\right\} \le \gamma_0(M).$
 
+\end{corollary}
 
 % Next lemma estimates the strengh of interaction between base solutions $U_0$ and $U_i$ $i=1,\cdots,k$.
 % \begin{lemma} \label{inter}There exists a constant $C>0$ such that $\forall y\in \mathbb{R}^N$
@@ -256,38 +299,10 @@ Assertions then straightforwardly follow.
 
 
 
-Our solution scheme is based on the observations below. Suppose $\big(U_0 +u, \sum U_i + v\big)$ is a solution of \eqref{system}, or $(u,v)$ formally solves
-\begin{equation*}
- \left\{
- \begin{aligned}
- &-\Delta u + \lambda u - 3\alpha_1U_0^2 u = 3\alpha_1U_1 u^2 + \alpha_1u^3 + \beta(U_0+u)\left(\sum U_i +v\right)^2=:g_0(u,v)\\
- &-\Delta v + \mu(y) v - 3\alpha_2\left(\sum U_i\right)^2 v = 3\alpha_2\left(\sum U_i\right)v^2 + \alpha_2v^3 + \beta\left(U_0 +u\right)^2\left(\sum U_i +v\right)  \\
- & \quad \quad \quad \quad \quad \quad \quad - (\mu-\mu_0)\left(\sum U_i\right)+ \alpha_2\left\{ \left(\sum U_i\right)^3 - \sum U_i^3 \right\} =:g_1(u,v).
- \end{aligned}
- \right.
-\end{equation*}
-For $N=2$ or $3$, by the Sovolev embedding and calculations that will follow in the proof of Proposition \ref{Fixed} , $|g_0(u,v)|$ and $|g_1(u,v)|$ {defines the bounded linear functionals respectively on $E_0$ and $E_1$} 
-\begin{align*}
- G_0(u,v)[\varphi]:=\int_{ \mathbb{R}^N} g_0(u,v)\varphi \quad \text{for $\varphi \in E_0$}, \quad
- G_1(u,v)[\phi]:=\int_{ \mathbb{R}^N} g_1(u,v)\phi \quad \text{for $\phi \in E_1$}.
-\end{align*}
-Applying Riesz representation theorem, there exist $\Gamma_0(u,v) \in E_0$, $\Gamma_1(u,v) \in E_1$ with
-$$\left<\Gamma_0(u,v),\varphi\right>_0 = G_0(u,v)[\varphi] \quad \text{for $\varphi \in E_0$} \quad \left<\Gamma_1(u,v),\phi\right>_1 = G_1(u,v)[\phi] \quad \text{for $\phi \in E_1$}.$$
-Combined with the inverses $L_0^{-1}$ and $L_1^{-1}$, the map
-$$(u,v) \mapsto (\bar{u},\bar{v})=\left(L_0^{-1}\Big(\Gamma_0(u,v)\Big), ~L_1^{-1}\Big(\Gamma_1(u,v)\Big)\right)$$
-defines an operator $F: E \rightarrow E$. If $(u,v)$ is any fixed point of $F$ then
-\begin{align*}
- &\left(L_0(u),L_1(v)\right) = \left(\Gamma_0(u,v),\Gamma_1(u,v)\right)\\
- \Longleftrightarrow &
- \quad\left\{ \quad
- \begin{aligned}
-  \int_{\mathbb{R}^N} \nabla u \cdot \nabla \varphi + \lambda u\varphi - 3\alpha_1U_0^2 u\varphi &= \int_{\mathbb{R}^N} g_0(u,v)\varphi \quad \forall \varphi\in E_0,\\
-  \int_{\mathbb{R}^N} \nabla v \cdot \nabla \phi + \mu(y) v\phi - 3\alpha_2\left(\sum U_i\right)^2v\phi &= \int_{\mathbb{R}^N} g_1(u,v)\phi \quad \forall \phi \in E_1.
- \end{aligned}
- \right.
-\end{align*}
 
-\begin{proposition} \label{Fixed} $\exists k_0>0$ such that for $k\ge k_0$ and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, the map $F$ has a fixed point $(u_*,v_*) \in E$. Furthermore, $\|(u_*,v_*)\| \le k^{-m + \frac{1}{2}}.$
+
+
+\begin{proposition} \label{Fixed} $\exists k_0>0$ such that for $k\ge k_0$ and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, the map $F$ has a fixed point $(u_*,v_*) \in E$ and $\|(u_*,v_*)\| \le k^{-m + \frac{1}{2}}.$
  \end{proposition}
 \begin{proof}
 1. Let $B \subset E$ be the ball with $\|(u,v)\| \le k^{-m + \frac{1}{2}}$. We first show that for $k$ sufficiently large and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, $F(B) \subset B$. 
@@ -298,21 +313,20 @@ Let $(\bar u, \bar v) := F(u,v)$. Then,
   &\le \sup_{\|\varphi\|_0=1} \Bigg[ \int \varphi \left( |u|^2 + |u^3| + |uv| + |uv^2|\right) + \left|\beta v U_0\left(\sum U_i\right)\varphi\right|\\
   & + \int  \left|\beta U_0\left(\sum U_i\right)^2\varphi\right| +  \left|\beta u\left(\sum U_i\right)^2\varphi\right|\Bigg].
  \end{align*}
- 
- For $y\in \Omega_1$ we have that
+For $y\in \Omega_1$ we have that
  \begin{align*}
-  U_0\left(\sum U_i\right) &\le C(M)e^{-\sqrt{\lambda}(|y|)}e^{-(1-\eta)|y-x_1|} \le C(M) e^{-\gamma R} \quad \text{for some small $\gamma>0$}
+  U_0\left(\sum U_i\right) &\le Ce^{-\sqrt{\lambda}|y|}e^{-(1-\eta)|y-x_1|} \le C(M) e^{-\gamma R} \quad \text{for some small $\gamma>0$}
  \intertext{
-and thus we have $\left\|U_0\left(\sum U_i\right)\right\|_\infty \le C(M) e^{-\gamma R}$. Also }
+and by the symmetry we have $\left\|U_0\left(\sum U_i\right)\right\|_\infty \le C(M) e^{-\gamma R}$. Also }
 % \begin{align*}
  \int U_0\left(\sum U_i\right)^2\varphi &\le C\sqrt{k}\left\|U_0\left(\sum U_i\right)\right\|_{L^2(\Omega_1)}\|\varphi\|_{L^2}  \\
  &\le C\sqrt{k} \left\|e^{-\sqrt{\lambda}|y| - (1-\eta)|y-x_1|}\right|_{L^2(\Omega_1)}\\
- &\le C \sqrt{k} e^{-\gamma R}\|\varphi\|_{L^2} \quad \text{for some small $\gamma>0$ and}\\
-\int u\left(\sum U_i\right)^2\varphi &\le C(M) \|u\|_{L^2}\|\varphi\|_{L^2}.
+ &\le C \sqrt{k} e^{-\gamma R}\|\varphi\|_{L^2} \quad \text{for some small $\gamma>0$. Finally}\\
+\int u\left(\sum U_i\right)^2\varphi &\le \gamma_0(M) \|u\|_{L^2}\|\varphi\|_{L^2}.
  \end{align*}
 Therefore, we have that
 \begin{equation} \label{p1}
- \|\bar u\|_0 \le C \left (k^{-2m+1} + (\sqrt{k} + 1)e^{-\gamma R}\right) + |\beta|C(M)k^{-m + \frac{1}{2}}.
+ \|\bar u\|_0 \le C \left (k^{-2m+1} + (\sqrt{k} + 1)e^{-\gamma R}\right) + |\beta|\gamma_0(M)k^{-m + \frac{1}{2}}.
 \end{equation}
 Now,
  \begin{align*}
@@ -339,28 +353,28 @@ Also,
  \end{align*}
 Therefore, we have that
 \begin{equation} \label{p2}
- \|\bar v\|_1 \le C\left( k^{-2m+1} + (\sqrt{k}+1)e^{-\gamma R} + \frac{\sqrt{k}}{R^m} + \sqrt{k}e^{-\frac{2\eta R}{k}} \right).
+ \|\bar v\|_1 \le C\left( k^{-2m+1} + (\sqrt{k}+1)e^{-\gamma R} + \frac{\sqrt{k}}{R^m} + \sqrt{k}e^{-\frac{2\eta R}{k}} \right) + |\beta|\gamma_0(M)k^{-m+ \frac{1}{2}}.
 \end{equation}
 Combining \eqref{p1} and \eqref{p2} with a suitable choice of $\eta \in (0,1)$, we have
 that $$\|(u,v)\| \le k^{-m + \frac{1}{2}}.$$
  
 
-2. Assertions then follows if we show that $F$ is a contraction in the ball $B$.
-% 
-% 
-%  {\blue last three term estimates}
-%  {\blue
-% \begin{align*} 
-% &g_0(u_1,v_1) - g_0(u_2,v_2)\\
-% &=(u_2 - u_1)\left\{ 3\alpha_1U_0(u_1+u_2) + \alpha_1\big(u_1^2+u_1u_2 + u_2^2\big) + \beta \left(\sum U_i\right)^2 + 2\beta \left(\sum U_i\right) v_1 + \beta v_1^2\right\}\\
-% &+ (v_2-v_1)\beta\left\{ 2U_0 \left(\sum U_i\right) + U_0(v_1+v_2) + 2\left( \sum U_i\right)u_2 + u_2(v_1+v_2)\right\} \\ 
-% &g_1(u_1,v_1) - g_2(u_2,v_2)\\
-% &=(u_2 - u_1)\beta\left\{ 2U_0\left(\sum U_i\right) + 2U_0v_1 + \left(\sum U_i\right)(u_1+u_2) +v_1(u_1+u_2)\right\}\\
-% &+ (v_2-v_1)\left\{ 3\alpha_2\left(\sum U_i\right)(v_1+v_2) + \alpha_2\big(v_1^2 + v_1v_2 + v_2^2\big) + \beta U_0^2 + 2\beta U_0u_2 + \beta u_2^2\right\}
-% \end{align*}
-% 
-% 
-%  }
+2. Assertions then follows if we show that $F$ is a contraction in the ball $B$. For $(u_1,v_1)\in B$ and $(u_2,v_2) \in B$, let $(\bar{u}_1, \bar{v}_1) = F(u_1,v_1)$ and $(\bar{u}_2, \bar{v}_2) = F(u_2,v_2)$. Since
+\begin{align*} 
+&g_0(u_1,v_1) - g_0(u_2,v_2)\\
+&=(u_2 - u_1)\left\{ 3\alpha_1U_0(u_1+u_2) + \alpha_1\big(u_1^2+u_1u_2 + u_2^2\big) + \beta \left(\sum U_i\right)^2 + 2\beta \left(\sum U_i\right) v_1 + \beta v_1^2\right\}\\
+&+ (v_2-v_1)\beta\left\{ 2U_0 \left(\sum U_i\right) + U_0(v_1+v_2) + 2\left( \sum U_i\right)u_2 + u_2(v_1+v_2)\right\} \\ 
+&g_1(u_1,v_1) - g_2(u_2,v_2)\\
+&=(u_2 - u_1)\beta\left\{ 2U_0\left(\sum U_i\right) + 2U_0v_1 + \left(\sum U_i\right)(u_1+u_2) +v_1(u_1+u_2)\right\}\\
+&+ (v_2-v_1)\left\{ 3\alpha_2\left(\sum U_i\right)(v_1+v_2) + \alpha_2\big(v_1^2 + v_1v_2 + v_2^2\big) + \beta U_0^2 + 2\beta U_0u_2 + \beta u_2^2\right\}
+\end{align*}
+calculations in the first part of the proof show that
+\begin{align*}
+ \|(\bar{u}_1 - \bar{u}_2, \bar{v}_1 - \bar{v}_2)\| &\le \|(u_1 - u_2,v_1-v_2)\| \left( |\beta|\gamma_0(M) + Ck^{-m+ \frac{1}{2}}\right). \\
+\end{align*}
+Therefore $\exists k_0$ so large that for $k \ge k_0$, $\left( |\beta|\gamma_0(M) + Ck^{-m+ \frac{1}{2}}\right) < 1$.
+
+
 
 \end{proof}
 
