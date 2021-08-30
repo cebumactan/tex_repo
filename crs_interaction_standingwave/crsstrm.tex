@@ -26,19 +26,6 @@
 \def\red{\color{red}}
 \def\blue{\color{blue}}
 \def\tbr{{\blue{to be revised}}}
-\def\bG{\bar{\Gamma}}
-\def\bS{\bar{\Sigma}}
-\def\bV{\bar{V}}
-\def\bU{\bar{U}}
-
-\def\tg{\tilde{\gamma}}
-\def\ts{\tilde{\sigma}}
-\def\tv{\tilde{v}}
-\def\tu{\tilde{u}}
-\def\tit{\tilde{t}}
-
-\def\del{\partial}
-\def\eps{\varepsilon}
 
 
 \def\lo{\mathcal{o}}
@@ -47,17 +34,15 @@
 \newcommand{\tcb}{\textcolor{blue}}
 \newcommand{\ubar}[1]{\text{\b{$#1$}}}
 
-\newcounter{dummy}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{corollary}{Corollary}[section]
 \newtheorem{definition}{Definition}[section]
-\newtheorem{remark}{Remark}[section]
 \newtheorem{hypothesis}{Hypothesis}[section]
-% \setcounter{dummy}{10}
-\newtheorem{step}{Step}[dummy]
-\numberwithin{step}{dummy}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -108,65 +93,65 @@ the invariant surface  is analyzed via the Poincar\'{e}-Bendixson theorem to con
 
 \section{Introduction} \label{sec:intro}
 
-\newpage
-
-We consider the following system of Schr\"odinger equations 
+We consider the following system of coupled Schr\"odinger equations 
 \begin{align}\label{system}
  \begin{aligned}
  \begin{aligned}
- -\Delta u + \lambda u - \left(\alpha_1 u^2 + \beta v^2\right) u&= 0 \\
- -\Delta v + \mu(y) v - \left(\beta u^2 + \alpha_2 v^2\right) v&= 0
+ -\Delta u + \lambda u - \left(\alpha_0 u^2 + \beta v^2\right) u&= 0 \\
+ -\Delta v + \mu(y) v - \left(\beta u^2 + \alpha_1 v^2\right) v&= 0
  \end{aligned} \quad &\text{in} \quad \mathbb{R}^N, \quad \text{$N=2$ or $3$},\\
  \text{$\big|(u(y),v(y))\big| \rightarrow 0$ as $|y| \rightarrow \infty$},&
  \end{aligned}
 \end{align}
-where constants $\lambda$, $\alpha_1$, $\alpha_2>0$, the coupling constant $\beta \in \mathbb{R}$, and $\mu: \mathbb{R}^N \rightarrow \mathbb{R}$ is a potential function. We show the existence of a non-radial {\blue positive} solution of \eqref{system} under the suitable condition on the coupling constant $\beta$. 
+where constants $\lambda$, $\alpha_0$, $\alpha_1>0$, the coupling constant $\beta \in \mathbb{R}$, and $\mu: \mathbb{R}^N \rightarrow \mathbb{R}$ is a potential function.
+%that asymptotes to a constant $\mu_0$ as $|y| \rightarrow \infty$. 
+Our objective is to construct a solution of \eqref{system} where the radial symmetry is broken exhibiting many peaks over a circle and at the origin.
 
-The potential function $\mu$ is assumed to satisfy the following that will be denoted by \eqref{A}:
+This work answers a question among many problems from exploring the radial symmetry, or else breaking of it, of the solutions of non-linear Schr\"odinger equations. By the work of {\red somebody} via the moving plane method, the following radial symmetry result is well-known, i.e., for the scalar Schr\"odinger equation
+\begin{equation} \label{single}
+ -\Delta u + \mu(|y|) u = |u|^{p-1}u \quad \text{in $ \mathbb{R}^N$} %\quad 1<p < \frac{N+2}{N-2}}
+\end{equation}
+if the potential function $\mu$ is radial and non-decreasing in the radial variable, then the solution of \eqref{single} must be radial. Thus, the solutions with interesting patterns breaking the radial symmetry, such as solutions with many peaks, can only exist after violating the assumptions of this problem. Further, it is also an interesting question if the cross interactions between species, where one considers then the system of coupled Schr\"odinger equations, provide different circumstances in nature so that non-radial solutions exist.
+
+For the scalar Schr\"odinger equation, by omitting the non-decreasing condition, i.e., $\mu$ is merely radial, such an example was presented by Wei and Yan \cite{wei_yan_2014}. They considered a $\mu$ that possesses the prescribed asymptotic behavior
+\begin{align} \label{asymp0}
+ \mu(|y|) = \mu_0 + \frac{a}{|y|^m} + \mathcal{O}\left(\frac{1}{|y|^{m+\theta}}\right) \quad \text{for some $\mu_0,a,\theta>0$ and $m>1$ as $|y| \rightarrow \infty$}.
+\end{align}
+The constructed solution $u$ has segregated $k$ peaks over a circle. More specifically, $u$ peaks about $k$ points $x_i=(z_i,\mathbf{0})$, $i=1,\cdots,k$ where
+$$z_i= \left( R \cos\left(\frac{2(i-1)\pi}{k}\right), ~R \sin\left(\frac{2(i-1)\pi}{k}\right)\right)\in \mathbb{R}^2 \quad \text{for $i=1,\cdots,k$}$$
+and the radius $R$ is sufficiently large dependently on the number of peaks $k$. They showed that there are infinitely many such solutions for every $k$ larger than a certain $k_0$. Cerami, et.al. \cite{cerami_passaseo_solimini_2015} showed that such a result holds with $\mu$ relaxed further so that $\mu$ is not even radial. 
+
+Also, it has been actively studied if radial symmetry result of scalar case persists for the problems of coupled Schr\"odinger systems. If $n$-species are interacting, we then employ $n$ potential functions. We adopt a naive classification by behaviors of potentials here, we will speak of a potential that is a constant function, an important case among non-decreasing potentials, or a potential that is an increasing function, and so on. In regard with this, for the prescribed asymptotic behaviors similar to \eqref{asymp0},  asymptotically $a\le 0$ corresponds to the non-decreasing potential while $a>0$ corresponds to the decreasing potential.
+
+Having those said, we remark a few relevant works. Peng and Wang \cite{peng_wang_2013} considered two species Schr\"odinger system 
+\begin{align*}
+ &-\Delta u + P(|x|)u = \alpha_0 u^3 + \beta v^2 u\\
+ &-\Delta v + Q(|x|)v = \beta v^3 + \alpha_1 u^2 v
+\end{align*}
+and constructed various interesting solutions. They generated solutions of patterns where two species peak in a synchronized manner at shared sites or in a segregated manner at respective sites over a circle. The assumption on the potential function were such that one of $P(\cdot)$ and $Q(\cdot)$ violates the non-decreasing condition, or some other sophisticated conditions were supposed. See Theorem 1.1 and Theorem 1.2 in \cite{peng_wang_2013}. Long, et. al. \cite{long_tang_yang_2020} considered a problem where the two potentials are decreasing exponentially and obtained the result. The problems even without radial symmetry of potentials are studied by Ao and Wei \cite{ao_wei_2014} and Ao, et. al. \cite{ao_wang_yao_2016}. The case with nonlinearity other than $p=3$ were studied by Zheng \cite{zheng_2017}. Recently, non-radial solutions have been constructed in the three species problem where the potentials are all positive constant, thus non-decreasing, by Peng, et. al. \cite{peng_wang_wang_2019}. Their results clearly show that it is possible to have non-radial patterns in the system case even with radial and non-increasing potentials. % by contrast to the scalar case \eqref{single}. 
+The results can be contrasted to those of Wei and Yan \cite{wei_yan_2014}: Not infinitely many solutions are constructed and results follow under a certain conditions on the constants.
+
+
+Lin and Peng \cite{lin_peng_2014} advanced a question into another direction. They sought for a different pattern. In their solution, while one species peaks at many points over a circle as before, the other species peaks at the origin. They constructed solutions of this patterns in a model where the coupling terms are linear.
+
+Our work in this paper can be summerized as follows. Continuing the work of Lin and Peng  \cite{lin_peng_2014} we seek for a solution of the type where one species has a peak at the origin but we work with the two species model where the coupling terms are non-linear as seen in \eqref{system}. Also, we employ one potential to be a constant function while the other potential $\mu(|y|)$ violates the non-decreasing condition. We though mention that we have made a small improvement from the work of Wei and Yan \cite{wei_yan_2014} and others that the asymptotic behavior of $\mu$ is assumed to satisfy the following with $m> \frac{1}{2}$:
 \begin{equation}\tag{$A$}\label{A}
  \begin{aligned}
-  &1. \quad \mu(y) = \mu_0 + \frac{a}{|y|^m} + o\left(\frac{1}{|y|^m}\right) \quad \text{for some $\mu_0>0$ and $m>0$ as $|y| \rightarrow \infty$.}\\
+  &1. \quad \mu(y) = \mu_0 + \frac{a}{|y|^m} + o\left(\frac{1}{|y|^m}\right) \quad \text{for some $\mu_0,a>0$ and $m> \frac{1}{2}$ as $|y| \rightarrow \infty$.}\\
   &2. \quad \text{$\mu$ is bounded and $\mu(y)\ge \tilde{\mu}_0 > 0$ for all $y$.}
  \end{aligned}
 \end{equation}
-
-{\blue $\gamma_0(M)$, $U_0$, $U_i$.}
-
-Our solution scheme is based on the observations below. Suppose $\big(U_0 +u, \sum U_i + v\big)$ is a solution of \eqref{system}, or $(u,v)$ formally solves
-\begin{equation*}
- \left\{
- \begin{aligned}
- &-\Delta u + \lambda u - 3\alpha_1U_0^2 u = 3\alpha_1U_1 u^2 + \alpha_1u^3 + \beta(U_0+u)\left(\sum U_i +v\right)^2=:g_0(u,v)\\
- &-\Delta v + \mu(y) v - 3\alpha_2\left(\sum U_i\right)^2 v = 3\alpha_2\left(\sum U_i\right)v^2 + \alpha_2v^3 + \beta\left(U_0 +u\right)^2\left(\sum U_i +v\right)  \\
- & \quad \quad \quad \quad \quad \quad \quad - (\mu-\mu_0)\left(\sum U_i\right)+ \alpha_2\left\{ \left(\sum U_i\right)^3 - \sum U_i^3 \right\} =:g_1(u,v).
- \end{aligned}
- \right.
-\end{equation*}
-
-
-\begin{theorem} Suppose $m \ge \frac{1}{2}$ and $\frac{\beta}{\mu_0} <\gamma_0(M)$. Then $\exists k_0$ such that for $k\ge k_0$ and $\frac{\beta}{\mu_0} \le \gamma_0(M)$ there exists a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where 
-$ \|u\|_{H^1},  \|v\|_{H^1} \le k^{-m + \frac{1}{2}}$.
- 
+We now state our main theorem. The fraction number $f_0$ in the statement will be fixed in section \ref{sec:result}.
+\begin{theorem} \label{mainthm} Suppose \eqref{A} is satisfied with $m > \frac{1}{2}$ and $\left|\frac{\beta}{\mu_0}\right| < f_0$. Then $\exists k_0$ such that for $k\ge k_0$ there exists a solution of the form $\Big(U_0 +u, \displaystyle \sum_{i=1}^k U_i + v\Big)$ of \eqref{system} where for some small constant $\epsilon>0$ $ \|u\|_{H^1},  \|v\|_{H^1} \le k^{-m -\epsilon + \frac{1}{2}}$.
 \end{theorem}
+\begin{remark}
+  Using dilation arguments, it is sufficient to give a proof of Theorem \ref{mainthm} under the assumption $\mu_0=1$ in \eqref{A} for the  case $|\beta| \le f_0$. For the rest of the paper, $\mu_0=1$.
+\end{remark}
+The paper is organized in the following way: In next section, we introduce a few notions. We prove the main theorem in the section \ref{sec:result}.
 
+\section{Notations} \label{notions}
 
-
-Using dilation arguments, it is sufficient to consider the system under assumptions
-\begin{equation}\tag{$A_1$}\label{A1}
- \begin{aligned}
-  &1. \quad \mu(y) = 1 + \frac{a}{|y|^m} + o\left(\frac{1}{|y|^m}\right) \quad \text{for some $m>0$ as $|y| \rightarrow \infty$ and}\\
-  &2. \quad \text{$\mu$ is bounded and $\mu(y)\ge \tilde{\mu}_0 > 0$ for all $y$}
- \end{aligned}
-\end{equation}
-when the coupling constant $|\beta| \le \gamma_0(M)$.
-
-\section{Results}
-
-
-
-
-\subsection{Notations}
-We first let $\bar{U}$ and $\bar{W}$ be respectively the unique radial solutions (see Kwong) of 
+We first let $\bar{U}$ and $\bar{W}$ be respectively the unique positive radial solutions (see {\red Kwong}) of 
 \begin{equation*}
  -\Delta \bar{U} + \lambda \bar{U} - \alpha_1 \bar{U}^3 = 0, \quad \text{and} \quad -\Delta \bar{W} + \bar{W} - \alpha_2 \bar{W}^3 = 0
 \end{equation*}
@@ -177,64 +162,57 @@ $$\bar{U}(|y|) \le Me^{-\sqrt{\lambda}|y|}, \quad \text{and} \quad \bar{W}(|y|) 
 We fix an integer $k>0$, the number of bumps away from the origin, and let $U_0(y):=\bar{U}(|y|)$, and $U_i(y):=\bar{W}(|y-x_i|)$ for $i=1,\cdots,k$. For the points 
 $$z_i= \left( R \cos\left(\frac{2(i-1)\pi}{k}\right), ~R \sin\left(\frac{2(i-1)\pi}{k}\right)\right) \quad \text{for $i=1,\cdots,k$,}$$
 $x_i = z_i$ in case $N=2$, and $x_i = (z_i,0)$ in case $N=3$. $R$ will be chosen sufficiently large later, dependently on $k$. It is also convenient to subdivide the plane $\mathbb{R}^2$ into $k$ sectors
-$$\Omega^\prime_i := \left\{z \in \mathbb{R}^2~\Big|~ z\cdot z_i \ge |z|\cos\left(\frac{\pi}{k}\right)\right\} \quad i=1,\cdots,k$$
+$$\Omega^\prime_i := \left\{z \in \mathbb{R}^2~\Big|~ z\cdot z_i \ge R|z|\cos\left(\frac{\pi}{k}\right)\right\} \quad i=1,\cdots,k$$
 and we set $\Omega_i = \Omega^\prime_i$ if $N=2$ and $\Omega_i = \Omega^\prime_i \times \mathbb{R}$ if $N=3$.
 
 
 
 
 On $H^1( \mathbb{R}^N)$, we introduce inner products
-$$ \left<u,v\right>_0:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \lambda uv \quad \text{and} \quad \left<u,v\right>_1:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \mu(y) uv.$$ and two norms $\|\cdot\|_0:=\sqrt{\left<\cdot,\cdot\right>_0}$, and $\|\cdot\|_1:=\sqrt{\left<\cdot,\cdot\right>_1}$. We fix a closed subspace $H$ of $H^1( \mathbb{R}^N)$ possesing the following symmetry. Let $Q$ be a rotating matrix of an angle $\frac{2\pi}{k}$ couterclockwisely for the first two coordinates. We define 
+$$ \left<u,v\right>_0:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \lambda uv \quad \text{and} \quad \left<u,v\right>_1:= \int_{ \mathbb{R}^N} \nabla u\cdot\nabla v + \mu(y) uv.$$ and two norms $\|\cdot\|_0:=\sqrt{\left<\cdot,\cdot\right>_0}$, and $\|\cdot\|_1:=\sqrt{\left<\cdot,\cdot\right>_1}$. We fix a closed subspace $H$ of $H^1( \mathbb{R}^N)$ possesing the following symmetry. Let $Q$ be a couter-clock-wise rotating matrix of an angle $\frac{2\pi}{k}$ for the first two coordinates. We define 
 \begin{equation*}
  H:= \left\{ u \in H^1 (\mathbb{R}^N) ~\Big|~ \text{$u(Q^iy) = u(y)$ for $i=1,\cdots,k$ and $u$ is even in $y_n$, $n=2,\cdots,N$.}\right\}
 \end{equation*}
-Nextly, we define two closed subspaces 
+Nextly, we define two closed subspaces of $H$
 \begin{equation}
  \begin{aligned}
  E_0&:= \left\{ u \in H ~\Big|~ \int_{\mathbb{R}^N}   \bar{U}^2 \bar{U}^\prime \,u(y)~dy = 0 \right\}, \\
  E_1&:= \left\{ v \in H ~\Big|~ \int_{\mathbb{R}^N}   \bar{W}^2 \bar{W}^\prime \,v(y+x_i)~dy = 0, \quad \text{for $i=1\cdots,k$} \right\}.
  \end{aligned}
 \end{equation}
-$E:= E_0 \times E_1$ and we equip $E$ with the norm $\|(u,v)\|:= \rm{max} \left\{ \|u\|_0, \|v\|_1\right\}$. We look for a solution of the form $\big(U_0 +u, \sum U_i + v\big)$ where the perturbations $(u,v)\in E$ with small norm. 
+We set $E:= E_0 \times E_1$ and equip $E$ with the norm $\|(u,v)\|:= \rm{max} \left\{ \|u\|_0, \|v\|_1\right\}$. We look for a solution of the form $\Big(U_0 +u, \displaystyle \sum_{i=1}^k U_i + v\Big)$ where the perturbations $(u,v)\in E$ with small norm. 
 
 
 
-For a fixed $u \in E_0$, we consider a linear functional on $E_0$
+
+\section{Results} \label{sec:result}
+
+ Our solution scheme is based on the observations below. Suppose $\Big(U_0 +u, \displaystyle \sum_{i=1}^k U_i + v\Big)$ is a solution of \eqref{system}, or $(u,v)$ formally solves
+\begin{equation*}
+ \left\{
+ \begin{aligned}
+ &-\Delta u + \lambda u - 3\alpha_1U_0^2 u = 3\alpha_1U_{\tcr{0}} u^2 + \alpha_1u^3 + \beta(U_0+u)\left(\sum U_i +v\right)^2=:g_0(u,v)\\
+ &-\Delta v + \mu(y) v - 3\alpha_2\left(\sum U_i\right)^2 v = 3\alpha_2\left(\sum U_i\right)v^2 + \alpha_2v^3 + \beta\left(U_0 +u\right)^2\left(\sum U_i +v\right)  \\
+ & \quad \quad \quad \quad \quad \quad \quad - (\mu-\mu_0)\left(\sum U_i\right)+ \alpha_2\left\{ \left(\sum U_i\right)^3 - \sum U_i^3 \right\} =:g_1(u,v).
+ \end{aligned}
+ \right.
+\end{equation*}
+Based on these observations, for a fixed $u \in E_0$, we consider a linear functional on $E_0$
 $$\ell_u[\varphi] := \int_{ \mathbb{R}^N} \nabla u\cdot\nabla\varphi + \lambda u \varphi - 3\alpha_1 U_0^2 u\varphi$$
-that is obviously bounded. This in turn, via Riesz representation theorem, define the linear operator $L_0: E_0 \rightarrow E_0$ by the defining relation
+that is obviously bounded. This in turn, via Riesz representation theorem, defines the linear operator $L_0: E_0 \rightarrow E_0$ by the defining relation
 $$\left<L_0(u),\varphi\right>_0 = \ell_u[\varphi].$$
 For a fixed $v \in E_1$,
 $$\tilde\ell_v[\phi]:=\int_{ \mathbb{R}^N} \nabla v\cdot\nabla\phi + \mu(y) v \phi - 3\alpha_2 \left(\sum U_i\right)^2 v\phi$$
 and the linear operator $L_1: E_1 \rightarrow E_1$ is defined by the relation
 $$\left<L_1(v),\phi\right>_1 = \tilde\ell_v[\phi].$$
-
-
-
-
-\begin{lemma} There is a constant $\rho_0>0$ such that
-$$ \|L_0 \varphi\|_0 \ge \rho_0 \|\varphi\|_0 \quad \text{for all $\varphi \in E_0$}.$$
-\end{lemma}
-\begin{proof}
-\blue
- $-\Delta w + \lambda w - 3\alpha_1U_0(y)^2 w = 0$ and $w \in E_0$ implies $w\equiv0$. 
-\end{proof}
-\begin{lemma} There is a constant $\rho_1>0$ such that
-$$ \|L_1 \varphi\|_1 \ge \rho_1 \|\phi\|_1 \quad \text{for all $\phi \in E_1$}.$$
-\end{lemma}
-\begin{proof}
-\blue
- $-\Delta w + \mu(y) w - 3\alpha_2\left(\sum U_i\right)^2 w = 0$ and $w \in E_1$ implies $w\equiv0$. 
-\end{proof}
-
-
-For $N=2$ or $3$, by the Sovolev embedding and calculations that will follow in the proof of Proposition \ref{Fixed}, $g_0(u,v)$ and $g_1(u,v)$ {defines the bounded linear functionals respectively on $E_0$ and $E_1$} 
+On the other hand, for $N=2$ or $3$, by the Sovolev embeddings and calculations we see in the proof of Proposition \ref{Fixed}, $g_0(u,v)$ and $g_1(u,v)$ {defines the bounded linear functionals \tcr{$G_0$ and $G_1$,} respectively on $E_0$ and $E_1$} 
 \begin{align*}
  G_0(u,v)[\varphi]:=\int_{ \mathbb{R}^N} g_0(u,v)\varphi \quad \text{for $\varphi \in E_0$}, \quad
  G_1(u,v)[\phi]:=\int_{ \mathbb{R}^N} g_1(u,v)\phi \quad \text{for $\phi \in E_1$}.
 \end{align*}
 Applying Riesz representation theorem, there exist $\Gamma_0(u,v) \in E_0$, $\Gamma_1(u,v) \in E_1$ with
 $$\left<\Gamma_0(u,v),\varphi\right>_0 = G_0(u,v)[\varphi] \quad \text{for $\varphi \in E_0$}, \quad \left<\Gamma_1(u,v),\phi\right>_1 = G_1(u,v)[\phi] \quad \text{for $\phi \in E_1$}.$$
-Combined with the inverses $L_0^{-1}$ and $L_1^{-1}$, the map
+Combined with the inverses $L_0^{-1}$ and $L_1^{-1}$ on $E_0$ and $E_1$ respectively (See Lemma \ref{inv0} and \ref{inv1}), the map
 $$(u,v) \mapsto (\bar{u},\bar{v})=\left(L_0^{-1}\Big(\Gamma_0(u,v)\Big), ~L_1^{-1}\Big(\Gamma_1(u,v)\Big)\right)$$
 defines an operator $F: E \rightarrow E$. If $(u,v)$ is any fixed point of $F$ then it holds that
 \begin{align*}
@@ -248,33 +226,34 @@ defines an operator $F: E \rightarrow E$. If $(u,v)$ is any fixed point of $F$ t
  \right.
 \end{align*}
 
-
-
-We first establish the uniform bound of the sum $\displaystyle \sum_{i=1}^k U_i$ independently of the number of bumps $k$, provided that $\frac{R}{k}$ is sufficiently large. 
-\begin{lemma}\label{ksum}[{\blue wei-yan}] Let $\eta \in (0,1]$ and suppose $\frac{R}{k}$ is such that $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$. Then for $y \in{\Omega}_1$
-$$\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|} \quad\text{and} \quad \displaystyle \sum_{i=1}^k U_i(y) \le 4Me^{-(1-\eta)|y-x_1|}.$$
-%  \begin{enumerate}
-%   \item $\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|}$ and 
-%   \item $\displaystyle \sum_{i=1}^k U_i(y) \le 4Me^{-(1-\eta)|y-x_1|}$
-%  \end{enumerate}
- \end{lemma}
+We first establish the invertibilities of $L_0$ and $L_1$.
+\begin{lemma} \label{inv0} There is a constant $\rho_0>0$ such that
+$$ \|L_0 \varphi\|_0 \ge \rho_0 \|\varphi\|_0 \quad \text{for all $\varphi \in E_0$}.$$
+\end{lemma}
 \begin{proof}
+\blue
+ $-\Delta w + \lambda w - 3\alpha_1U_0(y)^2 w = 0$ and $w \in E_0$ implies $w\equiv0$. 
+\end{proof}
+\begin{lemma} \label{inv1} There is a constant $\rho_1>0$ such that
+$$ \|L_1 \varphi\|_1 \ge \rho_1 \|\phi\|_1 \quad \text{for all $\phi \in E_1$}.$$
+\end{lemma}
+\begin{proof}
+\blue
+ $-\Delta w + \mu(y) w - 3\alpha_2\left(\sum U_i\right)^2 w = 0$ and $w \in E_1$ implies $w\equiv0$. 
+\end{proof}
 
-For $y\in \Omega_1$, it holds that $|y-x_i|\ge |y-x_1|$ and that $|y-x_1| \ge |x_i-x_1|-|y-x_i|$, resulting in $|y-x_i|\ge \frac{1}{2}|x_i-x_1|$. Therefore we have that
-$$\sum_{i\ge 2} U_i(y) \le \sum_{i\ge 2} Me^{-(1-\eta)|y-x_i|} e^{-\eta|y-x_i|}
-\le Me^{-(1-\eta)|y-x_1|}\sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} .$$
-We let $\theta_i = \frac{2\pi(i-1)}{k}$. Then $ \frac{|x_i-x_1|}{2} = R\left|\sin\left(\frac{\theta_i}{2}\right)\right|$ and using that $ \sin\left(\frac{\theta_i}{2}\right) \ge \frac{\theta_i}{\pi}$ for $0\le\theta_i \le \pi$
 
-\begin{align*}
- \sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} &\le 2\sum_{0<\theta_i \le \pi} e^{-\frac{\eta R}{\pi}\theta_i} \le 4 e^{-\frac{2\eta R}{k}} \quad \text{if the common ratio $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$}.
-\end{align*}
-Assertions then straightforwardly follow.
- \end{proof}
 
-\begin{corollary}
- $\exists \gamma_0 = \gamma_0(M)$ with $\displaystyle \max\left\{U_0^2 , \left(\sum U_i\right)^2\right\} \le \gamma_0(M).$
 
-\end{corollary}
+
+
+
+
+
+
+
+
+
 
 % Next lemma estimates the strengh of interaction between base solutions $U_0$ and $U_i$ $i=1,\cdots,k$.
 % \begin{lemma} \label{inter}There exists a constant $C>0$ such that $\forall y\in \mathbb{R}^N$
@@ -300,29 +279,53 @@ Assertions then straightforwardly follow.
 
 
 
+Now we establish the uniform bound of the sum $\displaystyle \sum_{i=1}^k U_i$ independently of the number of bumps $k$, provided that $\frac{R}{k}$ is sufficiently large. We provide the proof of a tweaked version of Lemma A.1 in \cite{wei_yan_2014}.
+\begin{lemma}\label{ksum}[Lemma A.1 in \cite{wei_yan_2014}] Let $\eta \in (0,1]$ and suppose $\frac{R}{k}$ is such that $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$. Then for $y \in{\Omega}_1$
+$$\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|} \quad\text{and} \quad \displaystyle \sum_{i=1}^k U_i(y) \le 4Me^{-(1-\eta)|y-x_1|}.$$
+%  \begin{enumerate}
+%   \item $\displaystyle \sum_{i=2}^k U_i(y) \le 4Me^{-\frac{2\eta R}{k}} e^{-(1-\eta)|y-x_1|}$ and 
+%   \item $\displaystyle \sum_{i=1}^k U_i(y) \le 4Me^{-(1-\eta)|y-x_1|}$
+%  \end{enumerate}
+ \end{lemma}
+\begin{proof}
 
+For $y\in \Omega_1$, it holds that $|y-x_i|\ge |y-x_1|$ and that $|y-x_1| \ge |x_i-x_1|-|y-x_i|$, resulting in $|y-x_i|\ge \frac{1}{2}|x_i-x_1|$. Therefore we have that
+$$\sum_{i\ge 2} U_i(y) \le \sum_{i\ge 2} Me^{-(1-\eta)|y-x_i|} e^{-\eta|y-x_i|}
+\le Me^{-(1-\eta)|y-x_1|}\sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} .$$
+We let $\theta_i = \frac{2\pi(i-1)}{k}$. Then $ \frac{|x_i-x_1|}{2} = R\left|\sin\left(\frac{\theta_i}{2}\right)\right|$ and using that $ \sin\left(\frac{\theta_i}{2}\right) \ge \frac{\theta_i}{\pi}$ for $0\le\theta_i \le \pi$
 
-\begin{proposition} \label{Fixed} $\exists k_0>0$ such that for $k\ge k_0$ and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, the map $F$ has a fixed point $(u_*,v_*) \in E$ and $\|(u_*,v_*)\| \le k^{-m + \frac{1}{2}}.$
+\begin{align*}
+ \sum_{i\ge 2} e^{-\frac{\eta}{2}|x_i-x_1|} &\le 2\sum_{0<\theta_i \le \pi} e^{-\frac{\eta R}{\pi}\theta_i} \le 4 e^{-\frac{2\eta R}{k}} \quad \text{if the common ratio $e^{-\frac{2\eta R}{k}} \le \frac{1}{2}$}.
+\end{align*}
+Assertions then straightforwardly follow.
+ \end{proof}
+
+\begin{corollary} 
+ $\exists \gamma_0 = \gamma_0(M)$ with $\displaystyle \max\left\{U_0^2 , \left(\sum U_i\right)^2\right\} \le \gamma_0.$
+\end{corollary}
+We fix a number $f_0$ such that $0< f_0 < \frac{1}{\gamma_0}$.
+\begin{proposition} \label{Fixed} $\exists k_0>0$ such that for $k\ge k_0$ and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, the map $F$ has a fixed point $(u_*,v_*) \in E$. For some $\epsilon>0$ $\|(u_*,v_*)\| \le k^{\red -m -\epsilon+ \frac{1}{2}}.$
  \end{proposition}
 \begin{proof}
-1. Let $B \subset E$ be the ball with $\|(u,v)\| \le k^{-m + \frac{1}{2}}$. We first show that for $k$ sufficiently large and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, $F(B) \subset B$. 
+1. Let $B \subset E$ be the ball with $\|(u,v)\| \le k^{-m + \frac{1}{2}}$. We first show that for $k$ sufficiently large and $R \in \Big[\frac{3m}{4}k\log k, \frac{5m}{4}k\log k\Big]$, $F(B) \subset B$.
 
 Let $(\bar u, \bar v) := F(u,v)$. Then,
  \begin{align*}
   \|\bar u\|_0 &= \left\|L_0^{-1}\Big(\Gamma_0(u,v)\Big)\right\|_0 \le \frac{1}{\rho_0}\left\|\Gamma_0(u,v)\right\|_0 = \frac{1}{\rho_0} \sup_{\|\varphi\|_0=1} \left| \int_{ \mathbb{R}^N} g_0(u,v) \varphi \right|\\
-  &\le \sup_{\|\varphi\|_0=1} \Bigg[ \int \varphi \left( |u|^2 + |u^3| + |uv| + |uv^2|\right) + \left|\beta v U_0\left(\sum U_i\right)\varphi\right|\\
-  & + \int  \left|\beta U_0\left(\sum U_i\right)^2\varphi\right| +  \left|\beta u\left(\sum U_i\right)^2\varphi\right|\Bigg].
+  &\le \tcr{\frac{1}{\rho_0}} \sup_{\|\varphi\|_0=1} \Bigg[  \tcr{\int_{ \mathbb{R}^N} c_0}\varphi \left( |u|^2 + |u^3| + |uv| + |uv^2|\right) + \left| \tcr{2}\beta v U_0\left(\sum U_i\right)\varphi\right|\\
+  & + \tcr{\int_{ \mathbb{R}^N} }  \left|\beta U_0\left(\sum U_i\right)^2\varphi\right| +  \left|\beta u\left(\sum U_i\right)^2\varphi\right|\Bigg],
  \end{align*}
+\tcr{where a constant $c_0$ depends only on $\alpha_1, \beta, \lambda$. }
 For $y\in \Omega_1$ we have that
  \begin{align*}
   U_0\left(\sum U_i\right) &\le Ce^{-\sqrt{\lambda}|y|}e^{-(1-\eta)|y-x_1|} \le C(M) e^{-\gamma R} \quad \text{for some small $\gamma>0$}
  \intertext{
 and by the symmetry we have $\left\|U_0\left(\sum U_i\right)\right\|_\infty \le C(M) e^{-\gamma R}$. Also }
 % \begin{align*}
- \int U_0\left(\sum U_i\right)^2\varphi &\le C\sqrt{k}\left\|U_0\left(\sum U_i\right)\right\|_{L^2(\Omega_1)}\|\varphi\|_{L^2}  \\
+ \tcr{\int_{ \mathbb{R}^N} } U_0\left(\sum U_i\right)^2\varphi &\le C\sqrt{k}\left\|U_0\left(\sum U_i\right)\right\|_{L^2(\Omega_1)}\|\varphi\|_{L^2(\tcr{ \mathbb{R}^N})}  \\
  &\le C\sqrt{k} \left\|e^{-\sqrt{\lambda}|y| - (1-\eta)|y-x_1|}\right|_{L^2(\Omega_1)}\\
- &\le C \sqrt{k} e^{-\gamma R}\|\varphi\|_{L^2} \quad \text{for some small $\gamma>0$. Finally}\\
-\int u\left(\sum U_i\right)^2\varphi &\le \gamma_0(M) \|u\|_{L^2}\|\varphi\|_{L^2}.
+ &\le C \sqrt{k} e^{-\gamma R}\|\varphi\|_{L^2(\tcr{ \mathbb{R}^N})} \quad \text{for some small $\gamma>0$. Finally}\\
+\int u\left(\sum U_i\right)^2\varphi &\le \gamma_0(M) \|u\|_{L^2(\tcr{ \mathbb{R}^N})}\|\varphi\|_{L^2}.
  \end{align*}
 Therefore, we have that
 \begin{equation} \label{p1}
@@ -331,22 +334,23 @@ Therefore, we have that
 Now,
  \begin{align*}
   \|\bar v\|_0 &= \left\|L_1^{-1}\Big(\Gamma_1(u,v)\Big)\right\|_1 \le \frac{1}{\rho_1}\left\|\Gamma_1(u,v)\right\|_1 = \frac{1}{\rho_1} \sup_{\|\phi\|_1=1} \left| \int_{ \mathbb{R}^N} g_1(u,v) \phi \right|\\
-  &\le \sup_{\|\phi\|_1=1} \Bigg[\int \phi\left( |u^2| + |v^2|+ |v^3| + |uv| +|u^2v|\right)  \\
-  &+ \int \left|\beta u U_0\left(\sum U_i\right)\phi\right| + \left|\beta U_0^2\left(\sum U_i\right)\phi\right| + \left|(\mu(y)-1)\left(\sum U_i\right)\phi\right|\\
-  &  + \int \left|\left(\sum U_i\right)^3 - \sum U_i^3 \right| |\phi| + \left|\beta v U_0^2  \phi\right| \Bigg].
+  &\le \tcr{\frac{1}{\rho_1}}\sup_{\|\phi\|_1=1} \Bigg[ \tcr{\int_{ \mathbb{R}^N} c_1} \phi\left( |u^2| + |v^2|+ |v^3| + |uv| +|u^2v|\right)  \\
+  &+ \int \left|\tcr{2} \beta u U_0\left(\sum U_i\right)\phi\right| + \left|\beta U_0^2\left(\sum U_i\right)\phi\right| + \left|(\mu(y)-1)\left(\sum U_i\right)\phi\right|\\
+  &  + \int \left|\left(\sum U_i\right)^3 - \sum U_i^3 \right| |\phi| + \left|\beta v U_0^2  \phi\right| \Bigg],
  \end{align*}
-It is possbile by \eqref{A1} to choose large $k_0$ and thus for $R \in S_k$ it holds that
+\tcr{where a constant $c_1$ depends only on $\alpha_2, \beta, \mu_0$. }
+It is possbile by \eqref{A} to choose large $k_0$ and thus for $R \in S_k$ it holds that
 $$ |\mu - 1| \le \frac{2a}{|y|^m} \quad \text{for $|y|\ge \frac{R}{2}$}.$$
 \begin{align*}
  &\int \left|(\mu(y)-1)\left(\sum U_i\right)\phi\right| \le \|\phi\|_{L^2} \sqrt{k}\left\| (\mu -1)\left(\sum U_i\right)\right\|_{L^2(\Omega_1)}\\
  &\le \|\phi\|_{L^2} \sqrt{k}\left(\left\| (\mu -1)\left(\sum U_i\right)\right\|_{L^2(\Omega_1 \cap B_{\frac{R}{2}(x_i)})} +  \left\| (\mu -1)\left(\sum U_i\right)\right\|_{L^2(\Omega_1 \setminus  B_{\frac{R}{2}(x_i)})}\right)\\
  &\le C\|\phi\|_{L^2} \sqrt{k} \left\| (\mu -1)\right\|_{L^\infty( B_{\frac{R}{2}(x_i)} )} \left\|e^{-(1-\eta)|y-x_1|}\right\|_{L^2(\Omega_1)} + C\|\phi\|_{L^2} \sqrt{k} e^{-\gamma R}\\
- &\le C\|\phi\|_{L^2} \left( \frac{\sqrt{k}}{R^m} + \sqrt{k}e^{-\gamma R}\right). 
+ &\le C\|\phi\|_{L^2} \left( \frac{\sqrt{k}}{R^m} + \sqrt{k}e^{-\gamma R}\right).
 \end{align*}
 Also,
 \begin{align*}
  \left(\sum U_i\right)^3 - \sum U_i^3 &= \left[ U_1 \sum_{i\in \hat{1}} U_i + U_2 \sum_{i\in \hat{2}} U_i + \cdots + U_k \sum_{i\in \hat{k}} U_i \right] \left(\sum U_i\right) \\
- & \le (U_1 + C) \left(\sum_{i\ge 2} U_i\right)\left(\sum U_i\right) \le C \left(\sum_{i\ge 2} U_i\right) 
+ & \le (U_1 + C) \left(\sum_{i\ge 2} U_i\right)\left(\sum U_i\right) \le C \left(\sum_{i\ge 2} U_i\right)
  \intertext{where $\hat{\ell} = \{1,2,\cdots,\ell-1,\ell+1,\cdots,k\}$. Hence}
   \int \left(\left(\sum U_i\right)^3 - \sum U_i^3 \right)\phi &\le \|\phi\|_{L^2} \sqrt{k}\left\|\left(\sum U_i\right)^3 - \sum U_i^3 \right\|_{L^2(\Omega_1)} \\
  &\le C\sqrt{k}e^{-\frac{2\eta R}{k}} \left\|e^{-(1-\eta)|y - x_1|}\right\|_{L^2(\Omega_1)} \le C\sqrt{k}e^{-\frac{2\eta R}{k}}.
@@ -357,16 +361,16 @@ Therefore, we have that
 \end{equation}
 Combining \eqref{p1} and \eqref{p2} with a suitable choice of $\eta \in (0,1)$, we have
 that $$\|(u,v)\| \le k^{-m + \frac{1}{2}}.$$
- 
+
 
 2. Assertions then follows if we show that $F$ is a contraction in the ball $B$. For $(u_1,v_1)\in B$ and $(u_2,v_2) \in B$, let $(\bar{u}_1, \bar{v}_1) = F(u_1,v_1)$ and $(\bar{u}_2, \bar{v}_2) = F(u_2,v_2)$. Since
-\begin{align*} 
+\begin{align*}
 &g_0(u_1,v_1) - g_0(u_2,v_2)\\
-&=(u_2 - u_1)\left\{ 3\alpha_1U_0(u_1+u_2) + \alpha_1\big(u_1^2+u_1u_2 + u_2^2\big) + \beta \left(\sum U_i\right)^2 + 2\beta \left(\sum U_i\right) v_1 + \beta v_1^2\right\}\\
-&+ (v_2-v_1)\beta\left\{ 2U_0 \left(\sum U_i\right) + U_0(v_1+v_2) + 2\left( \sum U_i\right)u_2 + u_2(v_1+v_2)\right\} \\ 
+&=\tcr{(u_1 - u_2)}\left\{ 3\alpha_1U_0(u_1+u_2) + \alpha_1\big(u_1^2+u_1u_2 + u_2^2\big) + \beta \left(\sum U_i\right)^2 + 2\beta \left(\sum U_i\right) v_1 + \beta v_1^2\right\}\\
+&+ \tcr{(v_1-v_2)}\beta\left\{ 2U_0 \left(\sum U_i\right) + U_0(v_1+v_2) + 2\left( \sum U_i\right)u_2 + u_2(v_1+v_2)\right\} \\
 &g_1(u_1,v_1) - g_2(u_2,v_2)\\
-&=(u_2 - u_1)\beta\left\{ 2U_0\left(\sum U_i\right) + 2U_0v_1 + \left(\sum U_i\right)(u_1+u_2) +v_1(u_1+u_2)\right\}\\
-&+ (v_2-v_1)\left\{ 3\alpha_2\left(\sum U_i\right)(v_1+v_2) + \alpha_2\big(v_1^2 + v_1v_2 + v_2^2\big) + \beta U_0^2 + 2\beta U_0u_2 + \beta u_2^2\right\}
+&=\tcr{(u_1 - u_2)}\beta\left\{ 2U_0\left(\sum U_i\right) + 2U_0v_1 + \left(\sum U_i\right)(u_1+u_2) +v_1(u_1+u_2)\right\}\\
+&+ \tcr{(v_1-v_2)}\left\{ 3\alpha_2\left(\sum U_i\right)(v_1+v_2) + \alpha_2\big(v_1^2 + v_1v_2 + v_2^2\big) + \beta U_0^2 + 2\beta U_0u_2 + \beta u_2^2\right\},
 \end{align*}
 calculations in the first part of the proof show that
 \begin{align*}
@@ -374,11 +378,87 @@ calculations in the first part of the proof show that
 \end{align*}
 Therefore $\exists k_0$ so large that for $k \ge k_0$, $\left( |\beta|\gamma_0(M) + Ck^{-m+ \frac{1}{2}}\right) < 1$.
 
-
+\end{proof}
+\begin{proof}[{\red proof of Theorem \ref{mainthm}}]
+proof
 
 \end{proof}
+{\red
+To do list:
+\begin{enumerate}
+ \item reference {Wang and Zhao \cite{wang_zhao_2017}}, kwong
+ \item Lemma 3.1
+ \item Lemma 3.2
+ \item reduction and interval $S_k$
+ \item proof of main theorem
+ \item title
+ \item abstract
+ \item revision of section 3
+
+\end{enumerate}
+}
 
 
+\section*{Acknowledgments}
+
+\bibliographystyle{amsplain}
+\begin{thebibliography}{10}
+\bibitem{ao_wang_yao_2016}
+Weiwei Ao, Liping Wang, and Wei Yao, \emph{Infinitely many solutions for
+  nonlinear {S}chr\"{o}dinger system with non-symmetric potentials}, Commun.
+  Pure Appl. Anal. \textbf{15} (2016), no.~3, 965--989. 
+
+\bibitem{ao_wei_2014}
+Weiwei Ao and Juncheng Wei, \emph{Infinitely many positive solutions for
+  nonlinear equations with non-symmetric potentials}, Calc. Var. Partial
+  Differential Equations \textbf{51} (2014), no.~3-4, 761--798. 
+
+\bibitem{cerami_passaseo_solimini_2015}
+Giovanna Cerami, Donato Passaseo, and Sergio Solimini, \emph{Nonlinear scalar
+  field equations: existence of a positive solution with infinitely many
+  bumps}, Ann. Inst. H. Poincar\'{e} Anal. Non Lin\'{e}aire \textbf{32} (2015),
+  no.~1, 23--40. 
+
+\bibitem{lin_peng_2014}
+Chang-Shou Lin and Shuangjie Peng, \emph{Segregated vector solutions for
+  linearly coupled nonlinear {S}chr\"{o}dinger systems}, Indiana Univ. Math. J.
+  \textbf{63} (2014), no.~4, 939--967. 
+
+\bibitem{long_tang_yang_2020}
+Wei Long, Zhongwei Tang, and Sudan Yang, \emph{Many synchronized vector
+  solutions for a {B}ose-{E}instein system}, Proc. Roy. Soc. Edinburgh Sect. A
+  \textbf{150} (2020), no.~6, 3293--3320. 
+
+\bibitem{peng_wang_wang_2019}
+Shuangjie Peng, Qingfang Wang, and Zhi-Qiang Wang, \emph{On coupled nonlinear
+  {S}chr\"{o}dinger systems with mixed couplings}, Trans. Amer. Math. Soc.
+  \textbf{371} (2019), no.~11, 7559--7583. 
+
+\bibitem{peng_wang_2013}
+Shuangjie Peng and Zhi-qiang Wang, \emph{Segregated and synchronized vector
+  solutions for nonlinear {S}chr\"{o}dinger systems}, Arch. Ration. Mech. Anal.
+  \textbf{208} (2013), no.~1, 305--339. 
+
+\bibitem{wang_zhao_2017}
+Liping Wang and Chunyi Zhao, \emph{Infinitely many solutions for nonlinear
+  {S}chr\"{o}dinger equations with slow decaying of potential}, Discrete
+  Contin. Dyn. Syst. \textbf{37} (2017), no.~3, 1707--1731. 
+
+\bibitem{wei_yan_2014}
+Juncheng Wei and Shusen Yan, \emph{Infinitely many positive solutions for the
+  nonlinear {S}chr\"{o}dinger equations in {$\mathbb R^N$}}, Calc. Var. Partial
+  Differential Equations \textbf{37} (2010), no.~3-4, 423--439. 
+
+\bibitem{zheng_2017}
+Lvzhou Zheng, \emph{Segregated vector solutions for the nonlinear
+  {S}chr\"{o}dinger systems in {$\mathbb{R}^3$}}, Mediterr. J. Math. \textbf{14}
+  (2017), no.~3, Paper No. 107, 21. 
+
+\end{thebibliography}
+
+
+
+%\bibliography{crsstrm}
 \end{document}
 
 
