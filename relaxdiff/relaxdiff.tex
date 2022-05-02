@@ -41,6 +41,14 @@
 \def\tr{\,\textrm{tr}\,}
 \def\div{\,\textrm{div}\,}
 \def\sgn{\,\textrm{sgn}\,}
+\def\ulg{\ul{\gamma}}
+\def\olg{\ol{\gamma}}
+\def\uls{\ul{\sigma}}
+\def\ols{\ol{\sigma}}
+
+
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\ol}[1]{\overline{#1}}
 
 \newcommand{\tcr}{\textcolor{red}}
 \newcommand{\tcb}{\textcolor{blue}}
@@ -77,15 +85,14 @@
 \tableofcontents
 \pagebreak 
  
-We study system of equations
+We study a non-negative solutions of a system of equations
 \begin{equation}\label{ug_system}
 \begin{aligned}
  \partial_t u &= \Delta \Big(\frac{u^n}{\gamma}\Big),\\
  \partial_t \gamma &= u^m - \gamma
 \end{aligned}
 \end{equation}
-in a bounded $C^{2,\alpha}$ domain $\Omega\subset \mathbb{R}^d$
-with initial conditions
+with parameters $m,n>0$ in a bounded domain $\Omega\subset \mathbb{R}^d$. The problem is composed of the initial conditions
 \begin{equation}
  \gamma(0,x)=\gamma_0(x), \quad u(0,x)=u_0(x), \quad x\in \Omega,
 \end{equation}
@@ -93,31 +100,297 @@ and boundary conditions
 \begin{equation}
  \nabla\Big(\frac{u^n}{\gamma}\Big)\cdot \mathbf{n} = 0, \quad \partial\Omega. \label{bdrycond}
 \end{equation}
-\eqref{bdrycond} implies
-\begin{equation}
- \frac{d}{dt} \int_\Omega u \: dx = 0. \quad \text{We normalize so that}  \int_\Omega u \: dx=1.
-\end{equation}
-We define $\sigma\triangleq\frac{|u|^{n-1}u}{\gamma}$. 
-We can formulate the problem with variables $\sigma$ and $\gamma$ by the relation 
-$\displaystyle u = \sigma^{\frac{1}{n}}\gamma^{\frac{1}{n}}$:
+%\eqref{bdrycond} implies
+%\begin{equation}
+% \frac{d}{dt} \int_\Omega u \: dx = 0. \quad \text{We normalize so that}  \int_\Omega u \: dx=1.
+%\end{equation}
+Throughout the paper, we assume that the domain has smooth boundary and the initial data $\gamma_0$ and $u_0$ are in $C^\infty(\bar\Omega)$. 
+
+The purpose of this article is to show the existence of a classical solution in particular taking values away from $0$. In that case, $(\gamma,\sigma)$ where $\sigma\triangleq\frac{u^n}{\gamma}$ solves the system of equations
 \begin{align}
 %  \partial_t \big(\sigma^{\frac{1}{n}}\big) &= \gamma^{-\frac{1}{n}} \Delta \sigma - \frac{1}{n} \sigma^{\frac{1}{n}} \gamma^{-1+\frac{m}{n}}\Big(\sigma^{\frac{m}{n}}-\gamma^{1-\frac{m}{n}}\Big), \label{eq:s}\\
  \partial_t \sigma &= n\gamma^{-\frac{1}{n}}\sigma^{\frac{n-1}{n}} \Delta \sigma - \gamma^{-1}\sigma\Big(\gamma^{\frac{m}{n}}\sigma^{\frac{m}{n}}-\gamma\Big) \label{eq:s},\\
- \partial_t \gamma &= \gamma^{\frac{m}{n}}\sigma^{\frac{m}{n}} - \gamma. \label{eq:g}
+ \partial_t \gamma &= \gamma^{\frac{m}{n}}\sigma^{\frac{m}{n}} - \gamma, \label{eq:g}
 \end{align}
-Initial conditions:
+with
 \begin{align}
- \gamma(0,x)&=\gamma_0(x), \quad \sigma(0,x)=\sigma_0(x), \quad x\in \Omega. \label{initcond}
+ \nabla\sigma \cdot \mathbf{n} &= 0 \quad \text{on} \quad S_T, \quad \gamma(0,x) = \gamma_0(x), \quad \sigma(0,x)=\sigma_0(x)=:\frac{u_0(x)^n}{\gamma_0(x)}. \label{IBC}
 \end{align}
+
+
+We proceed the study with this $\big(\gamma,\sigma\big)$ formulation for the classical solution taking values away from $0$. We shall thus suppose the initial data $\big(\gamma_0,\sigma_0\big)$ are away from $0$. It is not difficult to see the last implies that we can set four strictly positive constants $\gamma_-$, $\gamma_+$, $\sigma_-$, $\sigma_+$ such that $0<\gamma_-< \gamma_+$, $\sigma_\pm = \gamma_\pm^{\frac{n-m}{m}}$, and $\big(\gamma_0,\sigma_0\big)$ takes values in the closed rectangle $B_0:=[\gamma_-, \gamma_+] \times [\sigma_-, \sigma_+]$. Hence we write
+\begin{equation} \label{B0cond}
+ \text{$\big(\gamma_0,\sigma_0\big)$ takes values in $B_0:=[\gamma_-, \gamma_+] \times [\sigma_-, \sigma_+]$, where $0<\gamma_-< \gamma_+$, $\sigma_\pm = \gamma_\pm^{\frac{n-m}{m}}$.}
+\end{equation}
+%Initial conditions:
+%\begin{align}
+% \gamma(0,x)&=\gamma_0(x), \quad \sigma(0,x)=\sigma_0(x), \quad x\in \Omega. \label{initcond}
+%\end{align}
+
+\section{a priori estimates}
+
+\begin{theorem} \label{a priori} Assume that $\big(\gamma,\sigma\big)$ is a $\left[C^{1+\alpha/2, 2+\alpha}(\bar{Q}_T)\right]^2$ solution of \eqref{eq:s},\eqref{eq:g} with initial data satisfying \eqref{B0cond}. Then 
+\begin{enumerate}
+ \item $(\gamma,\sigma)$ only takes values in $B_0$ for all $(t,x) \in \bar{Q}_T$,
+ \item there exists $0< \alpha < 1$  where $\alpha = \alpha(\cdots)$, and $C>0$ where $C= C(d,\Omega,m,n,B_0)$ such that
+\begin{equation}
+ \left\| (\gamma,\sigma)\right\|_{1+\alpha/2, 2+\alpha, \bar{Q}_T} \le C(d,\Omega,m,n,B_0)\Big(1 + \|\gamma_0\|_{2+\alpha,\bar\Omega} +  \|\sigma_0\|_{2+\alpha,\bar\Omega}\Big).
+\end{equation}
+\end{enumerate}
+ 
+\end{theorem}
+
+
+\begin{proposition}[DiBenedetto] There exist an exponent $\alpha$ and constant $C$ that depend on $N,\Omega,B_0,\Phi_1$
+\begin{equation}
+ \left\| (\gamma,\sigma)\right\|_{\alpha/2, \alpha, \bar{Q}_T} \le C\Big(1 + \|\gamma_0\|_{\alpha,\bar\Omega} +  \|\sigma_0\|_{\alpha,\bar\Omega}\Big).
+\end{equation} 
+\end{proposition}
+
+
+
+\section{Global Existence}
+
+Let $$X:=\left\{ \big(\gamma,\sigma\big) \in \left[C^{@,@}(\bar{Q}_T)\right]^2 ~\Big|~ \gamma(0,x)=\gamma_0(x), \quad \sigma(0,x) = \sigma_0(x)\right\}.$$
+For a $\big(\bar\gamma,\bar\sigma\big) \in X$, we define the initial value problem 
+\begin{equation} \label{IVP1}\tag{$P$}
+ \begin{aligned}
+  &\begin{aligned}
+   \partial_t \sigma &= \tilde{a}(\bar\gamma,\bar\sigma)\Delta \sigma + f(\gamma,\sigma)\\
+   \partial_t \gamma &= g(\gamma,\sigma)
+  \end{aligned}  \quad \quad \text{in $Q_T$,}\\
+  &\nabla\sigma \cdot \mathbf{n} = 0 \quad \text{on} \quad S_T, \quad \gamma(0,x) = \gamma_0(x), \quad \sigma(0,x)=\sigma_0(x)=:\frac{u_0(x)^n}{\gamma_0(x)}
+  \end{aligned}
+\end{equation}
+and the family of initial value problems 
+\begin{equation} \label{IVPtau}\tag{$P_\tau$}
+ \begin{aligned}
+  &\begin{aligned}
+   \partial_t \sigma^\tau &= \left[\tau\tilde{a}(\bar\gamma,\bar\sigma) + (1-\tau)\lambda\right]\Delta \sigma + \tau f(\gamma^\tau,\sigma^\tau)\\
+   \partial_t \gamma^\tau &= g(\gamma^\tau,\sigma^\tau)
+  \end{aligned}  \quad \quad \text{in $Q_T$,}\\
+  &\nabla\sigma^\tau \cdot \mathbf{n} = 0 \quad \text{on} \quad S_T, \quad \gamma^\tau(0,x) = \tau\gamma_0(x), \quad \sigma^\tau(0,x)=\tau\sigma_0(x)=:\tau\frac{u_0(x)^n}{\gamma_0(x)}
+  \end{aligned}
+\end{equation}
+for $\tau \in [0,1]$. One checks $\eqref{IVP1}=(P_1)$.
+
+\begin{proposition} The initial value problems \eqref{IVPtau} has a unique solution $\big(\gamma^\tau,\sigma^\tau\big)$ in $\bar{Q}_T$ satisfying the same a priori estimates of Theorem \ref{a priori}.
+\end{proposition}
+As a consequence, the operator $S : \big(\bar\gamma,\bar\sigma,\tau\big) \mapsto (\gamma^\tau,\sigma^\tau\big)$ is well-defined from $X \times [0,1]$ to $X$.
+\begin{proposition} The operator $S$ is compact and continuous.
+\end{proposition}
+
+
+
+
 In particular, \eqref{eq:g} gives rise to the integral representation of $\gamma(t,x)$,
 \begin{equation}
- \gamma(t,x)^{\frac{n-m}{n}} = e^{-\frac{n-m}{n}t}\gamma_0(x)^{\frac{n-m}{n}} + e^{-\frac{n-m}{n}t}\int_0^t \frac{n-m}{n} e^{\frac{n-m}{n}s} \sigma(s,x)^{\frac{m}{n}} \: ds. \label{eq:rep}
+ \gamma(t,x)^{\frac{n-m}{n}} = e^{-\frac{n-m}{n}t}\gamma_0(x)^{\frac{n-m}{n}} + e^{-\frac{n-m}{n}t}\int_0^t \frac{n-m}{n} e^{\frac{n-m}{n}s} \sigma(s,x)^{\frac{m}{n}} \: ds. \label{rep}
 \end{equation}
 In this paper, we study the stable regime, namely
 \begin{equation}
  n-m>0. \label{stable}
 \end{equation}
-\section{Global Existence}
+
+\newpage
+
+ \begin{equation} \label{system}
+\begin{aligned}
+ \partial_t \sigma &= a(\gamma,\sigma) \Delta \sigma + f(\gamma,\sigma) ,\\
+ \partial_t \gamma &= g(\gamma,\sigma). 
+\end{aligned}
+\end{equation}
+
+
+
+\begin{equation} \label{assumption}
+ \text{$\big(\gamma_0,\sigma_0\big)$ is smooth and takes values in $B_0$}
+\end{equation}
+
+
+
+Let $\gamma_-$, $\gamma_+$, $\sigma_-$, $\sigma_+$ be given four positive constants such that $0<\gamma_-< \gamma_+$, $\sigma_-=\gamma_-^{\frac{n-m}{m}}$, and $\sigma_+ = \gamma_+^{\frac{n-m}{m}}$, and let $B_0$ be the closed rectangle $[\gamma_-, \gamma_+] \times [\sigma_-, \sigma_+]$.
+
+Let $\displaystyle\delta_0:= \min_{(\gamma,\sigma)\in B_0}|(\gamma,\sigma)|$ that is the gap of $B_0$ away from $x$-axis and $y$-axis.
+
+We let $B_1:=[\gamma_- - \frac{\delta_0}{2}, \gamma_- + \frac{\delta_0}{2}] \times  [\sigma_- - \frac{\delta_0}{2}, \sigma_- + \frac{\delta_0}{2}]$, checking that $\displaystyle\min_{(\gamma,\sigma)\in B_1}|(\gamma,\sigma)| = \frac{\delta_0}{2}$
+
+$\displaystyle\lambda:= \min_{B_0} a(\gamma,\sigma)$, $\displaystyle \Lambda:=\max_{B_0} a(\gamma,\sigma)$. Let $M_0$ and $M_1$ be constants such that 
+$$\displaystyle \max_{B_0} \Big|\big(a(\gamma,\sigma),f(\gamma,\sigma), g(\gamma,\sigma)\big)\Big| \le M_0, \quad \max_{B_0} \Big|\big(|Da(\gamma,\sigma)|,|Df(\gamma,\sigma)|, |Dg(\gamma,\sigma)|\big)\Big| \le M_1$$
+
+% \begin{enumerate}
+%  \item $\gamma_0$ and $\sigma_0$ are in $C^\infty(\Omega)$.
+%  \item $(\gamma_0,\sigma_0)$ is $B_0$-valued.
+% \end{enumerate}
+% 
+% \begin{proposition}
+%  Suppose $(\gamma,\sigma)$ is $C^\infty(\Omega)(\bar{Q}_T)$ solution of \eqref{system} that is $B_0$-valued. Then there exist a constant $C = C(n,\Omega,B_0)$ and an exponent $\alpha = \alpha(n,\Omega,B_0)$ that satisfy
+%  
+%   \begin{equation}
+%   \|\big(\gamma,\sigma\big)\|_{C^{1+\alpha/2, 2+ \alpha}(\bar{Q}_T)} \le C \left( 1+  \|\big(\gamma_0,\sigma_0\big)\|_{C^{2+ \alpha}(\bar{\Omega})} \right)
+%  \end{equation}
+%  
+% %  \begin{equation}
+% %   \left\|\begin{pmatrix} \gamma \\ \sigma \end{pmatrix}\right\|_{C^{1+\alpha/2, 2+ \alpha}(\bar{Q}_T)} \le C \left( 1+  \left\|\begin{pmatrix} \gamma_0 \\ \sigma_0 \end{pmatrix}\right\|_{C^{2+ \alpha}(\bar{\Omega})} \right)
+% %  \end{equation}
+% 
+% \end{proposition}
+% 
+% \begin{proof}
+%  $(\gamma,\sigma)$ solves the system
+%  \begin{equation}\label{Aux1}
+% \begin{aligned}
+%  \partial_t \sigma &= {\rm div} \big( a(\gamma,\sigma)\nabla \sigma \big) - \nabla a(\gamma,\sigma)\cdot \nabla \sigma + f(\gamma,\sigma) ,\\
+%  \partial_t \gamma &= g(\gamma,\sigma). 
+% \end{aligned}
+% \end{equation}
+% {\red By Dibenedetto} it holds that 
+% 
+% \end{proof}
+
+
+
+
+
+
+
+\begin{proposition}[Schauder] Suppose that $\hat{a}\in C^{\alpha/2,\alpha}(\bar{Q}_T)$, $\hat{f}\in C^{\alpha/2,\alpha}(\bar{Q}_T)$ for some $\alpha \in (0,1)$, $0<\lambda \le \hat{a}(t,x) \le \Lambda$ in $\bar{Q}_T$, and $\|\hat{a}\|_{\alpha/2,\alpha,\bar{Q}_T} \le A_\alpha$. Suppose that $\big(\gamma_0,\sigma_0\big)$ in \eqref{IC} satisfies \eqref{assumption}. Then the initial-boundary value problem \eqref{BC},\eqref{IC}, and
+\begin{equation}\label{Aux0}
+\begin{aligned}
+ \partial_t \sigma &= \hat{a}(t,x) \Delta \sigma + \hat{f}(t,x) ,\\
+ \partial_t \gamma &= g(\gamma,\sigma)
+\end{aligned}
+\end{equation}
+has the unique solution $\big(\gamma,\sigma\big)$ in $\bar{Q}_\eta$ for some $0\le\eta\le T$ that takes values in $B_1$ and satisfies
+\begin{equation} \label{est0}
+ \|(\gamma,\sigma)\|_{1+\alpha/2, 2+\alpha,\bar{Q}_{\eta}} \le C(d,\lambda,\Lambda,\Omega,\alpha,A_\alpha,B_0) \Big(1 + \|\gamma_0\|_{2+\alpha,\bar\Omega} +  \|\sigma_0\|_{2+\alpha,\bar\Omega}\Big).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For the first equation $\eqref{Aux0}_1$, we have for any $0 \le t\le T$  the unique $\sigma \in C^{1+\alpha/2,2+\alpha}(\bar{Q}_t)$ with
+ \begin{equation} \label{aa}
+ \|\sigma\|_{1+\alpha/2, 2+\alpha, \bar{Q}_{t}} \le C(d,\lambda,\Lambda,\Omega,\alpha, A_\alpha) \big(\|\hat{f}\|_{\alpha/2,\alpha,\bar{Q}_t} + \|\sigma_0\|_{2+\alpha,\bar{\Omega}}\big), 
+ \end{equation}
+ which is the linear Schauder theory.
+ By the Maximum Principle, it holds that in $\bar{Q}_t$ 
+  $$\sigma^- -t\|\hat{f}\|_{0,\bar{Q}_t} \le \sigma(t,x) \le \sigma^+ +t\|\hat{f}\|_{0,\bar{Q}_t}.$$
+  As $\eta\|\hat{f}\|_{0,\bar{Q}_\eta}$ decreases as $\eta$ decreases, we first choose $\eta>0$ so that $\eta\|\hat{f}\|_{0,\bar{Q}_\eta} \le \frac{\delta_0}{2}$.
+ 
+ For $\sigma\ge \frac{\delta_0}{2}$, $\sigma \mapsto \sigma^{\frac{m}{n}}$ is smooth, and for $\gamma_0 \ge \delta_0$, $\gamma_0 \mapsto \gamma_0^{\frac{n-m}{n}}$ is smooth. Using this and the representation formula \eqref{rep}, we have that
+  \begin{equation} \label{bb}
+ \|\gamma\|_{1+\alpha/2, 2+\alpha, \bar{Q}_{\eta}} \le C(n,m,B_0) \big(\|\gamma_0\|_{2+\alpha,\bar{\Omega}} + \|\sigma\|_{1+\alpha/2, 2+\alpha, \bar{Q}_{\eta}}\big).   
+  \end{equation}
+ \eqref{est0} follows from combining \eqref{aa} and \eqref{bb}. From \eqref{rep} we also see that
+   $$ e^{-\frac{n-m}{n}\eta} \gamma_-^{\frac{n-m}{n}} + \left(\sigma^- -\frac{\delta_0}{2}\right)^{\frac{m}{n}}\left(1- e^{-\frac{n-m}{n}\eta}\right) \le \gamma(t,x)^{\frac{n-m}{n}} \le \gamma_+^{\frac{n-m}{m}} + \left(\sigma_+ +  \frac{\delta_0}{2}\right)^\frac{m}{n}\left(1- e^{-\frac{n-m}{m}\eta}\right).$$
+ By choosing $\eta$ smaller if necessary we can make
+ $\left|\gamma(t,x)^{\frac{n-m}{m}} - \gamma_\pm^{\frac{n-m}{m}}\right|$ as small as we want, and so we choose one so that $\gamma(t,x)^{\frac{n-m}{m}}\ge \delta_1>0$. Since the map $z \mapsto z^\frac{m}{n-m}$ is smooth for $z^{\frac{n-m}{m}}\ge \delta_1$, we choose $\eta$ smaller if necessary so that $\left|\gamma(t,x) - \gamma_\pm\right|\le \frac{\delta_0}{2}.$ Therefore there exists $\eta>0$ so that $\big(\gamma,\sigma\big)$ is $B_1$-valued in $\bar{Q}_\eta$. 
+ \end{proof}
+
+
+\begin{proposition} Suppose that $\hat{a}\in C^{\alpha/2,\alpha}(\bar{Q}_T)$ for some $\alpha \in (0,1)$, $0<\lambda \le \hat{a}(t,x) \le \Lambda$ in $\bar{Q}_T$, and $\|\hat{a}\|_{\alpha/2,\alpha,\bar{Q}_T} \le A_\alpha$. Suppose that $\big(\gamma_0,\sigma_0\big)$ in \eqref{IC} satisfies \eqref{assumption}. Then the initial-boundary value problem \eqref{BC},\eqref{IC}, and
+\begin{equation} \label{Aux1}
+\begin{aligned}
+ \partial_t \sigma &= a(t,x) \Delta \sigma + f(\gamma,\sigma) ,\\
+ \partial_t \gamma &= g(\gamma,\sigma)
+\end{aligned}
+\end{equation}
+has the unique solution $\big(\gamma,\sigma\big)$ in $\bar{Q}_\eta$ for some $0\le\eta\le T$ that takes values in $B_1$ and satisfies
+\begin{align*}
+ \|(\gamma,\sigma)\|_{1+\alpha/2, 2+\alpha,\bar{Q}_{\bar{t}}} \le C(d,\lambda,\Lambda,\Omega,\alpha,A_\alpha,B_0,m,n) \Big(1 + \|\gamma_0\|_{2+\alpha,\bar\Omega} +  \|\sigma_0\|_{2+\alpha,\bar\Omega}\Big).
+\end{align*}
+\end{proposition}
+
+\begin{proof} 
+ We let $$X := \left\{ \big(\gamma,\sigma\big) \in C^{1+\alpha/2,2+\alpha}(\bar{Q}_\eta) ~\Big|~ \big(\gamma(0,x),\sigma(0,x)\big) = \big(\gamma_0(x),\sigma_0(x)\big)  \text{ and $\big(\gamma,\sigma\big)$ is $B_1$-valued} \right\}$$
+ 
+ 
+ \end{proof}
+
+
+
+\begin{proposition} Let $\big(\bar{\gamma},\bar{\sigma}\big) \in \left[C^{\alpha/2,\alpha}(\bar{Q}_T)\right]^2$ with $\|\big(\bar\gamma,\bar\sigma\big)\|_{\alpha/2,\alpha,\bar{Q}_T} \le A_\alpha$. Then there exists a solution $(\gamma,\sigma)$ of
+\begin{equation}
+\begin{aligned}
+ \partial_t \sigma &= a(\bar\gamma,\bar\sigma) \Delta \sigma + f(\gamma,\sigma) ,\\
+ \partial_t \gamma &= g(\gamma,\sigma) 
+\end{aligned}
+\end{equation}
+with \eqref{BC}-\eqref{IC} satisfying
+\begin{align*}
+ \|(\gamma,\sigma)\|_{1+\alpha/2, 2+\alpha,\bar{Q}_T} \le C(n,\Omega,\alpha,A_\alpha,B_0) \Big(1 + \|\gamma_0\|_{2+\alpha,\bar\Omega} +  \|\sigma_0\|_{2+\alpha,\bar\Omega}\Big).
+\end{align*}
+\end{proposition}
+
+
+
+
+
+\begin{proposition}[semi-linear] Let $\big(\bar{\gamma},\bar{\sigma}\big) \in \left[C^{\alpha/2,\alpha}(\bar{Q}_T)\right]^2$ with $\|\big(\bar\gamma,\bar\sigma\big)\|_{\alpha/2,\alpha,\bar{Q}_T} \le A_\alpha$. Then there exists a solution $(\gamma,\sigma)$ of
+\begin{equation}
+\begin{aligned}
+ \partial_t \sigma &= a(\bar\gamma,\bar\sigma) \Delta \sigma + f(\gamma,\sigma) ,\\
+ \partial_t \gamma &= g(\gamma,\sigma) 
+\end{aligned}
+\end{equation}
+with \eqref{BC}-\eqref{IC} satisfying
+\begin{align*}
+ \|(\gamma,\sigma)\|_{1+\alpha/2, 2+\alpha,\bar{Q}_T} \le C(n,\Omega,\alpha,A_\alpha,B_0) \Big(1 + \|\gamma_0\|_{2+\alpha,\bar\Omega} +  \|\sigma_0\|_{2+\alpha,\bar\Omega}\Big).
+\end{align*}
+\end{proposition}
+
+\begin{proposition} There exist a constant $C = C(n,\Omega,B_0)$, an exponent $\hat\alpha = \hat\alpha(n,\Omega,B_0)$, and a classical solution $(\gamma,\sigma)$ of the system \eqref{system} with \eqref{BC}-\eqref{IC} satisfying
+\begin{align*}
+ \|(\gamma,\sigma)\|_{1+\hat\alpha/2, 2+\hat\alpha,\bar{Q}_T} \le C(n,\Omega,B_0) \Big(1 + \|\gamma_0\|_{2+\hat\alpha,\bar\Omega} +  \|\sigma_0\|_{2+\hat\alpha,\bar\Omega}\Big).
+\end{align*}
+
+
+
+
+
+ There exist a constant $C = C(n,\Omega,B_0)$ and an exponent $\alpha = \alpha(n,\Omega,B_0)$ that satisfy
+ 
+  \begin{equation}
+  \|\big(\gamma,\sigma\big)\|_{C^{1+\alpha/2, 2+ \alpha}(\bar{Q}_T)} \le C \left( 1+  \|\big(\gamma_0,\sigma_0\big)\|_{C^{2+ \alpha}(\bar{\Omega})} \right)
+ \end{equation}
+ 
+%  \begin{equation}
+%   \left\|\begin{pmatrix} \gamma \\ \sigma \end{pmatrix}\right\|_{C^{1+\alpha/2, 2+ \alpha}(\bar{Q}_T)} \le C \left( 1+  \left\|\begin{pmatrix} \gamma_0 \\ \sigma_0 \end{pmatrix}\right\|_{C^{2+ \alpha}(\bar{\Omega})} \right)
+%  \end{equation}
+
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{proposition}
+ \begin{equation}\label{Aux2}
+\begin{aligned}
+ \partial_t \sigma &= n\gamma^{-\frac{1}{n}}\sigma^{\frac{n-1}{n}} \Delta \sigma - \gamma^{-1}\sigma\Big(\gamma^{\frac{m}{n}}\sigma^{\frac{m}{n}}-\gamma\Big) ,\\
+ \partial_t \gamma &= \gamma^{\frac{m}{n}}\sigma^{\frac{m}{n}} - \gamma. 
+\end{aligned}
+\end{equation}
+\end{proposition}
+
+
+
+
+
+
+
 The notations from the study of parabolic problem is used as in the below:
 \begin{align*}
  \Omega \subset \mathbb{R}^d& \text{ is a bounded $C^{2,\alpha}$ domain with $0<\alpha <1$},\\

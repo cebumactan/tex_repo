@@ -2,7 +2,7 @@
 %\usepackage{amsmath,amsfonts,amssymb,mathrsfs}
 %\usepackage{amssymb,mathrsfs}
 
-\usepackage{amsfonts,amssymb,amsmath,mathrsfs,graphicx}
+\usepackage{amsfonts,amssymb,amsmath,mathrsfs,graphicx,color}
 \usepackage{float}
 %\usepackage{srcltx}
 \usepackage{epsfig}
@@ -11,10 +11,10 @@
 \usepackage{subcaption}
 %\usepackage{refcheck}
 
-\hoffset=-25mm \voffset=-25mm
-\usepackage[left=35mm,right=35mm,top=35mm,bottom=40mm,a4paper]{geometry}
+%\hoffset=-1.5cm \voffset=-2.2cm
+\usepackage[left=25.4mm,right=25.4mm,top=30mm,bottom=25.4mm,a4paper]{geometry}
 
-\title[Random walk with location dependent travelling time]{Spatially heterogeneous random walk in one space dimension}% with location dependent travelling time}
+\title[Random walk with location dependent travelling time]{Spatially non-uniform random walk on the real line}% with location dependent travelling time}
 
 \author[Jaywan Chung]{Jaywan Chung}
 \address[Jaywan Chung]{\newline Department of Mathematics, Dankook University \newline 119 Dandae-ro, Dongnam-gu, Cheonan-si, Chungnam 330-714, Korea}
@@ -25,30 +25,45 @@
 \address[Yong-Jung Kim]{\newline Department of Mathematical Sciences, KAIST \newline 291 Daehak-ro, Yuseong-gu, Daejeon, 305-701, Korea}
 \email{yongkim@kaist.edu}
 
+\author[Min-Gi Lee]{Min-Gi Lee}
+\address[Min-Gi Lee]{\newline Department of Mathematics, Kyungpook National University \newline 80 Daehak-ro, Buk-gu, Daegu, 41566, Korea}
+\email{leem@knu.ac.kr}
 
-\author[Mingi Lee]{Mingi Lee}
-\address[Mingi Lee]{\newline ...}
-\email{...}
 
-\def\eps{\epsilon}
-\def\R{{\bf R}}
+
 
 
 \setcounter{tocdepth}{3}
 
 %%%%%%%%%%%%%% MY DEFINITIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+
+\def\eps{\epsilon}
+\def\R{{\bf R}}
+
+\def\BO{{\mathcal{O}}}
+\def\lio{{\mathcal{o}}}
+\def\t{{\tau}}
+% \def\l{{\|\pi\|}}
+\def\l{{h}}
+\def\Lip{{\mathrm{Lip}}}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+
 \def\d{d}
-\def\v{{\bf v}}
-\def\e{{\bf e}}
-\def\x{{x}}
-\def\k{{\bf k}}
-\def\p{{\bf p}}
-\def\q{{\bf q}}
+\def\v{\vec{v}}
+\def\e{\vec{e}}
+\def\x{\vec{x}}
+\def\k{\vec{k}}
+\def\p{\vec{p}}
+\def\q{\vec{q}}
 \def\R{{\bf R}}
 \def\Z{{\bf Z}}
 \def\bfR{{\bf R}}
 \def\bfZ{{\bf Z}}
-\def\f{{\bf f}}
+\def\f{\vec{f}}
 \def\div{{\rm div}}
 \def\tp{\Sigma}
 \def\erf{\mathrm{erf}}
@@ -64,44 +79,30 @@
 
 \begin{document}
 % The correct dates will be entered by the editor
-\maketitle
 %
 \begin{abstract}
   The random walk is a mathematical counterpart of a Brownian particle system and has been used as a powerful theoretical tool to understand random dispersal phenomena. If temperature is not spatially constant, the mean free path and the traveling time for the path has variation in space. In this paper we investigate behavior of a simple random walk having spatially dependent walk length and jumping time. One of the main conclusions is that one does not sense the change of the walk length on the other side, but does sense the change of the jumping time. This also indicates that a random walk system with a non-constant time step cannot be reduced to a constant time step one even if the walk length is rescaled.
 \end{abstract}
 
-%\tableofcontents
+\maketitle
+
+\tableofcontents
 
 
 
 \section{Introduction}
 
-In this paper we study the diffusion limit of a random walk system and find the corresponding diffusion equation. Let $\Delta x$ be the walk length and $\Delta t$ be the jumping time interval of a random walk system. ${1\over\Delta t}$ is also called a turning frequency. It is well understood that, if $\Delta x$ and $\Delta t$ are constant, the probability density $u$ in one space dimension satisfies a diffusion equation,
-\begin{equation}\label{HomoDiffusion}
+The purpose of this paper is to develop a diffusion model for a non-uniform random walk system when the walk length $\Delta x$ and the jumping time interval $\Delta t$ are spatially non-constant. Einstein's theory of the Brownian movement \cite{Einstein1905,Einstein1906} explains the connection between the Brownian motion and the diffusion process. A random walk system is a mathematical counterpart of such phenomena, where the parameters $\Delta x$ and $\Delta t$ represent the mean free path and the mean time interval between collisions of the Brownian particles, respectively. A case with constants $\Delta x$ and $\Delta t$ or a case that these parameters are random variables with spatially constant means and variations are well understood. In this paper we will see that new features appear if $\Delta x$ and $\Delta t$ are varying in space.
+
+Non-uniform random dispersal appears in many places and one obvious source of it is the temperature gradient. For example, the Brownian particles move more actively in a warm region and less actively in a cold region. The effect of temperature gradient such as thermal diffusion or Ludwig-Soret effect  \cite{Ludwig1856,Soret1879} has been well known for a long time. There have been enormous amount of researches related to the thermal diffusion phenomenon and readers are referred to review papers on experiments and modeling  \cite{Braun2004, Duhr2006, Eslamian2009, Harstad2009, Huang2010,Putnam2007,Srinivasan2011}. The effect of the thermal gradient, one of the main reason of dispersal, has been studied for a long time \cite{Chapman1928,14}. However, the literatures agree that there is no comprehensive or generic thermal diffusion model such as Einstein's molecular level explanation for the homogeneous case.
+
+Another example of non-uniform random dispersal is the migration of biological organisms. The necessity of formulating a more realistic dispersal theory beyond linear dispersal has been emphasized in mathematical ecology (see Skellam \cite{Skellam72,Skellam73} and Okubo \& Levin \cite[Chapter 5]{MR1895041}). In many cases biological organisms change their dispersal strategy if they are starving. Also in many cases the organisms do not know where to go, but do know when they should leave. To model such a behavior, the starvation driven diffusion is developed \cite{MR3050058,MR3128024,MR3189110}. Furthermore, a meaningful measure of distance for biological organisms is not simply the Euclidean distance but one which concerns food or mating. In fact Keller-Segel type traveling wave can be developed with an idea of the non-uniform random walk, but without usual assumptions on gradient \cite{ChoiKim,YoonKim}.
+
+If the walk length and jumping time are constant, the concentration density $u$ of particles in a random walk system in one space dimension can be modeled by a linear diffusion equation
+\begin{equation}\label{LinearDiffusion}
 u_t=ku_{xx},\qquad k={|\Delta x|^2\over 2\Delta t},
 \end{equation}
-where the sub-indexes indicate partial derivatives. The diffusivity constant $k$ is given by the Einstein-Smoluchowski relation. The multi-dimensional case is similarly obtained, where the diffusivity becomes $k={|\Delta x|^2\over 2n\Delta t}$ in $\R^n$. The purpose of this paper is to develop a diffusion model when $\Delta x$ and $\Delta t$ are spatially non-constant.
-
-The diffusion model \eqref{HomoDiffusion} is valid only when the diffusivity $k$ is constant. There have been many efforts and discussions to find a correct diffusion equation when the diffusivity is non-constant, i.e., $k=k(\x)$. For example, three diffusion models are often considered:
-\begin{eqnarray}
-% \nonumber % Remove numbering (before each equation)
-\label{Fick} u_t &=& (k(\x)u_x)_x, \\
-\label{Wereide} u_t &=& ( \sqrt{k(\x)}(\sqrt{k(\x)}u_x))_x, \\
-\label{Chapman} u_t &=& (k(\x)u)_{xx}.
-\end{eqnarray}
-Eq. \eqref{Fick} is called Fick's law. Eq. \eqref{Wereide} and \eqref{Chapman} have been by Wereide \cite{Wereide1914} and Chapman \cite{Chapman1928}, respectively. However, none of them are agreed to be the correct diffusion model. For example, the Fickian type diffusion \eqref{Fick} and the Fokker-Planck type one \eqref{Chapman} are often compared as mathematical dispersal models for physical particles and biological species in heterogeneous environment (see \cite{Bengfort2016,Milligen}).
-
-The three equations are satisfied by the probability density function of a stochastic process when the variation of jumping distance, i.e., $|\Delta x|^2$, depends on the terminal, middle, or starting point of each jump, respectively. In other words, \eqref{Wereide} and \eqref{Chapman} are obtained by the Stratonovich and Ito integrals of a stochastic process, respectively. Note that in the three cases of stochastic processes, the spatial heterogeneity is in $\Delta x$ only and $\Delta t$ is assumed to be spatially homogeneous. However, to understand a general spatially heterogeneous diffusion, it is essential to consider a case both $\Delta x$ and $\Delta t$ are spatially heterogeneous. For example, consider
-\begin{equation*}
-{1\over \Delta t}={\eps^2\over2}\mu(x)>0,\quad \Delta x=\eps b(x)>0,
-\end{equation*}
-where $\mu(x)$ and $b(x)$ contain the information of spatial heterogeneity in the turning frequency and walk length, respectively, and ${\eps^2\over2}$ and $\eps$ their microscopic scales. The claim of this paper is that the corresponding diffusion equation is
-\begin{equation}\label{Kim}
-u_t=(b(x)(b(x)\mu(x)u)_x)_x.
-\end{equation}
-In this paper we show that the diffusion limit of a random walk system satisfies the equation. If $\mu(x)$ and $b(x)$ are constant, then the diffusivity is $k={b^2\mu}$ and the four cases, \eqref{Fick}-\eqref{Kim}, are identical. If $\mu(x)=1$ and $b=b(x)$, \eqref{Kim} is identical to \eqref{Wereide}, the case of Stratonovich integral. We consider general spatial heterogeneity in $b(x)$. However, for $\mu(x)$, we consider a spacial case given by \eqref{mu(x)}.
-
-A random walk system is a mathematical counterpart of Brownian motion of particles suspended in a fluid and the parameters $\Delta x$ and $\Delta t$ respectively represent the mean free path and the mean collision time of Brownian particles. Spatial heterogeneity in such a motion appears in naturally and an obvious source of it is the spatial difference in temperature. The Brownian particles move more actively in warm regions. The effect of temperature gradient such as thermal diffusion or Ludwig-Soret effect  \cite{Ludwig1856,Soret1879} has been well known for a long time. There are enormous amount of researches related such phenomena (see \cite{Braun2004, Duhr2006, Eslamian2009, Harstad2009, Huang2010,14,Putnam2007,Srinivasan2011}). However, the literatures agree that there is no comprehensive or generic thermal diffusion model such as Einstein's molecular level explanation for the homogeneous case.
+where the diffusivity constant $k$ is given by the Einstein-Smoluchowski relation. This diffusion model is valid only when the diffusivity is constant. In this paper we will derive diffusion equations that corresponds to non-uniform random walks. Heterogeneity in the walk length $\Delta x$ will be studied first and then the one in the jumping time $\Delta t$ will. These two cases turn out to be quite different. For example, one may sense the change of $\Delta t$ but not of $\Delta x$ (see Section \ref{sect.Answer2}).
 
 In Section 2, we first consider a random walk model that the walk length is given as a spatial function $\Delta x={\|\pi\|\over2}b(x)$ for a constant $\|\pi\|$ in \eqref{pi} and the jumping time interval $\Delta t=\tau$ as a constant. It is shown in Theorem \ref{thm1} that the probability density function of the discrete random walk model converges to the solution of
 $$
@@ -123,30 +124,29 @@ $$
 $$
 where $\tau>0$ is a constant. However, due to the discontinuity at the origin, it is challenging to develop and analyze a correspoding PDE model; it will be shown that the probability density function of the discrete random walk model converges to the solution of
 \begin{equation}\label{ux1}
-u_t=d(b(x)(b(x)\mu(x)u)_x)_x,\qquad d={\|\pi\|^2\over 8\tau},
+u_t=d(b(x)(b(x)\alpha(x)u)_x)_x,\qquad d={\|\pi\|^2\over 8\tau},
 \end{equation}
 where
-\begin{equation}\label{mu(x)}
-\mu(x)=\begin{cases}
+$$
+\alpha(x)=\begin{cases}
 1 & \text{if $x<0$,}\\
 0.5& \text{if $x>0$}.
 \end{cases}
-\end{equation}
-Then, after the same variable change as above, we obtain $u_t=d(\mu(x)u)_{yy}$. If we set $w=\mu u$ and $d=1$, then $w$ satisfies
 $$
-w_t=\mu w_{yy},\qquad y\in\R.
+Then, after the same variable change as above, we obtain $u_t=d(\alpha(x)u)_{yy}$. If we set $w=\alpha u$ and $d=1$, then $w$ satisfies
 $$
-Notice that this equation is meaningless at $y=0$ due to the discontinuity of $\mu$. However, it is shown in Proposition \ref{proposition} that the limit of the probability density function of the corresponding random walk system has a continuous first order derivative at the origin. Hence we are looking for a solution which is $C^1(\R)$. Green's function of this PDE with a discontinuous coefficient has been constructed in Section \ref{sect.explicit} explicitly. Green's function corresponding to the diffusion equation (\ref{ux1}) is obtained by going back to the original variable $x$.
+w_t=\alpha w_{yy},\qquad y\in\R.
+$$
+Notice that this equation is meaningless at $y=0$ due to the discontinuity of $\alpha$. However, it is shown in Proposition \ref{proposition} that the limit of the probability density function of the corresponding random walk system has a continuous first order derivative at the origin. Hence we are looking for a solution which is $C^1(\R)$. Green's function of this PDE with a discontinuous coefficient has been constructed in Section \ref{sect.explicit} explicitly. Green's function corresponding to the diffusion equation (\ref{ux1}) is obtained by going back to the original variable $x$.
 
 
-\newpage
 \section{Random walk with a spatially non-constant walk length}
 
-In this section we develop a random walk system with a spatial heterogeneity in the walk length $\Delta x$. The time step $\Delta t$ is assumed to be constant in this section. We first introduce the notation. Let spatial grid points $x^k$ be ordered by $x^0=0$ and\footnote{We use the super-indices for the spatial discretization and sub-indices for the temporal one.}
+In this section we develop a random walk theory with a spatial heterogeneity in the walk length $\Delta x$. The time step $\Delta t$ is assumed to be constant in this section. First we introduce some notations. Let spatial grid points $x^k$ be ordered as $x^0=0$ and\footnote{We use the super-indices for the spatial discretization and sub-indices for the temporal one.}
 \begin{equation}\label{x^k}
 \cdots<x^{k-1}<x^k<x^{k+1}<\cdots \quad\text{with}\quad k\in\Z.
 \end{equation}
-For a homogeneous random walk system, the distance between two neighboring grid points is constant. In this paper we consider a non-uniform case when $x^{k+1}-x^{k}$ is not necessarily constant. We introduce a partition consisting of odd numbered grid points and its norm:
+For a uniform random walk system, the distance between two neighboring grid points is constant. In this paper we consider a non-uniform case when $x^{k+1}-x^{k}$ is not necessarily constant. We introduce a partition consisting of odd numbered grid points and its norm:
 \begin{equation}\label{pi}
 \pi:=\{x^{2k+1}:k\in\Z\},\qquad\|\pi\|:=\sup_{k\in\Z}(x^{2k+1}-x^{2k-1}).
 \end{equation}
@@ -332,7 +332,7 @@ This bound vanishes uniformly in $k$ as $\Delta t \to 0$ because of the assumpti
 
 \subsection{Numerical comparison between the random walk and the PDE model}
 
-In this section we compare the discrete random walk and the solution of the PDE model. First we consider the models using the normalized variable $y$. The PDE for the probability density function $w$ in $y$ variable is given by
+In this section we compare the discrete random walk model and the solutions of the corresponding PDE model. First we consider the models using the normalized variable $y$. The PDE for the probability density function $w$ in $y$ variable is given by
 \begin{equation}\label{EqnForWy}
 w_t=\d \,w_{yy},\quad w(y,0)=w_0(y),\quad -\infty<y<\infty,
 \end{equation}
@@ -444,10 +444,532 @@ where $\tau>0$ is a constant and $y^{k+1/2}:=(y^k+y^{k+1})/2$. We will consider 
 
 \subsection{Derivation of a PDE model}
 
-Define
+
+\begin{align*}
+ u_t &= \frac{1}{2} \left( \Delta x(x) \left( \frac{\Delta x(x)}{\Delta t(x)} u \right)_x\right)_x= \frac{1}{2} \left( \tfrac{\Delta x(x)}{\l} \left( \frac{\tfrac{\Delta x(x)}{\l}}{\tfrac{\Delta t(x)}{\tau}} u \right)_x\right)_x \frac{\l^2}{\t} =  \frac{\l^2}{2\t} \left( \beta(x) \left( \frac{\beta(x)}{\alpha(x)} u \right)_x\right)_x
+\end{align*}
+
+\begin{definition}[Weak solution] We call $L^1_{loc}\big(\R^+;W^{1,1}(\R)\big)$ a weak solution of
+\eqref{eqnw} for an initial data $w_0 \in L^1(\R)$ if, for any test function $\phi \in
+C_c^1(\R^+\times \R)$,
+ \begin{equation}\label{DefWeak}
+  \int_0^T\int_\R \alpha w\phi_t\,dxdt
+  +\int_\R\alpha w_0\phi(0,x)\,dx = d\int_0^T\int_\R w_x\phi_x\, dxdt.
+ \end{equation}
+\end{definition}
+
+
+\subsection{Convergence of a discrete scheme}
+
+\subsubsection{Time-space mesh and random walk algorithm}
+
+We denote by $p_n^k$ the probability of a particle to be placed at $x=x^k$ at time $t=t^n$. The time-space mesh used in this paper is denoted by
+$$
+(t^n,x^k):=(n\tau,kh),\qquad (n,k)\in \Z^+_0\times\Z,
+$$
+where the time step size $\tau$ and space mesh size $h$ are small and $n$ and $k$ are integers. We consider a random walk system that a particle jumps to one of two adjacent grid points with the same probability ${1\over2}$. The special feature of the random walk system in this paper is that the jumping time interval $\Delta t$ is different for two regions $x<0$ and $x>0$. To make the situation physically clear, we consider $\Delta t$ as a traveling time to move to the next grid point. We let $\Delta t=\tau$ in the region $x<0$ and $\Delta t=2\tau$ in the other region $x\ge0$, i.e.,
 \begin{equation}\label{alpha}
-\mu(y):=\frac{\tau}{\Delta t},\quad\text{i.e.,}\quad
-\mu(y)=
+\Delta t=\alpha(x)\tau,\qquad
+\alpha(x) =
+\left\{\begin{array}{ll}
+        1, & \text{if } x<0,\\
+        2, & \text{if } x\ge0.
+        \end{array}\right.
+\end{equation}
+Note that the step function $\alpha$ is to denote the spatial heterogeneity in $\Delta t$ and $\tau$ is the microscopic scale of it. In this case the probability $p_n^k$ satisfies
+\begin{equation} \label{RW1}\tag{RW1}
+\begin{aligned}
+    2p^k_n = \left\{\begin{array}{lr}
+        p^{k-1} _{n-1} + p ^{k+1} _{n-1}, & \text{if } k<0,\\
+        p^{-1} _{n-1} + p ^{1} _{n-2}, & \text{if } k=0,\\
+        p^{k-1} _{n-2} + p ^{k+1} _{n-2}, & \text{if } k>0.
+        \end{array}\right.
+\end{aligned}
+\end{equation}
+Note that the probability $p^k_n$ is the average of probabilities at two adjacent grid points at two moments, $t^{n-1}$ or $t^{n-2}$, depending on $k$. By removing from the equations the probabilities at  $t=t^{n-1}$ using the ones at $t=t_{n-2}$, we can rewrite \eqref{RW1} 
+\begin{equation} \label{RW2}\tag{RW2}
+\begin{aligned}
+    &p^{k}_n = \left\{\begin{array}{ll}
+        \frac{1}{4}p^{k-2} _{n-2} + \frac{1}{2}p ^{k} _{n-2} + \frac{1}{4} p^{k+2}_{n-2}, & \text{if $k<0$ is even},\\
+        \frac{1}{4}p^{-2} _{n-2} + \frac{1}{4}p^{0} _{n-2} + \frac{1}{2}p ^{1} _{n-2}, & \text{if $k=0$},\\
+        \frac{1}{2}p^{k-1} _{n-2} + \frac{1}{2}p ^{k+1} _{n-2}, & \text{if } k>0.
+        \end{array}\right. 
+\end{aligned}
+\end{equation}
+% 
+% using even numbered time steps $n=2\ell$ only and obtain
+% \begin{equation} \label{RW3}\tag{RW3}
+% \begin{aligned}
+%     &p^{k}_{2\ell} = \left\{\begin{array}{ll}
+%         \frac{1}{4}p^{k-2} _{2(\ell-1)} + \frac{1}{2}p ^{k} _{2(\ell-1)} +
+%         \frac{1}{4} p^{k+2}_{2(\ell-1)}, & \text{if $k<0$ is even},\\
+%         \frac{1}{4}p^{-2} _{2(\ell-1)} + \frac{1}{4}p^{0} _{2(\ell-1)} +
+%         \frac{1}{2}p ^{1} _{2(\ell-1)}, & \text{if $k=0$},\\
+%         \frac{1}{2}p^{k-1} _{2(\ell-1)} + \frac{1}{2}p ^{k+1} _{2(\ell-1)},
+%         & \text{if } k>0.
+%         \end{array}\right.
+% \end{aligned}
+% \end{equation}
+
+
+\subsubsection{Discretization}
+
+Suppose that an initial probability density function be given by $v_0(x)$ for $x\in\R$. We assume that
+\begin{equation} \label{initial}
+ v_0 \in L^1( \R)\cap L^\infty(\R), \quad \int_ \R v_0(x)\, dx = 1, \quad
+ w_0:=\frac{v_0(x)}{\alpha(x)} \in C^\infty_c(\R).
+\end{equation}
+The purpose of this paper is to support the hypothesis that what enjoys the propagation or the gain of regularities is the variable $w$, not $v$, whose actual distinction is only relevant when the medium is heterogeneous. This is why the regularity assumption of the problem is on the initial value of $w_0={v_0\over\alpha}$.
+
+For a given mesh size $h>0$, we discretize the initial probability density function $v_0$ by
+\begin{equation}\label{p0k}
+\bar{p}_{0}^{k} = \left\{\begin{array}{ll}
+               0 & \text{if } k<0\ \text{is odd},\\
+               \int_{x^k}^{x^{k}+2h} v_0(x)dx & \text{if } k<0\ \text{is
+               even},\\
+                \int_{x^k}^{x^{k}+h} v_0(x)dx  & \text{if } k\ge0.
+               \end{array}\right.
+\end{equation}
+This discretization is motivated from that a random walk process defined by \eqref{RW2} stands independently of \eqref{RW1} and is identical to that by \eqref{RW1} with the initial data such that $\bar{p}^k_0=0$ if $k<0$ is odd. Indeed \eqref{RW2} is self-contained; $\sum_{k=-1}^{-\infty}\bar{p}_{0}^{2k}+\sum_{k=0}^{\infty}\bar{p}_{0}^{k}= 1$ and $\sum_{k=-1}^{-\infty}\bar{p}_{2\ell}^{2k}+\sum_{k=0}^{\infty}\bar{p}_{2\ell}^{k}=1$ for all $\ell>0$. Note that missing probabilities are all zero, $\bar{p}_{2\ell}^{2k+1}=0$ if $k<0$. The justification that this discretization solely  accounts for the general case of \eqref{RW1} is not treated in this paper. 
+
+Besides, we keep labeling a quantity defined over the interval by its leftmost grid point index, as was how $\bar{p}^k_0$ is labeled, at our convenience.
+
+
+To denote the space grids with non-zero probability, we introduce another labelling, namely $(\ell,j)\in \mathbb{Z}_0^+ \times \mathbb{Z}$. The inverse map $(\ell,j)\mapsto (n,k): \mathbb{Z}_0^+ \times \mathbb{Z} \rightarrow \mathbb{Z}_0^+ \times \mathbb{Z}$ defines the labelling,
+\begin{align*}
+ n(\ell) &= 2\ell, \quad 
+ k(j)  =\left\{\begin{array}{lr}
+        2j, & \text{if } j<0,\\
+        j, & \text{if }  j\ge0.
+        \end{array}\right.
+\end{align*}
+Having that, we consider the grid points of $x^{k(j)}_{n(\ell)}$ and the probability $\bar{p}_{n(\ell)}^{k(j)}$. In particular, we define $y^j:=x^{k(j)}$.
+% and $p^j_\ell$, without assigning different symbol, is understood as $p^{k(j)}_{n(\ell)}$. 
+
+% \begin{equation}\label{yj}
+% y^j=x^{2j}\quad\text{if}\quad j<0,\quad\text{and}\quad
+% y^j=x^{j}\quad\text{if}\quad j\ge0.
+% \end{equation}
+To approximate the probability density function, not the total probability mass for the particle to be placed between two grid points, we divide $\bar{p}_{n(\ell)}^{k(j)}$ by the domain size of the integrals in \eqref{p0k}. 
+\begin{equation}\label{vj}
+\bar{v}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)} \over2h}\quad\text{for}\quad
+j<0\quad\text{and}
+\quad \bar{v}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)}\over h}\quad\text{for}\quad j\ge0.
+\end{equation}
+The activity function $w$ are respectively approximated by
+% The probability density distribution $v(t,x)$ will be the limit of $v^j_\ell$ as $h\to0$. However, we cannot use the relation \eqref{RW2} for $v^{j}_\ell$'s due to the non-symmetry in \eqref{vj}. Instead, we will take
+\begin{equation}\label{pandw}
+\bar{w}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)}\over2h}\quad\text{if}\quad j<0,\quad\text
+{and} \quad \bar{w}^{j}_\ell:={\bar{p}_{n(\ell)}^{k(j)} \over2h}\quad\text{if}\quad j\ge0.
+\end{equation}
+Then, $\bar{v}^{j}_\ell=\bar{w}^{j}_\ell$ for $j<0$ and $\bar{v}^{j}_\ell=2\bar{w}^{j}_\ell$ for
+$j\ge0$, i.e.,
+$$
+\bar{v}^j_\ell=\bar{w}_\ell^j\alpha(y^j).
+$$
+Realize further that $\bar{w}^{j}_\ell$ is a finite volume discretization of $w_0(x)$ given in \eqref{initial}, i.e.,
+\begin{equation} \label{vol_aver+pmf}
+\bar{w}_{0}^{j} ={1\over y^{j+1}-y^{j}}\int_{y^j}^{y^{j+1}} w_0(x)dx.
+\end{equation}
+\eqref{RW2}, after simply dividing it by $2h$, defines a dimensional version of random walk system for $\bar{w}^{j}_\ell$. 
+
+Despite the inexact total probability, it is expedient to consider also the finite difference discretization of $w_0(x)$,
+\begin{equation}\label{w_fdm}
+w^{j}_0:=w_0(y^j),
+\end{equation}
+and to reversely define  
+\begin{align*}
+ v^j_0:=w^j_0 \quad \text{for $j<0$}, \quad &v^j_0:=2w^j_0 \quad \text{for $j\ge0$},\\
+ p^j_0:=2hv^j_0\quad \text{for $j<0$}, \quad &p^j_0:=hv^j_0 \quad \text{for $j\ge0$}.
+\end{align*}
+On ahead, the random walk system with the discrete initial data \eqref{w_fdm} described by 
+\begin{equation} \label{RW3}\tag{RW3}
+\begin{aligned}
+    &w^{j}_\ell = \left\{\begin{array}{ll}
+        \frac{1}{4}w^{j-1} _{\ell-1} + \frac{1}{2}w ^{j} _{\ell-1} +
+        \frac{1}{4} w^{j+1}_{\ell-1}, & \text{if $j<0$},\\
+        \frac{1}{4}w^{-1} _{\ell-1} + \frac{1}{4}w^{0} _{\ell-1} +
+        \frac{1}{2}w ^{1} _{\ell-1}, & \text{if $j=0$},\\
+        \frac{1}{2}w^{j-1} _{\ell-1} + \frac{1}{2}w ^{j+1} _{\ell-1}, &
+        \text{if } j>0.
+        \end{array}\right.
+\end{aligned}
+\end{equation}
+is analyzed. We will find the limit function $w(t,x)$ of $w_\ell^j$'s as $h\to0$. Then, the probability density distribution $v(t,x)$ is recovered by $\alpha(x)w(t,x)$ with the total probability $1$ and the initial value becomes $v(0,x)=v_0(x)$ as given in \eqref{initial}.
+
+\subsubsection{Difference quotients}
+
+Difference quotients are useful to the regularity study and finding the relation satisfied by the limit of finite difference schemes. Let
+\begin{equation}\label{Ljl}
+L^j_\ell := \frac{w_\ell^{j+1}-w_\ell^j}{y^{j+1}-y^j}
+        =\left\{\begin{array}{ll}
+        \frac{w^{j+1}_{\ell} - w^{j}_{\ell}}{2\l}, & \text{if $j<0$},\\
+        \frac{w^{j+1}_{\ell} - w^{j}_{\ell}}{\l}, & \text{if }  j\ge0,
+        \end{array}\right.
+\end{equation}
+which is an approximation of the gradient $w_x$. Let
+\begin{equation}\label{Qjl}
+Q^j_\ell := \frac{L^j_\ell-L^{j-1}_\ell}{2h}= \left\{\begin{array}{ll}
+        \frac{1}{2\l^2}\Big( \frac{1}{2} w^{j-1} _{\ell} - w ^{j} _{\ell} +
+        \frac{1}{2} w^{j+1} _{\ell}\Big), & \text{if $j<0$},\\
+        \frac{1}{2\l^2}\Big( \frac{1}{2} w^{-1} _{\ell} - \frac{3}{2}w
+        ^{0} _{\ell} +w^{1} _{\ell}\Big), & \text{if $j=0$},\\
+        \frac{1}{2\l^2}\Big(w^{j-1} _{\ell} - 2w^j_\ell + w ^{j+1}
+        _{\ell}\Big), & \text{if $j>0$}.
+        \end{array}\right.
+\end{equation}
+Notice that $y^{j+1}-y^{j}=2h$ for $j<0$ and $y^{j+1}-y^{j}=h$ for $j\ge0$. Therefore, $Q^j_\ell$ is an approximation of $w_{xx}$ for $j<0$ and of ${1\over2}w_{xx}$ for $j>0$, i.e., of ${w_{xx}\over\alpha}$.\footnote{Remember that it is NOT an approximation of $({w_x\over\alpha})_x$. There is no delta measure like phenomenon in the relation. This observation will be useful when we consider a general case in the next paper.} From \eqref{RW3}, we obtain
+$$
+\begin{aligned}
+    &w^{j}_\ell-w^{j}_{\ell-1} = \left\{\begin{array}{ll}
+        \frac{1}{4}w^{j-1} _{\ell-1} - \frac{1}{2}w ^{j} _{\ell-1} +
+        \frac{1}{4} w^{j+1}_{\ell-1}, & \text{if $j<0$},\\
+        \frac{1}{4}w^{-1} _{\ell-1} - \frac{3}{4}w^{0} _{\ell-1} +
+        \frac{1}{2}w ^{1} _{\ell-1}, & \text{if $j=0$},\\
+        \frac{1}{2}w^{j-1} _{\ell-1}-w^{j}_{\ell-1} + \frac{1}{2}w ^{j+1}
+        _{\ell-1}, & \text{if } j>0.
+        \end{array}\right.
+\end{aligned}
+$$
+The three cases of the above are written in the same form using $Q_\ell^j$,
+which is
+\begin{equation} \label{RW1w}
+\begin{aligned}
+ \frac{w^j_\ell - w^j_{\ell-1}}{2\tau} &= \left(\frac{h^2}{2\tau}\right)
+ \frac{1}{2h}\left( \Big(\tfrac{w^{j+1}_{\ell-1} -
+ w^{j}_{\ell-1}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell-1} -
+ w^{j-1}_{\ell-1}}{y^{j}-y^{j-1}} \Big)\right)=
+ \left(\frac{h^2}{2\tau}\right)Q^j_{\ell-1}.
+  \end{aligned}
+\end{equation}
+This is the main relation which will give the diffusion equation satisfied by the probability density function.
+
+
+\subsubsection{Uniform estimates}
+The relations in \eqref{RW3} can be used to find relations for $L^j_\ell$ and $Q^j_\ell$ which are
+\begin{equation} \label{eq:L}
+L^j_\ell = \left\{\begin{array}{ll}
+        \frac{1}{4}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^j +
+        \frac{1}{4}L_{\ell-1}^{j+1}, & \text{if $j<0$},\\
+        \frac{1}{2}L_{\ell-1}^{j-1} + \frac{1}{2}L_{\ell-1}^{j+1}, &
+        \text{if $j\ge0$},
+        \end{array}\right.
+\end{equation}
+and
+\begin{equation}\label{eq:Q}
+\begin{aligned}
+Q^j_\ell %&= \frac{L^{j+1}_\ell - L^j_\ell}{\l}\\
+&=\left\{\begin{array}{ll}
+        \frac{1}{4}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j} +
+        \frac{1}{4}Q_{\ell-1}^{j+1}, & \text{if $j<0$},\\
+        \frac{1}{4}Q_{\ell-1}^{-1} + \frac{1}{4}Q_{\ell-1}^{0} +
+        \frac{1}{2}Q_{\ell-1}^{1}, & \text{if $j=0$},\\
+        \frac{1}{2}Q_{\ell-1}^{j-1} + \frac{1}{2}Q_{\ell-1}^{j+1}, &
+        \text{if $j>0$}.
+        \end{array}\right.
+ \end{aligned}
+\end{equation}
+Note that $L^j_\ell$ and $Q^j_\ell$ are again averaging relations of previous time steps, and this points to our theme monitoring the $w$ variable, not $v$ variable. This allows key estimates needed.
+
+\begin{lemma}[Uniform estimates by the initial value] \label{uniform_est} ~
+
+\begin{enumerate}\item Total sums of $w_\ell^j$, $L_\ell^j$, and
+$Q_\ell^j$ are constant, i.e.,
+$$
+\sum_{j} w^j_\ell = \sum_{j} w^j_0,\quad \sum_{j} L^j_\ell = \sum_{j}
+L^j_0,\quad \sum_{j} Q^j_\ell = \sum_{j} Q^j_0.
+$$
+\item Sequences $w_\ell^j$, $L_\ell^j$, and $Q_\ell^j$ are bounded by the
+    initial maximums, i.e.,
+  $$
+  |w^j_\ell| \le \sup _{j} |w^j_0|,\quad  |L^j_\ell| \le \sup _{j}
+  |L^j_0|,\quad |Q^j_\ell| \le \sup _{j} |Q^j_0|.
+  $$
+\item We also have, for $p\ge1$,
+$$
+\sum _{j} |w^j_\ell|^p \le \sum _{j} |w^j_0|^p,\quad\sum _{j} |L^j_\ell|^p \le \sum _{j} |L^j_0|^p,\quad \sum _{j} |Q^j_\ell|^p \le
+\sum _{j} |Q^j_0|^p.
+$$
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The first two are obvious since the relations in \eqref{RW3},\eqref{eq:L}, and \eqref{eq:Q} are averaging processes. The third one is also obvious since $f(x)=|x|^p$ is a convex function for all $p\ge1$. One may apply Jensen's inequality to the averaging processes, \eqref{RW3},\eqref{eq:L}, and \eqref{eq:Q}. For example, \eqref{eq:L} turns into
+$$
+|L^j_\ell|^p \le \left\{\begin{array}{ll}
+        \frac{1}{4}|L_{\ell-1}^{j-1}|^p + \frac{1}{2}|L_{\ell-1}^j|^p +
+        \frac{1}{4}|L_{\ell-1}^{j+1}|^p, & \text{if $j<0$},\\
+        \frac{1}{2}|L_{\ell-1}^{j-1}|^p + \frac{1}{2}|L_{\ell-1}^{j+1}|^p, &
+        \text{if $j\ge0$}.
+        \end{array}\right.
+$$
+Therefore, $\sum _{j} |L^j_\ell|^p \le\sum _{j} |L^j_{\ell-1}|^p\le\cdots\le\sum _{j} |L^j_0|^p$.
+\end{proof}
+
+Note that this lemma implies that we have enough regularity in $x$ variables. For example, the second assertion implies that the approximation of the second order derivative, $Q^j_\ell$, is uniformly bounded by the initial condition. 
+
+\subsubsection{Linear interpolation and subsequential convergence}
+In this section, we construct functions defined on the continuum space $\R^+\times\R$ which approximates the discrete values $w^j_\ell$ defined at grid points. The reconstruction is simply piecewise linear one, or we merely work in the framework of Lipschitz functions. This will turn out to be enough for the uniqueness and the existence of the limit. We show the convergence of the continuum approximations as $h\to0$. As typical, we construct four different interpolations,
+\begin{equation} \label{linear0}
+\begin{aligned}
+ w_1^h(t,x)&:= w^j_\ell,\\
+ w_2^h(t,x)&:= \left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell+1}^{j} + \left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell}^{j},\\
+ w_3^h(t,x)&:= \left(\tfrac{x-y^j}{y^{j+1}-y^j} \right) w_{\ell}^{j+1}
+ + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j} \right) w_{\ell}^{j},\\
+  w^h(t,x)&:= \left(\tfrac{x-y^j}{y^{j+1}-y^j}
+  \right)\left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
+  w_{\ell+1}^{j+1} + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j}
+  \right)\left(\tfrac{t-t_{2\ell}}{t_{2\ell+2}-t_{2\ell}} \right)
+  w_{\ell+1}^{j}\\
+ &+ \left(\tfrac{x-y^j}{y^{j+1}-y^j}
+ \right)\left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell}^{j+1} + \left(\tfrac{y^{j+1}-x}{y^{j+1}-y^j}
+ \right)\left(\tfrac{t_{2\ell+2}-t}{t_{2\ell+2}-t_{2\ell}} \right)
+ w_{\ell}^{j}
+  \end{aligned}
+\end{equation}
+when $(t,x)\in D_\ell^j:=[t_{2\ell}, t _{2\ell+2}) \times [y^j, y^{j+1})$. Note that $w_1^h$ is constant on $D_\ell^j$, and $w_2^h$ and $w_3^h$ are linear on $D_\ell^j$. The last one, $w^h(t,x)$, is continuous on $\R^+\times\R$. All of them has the value $w^j_\ell$ at $t=t_{2\ell}$ and $x=y^j$. We now see in the following lemma that the functions $w^h(t,x)$ are uniformly bounded in the Lipschitz space $C^{0,1}\big(\R^+\times \mathbb{R}\big)$ where the norm is defined by
+$$\|u\|_{C^{0,1}\big(\R^+\times \mathbb{R}\big)} = \sup_{(t,y)\in \R^+\times \mathbb{R}}|u(t,y)| + \sup_{(t,y)\ne(s,z) \in \R^+\times \mathbb{R}} \frac{|u(t,y)-u(s,z)|}{|(t,y)-(s,z)|}.$$
+\begin{lemma} \label{misc}
+Let $w_0\in C^{\infty}_c(\R)$ and $w^h$ be defined by \eqref{linear0}. We assume that $\tau$ and $h$ are related by
+$$
+{h^2\over 2\tau}=d,
+$$
+where $d>0$ is fixed. Then, for any $h>0$ small and any $t>0$, 
+$$\|\partial_x w^h(t,\cdot)\|_{L^\infty(\R)} + \|\partial_t w^h(t,\cdot)\|_{L^\infty(\R)} \le C,$$
+where $C$ depends only on $d$ and $\|w_0\|_{W^{2,\infty}(\R)}.$
+\end{lemma}
+\begin{proof}
+It is obvious that
+$$|L_0^{j;h}| + |Q_0^{j;h}| \le C\|w_0\|_{W^{2,\infty}(\R)}.$$
+from the Taylor Theorem. The linear interpolation $w^h$ has weak first 
+derivatives for a.e. $(t,y)$. By Lemma \ref{uniform_est},
+ \begin{align*}
+ |\partial_t w^h(t,y)| \le d\sup_j |Q^{j;h}_{\ell}|\le d\sup_j |Q^{j;h}_{0}|,\quad \quad
+ |\partial_y w^h(t,y)| \le \sup_j |L_0^{j;h}|.
+ \end{align*}
+\end{proof}
+% \begin{lemma} \label{misc}
+% Let $w_0\in C^{\infty}(\R)$ and $w^h$ be defined by \eqref{linear0}. We assume that $\tau$ and $h$ are related by
+% $$
+% {h^2\over 2\tau}=d,
+% $$
+% where $d>0$ is fixed. Then,
+% \begin{enumerate}
+%  \item For any $t>0$ and $h>0$, $\|\partial_x w^h(t,\cdot)\|_{L^\infty(\R)} \le \|\partial_x w_0\|_{L^\infty(\R)}$. Hence, $w^h(t,\cdot)$ is uniformly Lipschitz continuous in the $x$-variable.
+%  \item {\red need the correction} The approximations $w^h(\cdot,x)$ are uniformly Holder continuous in the $t$-variable with exponent ${1\over2}$ with respect to $h>0$ and $x\in\R$. In other words, there exists a constant $C>0$ such that, for any $x\in\R$ and $h>0$,
+%      \begin{equation}\label{Holder}
+%      |w^h(t,x)-w^h(s,x)|\le C\sqrt{|t-s|} \quad\text{for all } |t-s|\text{
+%      small}.
+%      \end{equation}
+%  \end{enumerate}
+% \end{lemma}
+% \begin{proof}
+% 1. Since $w_0^j$ is the mean of $w_0(x)$ in the interval $(y^j,y^{j+1})$
+% (see \eqref{vol_aver+pmf}) and $w^h(0,\cdot)$ is the linear interpolation of
+% $(y^j,y^{j+1})$, the first assertion is clear by Lemma \ref{uniform_est}.
+% 
+% 2. Let $L_0:=\sup |w_0'(x)|$. Then, $|L_0^{j}|\le L_0$ for any mesh size
+% $h>0$. It is enough to consider an estimate along mesh grids and let
+% $x=y^j$. By \eqref{Qjl} and \eqref{RW1w}, we have
+% $$
+%  \frac{|w^j_\ell - w^j_{\ell-1}|}{2\tau} \le d\sup|Q^j_{\ell}|\le {d\over
+%  h}L_0.
+% $$
+% Multiply $\sqrt{2\tau}$ both sides and obtain
+% $$
+%  {|w^h(t_{2\ell},y^j)-w^h(t_{2\ell-2},y^j)|\over\sqrt{2\tau}}=\frac{|w^j_\ell
+%  - w^j_{\ell-1}|}{\sqrt{2\tau}} \le d\sqrt{2\tau\over
+%  h^2}L_0=\sqrt{d}\,L_0.
+% $$
+% This inequality \eqref{Holder} holds for any $|s-t|<\tau$ and hence $w^h$ is Holder continuous with exponent ${1\over2}$. Since the upper bound $C:=\sqrt{d}\,L_0$ is independent of $h$ and $x$, $w^h$'s are uniformly Holder continuous.
+% \end{proof}
+
+By the Arzela-Ascoli theorem, there exists a subsequence $w^{h_i}(t,x)$ such that $w^{h_i}(t,x)\to w$ uniformly on any compact set for a limit function $w$ in the Lipschitz space. Furthermore, due to the way of construction, $w_1^{h_i},w_2^{h_i}$ and $w_3^{h_i}$ also converge to the same limit in the uniform norm.
+
+\begin{lemma}\label{compactness} There exists a subsequence $\{w^{h_i}\}$ and a function $w\in C^{0,1}\big(\R^+\times \R\big)$ such that $w_1^{h_i},w_2^{h_i},w_3^{h_i},w^{h_i}\rightarrow w$ uniformly on any compact set $K \subset \R^+\times \R$ and $\partial_x w_3^{h_i}, \partial_x w^{h_i} \rightharpoonup \partial_y w$ weakly-* in $L^\infty(\R^+\times \mathbb{R})$.
+\end{lemma}
+\begin{proof}
+ We prove only the assertion that $\partial_x w_3^{h_i}$ weakly-* converges to the same limit $\partial_x w^{h_i}$ converges.  %First we zero extend the $\partial_x {w}^h(t,x)$, $\partial_x w_3^h(t,x)$ and the test function $g\in L^1(\R^+\times \mathbb{R})$ for all $t\in \mathbb{R}$. Then
+ For a test function $g\in L^1(\R^+\times \mathbb{R})$,
+ \begin{align*}
+  &\int_0^\infty\int_\mathbb{R} \Big|\partial_x {w}^{h_i} - \partial_x w_3^{h_i}\Big| \Big|g(t,x)\Big| \; dxdt  \\%=\int_\mathbb{R}\int_\mathbb{R} \Big|\partial_x {w}^{h_i} - \partial_x w_3^{h_i}\Big| \Big|g(t,x)\Big| \; dydt\\
+  &= \sum_{\ell\ge0}\int_{t_{2\ell}}^{t_{2(\ell+1)}}\int_\mathbb{R} \Big|\partial_x w_3^{h_i}(t+2\tau,x)-\partial_x w_3^{h_i}(t,x) \Big| \left|\frac{t-t_{2\ell}}{t_{2(\ell+1)}-t_{2\ell}}\right|~\Big|g(t,x)\Big| \;dxdt\\
+%   &= \sum_{\ell\ge0}\int_{t_\ell}^{t_{\ell+1}}\int_\mathbb{R} \Big|\partial_y \hat{w}^{h(m)}(t+2\tau,y)-\partial_y \hat{w}^{h(m)}(t,y) \Big| \left|\frac{t-t_\ell}{t_{\ell+1}-t_{\ell}}g(t,y) \right|\;dydt\\
+  &\le \int_0^\infty \int_\mathbb{R} \Big|\partial_x w_3^{h_i}(t+2\tau,x)-\partial_x w_3^{h_i}(t,x) \Big| \Big|g(t,x)\Big| \; dxdt.
+ \end{align*}
+ Because the integrand pointwise converges to $0$, by Lebesgue dominated convergence theorem the error converges to $0$.
+\end{proof}
+
+\subsubsection{Convergence to a weak solution}
+
+In this section we show that the subsequential limit is a weak solution to a
+Cauchy problem of a non-autonomous parabolic equation,
+\begin{equation}\label{eqnw}
+  \alpha(x) w_t = d w_{xx},\qquad w(0,x)=w_0(x).
+\end{equation}
+We also show that there is an energy functional such that the energy level of the weak solution decreases as $t\to\infty$. This implies the uniqueness of the solution in the class of admissible ones and the convergence of $w^h$ as $h\to0$.
+
+Let $w$ be a smooth solution of \eqref{eqnw} and define an energy
+functional by
+$$
+e(t;w)={1\over 2}\int \alpha(x) w^2(t,x)\,dx.
+$$
+Then formally,
+$$
+e'(t;w)=\int \alpha ww_t\,dx=d\int ww_{xx}\,dx=-d\int w_x^2\,dx\le 0.
+$$
+We show that the energy of a subsequential limit decreases in time.
+\begin{theorem}
+Let $w$ be a subsequential limit, i.e., $w^{h_i}\to w$.
+\begin{enumerate}
+ \item  $\int_\R\alpha(x) w(t,x)\;dx = 1$.
+ \item For all $t>0$, $e(t;w)\le e(0;w)$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+It is straightforward to see that the $L^p$ norm of $w_0(x)$ and that of $w_0^h(x)$ are bounded for any $p\in [1,\infty]$. Further, by the Lemma \ref{uniform_est} and that $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ uniformly in any compact set of $\R$ for all $t\in\R^+$, $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ strongly in $L^p(\R)$ for any $p \in [1,\infty)$.
+
+Now, for $t\in [t_{2\ell}, t_{2\ell+2})$, we have
+\begin{align*}
+\int_\R \alpha(x)w_1^h(t,x) \; dx &= \sum_{j<0}w^j_\ell2h + 
+\sum_{j\ge0}2w^j_\ell h = \sum_{j<0}p^{2j}_{2\ell} +
+\sum_{j\ge0}p^j_{2\ell} = \sum_{j<0}p^{2j}_{0} + \sum_{j\ge0}p^j_{0} \rightarrow 1
+\end{align*}
+since $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ in $L^1(\R)$ for all $t\ge0$ and $\int_\R\alpha(x) w_0(x) \; dx=1$.
+
+Next consider the energy of the approximation $w^h_1$. If $t\in [t_{2\ell}, t_{2\ell+2})$,
+\begin{align*}
+e(0;w^h_1) &= \frac{1}{2} \int_\R \alpha(x) \big(w^h_1(0,x)\big)^2dx = \frac{1}{2} \Big( \sum_{j<0}(w_0^{j})^2(2h) +\sum_{j\ge0}2(w_0^{j})^2h \Big)=\sum_{j<0}(w_0^{j})^2\,h\\
+&\ge \sum_{j<0}(w_\ell^{j})^2\,h =\frac{1}{2} \Big( \sum_{j<0}(w_\ell^{j})^2(2h) +\sum_{j\ge0}2(w_\ell^{j})^2h \Big) = e(t;w^h_1).
+\end{align*}
+% \begin{align*}
+% e(t;w^h_1) &= \frac{1}{2} \int_\R \alpha(x) \big(w^h_1(t,x)\big)^2dx= \frac{1}{2} \Big( \sum_{j<0}(w_\ell^{j})^2(2h) +\sum_{j\ge0}2(w_\ell^{j})^2h \Big)\\
+% &= \sum_{j<0}(w_\ell^{j})^2\,h\le \sum_{j<0}(w_0^{j})^2\,h = \frac{1}{2} \Big( \sum_{j<0}(w_0^{j})^2(2h) +\sum_{j\ge0}2(w_0^{j})^2h \Big)=e(0;w^h_1).
+% \end{align*}
+Therefore, since $w_1^h(t,\cdot) \rightarrow w(t,\cdot)$ in $L^2(\R)$ for all $t\ge0$, $e(t;w)\le e(0;w)$ for all $t\ge0$.
+% Since $f(x)=x^2$ is a convex function, \eqref{RW2} gives that
+% $$
+% \begin{aligned}
+%     &(p^{k}_{2\ell})^2 \le \left\{\begin{array}{ll}
+%         \frac{1}{4}(p^{k-2} _{2(\ell-1)})^2 + \frac{1}{2}(p^{k}_{2(\ell-1)})^2 +\frac{1}{4} (p^{k+2}_{2(\ell-1)})^2, & \text{if $k<0$ is even},\\
+%         \frac{1}{4}(p^{-2} _{2(\ell-1)})^2 + \frac{1}{4}(p^{0} _{2(\ell-1)})^2 +\frac{1}{2}(p ^{1} _{2(\ell-1)})^2, & \text{if $k=0$},\\
+%         \frac{1}{2}(p^{k-1} _{2(\ell-1)})^2 + \frac{1}{2}(p ^{k+1} _{2(\ell-1)})^2,
+%         & \text{if } k>0.
+%         \end{array}\right.
+% \end{aligned}
+% $$
+% Therefore, $e(t^{2\ell};w^h_1)\le e(0;w^h_1)$ for all $\ell>0$. Since $w^{h_i}\to w$ as $h_i\to0$, we have $e(t;w)\le e(0;w)$ for all $t>0$.
+\end{proof}
+
+Finally, we show that the sequence converges to a weak solution of \eqref{eqnw}.
+\begin{theorem}
+  The interpolation $w^{h}(t,x)$ converges to $w\in C^{0,1}(\R^+\times\R)$ and the limit is a weak solution of \eqref{eqnw}.
+\end{theorem}
+\begin{proof}
+It is enough to show that the subsequential limit $w^{h_i}\to w$ is a weak solution of \eqref{eqnw}. Then, the uniqueness of energy decreasing solution gives the rest. The regularity of the limit $w$ is a consequence of the Arzela-Ascoli Theorem. Consider the two terms in the left side of \eqref{DefWeak} with $w_2^{h_i}$ in the place of $w$,
+\begin{align*}
+ \int_0^\infty\int_\R& w_2^{h_i}(t,x) \alpha(x)\partial_t\phi(t,x)\; dx dt
+ +\int_\R w_2^{h_i}(0,x)\alpha(x)\phi(t,x) \; dx\hskip 5mm \Big(=:A_i\Big).
+\end{align*}
+Since $w_2^{h_i} \rightarrow w$ uniformly on each compact set of $\R^+\times \R$, the left side converges as
+\begin{align*}
+\lim_{h_i\to0}A_i=\int_0^\infty\int_\R w(t,x) \alpha(x)\partial_t\phi(t,x)\; dx
+dt+\int_\R w_0(x)\alpha(x)\phi(t,x) \; dx.
+\end{align*}
+Now,
+\begin{align*}
+%  \int_0\infty\int_\R& w_2^{h_i}(t,x) \alpha(x)\partial_t\phi(t,x)\; dx dt
+%  +\int_\R w_2^{h_i}(0,x)\alpha(x)\phi(t,x) \; dx\hskip 5mm \Big(=:A_i\Big)\\
+ A_i&=-\sum_{\ell}\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R \partial_t
+ w_2^{h_i}(t,x) \alpha(x)\phi(t,x)\; dx dt \\
+ &=-\sum_{\ell}\sum_{j}\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
+ \frac{w^j_{2\ell+2}-w^j_{\ell}}{2\tau} \alpha(x) \phi(t,x) \chi_j(x)\; dx dt \hskip
+ 1.5cm (\text{with } \chi_j=\chi_{[y^j,y^{j+1})})\\
+ &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
+ \tfrac{1}{2h} \left( \Big(\tfrac{w^{j+1}_{\ell} -
+ w^{j}_{\ell}}{y^{j+1}-y^j}\Big) -\Big(\tfrac{w^{j}_{\ell} -
+ w^{j-1}_{\ell}}{y^{j}-y^{j-1}} \Big)\right) \alpha(x) \phi(t,x) \chi_j(x)\; dx
+ dt\quad\ (\text{by } \eqref{RW1w}\,)\\
+ &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}\int_\R
+ \tfrac{1}{2h} \Big(\tfrac{w^{j}_{\ell} -
+ w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)
+ \big(\chi_{j-1}(x)-\chi_{j}(x)\big)\alpha(x) \phi(t,x) \; dx \;dt\\
+ &=-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}B_\ell^j\,dt\hskip 5mm\Big(B_\ell^j:=\int_\R \tfrac{1}{2h} \Big(\tfrac{w^{j}_{\ell} -
+w^{j-1}_{\ell}}{y^{j-1}-y^j}\Big)
+\big(\chi_{j-1}(x)-\chi_{j}(x)\big)\alpha(x) \phi(t,x) \; dx\Big).
+\end{align*}
+
+The $B^j_\ell$ in the right side becomes
+\begin{align*}
+ B_\ell^j &= \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \left\{\frac{1}{2h}\int_{y^{j-1}}^{y^{j}} \alpha\phi  \; dx -
+        \frac{1}{2h}\int_{y^{j}}^{y^{j+1}} \alpha\phi  \; dx\right\}\\
+     &= \left\{\begin{array}{ll}
+        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
+        \frac{1}{y^{j+1}-y^{j}}\int_{y^{j}}^{y^{j+1}} \phi  \; dx \bigg)
+        & \text{if } j<0,\\
+        \Big(\tfrac{w^{0}_{\ell} - w^{-1}_{\ell}}{y^{0}-y^{-1}}\Big)
+        \bigg( \frac{1}{y^j-y^{j-1}}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
+        \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi  \; dx
+        \bigg) & \text{if } j=0,\\
+        \Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \bigg( \frac{1}{2(y^j-y^{j-1})}\int_{y^{j-1}}^{y^{j}} 2\phi  \; dx-
+        \frac{1}{2(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} 2\phi  \; dx
+        \bigg) & \text{if } j>0,
+       \end{array}\right.\\
+     &=\Big(\tfrac{w^{j}_{\ell} - w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)
+        \bigg( \frac{1}{(y^j-y^{j-1})}\int_{y^{j-1}}^{y^{j}} \phi  \; dx-
+        \frac{1}{(y^{j+1}-y^{j})}\int_{y^{j}}^{y^{j+1}} \phi  \; dx
+        \bigg).
+\end{align*}
+Therefore,
+\begin{align*}
+ B_\ell^j =&-\int_{y^{j-1}}^{y^{j}}\Big(\tfrac{w^{j}_{\ell} -
+ w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\partial_x\phi \;dx \\
+     & + \Big(\tfrac{w^{j}_{\ell} -
+     w^{j-1}_{\ell}}{y^{j}-y^{j-1}}\Big)\left\{
+        \frac{\int_{y^{j-1}}^{y^{j}} \phi -\phi(t,y^{j-1}) \;
+        dx}{y^j-y^{j-1}} - \frac{\int_{y^{j}}^{y^{j+1}} \phi -\phi(t,y^{j})
+        \; dx}{y^{j+1}-y^j} \right\}.
+\end{align*}
+Since the test function $\phi$ is $C^1$, the second term goes to zero faster than $h_i\to0$; the only exception is for $j=0$ where the error is $O(h_i)$ as $h_i\to0$.
+Since the support of $\phi$ is compact, after summing $B_\ell^j$ up and taking $h_i\to0$, we obtain
+\begin{align*}
+-\sum_{\ell}\sum_{j}d\int_{t_{2\ell}}^{t_{2\ell+2}}B_\ell^j\,dt &= d\int_0^\infty\int_\R \partial_x w_3^{h_i}(t,x) \partial_x \phi(t,x) \;
+dxdt + o(1) \\
+&\rightarrow d\int_0^\infty\int_\R \partial_x w(t,x) \partial_x \phi(t,x) \; dxdt,
+\end{align*}
+where the weak-* convergence of $\partial_x w_3^{h_i}$ to $\partial_x w$ has been used.
+Therefore, combining the limits shows that $w$ is a weak solution.
+\end{proof}
+
+\subsubsection{Conclusion}
+
+The probability density function is $v=\alpha\, w$. Then, $v$ satisfies
+$$
+v_t=d\Big({v\over\alpha(x)}\Big)_{xx},\qquad
+v(0,x)={\alpha(x)w_0(x)}=v_0(x),
+$$
+where the initial value $v_0(x)$ is the original initial value given in
+\eqref{initial}.
+
+If we include the spatial heterogeneity in the walk length
+$\Delta x=\beta(x)\epsilon$, then the probability density function $v$
+satisfies
+$$
+v_t=d\Big(\beta(x)\Big({\beta(x)\over\alpha(x)}v\Big)_x\Big)_x,\qquad
+v(0,x)=v_0(x).
+$$
+
+{\red previous version from here}
+
+Define
+\begin{equation}\label{alpha_old}
+\alpha(y):=\frac{\tau}{\Delta t},\quad\text{i.e.,}\quad
+\alpha(y)=
 \begin{cases}
 1 & \text{if $y<0$,}\\
 1/2 & \text{if $y\geq 0$.}
@@ -495,11 +1017,11 @@ $$
 w_t=\d w_{yy}\quad\text{for $y<0,$}\qquad
 w_t={1\over2}\d w_{yy}\quad\text{for $y>0$.}
 $$
-Using the definition of $\mu(y)$ in \eqref{alpha} we may write it as
+Using the definition of $\alpha(y)$ in \eqref{alpha} we may write it as
 \begin{equation}\label{EqnForPinY2}
-w_t=\mu(y)\d w_{yy} \qquad \text{for $y\ne0$.}
+w_t=\alpha(y)\d w_{yy} \qquad \text{for $y\ne0$.}
 \end{equation}
-This equation has meaning only if $y\ne0$ due to the discontinuity of $\mu$ at the origin $y=0$. Notice that the three cases with $k=-1,0,1$ are forgotten since $\Delta y$ is of microscopic scale, which is also the reason for the disconnected domain of the equation. In the following proposition we show that the limit $w$ is continuously diffrentiable even at the origin, i.e.,
+This equation has meaning only if $y\ne0$ due to the discontinuity of $\alpha$ at the origin $y=0$. Notice that the three cases with $k=-1,0,1$ are forgotten since $\Delta y$ is of microscopic scale, which is also the reason for the disconnected domain of the equation. In the following proposition we show that the limit $w$ is continuously diffrentiable even at the origin, i.e.,
 \begin{equation*}\label{continuity}
 \lim_{y\to0-}w(y,t_0)=\lim_{y\to0+}w(y,t_0),\qquad
 \lim_{y\to0-}w_y(y,t_0)=\lim_{y\to0+}w_y(y,t_0).
@@ -546,25 +1068,25 @@ v(y,t)=
 w(y,t) & \text{if $y<0$,}\\
 2w(y,t) & \text{if $y>0$,}
 \end{cases}
-\quad \text{or}\quad v(y,t)=\frac{1}{\mu(y)}w(y,t).
+\quad \text{or}\quad v(y,t)=\frac{1}{\alpha(y)}w(y,t).
 \end{equation*}
-This relation can be justified only when the probability at grid points and the probability in the middle of the way are identical in the region where $y>0$. They are almost identical if $\Delta t$ and $\Delta x$ are small enough. Substitute $w=\mu(y)v$ into (\ref{EqnForPinY2}) and obtain
+This relation can be justified only when the probability at grid points and the probability in the middle of the way are identical in the region where $y>0$. They are almost identical if $\Delta t$ and $\Delta x$ are small enough. Substitute $w=\alpha(y)v$ into (\ref{EqnForPinY2}) and obtain
 \begin{equation*}\label{EqnForUinY2}
-v_t=\d (\mu v)_{yy},\qquad y\in\bfR,\ \d:={|\Delta y|^2\over 2\tau}.
+v_t=\d (\alpha v)_{yy},\qquad y\in\bfR,\ \d:={|\Delta y|^2\over 2\tau}.
 \end{equation*}
 Now we change the variable using (\ref{relation-y(x)}) as in the previous section. Then the density becomes $u(x,t)=v(y(x),t)/b(x)$ and satisfies
 \begin{equation}\label{EqnForUinX2}
-u_t=\d (b(b\mu u)_{x})_{x},\qquad x\in\bfR,\ \d:={\|\Delta x\|^2\over 2\tau}.
+u_t=\d (b(b\alpha u)_{x})_{x},\qquad x\in\bfR,\ \d:={\|\Delta x\|^2\over 2\tau}.
 \end{equation}
-Remember that $w(y,t)=b(x(y))\mu(y)u(x(y),t)$ is the relation between $w$ and $u$ and it is $w$ that has $C^1(\R)$ regularity.
+Remember that $w(y,t)=b(x(y))\alpha(y)u(x(y),t)$ is the relation between $w$ and $u$ and it is $w$ that has $C^1(\R)$ regularity.
 
 \subsection{Green's function for the two-time step PDE model} \label{sect.explicit}
 
 The purpose of this section is to find Green's function for the diffusion model (\ref{EqnForUinX2}) in an explicit form. For simplicity we consider the case when there is no heterogeneity in $\Delta x$, i.e., $b(x)\equiv 1$, and the diffusivity is $\d=1$. Going back to (\ref{EqnForPinY2}), we will actually find  $G=G(y,a,t)$ that solves
 \[\left\{
 \begin{aligned}
-&G_t= \mu(y) \,G_{yy},\\
-&G(y,0)=\mu(y) \,\delta(y-a).
+&G_t= \frac{G_{yy}}{\blue \alpha(y)},\\
+&G(y,0)=\frac{\delta(y-a)}{\blue \alpha(y)}.
 \end{aligned}
 \right.\]
 In the followings we will look for Green's function such that $G(\cdot,a,t)\in C^1(\R)\cap C^\infty(\R\setminus\{0\})$ for each $a\in\bfR$ and $t>0$ since a meaningful solution satisfies this regularity as shown in Proposition \ref{proposition}.
@@ -575,12 +1097,12 @@ In this section, we will find $w(y,t):=G(y,0,t)$ explicitly that solves
 \begin{equation}\label{w0}
 \left\{
 \begin{aligned}
-&w_t= \mu(y) \,w_{yy},\\
-&w(y,0)=\mu(y) \,\delta(y).
+&{\blue \alpha(y)}w_t= w_{yy},\\
+&{\blue \alpha(y)}w(y,0)=\delta(y).
 \end{aligned}
 \right.
 \end{equation}
-It is tricky to find a solution due to the discontinuity of the coefficient $\mu$ at the origin. We employ a similar technique used in \cite{Chung20142520}. First, we split the real line $\textbf{R}$ into two regions, $\{ y>0 \}$ and $\{ y<0 \}$. In the region $\{y>0\}$, we solve an initial-boundary value problem:
+It is tricky to find a solution due to the discontinuity of the coefficient $\alpha$ at the origin. We employ a similar technique used in \cite{Chung20142520}. First, we split the real line $\textbf{R}$ into two regions, $\{ y>0 \}$ and $\{ y<0 \}$. In the region $\{y>0\}$, we solve an initial-boundary value problem:
 \[
 \begin{cases}
 w_t = \frac{1}{2} w_{yy} & \text{if $y > 0, ~t > 0$,} \\
@@ -649,9 +1171,9 @@ Therefore the solution $w$ of (\ref{w0}) is given by
 \frac{\sqrt{2}-1}{\sqrt{2} \pi} \int_0^t \frac{y e^{-y^2/2(t-\tau)}}{\sqrt{\tau} (t-\tau)^{3/2}} \,d\tau = \frac{2 (\sqrt{2}-1)}{\pi} \int_{y/\sqrt{2t}}^\infty \frac{e^{-\eta^2}}{\sqrt{t - y^2/2\eta^2}} \,d\eta & \text{if $y > 0$,} \\
 \frac{\sqrt{2}-1}{2\pi} \int_0^t \frac{(-y) e^{-y^2/4(t-\tau)}}{\sqrt{\tau} (t-\tau)^{3/2}} \,d\tau = \frac{2 (\sqrt{2}-1)}{\pi} \int_{-y/2\sqrt{t}}^\infty \frac{e^{-\eta^2}}{\sqrt{t-y^2/4\eta^2}}\,d\eta & \text{if $y < 0$.}
 \end{cases}\]
-Using the definition of $\mu(y)$ in \eqref{alpha}, Green's function $G(y,a=0,t)=w(y,t)$ can be written in a combined form
+Using the definition of $\alpha(y)$ in \eqref{alpha}, Green's function $G(y,a=0,t)=w(y,t)$ can be written in a combined form
 \begin{equation}\label{G0}
-G(y,a=0,t)=\frac{2(\sqrt{2}-1)}{\pi} \int_{|y|/\sqrt{4\mu(y)t}}^\infty \frac{e^{-\eta^2}}{\sqrt{t-y^2/4\mu(y)\eta^2}}\,d\eta,\qquad y\in\R.
+G(y,a=0,t)=\frac{2(\sqrt{2}-1)}{\pi} \int_{\sqrt{\blue \alpha}|y|/\sqrt{4t}}^\infty \frac{e^{-\eta^2}}{\sqrt{t-\blue \alpha(y)y^2/4\eta^2}}\,d\eta,\qquad y\in\R.
 \end{equation}
 
 
@@ -661,8 +1183,8 @@ G(y,a=0,t)=\frac{2(\sqrt{2}-1)}{\pi} \int_{|y|/\sqrt{4\mu(y)t}}^\infty \frac{e^{
 
 Now we move the initial Dirac delta distribution from the origin to some other point. Then the corresponding equation becomes
 \[ \left\{ \begin{aligned}
-&w_t = \mu(y) \,w_{yy}, \\
-&w(y,0) = \mu(y) \delta(y-a),
+&{\blue \alpha(y)}w_t = w_{yy}, \\
+&{\blue \alpha(y)}w(y,0) = \delta(y-a),
 \end{aligned} \right. \]
 where $a\ne0$. One may solve this problem in the same manner by dividing the spatial domain into two parts,  $\{y>0\}$ and $\{y<0\}$. For the case when $a > 0$, the corresponding boundary value is
 \[
@@ -715,7 +1237,7 @@ We compare the probability density function of the two-time step discrete random
  \includegraphics[width=\textwidth]{fig3b}
 (b) $\Delta t=0.1, x<0$, $\Delta t=0.2, x>0$, $\Delta x=0.05$
 \end{minipage}
-\caption{{\bf Random walk with a non-constant time step.} Probability distribution of the random walk is given with the explicit solution $u=w/\mu$, where $w$ is given by (\ref{ExplicitP}). The time step is $\Delta t=0.1$ for $x<0$ and  $\Delta t=0.2$ for $x>0$. The diffusivity is $\d=0.05$ on $x<0$ and the final time is given by a relation $t\d=0.5$.} \label{fig3}
+\caption{{\bf Random walk with a non-constant time step.} Probability distribution of the random walk is given with the explicit solution $u=w/\alpha$, where $w$ is given by (\ref{ExplicitP}). The time step is $\Delta t=0.1$ for $x<0$ and  $\Delta t=0.2$ for $x>0$. The diffusivity is $\d=0.05$ on $x<0$ and the final time is given by a relation $t\d=0.5$.} \label{fig3}
 \end{figure}
 Notice difference between Figure \ref{fig2} and Figure \ref{fig3}. The probability density distribution in Figure \ref{fig2} are basically obtained by gluing two normal distributions of different variations. Hence the probability of one side, $P\{x<0\}$, is the same as the other side $P\{x>0\}$. However, the profiles in Figure \ref{fig3} do not follow the Gaussian distribution and even the probability for $x<0$ is different from the one of the other side, i.e., $P\{x<0\}\ne P\{x>0\}$, which will be shown in the following section.
 
@@ -778,7 +1300,7 @@ For the above random walk systems one may easily compute the diffusivity $k(x)$ 
 \subsection{Sensibility of $\Delta t$ versus insensibility of $\Delta x$}\label{sect.Answer2}
 Let $w(y,t)=G(y,0,t)$ be Green's function with a Dirac delta distribution placed at $a=0$, which is given by the formula (\ref{G0}),
 \begin{equation*}
-w(y,t)=\frac{2(\sqrt{2}-1)}{\pi} \int_{|y|/\sqrt{4\mu(y)t}}^\infty \frac{e^{-\eta^2}}{\sqrt{t-y^2/4\mu(y)\eta^2}}\,d\eta,\qquad y\in\R.
+w(y,t)=\frac{2(\sqrt{2}-1)}{\pi} \int_{|y|/\sqrt{4\alpha(y)t}}^\infty \frac{e^{-\eta^2}}{\sqrt{t-y^2/4\alpha(y)\eta^2}}\,d\eta,\qquad y\in\R.
 \end{equation*}
 By Fubini's theorem, we may observe that
 \begin{align*}
@@ -789,7 +1311,7 @@ We similarly compute
 $$
 \int_{-\infty}^0 w(y,t)\,dx = \sqrt{2} - 1.
 $$
-The probability density function in $y$ variable is given by $v(y,t)=w(y,t)/\mu(y)$ and satisfies
+The probability density function in $y$ variable is given by $v(y,t)=w(y,t)/\alpha(y)$ and satisfies
 \begin{equation}\label{101}
 \sqrt{2}\int_{-\infty}^0 v(y,t)\,dy =\int_0^\infty v(y,t)\,dy.
 \end{equation}
@@ -798,130 +1320,130 @@ The relation (\ref{101}) implies that the probability for a particle to be place
 In conclusion we may say that people in the region where $x<0$ may sense a change in jumping time $\Delta t$ of the other side where $x>0$. However, they cannot sense a change in walk length $\Delta x$. This observation implies that heterogeneity in time step cannot be reduced to one in walk length through any kinds of rescaling.
 
 
-%
-%
-%\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
-%\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
-%% \MRhref is called by the amsart/book/proc definition of \MR.
-%\providecommand{\MRhref}[2]{%
-%  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
-%}
-%\providecommand{\href}[2]{#2}
-%\begin{thebibliography}{10}
-%
-%\bibitem{Braun2004}
-%D. Braun and A. Libchaber, \emph{Thermal force approach to molecular
-%  evolution}, Phys. Biol. \textbf{1}, 1--8 (2004)
-%
-%\bibitem{Chapman1928}
-%S. Chapman, \emph{On the {Brownian} displacements and thermal diffusion of
-%  grains suspended in a non-uniform fluid}, Proc. Roy. Soc. Lond. A
-%  \textbf{119}, 34--54 (1928)
-%
-%\bibitem{MR3050058}
-%E. Cho and Y.-J. Kim, \emph{Starvation driven diffusion as a survival
-%  strategy of biological organisms}, Bull. Math. Biol. \textbf{75},
-%  845--870 (2013)
-%
-%\bibitem{ChoiKim}
-%S. Choi and Y.-J. Kim, \emph{Chemotactic traveling waves by the metric
-%  of food}, preprint (2014)
-%
-%\bibitem{Chung20142520}
-%J. Chung, Y.-J. Kim, and M. Slemrod, \emph{An explicit solution
-%  of Burgers equation with stationary point source}, J. Differ.
-%  Equations \textbf{257}, 2520--2542 (2014)
-%
-%\bibitem{Duhr2006}
-%S. Duhr and D. Braun, \emph{Why molecules move along a temperature
-%  gradient}, Proc. Natl. Acad. Sci. USA \textbf{103}, 19678--19682 (2006)
-%
-%\bibitem{Einstein1905}
-%A. Einstein, \emph{\"{U}ber die von der molekularkinetischen theorie
-%  derw\"{a}rme geforderte bewegung von in ruhenden fl\"{u}ssigkeiten
-%  suspendierten teilchen (on the movement of small particles suspended in a
-%  stationary liquid demanded by the kinetic molecular theory of heat.)}, Ann.
-%  Phys. \textbf{17}, 549--560 (1905)
-%
-%\bibitem{Einstein1906}
-%A. Einstein, \emph{\emph{Zur theorie der brownschen bewegung} (on the theory of
-%  brownian movement)}, Ann. Phys. \textbf{19}, 371--381 (1906)
-%
-%\bibitem{Eslamian2009}
-%M. Eslamian and M. Z. Saghir, \emph{A critical review of thermodiffusion
-%  models: Role and significance of the heat of transport and the activation
-%  energy of viscous flow}, J. Non-Equilib. Thermodyn. \textbf{34}, 97--131 (2009)
-%
-%\bibitem{Fick1855}
-%A. Fick, \emph{\"{U}ber diffusion ({O}n diffusion)}, Poggendorff's. Annalen.
-%  \textbf{94}, 59--86 (1855)
-%
-%\bibitem{Harstad2009}
-%K. Harstad, \emph{Modeling the Soret effect in dense media mixtures},
-%  Ind. Eng. Chem. Res. \textbf{48}, 6907--6915 (2009)
-%
-%\bibitem{Huang2010}
-%F. Huang, P. Chakraborty, C. C. Lundstrom, C. Holmden, J. J. G. Glessner, S. W.
-%  Kieffer, and C. E. Lesher, \emph{Isotope fractionation in silicate melts by
-%  thermal diffusion}, Nature \textbf{464}, 396--400 (2010)
-%
-%\bibitem{MR1728947}
-%J. Kevorkian, Partial differential equations (2nd ed.), Texts in
-%  Applied Mathematics, vol.~35, Springer-Verlag, New York (2000)
-%
-%\bibitem{MR3128024}
-%Y.-J. Kim, O. Kwon, and F. Li, \emph{Evolution of dispersal toward
-%  fitness}, Bull. Math. Biol. \textbf{75}, 2474--2498 (2013)
-%
-%\bibitem{MR3189110}
-%Y.-J. Kim, O. Kwon, and F. Li, \emph{Global asymptotic stability and the ideal free distribution in a starvation driven diffusion}, J. Math. Biol. \textbf{68},  1341--1370 (2014)
-%
-%\bibitem{MR982711}
-%C. C. Lin and L. A. Segel, Mathematics applied to deterministic problems
-%  in the natural sciences (2nd ed.), Classics in Applied Mathematics,
-%  vol.~1, Society for Industrial and Applied Mathematics (SIAM), Philadelphia,
-%  PA (1988)
-%
-%\bibitem{Ludwig1856}
-%C. Ludwig, \emph{Diffusion zwischen ungleich erw\"{a}rmten orten gleich zusammengesetzter l\"{o}sungen} (Diffusion of homogeneous fluids between regions of different temperature), Sitz. Ber. Akad. Wiss. Wien Math-Naturw. Kl. \textbf{20}, 539 (1856)
-%
-%\bibitem{14}
-%J. C. Maxwell, \emph{On stresses in rarefied gases arising from inequalities of
-%  temperature}, Phil. Trans. R. Soc. Lond. \textbf{170}, 231--256 (1879)
-%
-%\bibitem{MR1895041}
-%A. Okubo and S. A. Levin, Diffusion and ecological problems: modern
-%  perspectives (2nd ed.), Interdisciplinary Applied Mathematics, vol.~14,
-%  Springer-Verlag, New York (2001)
-%
-%\bibitem{Putnam2007}
-%S. A. Putnam, D. G. Cahill, and G. C. L. Wong, \emph{Temperature dependence of
-%  thermodiffusion in aqueous suspensions of charged nanoparticles}, Langmuir
-%  \textbf{23}, 9221--9228 (2007)
-%
-%\bibitem{Skellam72}
-%J. G. Skellam, Some phylosophical aspects of mathematical modelling in
-%  empirical science with special reference to ecology, Mathematical Models in
-%  Ecology, Blackwell Sci. Publ., London (1972)
-%
-%\bibitem{Skellam73}
-%J. G. Skellam, The formulation and interpretation of mathematical models of
-%  diffusionary processes in population biology, The mathematical theory of the
-%  dynamics of biological populations, Academic Press, New York (1973)
-%
-%\bibitem{Soret1879}
-%Ch. Soret, \emph{Sur l'\'{e}tat d'\'{e}quilibre que prend, au point de vue de sa
-%concentration, une dissolution saline primitivement homog\`{e}ne, dont deux parties sont port\'{e}es \`{a} des temp\'{e}ratures diff\'{e}rentes}, Archives de Gen\`{e}ve \textbf{3}, 48--61 (1879)
-%
-%\bibitem{Srinivasan2011}
-%S. Srinivasan and M. Z. Saghir, \emph{Experimental approaches to study
-%  thermodiffusion - a review}, Int. J. Therm. Sci. \textbf{50}, 1125--1137 (2011)
-%
-%\bibitem{YoonKim}
-%C. Yoon and Y.-J. Kim, \emph{Bacterial chemotaxis without gradient-sensing}, J. Math. Biol. (2014). doi:10.1007/s00285-014-0790-y
-%\end{thebibliography}
-%
-%\end{document}
+
+
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{Braun2004}
+D. Braun and A. Libchaber, \emph{Thermal force approach to molecular
+  evolution}, Phys. Biol. \textbf{1}, 1--8 (2004)
+
+\bibitem{Chapman1928}
+S. Chapman, \emph{On the {Brownian} displacements and thermal diffusion of
+  grains suspended in a non-uniform fluid}, Proc. Roy. Soc. Lond. A
+  \textbf{119}, 34--54 (1928)
+
+\bibitem{MR3050058}
+E. Cho and Y.-J. Kim, \emph{Starvation driven diffusion as a survival
+  strategy of biological organisms}, Bull. Math. Biol. \textbf{75},
+  845--870 (2013)
+
+\bibitem{ChoiKim}
+S. Choi and Y.-J. Kim, \emph{Chemotactic traveling waves by the metric
+  of food}, preprint (2014)
+
+\bibitem{Chung20142520}
+J. Chung, Y.-J. Kim, and M. Slemrod, \emph{An explicit solution
+  of Burgers equation with stationary point source}, J. Differ.
+  Equations \textbf{257}, 2520--2542 (2014)
+
+\bibitem{Duhr2006}
+S. Duhr and D. Braun, \emph{Why molecules move along a temperature
+  gradient}, Proc. Natl. Acad. Sci. USA \textbf{103}, 19678--19682 (2006)
+
+\bibitem{Einstein1905}
+A. Einstein, \emph{\"{U}ber die von der molekularkinetischen theorie
+  derw\"{a}rme geforderte bewegung von in ruhenden fl\"{u}ssigkeiten
+  suspendierten teilchen (on the movement of small particles suspended in a
+  stationary liquid demanded by the kinetic molecular theory of heat.)}, Ann.
+  Phys. \textbf{17}, 549--560 (1905)
+
+\bibitem{Einstein1906}
+A. Einstein, \emph{\emph{Zur theorie der brownschen bewegung} (on the theory of
+  brownian movement)}, Ann. Phys. \textbf{19}, 371--381 (1906)
+
+\bibitem{Eslamian2009}
+M. Eslamian and M. Z. Saghir, \emph{A critical review of thermodiffusion
+  models: Role and significance of the heat of transport and the activation
+  energy of viscous flow}, J. Non-Equilib. Thermodyn. \textbf{34}, 97--131 (2009)
+
+\bibitem{Fick1855}
+A. Fick, \emph{\"{U}ber diffusion ({O}n diffusion)}, Poggendorff's. Annalen.
+  \textbf{94}, 59--86 (1855)
+
+\bibitem{Harstad2009}
+K. Harstad, \emph{Modeling the Soret effect in dense media mixtures},
+  Ind. Eng. Chem. Res. \textbf{48}, 6907--6915 (2009)
+
+\bibitem{Huang2010}
+F. Huang, P. Chakraborty, C. C. Lundstrom, C. Holmden, J. J. G. Glessner, S. W.
+  Kieffer, and C. E. Lesher, \emph{Isotope fractionation in silicate melts by
+  thermal diffusion}, Nature \textbf{464}, 396--400 (2010)
+
+\bibitem{MR1728947}
+J. Kevorkian, Partial differential equations (2nd ed.), Texts in
+  Applied Mathematics, vol.~35, Springer-Verlag, New York (2000)
+
+\bibitem{MR3128024}
+Y.-J. Kim, O. Kwon, and F. Li, \emph{Evolution of dispersal toward
+  fitness}, Bull. Math. Biol. \textbf{75}, 2474--2498 (2013)
+
+\bibitem{MR3189110}
+Y.-J. Kim, O. Kwon, and F. Li, \emph{Global asymptotic stability and the ideal free distribution in a starvation driven diffusion}, J. Math. Biol. \textbf{68},  1341--1370 (2014)
+
+\bibitem{MR982711}
+C. C. Lin and L. A. Segel, Mathematics applied to deterministic problems
+  in the natural sciences (2nd ed.), Classics in Applied Mathematics,
+  vol.~1, Society for Industrial and Applied Mathematics (SIAM), Philadelphia,
+  PA (1988)
+
+\bibitem{Ludwig1856}
+C. Ludwig, \emph{Diffusion zwischen ungleich erw\"{a}rmten orten gleich zusammengesetzter l\"{o}sungen} (Diffusion of homogeneous fluids between regions of different temperature), Sitz. Ber. Akad. Wiss. Wien Math-Naturw. Kl. \textbf{20}, 539 (1856)
+
+\bibitem{14}
+J. C. Maxwell, \emph{On stresses in rarefied gases arising from inequalities of
+  temperature}, Phil. Trans. R. Soc. Lond. \textbf{170}, 231--256 (1879)
+
+\bibitem{MR1895041}
+A. Okubo and S. A. Levin, Diffusion and ecological problems: modern
+  perspectives (2nd ed.), Interdisciplinary Applied Mathematics, vol.~14,
+  Springer-Verlag, New York (2001)
+
+\bibitem{Putnam2007}
+S. A. Putnam, D. G. Cahill, and G. C. L. Wong, \emph{Temperature dependence of
+  thermodiffusion in aqueous suspensions of charged nanoparticles}, Langmuir
+  \textbf{23}, 9221--9228 (2007)
+
+\bibitem{Skellam72}
+J. G. Skellam, Some phylosophical aspects of mathematical modelling in
+  empirical science with special reference to ecology, Mathematical Models in
+  Ecology, Blackwell Sci. Publ., London (1972)
+
+\bibitem{Skellam73}
+J. G. Skellam, The formulation and interpretation of mathematical models of
+  diffusionary processes in population biology, The mathematical theory of the
+  dynamics of biological populations, Academic Press, New York (1973)
+
+\bibitem{Soret1879}
+Ch. Soret, \emph{Sur l'\'{e}tat d'\'{e}quilibre que prend, au point de vue de sa
+concentration, une dissolution saline primitivement homog\`{e}ne, dont deux parties sont port\'{e}es \`{a} des temp\'{e}ratures diff\'{e}rentes}, Archives de Gen\`{e}ve \textbf{3}, 48--61 (1879)
+
+\bibitem{Srinivasan2011}
+S. Srinivasan and M. Z. Saghir, \emph{Experimental approaches to study
+  thermodiffusion - a review}, Int. J. Therm. Sci. \textbf{50}, 1125--1137 (2011)
+
+\bibitem{YoonKim}
+C. Yoon and Y.-J. Kim, \emph{Bacterial chemotaxis without gradient-sensing}, J. Math. Biol. (2014). doi:10.1007/s00285-014-0790-y
+\end{thebibliography}
+
+\end{document}
 
 
 
