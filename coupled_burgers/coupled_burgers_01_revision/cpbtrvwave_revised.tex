@@ -1,0 +1,1141 @@
+\documentclass{amsart}
+% \usepackage[notref,notcite]{showkeys}
+\usepackage[pagewise]{lineno}
+\usepackage{color}
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{subfigure}
+\usepackage{graphicx}
+% \usepackage{wrapfig}
+
+\usepackage{psfrag}
+% \usepackage{placeins}
+% \usepackage{cases}
+% \usepackage{empheq}
+% \usepackage{tikz}
+% \graphicspath{{./burgers/}}
+% \usepackage{titlesec}
+% \usepackage{titleps}
+% \usepackage{indentfirst}
+% \titleformat{\section}[block]
+% {\filcenter\Large\bfseries}
+% {\thesection}{1em}{}
+
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{thm1}{Theorem}[section]
+\newtheorem{defn}[thm1]{Definition}
+\newtheorem{thm2}[thm1]{Propostion}
+\newtheorem{thm3}[thm1]{Corollary}
+\newtheorem{lemma}[thm1]{Lemma}
+\newtheorem{rmk}[thm1]{Remark}
+\numberwithin{equation}{section}
+
+
+\def\ii{{\textrm{int}}\,}
+\def\cl{{\textrm{cl}}\,}
+\begin{document}
+
+\title{Existence and nonexistence of traveling waves of coupled Burgers' equations}
+
+%    Information for second author
+\author{Chanwoo Jeong}
+\address{Department of Mathematics, Kyungpook National University, Daegu, South Korea}
+\email{jeongcw.mail@gmail.com}
+\thanks{C. Jeong is supported by }
+
+\author{Philsu Kim}
+\address{Department of Mathematics, Kyungpook National University, Daegu, South Korea}
+\email{kimps@knu.ac.kr}
+\thanks{P. Kim is supported by }
+
+\author{Min-Gi Lee}
+\address{Department of Mathematics, Kyungpook National University, Daegu, South Korea}
+\email{leem@knu.ac.kr}
+\thanks{M.-G Lee is supported by }
+
+%    General info
+% \subjclass[2020]{Primary 35J50, 35Q55, 35B40 ; Secondary  35B45, 35J40}
+
+\date{\today}
+
+%\dedicatory{This paper is dedicated to our advisors.}
+
+\keywords{Coupled Burgers' equation; traveling wave solutions; global analysis; existence and nonexistence}
+
+
+\date{}
+
+
+\begin{abstract}
+ Traveling waves of the system of viscous coupled Burgers' equations are classified. While traveling wave solutions of the scalar Burgers' equation are simple, exhibiting a step-down or step-up wave pattern, numerous different wave patterns can appear for the coupled Burgers' system, which is determined by the strength of the coupling constants and other parameters. {\blue Understanding how traveling wave solutions appear can precede the study of various aspects of the system, such as the stability of numerical schemes.} 
+ 
+ It turns out that eight different parameter regimes account for all the system with relevant parameters. For each of eight regimes, we completely characterize the existence and nonexistence of traveling waves within a class we introduce in the paper. We find left- and right-moving waves with varieties of wave patterns. Waves of crossing patterns, where one species steps up and the other steps down, and bump-like patterns are shown to exist. We also provide numerical results for a selected set of traveling waves to illustrate the established existence and nonexistence results. The results, discussed in the last section, appear consistent with expectations.
+\end{abstract}
+\maketitle
+
+
+
+\section{Introduction} \label{sec:intro}
+We consider the system of coupled Burgers' equations
+\begin{align}\label{system0} %\tag{$P_A$}
+\begin{aligned}
+&u_{t} + ( \alpha_{1}u^{2} + \beta_{1}uv )_{x} -\epsilon u_{xx} = \; 0 \\
+&v_{t} + ( \alpha_{2}v^{2} + \beta_{2}uv )_{x} -\epsilon v_{xx} = \; 0 
+\end{aligned} \quad \quad &\text{in} \quad \mathbb{R}^+\times \mathbb{R}
+% \\u(0,x) = u_0(x), \quad v(0,x)= v_0(x) \quad &\text{in $\mathbb{R}$}, \label{initial}
+\end{align}
+% where $\alpha_1$, $\alpha_2$ are real coefficients of the intraspecific convection terms, $\beta_1$, $1$ are real coefficients of the interspecific convection terms, and $\epsilon, \epsilon >0$ are the viscosities of each species. We write $A = \begin{pmatrix}
+%                                                  \alpha_1 & \beta_1\\  \beta_2 & \alpha_2 
+%                                                 \end{pmatrix}$ to parametrize the problems \eqref{system0}. 
+where $\alpha_1$, $\alpha_2$, $\beta_1$, and $\beta_2 $ are real coefficients for the convection terms, and $\epsilon >0$ is the viscosity. We call $\alpha_i$ the coefficient of intraspecific flux and $\beta_i$ that of interspecific flux for $i=1,2$. We write $A = \begin{pmatrix}                                                 \alpha_1 & \beta_1\\  \beta_2 & \alpha_2  \end{pmatrix}$ to parametrize the problems \eqref{system0}. 
+
+For the scalar Burgers equation in one space dimension, the wind direction, i.e., the mass flux direction, is determined by the sign of the solution at the point. Moreover, these pieces of local information can collectively infer the global behaviors; one knows in advance if shock or rarefaction waves form in later time. However, for the system of Burgers' equations, the flux is determined by $\alpha_1, \alpha_2, \beta_1, \beta_2$, $u$, and $v$. Furthermore, we need to take the {\it strentgh} of their interactions into accounts to determine the net flux. Interactions may be constructive or destructive, and for destructive interferences, more cases appear combinatorially.% as fluxes compete.
+
+The system \eqref{system0} of coupled Burgers' equations is a macrocopic model to describe small rigid spherical particles settling under gravity through a fluid in a vertical vessel. $u$ (resp. $v$) is the volume fraction of particles, which is presumed to be in a regime of a dilute concentration. Four main motivating forces involves: The first is an interaction of the particle with the background medium; the second is the gravity; the third is a mutual interaction between particles electrical origin; and the last is the random browninan motion. Aforementioned nonlinear effects conceivably lead to interesting phenomena of front formations experimentally observed  in sedimentation of collidal suspensions. {\blue reference update} 
+
+In \cite{esipov_1995}, it is explained that in fact there possibly appear two different kinds of fronts, one is at the bottom between the sediments and the original suspensions, and the other is at the top between the original suspensions and dilute resolution. For the top front, within the framework of the macrocopic convective-diffusive flux 
+\begin{equation} \label{flux}
+ J(u) = V(u)u - D(u)\nabla u,
+\end{equation}
+the mean falling velocity function $V(u)$ is effectively linear, provided that the volume fraction $u$ is dilute enough and the function $V(u)$ is smooth at origin. The mean falling velocity function $V(u)$, or more broadly the stokes velocity, has been calculated for the case of rigid spherical particles by Batchelor \cite{B1982_1, B1982_2}. As a test to theories, settling experiments have been conducted by many authors where silica spheres disperse in cyclohexan medimum \cite{AS1993}, or glassy particles in hydrocarbon compounds \cite{DB1988}. To study the transient behaviors, dynamic model was considered analytically and numerically (see \cite{BG1987}) and it is not surprising that a viscous Burguers' equation appears. 
+
+While understandings and results have been considerably accumulated for the monodispersive sedimentation, where relatively similar sized particles disperse and the Burgers' equation is effective, it seems the interacting fronts and other richer features are not yet fully understood for the bi- or poly-dispersive sedimentation where particles are clustered in size into two or more groups. Richness of wave patterns has been pointed out from early stage of works, for example in \cite[Fig 3]{esipov_1995}. Batchelor \cite{B1982_1} have calculated the coupled velocity functions as well, and also considered the coupled and effectively linear velocity functions in dilute regime. The velocity functions in dilute regime  is adopted in the dynamic model \cite[eq. 3.2]{esipov_1995} that is the coupled system of Burguers' equation \eqref{system0} if number of species are $2$. For $N$ species, coupled $N$ equations can be considered, but in this article, we do not consdier the system other than that of two species. %that of $2$ equations. %Fronts of individual form and themselves interact as they approach.
+
+
+{\blue 
+toy problem. esipov.
+Understanding the formation of rich wave patterns is a key factor in the study of stability of an analytic or a numerical solution. The system of coupled Burgers' equations, regarded as a model of continuum mechanics, has attracted considerable attention from numerical analysts especially of experts in fluid dynamics. Various numerical schemes have also been adapted for \eqref{system0}. {\blue update: These include numerous Eulerian approaches \cite{Bashan2020,Kutluay2013,Lai_2014,Li_2015,Liu2018,Mittal2011,Mittal2014,Rashid2014} and a semi-Lagrangian scheme \cite{bkk_2019}.} There are also literature \cite{Kaya2001, Khater2009, Piao2021,Soliman2006} on exact solutions. Because \eqref{system0} is coupled and nonlinear, local stability analysis for a numerical scheme is difficult. One often observes {\it unexpected} wiggles in the computations, which may or may not be physically relavent. Our work, the classfication of wave patterns appearing as traveling waves, may precede the study of the stability of numerical schemes. 
+}
+
+
+
+
+
+
+
+% to understand the interactions better.
+
+% However, for this coupled Burgers' equations, it seems the behavior of interacting waves is not yet well understood. 
+% Our work is also motivated by the study of stability of numerical schemes of \eqref{system0}. 
+
+
+
+
+
+
+% We call $\alpha_1 u^2$, $\alpha_2 v^2$ the intraspecific fluxes, and $\beta_1 uv$, $\beta_2 uv$ the interspecific fluxes in \eqref{system0}. 
+
+
+% We call the terms with $\alpha_i$ intraspecific and terms with $\beta_i$ intraspecific ofr $i=1,2$. 
+%                                                 We study the existence or nonexistence of traveling wave solutions of \eqref{system} according to $A$.
+
+Our objectives are twofold. We first classify the system of coupled Burgers' equations by parameters into {\it eight} different regimes. Then, for each of regimes, we completely characterize the existence and nonexistence of traveling wave solutions, within a class we introduce in Section \ref{trv}.
+
+% The system of coupled Burgers' equations was derived to study the sedimentation problem in fluid suspensions or colloids (see, Batcheler \cite{B1982_1}, \cite{B1982_2}, Esipove \cite{esipov_1995}).
+% The advective and diffusive phenomena of the model problem are generic in fields such as gas dynamics, chemical physics, and mathematical biology. However, the nonlinear coupling resulted from advection terms that influence each other, is not frequently found in generic advection-diffusion problems. %Such nonlinearity can be also found in the problems such as shallow water equations \cite{Garcia2000, Vreugdenhil1995}, Boussinesq-Burgers' equations \cite{Chen2006, Kupershmidt1985} and dispersive long wave equations \cite{Alharbi2020, Pelloni2000}. %There are literature on finding exact solutions  for the model problem \eqref{system0} (see \cite{Kaya2001, Khater2009, Piao2021,Soliman2006}). However, there are no well-posedness analysis for the solutions of the initial-boundary value problem for \eqref{system0} to the best of our knowledge.
+
+
+
+
+Specifically, this paper contains the study of \eqref{systemb} for $r_1\in \mathbb{R}$, $r_2 \in \mathbb{R}$ %, and $0<\epsilon\le 1$
+\begin{equation}\label{systemb} \tag{$P_{r_1,r_2}$}
+\begin{aligned}
+&\left\{
+\begin{aligned}
+&u_{t} + ( r_{1}u^{2} + uv )_{x} -u_{xx} = \; 0, \\
+&v_{t} + ( r_{2}v^{2} + uv )_{x} -v_{xx} = \; 0 ,\\
+&u\ge0, \quad v\ge0
+\end{aligned} \quad \quad \text{in} \quad \mathbb{R}^+\times \mathbb{R}.\right. %\\
+% &  \quad \text{for } r_1\in \mathbb{R}, \quad r_2 \in \mathbb{R}, \quad 0<\epsilon\le 1.
+%\\u\ge0, \quad v\ge0. 
+% \\u(0,x) = u_0(x), \quad v(0,x)= v_0(x) \quad &\text{in $\mathbb{R}$}, \label{initial}
+\end{aligned}
+\end{equation}
+We explain why \eqref{systemb} is only relevant to study for our purposes in the following section.
+
+% For \eqref{systemb} formulated in the whole space, we do not need boundary conditions, but this needs a bit of consideration. The described configuration of specimen in vertical vessel in the first paragraph of Section \ref{sec:intro} suggests that volume fractions, after appropriate scaling, have
+% $$ (u,v) \rightarrow (1,1) \quad \text{as $x \rightarrow -\infty$ and} \quad (u,v) \rightarrow (0,0) \quad \text{as $x \rightarrow \infty$}.$$
+% 
+% 
+% We will not be confined in the above, however, which will 
+
+%it is relevant to study the following problem
+%We take the Maximum principle into accounts to study $(u,v)$ that have definite signs. 
+
+
+%In fact, by Maximum principle, one can show that bounded classical solutions of \eqref{system0} with initial data with definite signs keep their signs.
+% {\blue it is enough to study the problem : we take the Maximum principle into accounts and consider sign definite solutions. It will be difficult to study }
+% Assuming \eqref{suff} combined with the sign definiteness of solutions, the only relevant systems to study are the ones
+
+% To be specific, what is contained in this paper is the study of \eqref{systemb}, more specifically, the phase space analysis of nonlinear o.d.e. systems that arise from taking 
+% the traveling wave ansatz
+% $$u(t,x) = \bar{u}(x-ct), \quad v(t,x) = \bar{v}(x-ct), \quad \xi = x-ct.$$
+
+
+\subsection{Formulation of the problem \eqref{systemb}}
+
+\subsubsection{Hyperbolicity in inviscid system}
+
+One consideration comes from the {\it inviscid} coupled Burgers' system
+\begin{align}\label{system2} 
+\begin{aligned}
+u_{t} + ( \alpha_{1}u^{2} + \beta_{1}uv )_{x} &= \; 0 \\
+v_{t} + ( \alpha_{2}v^{2} + \beta_{2}uv )_{x} &= \; 0 
+\end{aligned} \quad &\text{in $\mathbb{R}^+\times \mathbb{R}$}.
+% \\u(0,x) = u_0(x), \quad v(0,x)= v_0(x) \quad &\text{in $\mathbb{R}$}, \label{initial}
+\end{align}
+One can write \eqref{system2} in the form
+\begin{equation*}%\label{cauchy}
+U_{t} +
+A(U) \; U_{x}=0
+\end{equation*}
+where
+\begin{equation*}
+U = \begin{pmatrix}
+u \\
+v
+\end{pmatrix}, \quad \quad
+A(U) =
+\begin{pmatrix}
+2\alpha_{1}u+\beta_{1}v & \beta_{1}u \\
+\beta_{2}v & 2\alpha_{2}v + \beta_{2}u
+\end{pmatrix}.
+\end{equation*}
+Considering the theory of hyperbolic system, we shall only consider equation \eqref{system2} that are hyperbolic; otherwise, one encounters severe instabilities in general. Straightforward calculation shows that two eigenvalues of $A(U)$ are real if and only if
+$$ (2\alpha_1u + \beta_1v - 2\alpha_2v - \beta_2u)^2 + 4 \beta_1\beta_2uv \ge 0.$$
+Thus, 
+\begin{equation} \label{suff} \tag{S}
+\beta_1\beta_2uv \ge 0 
+\end{equation}
+is a sufficient condition for $A(U)$ to have real eigenvalues. We do not consider cases where \eqref{suff} fails.
+
+
+\subsubsection{Sign definiteness}
+By the Maximum principle, one can show that bounded classical solutions of \eqref{system0} with initial data whose signs are definite keep their signs. We assume that each species has a definite sign in $ \mathbb{R}^+\times \mathbb{R}$. Studying sign-changing profile will be a difficult problem because fixing the coefficient $A$ does not fix whether interactions are constructive or destructive. In this paper, we will study only solutions with definite signs. %and keeping the initial signs of solution is due to the Maximum principle. 
+Coefficients and solutions with different combinations of signs are all transformed into the form \eqref{systemb} below.
+
+
+
+We assume that none of $u$ or $v$ is identically a constant state (see Definition \ref{nontrivial}); otherwise, the problem reduces to solving  scalar Burgers' equation. Additionally, we assume
+\begin{equation}
+ \beta_1\ne 0 \quad \text{and} \quad \beta_2\ne0.
+\end{equation}
+Otherwise, the system decouples, and one solves scalar Burgers' equations one after another.  In the above circumstances, the signs of $\beta_1$, $\beta_2$ do not take $0$, and $s_1$ and $s_2$ of signs of $u$ and $v$ do not take $0$ by defining $s_1=1$ if $u$ is non-negative and nontrivial in $ \mathbb{R}^+\times \mathbb{R}$, and $s_1=-1$ otherwise, and defining $s_2$ similarly with $v$.
+
+Now, suppose $(u,v)$ solves \eqref{system0} with coefficients $A = \begin{pmatrix} \alpha_1 & \beta_1 \\ \beta_2 & \alpha_2 \end{pmatrix}$ and let $s_1$ and $s_2$ be as above. Then, $\big(s_1 u, s_2 v)$ is a pair of nonnegative functions and solves the system \eqref{system0} with    $A = \begin{pmatrix} s_1 \alpha_1 & s_2 \beta_1 \\  s_1\beta_2 & s_2 \alpha_2 \end{pmatrix}$. Note that \eqref{suff} implies that $s_2\beta_1$ and $s_1\beta_2$ have the same sign. 
+
+Suppose now that $(u,v)$ is a pair of nonnegative functions and solves \eqref{system0} with coefficients $A = \begin{pmatrix} \alpha_1 & \beta_1 \\ \beta_2 & \alpha_2 \end{pmatrix}$ where $\beta_1$ and $\beta_2$ have the same sign $\sigma$. In case $\sigma=-1$, $\big(u(t,-x), v(t,-x)\big)$ solves \eqref{system0} with    $A = -\begin{pmatrix} \alpha_1 & \beta_1 \\  \beta_2 & \alpha_2 \end{pmatrix}$. 
+
+Suppose now that $(u,v)$ is a pair of nonnegative functions and solves \eqref{system0} where $\beta_1$ and $\beta_2$ are positive. Then, $(\beta_2u,\beta_1 v)$ solves the system \eqref{system0} with $A = \begin{pmatrix} \frac{\alpha_1}{\beta_2} & 1 \\ 1 & \frac{\alpha_2}{\beta_1} \end{pmatrix}$. 
+
+Finally, $\big(u(\epsilon t, \epsilon x), v(\epsilon t, \epsilon x)\big)$ solves the system with the viscosities $1$. In summary we study the problem \eqref{systemb}.
+
+
+% Finally, we assume $\epsilon\ge \epsilon$, otherwise we change the roles of $u$ and $v$. Then $\big(u(\epsilon t, \epsilon x), v(\epsilon t, \epsilon x)\big)$ solves the system with the viscosities $1$ and $\epsilon=\frac{\epsilon}{\epsilon}\le 1$ respectively. In summary we study the problem \eqref{systemb}.
+
+
+% In Section \ref{notions}, we explain why \eqref{systemb} is only relevant to study for our purposes. %it is relevant to study the following problem
+% In this consideration, we take the Maximum principle into accounts to study $(u,v)$ that have definite signs. To investigate the interactions for the sign changing solution will be hard because even after fixing the coefficient $A$, interaction can be constructive at one place and destructive at another place. In this paper we will study only solutions that have definite signs. Coefficients and solutions with different combination of signs are all transformed into the form of \eqref{systemb}. We have also made the viscosities same, which can be achieved by scailing $u$ and $v$. 
+
+\bigskip
+
+To study traveling wave solutions of \eqref{systemb}, we take the traveling wave ansatz
+$$u(t,x) = \bar{u}(x-ct), \quad v(t,x) = \bar{v}(x-ct), \quad \xi = x-ct.$$
+and perform the phase space analysis of the resulting nonlinear ODE systems. 
+
+Our phase space analysis will be mostly elementary, whereas our existence and nonexistence results are consistent with intuitions. We observe a few interesting wave patterns that we do not see for the scalar Burgers' equation. 
+\begin{figure}[ht]
+\setcounter{subfigure}{0}
+ \subfigure[step-up, step-down]{ \includegraphics[width=3.4cm]{Figure_4.eps} }
+ \subfigure[bump, step-down]{ \includegraphics[width=3.4cm]{Figure_10.eps} }
+ \subfigure[left-moving]{ \includegraphics[width=3.4cm]{Figure_2.eps} }
+\caption{A few traveling wave patterns } \label{figintro}
+\end{figure}
+Among others, Figure \ref{figintro} shows three wave patterns whose existences are proved in this paper. Figure \ref{figintro} (a) shows that it is possible to have patterns where one species steps up and the other steps down, while moving right. Figure \ref{figintro} (b) shows a pattern where one species is bump like, while moving right. These two patterns occur when $r_1>1$ and $0<r_2<1$. Figure \ref{figintro} (c) shows a left-moving wave pattern that occurs only when $r_1<0$, $r_2<0$, and $r_1r_2>1$. In particular, this left-moving wave exists under the competition with interspecific fluxes whose coefficients are always $1$. Further interesting existence or nonexistence results are discussed in Section \ref{secnumdis}.
+% 
+% One observes 
+% 
+% {\blue
+% The most interesting features that are contrasted to the scalar Burgers' equation is the existence of the traveling wave solutions of patterns in the below.
+% 
+% FIGURE: Solitary wave in regime (4), oppsite pattern in regime (5)
+% 
+% In $r_1>0$, $r_2<0$, $r_1>1$ nonexistence
+% 
+% In $r_1>0$, $r_2<0$, $r_1<1$, interesting right going wave
+% 
+% In $r_1>0$, $r_2>0$, $r_1>1$, $r_2<1$, interesting right going wave.
+% 
+%  What is remarkable is the regime . n the contrary to the scalar Burgers' equation, 
+% 
+% What 
+% 
+% % 
+% %  Since $\beta_1>0$ and $\beta_2>0$, the interspecific fluxes will always flow toward right. Then whether the intraspecific flux contributions are constructive or destructive are termed upon this sign convention 
+% % % . decided by fixing signs of $\alpha_1$ and $\alpha_2$, 
+% % and 
+% 
+% 
+% 
+% 
+% 
+% % Our phase space analysis will be mostly elementary, while our existence or nonexistence results are consistent to intuitions or expectations and thus are suggestive. 
+% 
+% For instance, take the case $A_2$. Since $\alpha_1>0$, the first species must be right-moving and one cannot expect the left-moving traveling waves, which is consistent to our nonexistence result. What is more interesting is the nonexistence of right-moving traveling wave for $\alpha_1>\beta_2$. This sounds consistent because  the second species, struggling with destructive interaction due to negative sign of $\alpha_2$, may not keep up the pace with the first species in marching right, where $\alpha_1$ is not only positive but is greater than $\beta_2$. Two species then cannot go right at the same speed. 
+
+The remainder of the paper is organized as follows. We present our classification of $A$ into eight regimes in Section \ref{notions}. In Section \ref{trv}, we use the traveling wave ansatz, to derive and analyze the dynamical system \eqref{ode}. Moreover, equilibrium points are identified, and their local linear stabilities are specified for the phase space analysis we advance in the proof of Theorem \ref{main}. In Section \ref{mainthm}, we prove Theorem \ref{main}, establishing the  existence and nonexistence of traveling waves. Section \ref{secnumdis} contains a discussion of the results obtained in Theorem \ref{main}. We also provide a few selected examples of traveling waves that we capture numerically for the discussion.
+
+
+
+\section{Classification of Flux coefficients} \label{notions}
+%\subsection{Classifications of $A$}
+
+
+
+% we will see that in our study of existence or nonexistence of traveling wave solutions, such a multiscale feature does not play any relevant role. 
+
+Based on the sign conventions in \eqref{systemb}, because $\beta_1=1>0$ and $\beta_2=1>0$, the interspecific fluxes will always flow toward right. Then whether the intraspecific flux contributions are constructive or destructive are based on this sign convention. This observation yields the following classification:
+\begin{equation} \label{classifications}
+\begin{aligned}
+ R_1:= \left\{r_1<0, \quad r_2<0 \right\},\\ % \quad& \text{(destructive, destructive)},\\  
+ R_2:= \left\{r_1>0, \quad r_2<0 \right\},\\ % \quad& \text{(constructive, destructive)}, \\  
+ R_3:= \left\{r_1>0, \quad r_2>0 \right\}.% \quad& \text{(constructive, constructive)}.
+\end{aligned}
+\end{equation}
+The case $r_1<0$ and $r_2>0$ is omitted because we may switch the role of $u$ and $v$. The sign of $r_1$ (resp. $r_2$) can also be viewed from the two flux terms involving the species $u$ (resp. $v$). Because $\beta_2=1>0$, $u$ always contributes for $v$ to flow right. $u$ contributes for $u$ to flow right if $r_1>0$, and to left if $r_1<0$.
+
+The magnitude of $r_1$ (resp. $r_2$) relative to $1$ accounts for the relative strength of the effects mentioned above, compared with those of $\beta_1=\beta_2=1$.
+% The effects of sign of $r_1$ (resp. $r_2$) are seen as follows. First, the sign of $r_1$ can be viewed from the perspective of the term $u_t$. For the two flux terms in the first equation, since $\beta_1=1>0$, the interspecific fluxes will always flow toward right. Upon this sign convention, the intraspecific flux contribution for $u_t$ is constructive if $r_1>0$, and destructive if $r_1<0$. Second, the role of sign of $r_1$ can be viewed from the two flux terms involving the species $u$. Since $\beta_2=1>0$, $u$ always contributes for $v$ to flow right. $u$ contributes for $u$ to flow right if $r_1>0$, and to left if $r_1<0$. Magnitude of $r_1$ then accouns for how strong those effects are. 
+These observations and our phase space analysis yield the classifications into eight regimes. They are listed below with our interpretations.
+\begin{equation} \label{class2}
+\begin{aligned}
+ (A)&:\left\{(r_1, r_2) \in R_1 ~|~ r_1r_2> 1\right\} && \text{(intraspecific fluxes are dominant)},\\%\text{(dest., dest.)-intraspecific dominant},\\
+ (B)&:\left\{(r_1, r_2) \in R_1 ~|~ r_1r_2 < 1\right\} &&\text{(interspecific fluxes are dominant)},\\% \quad \text{(dest., dest.)-interspecific dominant},\\
+ (C)&:\left\{(r_1, r_2) \in R_2 ~|~ r_1> 1\right\} && \text{($u$ is too fast)}, \\% \quad \text{(const., dest.)-flux competitive}, \\
+ (D)&:\left\{(r_1, r_2) \in R_2 ~|~ r_1< 1\right\} && \text{($u$ is not too fast)},\\ % \quad \text{(const., dest.)-forward flux dominant}, \\  
+ (E)&:\left\{(r_1, r_2) \in R_3 ~|~ r_1>1, r_2 < 1\right\}&& \text{(role of $v$ is critical)},\\
+ (F)&:\left\{(r_1, r_2) \in R_3 ~|~ r_1<1, r_2 > 1\right\}&& \text{(role of $u$ is critical)},\\
+ (G)&:\left\{(r_1, r_2) \in R_3 ~|~ r_1> 1, r_2 > 1\right\}&& \text{(intraspecific fluxes are dominant)},\\% \quad \text{(const., const.)-intraspecific dominant},\\
+ (H)&:\left\{(r_1, r_2) \in R_3 ~|~ r_1<1, r_2 < 1\right\}&& \text{(interspecific fluxes are dominant)}.\\% \quad \text{(const., const.)-intraspecific dominant}, 
+\end{aligned}
+\end{equation}
+% \begin{equation} \label{class2}
+% \begin{aligned}
+%  A_{1-1}&:=\left\{(r_1, r_2) \in A_1 ~|~ r_1r_2> 1\right\} && \text{(intraspecific fluxes are dominant)},\\%\text{(dest., dest.)-intraspecific dominant},\\
+%  A_{1-2}&:=\left\{(r_1, r_2) \in A_1 ~|~ r_1r_2 < 1\right\} &&\text{(interspecific fluxes are dominant)},\\% \quad \text{(dest., dest.)-interspecific dominant},\\
+%  A_{2-1}&:=\left\{(r_1, r_2) \in A_2 ~|~ r_1> 1\right\} && \text{($u$ is too fast)}, \\% \quad \text{(const., dest.)-flux competitive}, \\
+%  A_{2-2}&:=\left\{(r_1, r_2) \in A_2 ~|~ r_1< 1\right\} && \text{($u$ is not too fast)},\\ % \quad \text{(const., dest.)-forward flux dominant}, \\  
+%  A_{3-1}&:=\left\{(r_1, r_2) \in A_3 ~|~ r_1>1, r_2 < 1\right\}&& \text{(role of $v$ is critical)},\\
+%  A_{3-2}&:=\left\{(r_1, r_2) \in A_3 ~|~ r_1<1, r_2 > 1\right\}&& \text{(role of $u$ is critical)},\\
+%  A_{3-3}&:=\left\{(r_1, r_2) \in A_3 ~|~ r_1> 1, r_2 > 1\right\}&& \text{(intraspecific fluxes are dominant)},\\% \quad \text{(const., const.)-intraspecific dominant},\\
+%  A_{3-4}&:=\left\{(r_1, r_2) \in A_3 ~|~ r_1<1, r_2 < 1\right\}&& \text{(interspecific fluxes are dominant)}.\\% \quad \text{(const., const.)-intraspecific dominant}, 
+% \end{aligned}
+% \end{equation}
+Cases with negative signs would be more interesting because it is unclear how right- or left-moving traveling waves can exist under flux competitions. 
+
+% \begin{rmk} \label{rmk1}
+%  In our formulation of \eqref{systemb}, the species $v$ is distinguished from the species $u$ in its scale of diffusion. Although we let $\epsilon$ be a parameter, this multiscale feature does not play any role in our study of traveling wave solutions. 
+% \end{rmk}
+\begin{rmk} \label{rmk2}
+ We also set the borderline cases
+ \begin{equation} \label{bordercases}
+B:= \left\{r_1=0, \quad \text{or} \quad r_2=0, \quad \text{or} \quad r_1r_2=1, \quad \text{or} \quad r_1=1, \quad\text{or} \quad r_2=1\right\}.
+\end{equation}
+We do not include any results for the borderline cases in this paper. 
+\end{rmk}
+
+
+
+
+% What matters are the signs of $r_1$ and $r_2$ and their maginitudes. The sign of $r_1$ can be viewed from the perspective of the term $u_t$. For the two flux terms in the first equation, since $\beta_1=1>0$, the interspecific fluxes will always flow toward right. The intraspecific flux contribution is constructive if $r_1>0$, and destructive if $r_1<0$. The sign of $r_1$ can also be viewed from the two flux terms involving the species $u$. Since $\beta_2=1>0$, $u$ always contributes for $v$ to flow right. $u$ contributes for $u$ to flow right if $r_1>0$, and to left if $r_1<0$. These observations lead us to the classification of $A$ of \eqref{systemb} into three regimes:
+%We consider a set $\mathcal{M} \subset \mathbb{R}^{2\times 2}$ of the form 
+%$\begin{pmatrix} r_1 & 1 \\ 1 & r_2 \end{pmatrix}.$
+
+% that is 
+% $$ \left\{ \begin{pmatrix} \alpha_1 & \beta_1 \\ \beta_2 & \alpha_2 \end{pmatrix} ~\Big|~ \beta_1>0, \quad \beta_2>0 \right\}$$
+% and we consider disjoint subsets of $\mathcal{M} $ of \eqref{systemb}:
+% \begin{equation} \label{classifications}
+% \begin{aligned}
+%  A_1:= \left\{r_1<0, \quad r_2<0 \right\} \quad& \text{(destructive, destructive)},\\  
+%  A_2:= \left\{r_1>0, \quad r_2<0 \right\} \quad& \text{(constructive, destructive)}, \\  
+%  A_3:= \left\{r_1>0, \quad r_2>0 \right\} \quad& \text{(constructive, constructive)}.
+% \end{aligned}
+% \end{equation}
+
+% The case $r_1<0$ and $r_2>0$ is omitted because we may switch the role of $u$ and $v$. 
+% It turns out that the further classficiation of $A$ into following subcases are useful.
+% \begin{equation} \label{class2}
+% \begin{aligned}
+%  A_{1-1}&:=\left\{r_1<0, \quad r_2<0, \quad r_1r_2> 1\right\} \\%\text{(dest., dest.)-intraspecific dominant},\\
+%  A_{1-2}&:=\left\{r_1<0, \quad r_2<0, \quad r_1r_2 < 1\right\} \\% \quad \text{(dest., dest.)-interspecific dominant},\\
+%  A_{2-1}&:=\left\{r_1>0, \quad r_2<0, \quad r_1< 1\right\} \\% \quad \text{(const., dest.)-flux competitive}, \\
+%  A_{2-2}&:=\left\{r_1>0, \quad r_2<0, \quad r_1\ge 1\right\}\\ % \quad \text{(const., dest.)-forward flux dominant}, \\  
+%  A_{3-1}&:=\left\{r_1>0, \quad r_2>0, \quad r_1> 1, \quad r_2 > 1\right\}\\% \quad \text{(const., const.)-intraspecific dominant},\\
+%  A_{3-2}&:=\left\{r_1>0, \quad r_2>0, \quad r_1<1, \quad r_2 < 1\right\}\\% \quad \text{(const., const.)-intraspecific dominant}, 
+%  A_{3-3}&:=A_3 \setminus \big(A_{3-1} \cup A_{3-2}\big)
+% \end{aligned}
+% \end{equation}
+% We also set
+% \begin{equation} \label{borderline}
+%    B_2:=\left\{ r_1r_2 = 1 \right\}, \quad B:=B_1\cup B_2
+% %  B_2:= \left\{r_1=0 \quad \text{or} \quad r_2=0 \quad \text{or} \quad r_1r_2 -1 = 0 \right\}.
+% \end{equation}
+% that will be treated separately. 
+% Of course, cases with destructive interaction would be more interesting since it is not clear how right or left-moving traveling waves can exist. 
+
+% \begin{equation} \label{class2}
+% \begin{aligned}
+%  \text{(case $A_{1-1}$)} \quad&r_1<0, \quad r_2<0, \quad r_1r_2> 1 \\%\text{(dest., dest.)-intraspecific dominant},\\
+%  \text{(case $A_{1-2}$)} \quad&r_1<0, \quad r_2<0, \quad r_1r_2 < 1 \\% \quad \text{(dest., dest.)-interspecific dominant},\\
+%  \text{(case $A_{2-1}$)} \quad&r_1>0, \quad r_2<0, \quad r_1< 1 \\% \quad \text{(const., dest.)-flux competitive}, \\
+%  \text{(case $A_{2-2}$)} \quad&r_1>0, \quad r_2<0, \quad r_1\ge 1\\ % \quad \text{(const., dest.)-forward flux dominant}, \\  
+%  \text{(case $A_{3-1}$)} \quad&r_1>0, \quad r_2>0, \quad r_1> 1, \quad r_2 > 1\\% \quad \text{(const., const.)-intraspecific dominant},\\
+%  \text{(case $A_{3-2}$)} \quad&r_1>0, \quad r_2>0, \quad r_1<1, \quad r_2 < 1\\% \quad \text{(const., const.)-intraspecific dominant}, 
+%  \text{(case $A_{3-3}$)} \quad&r_1>0, \quad r_2>0, \quad \text{Not in (case $A_{3-1}$), Not in (case $A_{3-2}$), Not in (case $B$)}
+% \end{aligned}
+% \end{equation}
+
+
+\begin{figure}[ht]
+ \centering
+ \psfrag{x}{$r_1$}
+ \psfrag{y}{$r_2$}
+ \psfrag{1}{$1$}
+ \psfrag{g}{\hskip -1.3cm$r_1r_2 = 1$}
+ \psfrag{h}{\hskip 0.1cm$r_1r_2 = 1$}
+ \psfrag{A}{\scriptsize$(A)$ }
+ \psfrag{B}{\scriptsize$(B)$ }
+ \psfrag{C}{\scriptsize$(C)$ }
+ \psfrag{D}{\scriptsize$(D)$ }
+ \psfrag{E}{\scriptsize$(E)$}
+ \psfrag{F}{\scriptsize$(F)$ }
+ \psfrag{G}{\scriptsize$(G)$}
+ \psfrag{H}{\scriptsize$(H)$}
+ \psfrag{I}{ }
+ \psfrag{J}{ }
+ \includegraphics[width=5cm]{regimes.eps}
+ \caption{Regions that correspond to regimes $(A)\sim(H)$ respectively are marked. The red curves $r_1=0$, $r_2=0$, $r_1=1$, $r_2=1$, and $r_1r_2=1$ divide $\mathbb{R}^2$ into disjoint open regions, comprising the border $B$ of \eqref{bordercases}.}
+\end{figure}
+
+
+\section{Traveling wave ansatz and configurations in phase plane} \label{trv}
+
+\subsection{The class $\mathcal{T}_{(0,0)}$ of traveling waves.}
+
+Using the traveling wave ansatz 
+$$u(t,x) = \bar{u}(x-ct), \quad v(t,x) = \bar{v}(x-ct), \quad \xi = x-ct$$ for \eqref{systemb}, we obtain the system of two odes,
+\begin{equation}\label{eq:3.1}
+\begin{aligned}
+&-c\bar{u}' + ( r_{1}\bar{u}^{2} + \bar{u}  \bar{v} )'- \bar{u}'' = 0, \\
+&-c\bar{v}' + ( r_{2}\bar{v}^{2} + \bar{u}  \bar{v} )' -\bar{v}'' =  0.
+\end{aligned}
+\end{equation}
+Integrating \eqref{eq:3.1}, we obtain
+\begin{equation}\label{eq:3.2}
+\begin{aligned}
+&-c\bar{u} + r_{1}\bar{u}^{2} + \bar{u}  \bar{v} + P = \bar{u}', \\
+&-c\bar{v} + r_{2}\bar{v}^{2} + \bar{u}  \bar{v} + Q = \bar{v}',
+\end{aligned}
+\end{equation}
+where $P$ and $Q$ are constants of integrations. Each of choices on $P$ and $Q$ will give rise to a class of traveling wave solutions, if exists. In the following, we introduce the class $\mathcal{T}_{(P,Q)}$ of traveling wave solutions of \eqref{systemb}.
+
+\begin{defn} \label{nontrivial} We say a solution $({u}(\xi),{v}(\xi))$ of \eqref{eq:3.2} is  bounded and  nontrivial if neither $u$ nor $v$ is a constant state and
+$$ \begin{pmatrix} u(\xi) \\ v(\xi) \end{pmatrix} \rightarrow \begin{pmatrix} u^- \\ v^- \end{pmatrix}, \quad \begin{pmatrix} u(\xi) \\ v(\xi) \end{pmatrix} \rightarrow \begin{pmatrix} u^+ \\ v^+ \end{pmatrix} \quad \text{respectively as $\xi \rightarrow -\infty$, and $\xi \rightarrow \infty$}$$
+ for some constants $u^-$, $v^-$, $u^+$, and $v^+$. The class $\mathcal{T}_{(P,Q)}$ of traveling wave solutions is the set of bounded and nontrivial solutions of \eqref{eq:3.2}. 
+\end{defn}
+In the above definition, the case where any of the species is identically constant is excluded because the system decouples. Our objective is to investigate the class $\mathcal{T}_{(0,0)}$ where we provisionally set $P=Q=0$. %Presently, this is a technical assumption.
+\begin{rmk}
+ {\red some sufficient but not too much explanation on $P$ and $Q$. Qualitative bifurcation explanation on wave patterns}
+\end{rmk}
+
+% \subsection{Bounded nontrivial traveling waves as heteroclinic orbits} 
+% We perform phase plane analysis to study various kinds of orbits. For each subcase $A_{i-j}^\pm$, we use the tuple $(i,j)$, $i,j=0,1,2,3$ to label a set of heteroclinic orbits or homoclinic orbits
+% $$ \left\{ \varphi(\xi) ~|~ \varphi(\xi) \rightarrow e_i \: \text{as $\xi \rightarrow -\infty$ and} \quad \varphi(\xi) \rightarrow e_j \: \text{as $\xi \rightarrow \infty$}\right\}$$
+% that emanate from the equilibrium $e_i$ and is attracted to the equilibrium $e_j$ as $\xi$ proceeds in forward direction to $+\infty$ if exists. As a matter of fact, it turns out that no homoclinic orbit appear in any of cases.%, and $(i,j)$ consists of only one orbit if nonempy.
+
+
+\subsection{Equilibrium and linear stability}
+
+In this section we consider 
+\begin{equation}\label{ode}
+\begin{aligned}
+{u}' &= -c{u} + r_{1}{u}^{2} + {u}  {v},   \\
+{v}' &=-c{v} + r_{2}{v}^{2} + {u}  {v}.
+\end{aligned}
+\end{equation}
+For \eqref{ode}, we have two $u$-nullclines 
+$$u\equiv0, \quad -c + r_1 u + v = 0,$$
+and two $v$-nullclines 
+$$v\equiv0, \quad -c + r_2 v + u = 0.$$
+Assuming 
+\begin{equation} \label{notborderline}
+ r_1 \ne 0, \quad r_2\ne0, \quad r_1r_2-1 \ne 0
+\end{equation}
+as in Remark \ref{rmk2}, nullclines are pairwise unparallel, and there are exactly four equilibrium points:
+\begin{equation*}
+e_{0} = (0,0), \; e_{1} = \left( \frac{c}{r_{1}}, 0 \right), \;
+e_{2} = \left( 0, \frac{c}{r_{2}} \right), \;
+e_{3}= \left( \frac{1-r_{2}}{1-r_{1}r_{2}}c,
+\frac{1-r_{1}}{1-r_{1}r_{2}}c\right) .
+\end{equation*}
+Let $J(u_*,v_*)$ be the coefficient matrix of the linearized problem around an equilibrium point $(u_*,v_*)$. Two eigenvalues and associated eigenvectors $\lambda_i$, $\xi_i$, $i=1,2$ are computed as follows:
+\begin{enumerate}
+\item[(1)]At $(u_{\ast},v_{\ast})= e_0: \quad\quad J(u_{\ast},v_{\ast}) =
+\begin{pmatrix} -c & 0 \\  0 & -c \end{pmatrix}$, 
+\begin{align*}
+\lambda_1=\lambda_2 = -c, &  & \text{any nonzero vector is an eigenvector}.
+\end{align*}
+\item[(2)] At $(u_{\ast},v_{\ast})= e_1: \quad\quad J(u_{\ast},v_{\ast}) = \frac{1}{r_{1}} \begin{pmatrix} r_{1}c & c \\ 0 & (1-r_{1})c \end{pmatrix}$,
+\begin{align*}
+\lambda_1=c, \quad \lambda_2 = \frac{1-r_{1}}{r_{1}}c, & & 
+\xi_{1}= \begin{pmatrix} 1 \\ 0\end{pmatrix}, \quad\xi_{2}= \begin{pmatrix} 1 \\ 1 - 2r_{1} \end{pmatrix}.
+\end{align*}
+\item[(3)] At $(u_{\ast},v_{\ast})= e_2: \quad\quad J(u_{\ast},v_{\ast}) = \frac{1}{r_{2}}
+\begin{pmatrix}
+(1 - r_{2})c & 0 \\
+c & r_{2}c
+\end{pmatrix}$,
+\begin{align*}
+ \lambda_{1}=c, \quad \lambda_{2}=\frac{1-r_{2}}{r_{2}}c, && \xi_{1}=
+\begin{pmatrix} 0 \\1\end{pmatrix}, \quad \xi_{2}= \begin{pmatrix}1 - 2r_{2} \\ 1 \end{pmatrix}
+\end{align*}
+\item[(4)] At $(u_{\ast},v_{\ast})= e_3: \quad \quad J(u_{\ast},v_{\ast}) 
+%\begin{pmatrix}
+% (2r_{1}u_{\ast} + \beta_{1}v_{\ast}) - (r_{1}u_{\ast} + \beta_{1}v_{\ast}) & \beta_{1}u_{\ast} \\
+% \beta_{2}v_{\ast} & (2r_{2}v+_{\ast} \beta_{2}u_{\ast}) - (r_{2}v_{\ast} + \beta_{2}u_{\ast})
+% \end{pmatrix} \\
+=
+\begin{pmatrix}
+r_{1}u_{\ast} & u_{\ast} \\
+v_{\ast} & r_{2}v_{\ast}
+\end{pmatrix}.
+$
+\begin{align*}
+ \lambda_{1}=c, \quad \lambda_{2}=- \frac{(1-r_{2})(1-r_{1})}{(1-r_{1}r_{2})}c, && \xi_{1}=
+\begin{pmatrix}
+1 - r_{2} \\
+1 - r_{1}
+\end{pmatrix} \quad \xi_{2}=
+\begin{pmatrix}
+1 \\
+-1
+\end{pmatrix}.
+\end{align*}
+\end{enumerate}
+\begin{rmk}
+ For parameters out of borderline cases in Remark \ref{rmk2}, and for $c \ne 0$, the four equilibrium points are always hyperbolic. Centers can appear for the borderline cases and for $c=0$.
+\end{rmk}
+
+We are interested in the configuration of the four equilibrium points in the phase plane $\mathbb{R}^2$ and their belonging to the first quadrant $Q_1:=\{(u,v)~|~ u\ge 0, \: v\ge0\}$. These are determined by $r_1$, $r_2$, and $c$. Each of the cases $A_{i-j}$ in \eqref{class2} is further divided into $A_{i-j}^+$ and $A_{i-j}^-$ respectively, corresponding to the right-moving speed $c>0$ and left-moving speed $c<0$. Overall, we consider sixteen subcases. %In the below, we denote the set $\{(x,y)~|~ x\ge 0, \: y\ge0\}$ as $Q_1$. 
+
+Configurations in the first quadrant for the sixteen subcases are listed in Table \ref{table1}. In Figure \ref{config} are illustrations of the configurations. Blue lines denote the two $u$-nullclines, and green lines denote the two $v$-nullclines. Equilibrium points are marked red: red disks are  stable nodes, red cross marks are unstable nodes, and red triangles are saddles. For saddle points relevant to our proof of Theorem \ref{main}, local behavior around the point is depicted by arrows that express the eigenvectors. These sketches are justified by the Hartman-Grobman Theorem. 
+
+\renewcommand{\arraystretch}{1.5}
+ \medskip
+ \begin{table}[ht]
+ \centering
+ \begin{tabular}{|c|c|c|c|c|}
+\hline
+& type of $e_0$ & type of $e_1$ & type of $e_2$ & type of $e_3$ \\
+& if exists in $Q_1$ & if exists in $Q_1$ & if exists in $Q_1$ & if exists in $Q_1$\\
+\hline
+$A^+_{1-1}$ & stable & - & - & - \\
+\hline
+$A^+_{1-2}$ & stable & - & - & saddle \\
+\hline
+$A^+_{2-1}$ & stable & saddle & - & - \\
+\hline
+$A^+_{2-2}$ & stable & unstable & - & saddle \\
+\hline
+$A^+_{3-1}$ & stable & saddle & unstable & - \\
+\hline
+$A^+_{3-2}$ & stable & unstable & saddle & - \\
+\hline
+$A^+_{3-3}$ & stable & saddle & saddle & unstable \\
+\hline
+$A^+_{3-4}$ & stable & unstable & unstable & saddle \\
+\hline
+$A^-_{1-1}$ & unstable & saddle & saddle & stable \\
+\hline
+$A^-_{1-2}$ & unstable & saddle & saddle & - \\
+\hline
+$A^-_{2-1}$ & unstable & - & saddle & - \\
+\hline
+$A^-_{2-2}$ & unstable & - & saddle & - \\
+\hline
+$A^-_{3-1}$ & unstable & - & - & - \\
+\hline
+$A^-_{3-2}$ & unstable & - & - & - \\
+\hline
+$A^-_{3-3}$ & unstable & - & - & - \\
+\hline
+$A^-_{3-4}$ & unstable & - & - & - \\
+\hline
+\end{tabular}
+\medskip
+\caption{Configurations of equilibrium points in the first quadrant.} \label{table1}
+\end{table}
+For each of regimes, we took an instance with suitable parameter values, and computed the vector fields in the first quadrant in Figure \ref{vectors}, which supports the sketches in Figure \ref{config}.
+
+% \newpage
+% 
+% \begin{figure}[ht]
+%  \psfrag{e1}{\scriptsize $\tfrac{c}{r_1}$}  \psfrag{e2}{\scriptsize$\tfrac{c}{r_2}$}  
+%  \psfrag{c}{\scriptsize$c$}  \psfrag{d}{}  \psfrag{u}{\scriptsize$u$}  \psfrag{v}{\scriptsize$v$}
+%  \subfigure[$A_{1-1}^+$]{ \includegraphics[width=3.5cm]{case1.eps} }
+%  \subfigure[$A_{1-2}^+$]{ \includegraphics[width=3.5cm]{case2.eps} }
+%  \subfigure[$A_{2-1}^+$]{ \includegraphics[width=3.5cm]{case3.eps} }  \\ 
+%  \subfigure[$A_{2-2}^+$]{ \includegraphics[width=3.5cm]{case4.eps} }
+%  \subfigure[$A_{3-1}^+$]{ \includegraphics[width=3.5cm]{case5.eps} }
+%  \subfigure[$A_{3-2}^+$]{ \includegraphics[width=3.5cm]{case6.eps} }  \\ 
+%  \subfigure[$A_{3-3}^+$]{ \includegraphics[width=3.5cm]{case7.eps} } 
+%  \subfigure[$A_{3-4}^+$]{ \includegraphics[width=3.5cm]{case8.eps} }
+%  \subfigure[$A_{1-1}^-$]{ \includegraphics[width=3.5cm]{case9.eps} } \\ 
+%  \subfigure[$A_{1-2}^-$]{ \includegraphics[width=3.5cm]{case10.eps} }
+%  \subfigure[$A_{2-1}^- \cup A_{2-2}^-$]{ \includegraphics[width=3.5cm]{case11.eps} }
+%  \subfigure[$A_{3-1}^- \cup A_{3-2}^- \cup A_{3-3}^- \cup A_{3-4}^-$]{ \includegraphics[width=3.6cm]{case12.eps} }
+%  \caption{Configuration of equilibrium points and nullclines in each of regimes.}\label{config} 
+% \end{figure}
+\newpage
+
+\begin{figure}[ht]
+\setcounter{subfigure}{0}
+\subfigure[$A_{1-1}^+$]
+{\includegraphics[width=4.1cm]{figa.eps}} 
+\subfigure[$A_{1-2}^+$]
+{\includegraphics[width=4.1cm]{figb.eps}} 
+\subfigure[$A_{2-1}^+$]
+{\includegraphics[width=4.1cm]{figc.eps}} \\
+\subfigure[$A_{2-2}^+$]
+{\includegraphics[width=4.1cm]{figd.eps}} 
+\subfigure[$A_{3-1}^+$]
+{\includegraphics[width=4.1cm]{fige.eps}}
+\subfigure[$A_{3-2}^+$]
+{\includegraphics[width=4.1cm]{figf.eps}} \\
+% \subfigure[(12)]
+% {\includegraphics[width=3.7cm]{6.eps}} \quad
+\subfigure[$A_{3-3}^+$]
+{\includegraphics[width=4.1cm]{figg.eps}} 
+\subfigure[$A_{3-4}^+$]
+{\includegraphics[width=4.1cm]{figh.eps}} 
+\subfigure[$A_{1-1}^-$]
+{\includegraphics[width=4.1cm]{figi.eps}} \\
+\subfigure[$A_{1-2}^-$]
+{\includegraphics[width=4.1cm]{figj.eps}} 
+\subfigure[$A_{2-1}^- \cup A_{2-2}^-$]
+{\includegraphics[width=4.1cm]{figk.eps}} 
+\subfigure[$A_{3-1}^- \cup A_{3-2}^- \cup A_{3-3}^- \cup A_{3-4}^-$]
+{\includegraphics[width=4.1cm]{figl.eps}}
+\caption{Vector fields for each of regimes}\label{config}
+\end{figure}
+\medskip
+
+\section{Existence and Nonexistence of traveling waves in class $\mathcal{T}_{(0,0)}$} \label{mainthm}
+
+In this section, we present our results of phase space analysis. The arguments in the proof are not entirey ours because the vector field of \eqref{ode} is simply quadratic, which are found in a typical undergraduate textbook for introductory dynamical systems. Nevertheless, we investigate the existence and nonexistence results that gives the complete characterization of behaviors that uccur in the first quadrant $\{(u,v) \in \mathbb{R}^2 ~|~ u >0, v>0\}$. These results for the regimes are collected at once in our theorem.
+
+
+\begin{theorem} \label{main} In the class $\mathcal{T}_{(0,0)}$, we have the following existence or nonexistence of traveling waves.
+
+\begin{enumerate}
+ \item Case $A_{1-1}^+$ ($r_1<0$, $r_2<0$, $r_1r_2>1$, $c>0$):
+ \begin{enumerate}
+  \item (Nonexistence) $\mathcal{T}_{(0,0)}$ is empty.
+%  \item blabla
+ \end{enumerate}
+ \item Case $A_{1-2}^+$ ($r_1<0$, $r_2<0$, $r_1r_2<1$, $c>0$):
+ \begin{enumerate}
+  \item (Existence) There exists the heteroclinic orbit joining the saddle point $e_3$ and stable node $e_0$
+  \item (Nonexistence) There exists no other elements in $\mathcal{T}_{(0,0)}$.
+ \end{enumerate}
+ \item Case $A_{2-1}^+$ ($r_1>0$, $r_2<0$, $r_1 >1$, $c>0$):
+ \begin{enumerate}
+  \item (Nonexistence) $\mathcal{T}_{(0,0)}$ is empty.
+%  \item blabla
+ \end{enumerate}
+ \item Case $A_{2-2}^+$  ($r_1>0$, $r_2<0$, $r_1<1$, $c>0$):
+ \begin{enumerate}
+  \item (Existence) There exists a heteroclinic orbit joining the unstable node $e_1$ and saddle point $e_3$. 
+  \item (Existence) There exists a heteroclinic orbit joining the saddle point $e_3$ and stable node $e_0$
+  \item (Existence) There exists a 1-parameter family of orbits joining the unstable node $e_1$ and stable node $e_0$.
+  \item (Nonexistence) There exists no other elements in $\mathcal{T}_{(0,0)}$.
+ \end{enumerate}
+ \item Case $A_{3-1}^+$ ($r_1>0$, $r_2>0$, $r_1 >1$, $r_2<1$, $c>0$):
+ \begin{enumerate}
+   \item (Existence) There exists a heteroclinic orbit joining the unstable node $e_2$ and saddle point $e_1$.
+   \item (Existence) There exist a 1-parameter family of heteroclinic orbits joining the unstable node  $e_2$ and stable node $e_0$.
+  \item (Nonexistence) There exists no other elements in $\mathcal{T}_{(0,0)}$.
+ \end{enumerate}
+ \item Case $A_{3-2}^+$ ($r_1>0$, $r_2>0$, $r_1 <1$, $r_2>1$, $c>0$):
+ \begin{enumerate}
+   \item (Existence) There exists a heteroclinic orbit joining the unstable node $e_1$ and saddle point $e_2$.
+   \item (Existence) There exist a 1-parameter family of heteroclinic orbits joining the unstable node  $e_1$ and stable node $e_0$.
+  \item (Nonexistence) There exists no other elements in $\mathcal{T}_{(0,0)}$.
+ \end{enumerate} 
+ \item Case $A_{3-3}^+$ ($r_1>0$, $r_2>0$, $r_1>1$, $r_2>1$, $c>0$):
+ \begin{enumerate}
+ \item (Existence) There exists a heteroclinic orbit joining the unstable node $e_3$ and saddle point $e_1$.
+ \item (Existence) There exists a heteroclinic orbit joining the unstable node $e_3$ and saddle point $e_2$.
+ \item (Existence) There exists a 1-parameter family of heteroclinic orbits joining the unstable node $e_3$ and stable node $e_0$.
+ \item (Nonexistence) There exists no other elements in $\mathcal{T}_{(0,0)}$.
+ \end{enumerate}
+ \item Case $A_{3-4}^+$ ($r_1>0$, $r_2>0$, $r_1<1$, $r_2<1$, $c>0$):
+ \begin{enumerate}
+ \item (Existence) There exists a heteroclinic orbit joining the unstable node $e_1$ and saddle point $e_3$.
+ \item (Existence) There exists a heteroclinic orbit joining the unstable node $e_2$ and saddle point $e_3$.
+ \item (Existence) There exists a heteroclinic orbit joining the saddle point $e_3$ and stable node $e_0$.
+ \item (Existence) There exists a 1-parameter family of heteroclinic orbits joining the unstable node $e_1$ and stable node $e_0$.
+ \item (Existence) There exists a 1-parameter family of heteroclinic orbits joining the unstable node $e_2$ and stable node $e_0$.
+ \item (Nonexistence) There exists no other elements in $\mathcal{T}_{(0,0)}$. 
+ \end{enumerate}
+ \item Case $A_{1-1}^-$ ($r_1<0$, $r_2<0$, $r_1r_2>1$, $c<0$):
+\begin{enumerate}
+ \item (Existence) There exists a heteroclinic orbit joining the saddle point $e_1$ and stable node $e_3$.
+ \item (Existence) There exists a heteroclinic orbit joining the saddle point $e_2$ and stable node $e_3$.
+ \item (Existence) There exists a 1-parameter family of heteroclinic orbits joining the unstable node $e_0$ and stable node $e_3$.
+ \item (Nonexistence) There exists no other elements in $\mathcal{T}_{(0,0)}$.
+\end{enumerate}
+ \item Case $A_{1-2}^-$ ($r_1<0$, $r_2<0$, $r_1r_2<1$, $c<0$):
+ \begin{enumerate}
+  \item (Nonexistence) $\mathcal{T}_{(0,0)}$ is empty.
+ \end{enumerate}
+\item Case $A_{2}^- \cup A_3^-$ ($r_1>0$, $c<0$):
+ \begin{enumerate}
+  \item (Nonexistence) $\mathcal{T}_{(0,0)}$ is empty.
+ \end{enumerate}
+\end{enumerate}
+
+% Assume $A \in A_{1-1}$.
+% 
+%  For $A_{1-1}^+$ case, there exist heteroclinic orbits of type
+%  $$ (i,j), \quad(i,j), \quad (i,j)$$
+%  and no other bounded and nontrivial solutions in $\mathcal{T}_{(0,0)}$.
+%  
+%  For $A_{1-1}^-$ case, there exist heteroclinic orbits of type
+%  $$ (i,j), \quad, (i,j), \quad (i,j)$$
+%  and no other bounded and nontrivial solutions in $\mathcal{T}_{(0,0)}$..
+\end{theorem}
+
+The following lemma is an application of the Poincar\'e-Bendixson Theorem we repeatedly use.
+\begin{lemma} \label{pb} Suppose that $\Lambda$ is a positively invariant set containing a finite number of equilibrium points for the flow \eqref{ode}, and that there is no equilibrium point in $\ii \Lambda$. If the forward orbit trajectory passing a point $(u_0,v_0) \in \ii \Lambda$ is a compact set $K \subset \Lambda$, then the $\omega$-limit set of the point $(u_0,v_0)$ is an equilibrium point.
+
+
+% Suppose $\Lambda$ is a compact positively invariant set containing a finite number of equilibrium points for the flow  \eqref{ode}. 
+% \begin{enumerate}
+%   \item Every equilibrium point in $\Lambda$ is hyperbolic.
+%   \item There is no equilibrium point in the interior of $\Lambda$.
+%   \item If $e$ in $\Lambda$ is a saddle point, either its stable manifold with $\{e\}$ deleted does not intersect $\Lambda$, or its stable manifold in $\Lambda$ consists of heteroclinic orbits each of which connects $e$ and an unstable node in $\Lambda$.
+%  \end{enumerate}
+% Then the $\omega$-limit set of a point $(u_0,v_0) \in \ii \Lambda$ is an equilibrium point.
+\end{lemma}
+\begin{proof}
+%Since $\Lambda$ is positively invariant, the $\omega$-limit set of $(u_0,v_0)$ is contained in the compact set $\Lambda$. 
+By assumptions, the $\omega$-limit set of $(u_0,v_0)$ is nonempty and is a subset of $K$. For our system \eqref{ode}, we employ the version of Poincar\'e-Bendixson Theorem for an analytic system (Theorem 3 in \cite{perko_differential_2001}, p.245), to conclude that the $\omega$-limit set is either an equilibrium point or a periodic orbit, or a union of separatrix cycles. In particular, when the last is the case, the index is well-defined on each separatrix cycle. (See p.245, p.303 in \cite{perko_differential_2001}.) If the $\omega$-limit set is a periodic orbit or contains a separatrix cycle, then there is an equilibrium point in the interior of the set enclosed by the periodic orbit or the separatrix cycle. % that lies in $\ii \Lambda$. 
+This contradicts the assumption. 
+% 
+% 
+% 
+% 
+% and Poincar\'e-Bendixson Theorem for analytic system (See Perko),  and is either an equilibrium point or a periodic orbit, or a union of separatrix cycles. The latter two cannot be the case for the following reasons: If the $\omega$-limit set is a periodic orbit, or an union of separatrix cycles, then the index over the periodic orbit or the separatrix cycle in the limit set is defined (See p.245, p.303 in Perko) and is $1$. Then there is an equilibrium point in the interior of the set enclosed by either a periodic orbit or a separatrix cycle, % If any separatrix cycle is assumed, it cannot include nodes. If $e$ is a saddle in $\Lambda$, any trajectories whose $\omega$-limit set is $\{e\}$ is contained in the stable manifold of $e$. If every such trajectory is connected to an unstable node, the point cannot be included in a separatrix cycle. If every such trajectories with $\{e\}$ deleted does not intersect $\Lambda$, then the point cannot be included in a separatrix cycle. Therefore there is no separatrix cycle in $\Lambda$.
+\end{proof}
+
+To claim the heteroclinic orbits for some cases, the reversed flow of \eqref{ode} is considered, that is
+\begin{equation}\label{barode}
+\begin{aligned}
+ \tilde{u}' &=c\tilde{u} - r_{1}\tilde{u}^{2} - \tilde {u} \tilde{v}\\
+ \tilde{v}' &=c\tilde{v} - r_{2}\tilde{v}^{2} - \tilde{u} \tilde{v}
+\end{aligned}
+\end{equation} 
+with state variables $\big(\tilde u(\xi), \tilde v(\xi)\big) = \big(u(-\xi),v(-\xi)\big)$. 
+
+
+
+\begin{proof}[\textbf{Proof of Theorem}] In the proof of each case from (1) to (11), symbols for the constants $\delta_0$, $\delta_1$, $\cdots$, and sets $C$, $D$, $\cdots$ will denote different quantities for simplicity. We use the invariance of the first quadrant $Q_1$ both positively and negatively and will omit its mention subsequently. 
+
+\bigskip
+
+\textbf{(1) \boldmath case $r_1<0$, $r_2<0$, $r_1r_2>1$, $c>0$}
+
+\bigskip
+(Nonexistence) We claim that every orbit with the initial state in $\ii Q_1$ becomes unbounded as $\xi \rightarrow -\infty.$ We use the reversed flow using states $(\tilde u, \tilde v)$. We have that
+\begin{align*}
+  (\tilde u+\tilde v)' &= - q_A(\tilde u ,\tilde v) + c(\tilde u+\tilde v) \ge c(\tilde u+\tilde v) 
+ \end{align*}
+because $q_A(\tilde u, \tilde v) = (\tilde u, \tilde v) \begin{pmatrix} r_1 & 1 \\ 1 & r_2 \end{pmatrix}\begin{pmatrix} \tilde u \\ \tilde v \end{pmatrix} \le 0$.
+% Since $Q_1$ is invariant region, if $(\tilde u, \tilde v)(\tilde \xi_0) \in \ii Q_1$ then we have $\|(\tilde u, \tilde v)\| \rightarrow \infty$ as $\tilde\xi \rightarrow \infty$.  
+\bigskip
+
+\textbf{(2) \boldmath case $r_1<0$, $r_2<0$, $r_1r_2<1$, $c>0$}
+
+\bigskip
+(Existence) 1. We first claim the heteroclinic orbit joining the saddle point $e_3$ and stable node $e_0$. The unstable manifold of $e_3$ is tangent to the vector $\begin{pmatrix} 1-r_2 \\ 1-r_1 \end{pmatrix}$ at $e_3$, and the stable manifold of $e_3$ is tangent to $\begin{pmatrix} 1 \\ -1 \end{pmatrix}$ at $e_3$. By the assumptions we have the following inequalities among inverse slopes
+\begin{equation} \label{rel2}
+ -1<0<-r_2 < \frac{1-r_2}{1-r_1} < -\frac{1}{r_1}.
+\end{equation}
+Hence, the unstable manifold is continued into the interior of the closed set $C$ enclosed by two nullclines and $u$,$v$ axes that is positively invariant. Let $(u_0,v_0)$ be a point on the unstable manifold in the $\ii C$. We show that the $\omega$-limit set of $(u_0,v_0)$ is $\{e_0\}$. To this end, we verify that $e_3$ is a saddle point in $C$ and the intersection of $C$ and the stable manifold of $e_3$ with $e_3$ deleted is empty. This is because of \eqref{rel2} and the positive invariance of $C$. By Lemma \ref{pb}, the $\omega$-limit set is an equilibrium point but it cannot be $\{e_3\}$ for the reason right above. Hence it must be $\{e_0\}$.
+
+(Nonexistence) 2. Now, consider a set $$D:= \left\{ (u,v)\in Q_1 ~|~ -c+r_1 u + v \ge 0, \quad \text{and} \quad -c + r_2v +u \ge 0\right\}$$
+that is positively invariant. By \eqref{rel2} again, the unstable manifold of $e_3$ is continued into the interior of $D$. This orbit must be unbounded as $\xi \rightarrow \infty.$ Suppose not. Then the orbit trajectory is contained in a compact subset of $D$. By Lemma \ref{pb}, its $\omega$-limit set must be nonempty that is an equilibrium point. We verify that $e_3$ is a saddle point in $D$ and the intersection of $D$ and the stable manifold of $e_3$ with $e_3$ deleted is empty. Therefore, $\{e_3\}$ is not the $\omega$-limit set but there is no other equilibrium in $D$. We conclude that the orbit trajectory is unbounded.
+
+3. The unstable manifold of $e_3$ partitions $Q_1$ into two closed positively invariant set $E_1$ and $E_2$ whose common boundary is the unstable manifold of $e_3$. Consider any orbit in $\ii E_1$. We claim that the orbit is unbounded as $\xi \rightarrow -\infty$. Suppose not. Then the backward orbit trajectory is contained in a compact subset of $E_1$. By Lemma \ref{pb}, its $\alpha$-limit set must be nonempty that is an equilibrium point. We verify that $e_0$ is a stable node; $e_3$ is a saddle point but there is no orbit in $E_1$ whose $\alpha$-limit set is $e_3$ other than the unstable manifold on $\partial E_1$. Therefore, neither $\{e_3\}$ nor $\{e_0\}$ is the $\alpha$-limit set  but there is no other equilibrium in $E_1$. We conclude that the orbit trajectory is unbounded. Unboundedness in $E_2$ is done similarly.
+\bigskip
+
+
+\textbf{(3) \boldmath case $r_1>0$, $r_2<0$, $r_1 >1$, $c>0$}
+
+\bigskip
+(Nonexistence) We claim that every state in $\ii Q_1$ becomes unbounded as $\xi \rightarrow -\infty.$ We use the reversed flow using states $(\tilde u, \tilde v)$. Since $r_1>1$ we can take $\delta_0>0$ and $u_0$  such that $\frac{c}{r_1} + \delta_0 \le u_0 \le c-\delta_0$. Then
+$$ \tilde u \ge u_0 \quad \Longrightarrow \quad \tilde u' = \tilde u (c-r_1\tilde u -\tilde v) \le -r_1\delta_0 \tilde u.$$
+Therefore $\ii Q_1$ is attracted to the set $C:=\left\{(\tilde u , \tilde v) \in \ii Q_1 ~|~ \tilde u\le u_0\right\}$ and $C$ is positively invariant. Now,
+$$ \tilde u \le u_0 \quad \Longrightarrow \quad \tilde v' = \tilde v(c-r_2\tilde v - \tilde u) \ge \delta_0 \tilde v$$
+and thus claim follows.
+\bigskip
+
+\textbf{(4) \boldmath case  $r_1>0$, $r_2<0$, $r_1<1$, $c>0$}
+
+\bigskip
+(Existence) 1. We first claim the heteroclinic orbit joining the saddle point $e_3$ and unstable node $e_1$. The unstable manifold of $e_3$ is tangent to the vector $\begin{pmatrix} 1-r_2 \\ 1-r_1 \end{pmatrix}$ at $e_3$, and the stable manifold of $e_3$ is tangent to $\begin{pmatrix} 1 \\ -1 \end{pmatrix}$ at $e_3$. By the assumptions we have inequalities among inverse slopes
+\begin{equation}\label{rel4} -\frac{1}{r_1} < -1 < 0< -r_2 < \frac{1-r_2}{1-r_1}. \end{equation}
+Therefore the stable manifold of $e_3$ is continued into interior of 
+the closed set $C$ enclosed by two nullclines and $u$-axis that is negatively invariant. Let $(u_0,v_0)$ be a point on the stable manifold of $e_3$ in the $\ii C$. We show that the $\alpha$-limit set of $(u_0,v_0)$ is $\{e_1\}$. To this end, we verify that $e_3$ is a saddle point in $C$ and the intersection of $C$ and the unstable manifold of $e_3$ with $e_3$ deleted is empty. This is because of \eqref{rel4} and the negative invariance of $C$. By Lemma \ref{pb}, the $\alpha$-limit set is an equilibrium point but it cannot be $\{e_3\}$ for the reason right above. Hence it must be $\{e_1\}$.
+
+2. Next, we claim the heteroclinic orbit joining the saddle point $e_3$ and the stable node $e_0$. Using again \eqref{rel4}, the unstable manifold of $e_3$ is continued into interior of the closed set $D$ enclosed by two nullclines and $u,v$ axes that is positively invariant. Let $(u_1,v_1)$ be a point on the unstable manifold in the $\ii D$. We verify that $e_3$ is a saddle point in $D$ and the intersection of $D$ and the stable manifold of $e_3$ with $e_3$ deleted is empty. This is because of \eqref{rel4} and the positive invariance of $D$. By Lemma \ref{pb}, the $\omega$-limit set is an equilibrium point but it cannot be $\{e_3\}$ for the reason right above. Hence it must be $\{e_0\}$.
+
+
+3. Now let $E$ be the closed set enclosed by $u$-axis and the two heteroclinic orbits we have captured in the above that is invariant. We show that $\ii E$ is in the intersection of the stable manifold of $e_0$ and the unstable manifold of $e_1$. To this end, we verify that $e_0$ is a stable node; $e_1$ is an unstable node; $e_3$ is a saddle point and there is no orbit in $E$ whose $\alpha$-limit set or $\omega$-limit set is $e_3$ other than the two heteroclinic orbits on $\partial E$. Therefore we conclude that $\alpha$-limit set of any $(u_2,v_2) \in\ii E$ is $\{e_1\}$ and $\omega$-limit set of the point is $\{e_0\}$.
+
+(Nonexistence) 4. Now, consider a set $$F:= \left\{ (u,v)\in Q_1 ~|~ -c+r_1 u + v \ge 0, \quad \text{and} \quad -c + r_2v +u \ge 0\right\}$$ that is positively invariant. By \eqref{rel2} again, the unstable manifold is continued into the interior of $F$. This orbit must be unbounded as $\xi \rightarrow \infty.$ Suppose not. Then the forward orbit trajectory is contained in a compact subset of $F$. By Lemma \ref{pb}, its $\omega$-limit set must be nonempty that is an equilibrium point. We verify that $e_1$ is unstable; $e_3$ is a saddle point but the intersection of $F$ and the stable manifold of $e_3$ with $e_3$ deleted is empty. Therefore, neither $\{e_1\}$ nor $\{e_3\}$ is the $\omega$-limit set  but there is no other equilibrium in $F$. We conclude that the orbit trajectory is unbounded.
+
+5. Let $G:= \cl\big(\ii Q_1 \setminus E\big)$ that is invariant. $G$ is partitioned into two closed positively invariant set $G_1$ and $G_2$ whose common boundary is the unstable manifold $e_3$ in $F$. Let $G_1$ be the one intersects $u$-axis. Consider any orbit in $\ii G_1$. We claim that the orbit is unbounded as $\xi \rightarrow \infty$. Suppose not. Then the forward orbit trajectory is contained in a compact subset of $G_1$. By Lemma \ref{pb}, its $\omega$-limit set must be nonempty that is an equilibrium point. We verify that $e_1$ is unstable; $e_3$ is a saddle but there is no orbit in $G_1$ whose $\omega$-limit set is $e_3$ other than the heteroclinic on $\partial G_1$. Therefore, neither $\{e_1\}$ nor $\{e_3\}$ is the $\omega$-limit set but there is no other equilibrium in $G_1$. We conclude that the orbit trajectory is unbounded. 
+
+6. Consider any orbit in $\ii G_2$. We claim that the orbit is unbounded as $\xi \rightarrow -\infty$. Suppose not. Then the backward orbit trajectory is contained in a compact subset of $G_2$. By Lemma \ref{pb}, its $\alpha$-limit set must be nonempty that is an equilibrium point. We verify that $e_0$ is stable; $e_3$ is a saddle but there is no orbit in $G_2$ whose $\alpha$-limit set is $e_3$ other than the unstable manifold of $e_3$ on $\partial G_2$. Therefore, the $\alpha$-limit set is neither $\{e_0\}$ nor $\{e_3\}$ but there is no other equilibrium in $G_2$. We conclude that the orbit trajectory is unbounded. 
+\bigskip
+
+\textbf{(5) \boldmath case $r_1>0$, $r_2>0$, $r_1 >1$, $r_2<1$, $c>0$}
+
+\bigskip
+(Existence) 1. We first claim the heteroclinic orbit joining the unstable node $e_2$ and saddle point $e_1$. The unstable manifold of $e_1$ is tangent to the $u$-axis at $e_1$, and the stable manifold of $e_1$ is to $\begin{pmatrix} 1 \\ 1-2r_1 \end{pmatrix}$ at $e_1$. By assumptions it holds that
+\begin{equation}\label{rel5} -\infty< -\frac{1}{r_1} < \frac{1}{1-2r_1}. \end{equation}
+Therefore the stable manifold of $e_1$ is continued into interior of the closed set $C$ that is enclosed by the two nullclines and $u$,$v$ axes, and $C$ is negatively invariant. Let $(u_0,v_0)$ be a point on the stable manifold in the $\ii C$. We show that the $\alpha$-limit set of $(u_0,v_0)$ is $\{e_2\}$. To this end, we verify that $e_1$ is a saddle point in $C$ and by explicit computation the unstable manifold of $e_1$ is on $u$-axis, and thus there is no orbit whose $\alpha$-limit set is $\{e_1\}$ other than those in $u$-axis. By Lemma \ref{pb}, the $\alpha$-limit set is an equilibrium point but it cannot be $\{e_1\}$ for the reason right above. Hence it must be $\{e_2\}$.
+
+2. Let $D$ be the closed set enclosed by the above heteroclinic orbit and $u$,$v$ axes. We show that $\ii D$ is in the intersection of the stable manifold of $e_0$ and the unstable manifold of $e_2$. To this end, we verify that $e_0$ is a stable node; $e_2$ is an unstable node; $e_1$ is a saddle point and there is no orbit in $D$ whose $\alpha$-limit set or $\omega$-limit set is $e_1$ other than the two heteroclinic orbits on $\partial D$. Therefore we conclude that $\alpha$-limit set of any $(u_1,v_1) \in\ii D$ is $\{e_2\}$ and $\omega$-limit set of the point is $\{e_0\}$.
+
+(Nonexistence) 3. Let $E:= \cl\big(\ii Q_1 \setminus D\big)$ that is invariant. We claim any orbit in $\ii E$ is unbounded as $\xi \rightarrow \infty$. Suppose not. Then its forward orbit trajectory is contained in a compact subset of $E$. By Lemma \ref{pb}, its $\omega$-limit set must be nonempty that is an equilibrium point. We verify that $e_2$ is unstable; $e_1$ is a saddle but there is no orbit whose $\omega$-limit set is $e_1$ other than the heteroclinic on $\partial E$. Therefore, neither $\{e_1\}$ nor $\{e_2\}$ is the $\omega$-limit set but there is no other equilibrium in $E$. We conclude that the orbit trajectory is unbounded.
+
+
+\bigskip
+
+\textbf{(6) \boldmath case $r_1>0$, $r_2>0$, $r_1 <1$, $r_2>1$, $c>0$}
+
+This case is treated exactly the same with the role of $u$ and $v$ switched.
+\bigskip
+
+\textbf{(7) \boldmath case  $r_1>0$, $r_2>0$, $r_1>1$, $r_2>1$, $c>0$}
+
+\bigskip
+(Existence) 1. We claim the entire set $\ii Q_1$ is contained in the unstable manifold of $e_3=(u_*,v_*)$. We use the reversed flow using states $(\tilde u, \tilde v)$  and show $\ii Q_1$ is in the stable manifold of $e_3$. Since $r_1>1$ and $r_2>1$, we can take $M$ so that
+$$ \textrm{max}\left\{ \frac{c}{r_1}, \frac{c}{r_2}\right\} < M < c.$$
+and also we can take $m:=\textrm{min}\left\{ \frac{c-M}{2r_1}, \frac{c-M}{2r_2}, \frac{u_*}{2}, \frac{v_*}{2} \right\}>0$.
+We set $$C_1:= \left\{(\tilde u,\tilde v) \in Q_1~|~ \tilde u \le M, \quad \tilde v \le M\right\}, \quad C_2= \left\{(\tilde u,\tilde v) \in C_1 ~|~ m \le \tilde u, \quad m\le \tilde v \right\}.$$
+We first verify that $\ii Q_1$ is attracted to $C_1$ and $C_1$ is positively invariant. This is justified by observing that
+\begin{align*}
+ \tilde u \ge M  \quad &\Longrightarrow \quad \tilde u' \le -(r_1M-c) \tilde u, \\
+ \tilde v \ge M  \quad &\Longrightarrow \quad \tilde v' \le -(r_2M-c) \tilde v.
+\end{align*}
+Now we verify that $C_1$ is attracted to the set $C_1 \cap C_2$ that is positively invariant. This is justified by observing that
+\begin{align*}
+ (\tilde u,\tilde v)\in C_1 \quad \text{and} \quad \tilde u \le m \quad &\Longrightarrow \quad \tilde u' \ge \delta_1 \tilde u, \\
+ (\tilde u,\tilde v)\in C_1 \quad \text{and} \quad \tilde v \le m \quad &\Longrightarrow \quad \tilde v'\ge \delta_1 \tilde v, \quad \text{where $\delta_1 = \frac{c-M}{2}$}.
+\end{align*}
+Lastly, we show that $C_1\cap C_2$ is contained in the stable manifold of $e_3$. We write $e_3 = (\tilde u_*, \tilde v_*)$, $\hat u = \tilde u - \tilde u_*$, $\hat v = \tilde v - \tilde v_*$, and 
+\begin{align*}
+ \hat u' = -\tilde u \big(r_1 \hat u + \hat v\big), \quad 
+ \hat v' = -\tilde v \big(r_2 \hat v + \hat u\big).
+\end{align*}
+Note that the matrix $J:=\begin{pmatrix} -\tilde ur_1 & -\tilde u \\ -\tilde v & -\tilde vr_2 \end{pmatrix}$ is negative definite, more precisely,
+\begin{align*}
+&-M(r_1+r_2) \le \textrm{trace}(J) = -ur_1 - vr_2 \le -m(r_1+ r_2) < 0, \\
+&\textrm{det}(J) = uv(r_1r_2-1) \ge m^2(r_1r_2-1) >0,
+\end{align*}
+and any eigenvalue of $J$ has a negative upper bound $-\delta<0$ that is independent of $\tilde u$ and $\tilde v$. Consequently, 
+$$ \frac{1}{2} (\hat{u}^2 + \hat{v}^2)' = \hat u \hat u' + \hat v \hat v' \le -\delta (\hat{u}^2 + \hat{v}^2)$$%\le -\delta (\hat{u}^2 + \epsilon\hat{v}^2)$$
+and the claim follows. The claim implies
+\begin{enumerate}
+ \item There exists a heteroclinic orbit joining $e_3$ and $e_1$.
+ \item There exists a heteroclinic orbit joining $e_3$ and $e_2$.
+\end{enumerate}
+
+2. Now let $E$ be the closed set enclosed by $u$,$v$ axes and the two heteroclinic orbits we have captured in the above that is invariant. We show that $\ii E$ is in the intersection of the stable manifold of $e_0$ and the unstable manifold of $e_3$. To this end, we verify that $e_0$ is a stable node; $e_3$ is an unstable node; $e_1$ and $e_2$ are saddles and by explicit computations the unstable manifold of $e_1$ is on $u$-axis and the unstable manifold of $e_2$ is on $v$-axis. Hence there is no orbit in $E$ whose $\alpha$-limit set or $\omega$-limit set is contained $\{e_1,e_2\}$ other than heteroclinics on $\partial E$. Therefore we conclude that $\alpha$-limit set of any $(u_0,v_0) \in\ii E$ is $\{e_3\}$ and $\omega$-limit set of the point is $\{e_0\}$.
+
+(Nonexistence) 3. Let $F:= \cl\big( \ii Q_1 \setminus E\big)$ that is invariant. We claim any orbit in $\ii F$ is unbounded as $\xi \rightarrow \infty$. Suppose not. Then its forward orbit trajectory is contained in a compact subset of $F$. By Lemma \ref{pb}, its $\omega$-limit set must be nonempty that is an equilibruim point. We verify that $e_3$ is unstable; $e_1$ (resp. $e_2$) is a saddle but there is no orbit whose $\omega$-limit set is $e_1$ (resp. $e_2$) other than the heteroclinic on $\partial F$. Therefore, $\{e_j\}$ for $j=1,2,3$ is not the $\omega$-limit set but there is no other equilibrium in $F$. We conclude that the orbit trajectory is unbounded.
+
+\bigskip
+
+\textbf{(8) \boldmath case  $r_1>0$, $r_2>0$, $r_1<1$, $r_2<1$, $c>0$}
+
+\bigskip
+(Existence) 1. We claim that $(i)$ there exists a heteroclinic orbit joining the saddle point $e_3$ and unstable node $e_1$;  $(ii)$ there exists a heteroclinic orbit joining the saddle point $e_3$ and unstable node $e_2$. 
+
+The unstable manifold of $e_3$ is tangent to the vector $\begin{pmatrix} 1-r_2 \\ 1-r_1 \end{pmatrix}$ at $e_3$, and the stable manifold of $e_3$ is tangent to $\begin{pmatrix} 1 \\ -1 \end{pmatrix}$ at $e_3$. By assumptions we have the inequlities between the inverse slopes
+\begin{equation}\label{rel8} - \frac{1}{r_1} < -1 < - r_2 < 0 < \frac{1-r_2}{1-r_1}. \end{equation}
+Therefore the stable manifold of $e_3$ is continued into the interior of the closed set $C$ enclosed by the two nullclines and $v$-axis that is negatively invariant. Let $(u_0,v_0)$ be a point on the stable manifold in the $\ii C$. We show that the $\alpha$-limit set of $(u_0,v_0)$ is $\{e_2\}$. To this end, we verify $e_3$ is a saddle point in $C$ and the intersection of $C$ and the unstable manifold of $e_3$ with $e_3$ deleted is empty. This is because of \eqref{rel2} and the negative invariance of $C$. By Lemma \ref{pb}, the $\alpha$-limit set is an equilibrium point but it cannot be $\{e_3\}$ for the reason right above. Hence it must be $\{e_2\}$. We use the similar arguments to claim the first heteroclinic orbit.
+
+2. Now let $D$ be the closed set enclosed by $u$,$v$ axes and the two heteroclinic orbits we have captured in the above that is invariant. We show that $\ii D$ is in the stable manifold of $e_0$. To this end, we verify that $e_0$ is a stable node; $e_1$ and $e_2$ are unstable nodes; $e_3$ is a saddle point and there is no orbit in $D$ whose $\omega$-limit set is $e_3$ other than the two heteroclinic orbits on $\partial D$. Therefore we conclude that $\omega$-limit set of any $(u_1,v_1) \in \ii E$ is $\{e_0\}$. In particular, this implies the existence of heteroclinic orbit joining the saddle $e_3$ and the stable node $e_0$.
+
+3. Let $E_1$ be the closed set enclosed by $u$-axis, the heteroclinic orbit joining $e_1$ to $e_3$, and the heteroclinic orbit joining $e_3$ to $e_0$ that is invariant. We show that $\ii E_1$ is in the unstable manifold of $e_1$. To this end, we verify that $e_3$ is a saddle point in $E_1$ and there is no orbit in $E_1$ whose $\alpha$-limit set is $e_3$ other than the two heteroclinic orbits on $\partial E_1$. Therefore we conclude that $\alpha$-limit set of any $(u_2,v_2)\ii E$ is $\{e_1\}$.
+
+4. Let $E_2$ be the closed set enclosed by $v$-axis, the heteroclinic orbit joining $e_2$ to $e_3$, and the heteroclinic orbit joining $e_3$ to $e_0$ that is invariant. $\ii E_2$ is in the unstable manifold of $e_2$ by similar arguments in step 3. 
+
+(Nonexistence) 5. Let $F:= \cl\big(\ii Q_1 \setminus D\big)$ that is invariant. We claim any orbit in $\ii F$ is unbounded as $\xi \rightarrow \infty$. Suppose not. Then its forward orbit trajectory is contained in a compact subset of $F$. By Lemma \ref{pb}, its $\omega$-limit set must be nonempty that is an equilibruim point. We verify that $e_1$ and $e_2$ are unstable; $e_3$ is a saddle but there is no orbit whose $\omega$-limit set is $e_3$ other than the two heteroclinics on $\partial F$. Therefore, $\{e_j\}$ for $j=1,2,3$ is not the $\omega$-limit set but there is no other equilibrium in $F$. We conclude that the orbit trajectory is unbounded.
+
+\bigskip
+
+
+\textbf{(9) \boldmath case $r_1<0$, $r_2<0$, $r_1r_2>1$, $c<0$}
+
+\bigskip 
+(Existence) 1. We claim that the entire set $\ii Q_1$ is contained in the stable manifold of $e_3$ which we write $(u_*,v_*)$. By assumption, $\begin{pmatrix} r_1 & 1 \\ 1 & r_2 \end{pmatrix}$ is negative definite, and let $-\delta$ be a negative upper bound of its eigenvalues. We first establish that $\ii Q_1$ is attracted to $C:=\left\{(u,v)\in \ii Q_1 ~|~ u+ v \le M\right\}$, where $M=\textrm{max}\left\{\frac{-4c}{\delta}, \:u_*+ v_*\right\}$. This is justified by observing that
+$(u+ v) \ge M\ge \frac{-4c}{\delta}$ implies that
+\begin{align*}
+ (u+ v)' &= r_1 u^2 + 2uv + r_2 v^2 - c(u+v) \le -\delta (u^2 + v^2) - c(u+v)\\
+  &\le -\frac{\delta}{2} (u+v)^2 - c(u+v) \le c(u+v).
+%  &\le \frac{c}{\epsilon} (u+\epsilon v).
+\end{align*}
+Now, let $m = \textrm{min}\left\{\frac{c}{2r_1},\frac{c}{2r_2}\right\}$ and $D:= \left\{(u,v)~|~  u \ge m \quad \text{and} \quad  v \ge m\right\}.$ We show that the $C$ is attracted to the set $D$ and that $C \cap D$ is positively invariant. This is justified by observing that
+\begin{align*}
+ u \le \frac{c}{2r_1} \Longrightarrow u' \ge -\frac{c}{2} u \quad \text{and} \quad
+ v \le \frac{c}{2r_2} \Longrightarrow v' \ge -\frac{c}{2} v.
+ \end{align*}
+Next, we show that $C\cap D$ is contained in the stable manifold of $e_3$. We write $\hat u = u -  u_*$, $\hat v =  v -  v_*$, and 
+\begin{align*}
+ \hat u' =  u \big(r_1 \hat u + \hat v\big), \quad 
+ \hat v' =  v \big(r_2 \hat v + \hat u\big).
+\end{align*}
+Note that the matrix $J=\begin{pmatrix}  ur_1 &  u \\  v &  vr_2 \end{pmatrix}$ is negative definite, more precisely,
+\begin{align*}
+ & M(r_1+r_2)\le \textrm{trace}(J) = ur_1 + vr_2 \le m(r_1+ r_2) < 0, \\
+ &\textrm{det}(J) = uv(r_1r_2-1) \ge m^2(r_1r_2-1) > 0.
+\end{align*}
+Therefore, eigenvalues of $J$ have a negative upper bound $-\delta_1<0$ that is independent of $u$ and $v$. Consequently, 
+$$ \frac{1}{2} (\hat{u}^2 +  \hat{v}^2)' = \hat u \hat u' + \hat v \hat v' \le -\delta_1 (\hat{u}^2 + \hat{v}^2) $$%\le -\delta_1(\hat{u}^2 + \epsilon\hat{v}^2)$$
+and the claim follows. The claim implies
+\begin{enumerate}
+ \item There exists a heteroclinic orbit joining the saddle point $e_1$ and the stable node $e_3$.
+ \item There exists a heteroclinic orbit joining the saddle point $e_2$ and the stable node $e_3$.
+\end{enumerate}
+
+2. Now let $E$ be the closed set enclosed by $u$,$v$ axes and the two heteroclinic orbits we have captured in the above that is invariant. We show that $\ii E$ is in the intersection of the unstable manifold of $e_0$ and the stable manifold of $e_3$. 
+
+To this end, we verify that $e_0$ is an unstable node; $e_3$ is a stable node; $e_1$ and $e_2$ are saddles and by explicit computations the stable manifold of $e_1$ is on $u$-axis and the stable manifold of $e_2$ is on $v$-axis. Hence there is no orbit in $E$ whose $\alpha$-limit set or $\omega$-limit set is in $\{e_1,e_2\}$ other than the heteroclinics on $\partial E$. Therefore we conclude that $\alpha$-limit set of any $(u_0,v_0) \in\ii E$ is $\{e_0\}$ and $\omega$-limit set of the point is $\{e_3\}$.
+
+(Nonexistence) 3. Let $F:= \cl\big(\ii Q_1 \setminus E\big)$ that is invariant. We claim any orbit in $\ii F$ is unbounded as $\xi \rightarrow -\infty$. Suppose not. Then its backward orbit trajectory is contained in a compact subset of $F$. By Lemma \ref{pb}, its $\alpha$-limit set must be nonempty that is an equilibruim point. We verify that $e_3$ is stable; $e_1$ (resp. $e_2$) is a saddle but there is no orbit whose $\alpha$-limit set is $e_1$ (resp. $e_2$) other than the heteroclinic on $\partial F$. Therefore, $\{e_j\}$ for $j=1,2,3$ is not the $\omega$-limit set but there is no other equilibrium in $F$. We conclude that the orbit trajectory is unbounded.
+\bigskip
+
+\textbf{(10) \boldmath case $r_1<0$, $r_2<0$, $r_1r_2<1$, $c<0$}
+
+\bigskip
+(Nonexistence) We claim any orbit in $\ii Q_1$ is unbounded as $\xi \rightarrow \infty$. Suppose not. Then its forward orbit trajectory is contained a compact subset of $Q_1$. By Lemma \ref{pb}, its $\omega$-limit set must be nonempty that is an equilibruim point. We verify that $e_0$ is untable; $e_1$ (resp. $e_2$) is a saddle but there is no orbit whose $\omega$-limit set is $e_1$ (resp. $e_2$) other than the heteroclinic on $u,v$ axes. Therefore, $\{e_j\}$ for $j=0,1,2$ is not the $\omega$-limit set but there is no other equilibrium in $F$. We conclude that the orbit trajectory is unbounded.
+
+
+\bigskip
+
+
+\textbf{(11) \boldmath case $r_1>0$, $c<0$}
+
+We have $u' \ge -c u$ and thus all orbits with initial state in $\ii Q_1$ becomes unbounded as $\xi \rightarrow \infty.$
+
+\end{proof}
+\newpage
+
+\section{Numerical simulations and discussions} \label{secnumdis}
+
+In this section, a few heteroclinic orbits are captured numerically. The results are computed using the SciPy library in Python. The vector field \eqref{ode} is quadratic, and more importantly, none of heteroclinc orbits is a saddle-saddle connection. This enabled us to use techniques no more elaborate than  numerical integrations.
+
+\begin{figure}[ht]
+\setcounter{subfigure}{0}
+ \subfigure[$e_0$-$e_3$ in $A_{1-1}^-$]{ \includegraphics[width=3.4cm]{Figure_1.eps} }
+ \subfigure[$e_1$-$e_3$ in $A_{1-1}^-$]{ \includegraphics[width=3.4cm]{Figure_2.eps} }
+ \subfigure[$e_2$-$e_3$ in $A_{1-1}^-$]{ \includegraphics[width=3.4cm]{Figure_3.eps} }  \\ 
+ \subfigure[$e_1$-$e_3$ in $A_{2-2}^-$]{ \includegraphics[width=3.4cm]{Figure_6.eps} }  
+ \subfigure[$e_3$-$e_0$ in $A_{2-2}^-$]{ \includegraphics[width=3.4cm]{Figure_7.eps} } 
+ \subfigure[$e_1$-$e_0$ in $A_{2-2}^-$]{ \includegraphics[width=3.4cm]{Figure_8.eps} }  \\ 
+ \subfigure[$e_2$-$e_1$ in $A_{3-1}^+$]{ \includegraphics[width=3.4cm]{Figure_4.eps} }
+ \subfigure[$e_1$-$e_2$ in $A_{3-2}^+$]{ \includegraphics[width=3.4cm]{Figure_5.eps} }
+ \subfigure[$e_3$-$e_0$ in {\red $A_{1-2}^+$}]{ \includegraphics[width=3.4cm]{Figure_9.eps} }  \\ 
+ \subfigure[$e_2$-$e_0$ in $A_{3-2}^+$]{ \includegraphics[width=3.4cm]{Figure_10.eps} }
+ \subfigure[$e_2$-$e_0$ in $A_{3-4}^+$]{ \includegraphics[width=3.4cm]{Figure_12.eps} }
+ \subfigure[$e_1$-$e_0$ in $A_{3-4}^+$]{ \includegraphics[width=3.4cm]{Figure_11.eps} }  
+\caption{Heteroclinic orbits numerically captured from $e_i$ to $e_j$. { The parameter values in the figures are as follow:\\ $r_1=-2.0$, $r_2=-1.5$, $c=-1.2$ for (a)-(c);\\ $r_1=0.4$, $r_2=-1.2$, $c=1.9$ for (d)-(f);\\ $r_1=1.2$, $r_2=0.8$, $c=1.9$ for (g) and (j);\\  $r_1=0.8$, $r_2=1.2$, $c=1.9$ for (h);\\ $r_1=-0.9$, $r_2=-0.6$, $c=0.9$ for (i);\\ $r_1=0.9$, $r_2=0.5$, $c=1.4$ for (k) and (l).} } \label{fign}
+\end{figure}
+
+
+We discuss the left-moving traveling waves. In any case where one of $r_1$ or $r_2$ is positive, say $r_1$ is positive, the mass of the species $u$ is towards the right, and it is not expected to have a left-moving traveling wave. Indeed, it turns out that left-moving traveling waves are allowed only if both $r_1$ and $r_2$ are negative. Furthermore, they exists only on additional condition $r_1r_2>1$, which we interpret as intraspecific fluxes being dominant. In Figure \ref{fign} (a)-(c) are the only possible left-moving wave patterns. Their difference lies in which species is $0$ at the limit $\xi \rightarrow -\infty$. We see only the (step-up, step-up) patterns for the two species, which sounds familiar for left-moving traveling waves, for the signs we have. If $r_1r_2<1$, or interspecific fluxes are dominant, left-moving waves are not allowed. The only traveling wave allowed is the one in Figure \ref{fign} (i), which is right-moving.
+
+Another interesting result is when $r_1>0$ while $r_2<0$. As mentioned, no left-moving wave is expected, and it is indeed so. Interestingly, the right-moving wave is not allowed for $r_1>1$, which we interpret as the impossibility of marching together. While the mass of $v$ struggles with the competition in marching toward the right, the mass of $u$ seems to move toward the right significantly. In case $r_1<1$, right-moving waves do exist with patterns in Figure \ref{fign} (d)-(f). We see that $u$ exhibits the familiar step-down pattern in every case while values of $v$ are kept relatively small and patterns are any of step-up, step-down, or bump. It seems that $u$ plays an important role in this regime.
+
+Yet another interesting patterns are observed when both $r_1$ and $r_2$ are positive. Figure \ref{fign} (g) shows a (step-up, step-down) crossing pattern, still moving together toward the right. This occurs in the case $r_1>1$ and $r_2<1$, which we interpret as the role of $v$ being critical. In Figure \ref{fign} (h) is the opposite case $r_1<1$ and $r_2>1$. These wave patterns are of course not observed in scalar Burgers' equation. 
+
+Except the case $r_1>1$, $r_2>1$, we observe also the right-moving (step-down, bump) wave patterns that are shown in Figure \ref{fign} (f),(j),(k),(l). Figure \ref{fign} (k),(l) is for the case $r_1<1$ and $r_2 <1$ where $u$-bump and $v$-bump both appears. $u$-bumps appear only when $r_2<1$, and $v$-bumps appear only when $r_1<1$. When a bump appears for one speciecs, the other species must exhibit a step-down pattern.
+
+We also conclude that there are no (bump, bump) wave patterns, which would be made possible by the presence of a homoclinic orbit. There are no (step-up, bump) wave patterns for left-moving waves. It sounds reasonable that the left-moving waves appear with limited varieties as we have fixed $\beta_1=\beta_2=1>0$, or they appear only under the competition circumstances.
+
+
+\bibliographystyle{amsplain}
+\begin{thebibliography}{10}
+
+\bibitem{AS1993}
+        {M. A. Al-Naafa and M. S. Selim},
+        {Sedimentation and brownian diffusion coefficients of interacting hard spheres},
+        Fluid phase equilibria {88} (1993) 227--238. 
+
+
+
+%Such nonlinearity can be also found in the problems such as shallow water equations \cite{Garcia2000, Vreugdenhil1995}, Boussinesq-Burgers' equations \cite{Chen2006, Kupershmidt1985} and dispersive long wave equations \cite{Alharbi2020, Pelloni2000}. %There are literature on finding exact solutions  for the model problem \eqref{system0} (see \cite{Kaya2001, Khater2009, Piao2021,Soliman2006}). 
+
+
+% \bibitem{Alharbi2020}
+%         {A. Alharbi, M.B. Almatrafi},
+%         {Numerical investigation of the dispersive long wave equation using an adaptive moving mesh method and its stability},
+%         Results Phys. 16 (2020) 102870.
+
+\bibitem{bkk_2019}
+        {S. Bak, P. Kim, and D. Kim}, 
+        {A semi-Lagrangian approach for numerical simulation of coupled Burgers’ equations},
+        Communications in Nonlinear Science and Numerical Simulation {69} (2019) 31--44.
+
+\bibitem{BG1987}
+        {G. C. Barker and M. J. Grimson},
+        {A solitary wave model for sedimentation in colloidal suspensions}
+        Journal of Physics A: Mathematical and General, {20} no.2 305.
+        {Grimson}        
+        
+\bibitem{Bashan2020}
+        {A. Ba\c{s}han},
+        {A numerical treatment of the coupled viscous Burgers' equation in the presence of very large Reynolds number},
+        Physica A 545 (2020) 123755.
+        
+        
+        
+\bibitem{B1982_1}
+        {G. K. Batchelor},  
+        {Sedimentation in a dilute polydisperse system of interacting spheres. Part 1. General theory} 
+        Journal of Fluid Mechanics 119 (1982) 379--408.
+
+\bibitem{B1982_2}
+        {G. K. Batchelor and C-S. Wen}, 
+        {Sedimentation in a dilute polydisperse system of interacting spheres. Part 2. Numerical results} 
+        Journal of Fluid Mechanics 124 (1982) 495--528.
+
+\bibitem{DB1988}
+        {R. H. Davis and M. A. Hassen},
+        {Spreading of the interface at the top of a slightly polydisperse sedimenting suspension}
+        Journal of Fluid Mechanics {196} (1988) 107--134.        
+% \bibitem{Chen2006}
+%         {A. Chen, X. Li},
+%         {Darboux transformation and soliton solutions for Boussinesq-Burgers equation},
+%         Chaos, Solitons and Fractals 27 (2006) 43--49.
+
+\bibitem{esipov_1995}
+        {S.E. Esipov}, 
+        {Coupled Burgers equations: A model of polydispersive sedimentation},
+        Phys. Rev. E. 52 (1995) 3711--3718. 
+        
+% \bibitem{Garcia2000}
+%         {P. Garcia-Navarro, M.E. Vazquez-Cendon},
+%         {On numerical treatment of the source term in the shallow water equations},
+%         Comput. Fluids 29(8) (2000) 951--979.
+        
+        
+\bibitem{Kaya2001}
+        {D. Kaya},
+        {An explicit solution of coupled viscous Burgers' equation by the decomposition method},
+        Int. J. Mathe. Math. Sci. 27(11) (2001) 675--680.
+
+\bibitem{Khater2009}
+        {A.H. Khater, R.S. Temsh, M.M. Hassan},
+        {A Chebyshev spectral collocation method for solving Burgers'-type equations},
+        J. Comput. Appl. Math. 222(2) (2009) 333--350.
+
+% \bibitem{Kupershmidt1985}
+%         {B.A. Kupershmidt},
+%         { Mathematics of Dispersive Water Waves},
+%         Commun. Math. Phys. 99 (1985) 51--73.
+
+\bibitem{Kutluay2013}
+        {S. Kutluay, Y. U\c{c}ar},
+        {Numerical solutions of the coupled Burgers' equation by the Galerkin quadratic B-spline finite element method},
+        Math. Methods Appl. Sci. 36 (2013) 2403—2415.
+
+\bibitem{Lai_2014}
+        {H. Lai, C. Ma},
+        {A new lattice Boltzmann model for solving the coupled viscous Burgers' equation},
+        Physica A 395 (2014) 445—457.
+
+\bibitem{Li_2015}
+        {Q. Li, Z. Chai, B. Shi},
+        {A novel lattice Boltzmann model for coupled viscous Burgers' equations},
+        Appl. Math. Comput. 250 (2015) 948--957.
+\bibitem{Liu2018}
+        {F. Liu, Y. Wang, S. Liu},
+        {Barycentric interpolation collocation method for solving the coupled viscous Burgers' equations},
+        Int. J. Comput. Math. 95 (2018) 2162--2173.
+\bibitem{Mittal2011}
+        {R.C. Mittal, G. Arora},
+        {Numerical solution of the coupled viscous Burgers' equation},
+        Commun. Nonlinear Sci. Numer. Simul. 16 (2011) 1304--1313.
+\bibitem{Mittal2014}
+        {R.C. Mittal, A. Tripathi},
+        {A collocation method for numerical solutions of coupled Burgers' equations},
+        Int. J. Comput. Methods Eng. Sci. Mech. 15 (2014) 457—471.
+        
+       
+% \bibitem{Pelloni2000}
+%         {B. Pelloni, V.A. Dougalis},
+%         {Numerical solution of some nonlocal, nonlinear dispersive wave equations},
+%         J. Nonlinear Sci. 10 (2000) 1--22.
+        
+        
+\bibitem{perko_differential_2001}
+        {\sc L.~Perko}, 
+        {Differential equations and dynamical systems 3rd. ed.}, 
+        TAM {\bf 7} (Springer-Verlag New York 2001).
+        
+    
+        
+\bibitem{Piao2021}
+        {X. Piao, P. Kim},
+        {Comment on: ``The modified extended $\tanh$-function method for solving Burgers-type equations" [Physica A, 361 (2006) 394--404]},
+        Physica A 569 (2021) 125771.
+
+\bibitem{Rashid2014}
+        {A. Rashid, M. Abbas, A.I.M. Ismail, A.A. Majid},
+        {Numerical solution of the coupled visous Burgers' equations by Chebyshev-Legendre Pseudo-Spectral method},
+        Appl. Math. Comput. 245 (2014) 372--381.       
+        
+        
+\bibitem{Soliman2006}
+        {A. Soliman},
+        {The modified extended tanh-function method for solving Burgers-type equations},
+        Physica A 361 (2006) 394--404.
+
+
+
+% \bibitem{Vreugdenhil1995}
+%         {C.B. Vreugdenhil},
+%         {Numerical Methods for shallow-water flow (Water Science and Technology Library, 13)},
+%         Springer 1995. %book
+
+%%%%%%%%%%%%%%%%%%%%% eulerian approaches
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{thebibliography}
+
+\end{document}
