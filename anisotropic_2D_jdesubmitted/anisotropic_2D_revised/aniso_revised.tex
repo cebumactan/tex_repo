@@ -76,9 +76,10 @@
 \email{leem@knu.ac.kr}
 
 
+\thanks{This research was supported by Kyungpook National University Research Fund, 2018}
 
 %
-\thanks{Min-Gi Lee was supported by the National Research Foundation of Korea(NRF) grant funded by the Korea government(MSIT) (No. 2020R1A4A1018190, 2021R1C1C1011867).}
+% \thanks{Min-Gi Lee was supported by the National Research Foundation of Korea(NRF) grant funded by the Korea government(MSIT) (No. 2020R1A4A1018190, 2021R1C1C1011867).}
 
 %
 \keywords{}
@@ -152,14 +153,14 @@ where $\Sigma$ is the conductivity field that takes values in symmetric and posi
 \end{equation}
 everywhere for some $0<\lambda <\infty$. The same bound also applies to $\r$.
 
-Considering an electric potential $u$ and then the divergence free equation $\nabla\cdot\F=0$ gives an second order scalar elliptic equation for the potential. If the Nuemann boundary condition is imposed, we have
+Considering an electric potential $u$ and then the divergence free equation $\nabla\cdot\F=0$ gives an second order scalar elliptic equation for the potential. If the Neumann boundary condition is imposed, we have
 \begin{align}
 \nabla\cdot(\Sigma(\nabla u))  &=0, \quad \text{in $\Omega$},\label{ellipticeqn}\\
-\Sigma\cdot(\nabla u)\n&=g, \quad \text{on $\partial\Omega$},\label{Nuemann}
+\Sigma\cdot(\nabla u)\n&=g, \quad \text{on $\partial\Omega$},\label{Neumann}
 \end{align}
 where the above Neumann boundary condition satisfies $\int_{\partial\Omega}gdx=0$. We can say the second order equation is a manifestation of $\nabla\cdot\F=0$ and $\nabla\times\E=0$, in the connection of the Ohm's law. 
 
-One can consider another way of this manifestaion through the stream function $\psi$ which is written as
+One can consider another way of this manifestation through the stream function $\psi$ which is written as
 \begin{equation}\label{curlfreeA}
 \nabla\times\big(\r(\nabla^\perp\psi)\big)=0.
 \end{equation}
@@ -189,7 +190,7 @@ The function $G$ on $\partial\Omega$ is then a Dirichlet boundary condition for 
 
 \section{Admissibility of Data and Inverse Problem} \label{sec:adm}
 
-In this section we define the admissiblity of data. Specifying an adimisibility on data reflects the fact that there may be an invisible region of target conductivity map even though the generated data are correctly measured. To put this another way, when $n$ data are to be employed, it is necessary that $n$ data provide independent information everywhere in $\Omega$. This led us to the following admissibility, which at first glance looks restrictive, but are natural properties of $\sigma$-harmonic functions and $\sigma$-harmonic vector fields. 
+In this section we define the admissiblity of data. Specifying an admissibility on data reflects the fact that there may be an invisible region of target conductivity map even though the generated data are correctly measured. To put this another way, when $n$ data are to be employed, it is necessary that $n$ data provide independent information everywhere in $\Omega$. This led us to the following admissibility, which at first glance looks restrictive, but are natural properties of $\sigma$-harmonic functions and $\sigma$-harmonic vector fields. 
 
 \begin{Def}[Admissibility] \label{def:adm3} We call a set of three smooth vector fields $\F_k$ on $\overline\Omega$, $k=1,2,3$ satisfying the following four conditions admissible.
 \begin{enumerate}
@@ -299,7 +300,7 @@ Therefore, since the trace of the matrix is $a+c>0$, we have
 
 In summary, that $\psi_3\circ \Psi^{-1}$ has non-positive scalar curvature is not restrictive. Our admissibility \ref{def:adm3} (3) requires the scalar curvature of $\psi_3\circ \Psi^{-1}$ to be strictly negative in $\overline\Omega$ and thus it will attain the negative maximum in $\overline\Omega$. This certainly is stronger condition. Nevertheless, in Appendix we show that there is a choice of boundary condition for the third data that gives rise to   \ref{def:adm3} (3).
 
-The last condition \ref{def:adm3} (4) is a sufficient condition for the global reconstruction at all points of $\overline\Omega$, and one can recover the resistivity in a possibly proper subset of $\Omega$ without the condition. This needs a technical explanation: In the following section we formulate a system of hyperbolic equation, whose integration gives rise to resistivity. Because the problem is hyperbolic, it is to be solved as an initial boundary value problem, or our two dimensional domain $U=\Psi(\Omega)$ is to be equipped with a metric that tells us which is timelike direction and which is spacelike direction. Accordingly, for the boundary $\partial U$ we have to  decide which portion is the initial spacelike curve, the finial spacelike curve, and boundary timelike curves respectively. Global integrability of a hyperbolic equation thus relies on whether characteristic curves emanated from those initial and boundary curves covers whole domain in a consistent manner. This will be resolved by \ref{def:adm3}. (4) As of now, we have not been successful in giving a sufficient condition to have \ref{def:adm3} (4). We though address that in practical reconstruction, one might solve many hyperbolic problems using more data and ignoring issue of overdetermination, which possibily gives a chance for characteristic curves to cover the whole domain $U$.
+The last condition \ref{def:adm3} (4) is a sufficient condition for the global reconstruction at all points of $\overline\Omega$, and one can recover the resistivity in a possibly proper subset of $\Omega$ without the condition. This needs a technical explanation: In the following section we formulate a system of hyperbolic equation, whose integration gives rise to resistivity. Because the problem is hyperbolic, it is to be solved as an initial boundary value problem, or our two dimensional domain $U=\Psi(\Omega)$ is to be equipped with a metric that tells us which is timelike direction and which is spacelike direction. Accordingly, for the boundary $\partial U$ we have to  decide which portion is the initial spacelike curve, the finial spacelike curve, and boundary timelike curves respectively. Global integrability of a hyperbolic equation thus relies on whether characteristic curves emanated from those initial and boundary curves covers whole domain in a consistent manner. This will be resolved by \ref{def:adm3} (4). As of now, we have not been successful in giving a sufficient condition to have \ref{def:adm3} (4).
 
 \subsection{Inverse problem of Ohm's Law} \label{sec:inv}
 In this section, we precisely define the inverse problem we want to solve. We denote the following assumptions by $(A)$.
@@ -311,7 +312,7 @@ In the below $\r$ is a map defined on $\overline\Omega$ that takes values in sym
 \begin{equation}
 \r\F_k = -\nabla u_k \quad \text{in $\overline\Omega$} \quad \text{for $k=1,2,3$}. \label{myohms} 
 \end{equation}
-We emphasize that the inverse problem is to the Ohm's Law.% but not about the second order elliptic equation \eqref{ellipticeqn}. 
+We prefer writing the Ohm's Law as in \eqref{myohms} to writing $\F_k = -\Sigma\nabla u_k$ for our specific inverse problem because the right-hand-side of the latter is a product of two unknowns $\Sigma$ and $\nabla u_k$, making the equation nonlinear. Note that \eqref{myohms} is linear.
 
 
 \section{hyperbolic system definition} \label{sec:hprob}
@@ -349,12 +350,12 @@ For the notational convenience, for any function $h$ on $\overline\Omega$, we ab
 
 We say a vector $\N=(f,g)$ is a characteristic vector at $z\in \U$ to \eqref{heqn} if at $z$
 $$a g^2 - 2b fg + c f^2 = 0 \quad \left( \Longleftrightarrow \quad \left<\N(z), D^2\psi_3(z) \N(z)\right> = 0\right).$$
-By adimissibility condition \ref{def:adm3} (3), \eqref{heqn} admits the two linearly characteristic vectors everywhere in $\overline{U}$. To have a smooth choice of characteristic vectors over the domain, we quote a result for a two dimensional Lorentzian manifold in the following. If we equip $\overline U$ with the metric $\mathscr{G}:=D^2 \psi_3$, \ref{def:adm3} (3) implies that one of the two eigenvalues is positive and the other is negative. Therefore, $(\U,\mathscr{G})$ is a simply connected Lorentzian manifold. The characteristic vector is called the {\it null vector} in this context.% from the view point of Lorentzian manifold.
+By admissibility condition \ref{def:adm3} (3), \eqref{heqn} admits the two linearly independent characteristic vectors everywhere in $\overline{U}$. To have a smooth choice of characteristic vectors over the domain, we quote a result for a two dimensional Lorentzian manifold in the following. If we equip $\overline U$ with the metric $\mathscr{G}:=D^2 \psi_3$, \ref{def:adm3} (3) implies that one of the two eigenvalues is positive and the other is negative. Therefore, $(\U,\mathscr{G})$ is a simply connected Lorentzian manifold. The characteristic vector is called the {\it null vector} in this context.% from the view point of Lorentzian manifold.
 \begin{Lem}\cite[Proposition 3.37]{MR1384756}\label{lemma:GHL}
 Let $(M,\mathscr{G})$ be a simply connected Lorentzian manifold of dimension two. Then, there exist two linearly independent smooth null vector fields $\N_1$ and $\N_2$ defined on $M$.
 \end{Lem}
 We thus have the following proposition:
-\begin{Prop}\label{prop:separability} Suppose $(\F_1,\F_2,\F_3)$ is admissbile and $\Psi$, $U$, $a$, $b$, and $c$ are defined as in \eqref{maps} and \eqref{coeff}. Then there exist two smooth linearly independent vector fields $\N_1$ and $\N_2$ on $\overline U$ which are characteristic everywhere for the equation \eqref{heqn}. We may assume $\N_1 \times \N_2 > 0$ in $\overline U$.
+\begin{Prop}\label{prop:separability} Suppose $(\F_1,\F_2,\F_3)$ is admissible and $\Psi$, $U$, $a$, $b$, and $c$ are defined as in \eqref{maps} and \eqref{coeff}. Then there exist two smooth linearly independent vector fields $\N_1$ and $\N_2$ on $\overline U$ which are characteristic everywhere for the equation \eqref{heqn}. We may assume $\N_1 \times \N_2 > 0$ in $\overline U$.
 \end{Prop}
 
 %   % and we have two linearly independent smooth null vector fields denoted by $\N_1$ and $\N_2$. 
@@ -389,7 +390,7 @@ If $\arg(\mathbf{V})$ is the polar angle of a vector $\mathbf{V}$, ranging in $[
 $$\theta_T(0) = \arg(\gamma(0)), \quad \theta_1(0) = \arg\Big(\N_1\big(\gamma(0)\big)\Big),\quad \theta_2(0) = \arg\Big(\N_2\big(\gamma(0)\big)\Big).$$
 Without loss, we may assume $\theta_T(0) = 0$, and also $\theta_1(0) \in [0,\pi)$ by replacing $(\N_1,\N_2)$ by $(-\N_1,-\N_2)$ if necessary. It is immediate that $\theta_T(L) = 2\pi$ and from that $\N_1$ and $\N_2$ are nowhere vanishing we also have $\theta_1(0)=\theta_1(L)$ and $\theta_2(0)=\theta_2(L)$.
 
-Now, because $\N_1 \times \N_2 > 0$ in $\overline U$, i.e., $(\N_1,\N_2)$ is positively orientated, $\theta_1(0) < \theta_2(0) < \theta_1(0) + \pi$. We claim this strict inequality must hold for any $t\in[0,L]$, i.e.,
+Now, because $\N_1 \times \N_2 > 0$ in $\overline U$, i.e., $(\N_1,\N_2)$ is positively oriented, $\theta_1(0) < \theta_2(0) < \theta_1(0) + \pi$. We claim this strict inequality must hold for any $t\in[0,L]$, i.e.,
 \begin{equation} \label{strinq}
 \theta_1(t) < \theta_2(t) < \theta_1(t) + \pi, \quad \forall t\in[0,L]. 
 \end{equation}
@@ -456,16 +457,16 @@ Note that $\N_1\times\N_2>0$ gives the bijectivity of the transformation.
 Then the directional derivatives
 \begin{equation} \label{pdev}
 \begin{aligned}
-   \N_1\cdot\nabla v_1 &= \N_1\cdot (\nabla \bar{f} u_1 + \nabla \bar{g} u_2) + \N_1 \cdot (\nabla u_1 \bar{f} + \nabla u_2 \bar{g}), \\
-   \N_2\cdot\nabla v_2 &= \N_2\cdot (\nabla {f} u_1 + \nabla {g} u_2) + \N_2 \cdot (\nabla u_1 {f} + \nabla u_2 {g}).
+   \N_1\cdot\nabla v_1 &= \N_1\cdot (u_1\nabla \bar{f}  + u_2\nabla \bar{g} ) + \N_1 \cdot (\bar{f}\nabla u_1  + \bar{g}\nabla u_2 ), \\
+   \N_2\cdot\nabla v_2 &= \N_2\cdot (u_1\nabla {f}  + u_2\nabla {g} ) + \N_2 \cdot ({f}\nabla u_1  + {g}\nabla u_2 ).
 \end{aligned}
 \end{equation}
 % the term $\N_1\cdot (\nabla \bar{f} u_1 + \nabla \bar{g} u_2)$ and $\N_2\cdot (\nabla {f} u_1 + \nabla {g} u_2)$ can be calculated from the data and \eqref{formula}. Thanks to the transformation we have that $\N_1 \cdot (\nabla u_1 \bar{f} + \nabla u_2 \bar{g}) = \N_2 \cdot (\nabla u_1 {f} + \nabla u_2 {g})= 0$ which is calculated in the below.
-\begin{Lem} \label{lem:zero} Suppose $\phi$ is a smooth solution of \eqref{heqn}, $u_1 = \phi_\xi$, and $u_2=\phi_\eta$. Suppose $\N_1=({f},{g})$ and $\N_2=(\bar{f},\bar{g})$ are linearly independent and characteristic at each point of $\U$. Then $\N_1 \cdot (\nabla u_1 \bar{f} + \nabla u_2 \bar{g}) = \N_2 \cdot (\nabla u_1 {f} + \nabla u_2 {g})= 0.$
+\begin{Lem} \label{lem:zero} Suppose $\phi$ is a smooth solution of \eqref{heqn}, $u_1 = \phi_\xi$, and $u_2=\phi_\eta$. Suppose $\N_1=({f},{g})$ and $\N_2=(\bar{f},\bar{g})$ are linearly independent and characteristic at each point of $\U$. Then $\N_1 \cdot (\bar{f}\nabla u_1  + \bar{g}\nabla u_2 ) = \N_2 \cdot ({f}\nabla u_1  + {g}\nabla u_2 )= 0.$
 \end{Lem}
 \begin{proof}
 Using that $u_1 = \phi_\xi$ and $u_2=\phi_\eta$,
- $$\N_1 \cdot (\nabla u_1 \bar{f} + \nabla u_2 \bar{g}) = \N_2 \cdot (\nabla u_1 {f} + \nabla u_2 {g})=  {f}\bar{f} \phi_{\xi\xi} + ({f}\bar{g} + {g} \bar{f}) \phi_{\xi\eta} + {g}\bar{g} \phi_{\eta\eta}.$$
+ $$\N_1 \cdot (\bar{f}\nabla u_1  + \bar{g}\nabla u_2 ) = \N_2 \cdot ( {f}\nabla u_1 + {g}\nabla u_2 )=  {f}\bar{f} \phi_{\xi\xi} + ({f}\bar{g} + {g} \bar{f}) \phi_{\xi\eta} + {g}\bar{g} \phi_{\eta\eta}.$$
  
  By definition,  $({f},{g})$ and $(\bar{f},\bar{g})$ are the two distinct solutions (unique up to multiplication of nonzero constant) of the following quadratic equation on $({f}_*,{g}_*)$
  \begin{equation} \label{quadratic}
@@ -510,7 +511,7 @@ The data $(\F_1,\F_2,\F_3)$ is assumed, which satisfies the admissibility \ref{d
  \item[2.] Out of $\F_3$, the Hessian $D^2\psi_3$ in a new coordinate system is computed, whose determinant is negative everywhere in $\U$.
  \item[3.] That $\U$ is simply connected subset of $\mathbb{R}^2$ and that $\det D^2\psi_3 < 0$ everywhere give rise to the computation of the vector fields $\N_1$ and $\N_2$. Accordingly, the boundary portions $\Gamma^\pm_j$ are defined.
  \item[4.] The hyperbolic problem consists of a system of equation \eqref{heqn3} and boundary condition \eqref{hBC} is formulated.
- \item[5.] In Section \ref{causal}, we give a {\it causal structure} on $\U$, revealing the topological properties of $1$-characteristic family of curves and $2$-characteristic family of curves. It turns out that $\Gamma^-_1 \cap \Gamma^-_2$  (See Figure \ref{fig1}) is our initial spacelike curve, and $\Gamma^-_j \setminus (\Gamma^-_1 \cap \Gamma^-_2)$, $j=1,2$ are the two boundary timelike curves. \eqref{heqn3}-\eqref{hBC} is thus understood as an initial boundary value problem, and the integration is to be done up to the final spacelike curve $\Gamma^+_1 \cap \Gamma^+_2$. 
+ \item[5.] In Section \ref{causal}, we give a {\it causal structure} on $\U$, revealing the topological properties of $1$-characteristic family of curves and $2$-characteristic family of curves. It turns out that $\overline{\Gamma^-_1 \cap \Gamma^-_2}$  (See Figure \ref{fig3}) is our initial spacelike curve, and $\overline{\Gamma^-_1} \setminus \Gamma^-_2$ and $\overline{\Gamma^-_2} \setminus \Gamma^-_1$ are the two boundary timelike curves. \eqref{heqn3}-\eqref{hBC} is thus understood as an initial boundary value problem, and the integration is to be done up to the final spacelike curve $\overline{\Gamma^+_1 \cap \Gamma^+_2}$. 
  \item[6.] In Appendix \ref{local}, local solvabilities of the {\it Goursat problem} and the {\it Triangle problem} are introduced. 
  \item[7.] In Proposition \ref{prop:final}, the integration procedure explained in step 5. is achieved to obtain $(v_1,v_2)$  in the wholse set $\U$. 
  \item[8.] $(u_1,u_2)$ is recovered from $(v_1,v_2)$ in $\U$ by \eqref{formula}. Two potentials then give rise to the computation of $\tilde {r}$ in \eqref{tilder2}.
@@ -525,14 +526,14 @@ The data $(\F_1,\F_2,\F_3)$ is assumed, which satisfies the admissibility \ref{d
 
 Solving the linear hyperbolic system \eqref{heqn3}-\eqref{hBC} is of classical theory, and it can be done by a so-called the Hodograph transformation, constructing a coordinate map $(\nu_1,\nu_2)$ whose level lines are the integral curves of two characteristic vector fields. Constructing a local coordinate map is immediate by inverse function theorem, but contructing a global one is quite elaborate. Instead of relying on the existence of global coordinate map, we here work with two families of characteristic curves. 
 
-In the following Lemma, the simiplicity of topological properties of integral curves by $\N_1$ and $\N_2$ are presented. The family of integral curves of $\N_1$ is called the $1$-characteristic family, or $1$-family for brevity, and that of $\N_2$ is called the $2$-characteristic family. We estabilish that curves in $1$-family are layered, not intersecting each other, and the same is true for $2$-family. A curve from $1$-family and another curve from $2$-family must intersect, transversally, only once. That $\N_1$ and $\N_2$ are nowhere vanishing vector fields, and that $\N_1\times \N_2$ is nowhere vanishing too give the results.
+In the following Lemma, the simplicity of topological properties of integral curves by $\N_1$ and $\N_2$ are presented. The family of integral curves of $\N_1$ is called the $1$-characteristic family, or $1$-family for brevity, and that of $\N_2$ is called the $2$-characteristic family. We estabilish that curves in $1$-family are layered, not intersecting each other, and the same is true for $2$-family. A curve from $1$-family and another curve from $2$-family must intersect, transversally, only once. That $\N_1$ and $\N_2$ are nowhere vanishing vector fields, and that $\N_1\times \N_2$ is nowhere vanishing too give the results.
 
-The main tool is a phase space analysis for a planar dynamical system; the results follows mainly from the Poincar\'e-Bendixson Theorem. For notions in the area of dynamical systems, we refer a standard textbook such as Perko \cite{perko_differential_2001}.  We introduce a few notations: For a given smooth vector field $\N$ and a point $\bar z$, we consider an integral curve of $\N$ passing $\bar z$ that is a solution of orinary differential equations $z'(s) = \N(z(s))$, $z(0)=\bar z$. The forward trajectory by $\N$ from $\bar{z}$ is the portion where $s\ge0$, and the backward trajectory is the one for $s\le0$. With these, $C_1(\bar z)$ denotes the maximally defined closed integral curve passing $\bar z$ by $\N_1$ flow. $C_2(\bar z)$ denotes the similar by $\N_2$ flow. $C^-_1(\bar z)$ (resp. $C^+_1(\bar z)$) denotes the maximally defined closed forward (resp. backward) trajectory by $\N_1$ out of $\bar z$. $C^\pm_2(\bar z)$ denote the similars by $\N_2$. 
+The main tool is a phase space analysis for a planar dynamical system; the results follows mainly from the Poincar\'e-Bendixson Theorem. For notions in the area of dynamical systems, we refer a standard textbook such as Perko \cite{perko_differential_2001}.  We introduce a few notations: For a given smooth vector field $\N$ and a point $\bar z$, we consider an integral curve of $\N$ passing $\bar z$ that is a solution of orinary differential equations $z'(s) = \N(z(s))$, $z(0)=\bar z$. The forward trajectory by $\N$ from $\bar{z}$ is the portion where $s\ge0$, and the backward trajectory is the one for $s\le0$. With these, $C_1(\bar z)$ denotes the maximally defined closed integral curve passing $\bar z$ by $\N_1$ flow. $C_2(\bar z)$ denotes the similar by $\N_2$ flow. $C^+_1(\bar z)$ (resp. $C^-_1(\bar z)$) denotes the maximally defined closed forward (resp. backward) trajectory by $\N_1$ out of $\bar z$. $C^\pm_2(\bar z)$ denote the similars by $\N_2$. 
 
 \begin{Prop} \label{lemma:2familychar}
 Suppose $(\F_1,\F_2,\F_3)$ is admissbile, and $\Psi$, $U$, $a$, $b$, and $c$ are defined as in \eqref{maps} and \eqref{coeff}. Let $\N_1$ and $\N_2$ be the vector fields defined in Proposition \ref{prop:separability}. Let $\Gamma^\pm_1$, $\Gamma^\pm_2$, $P=\{p_0,p_1\}$, and $Q=\{q_0,q_1\}$ be the sets defined in Proposition \ref{lemma:anisogeom} and in Remark \ref{defs}. Then followings hold.
 \begin{enumerate}
- \item For every $z \in {\overline{U}\setminus P}$, there exists the unique integral curve of $\N_1$ passing $z$ and ending up forwardly on some $\alpha^+(z)\in\Gamma_1^+$ and backwardly on some $\alpha^-(z)\in\Gamma_1^-$. For every $z\in {\overline{U}\setminus Q}$, there exists the unique integral curve of $\N_2$ passing $z$ and ending up forwardly on some $\beta^+(z)\in\Gamma_2^+$ and backwardly on some $\beta^-(z)\in\Gamma_2^-$. Every integral curve is a homeomorphic image of a finite line segment.
+ \item For every $z \in {\overline{U}\setminus P}$, there exists a unique integral curve of $\N_1$ passing $z$ and ending up forwardly on some $\alpha^+(z)\in\Gamma_1^+$ and backwardly on some $\alpha^-(z)\in\Gamma_1^-$. For every $z\in {\overline{U}\setminus Q}$, there exists a unique integral curve of $\N_2$ passing $z$ and ending up forwardly on some $\beta^+(z)\in\Gamma_2^+$ and backwardly on some $\beta^-(z)\in\Gamma_2^-$. Every integral curve is a homeomorphic image of a finite line segment.
  \item Conversely, if $\alpha^-\in \Gamma^-_1$ and $\beta^-\in \Gamma^-_2$ then $C^+_1(\alpha^-)$ and $C^+_2(\beta^-)$ intersects exactly at one point in $\overline{U}\setminus (P \cup Q)$ transversally.
 \end{enumerate}
 \end{Prop}
@@ -551,7 +552,7 @@ Now, we claim that $\alpha^+(z) \in \Gamma_1^+$ and $\alpha^-(z) \in \Gamma_1^-$
 
 % Now, for any $(\xi,\eta) \in U$, there exists the unique integral curve of $\N_1$ passing $(\xi,\eta)$ emanated from $z^- \in \Gamma_1^-$, and there exists the unique integral curve of $\N_2$ passing $(\xi,\eta)$ emanated from $w^- \in \Gamma_2^-$. 
 
-Now, we prove the second assertion. Let $\alpha^-\in \Gamma^-_1$ and $\beta^-\in \Gamma^-_2$. Since at $\alpha^-$,  $\N_1\cdot\n < 0$ where $\n$ is outward normal, $C^+_1(\alpha^-)$ continues into $int(\overline{U})$, and by assertion (1) it ends up at some $\alpha^+\in \Gamma^+_1$. We denote this trajectory by $D$. By the embedding $\gamma: [0,L] \rightarrow \partial U$ as in the proof of Proposition \ref{lemma:anisogeom}, let $(t_1,t_2)$ be the inverse image of $\Gamma^-_2$. At each point on $D \cap int(\U)$, by assertion (1) for some $\tilde{\beta}^-\in \Gamma^-_2$, $C^+_2(\tilde \beta^-)$ passes the point. Therefore the set $I \subset (t_1,t_2)$ of point $t$ such that out of $\gamma(t)$, $C^+_2(\gamma(t))$ intersects $D$ is nonempty. We show that $I$ is open and closed relatively to $(t_1,t_2)$. If $t \in I$ and $z_*$ is an intersection point of $D$ and $C^+_2(\gamma(t))$, the intersection at $z_*$ is transversal  because $\N_1 \times \N_2 \ne 0$. Because the finite length trajectory $C^+_2(\gamma(t))$ smoothly changes as $t$ changes, and the transversal intersection is stable under perturbation, intersection persists for some neighborhood of $t$. On the other hand, if $t' \in (t_1,t_2) \setminus I$, $C^+_2(\gamma(t'))$ and $D$ are two disjoint closed sets, and the distance between two is a finite positive number. Therefore, for some neighborhood of $t'$ intersection does not occur. Thus $I$ is closed relatively to $I$, and $I = (t_1,t_2)$. Intersection must uccur for every $\beta^-\in \Gamma^-_2$.
+Now, we prove assertion (2). Let $\alpha^-\in \Gamma^-_1$ and $\beta^-\in \Gamma^-_2$. Since at $\alpha^-$,  $\N_1\cdot\n < 0$ where $\n$ is outward normal, $C^+_1(\alpha^-)$ continues into $int(\overline{U})$, and by assertion (1) it ends up at some $\alpha^+\in \Gamma^+_1$. We denote this trajectory by $D$. By the embedding $\gamma: [0,L] \rightarrow \partial U$ as in the proof of Proposition \ref{lemma:anisogeom}, let $(t_1,t_2)$ be the inverse image of $\Gamma^-_2$. At each point on $D \cap int(\U)$, by assertion (1) for some $\tilde{\beta}^-\in \Gamma^-_2$, $C^+_2(\tilde \beta^-)$ passes the point. Therefore the set $I \subset (t_1,t_2)$ of point $t$ such that out of $\gamma(t)$, $C^+_2(\gamma(t))$ intersects $D$ is nonempty. We show that $I$ is open and closed relatively to $(t_1,t_2)$. If $t \in I$ and $z_*$ is an intersection point of $D$ and $C^+_2(\gamma(t))$, the intersection at $z_*$ is transversal  because $\N_1 \times \N_2 \ne 0$. Because the finite length trajectory $C^+_2(\gamma(t))$ smoothly changes as $t$ changes, and the transversal intersection is stable under perturbation, intersection persists for some neighborhood of $t$. On the other hand, if $t' \in (t_1,t_2) \setminus I$, $C^+_2(\gamma(t'))$ and $D$ are two disjoint closed sets, and the distance between two is a finite positive number. Therefore, for some neighborhood of $t'$ intersection does not occur. Thus $I$ is closed relatively to $I$, and $I = (t_1,t_2)$. Intersection must uccur for every $\beta^-\in \Gamma^-_2$.
 
 Now suppose $D$ and $E:=C^+_2(\beta^-)$ intersects more than once. $\overline{U}$ is divided into two sides by the curve $E$. Pick one side and let $\nu$ be the inward normal to the side along $E$. Since $\N_2$ is tangent on $E$ and $\N_1\times \N_2>0$, $\N_1\cdot \nu$ has definite sign on $E$. We assume $\N_1\cdot \nu>0$ without loss. We let $p$ be an intersection point such that another intersection point appears at later time by $\N_1$ flow. Since $C^+_1(p)$ is continued into interior of the side from $p$, if $q$ is the intersection point appears for the first time after $p$, then the portion $F$ of $C^+_1(p)$ between $p$ and $q$ is entirely in the side. The curves $E$ and $F$ then enclose a simply connected set $K$, and $K$ is positively invariant by $\N_1$, which is a contradiction. 
 
@@ -561,15 +562,49 @@ Finally, the trajectory $D$ has been continued into $int(\overline{U})$, and by 
 
 \subsubsection{Causal structure on $\U$}
 
- At each point $z\in \U$, the {\it causal structure} can be introduced on the tangent space $T_z$. Two subspaces $\textsf{Span}(\N_1)$ and $\textsf{Span}(\N_2)$ divide $T_z$ into four open sectors. Vectors in $\textsf{Span}(\N_1) \cup \textsf{Span}(\N_2)$ are said to be {\it null}. Because $\N_1 \times \N_2 >0$, rotating from $\N_1$ counter-clock-wisely, the open sectors are the ones consisting of {\it future-pointing timelike, negative-pointing spacelike, past-pointing timelike, and positive-pointing spacelike} tangent vectors. 
+ At each point $z\in \U$, the {\it causal structure} can be introduced on the tangent space $T_z$. Two subspaces $\textsf{Span}(\N_1)$ and $\textsf{Span}(\N_2)$ divide $T_z$ into four open sectors. Vectors in $\textsf{Span}(\N_1) \cup \textsf{Span}(\N_2)$ are said to be {\it null}. Because $\N_1 \times \N_2 >0$, rotating from $\N_1$ counter-clock-wisely, the open sectors are the ones consisting of {\it future-pointing timelike, negative-pointing spacelike, past-pointing timelike, and positive-pointing spacelike} tangent vectors. See Figure \ref{Tz}.
  
- Regarding the boundary portions $\Gamma^\pm_j$ $j=1,2$, we will have to consider a closed curve nowhere characteristic with exceptions at the end points. Precisely, a $C^1$ closed curve $G$ in $\U$ is said to be timelike in its relative interior if there is an embedding $\kappa$ of $G$ from $[s_0,s_1]$ with unit speed such that at every point $s\in(s_0,s_1)$ $\kappa'(s)$ is future-pointing timelike. A $C^1$ closed curve $H$ in $\U$ is said to be spacelike in its relative interior if there is an embedding $\kappa$ of $H$ from $[s_0,s_1]$ with unit speed such that at every point $s\in(s_0,s_1)$ $\kappa'(s)$ is positive-pointing spacelike. It is not difficult to see that $E_*=\overline{\Gamma_1^-\cap \Gamma_2^-}$ and $E^*=\overline{\Gamma_1^+\cap \Gamma_2^+}$ are two examples of curves spacelike in relative interior, and $\overline{\Gamma_1^-} \setminus (\Gamma_1^-\cap \Gamma_2^-)$ and $\overline{\Gamma_2^-} \setminus (\Gamma_1^-\cap \Gamma_2^-)$ are two curves timelike in relative interior.
+\begin{figure}[ht]
+ \centering
+%  \begin{subfigure}[t]{2in}
+ \centering
+ \psfrag{z}{${z}$}
+ \psfrag{F}{{Future}}
+ \psfrag{P2}{Past}
+ \psfrag{P1}{Positive}
+ \psfrag{N}{Negative}
+ \psfrag{N1}{$\N_1$}
+ \psfrag{N2}{$\N_2$}
+ \includegraphics[width=4cm]{cone2.eps} 
+  \caption{Causal structure on $T_z$ is illustrated. The closure of the open positive sector is the nonnegative non-timelike sector $K_z$.} \label{Tz}
+%  \end{subfigure} \quad \quad \quad
+\end{figure}
+
  
-We will also have to consider generalized spacelike curves, for example the staircase pattern consists of sequence of  alternating pieces of forward $1$-family and backward $2$-family trajectories $C^+_1(z_1)$, $C^-_2(z_2)$, $C^+_1(z_3)$, $C^-_2(z_4)$, $\cdots$. We first define the closed cone $K_z$ of nonnegative and non-timelike  vectors that is 
+ Regarding the boundary portions $\Gamma^\pm_j$ $j=1,2$, we will have to consider a closed curve nowhere characteristic with exceptions at the end points. Precisely, a $C^1$ closed curve $G$ in $\U$ is said to be timelike in its relative interior if there is an embedding $\kappa$ of $G$ from $[s_0,s_1]$ with unit speed such that at every point $s\in(s_0,s_1)$ $\kappa'(s)$ is future-pointing timelike. A $C^1$ closed curve $H$ in $\U$ is said to be spacelike in its relative interior if there is an embedding $\kappa$ of $H$ from $[s_0,s_1]$ with unit speed such that at every point $s\in(s_0,s_1)$ $\kappa'(s)$ is positive-pointing spacelike. It is not difficult to see that $E_*=\overline{\Gamma_1^-\cap \Gamma_2^-}$ and $E^*=\overline{\Gamma_1^+\cap \Gamma_2^+}$ are two examples of curves spacelike in relative interior, and $\overline{\Gamma_1^-} \setminus \Gamma_2^-$ and $\overline{\Gamma_2^-} \setminus \Gamma_1^-$ are two curves timelike in relative interior.
+ 
+ \begin{figure}[ht]
+%  \begin{subfigure}[t]{2in}
+ \centering
+ \psfrag{G1}{\hskip -2em $\overline{\Gamma_1^- \cap \Gamma_2^-}$}
+ \psfrag{G2}{$\overline{\Gamma_2^-} \setminus \Gamma_1^-$}
+ \psfrag{G3}{$\overline{\Gamma_1^+ \cap \Gamma_2^+}$}
+ \psfrag{G4}{\hskip -3em $\overline{\Gamma_1^-} \setminus \Gamma_2^-$}
+ \psfrag{z1}{$z_1$}
+ \psfrag{z2}{$z_2$}
+ \psfrag{z3}{$z_3$}
+ \psfrag{z4}{$z_4$}
+ \psfrag{p0}{$p_0$}\psfrag{p1}{$p_1$}\psfrag{q0}{\hskip -1em$q_0$}\psfrag{q1}{$q_1$}
+ \includegraphics[width=6cm]{curves} 
+ \caption{An example of a monotone and non-timelike curve that consists of portions of characteristic curves $C^+_1(z_1)$, $C^-_2(z_2)$, $C^+_1(z_3)$, $C^-_2(z_4)$. Red arrows are parallel to $\N_1$ and blue arrows are parallel to $\N_2$ at respective points.} \label{fig3}
+%  \end{subfigure}
+\end{figure} 
+ 
+We will also have to consider generalized spacelike curves, for example the staircase pattern consists of sequence of  alternating pieces of forward $1$-family and backward $2$-family trajectories $C^+_1(z_1)$, $C^-_2(z_2)$, $C^+_1(z_3)$, $C^-_2(z_4)$, $\cdots$. We first define the closed cone $K_z$ (see Figure \ref{Tz})  of nonnegative and non-timelike  vectors that is 
  \begin{equation} \label{Kz}
   K_z:= \text{closure of } \left\{ v \in T_z ~|~ v \times \N_1>0 \quad \text{and} \quad v \times \N_2>0\right\}.
  \end{equation}
-  We say a closed Lipschitz curve $E$ in $\U$ is monotone and non-timelike if there is an embedding of $\kappa$ of $E$ from $[s_0, s_1]$ with unit speed such that $\kappa'(s)$ is a BV function and at every point $s\in(s_0,s_1)$ the left and right limit $\kappa'(s\pm)$ is in the cone $K_z$, and $\kappa'$ is continuous at the end points $s_1$ and $s_2$. %In particular, it is not dificult to see that $E_*=\overline{\Gamma_1^-\cap \Gamma_2^-}$ and $E^*=\overline{\Gamma_1^+\cap \Gamma_2^+}$ are such examples, where at each end points tangent vector is null. $\Gamma^- \setminus E_*$ and $\Gamma^-_2$
+  We say a closed Lipschitz curve $E$ in $\U$ is monotone and non-timelike if there is an embedding of $\kappa$ of $E$ from $[s_0, s_1]$ with unit speed such that $\kappa'(s)$ is a BV function and at every point $s\in(s_0,s_1)$ the left and right limit $\kappa'(s\pm)$ is in the cone $K_z$, and $\kappa'$ is continuous at the end points $s_0$ and $s_1$. %In particular, it is not dificult to see that $E_*=\overline{\Gamma_1^-\cap \Gamma_2^-}$ and $E^*=\overline{\Gamma_1^+\cap \Gamma_2^+}$ are such examples, where at each end points tangent vector is null. $\Gamma^- \setminus E_*$ and $\Gamma^-_2$
 %  $\kappa'(s)$ belongs to $K_{\kappa(s)}$ for every $s\in[s_0,s_1]$. We say a Lipschitz and piecewise $C^1$ curve $E$ is monotone and non-timelike if the curve is piecewisely monotone and non-timelike, and globally Lipschitz. In particular, it is not difficult to see that $\overline{\Gamma_1^-\cap \Gamma_2^-}$ is monotone and non-timelike.
 
 
@@ -580,12 +615,12 @@ We will also have to consider generalized spacelike curves, for example the stai
 
 \subsection{Main theorem}
 Finally we prove Proposition \ref{prop:final} and Theorem \ref{thm:main}. Materials on Goursat and Triangle problem are necessary in the proof, and are contained in Appendix \ref{local}.
-\begin{Prop}\label{prop:final} Suppose $\varphi_1,\varphi_2 \in C^1(\overline U)$ and assign $v_{01}=\varphi_1$ on $\Gamma_1^-$ and $v_{02}=\varphi_2$ on $\Gamma_2^-$. Then there exists the unique solution $(v_1,v_2)\in [C^1(\overline U)]^2$ of \eqref{heqn3}-\eqref{hBC}.
+\begin{Prop}\label{prop:final} Suppose $\varphi_1,\varphi_2 \in C^1(\overline U)$ and assign $v_{01}=\varphi_1$ on $\Gamma_1^-$ and $v_{02}=\varphi_2$ on $\Gamma_2^-$. Then there exists a unique solution $(v_1,v_2)\in [C^1(\overline U)]^2$ of \eqref{heqn3}-\eqref{hBC}.
 \end{Prop}
 \begin{proof} 
 First, we set $E_* = \overline{\Gamma_1^- \cap \Gamma_2^-}$, where the value of $(v_1,v_2)$ is known by \eqref{hBC}. Because $v_{0j}$ is uniformly continuous relative to $\Gamma^-_j$, $v_{0j}$ is uniquely extended to $\overline{\Gamma^-_j}$ for $j=1,2$. 
 
-Now, we consider a finite length closed non-timelike curve $E$ in $\U$. We say a closed curve $E$ satisfies the condition $(EC)$ if followings hold:
+Now, we consider a finite length closed non-timelike curve $E$ in $\U$. We say a closed curve $E$ satisfies the condition $(EC)$ if the following holds:
 \begin{enumerate} 
  \item $E$ is homeomorphic to a line segment.
  \item $E$ is entirely contained in $\U$.
@@ -606,21 +641,21 @@ For each $E\in\mathcal{E}_0$, we define the closed subset $A(E)$ of $\U$, {\it t
 
 Having defined the condition $(EC)$ and $A(E)$, we consider the collection
 $$\mathcal{E}:=\left\{ E \in \mathcal{E}_0 ~|~ \text{a solution $(v_1,v_2)$ of \eqref{heqn3}-\eqref{hBC} exists in $A(E)$} \right\}.$$ 
-Then $E_* \in \mathcal{E}$ and thus $\mathcal{E}$ is nonempty. We give a partial order $E_1 \preceq E_2$ if $A(E_1)\subseteq A(E_2)$. We now claim: If $E\in \mathcal{E}$ and $A(E)\ne \U$, then there is $E'\in \mathcal{E}$ such that $A(E)$ is a proper subset of $A(E')$. Once the claim is estabilished, a maximal element is in $\mathcal{E}$ and the existence of solution on $\U$ is proved. Uniqueness is a practice of the typical energy method. 
+Then $E_* \in \mathcal{E}$ and thus $\mathcal{E}$ is nonempty. We give a partial order $E_1 \preceq E_2$ if $A(E_1)\subseteq A(E_2)$. We now claim: If $E\in \mathcal{E}$ and $A(E)\ne \U$, then there is $E'\in \mathcal{E}$ such that $A(E)$ is a proper subset of $A(E')$. Once the claim is established, a maximal element is in $\mathcal{E}$ and the existence of solution on $\U$ is proved. Uniqueness is a practice of the typical energy method. 
 
-We are left to prove the claim. Suppose $E \in \mathcal{E}$ is given and $A(E)\ne \U$. We divide the proof into two cases. In the first case, a point $z_0$ on $E$ is assumed that is not characteristic, i.e., the tangent vector of $E$ at $z_0$ is parallel neither to $\N_1$ nor to $\N_2$. The remaining case is then everywhere of $E$ is characteristic. If the first case happens, then by continuity there is a neighborhood $\U\cap V$ of $z_0$ such that $E\cap \U \cap V$ is nowhere characteristic. If so, by definition of $E$, $E\cap \U \cap V$ must be spacelike. Let $z \in \U \cap V \setminus A(E)$. Because $C^-_1(z)$ and $C^-_2(z)$ restricted in $\U \cap V \setminus A(E)$ collapse down to $z_0$  as $z$ approaches to $z_0$, for some $z$ close enough to $z_0$, both $C^-_1(z)$ and $C^-_2(z)$ intersect the curve $E\cap \U \cap V$ at $\alpha$ and $\beta$ respectively. Then on the set $T$ enclosed by the curves joining points $z$, $\alpha$, and $\beta$, one can pose a Triangle problem (See Appendix \ref{local}) of sufficiently small size, and the solution is extended to $T$. Now, $E'$ is the curve obtained from $E$ with the portion $E\cap \U \cap V$ replaced by the two characteristic curves, one joining $z$ and $\alpha$ and the other joining $z$ and $\beta$.
+We are left to prove the claim. Suppose $E \in \mathcal{E}$ is given and $A(E)\ne \U$. We divide the proof into two cases. In the first case, a point $z_0$ on $E$ is assumed that is not characteristic, i.e., the tangent vector of $E$ at $z_0$ is parallel neither to $\N_1$ nor to $\N_2$. The remaining case is then everywhere of $E$ is characteristic. If the first case happens, then by continuity there is a neighborhood $\U\cap V$ of $z_0$ such that $E\cap \U \cap V$ is nowhere characteristic. If so, by definition of $E$, $E\cap \U \cap V$ must be spacelike. Let $z \in \U \cap V \setminus A(E)$. Because $C^-_1(z)$ and $C^-_2(z)$ restricted in $\U \cap V \setminus A(E)$ collapse down to $z_0$  as $z$ approaches to $z_0$, for some $z$ close enough to $z_0$, both $C^-_1(z)$ and $C^-_2(z)$ intersect the curve $E\cap \U \cap V$ at $\alpha$ and $\beta$ respectively. Then on the set $T$ enclosed by the curves joining points $z$, $\alpha$, and $\beta$, one can pose a Triangle problem (See Figure \ref{T} in Appendix \ref{local}) of sufficiently small size, and the solution is extended to $T$. Now, $E'$ is the curve obtained from $E$ with the portion $E\cap \U \cap V$ replaced by the two characteristic curves, one joining $z$ and $\alpha$ and the other joining $z$ and $\beta$.
 
-Now, we assume $E$ is everywhere characteristic. Consider an embedding $\kappa:[s_0,s_1] \rightarrow E$ with $\kappa(s_1) \in \overline{\Gamma^-_1} \setminus (\Gamma_1^- \cap \Gamma_2^-)$ and $\kappa(s_2) \in \overline{\Gamma^-_2} \setminus (\Gamma_1^- \cap \Gamma_2^-)$. Then there are only three possibilities:
+Now, we assume $E$ is everywhere characteristic. Consider an embedding $\kappa:[s_0,s_1] \rightarrow E$ with $\kappa(s_0) \in \overline{\Gamma^-_1} \setminus \Gamma_2^-$ and $\kappa(s_1) \in \overline{\Gamma^-_2} \setminus \Gamma_1^-$. Then there are only three possibilities:
 \begin{enumerate}
- \item For some $s_a \in (s_0,s_1)$, $\kappa\big([s_0,s_a]\big) \subset C^-_1(\kappa(s_0))$ and $\kappa(s_0)\ne p_1$.
+ \item For some $s_a \in (s_0,s_1)$, $\kappa\big([s_0,s_a]\big) \subset C^+_1(\kappa(s_0))$ and $\kappa(s_0)\ne p_1$.
  \item The entire set $E = C^-_2(\kappa(s_0))$ and $\kappa(s_1)\ne q_1$.
  \item For some $s_a, s_b$ such that $s_0 < s_a < s_b <s_1$, $\kappa\big([s_0,s_a]\big) \subset C^-_2(\kappa(s_0))$  and $\kappa\big([s_a,s_b]\big) \subset C^+_1(\kappa(s_a))$.
 \end{enumerate}
 It is justified by following reasons: In (1), if $\kappa(s_0)=p_1$, $E$ is tangent to $\partial U$ at $p_1$ and $E$ cannot be a curve everywhere characteristic. Similarly in (2) that $\kappa(s_1)\ne q_1$ is justified.
 
-Suppose (1) happens and let $z_0=\kappa(s_0)$. Because $z_0\ne p_1$ there is a neighborhood $\U \cap V$ of $z_0$ such that $p_1\notin V$. Let $F=\Gamma^-_1 \cap V \setminus A(E)$. Let $z \in \U\cap V \setminus A(E)$. Because $C^-_1(z)$ and $C^-_2(z)$ restricted in $\U\cap V \setminus A(E)$ collapse down to $z_0$ as $z$ approaches to $z_0$, for some $z$ close enough to $z_0$, $C^-_1(z)$ intersects $F$ at $\alpha$ and $C^-_2(z)$ intersects $E$ at $\beta$ respectively. Then $R$ is defined by curves joining $z$, $\alpha$, $\beta$, and $z_0$. One can pose a modified Goursat problem (See Appendix \ref{local}) on $R$ of sufficiently small size, and the solution is extended to $R$. Now, $E'$ is the curve obtained from $E$ with the portion $[\alpha,z_0]$ and $[\beta,z_0]$ replaced by $[z,\alpha]$ and $[z,\beta]$.
+Suppose (1) happens and let $z_0=\kappa(s_0)$. Because $z_0\ne p_1$ there is a neighborhood $\U \cap V$ of $z_0$ such that $p_1\notin V$. Let $F=\Gamma^-_1 \cap V \setminus A(E)$. Let $z \in \U\cap V \setminus A(E)$. Because $C^-_1(z)$ and $C^-_2(z)$ restricted in $\U\cap V \setminus A(E)$ collapse down to $z_0$ as $z$ approaches to $z_0$, for some $z$ close enough to $z_0$, $C^-_1(z)$ intersects $F$ at $\alpha$ and $C^-_2(z)$ intersects $E$ at $\beta$ respectively. Then $R$ is defined by curves joining $z$, $\alpha$, $\beta$, and $z_0$. One can pose a modified Goursat problem (See Figure \ref{G1} in Appendix \ref{local}) on $R$ of sufficiently small size, and the solution is extended to $R$. Now, $E'$ is the curve obtained from $E$ with the portion $[\alpha,z_0]$ and $[\beta,z_0]$ replaced by $[z,\alpha]$ and $[z,\beta]$.
 
-If (2) happens we do the similar at $\kappa(s_1)\ne q_1$. If (3) happens, we pose a Goursat problem at the corner $\kappa(s_a)$.
+If (2) happens we do the similar at $\kappa(s_1)\ne q_1$ (See Figure \ref{G2} in Appendix \ref{local} but left-and-right reversed). If (3) happens, we pose a Goursat problem at the corner $\kappa(s_a)$ (See Figure \ref{G} in Appendix \ref{local}).
 
 % Now, applying $\frac{\N_2}{|\N_2|}\cdot \nabla$ and $\frac{\N_1}{|\N_1|}\cdot \nabla$ respectively on the first and the second equation in \eqref{hprob}, we obtain
 % \begin{align*}
@@ -672,8 +707,20 @@ This series of papers on Faraday's law based two dimensional conductivity recons
 
 \section{Construction of admissible vector fields}\label{sect.cons}
 
-If there is no admissible current densities, the theory of this paper ends in vain. In the proof of the following proposition we introduce appropriate boundary conditions that may produce admissible set of current densities that satisfy the assumptions (1), (2) and (3) in Definition \ref{def:adm3}. The divergence free equation in \eqref{Eqn3.2} has been studied intensively for a long time, where $\Sigma$ is the \emph{conductivity} tensor corresponding to the resistivity one $\r$, i.e., $\Sigma=\r^{-1}$. There are rich theories related to the solution of this divergence free equation, and, in fact, the first part of the proposition can be found from Bauman \emph{et al.} \cite{MR1871388}. We will fully prove the proposition for completeness using the following lemma.
+If there is no admissible current densities, the theory of this paper ends in vain. In the proof of the following proposition we introduce appropriate boundary conditions that may produce admissible set of current densities that satisfy the assumptions (1), (2) and (3) in Definition \ref{def:adm3}. The divergence free equation in \eqref{Eqn3.2} has been studied intensively for a long time, where $\Sigma$ is the \emph{conductivity} tensor corresponding to the resistivity one $\r$, i.e., $\Sigma=\r^{-1}$. There are rich theories related to the solution of this divergence free equation, and, in fact, the first part of the proposition can be found from Bauman \emph{et al.} \cite{MR1871388}. We will fully prove the proposition for completeness using the following lemma. The lemma is related to the interior critical points of an elliptic problem, which is used in Proposition \ref{thm:anisoadm}.
 
+\begin{Lem}[Alessandrini \cite{alessandrini_critical_1987}] \label{lem:aless}
+Let $\Omega \subset \R^2$ be a bounded simply connected domain with a smooth boundary, $g \in C(\partial\Omega)$, $a_{ij} \in C^1(\Omega)$, and $a_i \in C(\Omega)$ for $i,j=1,2$. Let $u \in W^2_{loc}(\Omega) \cap C(\overline\Omega)$ satisfy
+\begin{align*}
+  \sum_{i,j=1}^2 a_{ij} \partial_{x_i}\partial_{x_j}u + \sum_{i=1}^2 a_i \partial_{x_i}u &= 0, \quad \text{in $\Omega$,} \\
+  u&=g, \quad \text{on $\partial \Omega$}.
+\end{align*}
+If $g|_{\partial\Omega}$ has $N$ maxima (and hence it has $N$ minima), then the interior critical points of $u$ are of a finite number and
+$$
+\sum_{i=1}^K m_i \le N-1,
+$$
+where $m_1,\cdots,m_K$ are the multiplicities of the corresponding maxima.
+\end{Lem}
 
 
 
@@ -696,35 +743,22 @@ Suppose that $\Omega\subset\R^2$ is a bounded simply connected domain and $\Sigm
 \end{equation}
 Then, $\psi_k$ is a stream function of the current density field $\F_k = -\Sigma\nabla u_k$ with the corresponding Neumann boundary value $g_k$.  
 
-Let $\Psi(x,y)= \big(\xi(x,y),\eta(x,y)\big):=\big(\psi_2(x,y), -\psi_1(x,y)\big)$. Since the boundary value is continuous on the smooth boundary $\partial\Omega$, the solution is continuous on $\overline\Omega$. Since $\psi_k|_{\partial\Omega}$ has one local maximum on the boundary, by Lemma \ref{lem:aless}, $\psi_1$ and $\psi_2$ have no critical point in $\Omega$. By the Hopf lemma, $\nabla\psi_k \ne 0$ along the boundary, neither. Suppose that there is a point $\x_0 \in \Omega$ such that $\nabla\psi_1(\x_0) \times \nabla\psi_2(\x_0) =0$. Then, $\nabla\psi_1(\x_0) = c \nabla\psi_2(\x_0)$ for a constant $c\ne0$. Then, $\tilde\psi = \psi_1 - c\psi_2$  is also a solution with a boundary condition $\tilde\psi\big(\gamma(t)\big) = \sin t + c\cos t =\sqrt{1+c^2} \sin(t+t^*)$ for some $t^*$, and $\x_0$ is an interior critical point of $\tilde\psi$. However, this boundary condition also has one local maximum point on the boundary and hence $\tilde\psi$ does not have an interior critical point, which is a contradiction. Therefore $\nabla\psi_1 \times \nabla\psi_2$  has no interior zero point, i.e., $\det D\Psi\ne0$ in $\Omega$. Furthermore, since $(G_2(\gamma(t)),-G_1(\gamma(t))) = (\cos t, \sin t)$, the mapping $(\psi_2,-\psi_1)|_{\partial \Omega}$ is one-to-one from $\partial\Omega$ to the unit circle. Therefore, by Lemma \ref{lemma:bijection}, the mapping $\Psi$ is bijective in $\overline\Omega$. The differentiability of the mapping and its inverse one comes from the inverse function theorem. Therefore, we conclude that $\F_1$ and $\F_2$ satisfy the first two admissibility conditions.
+Let $\Psi(x,y)= \big(\xi(x,y),\eta(x,y)\big):=\big(\psi_2(x,y), -\psi_1(x,y)\big)$. Since the boundary value is continuous on the smooth boundary $\partial\Omega$, the solution is continuous on $\overline\Omega$. Since $\psi_k|_{\partial\Omega}$ has one local maximum on the boundary, by Lemma \ref{lem:aless}, $\psi_1$ and $\psi_2$ have no critical point in $\Omega$. By the Hopf lemma, $\nabla\psi_k \ne 0$ along the boundary, neither. Suppose that there is a point $\x_0 \in \Omega$ such that $\nabla\psi_1(\x_0) \times \nabla\psi_2(\x_0) =0$. Then, $\nabla\psi_1(\x_0) = c \nabla\psi_2(\x_0)$ for a constant $c\ne0$. Then, $\psi := \psi_1 - c\psi_2$  is also a solution with a boundary condition $\psi\big(\gamma(t)\big) = \sin t + c\cos t =\sqrt{1+c^2} \sin(t+t^*)$ for some $t^*$, and $\x_0$ is an interior critical point of $\psi$. However, this boundary condition also has one local maximum point on the boundary and hence $\psi$ does not have an interior critical point, which is a contradiction. Therefore $\nabla\psi_1 \times \nabla\psi_2$  has no interior zero point, i.e., $\det D\Psi\ne0$ in $\Omega$. Furthermore, since $(G_2(\gamma(t)),-G_1(\gamma(t))) = (\cos t, \sin t)$, the mapping $(\psi_2,-\psi_1)|_{\partial \Omega}$ is one-to-one from $\partial\Omega$ to the unit circle. Therefore, by Lemma \ref{lemma:bijection}, the mapping $\Psi$ is bijective in $\overline\Omega$. The differentiability of the mapping and its inverse one comes from the inverse function theorem. Therefore, we conclude that $\F_1$ and $\F_2$ satisfy the first two admissibility conditions.
 
-Next, we prove the third admissibility condition. The diffeomorphism $\Psi$ gives a new coordinate system $(\xi,\eta):=(\psi_2,-\psi_1)$ where the domain $\Omega$ is  transformed to the unit disk. The third stream function $\psi_3$ is taken as the solution of the uniformly elliptic equation in \eqref{eqn:anisotropic} with a boundary condition $\psi_3(\gamma(t))=\cos 2t$. If we show the Hessian $D^2\psi_3(\xi,\eta)\ne0$ for all $(\xi,\eta)$ in the unit disk, the strict inequality in \eqref{strictInquality} holds by Lemma \ref{lemma:scalarcurvature}.
+Next, we prove the third admissibility condition. The diffeomorphism $\Psi$ gives a new coordinate system $(\xi,\eta):=(\psi_2,-\psi_1)$ where the domain $\Omega$ is  transformed to the unit disk. The third stream function $\psi_3$ is taken as the solution of the uniformly elliptic equation in \eqref{eqn:anisotropic} with a boundary condition $\psi_3(\gamma(t))=\cos 2t$. If we show the Hessian $D^2\tilde{\psi}_3(\xi,\eta)\ne0$ ($\tilde{\psi}_3 = \psi_3 \circ \Psi^{-1}$) for all $(\xi,\eta)$ in the unit disk, the strict inequality in \eqref{strictInquality} holds by Lemma \ref{lemma:scalarcurvature}.
 
-Suppose that $D^2\psi_3(\xi_0,\eta_0)=0$ at a point $(\xi_0,\eta_0)$ and let $\nabla \psi_3 (\xi_0,\eta_0) = (c_1,c_2)$. Then, the Hessian of $\tilde\psi:=\psi_3 - c_1\xi - c_2\eta$ is still zero at $(\xi_0,\eta_0)$ and it has a critical point at $(\xi_0,\eta_0)$ with multiplicity $2$. By the linearity of the problem, $\tilde\psi$ is a solution with a boundary condition $\tilde\psi(\gamma(t)) = \cos 2t - c_1\cos t - c_2\sin t$. In order to investigate the local maxima along the boundary, differentiate $\tilde\psi(\gamma(t))$ with respect to $t$ and obtain
+Suppose that $D^2\tilde{\psi}_3(\xi_0,\eta_0)=0$ at a point $(\xi_0,\eta_0)$ and let $\nabla \tilde{\psi}_3 (\xi_0,\eta_0) = (c_1,c_2)$. Then, the Hessian of $\phi:=\tilde{\psi}_3 - c_1\xi - c_2\eta$ is still zero at $(\xi_0,\eta_0)$ and it has a critical point at $(\xi_0,\eta_0)$ with multiplicity $2$. By the linearity of the problem, $\phi$ is a solution with a boundary condition $\phi(\gamma(t)) = \cos 2t - c_1\cos t - c_2\sin t$. In order to investigate the local maxima along the boundary, differentiate $\phi(\gamma(t))$ with respect to $t$ and obtain
 $$
-{\frac{d}{dt}}\tilde\psi(\gamma(t))= -2\sin 2t + c_1\sin t - c_2\cos t =-4\cos t  \sin  t  + c_1\sin t  - c_2\cos t .
+{\frac{d}{dt}}\phi(\gamma(t))= -2\sin 2t + c_1\sin t - c_2\cos t =-4\cos t  \sin  t  + c_1\sin t  - c_2\cos t .
 $$
-One may easily see that this derivative has four zero points. For example, if $c_1=c_2=0$, it has zeros at $t=0,{\pi/2},\pi$ and $3\pi/2$. If not, let $\alpha(\xi,\eta):=-4\xi\eta + c_1\eta-c_2\xi$ which is identical to ${\frac{d}{dt}}\tilde\psi(\gamma(t))$ in $\xi,\eta$ variables on the boundary. The zeros of $\alpha$ are hyperbolas and hence there are 4 critical points on the unit circle. In other words, there are at most two local maxima of $\tilde\psi$ on the boundary. This contradict Lemma \ref{lem:aless} in Appendix since $\tilde\psi$ has an interior critical point of multiplicity $2$. Therefore, there is no such interior point $(\xi_0,\eta_0)$ that makes the Hessian of $\psi_3$ be zero matrix, and the strict inequality in \eqref{strictInquality} is obtained by Lemma \ref{lemma:scalarcurvature}.
+One may easily see that this derivative has four zero points. For example, if $c_1=c_2=0$, it has zeros at $t=0,{\pi/2},\pi$ and $3\pi/2$. If not, let $\alpha(\xi,\eta):=-4\xi\eta + c_1\eta-c_2\xi$ which is identical to ${\frac{d}{dt}}\phi(\gamma(t))$ in $\xi,\eta$ variables on the boundary. The zeros of $\alpha$ are hyperbolas and hence there are 4 critical points on the unit circle. In other words, there are at most two local maxima of $\phi$ on the boundary. This contradict Lemma \ref{lem:aless} in Appendix since $\phi$ has an interior critical point of multiplicity $2$. Therefore, there is no such interior point $(\xi_0,\eta_0)$ that makes the Hessian of $\tilde{\psi}_3$ be zero matrix, and the strict inequality in \eqref{strictInquality} is obtained by Lemma \ref{lemma:scalarcurvature}.
 \end{proof}
 
-Finally, we introduce a theorem related to the interior critical points of an elliptic problem, which is used in Proposition \ref{thm:anisoadm}.
 
-\begin{Lem}[Alessandrini \cite{alessandrini_critical_1987}] \label{lem:aless}
-Let $\Omega \subset \R^2$ be a bounded simply connected domain with a smooth boundary, $g \in C(\partial\Omega)$, $a_{ij} \in C^1(\Omega)$, and $a_i \in C(\Omega)$ for $i,j=1,2$. Let $u \in W^2_{loc}(\Omega) \cap C(\overline\Omega)$ satisfy
-\begin{align*}
-  \sum_{i,j=1}^2 a_{ij} \partial_{x_i}\partial_{x_j}u + \sum_{i=1}^2 a_i \partial_{x_i}u &= 0, \quad \text{in $\Omega$,} \\
-  u&=g, \quad \text{on $\partial \Omega$}.
-\end{align*}
-If $g|_{\partial\Omega}$ has $N$ maxima (and hence it has $N$ minima), then the interior critical points of $u$ are of a finite number and
-$$
-\sum_{i=1}^K m_i \le N-1,
-$$
-where $m_1,\cdots,m_K$ are the multiplicities of the corresponding maxima.
-\end{Lem}
 
-\begin{Rem}
-We will use this lemma to claim that there is no interior critical point if the boundary value $g$ has only one local maximum point on the boundary.
-\end{Rem}
+% \begin{Rem}
+% We will use this lemma to claim that there is no interior critical point if the boundary value $g$ has only one local maximum point on the boundary.
+% \end{Rem}
 
 \section{Quadrilateral and Triangle problem} \label{local}
 % Now, having $1$-family and $2$-family of characteristic curves, we are to prove the existence of the linear hyperbolic system. To this ends, we first 
